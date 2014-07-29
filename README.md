@@ -7,9 +7,9 @@ SQL project for druid, has 3 sub projects
 
 1) SQL -> Json compiler,
 
-2) Terminal SQL client interface,
+2) Terminal based SQL client interface,
 
-3) Java JDBC driver for druid.
+3) Java JDBC like driver for druid.
 
 Getting started guide
 =====================
