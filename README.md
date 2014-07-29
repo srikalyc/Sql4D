@@ -4,6 +4,7 @@ Sql4D
 =====
 
 SQL project for druid, has 3 sub projects
+
 1) SQL -> Json compiler,
 
 2) Terminal SQL client interface,
