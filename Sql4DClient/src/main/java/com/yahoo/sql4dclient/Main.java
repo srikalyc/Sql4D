@@ -98,7 +98,7 @@ public class Main {
     }
     
     private static void printHelp() {
-        println(" 1. select queries        (GroupBy, TimeSeries, TopN). See wiki for examples: https://git.corp.yahoo.com/srikalyan/Sql4D/wiki/Sql4DCompiler");
+        println(" 1. select queries        (GroupBy, TimeSeries, TopN). See wiki for examples: https://github.com/srikalyc/Sql4D/wiki/Sql4DCompiler");
         println(" 2. generatebean=BeanName (This command must be preceding a SQL, it generates a java source file BeanName.java which extends DruidBaseBean.");
         println(" 3. trace=[true|false]    (When enabled prints out compiled JSON query)");
         println(" 4. querymode=[sql|json]  (Default is sql, when mode is json it is fired directly)");
