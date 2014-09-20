@@ -374,32 +374,38 @@ public class DDataSource {
     }
 
     public static void main(String[] args) {
-        String s1 = "SELECT timestamp , LONG_SUM(content_views) AS content_views, LONG_SUM(shares) AS shares FROM AggTable WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='superprovider' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT')  GROUP BY timestamp HINT('timeseries') ";
-        String s2 = "SELECT timestamp , LONG_SUM(all_content_seen) AS content_seen FROM UniqueCount WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='superprovider' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT') GROUP BY timestamp HINT('timeseries')";
-        String join = "SELECT timestamp , LONG_SUM(content_views) AS content_views, LONG_SUM(shares) AS shares FROM AggTable WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='superprovider' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT')  GROUP BY timestamp HINT('timeseries') JOIN (SELECT timestamp , LONG_SUM(all_content_seen) AS content_seen FROM UniqueTable WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='superprovider' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT') GROUP BY timestamp HINT('timeseries')) ON (timestamp, content_views);";
-        DDataSource driver = new DDataSource("mybroker.com", 4080, "mycoordinator.com", 8082, "myproxy.com", 3128);
-         Either<String,Either<Joiner4All,Mapper4All>> result = driver.query(join, false, "sql");
-         if (result.isRight()) {
-             Either<Joiner4All,Mapper4All> grandRes = result.right().get();
-             if (grandRes.isLeft()) {
-                 Joiner4All joiner4All = grandRes.left().get();
-                 PrettyPrint.print(joiner4All);
-             } else {
-                 Mapper4All mapper4All = grandRes.right().get();
-                 PrettyPrint.print(mapper4All);
-             }
-         }
-        Either<String,Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>>> result2 = driver.query(join, TimeSeriesBean.class, true);
-        if (result2.isRight()) {
-            Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>> grandRes =  result2.right().get();
-             if (grandRes.isLeft()) {
-                 List<TimeSeriesBean> joiner4All = grandRes.left().get();
-                 PrettyPrint.print(joiner4All);
-             } else {
-                 Map<Object,TimeSeriesBean> mapper4All = grandRes.right().get();
-                 println(mapper4All.toString());
-             }
-        }
+//        String s1 = "SELECT timestamp , LONG_SUM(content_views) AS content_views, LONG_SUM(shares) AS shares FROM content_agg_hourly_v5 WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT')  GROUP BY timestamp HINT('timeseries') ";
+//        String s2 = "SELECT timestamp , LONG_SUM(all_content_seen) AS content_seen FROM unique_content_24_hour_v5 WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT') GROUP BY timestamp HINT('timeseries')";
+//        String join = "SELECT timestamp , LONG_SUM(content_views) AS content_views, LONG_SUM(shares) AS shares FROM content_agg_hourly_v5 WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT')  GROUP BY timestamp HINT('timeseries') JOIN (SELECT timestamp , LONG_SUM(all_content_seen) AS content_seen FROM unique_content_24_hour_v5 WHERE interval BETWEEN  2014-05-20T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY PERIOD('P1D', 'EST5EDT') GROUP BY timestamp HINT('timeseries')) ON (timestamp);";
+//        DDataSource driver = new DDataSource("bk1.qa.analytics.media.gq1.yahoo.com", 4080, "co2.qa.analytics.media.gq1.yahoo.com", 8082, "yca-proxy.corp.yahoo.com", 3128);
+//         Either<String,Either<Joiner4All,Mapper4All>> result = driver.query(join, false, "sql");
+//         if (result.isRight()) {
+//             Either<Joiner4All,Mapper4All> grandRes = result.right().get();
+//             if (grandRes.isLeft()) {
+//                 Joiner4All joiner4All = grandRes.left().get();
+//                 PrettyPrint.print(joiner4All);
+//             } else {
+//                 Mapper4All mapper4All = grandRes.right().get();
+//                 PrettyPrint.print(mapper4All);
+//             }
+//         }
+        String q = "SELECT timestamp, LONG_SUM(count) AS edit_count, DOUBLE_SUM(added) AS chars_added FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z BREAK BY 'minute' HINT('timeseries');";
+        String q1 = "SELECT timestamp, page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z AND country='United States' BREAK BY 'all' GROUP BY page  ORDER BY edit_count DESC LIMIT 10;";
+        String q2 = "SELECT page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z AND country='United States' BREAK BY 'minute' GROUP BY page  LIMIT 10;";
+        DDataSource driver = new DDataSource("localhost", 8083, "co2.qa.analytics.media.gq1.yahoo.com", 8082, null, 3128);
+         Either<String,Either<Joiner4All,Mapper4All>> result = driver.query(q1, true, "sql");
+         System.out.println(result.right().get().right().get());
+//        Either<String,Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>>> result2 = driver.query(join, TimeSeriesBean.class, true);
+//        if (result2.isRight()) {
+//            Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>> grandRes =  result2.right().get();
+//             if (grandRes.isLeft()) {
+//                 List<TimeSeriesBean> joiner4All = grandRes.left().get();
+//                 PrettyPrint.print(joiner4All);
+//             } else {
+//                 Map<Object,TimeSeriesBean> mapper4All = grandRes.right().get();
+//                 println(mapper4All.toString());
+//             }
+//        }
 
     }
 }

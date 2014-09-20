@@ -125,7 +125,12 @@ public class TopNQueryMeta  extends BaseAggQueryMeta {
             if (gBQMeta.fetchDimensions != null && gBQMeta.fetchDimensions.size() == 1) {
                 for (String dim:gBQMeta.fetchDimensions.keySet()) {// We care only about 1st dimension
                     String dimaAlias = gBQMeta.fetchDimensions.get(dim);
-                    topN.dimension = dimaAlias;
+                    if (dimaAlias == null) {//Directly use the dim
+                        topN.dimension = dim;
+                    } else {
+                        topN.dimension = dimaAlias;
+                    }
+                    
                     break;// Break after the first dimension.
                 }
             } else {

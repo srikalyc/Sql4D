@@ -28,6 +28,7 @@ options { k=6; }
 	import com.yahoo.sql4d.query.select.*;
 	import com.yahoo.sql4d.query.search.*;
 	import com.yahoo.sql4d.query.topn.*;
+	import com.yahoo.sql4d.query.*;
 }
 
 
@@ -89,20 +90,49 @@ statement returns [QueryMeta qMeta]
 		       )?
 		   )? {qMeta = QueryUtils.checkAndPromoteToTimeSeries(qMeta);}
 		  (WS ORDER WS BY WS (id=ID) 
-		      {	qMeta = TopNQueryMeta.promote(qMeta);
-		      	((TopNQueryMeta)qMeta).metric = $id.text;
-		      } 
-		  )?
-		  (WS LIMIT WS (l=LONG)
 		      {	
-		      	if (qMeta instanceof TopNQueryMeta) {
-		      		((TopNQueryMeta)qMeta).threshold = Integer.valueOf($l.text);
-		      	} else if (qMeta instanceof SelectQueryMeta) {
-				((SelectQueryMeta)qMeta).pagingSpec.threshold = Integer.valueOf($l.text);	      	
+		  	if (((PlainDimQueryMeta)qMeta).fetchDimensions.size() != 1) {
+			   ((GroupByQueryMeta)qMeta).limitSpec = new LimitSpec();
+			   
+		  	} else {// If fetchDimensions = 1 then TopN is more optimal.
+		           qMeta = TopNQueryMeta.promote(qMeta);
+	        	   ((TopNQueryMeta)qMeta).metric = $id.text;
 		      	}
-		      } 
+		      }
+		       
+		      (WS dir=(ASC|DESC) 
+		      { 
+		        if (qMeta instanceof GroupByQueryMeta && ((GroupByQueryMeta)qMeta).limitSpec != null) {
+			    if ($dir != null && $dir.text != null) {
+			        ((GroupByQueryMeta)qMeta).limitSpec.addColumn($id.text, $dir.text);
+			    } else {
+			    	((GroupByQueryMeta)qMeta).limitSpec.addColumn($id.text, "ASC");
+			    }
+		      	}
+		      })?
+			{
+			    // At this point if the qMeta is not TopN and is still GroupBy then do the following(default is ascending sort).
+			    if (qMeta instanceof GroupByQueryMeta && ((GroupByQueryMeta)qMeta).limitSpec != null) {
+			       if (!((GroupByQueryMeta)qMeta).limitSpec.columns.containsKey($id.text)) {
+			       	   ((GroupByQueryMeta)qMeta).limitSpec.addColumn($id.text, "ASC");
+			       }
+			       
+			    }
+
+			}		      
 		  )?
-		  
+		  (
+		   WS LIMIT WS (l=LONG)
+		      {	
+		  	if (((PlainDimQueryMeta)qMeta).fetchDimensions.size() != 1) {
+		      	    ((GroupByQueryMeta)qMeta).limitSpec.limit = Long.valueOf($l.text);
+		      	} else if (qMeta instanceof TopNQueryMeta) {
+		      	    ((TopNQueryMeta)qMeta).threshold = Integer.valueOf($l.text);
+		      	} else if (qMeta instanceof SelectQueryMeta) {
+			    ((SelectQueryMeta)qMeta).pagingSpec.threshold = Integer.valueOf($l.text);	      	
+		      	}
+		      }    
+		  )?
 		    
 	  	  (WS THEN WS p=postAggItem {QueryUtils.setPostAggregation(qMeta, p);})?
 	  )
@@ -413,6 +443,8 @@ AND 	:	('AND'|'and');
 OR 	:	('OR'|'or');
 NOT 	:	('NOT'|'not');
 GROUP	:	('GROUP' | 'group');
+ASC	:	('ASC' | 'asc');
+DESC	:	('DESC' | 'desc');
 ORDER	:	('ORDER' | 'order');// Metric for TopN
 HAVING	:	('HAVING' | 'having');// Metric for groupBy
 BREAK	:	('BREAK' | 'break');// Granularity

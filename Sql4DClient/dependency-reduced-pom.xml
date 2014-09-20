@@ -36,16 +36,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>yahoo.yinst.maven_plugins</groupId>
-        <artifactId>yjava_maven_plugins_yinst</artifactId>
-        <configuration>
-          <buildtype>${buildtype}</buildtype>
-          <sourceDirectory>${basedir}/src/main/yinst</sourceDirectory>
-          <target_dir>${basedir}/target</target_dir>
-          <chdir>${basedir}/src/main/yinst</chdir>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
   <properties>

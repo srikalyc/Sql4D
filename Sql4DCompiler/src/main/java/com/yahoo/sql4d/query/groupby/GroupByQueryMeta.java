@@ -57,7 +57,8 @@ import org.json.JSONObject;
  */
 public class GroupByQueryMeta  extends BaseAggQueryMeta {
     public Having having;
-
+    public LimitSpec limitSpec;
+    
     public GroupByQueryMeta() {
     }
 
@@ -84,7 +85,9 @@ public class GroupByQueryMeta  extends BaseAggQueryMeta {
         if (having != null) {
             map.put("having", having.getJson());
         }
-        
+        if (limitSpec != null) {
+            map.put("limitSpec", limitSpec.getJson());
+        }
         return map;
     }
 
