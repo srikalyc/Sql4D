@@ -397,7 +397,8 @@ postAggArithOper[PostAggItem postAggItem]
 ////////////// Miscellaneous rules ////////////////
 ////////////////////////////////////////////////////////
 isoTime returns [String date]
-	:d=DATE_HOUR {$date = $d.text;}
+	:d=DATE {$date = $d.text;}
+	|d=DATE_HOUR {$date = $d.text;}
 	|d=DATE_HOUR_MIN {$date = $d.text;}
 	|d=DATE_HOUR_MIN_SEC {$date = $d.text;}
 	|d=DATE_HOUR_MIN_SEC_SUB {$date = $d.text;}
@@ -478,7 +479,7 @@ WS
 	;
 
 	
-fragment DATE 	
+DATE 	
 	: NUM NUM NUM NUM '-' NUM NUM '-' NUM NUM; 	
 	
 DATE_HOUR

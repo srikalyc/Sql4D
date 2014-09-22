@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-09-18 22:22:15
+// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-09-22 13:39:27
 package com.yahoo.sql4d.converter;
 
 import org.antlr.runtime.*;
@@ -133,11 +133,11 @@ public class druidGParser extends Parser {
 
     @Override
     public String getGrammarFileName() {
-        return "/Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g";
+        return "/Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g";
     }
 
 	// $ANTLR start "program"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:35:1: program returns [Program program] : (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:35:1: program returns [Program program] : (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )? ;
     public final Program program() throws RecognitionException {
         Program program = null;
 
@@ -148,11 +148,11 @@ public class druidGParser extends Parser {
 
         program = new Program();
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:2: ( (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:4: (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:2: ( (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:4: (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? ) ( OPT_SEMI_COLON )?
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:4: (s1= statement )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:5: s1= statement
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:4: (s1= statement )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:37:5: s1= statement
                 {
                     pushFollow(FOLLOW_statement_in_program42);
                     s1 = statement();
@@ -161,8 +161,8 @@ public class druidGParser extends Parser {
                 }
 
                 program.listOfQueries.add(s1);
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:5: WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:5: WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN ( WS )?
                 {
                     match(input, WS, FOLLOW_WS_in_program52);
                     j = input.LT(1);
@@ -174,14 +174,14 @@ public class druidGParser extends Parser {
                         throw mse;
                     }
                     program.joinTypes.add((j != null ? j.getText() : null).toUpperCase());
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:86: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:86: ( WS )?
                     int alt1 = 2;
                     int LA1_0 = input.LA(1);
                     if ((LA1_0 == WS)) {
                         alt1 = 1;
                     }
                     switch (alt1) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:86: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:86: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program66);
                         }
@@ -190,14 +190,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, LPARAN, FOLLOW_LPARAN_in_program69);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:97: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:97: ( WS )?
                     int alt2 = 2;
                     int LA2_0 = input.LA(1);
                     if ((LA2_0 == WS)) {
                         alt2 = 1;
                     }
                     switch (alt2) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:97: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:97: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program71);
                         }
@@ -205,8 +205,8 @@ public class druidGParser extends Parser {
 
                     }
 
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:101: (s2= statement )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:102: s2= statement
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:101: (s2= statement )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:102: s2= statement
                     {
                         pushFollow(FOLLOW_statement_in_program77);
                         s2 = statement();
@@ -215,14 +215,14 @@ public class druidGParser extends Parser {
                     }
 
                     program.listOfQueries.add(s2);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:149: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:149: ( WS )?
                     int alt3 = 2;
                     int LA3_0 = input.LA(1);
                     if ((LA3_0 == WS)) {
                         alt3 = 1;
                     }
                     switch (alt3) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:149: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:149: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program82);
                         }
@@ -231,14 +231,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, RPARAN, FOLLOW_RPARAN_in_program85);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:160: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:160: ( WS )?
                     int alt4 = 2;
                     int LA4_0 = input.LA(1);
                     if ((LA4_0 == WS)) {
                         alt4 = 1;
                     }
                     switch (alt4) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:160: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:160: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program87);
                         }
@@ -247,14 +247,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, ON, FOLLOW_ON_in_program90);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:167: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:167: ( WS )?
                     int alt5 = 2;
                     int LA5_0 = input.LA(1);
                     if ((LA5_0 == WS)) {
                         alt5 = 1;
                     }
                     switch (alt5) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:167: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:167: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program92);
                         }
@@ -263,14 +263,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, LPARAN, FOLLOW_LPARAN_in_program95);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:178: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:178: ( WS )?
                     int alt6 = 2;
                     int LA6_0 = input.LA(1);
                     if ((LA6_0 == WS)) {
                         alt6 = 1;
                     }
                     switch (alt6) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:178: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:178: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program97);
                         }
@@ -278,14 +278,14 @@ public class druidGParser extends Parser {
 
                     }
 
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:182: (a= ID )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:183: a= ID
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:182: (a= ID )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:183: a= ID
                     {
                         a = (Token) match(input, ID, FOLLOW_ID_in_program103);
                         program.primaryJoinableHooks.add((a != null ? a.getText() : null));
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:235: ( ( WS )? ',' ( WS )? a= ID )*
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:235: ( ( WS )? ',' ( WS )? a= ID )*
                     loop9:
                     while (true) {
                         int alt9 = 2;
@@ -301,16 +301,16 @@ public class druidGParser extends Parser {
                         }
 
                         switch (alt9) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: ( WS )? ',' ( WS )? a= ID
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: ( WS )? ',' ( WS )? a= ID
                             {
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: ( WS )?
                                 int alt7 = 2;
                                 int LA7_0 = input.LA(1);
                                 if ((LA7_0 == WS)) {
                                     alt7 = 1;
                                 }
                                 switch (alt7) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:236: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_program108);
                                     }
@@ -319,14 +319,14 @@ public class druidGParser extends Parser {
                                 }
 
                                 match(input, 72, FOLLOW_72_in_program111);
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:244: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:244: ( WS )?
                                 int alt8 = 2;
                                 int LA8_0 = input.LA(1);
                                 if ((LA8_0 == WS)) {
                                     alt8 = 1;
                                 }
                                 switch (alt8) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:244: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:244: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_program113);
                                     }
@@ -344,14 +344,14 @@ public class druidGParser extends Parser {
                         }
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:302: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:302: ( WS )?
                     int alt10 = 2;
                     int LA10_0 = input.LA(1);
                     if ((LA10_0 == WS)) {
                         alt10 = 1;
                     }
                     switch (alt10) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:302: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:302: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program124);
                         }
@@ -360,14 +360,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, RPARAN, FOLLOW_RPARAN_in_program127);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:313: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:313: ( WS )?
                     int alt11 = 2;
                     int LA11_0 = input.LA(1);
                     if ((LA11_0 == WS)) {
                         alt11 = 1;
                     }
                     switch (alt11) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:313: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:313: WS
                         {
                             match(input, WS, FOLLOW_WS_in_program129);
                         }
@@ -377,14 +377,14 @@ public class druidGParser extends Parser {
 
                 }
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:319: ( OPT_SEMI_COLON )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:319: ( OPT_SEMI_COLON )?
                 int alt12 = 2;
                 int LA12_0 = input.LA(1);
                 if ((LA12_0 == OPT_SEMI_COLON)) {
                     alt12 = 1;
                 }
                 switch (alt12) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:319: OPT_SEMI_COLON
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:38:319: OPT_SEMI_COLON
                     {
                         match(input, OPT_SEMI_COLON, FOLLOW_OPT_SEMI_COLON_in_program134);
                     }
@@ -405,7 +405,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "program"
 
 	// $ANTLR start "statement"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:43:1: statement returns [QueryMeta qMeta] : SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:43:1: statement returns [QueryMeta qMeta] : SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? ;
     public final QueryMeta statement() throws RecognitionException {
         QueryMeta qMeta = null;
 
@@ -423,12 +423,12 @@ public class druidGParser extends Parser {
         qMeta.intervals = new ArrayList<>();
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:48:2: ( SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:48:4: SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:48:2: ( SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:48:4: SELECT WS ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) ) WS FROM WS id= ID WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
             {
                 match(input, SELECT, FOLLOW_SELECT_in_statement160);
                 match(input, WS, FOLLOW_WS_in_statement162);
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:49:7: ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:49:7: ( ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( '*' ) )
                 int alt16 = 2;
                 int LA16_0 = input.LA(1);
                 if ((LA16_0 == COUNT || LA16_0 == DOUBLE_SUM || LA16_0 == ID || LA16_0 == JAVASCRIPT || LA16_0 == LONG_SUM || (LA16_0 >= MAX && LA16_0 <= MIN) || LA16_0 == UNIQUE)) {
@@ -442,16 +442,16 @@ public class druidGParser extends Parser {
                 }
 
                 switch (alt16) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:50:8: ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:50:8: ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:50:8: ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:9: selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:50:8: ( selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:9: selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
                         {
                             pushFollow(FOLLOW_selectItems_in_statement189);
                             selectItems(qMeta);
                             state._fsp--;
 
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:28: ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:28: ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
                             loop15:
                             while (true) {
                                 int alt15 = 2;
@@ -467,16 +467,16 @@ public class druidGParser extends Parser {
                                 }
 
                                 switch (alt15) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: ( WS )? ',' ( WS )? selectItems[qMeta]
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: ( WS )? ',' ( WS )? selectItems[qMeta]
                                     {
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: ( WS )?
                                         int alt13 = 2;
                                         int LA13_0 = input.LA(1);
                                         if ((LA13_0 == WS)) {
                                             alt13 = 1;
                                         }
                                         switch (alt13) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:29: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_statement193);
                                             }
@@ -485,14 +485,14 @@ public class druidGParser extends Parser {
                                         }
 
                                         match(input, 72, FOLLOW_72_in_statement196);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:37: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:37: ( WS )?
                                         int alt14 = 2;
                                         int LA14_0 = input.LA(1);
                                         if ((LA14_0 == WS)) {
                                             alt14 = 1;
                                         }
                                         switch (alt14) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:37: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:51:37: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_statement198);
                                             }
@@ -516,10 +516,10 @@ public class druidGParser extends Parser {
 
                     }
                     break;
-                    case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:8: ( '*' )
+                    case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:8: ( '*' )
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:8: ( '*' )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:9: '*'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:8: ( '*' )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:54:9: '*'
                         {
                             match(input, 71, FOLLOW_71_in_statement232);
                         }
@@ -546,10 +546,10 @@ public class druidGParser extends Parser {
                 whereClause(qMeta);
                 state._fsp--;
 
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:65:4: ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:5: ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:65:4: ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:5: ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )?
                 {
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:5: ( WS BREAK WS BY WS granularityClause[qMeta] )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:5: ( WS BREAK WS BY WS granularityClause[qMeta] )?
                     int alt17 = 2;
                     int LA17_0 = input.LA(1);
                     if ((LA17_0 == WS)) {
@@ -559,7 +559,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt17) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:6: WS BREAK WS BY WS granularityClause[qMeta]
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:66:6: WS BREAK WS BY WS granularityClause[qMeta]
                         {
                             match(input, WS, FOLLOW_WS_in_statement298);
                             match(input, BREAK, FOLLOW_BREAK_in_statement300);
@@ -575,7 +575,7 @@ public class druidGParser extends Parser {
 
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:67:5: ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:67:5: ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )?
                     int alt22 = 2;
                     int LA22_0 = input.LA(1);
                     if ((LA22_0 == WS)) {
@@ -585,7 +585,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt22) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:67:6: WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )?
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:67:6: WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )?
                         {
                             match(input, WS, FOLLOW_WS_in_statement319);
                             match(input, GROUP, FOLLOW_GROUP_in_statement321);
@@ -598,8 +598,8 @@ public class druidGParser extends Parser {
                                 System.err.println("No dimensions !! ");
                             }
 
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:74:10: (id= ID ( ( WS )? ',' ( WS )? id= ID )* )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:74:11: id= ID ( ( WS )? ',' ( WS )? id= ID )*
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:74:10: (id= ID ( ( WS )? ',' ( WS )? id= ID )* )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:74:11: id= ID ( ( WS )? ',' ( WS )? id= ID )*
                             {
                                 id = (Token) match(input, ID, FOLLOW_ID_in_statement353);
 
@@ -607,7 +607,7 @@ public class druidGParser extends Parser {
                                     System.err.println("Dimension/Alias " + (id != null ? id.getText() : null) + " not valid..");
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:14: ( ( WS )? ',' ( WS )? id= ID )*
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:14: ( ( WS )? ',' ( WS )? id= ID )*
                                 loop20:
                                 while (true) {
                                     int alt20 = 2;
@@ -623,16 +623,16 @@ public class druidGParser extends Parser {
                                     }
 
                                     switch (alt20) {
-                                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: ( WS )? ',' ( WS )? id= ID
+                                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: ( WS )? ',' ( WS )? id= ID
                                         {
-                                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: ( WS )?
+                                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: ( WS )?
                                             int alt18 = 2;
                                             int LA18_0 = input.LA(1);
                                             if ((LA18_0 == WS)) {
                                                 alt18 = 1;
                                             }
                                             switch (alt18) {
-                                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: WS
+                                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:15: WS
                                                 {
                                                     match(input, WS, FOLLOW_WS_in_statement385);
                                                 }
@@ -641,14 +641,14 @@ public class druidGParser extends Parser {
                                             }
 
                                             match(input, 72, FOLLOW_72_in_statement388);
-                                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:23: ( WS )?
+                                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:23: ( WS )?
                                             int alt19 = 2;
                                             int LA19_0 = input.LA(1);
                                             if ((LA19_0 == WS)) {
                                                 alt19 = 1;
                                             }
                                             switch (alt19) {
-                                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:23: WS
+                                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:80:23: WS
                                                 {
                                                     match(input, WS, FOLLOW_WS_in_statement390);
                                                 }
@@ -672,7 +672,7 @@ public class druidGParser extends Parser {
 
                             }
 
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:88:10: ( WS HAVING WS h= havingClause )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:88:10: ( WS HAVING WS h= havingClause )?
                             int alt21 = 2;
                             int LA21_0 = input.LA(1);
                             if ((LA21_0 == WS)) {
@@ -682,7 +682,7 @@ public class druidGParser extends Parser {
                                 }
                             }
                             switch (alt21) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:88:11: WS HAVING WS h= havingClause
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:88:11: WS HAVING WS h= havingClause
                                 {
                                     match(input, WS, FOLLOW_WS_in_statement452);
                                     match(input, HAVING, FOLLOW_HAVING_in_statement454);
@@ -703,7 +703,7 @@ public class druidGParser extends Parser {
                     }
 
                     qMeta = QueryUtils.checkAndPromoteToTimeSeries(qMeta);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:5: ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:5: ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )?
                     int alt24 = 2;
                     int LA24_0 = input.LA(1);
                     if ((LA24_0 == WS)) {
@@ -713,15 +713,15 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt24) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:6: WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )?
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:6: WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )?
                         {
                             match(input, WS, FOLLOW_WS_in_statement504);
                             match(input, ORDER, FOLLOW_ORDER_in_statement506);
                             match(input, WS, FOLLOW_WS_in_statement508);
                             match(input, BY, FOLLOW_BY_in_statement510);
                             match(input, WS, FOLLOW_WS_in_statement512);
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:24: (id= ID )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:25: id= ID
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:24: (id= ID )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:92:25: id= ID
                             {
                                 id = (Token) match(input, ID, FOLLOW_ID_in_statement517);
                             }
@@ -734,7 +734,7 @@ public class druidGParser extends Parser {
                                 ((TopNQueryMeta) qMeta).metric = (id != null ? id.getText() : null);
                             }
 
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:103:9: ( WS dir= ( ASC | DESC ) )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:103:9: ( WS dir= ( ASC | DESC ) )?
                             int alt23 = 2;
                             int LA23_0 = input.LA(1);
                             if ((LA23_0 == WS)) {
@@ -744,7 +744,7 @@ public class druidGParser extends Parser {
                                 }
                             }
                             switch (alt23) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:103:10: WS dir= ( ASC | DESC )
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:103:10: WS dir= ( ASC | DESC )
                                 {
                                     match(input, WS, FOLLOW_WS_in_statement550);
                                     dir = input.LT(1);
@@ -782,7 +782,7 @@ public class druidGParser extends Parser {
 
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:124:5: ( WS LIMIT WS (l= LONG ) )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:124:5: ( WS LIMIT WS (l= LONG ) )?
                     int alt25 = 2;
                     int LA25_0 = input.LA(1);
                     if ((LA25_0 == WS)) {
@@ -792,13 +792,13 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt25) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:6: WS LIMIT WS (l= LONG )
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:6: WS LIMIT WS (l= LONG )
                         {
                             match(input, WS, FOLLOW_WS_in_statement604);
                             match(input, LIMIT, FOLLOW_LIMIT_in_statement606);
                             match(input, WS, FOLLOW_WS_in_statement608);
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:18: (l= LONG )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:19: l= LONG
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:18: (l= LONG )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:125:19: l= LONG
                             {
                                 l = (Token) match(input, LONG, FOLLOW_LONG_in_statement613);
                             }
@@ -816,7 +816,7 @@ public class druidGParser extends Parser {
 
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:137:7: ( WS THEN WS p= postAggItem )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:137:7: ( WS THEN WS p= postAggItem )?
                     int alt26 = 2;
                     int LA26_0 = input.LA(1);
                     if ((LA26_0 == WS)) {
@@ -826,7 +826,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt26) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:137:8: WS THEN WS p= postAggItem
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:137:8: WS THEN WS p= postAggItem
                         {
                             match(input, WS, FOLLOW_WS_in_statement651);
                             match(input, THEN, FOLLOW_THEN_in_statement653);
@@ -843,7 +843,7 @@ public class druidGParser extends Parser {
 
                 }
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:4: ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:4: ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )?
                 int alt36 = 2;
                 int LA36_0 = input.LA(1);
                 if ((LA36_0 == WS)) {
@@ -853,21 +853,21 @@ public class druidGParser extends Parser {
                     }
                 }
                 switch (alt36) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:5: WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:5: WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN
                     {
                         match(input, WS, FOLLOW_WS_in_statement674);
                         match(input, WHICH, FOLLOW_WHICH_in_statement676);
                         match(input, WS, FOLLOW_WS_in_statement678);
                         match(input, CONTAINS, FOLLOW_CONTAINS_in_statement680);
                         qMeta = SearchQueryMeta.promote(qMeta);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:68: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:68: ( WS )?
                         int alt27 = 2;
                         int LA27_0 = input.LA(1);
                         if ((LA27_0 == WS)) {
                             alt27 = 1;
                         }
                         switch (alt27) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:68: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:68: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement684);
                             }
@@ -876,14 +876,14 @@ public class druidGParser extends Parser {
                         }
 
                         match(input, LPARAN, FOLLOW_LPARAN_in_statement687);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:79: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:79: ( WS )?
                         int alt28 = 2;
                         int LA28_0 = input.LA(1);
                         if ((LA28_0 == WS)) {
                             alt28 = 1;
                         }
                         switch (alt28) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:79: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:79: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement689);
                             }
@@ -891,13 +891,13 @@ public class druidGParser extends Parser {
 
                         }
 
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:83: (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:84: s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:83: (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:84: s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
                         {
                             s1 = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_statement695);
                             ((SearchQueryMeta) qMeta).type = "insensitive_contains";
                             ((SearchQueryMeta) qMeta).addValue((s1 != null ? s1.getText() : null));
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:208: ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:208: ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
                             loop31:
                             while (true) {
                                 int alt31 = 2;
@@ -913,16 +913,16 @@ public class druidGParser extends Parser {
                                 }
 
                                 switch (alt31) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING
                                     {
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: ( WS )?
                                         int alt29 = 2;
                                         int LA29_0 = input.LA(1);
                                         if ((LA29_0 == WS)) {
                                             alt29 = 1;
                                         }
                                         switch (alt29) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:209: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_statement699);
                                             }
@@ -931,14 +931,14 @@ public class druidGParser extends Parser {
                                         }
 
                                         match(input, 72, FOLLOW_72_in_statement702);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:217: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:217: ( WS )?
                                         int alt30 = 2;
                                         int LA30_0 = input.LA(1);
                                         if ((LA30_0 == WS)) {
                                             alt30 = 1;
                                         }
                                         switch (alt30) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:217: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:217: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_statement704);
                                             }
@@ -959,14 +959,14 @@ public class druidGParser extends Parser {
 
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:337: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:337: ( WS )?
                         int alt32 = 2;
                         int LA32_0 = input.LA(1);
                         if ((LA32_0 == WS)) {
                             alt32 = 1;
                         }
                         switch (alt32) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:337: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:139:337: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement716);
                             }
@@ -977,14 +977,14 @@ public class druidGParser extends Parser {
                         match(input, RPARAN, FOLLOW_RPARAN_in_statement719);
                         match(input, WS, FOLLOW_WS_in_statement725);
                         match(input, SORT, FOLLOW_SORT_in_statement727);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:13: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:13: ( WS )?
                         int alt33 = 2;
                         int LA33_0 = input.LA(1);
                         if ((LA33_0 == WS)) {
                             alt33 = 1;
                         }
                         switch (alt33) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:13: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:13: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement729);
                             }
@@ -993,14 +993,14 @@ public class druidGParser extends Parser {
                         }
 
                         match(input, LPARAN, FOLLOW_LPARAN_in_statement732);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:24: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:24: ( WS )?
                         int alt34 = 2;
                         int LA34_0 = input.LA(1);
                         if ((LA34_0 == WS)) {
                             alt34 = 1;
                         }
                         switch (alt34) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:24: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:24: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement734);
                             }
@@ -1008,21 +1008,21 @@ public class druidGParser extends Parser {
 
                         }
 
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:28: (s= SINGLE_QUOTE_STRING )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:29: s= SINGLE_QUOTE_STRING
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:28: (s= SINGLE_QUOTE_STRING )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:29: s= SINGLE_QUOTE_STRING
                         {
                             s = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_statement740);
                         }
 
                         ((SearchQueryMeta) qMeta).setSort((s != null ? s.getText() : null));
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:97: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:97: ( WS )?
                         int alt35 = 2;
                         int LA35_0 = input.LA(1);
                         if ((LA35_0 == WS)) {
                             alt35 = 1;
                         }
                         switch (alt35) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:97: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:140:97: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement745);
                             }
@@ -1036,7 +1036,7 @@ public class druidGParser extends Parser {
 
                 }
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:4: ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:4: ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
                 int alt40 = 2;
                 int LA40_0 = input.LA(1);
                 if ((LA40_0 == WS)) {
@@ -1046,18 +1046,18 @@ public class druidGParser extends Parser {
                     }
                 }
                 switch (alt40) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:5: WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:5: WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN
                     {
                         match(input, WS, FOLLOW_WS_in_statement760);
                         match(input, HINT, FOLLOW_HINT_in_statement762);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:13: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:13: ( WS )?
                         int alt37 = 2;
                         int LA37_0 = input.LA(1);
                         if ((LA37_0 == WS)) {
                             alt37 = 1;
                         }
                         switch (alt37) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:13: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:13: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement764);
                             }
@@ -1066,14 +1066,14 @@ public class druidGParser extends Parser {
                         }
 
                         match(input, LPARAN, FOLLOW_LPARAN_in_statement767);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:24: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:24: ( WS )?
                         int alt38 = 2;
                         int LA38_0 = input.LA(1);
                         if ((LA38_0 == WS)) {
                             alt38 = 1;
                         }
                         switch (alt38) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:24: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:24: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement769);
                             }
@@ -1083,14 +1083,14 @@ public class druidGParser extends Parser {
 
                         s = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_statement774);
                         qMeta = HintProcessor.process(qMeta, (s != null ? s.getText() : null));
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:99: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:99: ( WS )?
                         int alt39 = 2;
                         int LA39_0 = input.LA(1);
                         if ((LA39_0 == WS)) {
                             alt39 = 1;
                         }
                         switch (alt39) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:99: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:99: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_statement778);
                             }
@@ -1117,12 +1117,12 @@ public class druidGParser extends Parser {
 	// $ANTLR end "statement"
 
 	// $ANTLR start "selectItems"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:145:1: selectItems[QueryMeta qMeta] : (sI1= aggItemInSelect | simpleDim[qMeta] );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:145:1: selectItems[QueryMeta qMeta] : (sI1= aggItemInSelect | simpleDim[qMeta] );
     public final void selectItems(QueryMeta qMeta) throws RecognitionException {
         AggItem sI1 = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:146:2: (sI1= aggItemInSelect | simpleDim[qMeta] )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:146:2: (sI1= aggItemInSelect | simpleDim[qMeta] )
             int alt41 = 2;
             int LA41_0 = input.LA(1);
             if ((LA41_0 == COUNT || LA41_0 == DOUBLE_SUM || LA41_0 == JAVASCRIPT || LA41_0 == LONG_SUM || (LA41_0 >= MAX && LA41_0 <= MIN) || LA41_0 == UNIQUE)) {
@@ -1136,7 +1136,7 @@ public class druidGParser extends Parser {
             }
 
             switch (alt41) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:146:5: sI1= aggItemInSelect
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:146:5: sI1= aggItemInSelect
                 {
                     pushFollow(FOLLOW_aggItemInSelect_in_selectItems800);
                     sI1 = aggItemInSelect();
@@ -1145,7 +1145,7 @@ public class druidGParser extends Parser {
                     ((BaseAggQueryMeta) qMeta).aggregations.add(sI1);
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:147:5: simpleDim[qMeta]
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:147:5: simpleDim[qMeta]
                 {
                     pushFollow(FOLLOW_simpleDim_in_selectItems808);
                     simpleDim(qMeta);
@@ -1165,20 +1165,20 @@ public class druidGParser extends Parser {
 	// $ANTLR end "selectItems"
 
 	// $ANTLR start "simpleDim"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:150:1: simpleDim[QueryMeta qMeta] : (a= ID ( WS AS WS b= ID )? ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:150:1: simpleDim[QueryMeta qMeta] : (a= ID ( WS AS WS b= ID )? ) ;
     public final void simpleDim(QueryMeta qMeta) throws RecognitionException {
         Token a = null;
         Token b = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:2: ( (a= ID ( WS AS WS b= ID )? ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:4: (a= ID ( WS AS WS b= ID )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:2: ( (a= ID ( WS AS WS b= ID )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:4: (a= ID ( WS AS WS b= ID )? )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:4: (a= ID ( WS AS WS b= ID )? )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:5: a= ID ( WS AS WS b= ID )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:4: (a= ID ( WS AS WS b= ID )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:5: a= ID ( WS AS WS b= ID )?
                 {
                     a = (Token) match(input, ID, FOLLOW_ID_in_simpleDim824);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:10: ( WS AS WS b= ID )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:10: ( WS AS WS b= ID )?
                     int alt42 = 2;
                     int LA42_0 = input.LA(1);
                     if ((LA42_0 == WS)) {
@@ -1188,7 +1188,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt42) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:11: WS AS WS b= ID
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:151:11: WS AS WS b= ID
                         {
                             match(input, WS, FOLLOW_WS_in_simpleDim827);
                             match(input, AS, FOLLOW_AS_in_simpleDim829);
@@ -1219,19 +1219,19 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleDim"
 
 	// $ANTLR start "whereClause"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:162:1: whereClause[QueryMeta qMeta] : intervalClause[qMeta] ( WS AND WS f= grandFilter )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:162:1: whereClause[QueryMeta qMeta] : intervalClause[qMeta] ( WS AND WS f= grandFilter )? ;
     public final void whereClause(QueryMeta qMeta) throws RecognitionException {
         Filter f = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:2: ( intervalClause[qMeta] ( WS AND WS f= grandFilter )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:3: intervalClause[qMeta] ( WS AND WS f= grandFilter )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:2: ( intervalClause[qMeta] ( WS AND WS f= grandFilter )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:3: intervalClause[qMeta] ( WS AND WS f= grandFilter )?
             {
                 pushFollow(FOLLOW_intervalClause_in_whereClause856);
                 intervalClause(qMeta);
                 state._fsp--;
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:25: ( WS AND WS f= grandFilter )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:25: ( WS AND WS f= grandFilter )?
                 int alt43 = 2;
                 int LA43_0 = input.LA(1);
                 if ((LA43_0 == WS)) {
@@ -1241,7 +1241,7 @@ public class druidGParser extends Parser {
                     }
                 }
                 switch (alt43) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:26: WS AND WS f= grandFilter
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:163:26: WS AND WS f= grandFilter
                     {
                         match(input, WS, FOLLOW_WS_in_whereClause860);
                         match(input, AND, FOLLOW_AND_in_whereClause862);
@@ -1268,7 +1268,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "whereClause"
 
 	// $ANTLR start "intervalClause"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:167:1: intervalClause[QueryMeta qMeta] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:167:1: intervalClause[QueryMeta qMeta] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
     public final void intervalClause(QueryMeta qMeta) throws RecognitionException {
         Token st2 = null;
         Token et2 = null;
@@ -1278,17 +1278,17 @@ public class druidGParser extends Parser {
         Pair<String> p2 = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:168:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:168:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:168:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:168:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
             {
                 match(input, 73, FOLLOW_73_in_intervalClause887);
                 match(input, WS, FOLLOW_WS_in_intervalClause889);
                 match(input, BETWEEN, FOLLOW_BETWEEN_in_intervalClause891);
                 match(input, WS, FOLLOW_WS_in_intervalClause893);
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:169:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:169:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
                 int alt51 = 2;
                 int LA51_0 = input.LA(1);
-                if (((LA51_0 >= DATE_HOUR && LA51_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ) || LA51_0 == SINGLE_QUOTE_STRING)) {
+                if (((LA51_0 >= DATE && LA51_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ) || LA51_0 == SINGLE_QUOTE_STRING)) {
                     alt51 = 1;
                 } else if ((LA51_0 == LPARAN)) {
                     alt51 = 2;
@@ -1299,18 +1299,18 @@ public class druidGParser extends Parser {
                 }
 
                 switch (alt51) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:170:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:170:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:170:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:170:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
                         {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
                             {
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
                                 int alt44 = 2;
                                 int LA44_0 = input.LA(1);
-                                if (((LA44_0 >= DATE_HOUR && LA44_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ))) {
+                                if (((LA44_0 >= DATE && LA44_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ))) {
                                     alt44 = 1;
                                 } else if ((LA44_0 == SINGLE_QUOTE_STRING)) {
                                     alt44 = 2;
@@ -1321,7 +1321,7 @@ public class druidGParser extends Parser {
                                 }
 
                                 switch (alt44) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:8: st= isoTime
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:8: st= isoTime
                                     {
                                         pushFollow(FOLLOW_isoTime_in_intervalClause913);
                                         st = isoTime();
@@ -1329,7 +1329,7 @@ public class druidGParser extends Parser {
 
                                     }
                                     break;
-                                    case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:22: st2= SINGLE_QUOTE_STRING
+                                    case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:22: st2= SINGLE_QUOTE_STRING
                                     {
                                         st2 = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause920);
                                     }
@@ -1340,10 +1340,10 @@ public class druidGParser extends Parser {
                                 match(input, WS, FOLLOW_WS_in_intervalClause924);
                                 match(input, AND, FOLLOW_AND_in_intervalClause926);
                                 match(input, WS, FOLLOW_WS_in_intervalClause928);
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
                                 int alt45 = 2;
                                 int LA45_0 = input.LA(1);
-                                if (((LA45_0 >= DATE_HOUR && LA45_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ))) {
+                                if (((LA45_0 >= DATE && LA45_0 <= DATE_HOUR_MIN_SEC_SUB_UTC_TZ))) {
                                     alt45 = 1;
                                 } else if ((LA45_0 == SINGLE_QUOTE_STRING)) {
                                     alt45 = 2;
@@ -1354,7 +1354,7 @@ public class druidGParser extends Parser {
                                 }
 
                                 switch (alt45) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:59: et= isoTime
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:59: et= isoTime
                                     {
                                         pushFollow(FOLLOW_isoTime_in_intervalClause933);
                                         et = isoTime();
@@ -1362,7 +1362,7 @@ public class druidGParser extends Parser {
 
                                     }
                                     break;
-                                    case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:73: et2= SINGLE_QUOTE_STRING
+                                    case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:171:73: et2= SINGLE_QUOTE_STRING
                                     {
                                         et2 = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause940);
                                     }
@@ -1390,20 +1390,20 @@ public class druidGParser extends Parser {
 
                     }
                     break;
-                    case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+                    case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
                         {
                             match(input, LPARAN, FOLLOW_LPARAN_in_intervalClause965);
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:12: ( WS )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:12: ( WS )?
                             int alt46 = 2;
                             int LA46_0 = input.LA(1);
                             if ((LA46_0 == WS)) {
                                 alt46 = 1;
                             }
                             switch (alt46) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:12: WS
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:188:12: WS
                                 {
                                     match(input, WS, FOLLOW_WS_in_intervalClause967);
                                 }
@@ -1416,7 +1416,7 @@ public class druidGParser extends Parser {
                             state._fsp--;
 
                             qMeta.intervals.add(new Interval(p1.a, p1.b));
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:7: ( ( WS )? ',' ( WS )? p2= pairString )*
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:7: ( ( WS )? ',' ( WS )? p2= pairString )*
                             loop49:
                             while (true) {
                                 int alt49 = 2;
@@ -1432,16 +1432,16 @@ public class druidGParser extends Parser {
                                 }
 
                                 switch (alt49) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: ( WS )? ',' ( WS )? p2= pairString
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: ( WS )? ',' ( WS )? p2= pairString
                                     {
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: ( WS )?
                                         int alt47 = 2;
                                         int LA47_0 = input.LA(1);
                                         if ((LA47_0 == WS)) {
                                             alt47 = 1;
                                         }
                                         switch (alt47) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:8: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_intervalClause984);
                                             }
@@ -1450,14 +1450,14 @@ public class druidGParser extends Parser {
                                         }
 
                                         match(input, 72, FOLLOW_72_in_intervalClause987);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:16: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:16: ( WS )?
                                         int alt48 = 2;
                                         int LA48_0 = input.LA(1);
                                         if ((LA48_0 == WS)) {
                                             alt48 = 1;
                                         }
                                         switch (alt48) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:16: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:16: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_intervalClause989);
                                             }
@@ -1478,14 +1478,14 @@ public class druidGParser extends Parser {
                                 }
                             }
 
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:85: ( WS )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:85: ( WS )?
                             int alt50 = 2;
                             int LA50_0 = input.LA(1);
                             if ((LA50_0 == WS)) {
                                 alt50 = 1;
                             }
                             switch (alt50) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:85: WS
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:189:85: WS
                                 {
                                     match(input, WS, FOLLOW_WS_in_intervalClause1000);
                                 }
@@ -1513,7 +1513,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "intervalClause"
 
 	// $ANTLR start "getEquals"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:194:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:194:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
     public final EqualsToHolder getEquals() throws RecognitionException {
         EqualsToHolder holder = null;
 
@@ -1521,21 +1521,21 @@ public class druidGParser extends Parser {
         Token b = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
                 {
                     a = (Token) match(input, ID, FOLLOW_ID_in_getEquals1026);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:10: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:10: ( WS )?
                     int alt52 = 2;
                     int LA52_0 = input.LA(1);
                     if ((LA52_0 == WS)) {
                         alt52 = 1;
                     }
                     switch (alt52) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:10: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:10: WS
                         {
                             match(input, WS, FOLLOW_WS_in_getEquals1028);
                         }
@@ -1544,14 +1544,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, EQUALS, FOLLOW_EQUALS_in_getEquals1031);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:21: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:21: ( WS )?
                     int alt53 = 2;
                     int LA53_0 = input.LA(1);
                     if ((LA53_0 == WS)) {
                         alt53 = 1;
                     }
                     switch (alt53) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:21: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:195:21: WS
                         {
                             match(input, WS, FOLLOW_WS_in_getEquals1033);
                         }
@@ -1583,7 +1583,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "getEquals"
 
 	// $ANTLR start "granularityClause"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:200:1: granularityClause[QueryMeta qMeta] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:200:1: granularityClause[QueryMeta qMeta] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) ) );
     public final void granularityClause(QueryMeta qMeta) throws RecognitionException {
         Token s = null;
         Token dur = null;
@@ -1593,7 +1593,7 @@ public class druidGParser extends Parser {
 
         qMeta.granularity = new Granularity();
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) ) )
             int alt76 = 2;
             int LA76_0 = input.LA(1);
             if ((LA76_0 == SINGLE_QUOTE_STRING)) {
@@ -1607,13 +1607,13 @@ public class druidGParser extends Parser {
             }
 
             switch (alt76) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:3: ( (s= SINGLE_QUOTE_STRING ) )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:3: ( (s= SINGLE_QUOTE_STRING ) )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:3: ( (s= SINGLE_QUOTE_STRING ) )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:4: (s= SINGLE_QUOTE_STRING )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:3: ( (s= SINGLE_QUOTE_STRING ) )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:4: (s= SINGLE_QUOTE_STRING )
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:4: (s= SINGLE_QUOTE_STRING )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:5: s= SINGLE_QUOTE_STRING
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:4: (s= SINGLE_QUOTE_STRING )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:202:5: s= SINGLE_QUOTE_STRING
                         {
                             s = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1077);
                         }
@@ -1623,9 +1623,9 @@ public class druidGParser extends Parser {
 
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:204:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:204:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) )
                 {
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:204:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:204:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) )
                     int alt75 = 2;
                     int LA75_0 = input.LA(1);
                     if ((LA75_0 == DURATION)) {
@@ -1639,21 +1639,21 @@ public class druidGParser extends Parser {
                     }
 
                     switch (alt75) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
                         {
-							// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN
+							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN
                             {
                                 match(input, DURATION, FOLLOW_DURATION_in_granularityClause1101);
                                 qMeta.granularity.type = "duration";
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:55: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:55: ( WS )?
                                 int alt54 = 2;
                                 int LA54_0 = input.LA(1);
                                 if ((LA54_0 == WS)) {
                                     alt54 = 1;
                                 }
                                 switch (alt54) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:55: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:55: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1105);
                                     }
@@ -1662,14 +1662,14 @@ public class druidGParser extends Parser {
                                 }
 
                                 match(input, LPARAN, FOLLOW_LPARAN_in_granularityClause1108);
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:66: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:66: ( WS )?
                                 int alt55 = 2;
                                 int LA55_0 = input.LA(1);
                                 if ((LA55_0 == WS)) {
                                     alt55 = 1;
                                 }
                                 switch (alt55) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:66: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:66: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1110);
                                     }
@@ -1679,14 +1679,14 @@ public class druidGParser extends Parser {
 
                                 dur = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1115);
                                 qMeta.granularity.setDuration((dur != null ? dur.getText() : null));
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:138: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:138: ( WS )?
                                 int alt56 = 2;
                                 int LA56_0 = input.LA(1);
                                 if ((LA56_0 == WS)) {
                                     alt56 = 1;
                                 }
                                 switch (alt56) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:138: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:138: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1119);
                                     }
@@ -1694,7 +1694,7 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:142: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:142: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
                                 int alt58 = 2;
                                 int LA58_0 = input.LA(1);
                                 if ((LA58_0 == 72)) {
@@ -1709,17 +1709,17 @@ public class druidGParser extends Parser {
                                     }
                                 }
                                 switch (alt58) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:143: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:143: ',' ( WS )? orig= SINGLE_QUOTE_STRING
                                     {
                                         match(input, 72, FOLLOW_72_in_granularityClause1123);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:147: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:147: ( WS )?
                                         int alt57 = 2;
                                         int LA57_0 = input.LA(1);
                                         if ((LA57_0 == WS)) {
                                             alt57 = 1;
                                         }
                                         switch (alt57) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:147: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:147: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1125);
                                             }
@@ -1734,23 +1734,23 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:221: ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:221: ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )?
                                 int alt62 = 2;
                                 int LA62_0 = input.LA(1);
                                 if ((LA62_0 == WS || LA62_0 == 72)) {
                                     alt62 = 1;
                                 }
                                 switch (alt62) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )?
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )?
                                     {
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: ( WS )?
                                         int alt59 = 2;
                                         int LA59_0 = input.LA(1);
                                         if ((LA59_0 == WS)) {
                                             alt59 = 1;
                                         }
                                         switch (alt59) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:222: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1137);
                                             }
@@ -1759,7 +1759,7 @@ public class druidGParser extends Parser {
                                         }
 
                                         match(input, 72, FOLLOW_72_in_granularityClause1140);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:230: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:230: ( WS )?
                                         int alt60 = 2;
                                         int LA60_0 = input.LA(1);
                                         if ((LA60_0 == WS)) {
@@ -1769,7 +1769,7 @@ public class druidGParser extends Parser {
                                             }
                                         }
                                         switch (alt60) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:230: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:230: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1142);
                                             }
@@ -1781,14 +1781,14 @@ public class druidGParser extends Parser {
                                         granularityInclude(qMeta);
                                         state._fsp--;
 
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:260: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:260: ( WS )?
                                         int alt61 = 2;
                                         int LA61_0 = input.LA(1);
                                         if ((LA61_0 == WS)) {
                                             alt61 = 1;
                                         }
                                         switch (alt61) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:260: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:260: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1148);
                                             }
@@ -1806,21 +1806,21 @@ public class druidGParser extends Parser {
 
                         }
                         break;
-                        case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
+                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
                         {
-							// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN
+							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN
                             {
                                 match(input, PERIOD, FOLLOW_PERIOD_in_granularityClause1172);
                                 qMeta.granularity.type = "period";
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:51: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:51: ( WS )?
                                 int alt63 = 2;
                                 int LA63_0 = input.LA(1);
                                 if ((LA63_0 == WS)) {
                                     alt63 = 1;
                                 }
                                 switch (alt63) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:51: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:51: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1176);
                                     }
@@ -1829,14 +1829,14 @@ public class druidGParser extends Parser {
                                 }
 
                                 match(input, LPARAN, FOLLOW_LPARAN_in_granularityClause1179);
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:62: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:62: ( WS )?
                                 int alt64 = 2;
                                 int LA64_0 = input.LA(1);
                                 if ((LA64_0 == WS)) {
                                     alt64 = 1;
                                 }
                                 switch (alt64) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:62: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:62: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1181);
                                     }
@@ -1846,14 +1846,14 @@ public class druidGParser extends Parser {
 
                                 per = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1186);
                                 qMeta.granularity.setPeriod((per != null ? per.getText() : null));
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:132: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:132: ( WS )?
                                 int alt65 = 2;
                                 int LA65_0 = input.LA(1);
                                 if ((LA65_0 == WS)) {
                                     alt65 = 1;
                                 }
                                 switch (alt65) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:132: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:132: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1190);
                                     }
@@ -1861,7 +1861,7 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:136: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:136: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
                                 int alt67 = 2;
                                 int LA67_0 = input.LA(1);
                                 if ((LA67_0 == 72)) {
@@ -1876,17 +1876,17 @@ public class druidGParser extends Parser {
                                     }
                                 }
                                 switch (alt67) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:137: ',' ( WS )? tz= SINGLE_QUOTE_STRING
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:137: ',' ( WS )? tz= SINGLE_QUOTE_STRING
                                     {
                                         match(input, 72, FOLLOW_72_in_granularityClause1194);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:141: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:141: ( WS )?
                                         int alt66 = 2;
                                         int LA66_0 = input.LA(1);
                                         if ((LA66_0 == WS)) {
                                             alt66 = 1;
                                         }
                                         switch (alt66) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:141: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:141: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1196);
                                             }
@@ -1901,14 +1901,14 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:213: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:213: ( WS )?
                                 int alt68 = 2;
                                 int LA68_0 = input.LA(1);
                                 if ((LA68_0 == WS)) {
                                     alt68 = 1;
                                 }
                                 switch (alt68) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:213: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:213: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_granularityClause1207);
                                     }
@@ -1916,7 +1916,7 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:217: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:217: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
                                 int alt70 = 2;
                                 int LA70_0 = input.LA(1);
                                 if ((LA70_0 == 72)) {
@@ -1931,17 +1931,17 @@ public class druidGParser extends Parser {
                                     }
                                 }
                                 switch (alt70) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:218: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:218: ',' ( WS )? orig= SINGLE_QUOTE_STRING
                                     {
                                         match(input, 72, FOLLOW_72_in_granularityClause1211);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:222: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:222: ( WS )?
                                         int alt69 = 2;
                                         int LA69_0 = input.LA(1);
                                         if ((LA69_0 == WS)) {
                                             alt69 = 1;
                                         }
                                         switch (alt69) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:222: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:222: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1213);
                                             }
@@ -1956,23 +1956,23 @@ public class druidGParser extends Parser {
 
                                 }
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:296: ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:296: ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )?
                                 int alt74 = 2;
                                 int LA74_0 = input.LA(1);
                                 if ((LA74_0 == WS || LA74_0 == 72)) {
                                     alt74 = 1;
                                 }
                                 switch (alt74) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )?
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )?
                                     {
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: ( WS )?
                                         int alt71 = 2;
                                         int LA71_0 = input.LA(1);
                                         if ((LA71_0 == WS)) {
                                             alt71 = 1;
                                         }
                                         switch (alt71) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:297: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1225);
                                             }
@@ -1981,7 +1981,7 @@ public class druidGParser extends Parser {
                                         }
 
                                         match(input, 72, FOLLOW_72_in_granularityClause1228);
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:305: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:305: ( WS )?
                                         int alt72 = 2;
                                         int LA72_0 = input.LA(1);
                                         if ((LA72_0 == WS)) {
@@ -1991,7 +1991,7 @@ public class druidGParser extends Parser {
                                             }
                                         }
                                         switch (alt72) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:305: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:305: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1230);
                                             }
@@ -2003,14 +2003,14 @@ public class druidGParser extends Parser {
                                         granularityInclude(qMeta);
                                         state._fsp--;
 
-                                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:335: ( WS )?
+                                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:335: ( WS )?
                                         int alt73 = 2;
                                         int LA73_0 = input.LA(1);
                                         if ((LA73_0 == WS)) {
                                             alt73 = 1;
                                         }
                                         switch (alt73) {
-                                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:335: WS
+                                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:207:335: WS
                                             {
                                                 match(input, WS, FOLLOW_WS_in_granularityClause1236);
                                             }
@@ -2045,28 +2045,28 @@ public class druidGParser extends Parser {
 	// $ANTLR end "granularityClause"
 
 	// $ANTLR start "granularityInclude"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:211:1: granularityInclude[QueryMeta qMeta] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:211:1: granularityInclude[QueryMeta qMeta] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
     public final void granularityInclude(QueryMeta qMeta) throws RecognitionException {
         Pair<Integer> p1 = null;
         Pair<Integer> p2 = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:212:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:212:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
                 {
                     match(input, WS, FOLLOW_WS_in_granularityInclude1263);
                     match(input, INCLUDE, FOLLOW_INCLUDE_in_granularityInclude1265);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:15: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:15: ( WS )?
                     int alt77 = 2;
                     int LA77_0 = input.LA(1);
                     if ((LA77_0 == WS)) {
                         alt77 = 1;
                     }
                     switch (alt77) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:15: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:15: WS
                         {
                             match(input, WS, FOLLOW_WS_in_granularityInclude1267);
                         }
@@ -2075,14 +2075,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, LPARAN, FOLLOW_LPARAN_in_granularityInclude1270);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:26: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:26: ( WS )?
                     int alt78 = 2;
                     int LA78_0 = input.LA(1);
                     if ((LA78_0 == WS)) {
                         alt78 = 1;
                     }
                     switch (alt78) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:26: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:26: WS
                         {
                             match(input, WS, FOLLOW_WS_in_granularityInclude1272);
                         }
@@ -2090,15 +2090,15 @@ public class druidGParser extends Parser {
 
                     }
 
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:30: (p1= pairNums ( ',' p2= pairNums )* )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:31: p1= pairNums ( ',' p2= pairNums )*
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:30: (p1= pairNums ( ',' p2= pairNums )* )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:31: p1= pairNums ( ',' p2= pairNums )*
                     {
                         pushFollow(FOLLOW_pairNums_in_granularityInclude1278);
                         p1 = pairNums();
                         state._fsp--;
 
                         qMeta.microIntervals.add(p1);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:75: ( ',' p2= pairNums )*
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:75: ( ',' p2= pairNums )*
                         loop79:
                         while (true) {
                             int alt79 = 2;
@@ -2108,7 +2108,7 @@ public class druidGParser extends Parser {
                             }
 
                             switch (alt79) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:76: ',' p2= pairNums
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:76: ',' p2= pairNums
                                 {
                                     match(input, 72, FOLLOW_72_in_granularityInclude1283);
                                     pushFollow(FOLLOW_pairNums_in_granularityInclude1287);
@@ -2126,14 +2126,14 @@ public class druidGParser extends Parser {
 
                     }
 
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:127: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:127: ( WS )?
                     int alt80 = 2;
                     int LA80_0 = input.LA(1);
                     if ((LA80_0 == WS)) {
                         alt80 = 1;
                     }
                     switch (alt80) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:127: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:213:127: WS
                         {
                             match(input, WS, FOLLOW_WS_in_granularityInclude1294);
                         }
@@ -2156,7 +2156,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "granularityInclude"
 
 	// $ANTLR start "pairNums"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:216:1: pairNums returns [Pair<Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:216:1: pairNums returns [Pair<Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
     public final Pair<Integer> pairNums() throws RecognitionException {
         Pair<Integer> pair = null;
 
@@ -2164,21 +2164,21 @@ public class druidGParser extends Parser {
         Token j = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
                 {
                     match(input, LSQUARE, FOLLOW_LSQUARE_in_pairNums1316);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:13: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:13: ( WS )?
                     int alt81 = 2;
                     int LA81_0 = input.LA(1);
                     if ((LA81_0 == WS)) {
                         alt81 = 1;
                     }
                     switch (alt81) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:13: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:13: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairNums1318);
                         }
@@ -2187,14 +2187,14 @@ public class druidGParser extends Parser {
                     }
 
                     i = (Token) match(input, LONG, FOLLOW_LONG_in_pairNums1323);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:25: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:25: ( WS )?
                     int alt82 = 2;
                     int LA82_0 = input.LA(1);
                     if ((LA82_0 == WS)) {
                         alt82 = 1;
                     }
                     switch (alt82) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:25: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:25: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairNums1326);
                         }
@@ -2203,14 +2203,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, 72, FOLLOW_72_in_pairNums1329);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:33: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:33: ( WS )?
                     int alt83 = 2;
                     int LA83_0 = input.LA(1);
                     if ((LA83_0 == WS)) {
                         alt83 = 1;
                     }
                     switch (alt83) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:33: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:33: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairNums1331);
                         }
@@ -2219,14 +2219,14 @@ public class druidGParser extends Parser {
                     }
 
                     j = (Token) match(input, LONG, FOLLOW_LONG_in_pairNums1336);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:44: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:44: ( WS )?
                     int alt84 = 2;
                     int LA84_0 = input.LA(1);
                     if ((LA84_0 == WS)) {
                         alt84 = 1;
                     }
                     switch (alt84) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:44: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:217:44: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairNums1338);
                         }
@@ -2251,7 +2251,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "pairNums"
 
 	// $ANTLR start "pairString"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:220:1: pairString returns [Pair<String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:220:1: pairString returns [Pair<String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
     public final Pair<String> pairString() throws RecognitionException {
         Pair<String> pair = null;
 
@@ -2259,21 +2259,21 @@ public class druidGParser extends Parser {
         Token j = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
                 {
                     match(input, LSQUARE, FOLLOW_LSQUARE_in_pairString1361);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:13: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:13: ( WS )?
                     int alt85 = 2;
                     int LA85_0 = input.LA(1);
                     if ((LA85_0 == WS)) {
                         alt85 = 1;
                     }
                     switch (alt85) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:13: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:13: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairString1363);
                         }
@@ -2282,14 +2282,14 @@ public class druidGParser extends Parser {
                     }
 
                     i = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_pairString1368);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:40: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:40: ( WS )?
                     int alt86 = 2;
                     int LA86_0 = input.LA(1);
                     if ((LA86_0 == WS)) {
                         alt86 = 1;
                     }
                     switch (alt86) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:40: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:40: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairString1371);
                         }
@@ -2298,14 +2298,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, 72, FOLLOW_72_in_pairString1374);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:48: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:48: ( WS )?
                     int alt87 = 2;
                     int LA87_0 = input.LA(1);
                     if ((LA87_0 == WS)) {
                         alt87 = 1;
                     }
                     switch (alt87) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:48: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:48: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairString1376);
                         }
@@ -2314,14 +2314,14 @@ public class druidGParser extends Parser {
                     }
 
                     j = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_pairString1381);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:74: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:74: ( WS )?
                     int alt88 = 2;
                     int LA88_0 = input.LA(1);
                     if ((LA88_0 == WS)) {
                         alt88 = 1;
                     }
                     switch (alt88) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:74: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:221:74: WS
                         {
                             match(input, WS, FOLLOW_WS_in_pairString1383);
                         }
@@ -2346,15 +2346,15 @@ public class druidGParser extends Parser {
 	// $ANTLR end "pairString"
 
 	// $ANTLR start "havingClause"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:228:1: havingClause returns [Having having] : h= complexHaving ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:228:1: havingClause returns [Having having] : h= complexHaving ;
     public final Having havingClause() throws RecognitionException {
         Having having = null;
 
         Having h = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:2: (h= complexHaving )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:4: h= complexHaving
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:2: (h= complexHaving )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:4: h= complexHaving
             {
                 pushFollow(FOLLOW_complexHaving_in_havingClause1411);
                 h = complexHaving();
@@ -2374,7 +2374,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "havingClause"
 
 	// $ANTLR start "simpleHaving"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
     public final Having simpleHaving() throws RecognitionException {
         Having having = null;
 
@@ -2385,7 +2385,7 @@ public class druidGParser extends Parser {
         EqualsToHolder e = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
             int alt93 = 3;
             int LA93_0 = input.LA(1);
             if ((LA93_0 == ID)) {
@@ -2440,20 +2440,20 @@ public class druidGParser extends Parser {
             }
 
             switch (alt93) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
                     {
                         a = (Token) match(input, ID, FOLLOW_ID_in_simpleHaving1432);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:10: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:10: ( WS )?
                         int alt89 = 2;
                         int LA89_0 = input.LA(1);
                         if ((LA89_0 == WS)) {
                             alt89 = 1;
                         }
                         switch (alt89) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:10: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:10: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleHaving1434);
                             }
@@ -2462,14 +2462,14 @@ public class druidGParser extends Parser {
                         }
 
                         t = (Token) match(input, COMPARE_OPER, FOLLOW_COMPARE_OPER_in_simpleHaving1439);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:29: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:29: ( WS )?
                         int alt90 = 2;
                         int LA90_0 = input.LA(1);
                         if ((LA90_0 == WS)) {
                             alt90 = 1;
                         }
                         switch (alt90) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:29: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:233:29: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleHaving1441);
                             }
@@ -2490,10 +2490,10 @@ public class druidGParser extends Parser {
                     having = new Having((t != null ? t.getText() : null), (a != null ? a.getText() : null), (v != null ? v.getText() : null));
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:4: (e= getEquals )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:4: (e= getEquals )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:4: (e= getEquals )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:5: e= getEquals
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:4: (e= getEquals )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:234:5: e= getEquals
                     {
                         pushFollow(FOLLOW_getEquals_in_simpleHaving1463);
                         e = getEquals();
@@ -2504,22 +2504,22 @@ public class druidGParser extends Parser {
                     having = new Having("=", e.name, e.value);
                 }
                 break;
-                case 3: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
                     {
                         n = (Token) match(input, NOT, FOLLOW_NOT_in_simpleHaving1474);
                         match(input, WS, FOLLOW_WS_in_simpleHaving1476);
                         a = (Token) match(input, ID, FOLLOW_ID_in_simpleHaving1480);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:19: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:19: ( WS )?
                         int alt91 = 2;
                         int LA91_0 = input.LA(1);
                         if ((LA91_0 == WS)) {
                             alt91 = 1;
                         }
                         switch (alt91) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:19: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:19: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleHaving1482);
                             }
@@ -2528,14 +2528,14 @@ public class druidGParser extends Parser {
                         }
 
                         t = (Token) match(input, COMPARE_OPER, FOLLOW_COMPARE_OPER_in_simpleHaving1487);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:38: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:38: ( WS )?
                         int alt92 = 2;
                         int LA92_0 = input.LA(1);
                         if ((LA92_0 == WS)) {
                             alt92 = 1;
                         }
                         switch (alt92) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:38: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:235:38: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleHaving1489);
                             }
@@ -2570,7 +2570,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleHaving"
 
 	// $ANTLR start "complexHaving"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:238:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:238:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
     public final Having complexHaving() throws RecognitionException {
         Having having = null;
 
@@ -2580,14 +2580,14 @@ public class druidGParser extends Parser {
         Having b = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
             int alt94 = 2;
             alt94 = dfa94.predict(input);
             switch (alt94) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:4: (s= simpleHaving )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:4: (s= simpleHaving )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:4: (s= simpleHaving )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:5: s= simpleHaving
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:4: (s= simpleHaving )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:239:5: s= simpleHaving
                     {
                         pushFollow(FOLLOW_simpleHaving_in_complexHaving1522);
                         s = simpleHaving();
@@ -2598,10 +2598,10 @@ public class druidGParser extends Parser {
                     having = s;
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
                     {
                         pushFollow(FOLLOW_simpleHaving_in_complexHaving1533);
                         a = simpleHaving();
@@ -2640,7 +2640,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "complexHaving"
 
 	// $ANTLR start "selectorFilter"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:248:1: selectorFilter returns [Filter filter] : e= getEquals ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:248:1: selectorFilter returns [Filter filter] : e= getEquals ;
     public final Filter selectorFilter() throws RecognitionException {
         Filter filter = null;
 
@@ -2648,8 +2648,8 @@ public class druidGParser extends Parser {
 
         filter = new Filter("selector");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:2: (e= getEquals )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:4: e= getEquals
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:2: (e= getEquals )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:4: e= getEquals
             {
                 pushFollow(FOLLOW_getEquals_in_selectorFilter1586);
                 e = getEquals();
@@ -2674,7 +2674,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "selectorFilter"
 
 	// $ANTLR start "regexFilter"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:259:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:259:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
     public final Filter regexFilter() throws RecognitionException {
         Filter filter = null;
 
@@ -2683,18 +2683,18 @@ public class druidGParser extends Parser {
 
         filter = new Filter("regex");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
                 {
                     a = (Token) match(input, ID, FOLLOW_ID_in_regexFilter1615);
                     match(input, WS, FOLLOW_WS_in_regexFilter1617);
                     match(input, LIKE, FOLLOW_LIKE_in_regexFilter1619);
                     match(input, WS, FOLLOW_WS_in_regexFilter1621);
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:24: ( SINGLE_QUOTE_STRING )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:25: SINGLE_QUOTE_STRING
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:24: ( SINGLE_QUOTE_STRING )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:261:25: SINGLE_QUOTE_STRING
                     {
                         b = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter1627);
                     }
@@ -2720,14 +2720,14 @@ public class druidGParser extends Parser {
 	// $ANTLR end "regexFilter"
 
 	// $ANTLR start "simpleFilter"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:270:1: simpleFilter returns [Filter filter] : ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:270:1: simpleFilter returns [Filter filter] : ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) );
     public final Filter simpleFilter() throws RecognitionException {
         Filter filter = null;
 
         Filter a = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:2: ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:2: ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) )
             int alt99 = 2;
             int LA99_0 = input.LA(1);
             if ((LA99_0 == ID)) {
@@ -2741,9 +2741,9 @@ public class druidGParser extends Parser {
             }
 
             switch (alt99) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:4: (a= selectorFilter |a= regexFilter )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:4: (a= selectorFilter |a= regexFilter )
                 {
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:4: (a= selectorFilter |a= regexFilter )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:4: (a= selectorFilter |a= regexFilter )
                     int alt95 = 2;
                     int LA95_0 = input.LA(1);
                     if ((LA95_0 == ID)) {
@@ -2789,7 +2789,7 @@ public class druidGParser extends Parser {
                     }
 
                     switch (alt95) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:5: a= selectorFilter
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:5: a= selectorFilter
                         {
                             pushFollow(FOLLOW_selectorFilter_in_simpleFilter1652);
                             a = selectorFilter();
@@ -2797,7 +2797,7 @@ public class druidGParser extends Parser {
 
                         }
                         break;
-                        case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:24: a= regexFilter
+                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:24: a= regexFilter
                         {
                             pushFollow(FOLLOW_regexFilter_in_simpleFilter1658);
                             a = regexFilter();
@@ -2811,20 +2811,20 @@ public class druidGParser extends Parser {
                     filter = a;
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:6: LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:6: LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN
                     {
                         match(input, LPARAN, FOLLOW_LPARAN_in_simpleFilter1668);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:13: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:13: ( WS )?
                         int alt96 = 2;
                         int LA96_0 = input.LA(1);
                         if ((LA96_0 == WS)) {
                             alt96 = 1;
                         }
                         switch (alt96) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:13: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:13: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleFilter1670);
                             }
@@ -2832,7 +2832,7 @@ public class druidGParser extends Parser {
 
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:17: (a= selectorFilter |a= regexFilter )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:17: (a= selectorFilter |a= regexFilter )
                         int alt97 = 2;
                         int LA97_0 = input.LA(1);
                         if ((LA97_0 == ID)) {
@@ -2878,7 +2878,7 @@ public class druidGParser extends Parser {
                         }
 
                         switch (alt97) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:18: a= selectorFilter
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:18: a= selectorFilter
                             {
                                 pushFollow(FOLLOW_selectorFilter_in_simpleFilter1676);
                                 a = selectorFilter();
@@ -2886,7 +2886,7 @@ public class druidGParser extends Parser {
 
                             }
                             break;
-                            case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:37: a= regexFilter
+                            case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:37: a= regexFilter
                             {
                                 pushFollow(FOLLOW_regexFilter_in_simpleFilter1682);
                                 a = regexFilter();
@@ -2897,14 +2897,14 @@ public class druidGParser extends Parser {
 
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:52: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:52: ( WS )?
                         int alt98 = 2;
                         int LA98_0 = input.LA(1);
                         if ((LA98_0 == WS)) {
                             alt98 = 1;
                         }
                         switch (alt98) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:52: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:272:52: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleFilter1685);
                             }
@@ -2931,7 +2931,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleFilter"
 
 	// $ANTLR start "simpleLogicalFilter"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:1: simpleLogicalFilter returns [Filter filter] : ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:1: simpleLogicalFilter returns [Filter filter] : ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) );
     public final Filter simpleLogicalFilter() throws RecognitionException {
         Filter filter = null;
 
@@ -2941,7 +2941,7 @@ public class druidGParser extends Parser {
         Filter s = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:2: ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:2: ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) )
             int alt103 = 2;
             int LA103_0 = input.LA(1);
             if ((LA103_0 == ID || LA103_0 == NOT)) {
@@ -3327,9 +3327,9 @@ public class druidGParser extends Parser {
             }
 
             switch (alt103) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
                 {
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
                     int alt100 = 2;
                     int LA100_0 = input.LA(1);
                     if ((LA100_0 == ID || LA100_0 == LPARAN)) {
@@ -3343,10 +3343,10 @@ public class druidGParser extends Parser {
                     }
 
                     switch (alt100) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
                         {
-							// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
+							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
                             {
                                 pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter1709);
                                 a = simpleFilter();
@@ -3370,10 +3370,10 @@ public class druidGParser extends Parser {
 
                         }
                         break;
-                        case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:55: (o= NOT WS b= simpleFilter )
+                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:55: (o= NOT WS b= simpleFilter )
                         {
-							// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:55: (o= NOT WS b= simpleFilter )
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:56: o= NOT WS b= simpleFilter
+							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:55: (o= NOT WS b= simpleFilter )
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:276:56: o= NOT WS b= simpleFilter
                             {
                                 o = (Token) match(input, NOT, FOLLOW_NOT_in_simpleLogicalFilter1733);
                                 match(input, WS, FOLLOW_WS_in_simpleLogicalFilter1735);
@@ -3397,20 +3397,20 @@ public class druidGParser extends Parser {
 
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:5: LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:5: LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN
                     {
                         match(input, LPARAN, FOLLOW_LPARAN_in_simpleLogicalFilter1752);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:12: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:12: ( WS )?
                         int alt101 = 2;
                         int LA101_0 = input.LA(1);
                         if ((LA101_0 == WS)) {
                             alt101 = 1;
                         }
                         switch (alt101) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:12: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:12: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleLogicalFilter1754);
                             }
@@ -3422,14 +3422,14 @@ public class druidGParser extends Parser {
                         s = simpleLogicalFilter();
                         state._fsp--;
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:38: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:38: ( WS )?
                         int alt102 = 2;
                         int LA102_0 = input.LA(1);
                         if ((LA102_0 == WS)) {
                             alt102 = 1;
                         }
                         switch (alt102) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:38: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:284:38: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleLogicalFilter1761);
                             }
@@ -3456,7 +3456,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleLogicalFilter"
 
 	// $ANTLR start "grandFilter"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:289:1: grandFilter returns [Filter filter] : (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:289:1: grandFilter returns [Filter filter] : (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? ;
     public final Filter grandFilter() throws RecognitionException {
         Filter filter = null;
 
@@ -3465,14 +3465,14 @@ public class druidGParser extends Parser {
         Filter b = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:2: ( (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:4: (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:2: ( (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:4: (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )?
             {
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:4: (a= simpleFilter |a= simpleLogicalFilter )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:4: (a= simpleFilter |a= simpleLogicalFilter )
                 int alt104 = 2;
                 alt104 = dfa104.predict(input);
                 switch (alt104) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:5: a= simpleFilter
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:5: a= simpleFilter
                     {
                         pushFollow(FOLLOW_simpleFilter_in_grandFilter1788);
                         a = simpleFilter();
@@ -3480,7 +3480,7 @@ public class druidGParser extends Parser {
 
                     }
                     break;
-                    case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:22: a= simpleLogicalFilter
+                    case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:22: a= simpleLogicalFilter
                     {
                         pushFollow(FOLLOW_simpleLogicalFilter_in_grandFilter1794);
                         a = simpleLogicalFilter();
@@ -3492,7 +3492,7 @@ public class druidGParser extends Parser {
                 }
 
                 filter = a;
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:60: ( WS o= ( AND | OR ) WS b= grandFilter )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:60: ( WS o= ( AND | OR ) WS b= grandFilter )?
                 int alt105 = 2;
                 int LA105_0 = input.LA(1);
                 if ((LA105_0 == WS)) {
@@ -3502,7 +3502,7 @@ public class druidGParser extends Parser {
                     }
                 }
                 switch (alt105) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:61: WS o= ( AND | OR ) WS b= grandFilter
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:290:61: WS o= ( AND | OR ) WS b= grandFilter
                     {
                         match(input, WS, FOLLOW_WS_in_grandFilter1801);
                         o = input.LT(1);
@@ -3541,7 +3541,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "grandFilter"
 
 	// $ANTLR start "aggItemInSelect"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:301:1: aggItemInSelect returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:301:1: aggItemInSelect returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
     public final AggItem aggItemInSelect() throws RecognitionException {
         AggItem aggItem = null;
 
@@ -3549,14 +3549,14 @@ public class druidGParser extends Parser {
 
         aggItem = new AggItem();
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
             {
                 pushFollow(FOLLOW_aggCallSite_in_aggItemInSelect1852);
                 aggCallSite(aggItem);
                 state._fsp--;
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:25: ( WS AS WS x= ID )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:25: ( WS AS WS x= ID )?
                 int alt106 = 2;
                 int LA106_0 = input.LA(1);
                 if ((LA106_0 == WS)) {
@@ -3566,7 +3566,7 @@ public class druidGParser extends Parser {
                     }
                 }
                 switch (alt106) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:26: WS AS WS x= ID
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:303:26: WS AS WS x= ID
                     {
                         match(input, WS, FOLLOW_WS_in_aggItemInSelect1856);
                         match(input, AS, FOLLOW_AS_in_aggItemInSelect1858);
@@ -3591,13 +3591,13 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggItemInSelect"
 
 	// $ANTLR start "aggCallSite"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:305:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:305:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) );
     public final void aggCallSite(AggItem aggItem) throws RecognitionException {
         Token x = null;
         String p = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) )
             int alt110 = 2;
             int LA110_0 = input.LA(1);
             if ((LA110_0 == DOUBLE_SUM || LA110_0 == JAVASCRIPT || LA110_0 == LONG_SUM || (LA110_0 >= MAX && LA110_0 <= MIN) || LA110_0 == UNIQUE)) {
@@ -3611,24 +3611,24 @@ public class druidGParser extends Parser {
             }
 
             switch (alt110) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
                 {
                     pushFollow(FOLLOW_aggFunc_in_aggCallSite1883);
                     p = aggFunc();
                     state._fsp--;
 
                     aggItem.setAggType(p);
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN
                     {
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: ( WS )?
                         int alt107 = 2;
                         int LA107_0 = input.LA(1);
                         if ((LA107_0 == WS)) {
                             alt107 = 1;
                         }
                         switch (alt107) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:40: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_aggCallSite1888);
                             }
@@ -3637,14 +3637,14 @@ public class druidGParser extends Parser {
                         }
 
                         match(input, LPARAN, FOLLOW_LPARAN_in_aggCallSite1891);
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:51: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:51: ( WS )?
                         int alt108 = 2;
                         int LA108_0 = input.LA(1);
                         if ((LA108_0 == WS)) {
                             alt108 = 1;
                         }
                         switch (alt108) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:51: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:51: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_aggCallSite1893);
                             }
@@ -3652,21 +3652,21 @@ public class druidGParser extends Parser {
 
                         }
 
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:55: (x= ID )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:57: x= ID
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:55: (x= ID )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:57: x= ID
                         {
                             x = (Token) match(input, ID, FOLLOW_ID_in_aggCallSite1900);
                             aggItem.setFieldName((x != null ? x.getText() : null));
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:96: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:96: ( WS )?
                         int alt109 = 2;
                         int LA109_0 = input.LA(1);
                         if ((LA109_0 == WS)) {
                             alt109 = 1;
                         }
                         switch (alt109) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:96: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:306:96: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_aggCallSite1905);
                             }
@@ -3679,12 +3679,12 @@ public class druidGParser extends Parser {
 
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:4: COUNT ( '(*)' )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:4: COUNT ( '(*)' )
                 {
                     match(input, COUNT, FOLLOW_COUNT_in_aggCallSite1915);
                     aggItem.setAggType("count");
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:41: ( '(*)' )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:42: '(*)'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:41: ( '(*)' )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:307:42: '(*)'
                     {
                         match(input, 70, FOLLOW_70_in_aggCallSite1920);
                     }
@@ -3703,12 +3703,12 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggCallSite"
 
 	// $ANTLR start "aggFunc"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:310:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:310:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT );
     public final String aggFunc() throws RecognitionException {
         String name = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:311:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:311:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT )
             int alt111 = 6;
             switch (input.LA(1)) {
                 case LONG_SUM: {
@@ -3741,37 +3741,37 @@ public class druidGParser extends Parser {
                     throw nvae;
             }
             switch (alt111) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:311:4: LONG_SUM
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:311:4: LONG_SUM
                 {
                     match(input, LONG_SUM, FOLLOW_LONG_SUM_in_aggFunc1938);
                     name = "longSum";
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:312:4: DOUBLE_SUM
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:312:4: DOUBLE_SUM
                 {
                     match(input, DOUBLE_SUM, FOLLOW_DOUBLE_SUM_in_aggFunc1945);
                     name = "doubleSum";
                 }
                 break;
-                case 3: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:313:4: UNIQUE
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:313:4: UNIQUE
                 {
                     match(input, UNIQUE, FOLLOW_UNIQUE_in_aggFunc1952);
                     name = "hyperUnique";
                 }
                 break;
-                case 4: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:314:4: MIN
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:314:4: MIN
                 {
                     match(input, MIN, FOLLOW_MIN_in_aggFunc1959);
                     name = "min";
                 }
                 break;
-                case 5: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:315:4: MAX
+                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:315:4: MAX
                 {
                     match(input, MAX, FOLLOW_MAX_in_aggFunc1966);
                     name = "max";
                 }
                 break;
-                case 6: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:316:4: JAVASCRIPT
+                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:316:4: JAVASCRIPT
                 {
                     match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_aggFunc1973);
                     name = "javascript";
@@ -3790,7 +3790,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggFunc"
 
 	// $ANTLR start "postAggItem"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:322:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:322:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
     public final PostAggItem postAggItem() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -3799,7 +3799,7 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("arithmetic");
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
             int alt121 = 2;
             int LA121_0 = input.LA(1);
             if ((LA121_0 == FLOAT || LA121_0 == ID || LA121_0 == JAVASCRIPT || LA121_0 == LONG || LA121_0 == UNIQUE)) {
@@ -3813,16 +3813,16 @@ public class druidGParser extends Parser {
             }
 
             switch (alt121) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                     {
                         pushFollow(FOLLOW_simpleArith_in_postAggItem2001);
                         a = simpleArith();
                         state._fsp--;
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                         int alt114 = 2;
                         int LA114_0 = input.LA(1);
                         if ((LA114_0 == WS)) {
@@ -3834,16 +3834,16 @@ public class druidGParser extends Parser {
                             alt114 = 1;
                         }
                         switch (alt114) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
                             {
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: ( WS )?
                                 int alt112 = 2;
                                 int LA112_0 = input.LA(1);
                                 if ((LA112_0 == WS)) {
                                     alt112 = 1;
                                 }
                                 switch (alt112) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:21: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_postAggItem2005);
                                     }
@@ -3855,14 +3855,14 @@ public class druidGParser extends Parser {
                                 postAggArithOper(postAggItem);
                                 state._fsp--;
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:55: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:55: ( WS )?
                                 int alt113 = 2;
                                 int LA113_0 = input.LA(1);
                                 if ((LA113_0 == WS)) {
                                     alt113 = 1;
                                 }
                                 switch (alt113) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:55: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:55: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_postAggItem2011);
                                     }
@@ -3889,23 +3889,23 @@ public class druidGParser extends Parser {
 
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
                 {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                     {
-					// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
                         {
                             match(input, LPARAN, FOLLOW_LPARAN_in_postAggItem2034);
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:13: ( WS )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:13: ( WS )?
                             int alt115 = 2;
                             int LA115_0 = input.LA(1);
                             if ((LA115_0 == WS)) {
                                 alt115 = 1;
                             }
                             switch (alt115) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:13: WS
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:13: WS
                                 {
                                     match(input, WS, FOLLOW_WS_in_postAggItem2036);
                                 }
@@ -3917,14 +3917,14 @@ public class druidGParser extends Parser {
                             a = postAggItem();
                             state._fsp--;
 
-                            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:31: ( WS )?
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:31: ( WS )?
                             int alt116 = 2;
                             int LA116_0 = input.LA(1);
                             if ((LA116_0 == WS)) {
                                 alt116 = 1;
                             }
                             switch (alt116) {
-                                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:31: WS
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:31: WS
                                 {
                                     match(input, WS, FOLLOW_WS_in_postAggItem2043);
                                 }
@@ -3935,14 +3935,14 @@ public class druidGParser extends Parser {
                             match(input, RPARAN, FOLLOW_RPARAN_in_postAggItem2046);
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:43: ( postAggLabel[postAggItem] )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:43: ( postAggLabel[postAggItem] )?
                         int alt117 = 2;
                         int LA117_0 = input.LA(1);
                         if ((LA117_0 == AS)) {
                             alt117 = 1;
                         }
                         switch (alt117) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:44: postAggLabel[postAggItem]
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:44: postAggLabel[postAggItem]
                             {
                                 pushFollow(FOLLOW_postAggLabel_in_postAggItem2050);
                                 postAggLabel(postAggItem);
@@ -3953,7 +3953,7 @@ public class druidGParser extends Parser {
 
                         }
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                         int alt120 = 2;
                         int LA120_0 = input.LA(1);
                         if ((LA120_0 == WS)) {
@@ -3965,16 +3965,16 @@ public class druidGParser extends Parser {
                             alt120 = 1;
                         }
                         switch (alt120) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
                             {
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: ( WS )?
                                 int alt118 = 2;
                                 int LA118_0 = input.LA(1);
                                 if ((LA118_0 == WS)) {
                                     alt118 = 1;
                                 }
                                 switch (alt118) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:73: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_postAggItem2056);
                                     }
@@ -3986,14 +3986,14 @@ public class druidGParser extends Parser {
                                 postAggArithOper(postAggItem);
                                 state._fsp--;
 
-                                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:107: ( WS )?
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:107: ( WS )?
                                 int alt119 = 2;
                                 int LA119_0 = input.LA(1);
                                 if ((LA119_0 == WS)) {
                                     alt119 = 1;
                                 }
                                 switch (alt119) {
-                                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:107: WS
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:107: WS
                                     {
                                         match(input, WS, FOLLOW_WS_in_postAggItem2062);
                                     }
@@ -4033,7 +4033,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggItem"
 
 	// $ANTLR start "simpleArith"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:342:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:342:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
     public final PostAggItem simpleArith() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4042,11 +4042,11 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("arithmetic");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:4: (a= simplePostAggAccess )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:5: a= simplePostAggAccess
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:4: (a= simplePostAggAccess )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:5: a= simplePostAggAccess
                 {
                     pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2103);
                     a = simplePostAggAccess();
@@ -4055,20 +4055,20 @@ public class druidGParser extends Parser {
                     postAggItem = a;
                 }
 
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
                 int alt124 = 2;
                 alt124 = dfa124.predict(input);
                 switch (alt124) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
                     {
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: ( WS )?
                         int alt122 = 2;
                         int LA122_0 = input.LA(1);
                         if ((LA122_0 == WS)) {
                             alt122 = 1;
                         }
                         switch (alt122) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:46: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleArith2109);
                             }
@@ -4080,14 +4080,14 @@ public class druidGParser extends Parser {
                         postAggArithOper(postAggItem);
                         state._fsp--;
 
-                        // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:80: ( WS )?
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:80: ( WS )?
                         int alt123 = 2;
                         int LA123_0 = input.LA(1);
                         if ((LA123_0 == WS)) {
                             alt123 = 1;
                         }
                         switch (alt123) {
-                            case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:80: WS
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:344:80: WS
                             {
                                 match(input, WS, FOLLOW_WS_in_simpleArith2115);
                             }
@@ -4124,7 +4124,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleArith"
 
 	// $ANTLR start "simplePostAggAccess"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:356:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:356:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
     public final PostAggItem simplePostAggAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4134,7 +4134,7 @@ public class druidGParser extends Parser {
         PostAggItem js = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:357:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:357:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
             int alt125 = 4;
             switch (input.LA(1)) {
                 case FLOAT:
@@ -4160,7 +4160,7 @@ public class druidGParser extends Parser {
                     throw nvae;
             }
             switch (alt125) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:357:4: c= constantAccess
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:357:4: c= constantAccess
                 {
                     pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess2149);
                     c = constantAccess();
@@ -4169,7 +4169,7 @@ public class druidGParser extends Parser {
                     postAggItem = c;
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:4: f= fieldAccess
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:4: f= fieldAccess
                 {
                     pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess2166);
                     f = fieldAccess();
@@ -4178,7 +4178,7 @@ public class druidGParser extends Parser {
                     postAggItem = f;
                 }
                 break;
-                case 3: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:359:4: h= hyperUniqueCardinality
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:359:4: h= hyperUniqueCardinality
                 {
                     pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2179);
                     h = hyperUniqueCardinality();
@@ -4187,7 +4187,7 @@ public class druidGParser extends Parser {
                     postAggItem = h;
                 }
                 break;
-                case 4: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:360:4: js= postAggJavascriptDef
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:360:4: js= postAggJavascriptDef
                 {
                     pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2188);
                     js = postAggJavascriptDef();
@@ -4209,7 +4209,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simplePostAggAccess"
 
 	// $ANTLR start "constantAccess"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
     public final PostAggItem constantAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4217,13 +4217,13 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("constant");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
                 {
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:5: (a= FLOAT |a= LONG )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:5: (a= FLOAT |a= LONG )
                     int alt126 = 2;
                     int LA126_0 = input.LA(1);
                     if ((LA126_0 == FLOAT)) {
@@ -4237,12 +4237,12 @@ public class druidGParser extends Parser {
                     }
 
                     switch (alt126) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:6: a= FLOAT
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:6: a= FLOAT
                         {
                             a = (Token) match(input, FLOAT, FOLLOW_FLOAT_in_constantAccess2218);
                         }
                         break;
-                        case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:16: a= LONG
+                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:367:16: a= LONG
                         {
                             a = (Token) match(input, LONG, FOLLOW_LONG_in_constantAccess2224);
                         }
@@ -4251,7 +4251,7 @@ public class druidGParser extends Parser {
                     }
 
                     postAggItem.constantValue = Double.valueOf((a != null ? a.getText() : null));
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:369:5: ( WS postAggLabel[postAggItem] )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:369:5: ( WS postAggLabel[postAggItem] )?
                     int alt127 = 2;
                     int LA127_0 = input.LA(1);
                     if ((LA127_0 == WS)) {
@@ -4261,7 +4261,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt127) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:369:6: WS postAggLabel[postAggItem]
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:369:6: WS postAggLabel[postAggItem]
                         {
                             match(input, WS, FOLLOW_WS_in_constantAccess2237);
                             pushFollow(FOLLOW_postAggLabel_in_constantAccess2239);
@@ -4288,7 +4288,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "constantAccess"
 
 	// $ANTLR start "fieldAccess"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:372:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:372:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
     public final PostAggItem fieldAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4296,14 +4296,14 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("fieldAccess");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: (a= ID ( WS postAggLabel[postAggItem] )? )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: (a= ID ( WS postAggLabel[postAggItem] )? )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:5: a= ID ( WS postAggLabel[postAggItem] )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:5: a= ID ( WS postAggLabel[postAggItem] )?
                 {
                     a = (Token) match(input, ID, FOLLOW_ID_in_fieldAccess2267);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:10: ( WS postAggLabel[postAggItem] )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:10: ( WS postAggLabel[postAggItem] )?
                     int alt128 = 2;
                     int LA128_0 = input.LA(1);
                     if ((LA128_0 == WS)) {
@@ -4313,7 +4313,7 @@ public class druidGParser extends Parser {
                         }
                     }
                     switch (alt128) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:11: WS postAggLabel[postAggItem]
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:11: WS postAggLabel[postAggItem]
                         {
                             match(input, WS, FOLLOW_WS_in_fieldAccess2270);
                             pushFollow(FOLLOW_postAggLabel_in_fieldAccess2272);
@@ -4341,7 +4341,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "fieldAccess"
 
 	// $ANTLR start "hyperUniqueCardinality"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:377:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:377:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
     public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4349,21 +4349,21 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("hyperUniqueCardinality");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
                 {
                     match(input, UNIQUE, FOLLOW_UNIQUE_in_hyperUniqueCardinality2301);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:12: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:12: ( WS )?
                     int alt129 = 2;
                     int LA129_0 = input.LA(1);
                     if ((LA129_0 == WS)) {
                         alt129 = 1;
                     }
                     switch (alt129) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:12: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:12: WS
                         {
                             match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2303);
                         }
@@ -4372,14 +4372,14 @@ public class druidGParser extends Parser {
                     }
 
                     match(input, LPARAN, FOLLOW_LPARAN_in_hyperUniqueCardinality2306);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:23: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:23: ( WS )?
                     int alt130 = 2;
                     int LA130_0 = input.LA(1);
                     if ((LA130_0 == WS)) {
                         alt130 = 1;
                     }
                     switch (alt130) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:23: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:23: WS
                         {
                             match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2308);
                         }
@@ -4388,14 +4388,14 @@ public class druidGParser extends Parser {
                     }
 
                     a = (Token) match(input, ID, FOLLOW_ID_in_hyperUniqueCardinality2313);
-                    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:32: ( WS )?
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:32: ( WS )?
                     int alt131 = 2;
                     int LA131_0 = input.LA(1);
                     if ((LA131_0 == WS)) {
                         alt131 = 1;
                     }
                     switch (alt131) {
-                        case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:32: WS
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:32: WS
                         {
                             match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2315);
                         }
@@ -4420,7 +4420,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "hyperUniqueCardinality"
 
 	// $ANTLR start "postAggJavascriptDef"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:384:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:384:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
     public final PostAggItem postAggJavascriptDef() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4428,18 +4428,18 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("javascript");
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
             {
                 match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2344);
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:15: ( WS )?
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:15: ( WS )?
                 int alt132 = 2;
                 int LA132_0 = input.LA(1);
                 if ((LA132_0 == WS)) {
                     alt132 = 1;
                 }
                 switch (alt132) {
-                    case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:15: WS
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:15: WS
                     {
                         match(input, WS, FOLLOW_WS_in_postAggJavascriptDef2346);
                     }
@@ -4462,16 +4462,16 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggJavascriptDef"
 
 	// $ANTLR start "postAggLabel"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:389:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:389:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
     public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
         Token id = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:2: ( ( AS WS id= ID ) )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:4: ( AS WS id= ID )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:2: ( ( AS WS id= ID ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:4: ( AS WS id= ID )
             {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:4: ( AS WS id= ID )
-                // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:5: AS WS id= ID
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:4: ( AS WS id= ID )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:5: AS WS id= ID
                 {
                     match(input, AS, FOLLOW_AS_in_postAggLabel2367);
                     match(input, WS, FOLLOW_WS_in_postAggLabel2369);
@@ -4491,13 +4491,13 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggLabel"
 
 	// $ANTLR start "postAggArithOper"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
     public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
         Token arith = null;
 
         try {
-			// /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:2: (arith= ARITH_OPER )
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:3: arith= ARITH_OPER
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:2: (arith= ARITH_OPER )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:3: arith= ARITH_OPER
             {
                 arith = (Token) match(input, ARITH_OPER, FOLLOW_ARITH_OPER_in_postAggArithOper2389);
                 postAggItem.fn = (arith != null ? arith.getText() : null);
@@ -4518,7 +4518,7 @@ public class druidGParser extends Parser {
     };
 
 	// $ANTLR start "isoTime"
-    // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:399:1: isoTime returns [String date] : (d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:399:1: isoTime returns [String date] : (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
     public final druidGParser.isoTime_return isoTime() throws RecognitionException {
         druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
         retval.start = input.LT(1);
@@ -4526,31 +4526,35 @@ public class druidGParser extends Parser {
         Token d = null;
 
         try {
-            // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:2: (d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
-            int alt133 = 6;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:2: (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
+            int alt133 = 7;
             switch (input.LA(1)) {
-                case DATE_HOUR: {
+                case DATE: {
                     alt133 = 1;
                 }
                 break;
-                case DATE_HOUR_MIN: {
+                case DATE_HOUR: {
                     alt133 = 2;
                 }
                 break;
-                case DATE_HOUR_MIN_SEC: {
+                case DATE_HOUR_MIN: {
                     alt133 = 3;
                 }
                 break;
-                case DATE_HOUR_MIN_SEC_SUB: {
+                case DATE_HOUR_MIN_SEC: {
                     alt133 = 4;
                 }
                 break;
-                case DATE_HOUR_MIN_SEC_SUB_TZ: {
+                case DATE_HOUR_MIN_SEC_SUB: {
                     alt133 = 5;
                 }
                 break;
-                case DATE_HOUR_MIN_SEC_SUB_UTC_TZ: {
+                case DATE_HOUR_MIN_SEC_SUB_TZ: {
                     alt133 = 6;
+                }
+                break;
+                case DATE_HOUR_MIN_SEC_SUB_UTC_TZ: {
+                    alt133 = 7;
                 }
                 break;
                 default:
@@ -4559,39 +4563,45 @@ public class druidGParser extends Parser {
                     throw nvae;
             }
             switch (alt133) {
-                case 1: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:3: d= DATE_HOUR
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:3: d= DATE
                 {
-                    d = (Token) match(input, DATE_HOUR, FOLLOW_DATE_HOUR_in_isoTime2408);
+                    d = (Token) match(input, DATE, FOLLOW_DATE_in_isoTime2408);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 2: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:401:3: d= DATE_HOUR_MIN
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:401:3: d= DATE_HOUR
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN, FOLLOW_DATE_HOUR_MIN_in_isoTime2416);
+                    d = (Token) match(input, DATE_HOUR, FOLLOW_DATE_HOUR_in_isoTime2416);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 3: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:402:3: d= DATE_HOUR_MIN_SEC
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:402:3: d= DATE_HOUR_MIN
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC, FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2424);
+                    d = (Token) match(input, DATE_HOUR_MIN, FOLLOW_DATE_HOUR_MIN_in_isoTime2424);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 4: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:403:3: d= DATE_HOUR_MIN_SEC_SUB
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:403:3: d= DATE_HOUR_MIN_SEC
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB, FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2432);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC, FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2432);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 5: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
+                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:3: d= DATE_HOUR_MIN_SEC_SUB
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2440);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB, FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2440);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 6: // /Users/srikalyan/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:405:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:405:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_UTC_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2448);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2448);
+                    retval.date = (d != null ? d.getText() : null);
+                }
+                break;
+                case 7: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:406:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+                {
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_UTC_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2456);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
@@ -5205,12 +5215,12 @@ public class druidGParser extends Parser {
     public static final BitSet FOLLOW_73_in_intervalClause887 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
     public static final BitSet FOLLOW_WS_in_intervalClause889 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_BETWEEN_in_intervalClause891 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_intervalClause893 = new BitSet(new long[]{0x20000800001F8000L});
+    public static final BitSet FOLLOW_WS_in_intervalClause893 = new BitSet(new long[]{0x20000800001FC000L});
     public static final BitSet FOLLOW_isoTime_in_intervalClause913 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
     public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause920 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
     public static final BitSet FOLLOW_WS_in_intervalClause924 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_AND_in_intervalClause926 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_intervalClause928 = new BitSet(new long[]{0x20000000001F8000L});
+    public static final BitSet FOLLOW_WS_in_intervalClause928 = new BitSet(new long[]{0x20000000001FC000L});
     public static final BitSet FOLLOW_isoTime_in_intervalClause933 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause940 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_LPARAN_in_intervalClause965 = new BitSet(new long[]{0x0000100000000000L, 0x0000000000000020L});
@@ -5408,10 +5418,11 @@ public class druidGParser extends Parser {
     public static final BitSet FOLLOW_WS_in_postAggLabel2369 = new BitSet(new long[]{0x0000000200000000L});
     public static final BitSet FOLLOW_ID_in_postAggLabel2373 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper2389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_in_isoTime2408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2456 = new BitSet(new long[]{0x0000000000000002L});
 }
