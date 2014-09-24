@@ -23,6 +23,9 @@ See here http://selftechrambling.blogspot.com/2014/09/a-first-look-at-druid-with
 
 
 
+
+
+
 NOTE: Sql4D/sql4ddriver/.../PrettyPrint.java contains a code snippet modified from a publication here: http://stackoverflow.com/questions/11383070/pretty-print-2d-array-in-java . The
  text/code is licensed under Creative Commons-BY-SA 3.0.
 
