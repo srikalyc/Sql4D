@@ -3,7 +3,7 @@ Copyright 2014 Yahoo! Inc. License, Version 2.0 (the "License"); you may not use
 Sql4D
 =====
 
-SQL project for druid, has 3 sub projects
+SQL interface to druid(see http://druid.io/ ), has 3 sub projects
 
 1) SQL -> Json compiler,
 
