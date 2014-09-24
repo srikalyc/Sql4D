@@ -28,6 +28,7 @@ options { k=6; }
 	import com.yahoo.sql4d.query.select.*;
 	import com.yahoo.sql4d.query.search.*;
 	import com.yahoo.sql4d.query.topn.*;
+	import com.yahoo.sql4d.query.timeboundary.*;
 	import com.yahoo.sql4d.query.*;
 }
 
@@ -45,14 +46,14 @@ statement returns [QueryMeta qMeta]
 	((BaseAggQueryMeta)qMeta).aggregations = new ArrayList<>();
 	qMeta.intervals = new ArrayList<>();
       }
-	: SELECT WS
+	: SELECT 
 	     (
 	      (// For GroupBy , Timeseries, TopN, Select.
-	       selectItems[qMeta] (WS? ',' WS? selectItems[qMeta])*
+	       WS selectItems[qMeta] (WS? ',' WS? selectItems[qMeta])*
 	      )
 	      |
-	      ('*')
-	     )    
+	      (WS '*')
+	     )?
 	  WS FROM WS id=ID  { 
 	  	qMeta.dataSource = $id.text; 
   	  	if (((BaseAggQueryMeta)qMeta).aggregations.isEmpty()) {
@@ -60,7 +61,7 @@ statement returns [QueryMeta qMeta]
 	  	}
 	    } 
 	  
-	  
+	(
 	  WS WHERE WS whereClause[qMeta]
 	  (		  
 		  (WS BREAK WS BY WS granularityClause[qMeta])? // Default granularity is all
@@ -140,6 +141,12 @@ statement returns [QueryMeta qMeta]
 	   WS SORT WS? LPARAN WS? (s=SINGLE_QUOTE_STRING) {((SearchQueryMeta)qMeta).setSort($s.text);} WS? RPARAN
 	  )?
 	  (WS HINT WS? LPARAN WS? s=SINGLE_QUOTE_STRING {qMeta = HintProcessor.process(qMeta, $s.text);} WS? RPARAN)?
+	  )? 
+	  {
+	  	if (qMeta.intervals == null || qMeta.intervals.isEmpty()) {
+	  		qMeta = TimeBoundaryQueryMeta.promote(qMeta);
+	  	}
+	  }
 	  ;
 
 selectItems[QueryMeta qMeta]

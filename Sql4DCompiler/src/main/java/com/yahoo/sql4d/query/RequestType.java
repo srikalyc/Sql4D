@@ -15,9 +15,12 @@ package com.yahoo.sql4d.query;
  * @author srikalyan
  */
 public enum RequestType {
-    GROUPBY, TIMESERIES, TOPN, SEARCH, SELECT, UNKNOWN;
+    GROUPBY, TIMESERIES, TOPN, SEARCH, SELECT, TIMEBOUNDARY, UNKNOWN;
 
     public String getName() {
+        if (this == TIMEBOUNDARY) {
+            return "timeBoundary";
+        }
         return this.name().toLowerCase();
     }
 }

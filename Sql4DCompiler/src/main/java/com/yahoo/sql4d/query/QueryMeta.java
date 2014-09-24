@@ -60,6 +60,9 @@ public class QueryMeta {
         dataSourceJson.put("type", "table");
         dataSourceJson.put("name", dataSource);
         map.put("dataSource", dataSourceJson);
+        if (queryType == RequestType.TIMEBOUNDARY) {
+            return map;
+        }
         if (granularity != null) {
             if (granularity.gString != null) {
                 map.put("granularity", granularity.gString);

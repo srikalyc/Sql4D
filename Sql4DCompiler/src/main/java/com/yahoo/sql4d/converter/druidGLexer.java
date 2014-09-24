@@ -1,6 +1,6 @@
 package com.yahoo.sql4d.converter;
 
-// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-09-22 13:39:27
+// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-09-23 19:14:59
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -183,8 +183,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LPARAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:8: ( '(' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:11: '('
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:418:8: ( '(' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:418:11: '('
 			{
 			match('('); 
 			}
@@ -203,8 +203,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RPARAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:412:8: ( ')' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:412:11: ')'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:8: ( ')' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:11: ')'
 			{
 			match(')'); 
 			}
@@ -223,8 +223,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LCURLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:413:8: ( '{' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:413:11: '{'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:420:8: ( '{' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:420:11: '{'
 			{
 			match('{'); 
 			}
@@ -243,8 +243,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RCURLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:414:8: ( '}' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:414:11: '}'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:8: ( '}' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:11: '}'
 			{
 			match('}'); 
 			}
@@ -263,8 +263,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LSQUARE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:415:9: ( '[' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:415:12: '['
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:9: ( '[' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:12: '['
 			{
 			match('['); 
 			}
@@ -283,8 +283,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RSQUARE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:416:9: ( ']' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:416:12: ']'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:9: ( ']' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:12: ']'
 			{
 			match(']'); 
 			}
@@ -303,10 +303,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = SELECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:9: ( ( 'SELECT' | 'select' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:11: ( 'SELECT' | 'select' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:9: ( ( 'SELECT' | 'select' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:11: ( 'SELECT' | 'select' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:11: ( 'SELECT' | 'select' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:11: ( 'SELECT' | 'select' )
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='S') ) {
@@ -324,14 +324,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt1) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:12: 'SELECT'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:12: 'SELECT'
 					{
 					match("SELECT"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:21: 'select'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:21: 'select'
 					{
 					match("select"); 
 
@@ -356,11 +356,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = COUNT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:8: ( ( 'COUNT' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:10: ( 'COUNT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:8: ( ( 'COUNT' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:10: ( 'COUNT' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:10: ( 'COUNT' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:11: 'COUNT'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:10: ( 'COUNT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:11: 'COUNT'
 			{
 			match("COUNT"); 
 
@@ -382,11 +382,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LONG_SUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:10: ( ( 'LONG_SUM' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:12: ( 'LONG_SUM' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:10: ( ( 'LONG_SUM' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:12: ( 'LONG_SUM' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:12: ( 'LONG_SUM' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:13: 'LONG_SUM'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:12: ( 'LONG_SUM' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:13: 'LONG_SUM'
 			{
 			match("LONG_SUM"); 
 
@@ -408,11 +408,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DOUBLE_SUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:12: ( ( 'DOUBLE_SUM' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:14: ( 'DOUBLE_SUM' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:12: ( ( 'DOUBLE_SUM' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:14: ( 'DOUBLE_SUM' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:14: ( 'DOUBLE_SUM' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:15: 'DOUBLE_SUM'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:14: ( 'DOUBLE_SUM' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:15: 'DOUBLE_SUM'
 			{
 			match("DOUBLE_SUM"); 
 
@@ -434,11 +434,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = UNIQUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:424:9: ( ( 'UNIQUE' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:424:11: ( 'UNIQUE' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:431:9: ( ( 'UNIQUE' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:431:11: ( 'UNIQUE' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:424:11: ( 'UNIQUE' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:424:12: 'UNIQUE'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:431:11: ( 'UNIQUE' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:431:12: 'UNIQUE'
 			{
 			match("UNIQUE"); 
 
@@ -460,11 +460,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = MIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:425:6: ( ( 'MIN' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:425:8: ( 'MIN' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:6: ( ( 'MIN' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:8: ( 'MIN' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:425:8: ( 'MIN' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:425:9: 'MIN'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:8: ( 'MIN' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:9: 'MIN'
 			{
 			match("MIN"); 
 
@@ -486,11 +486,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = MAX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:5: ( ( 'MAX' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:7: ( 'MAX' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:5: ( ( 'MAX' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:7: ( 'MAX' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:7: ( 'MAX' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:8: 'MAX'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:7: ( 'MAX' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:8: 'MAX'
 			{
 			match("MAX"); 
 
@@ -512,11 +512,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DURATION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:9: ( ( 'DURATION' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:11: ( 'DURATION' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:435:9: ( ( 'DURATION' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:435:11: ( 'DURATION' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:11: ( 'DURATION' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:428:12: 'DURATION'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:435:11: ( 'DURATION' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:435:12: 'DURATION'
 			{
 			match("DURATION"); 
 
@@ -538,11 +538,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = PERIOD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:8: ( ( 'PERIOD' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:10: ( 'PERIOD' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:8: ( ( 'PERIOD' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:10: ( 'PERIOD' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:10: ( 'PERIOD' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:429:11: 'PERIOD'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:10: ( 'PERIOD' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:11: 'PERIOD'
 			{
 			match("PERIOD"); 
 
@@ -564,11 +564,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INCLUDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:9: ( ( 'INCLUDE' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:11: ( 'INCLUDE' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:9: ( ( 'INCLUDE' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:11: ( 'INCLUDE' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:11: ( 'INCLUDE' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:12: 'INCLUDE'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:11: ( 'INCLUDE' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:12: 'INCLUDE'
 			{
 			match("INCLUDE"); 
 
@@ -590,11 +590,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WHICH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:7: ( ( 'WHICH' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:9: ( 'WHICH' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:7: ( ( 'WHICH' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:9: ( 'WHICH' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:9: ( 'WHICH' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:10: 'WHICH'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:9: ( 'WHICH' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:10: 'WHICH'
 			{
 			match("WHICH"); 
 
@@ -616,11 +616,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = CONTAINS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:9: ( ( 'CONTAINS' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:11: ( 'CONTAINS' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:9: ( ( 'CONTAINS' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:11: ( 'CONTAINS' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:11: ( 'CONTAINS' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:433:12: 'CONTAINS'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:11: ( 'CONTAINS' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:12: 'CONTAINS'
 			{
 			match("CONTAINS"); 
 
@@ -642,11 +642,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = SORT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:434:6: ( ( 'SORT' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:434:8: ( 'SORT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:6: ( ( 'SORT' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:8: ( 'SORT' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:434:8: ( 'SORT' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:434:9: 'SORT'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:8: ( 'SORT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:9: 'SORT'
 			{
 			match("SORT"); 
 
@@ -668,11 +668,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = HINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:6: ( ( 'HINT' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:8: ( 'HINT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:6: ( ( 'HINT' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:8: ( 'HINT' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:8: ( 'HINT' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:436:9: 'HINT'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:8: ( 'HINT' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:9: 'HINT'
 			{
 			match("HINT"); 
 
@@ -694,10 +694,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = AS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:438:5: ( ( 'AS' | 'as' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:438:7: ( 'AS' | 'as' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:5: ( ( 'AS' | 'as' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:7: ( 'AS' | 'as' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:438:7: ( 'AS' | 'as' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:7: ( 'AS' | 'as' )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0=='A') ) {
@@ -715,14 +715,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt2) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:438:8: 'AS'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:8: 'AS'
 					{
 					match("AS"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:438:13: 'as'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:13: 'as'
 					{
 					match("as"); 
 
@@ -747,10 +747,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = FIELD_ACCESS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:14: ( ( 'FIELD_ACCESS' | 'field_access' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:16: ( 'FIELD_ACCESS' | 'field_access' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:14: ( ( 'FIELD_ACCESS' | 'field_access' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:16: ( 'FIELD_ACCESS' | 'field_access' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:16: ( 'FIELD_ACCESS' | 'field_access' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:16: ( 'FIELD_ACCESS' | 'field_access' )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='F') ) {
@@ -768,14 +768,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt3) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:17: 'FIELD_ACCESS'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:17: 'FIELD_ACCESS'
 					{
 					match("FIELD_ACCESS"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:439:32: 'field_access'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:32: 'field_access'
 					{
 					match("field_access"); 
 
@@ -800,10 +800,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = FROM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:7: ( ( 'FROM' | 'from' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:9: ( 'FROM' | 'from' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:7: ( ( 'FROM' | 'from' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:9: ( 'FROM' | 'from' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:9: ( 'FROM' | 'from' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:9: ( 'FROM' | 'from' )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0=='F') ) {
@@ -821,14 +821,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt4) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:10: 'FROM'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:10: 'FROM'
 					{
 					match("FROM"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:440:17: 'from'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:17: 'from'
 					{
 					match("from"); 
 
@@ -853,10 +853,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WHERE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:8: ( ( 'WHERE' | 'where' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:10: ( 'WHERE' | 'where' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:8: ( ( 'WHERE' | 'where' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:10: ( 'WHERE' | 'where' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:10: ( 'WHERE' | 'where' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:10: ( 'WHERE' | 'where' )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='W') ) {
@@ -874,14 +874,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:11: 'WHERE'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:11: 'WHERE'
 					{
 					match("WHERE"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:441:19: 'where'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:19: 'where'
 					{
 					match("where"); 
 
@@ -906,10 +906,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BETWEEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:9: ( ( 'BETWEEN' | 'between' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:11: ( 'BETWEEN' | 'between' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:9: ( ( 'BETWEEN' | 'between' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:11: ( 'BETWEEN' | 'between' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:11: ( 'BETWEEN' | 'between' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:11: ( 'BETWEEN' | 'between' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='B') ) {
@@ -927,14 +927,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:12: 'BETWEEN'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:12: 'BETWEEN'
 					{
 					match("BETWEEN"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:22: 'between'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:22: 'between'
 					{
 					match("between"); 
 
@@ -959,10 +959,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:6: ( ( 'AND' | 'and' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:8: ( 'AND' | 'and' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:6: ( ( 'AND' | 'and' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:8: ( 'AND' | 'and' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:8: ( 'AND' | 'and' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:8: ( 'AND' | 'and' )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='A') ) {
@@ -980,14 +980,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:9: 'AND'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:9: 'AND'
 					{
 					match("AND"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:443:15: 'and'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:15: 'and'
 					{
 					match("and"); 
 
@@ -1012,10 +1012,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:444:5: ( ( 'OR' | 'or' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:444:7: ( 'OR' | 'or' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:5: ( ( 'OR' | 'or' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:7: ( 'OR' | 'or' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:444:7: ( 'OR' | 'or' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:7: ( 'OR' | 'or' )
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='O') ) {
@@ -1033,14 +1033,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt8) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:444:8: 'OR'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:8: 'OR'
 					{
 					match("OR"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:444:13: 'or'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:13: 'or'
 					{
 					match("or"); 
 
@@ -1065,10 +1065,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:6: ( ( 'NOT' | 'not' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:8: ( 'NOT' | 'not' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:6: ( ( 'NOT' | 'not' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:8: ( 'NOT' | 'not' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:8: ( 'NOT' | 'not' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:8: ( 'NOT' | 'not' )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0=='N') ) {
@@ -1086,14 +1086,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt9) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:9: 'NOT'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:9: 'NOT'
 					{
 					match("NOT"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:445:15: 'not'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:15: 'not'
 					{
 					match("not"); 
 
@@ -1118,10 +1118,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = GROUP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:7: ( ( 'GROUP' | 'group' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:9: ( 'GROUP' | 'group' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:7: ( ( 'GROUP' | 'group' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:9: ( 'GROUP' | 'group' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:9: ( 'GROUP' | 'group' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:9: ( 'GROUP' | 'group' )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0=='G') ) {
@@ -1139,14 +1139,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt10) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:10: 'GROUP'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:10: 'GROUP'
 					{
 					match("GROUP"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:446:20: 'group'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:20: 'group'
 					{
 					match("group"); 
 
@@ -1171,10 +1171,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ASC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:5: ( ( 'ASC' | 'asc' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:7: ( 'ASC' | 'asc' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:5: ( ( 'ASC' | 'asc' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:7: ( 'ASC' | 'asc' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:7: ( 'ASC' | 'asc' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:7: ( 'ASC' | 'asc' )
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0=='A') ) {
@@ -1192,14 +1192,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt11) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:8: 'ASC'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:8: 'ASC'
 					{
 					match("ASC"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:447:16: 'asc'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:16: 'asc'
 					{
 					match("asc"); 
 
@@ -1224,10 +1224,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DESC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:6: ( ( 'DESC' | 'desc' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:8: ( 'DESC' | 'desc' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:6: ( ( 'DESC' | 'desc' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:8: ( 'DESC' | 'desc' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:8: ( 'DESC' | 'desc' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:8: ( 'DESC' | 'desc' )
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0=='D') ) {
@@ -1245,14 +1245,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt12) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:9: 'DESC'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:9: 'DESC'
 					{
 					match("DESC"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:448:18: 'desc'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:18: 'desc'
 					{
 					match("desc"); 
 
@@ -1277,10 +1277,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ORDER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:7: ( ( 'ORDER' | 'order' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:9: ( 'ORDER' | 'order' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:7: ( ( 'ORDER' | 'order' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:9: ( 'ORDER' | 'order' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:9: ( 'ORDER' | 'order' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:9: ( 'ORDER' | 'order' )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='O') ) {
@@ -1298,14 +1298,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:10: 'ORDER'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:10: 'ORDER'
 					{
 					match("ORDER"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:20: 'order'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:20: 'order'
 					{
 					match("order"); 
 
@@ -1330,10 +1330,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = HAVING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:8: ( ( 'HAVING' | 'having' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:10: ( 'HAVING' | 'having' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:8: ( ( 'HAVING' | 'having' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:10: ( 'HAVING' | 'having' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:10: ( 'HAVING' | 'having' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:10: ( 'HAVING' | 'having' )
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0=='H') ) {
@@ -1351,14 +1351,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt14) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:11: 'HAVING'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:11: 'HAVING'
 					{
 					match("HAVING"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:450:22: 'having'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:22: 'having'
 					{
 					match("having"); 
 
@@ -1383,10 +1383,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BREAK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:7: ( ( 'BREAK' | 'break' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:9: ( 'BREAK' | 'break' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:458:7: ( ( 'BREAK' | 'break' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:458:9: ( 'BREAK' | 'break' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:9: ( 'BREAK' | 'break' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:458:9: ( 'BREAK' | 'break' )
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0=='B') ) {
@@ -1404,14 +1404,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt15) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:10: 'BREAK'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:458:10: 'BREAK'
 					{
 					match("BREAK"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:451:20: 'break'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:458:20: 'break'
 					{
 					match("break"); 
 
@@ -1436,10 +1436,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:4: ( ( 'BY' | 'by' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:6: ( 'BY' | 'by' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:4: ( ( 'BY' | 'by' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:6: ( 'BY' | 'by' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:6: ( 'BY' | 'by' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:6: ( 'BY' | 'by' )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='B') ) {
@@ -1457,14 +1457,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt16) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:7: 'BY'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:7: 'BY'
 					{
 					match("BY"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:452:14: 'by'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:14: 'by'
 					{
 					match("by"); 
 
@@ -1489,10 +1489,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LIMIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:7: ( ( 'LIMIT' | 'limit' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:9: ( 'LIMIT' | 'limit' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:7: ( ( 'LIMIT' | 'limit' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:9: ( 'LIMIT' | 'limit' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:9: ( 'LIMIT' | 'limit' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:9: ( 'LIMIT' | 'limit' )
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0=='L') ) {
@@ -1510,14 +1510,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt17) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:10: 'LIMIT'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:10: 'LIMIT'
 					{
 					match("LIMIT"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:454:20: 'limit'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:20: 'limit'
 					{
 					match("limit"); 
 
@@ -1542,10 +1542,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LIKE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:6: ( ( 'LIKE' | 'like' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:8: ( 'LIKE' | 'like' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:462:6: ( ( 'LIKE' | 'like' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:462:8: ( 'LIKE' | 'like' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:8: ( 'LIKE' | 'like' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:462:8: ( 'LIKE' | 'like' )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='L') ) {
@@ -1563,14 +1563,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt18) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:9: 'LIKE'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:462:9: 'LIKE'
 					{
 					match("LIKE"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:455:18: 'like'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:462:18: 'like'
 					{
 					match("like"); 
 
@@ -1595,10 +1595,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:6: ( ( 'THEN' | 'then' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:8: ( 'THEN' | 'then' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:6: ( ( 'THEN' | 'then' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:8: ( 'THEN' | 'then' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:8: ( 'THEN' | 'then' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:8: ( 'THEN' | 'then' )
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0=='T') ) {
@@ -1616,14 +1616,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt19) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:9: 'THEN'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:9: 'THEN'
 					{
 					match("THEN"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:456:18: 'then'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:18: 'then'
 					{
 					match("then"); 
 
@@ -1648,10 +1648,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = JAVASCRIPT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:2: ( ( 'JAVASCRIPT:' | 'javascript:' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:5: ( 'JAVASCRIPT:' | 'javascript:' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:2: ( ( 'JAVASCRIPT:' | 'javascript:' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:5: ( 'JAVASCRIPT:' | 'javascript:' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:5: ( 'JAVASCRIPT:' | 'javascript:' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:5: ( 'JAVASCRIPT:' | 'javascript:' )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0=='J') ) {
@@ -1669,14 +1669,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt20) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:6: 'JAVASCRIPT:'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:6: 'JAVASCRIPT:'
 					{
 					match("JAVASCRIPT:"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:459:21: 'javascript:'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:21: 'javascript:'
 					{
 					match("javascript:"); 
 
@@ -1701,10 +1701,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:7: ( ( 'JOIN' | 'join' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:9: ( 'JOIN' | 'join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:7: ( ( 'JOIN' | 'join' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:9: ( 'JOIN' | 'join' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:9: ( 'JOIN' | 'join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:9: ( 'JOIN' | 'join' )
 			int alt21=2;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0=='J') ) {
@@ -1722,14 +1722,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt21) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:10: 'JOIN'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:10: 'JOIN'
 					{
 					match("JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:461:19: 'join'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:19: 'join'
 					{
 					match("join"); 
 
@@ -1754,10 +1754,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LEFT_JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:12: ( ( 'LEFT_JOIN' | 'left_join' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:14: ( 'LEFT_JOIN' | 'left_join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:12: ( ( 'LEFT_JOIN' | 'left_join' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:14: ( 'LEFT_JOIN' | 'left_join' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:14: ( 'LEFT_JOIN' | 'left_join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:14: ( 'LEFT_JOIN' | 'left_join' )
 			int alt22=2;
 			int LA22_0 = input.LA(1);
 			if ( (LA22_0=='L') ) {
@@ -1775,14 +1775,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt22) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:15: 'LEFT_JOIN'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:15: 'LEFT_JOIN'
 					{
 					match("LEFT_JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:29: 'left_join'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:29: 'left_join'
 					{
 					match("left_join"); 
 
@@ -1807,10 +1807,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RIGHT_JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:13: ( ( 'RIGHT_JOIN' | 'right_join' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:15: ( 'RIGHT_JOIN' | 'right_join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:474:13: ( ( 'RIGHT_JOIN' | 'right_join' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:474:15: ( 'RIGHT_JOIN' | 'right_join' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:15: ( 'RIGHT_JOIN' | 'right_join' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:474:15: ( 'RIGHT_JOIN' | 'right_join' )
 			int alt23=2;
 			int LA23_0 = input.LA(1);
 			if ( (LA23_0=='R') ) {
@@ -1828,14 +1828,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt23) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:16: 'RIGHT_JOIN'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:474:16: 'RIGHT_JOIN'
 					{
 					match("RIGHT_JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:31: 'right_join'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:474:31: 'right_join'
 					{
 					match("right_join"); 
 
@@ -1860,11 +1860,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:470:5: ( ( 'ON' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:470:7: ( 'ON' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:477:5: ( ( 'ON' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:477:7: ( 'ON' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:470:7: ( 'ON' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:470:8: 'ON'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:477:7: ( 'ON' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:477:8: 'ON'
 			{
 			match("ON"); 
 
@@ -1886,8 +1886,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = OPT_SEMI_COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:475:2: ( ';' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:475:4: ';'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:482:2: ( ';' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:482:4: ';'
 			{
 			match(';'); 
 			}
@@ -1906,10 +1906,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:478:2: ( ( ' ' | '\\t' )+ )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:478:4: ( ' ' | '\\t' )+
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:485:2: ( ( ' ' | '\\t' )+ )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:485:4: ( ' ' | '\\t' )+
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:478:4: ( ' ' | '\\t' )+
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:485:4: ( ' ' | '\\t' )+
 			int cnt24=0;
 			loop24:
 			while (true) {
@@ -1958,8 +1958,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:483:2: ( NUM NUM NUM NUM '-' NUM NUM '-' NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:483:4: NUM NUM NUM NUM '-' NUM NUM '-' NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:490:2: ( NUM NUM NUM NUM '-' NUM NUM '-' NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:490:4: NUM NUM NUM NUM '-' NUM NUM '-' NUM NUM
 			{
 			mNUM(); 
 
@@ -1995,8 +1995,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:486:2: ( DATE 'T' NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:486:4: DATE 'T' NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:493:2: ( DATE 'T' NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:493:4: DATE 'T' NUM NUM
 			{
 			mDATE(); 
 
@@ -2021,8 +2021,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:489:2: ( DATE_HOUR ':' NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:489:5: DATE_HOUR ':' NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:496:2: ( DATE_HOUR ':' NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:496:5: DATE_HOUR ':' NUM NUM
 			{
 			mDATE_HOUR(); 
 
@@ -2047,8 +2047,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:492:2: ( DATE_HOUR_MIN ':' NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:492:5: DATE_HOUR_MIN ':' NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:499:2: ( DATE_HOUR_MIN ':' NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:499:5: DATE_HOUR_MIN ':' NUM NUM
 			{
 			mDATE_HOUR_MIN(); 
 
@@ -2073,8 +2073,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:495:2: ( DATE_HOUR_MIN_SEC '.' NUM NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:495:5: DATE_HOUR_MIN_SEC '.' NUM NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:502:2: ( DATE_HOUR_MIN_SEC '.' NUM NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:502:5: DATE_HOUR_MIN_SEC '.' NUM NUM NUM
 			{
 			mDATE_HOUR_MIN_SEC(); 
 
@@ -2101,8 +2101,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB_TZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:498:2: ( DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:498:5: DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:505:2: ( DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:505:5: DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM
 			{
 			mDATE_HOUR_MIN_SEC_SUB(); 
 
@@ -2139,7 +2139,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB_UTC_TZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:501:2: ( DATE_HOUR_MIN 'Z' | DATE_HOUR_MIN_SEC 'Z' | DATE_HOUR_MIN_SEC_SUB 'Z' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:508:2: ( DATE_HOUR_MIN 'Z' | DATE_HOUR_MIN_SEC 'Z' | DATE_HOUR_MIN_SEC_SUB 'Z' )
 			int alt25=3;
 			int LA25_0 = input.LA(1);
 			if ( ((LA25_0 >= '0' && LA25_0 <= '9')) ) {
@@ -2500,7 +2500,7 @@ public class druidGLexer extends Lexer {
 
 			switch (alt25) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:501:5: DATE_HOUR_MIN 'Z'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:508:5: DATE_HOUR_MIN 'Z'
 					{
 					mDATE_HOUR_MIN(); 
 
@@ -2508,7 +2508,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:502:6: DATE_HOUR_MIN_SEC 'Z'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:509:6: DATE_HOUR_MIN_SEC 'Z'
 					{
 					mDATE_HOUR_MIN_SEC(); 
 
@@ -2516,7 +2516,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:503:6: DATE_HOUR_MIN_SEC_SUB 'Z'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:510:6: DATE_HOUR_MIN_SEC_SUB 'Z'
 					{
 					mDATE_HOUR_MIN_SEC_SUB(); 
 
@@ -2539,7 +2539,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ARITH_OPER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:506:13: ( ( '*' | '+' | '/' | '-' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:513:13: ( ( '*' | '+' | '/' | '-' ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:
 			{
 			if ( (input.LA(1) >= '*' && input.LA(1) <= '+')||input.LA(1)=='-'||input.LA(1)=='/' ) {
@@ -2566,8 +2566,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = EQUALS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:509:9: ( '=' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:509:11: '='
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:516:9: ( '=' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:516:11: '='
 			{
 			match('='); 
 			}
@@ -2586,7 +2586,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = COMPARE_OPER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:511:15: ( ( '<' | '>' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:518:15: ( ( '<' | '>' ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:
 			{
 			if ( input.LA(1)=='<'||input.LA(1)=='>' ) {
@@ -2613,8 +2613,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:515:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:515:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:522:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:522:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -2624,7 +2624,7 @@ public class druidGLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:515:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:522:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			loop26:
 			while (true) {
 				int alt26=2;
@@ -2669,10 +2669,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = NEWLINE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:519:11: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:519:14: ( '\\r\\n' | '\\r' | '\\n' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:526:11: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:526:14: ( '\\r\\n' | '\\r' | '\\n' )
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:519:14: ( '\\r\\n' | '\\r' | '\\n' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:526:14: ( '\\r\\n' | '\\r' | '\\n' )
 			int alt27=3;
 			int LA27_0 = input.LA(1);
 			if ( (LA27_0=='\r') ) {
@@ -2698,20 +2698,20 @@ public class druidGLexer extends Lexer {
 
 			switch (alt27) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:519:16: '\\r\\n'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:526:16: '\\r\\n'
 					{
 					match("\r\n"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:520:18: '\\r'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:527:18: '\\r'
 					{
 					match('\r'); 
 					}
 					break;
 				case 3 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:521:18: '\\n'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:18: '\\n'
 					{
 					match('\n'); 
 					}
@@ -2738,11 +2738,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:535:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:535:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
 			{
 			match('\"'); 
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:535:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
 			loop28:
 			while (true) {
 				int alt28=3;
@@ -2756,14 +2756,14 @@ public class druidGLexer extends Lexer {
 
 				switch (alt28) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:14: ESC_SEQ
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:535:14: ESC_SEQ
 					{
 					mESC_SEQ(); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:528:24: ~ ( '\\\\' | '\"' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:535:24: ~ ( '\\\\' | '\"' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -2798,11 +2798,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = SINGLE_QUOTE_STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:533:5: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:533:8: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:540:5: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:540:8: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
 			{
 			match('\''); 
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:533:13: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:540:13: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
 			loop29:
 			while (true) {
 				int alt29=3;
@@ -2816,14 +2816,14 @@ public class druidGLexer extends Lexer {
 
 				switch (alt29) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:533:14: ESC_SEQ
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:540:14: ESC_SEQ
 					{
 					mESC_SEQ(); 
 
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:533:24: ~ ( '\\\\' | '\\'' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:540:24: ~ ( '\\\\' | '\\'' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -2858,10 +2858,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LONG;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:536:6: ( ( NUM )+ )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:536:8: ( NUM )+
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:543:6: ( ( NUM )+ )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:543:8: ( NUM )+
 			{
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:536:8: ( NUM )+
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:543:8: ( NUM )+
 			int cnt30=0;
 			loop30:
 			while (true) {
@@ -2910,12 +2910,12 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:537:10: ( LONG ( '.' LONG )? )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:537:15: LONG ( '.' LONG )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:10: ( LONG ( '.' LONG )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:15: LONG ( '.' LONG )?
 			{
 			mLONG(); 
 
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:537:20: ( '.' LONG )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:20: ( '.' LONG )?
 			int alt31=2;
 			int LA31_0 = input.LA(1);
 			if ( (LA31_0=='.') ) {
@@ -2923,7 +2923,7 @@ public class druidGLexer extends Lexer {
 			}
 			switch (alt31) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:537:21: '.' LONG
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:21: '.' LONG
 					{
 					match('.'); 
 					mLONG(); 
@@ -2947,7 +2947,7 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "NUM"
 	public final void mNUM() throws RecognitionException {
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:539:14: ( ( '0' .. '9' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:546:14: ( ( '0' .. '9' ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -2970,7 +2970,7 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "HEX_DIGIT"
 	public final void mHEX_DIGIT() throws RecognitionException {
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:541:20: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:548:20: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -2993,7 +2993,7 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "ESC_SEQ"
 	public final void mESC_SEQ() throws RecognitionException {
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:551:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
 			int alt32=3;
 			int LA32_0 = input.LA(1);
 			if ( (LA32_0=='\\') ) {
@@ -3048,7 +3048,7 @@ public class druidGLexer extends Lexer {
 
 			switch (alt32) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:544:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:551:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 					{
 					match('\\'); 
 					if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -3062,14 +3062,14 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:545:9: UNICODE_ESC
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:552:9: UNICODE_ESC
 					{
 					mUNICODE_ESC(); 
 
 					}
 					break;
 				case 3 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:546:9: OCTAL_ESC
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:553:9: OCTAL_ESC
 					{
 					mOCTAL_ESC(); 
 
@@ -3087,7 +3087,7 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "OCTAL_ESC"
 	public final void mOCTAL_ESC() throws RecognitionException {
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:550:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:557:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
 			int alt33=3;
 			int LA33_0 = input.LA(1);
 			if ( (LA33_0=='\\') ) {
@@ -3145,7 +3145,7 @@ public class druidGLexer extends Lexer {
 
 			switch (alt33) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:550:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:557:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '3') ) {
@@ -3175,7 +3175,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:551:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:558:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -3197,7 +3197,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:552:9: '\\\\' ( '0' .. '7' )
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:559:9: '\\\\' ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -3222,8 +3222,8 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "UNICODE_ESC"
 	public final void mUNICODE_ESC() throws RecognitionException {
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:556:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:556:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:563:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:563:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
 			{
 			match('\\'); 
 			match('u'); 
