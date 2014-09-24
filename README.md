@@ -16,6 +16,11 @@ Getting started guide
 
 See this page https://github.com/srikalyc/Sql4D/wiki
 
+A first look at druid with Sql
+=====================
+See here http://selftechrambling.blogspot.com/2014/09/a-first-look-at-druid-with-sql.html
+
+
 
 
 NOTE: Sql4D/sql4ddriver/.../PrettyPrint.java contains a code snippet modified from a publication here: http://stackoverflow.com/questions/11383070/pretty-print-2d-array-in-java . The
