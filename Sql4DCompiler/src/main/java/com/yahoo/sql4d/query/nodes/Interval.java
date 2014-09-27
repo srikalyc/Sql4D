@@ -22,6 +22,8 @@ import org.joda.time.format.DateTimeFormatter;
  */
 public class Interval {
     private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd").withOffsetParsed();
+    private static final DateTimeFormatter dateHourOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH").withOffsetParsed();
+    private static final DateTimeFormatter dateHourMinOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm").withOffsetParsed();
     private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withOffsetParsed();
     private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withOffsetParsed();
     private static final DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ").withOffsetParsed();
@@ -61,8 +63,12 @@ public class Interval {
             if ((dateTime = tryFormat(strTime, dateTimeAndTZFormat)) == null) {
                 if ((dateTime = tryFormat(strTime, dateTimeWithSubSecFormat)) == null) {
                     if ((dateTime = tryFormat(strTime, dateTimeFormat)) == null) {
-                        if ((dateTime = tryFormat(strTime, dateOnlyFormat)) == null) {
-                            return dateTime;
+                        if ((dateTime = tryFormat(strTime, dateHourMinOnlyFormat)) == null) {
+                            if ((dateTime = tryFormat(strTime, dateHourOnlyFormat)) == null) {
+                                if ((dateTime = tryFormat(strTime, dateOnlyFormat)) == null) {
+                                    return dateTime;
+                                }
+                            }
                         }
                     }
                 }
