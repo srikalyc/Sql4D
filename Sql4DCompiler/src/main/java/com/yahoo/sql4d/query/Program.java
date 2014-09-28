@@ -58,19 +58,19 @@ public class Program {
                         continue;
                     }
                     for (QueryMeta query: listOfQueries) {
-                        boolean isPresent = true;
+                        boolean isPresent = false;
                         if (query instanceof BaseAggQueryMeta) {// Since BaseAggQueryMeta is also a PlainDimQueryMeta we go with former first.
                             for (AggItem item:((BaseAggQueryMeta)query).aggregations) {
-                                if (!(joinField.equals(item.fieldName) || (item.asName != null && joinField.equals(item.asName)))) {
-                                    isPresent = false;
+                                if (joinField.equals(item.fieldName) || (item.asName != null && joinField.equals(item.asName))) {
+                                    isPresent = true;
                                 }
                             }
                         }
                         if (query instanceof PlainDimQueryMeta) {
                             Map<String, String> dims = ((PlainDimQueryMeta)query).fetchDimensions;
                             for (Map.Entry<String, String> entry :dims.entrySet()) {
-                                if (!(joinField.equals(entry.getKey()) || (entry.getValue() != null && joinField.equals(entry.getValue())))) {
-                                    isPresent = false;
+                                if (joinField.equals(entry.getKey()) || (entry.getValue() != null && joinField.equals(entry.getValue()))) {
+                                    isPresent = true;
                                 }
                             }
                         }

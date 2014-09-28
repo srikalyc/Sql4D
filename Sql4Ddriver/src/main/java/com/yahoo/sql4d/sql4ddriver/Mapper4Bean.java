@@ -62,7 +62,7 @@ public class Mapper4Bean<T extends DruidBaseBean> extends BaseMapper {
                 }
             }
             if (i == 0) {// Fill headers (only once)
-                fillHeaders(eachRow);
+                tryRefillHeaders(eachRow);
             }
             T row = extractKeyAndRow(actualTimestamp, eachRow);
             baseAllRows.add(row);

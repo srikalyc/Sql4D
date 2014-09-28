@@ -36,7 +36,12 @@ options { k=6; }
 program	returns [Program program]
 @init { program = new Program(); }
 	: (s1=statement) { program.listOfQueries.add(s1); } 
-	  (WS j=(JOIN|LEFT_JOIN|RIGHT_JOIN) {program.joinTypes.add($j.text.toUpperCase());} WS? LPARAN WS? (s2=statement) {program.listOfQueries.add(s2);} WS? RPARAN WS? ON WS? LPARAN WS? (a=ID{ program.primaryJoinableHooks.add($a.text); }) (WS? ',' WS? a=ID{ program.primaryJoinableHooks.add($a.text); })*  WS? RPARAN WS? ) OPT_SEMI_COLON? {}
+	  (WS j=(JOIN|LEFT_JOIN|RIGHT_JOIN) 
+	     {program.joinTypes.add($j.text.toUpperCase());}
+	   WS? LPARAN WS? (s2=statement) {program.listOfQueries.add(s2);} WS? RPARAN WS? ON 
+	   WS? LPARAN WS? (a=ID{ program.primaryJoinableHooks.add($a.text); }) (WS? ',' WS? a=ID{ program.primaryJoinableHooks.add($a.text); })*  WS? RPARAN 
+          )?
+	  WS? OPT_SEMI_COLON? {}
 	;
 	
 

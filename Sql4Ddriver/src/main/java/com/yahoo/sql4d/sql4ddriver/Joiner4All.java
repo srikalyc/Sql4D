@@ -125,7 +125,7 @@ public class Joiner4All extends BaseJoiner {
     }
     @Override
     public String toString() {
-        return baseAllRows.toString();
+        return baseFieldNames.toString() + "\n" + baseAllRows.toString();
     }
 
 }

@@ -353,6 +353,8 @@ public class Main {
     public static void main(String[] args) {
         init(args);
         history = new CircularBuffer<>(10);
+//        trace = true;
+//        runCommand("SELECT LONG_SUM(count) AS count, content_thumbnail_url AS content_thumb, content_uuid AS content_uuid, uri AS content_click_url, content_publish_time AS content_published_date, is_deleted AS content_deleted, content_type AS content_type FROM cmeta_v5 WHERE interval BETWEEN 2012-05-30T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY 'all' GROUP BY content_uuid,content_click_url,content_published_date,content_deleted,content_thumb,content_type ORDER BY count LIMIT 5;");
         readCommands();
     }
 }

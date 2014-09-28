@@ -66,10 +66,17 @@ public class BaseMapper {
         } 
         return eachRow;
     }
-    
-    protected void fillHeaders(JSONObject eachRow) {
-        baseFieldNames.add("timestamp");
-        if (eachRow != null) {
+    /**
+     * Will attempt to refill headers if we see more fields.
+     * @param eachRow 
+     */
+    protected void tryRefillHeaders(JSONObject eachRow) {
+        if (eachRow == null) {
+            return;
+        }
+        if (eachRow.keySet().size() > baseFieldNames.size() - 1) {//i.e excluding timestamp, if the sizes are not same then we have not covered all field names
+            baseFieldNames.clear();
+            baseFieldNames.add("timestamp");
             baseFieldNames.addAll(eachRow.keySet());
         }
     }

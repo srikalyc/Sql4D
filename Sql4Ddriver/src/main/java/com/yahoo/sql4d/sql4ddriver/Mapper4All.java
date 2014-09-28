@@ -53,9 +53,9 @@ public class Mapper4All extends BaseMapper {
                     actualTimestamp = jsonItem.optString("timestamp");
                 }
             }
-            if (i == 0) {// Fill headers (only once)
-                fillHeaders(eachRow);
-            }
+            // Try refill headers for every row simply because we may not have result for that field in the response(which may skip that field) worst
+            // case is some may have and some rows may not have values for that field.
+            tryRefillHeaders(eachRow);
             List<Object> row = extractKeyAndRow(actualTimestamp, eachRow);
             baseAllRows.add(row);
         }
@@ -79,7 +79,7 @@ public class Mapper4All extends BaseMapper {
 
     @Override
     public String toString() {
-        return baseAllRows.toString();
+        return baseFieldNames.toString() + "\n" + baseAllRows.toString();
     }
     
     

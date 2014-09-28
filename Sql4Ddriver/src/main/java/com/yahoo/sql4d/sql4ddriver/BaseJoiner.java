@@ -79,7 +79,7 @@ public abstract class BaseJoiner extends BaseMapper {
         } 
         return eachRow;
     }
-    
+    //TODO: Make this like tryRefillHeaders() method in BaseMapper because some items in the json resultset may not have all the fields.
     protected void fillHeaders(JSONObject eachRow, List<String> joinFields, ActionType action) {
         if (action == ActionType.FIRST_CUT) {
             baseFieldNames.add("timestamp");

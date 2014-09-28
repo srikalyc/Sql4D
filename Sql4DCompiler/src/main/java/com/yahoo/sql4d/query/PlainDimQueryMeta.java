@@ -10,7 +10,7 @@
  */
 package com.yahoo.sql4d.query;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ import org.json.JSONObject;
  * @author srikalyan
  */
 public class PlainDimQueryMeta  extends QueryMeta {
-    public Map<String, String> fetchDimensions = new HashMap<>();// Normal alias go into this (aggregation based alias go into AggItem)
+    public Map<String, String> fetchDimensions = new LinkedHashMap<>();// Normal alias go into this (aggregation based alias go into AggItem)
 
     public PlainDimQueryMeta() {
     }
