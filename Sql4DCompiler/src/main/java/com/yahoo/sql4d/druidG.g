@@ -135,7 +135,9 @@ statement returns [QueryMeta qMeta]
 		      	} else if (qMeta instanceof TopNQueryMeta) {
 		      	    ((TopNQueryMeta)qMeta).threshold = Integer.valueOf($l.text);
 		      	} else if (((PlainDimQueryMeta)qMeta).fetchDimensions.size() != 1) {
-		      	    ((GroupByQueryMeta)qMeta).limitSpec.limit = Long.valueOf($l.text);
+		      	    if (((GroupByQueryMeta)qMeta).limitSpec != null) {
+		      	        ((GroupByQueryMeta)qMeta).limitSpec.limit = Long.valueOf($l.text);
+		      	    }
 		      	}
 		      }    
 		  )?
