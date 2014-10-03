@@ -130,12 +130,12 @@ statement returns [QueryMeta qMeta]
 		  (
 		   WS LIMIT WS (l=LONG)
 		      {	
-		  	if (((PlainDimQueryMeta)qMeta).fetchDimensions.size() != 1) {
-		      	    ((GroupByQueryMeta)qMeta).limitSpec.limit = Long.valueOf($l.text);
+		  	if (qMeta instanceof SelectQueryMeta) {
+			    ((SelectQueryMeta)qMeta).pagingSpec.threshold = Integer.valueOf($l.text);	      	
 		      	} else if (qMeta instanceof TopNQueryMeta) {
 		      	    ((TopNQueryMeta)qMeta).threshold = Integer.valueOf($l.text);
-		      	} else if (qMeta instanceof SelectQueryMeta) {
-			    ((SelectQueryMeta)qMeta).pagingSpec.threshold = Integer.valueOf($l.text);	      	
+		      	} else if (((PlainDimQueryMeta)qMeta).fetchDimensions.size() != 1) {
+		      	    ((GroupByQueryMeta)qMeta).limitSpec.limit = Long.valueOf($l.text);
 		      	}
 		      }    
 		  )?

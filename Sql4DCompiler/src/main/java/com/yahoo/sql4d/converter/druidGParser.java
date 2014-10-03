@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-09-27 19:28:02
+// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-10-02 21:03:52
 package com.yahoo.sql4d.converter;
 
 import org.antlr.runtime.*;
@@ -139,7 +139,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "program"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:36:1: program returns [Program program] : (s1= statement ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= statement ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? ;
-    public final Program program() throws RecognitionException {
+    public final Program program() throws RecognitionException{
         Program program = null;
 
         Token j = null;
@@ -419,7 +419,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "statement"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:49:1: statement returns [QueryMeta qMeta] : SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM WS id= ID ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS granularityClause[qMeta] )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )? ;
-    public final QueryMeta statement() throws RecognitionException {
+    public final QueryMeta statement() throws RecognitionException{
         QueryMeta qMeta = null;
 
         Token id = null;
@@ -827,12 +827,12 @@ public class druidGParser extends Parser {
                                         l = (Token) match(input, LONG, FOLLOW_LONG_in_statement643);
                                     }
 
-                                    if (((PlainDimQueryMeta) qMeta).fetchDimensions.size() != 1) {
-                                        ((GroupByQueryMeta) qMeta).limitSpec.limit = Long.valueOf((l != null ? l.getText() : null));
+                                    if (qMeta instanceof SelectQueryMeta) {
+                                        ((SelectQueryMeta) qMeta).pagingSpec.threshold = Integer.valueOf((l != null ? l.getText() : null));
                                     } else if (qMeta instanceof TopNQueryMeta) {
                                         ((TopNQueryMeta) qMeta).threshold = Integer.valueOf((l != null ? l.getText() : null));
-                                    } else if (qMeta instanceof SelectQueryMeta) {
-                                        ((SelectQueryMeta) qMeta).pagingSpec.threshold = Integer.valueOf((l != null ? l.getText() : null));
+                                    } else if (((PlainDimQueryMeta) qMeta).fetchDimensions.size() != 1) {
+                                        ((GroupByQueryMeta) qMeta).limitSpec.limit = Long.valueOf((l != null ? l.getText() : null));
                                     }
 
                                 }
@@ -1151,7 +1151,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "selectItems"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:157:1: selectItems[QueryMeta qMeta] : (sI1= aggItemInSelect | simpleDim[qMeta] );
-    public final void selectItems(QueryMeta qMeta) throws RecognitionException {
+    public final void selectItems(QueryMeta qMeta) throws RecognitionException{
         AggItem sI1 = null;
 
         try {
@@ -1199,7 +1199,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simpleDim"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:162:1: simpleDim[QueryMeta qMeta] : (a= ID ( WS AS WS b= ID )? ) ;
-    public final void simpleDim(QueryMeta qMeta) throws RecognitionException {
+    public final void simpleDim(QueryMeta qMeta) throws RecognitionException{
         Token a = null;
         Token b = null;
 
@@ -1253,7 +1253,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "whereClause"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:174:1: whereClause[QueryMeta qMeta] : intervalClause[qMeta] ( WS AND WS f= grandFilter )? ;
-    public final void whereClause(QueryMeta qMeta) throws RecognitionException {
+    public final void whereClause(QueryMeta qMeta) throws RecognitionException{
         Filter f = null;
 
         try {
@@ -1302,7 +1302,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "intervalClause"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:179:1: intervalClause[QueryMeta qMeta] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
-    public final void intervalClause(QueryMeta qMeta) throws RecognitionException {
+    public final void intervalClause(QueryMeta qMeta) throws RecognitionException{
         Token st2 = null;
         Token et2 = null;
         ParserRuleReturnScope st = null;
@@ -1547,7 +1547,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "getEquals"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:206:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
-    public final EqualsToHolder getEquals() throws RecognitionException {
+    public final EqualsToHolder getEquals() throws RecognitionException{
         EqualsToHolder holder = null;
 
         Token a = null;
@@ -1617,7 +1617,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "granularityClause"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:212:1: granularityClause[QueryMeta qMeta] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? granularityInclude[qMeta] ( WS )? )? RPARAN ) ) );
-    public final void granularityClause(QueryMeta qMeta) throws RecognitionException {
+    public final void granularityClause(QueryMeta qMeta) throws RecognitionException{
         Token s = null;
         Token dur = null;
         Token orig = null;
@@ -2079,7 +2079,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "granularityInclude"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:1: granularityInclude[QueryMeta qMeta] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
-    public final void granularityInclude(QueryMeta qMeta) throws RecognitionException {
+    public final void granularityInclude(QueryMeta qMeta) throws RecognitionException{
         Pair<Integer> p1 = null;
         Pair<Integer> p2 = null;
 
@@ -2190,7 +2190,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "pairNums"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:228:1: pairNums returns [Pair<Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
-    public final Pair<Integer> pairNums() throws RecognitionException {
+    public final Pair<Integer> pairNums() throws RecognitionException{
         Pair<Integer> pair = null;
 
         Token i = null;
@@ -2285,7 +2285,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "pairString"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:1: pairString returns [Pair<String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
-    public final Pair<String> pairString() throws RecognitionException {
+    public final Pair<String> pairString() throws RecognitionException{
         Pair<String> pair = null;
 
         Token i = null;
@@ -2380,7 +2380,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "havingClause"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:240:1: havingClause returns [Having having] : h= complexHaving ;
-    public final Having havingClause() throws RecognitionException {
+    public final Having havingClause() throws RecognitionException{
         Having having = null;
 
         Having h = null;
@@ -2408,7 +2408,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simpleHaving"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:244:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
-    public final Having simpleHaving() throws RecognitionException {
+    public final Having simpleHaving() throws RecognitionException{
         Having having = null;
 
         Token a = null;
@@ -2604,7 +2604,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "complexHaving"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
-    public final Having complexHaving() throws RecognitionException {
+    public final Having complexHaving() throws RecognitionException{
         Having having = null;
 
         Token o = null;
@@ -2674,7 +2674,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "selectorFilter"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:260:1: selectorFilter returns [Filter filter] : e= getEquals ;
-    public final Filter selectorFilter() throws RecognitionException {
+    public final Filter selectorFilter() throws RecognitionException{
         Filter filter = null;
 
         EqualsToHolder e = null;
@@ -2708,7 +2708,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "regexFilter"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:271:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
-    public final Filter regexFilter() throws RecognitionException {
+    public final Filter regexFilter() throws RecognitionException{
         Filter filter = null;
 
         Token a = null;
@@ -2754,7 +2754,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simpleFilter"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:282:1: simpleFilter returns [Filter filter] : ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) );
-    public final Filter simpleFilter() throws RecognitionException {
+    public final Filter simpleFilter() throws RecognitionException{
         Filter filter = null;
 
         Filter a = null;
@@ -2965,7 +2965,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simpleLogicalFilter"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:287:1: simpleLogicalFilter returns [Filter filter] : ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) );
-    public final Filter simpleLogicalFilter() throws RecognitionException {
+    public final Filter simpleLogicalFilter() throws RecognitionException{
         Filter filter = null;
 
         Token o = null;
@@ -3490,7 +3490,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "grandFilter"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:301:1: grandFilter returns [Filter filter] : (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? ;
-    public final Filter grandFilter() throws RecognitionException {
+    public final Filter grandFilter() throws RecognitionException{
         Filter filter = null;
 
         Token o = null;
@@ -3575,7 +3575,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "aggItemInSelect"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:313:1: aggItemInSelect returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
-    public final AggItem aggItemInSelect() throws RecognitionException {
+    public final AggItem aggItemInSelect() throws RecognitionException{
         AggItem aggItem = null;
 
         Token x = null;
@@ -3625,7 +3625,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "aggCallSite"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:317:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) );
-    public final void aggCallSite(AggItem aggItem) throws RecognitionException {
+    public final void aggCallSite(AggItem aggItem) throws RecognitionException{
         Token x = null;
         String p = null;
 
@@ -3737,7 +3737,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "aggFunc"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:322:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT );
-    public final String aggFunc() throws RecognitionException {
+    public final String aggFunc() throws RecognitionException{
         String name = null;
 
         try {
@@ -3824,7 +3824,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "postAggItem"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:334:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
-    public final PostAggItem postAggItem() throws RecognitionException {
+    public final PostAggItem postAggItem() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         PostAggItem a = null;
@@ -4067,7 +4067,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simpleArith"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:354:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
-    public final PostAggItem simpleArith() throws RecognitionException {
+    public final PostAggItem simpleArith() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         PostAggItem a = null;
@@ -4158,7 +4158,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "simplePostAggAccess"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:368:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
-    public final PostAggItem simplePostAggAccess() throws RecognitionException {
+    public final PostAggItem simplePostAggAccess() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         PostAggItem c = null;
@@ -4243,7 +4243,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "constantAccess"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:377:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
-    public final PostAggItem constantAccess() throws RecognitionException {
+    public final PostAggItem constantAccess() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         Token a = null;
@@ -4322,7 +4322,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "fieldAccess"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:384:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
-    public final PostAggItem fieldAccess() throws RecognitionException {
+    public final PostAggItem fieldAccess() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         Token a = null;
@@ -4375,7 +4375,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "hyperUniqueCardinality"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:389:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
-    public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
+    public final PostAggItem hyperUniqueCardinality() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         Token a = null;
@@ -4454,7 +4454,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "postAggJavascriptDef"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:396:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
-    public final PostAggItem postAggJavascriptDef() throws RecognitionException {
+    public final PostAggItem postAggJavascriptDef() throws RecognitionException{
         PostAggItem postAggItem = null;
 
         Token str = null;
@@ -4496,7 +4496,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "postAggLabel"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:401:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
-    public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
+    public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException{
         Token id = null;
 
         try {
@@ -4525,7 +4525,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "postAggArithOper"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:405:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
-    public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
+    public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException{
         Token arith = null;
 
         try {
@@ -4552,7 +4552,7 @@ public class druidGParser extends Parser {
 
 	// $ANTLR start "isoTime"
     // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:1: isoTime returns [String date] : (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
-    public final druidGParser.isoTime_return isoTime() throws RecognitionException {
+    public final druidGParser.isoTime_return isoTime() throws RecognitionException{
         druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
         retval.start = input.LT(1);
 
