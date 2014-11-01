@@ -317,7 +317,14 @@ aggItemInSelect returns [AggItem aggItem]
 	: aggCallSite[aggItem] (WS AS WS x=ID {aggItem.setAsName($x.text);})? ; 
 
 aggCallSite [AggItem aggItem]
-	: p=aggFunc {aggItem.setAggType(p);} (WS? LPARAN WS? ( x=ID {aggItem.setFieldName($x.text);}) WS? RPARAN) 
+	: p=aggFunc {aggItem.setAggType(p);} (WS? LPARAN WS? ( x=ID {aggItem.setFieldName($x.text);}) (WS? ',' WS? y=ID {
+	    if (aggItem.fieldNames == null || aggItem.fieldNames.isEmpty()) {
+	       aggItem.fieldNames = new ArrayList<>();
+	       aggItem.fieldNames.add(aggItem.fieldName);
+	       aggItem.fieldName = null;
+	    }
+	    aggItem.fieldNames.add($y.text);
+	})* WS? RPARAN) 
 	| COUNT {aggItem.setAggType("count");} ('(*)') // TODO: Remove hardcode (*) (make to match multiple White spaces)
 	;
 	

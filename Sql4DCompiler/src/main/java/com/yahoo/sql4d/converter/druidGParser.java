@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-10-02 21:43:03
+// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-10-31 22:08:50
 package com.yahoo.sql4d.converter;
 
 import org.antlr.runtime.*;
@@ -3626,35 +3626,36 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggItemInSelect"
 
 	// $ANTLR start "aggCallSite"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:319:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:319:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
     public final void aggCallSite(AggItem aggItem) throws RecognitionException {
         Token x = null;
+        Token y = null;
         String p = null;
 
         try {
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN ) | COUNT ( '(*)' ) )
-            int alt112 = 2;
-            int LA112_0 = input.LA(1);
-            if ((LA112_0 == DOUBLE_SUM || LA112_0 == JAVASCRIPT || LA112_0 == LONG_SUM || (LA112_0 >= MAX && LA112_0 <= MIN) || LA112_0 == UNIQUE)) {
-                alt112 = 1;
-            } else if ((LA112_0 == COUNT)) {
-                alt112 = 2;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
+            int alt115 = 2;
+            int LA115_0 = input.LA(1);
+            if ((LA115_0 == DOUBLE_SUM || LA115_0 == JAVASCRIPT || LA115_0 == LONG_SUM || (LA115_0 >= MAX && LA115_0 <= MIN) || LA115_0 == UNIQUE)) {
+                alt115 = 1;
+            } else if ((LA115_0 == COUNT)) {
+                alt115 = 2;
             } else {
                 NoViableAltException nvae
-                        = new NoViableAltException("", 112, 0, input);
+                        = new NoViableAltException("", 115, 0, input);
                 throw nvae;
             }
 
-            switch (alt112) {
-                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
+            switch (alt115) {
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
                 {
                     pushFollow(FOLLOW_aggFunc_in_aggCallSite1925);
                     p = aggFunc();
                     state._fsp--;
 
                     aggItem.setAggType(p);
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN )
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:40: ( WS )? LPARAN ( WS )? (x= ID ) ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
                     {
                         // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:40: ( WS )?
                         int alt109 = 2;
@@ -3694,34 +3695,100 @@ public class druidGParser extends Parser {
                             aggItem.setFieldName((x != null ? x.getText() : null));
                         }
 
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:96: ( WS )?
-                        int alt111 = 2;
-                        int LA111_0 = input.LA(1);
-                        if ((LA111_0 == WS)) {
-                            alt111 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:96: ( ( WS )? ',' ( WS )? y= ID )*
+                        loop113:
+                        while (true) {
+                            int alt113 = 2;
+                            int LA113_0 = input.LA(1);
+                            if ((LA113_0 == WS)) {
+                                int LA113_1 = input.LA(2);
+                                if ((LA113_1 == 72)) {
+                                    alt113 = 1;
+                                }
+
+                            } else if ((LA113_0 == 72)) {
+                                alt113 = 1;
+                            }
+
+                            switch (alt113) {
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:97: ( WS )? ',' ( WS )? y= ID
+                                {
+                                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:97: ( WS )?
+                                    int alt111 = 2;
+                                    int LA111_0 = input.LA(1);
+                                    if ((LA111_0 == WS)) {
+                                        alt111 = 1;
+                                    }
+                                    switch (alt111) {
+                                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:97: WS
+                                        {
+                                            match(input, WS, FOLLOW_WS_in_aggCallSite1948);
+                                        }
+                                        break;
+
+                                    }
+
+                                    match(input, 72, FOLLOW_72_in_aggCallSite1951);
+                                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:105: ( WS )?
+                                    int alt112 = 2;
+                                    int LA112_0 = input.LA(1);
+                                    if ((LA112_0 == WS)) {
+                                        alt112 = 1;
+                                    }
+                                    switch (alt112) {
+                                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:105: WS
+                                        {
+                                            match(input, WS, FOLLOW_WS_in_aggCallSite1953);
+                                        }
+                                        break;
+
+                                    }
+
+                                    y = (Token) match(input, ID, FOLLOW_ID_in_aggCallSite1958);
+
+                                    if (aggItem.fieldNames == null || aggItem.fieldNames.isEmpty()) {
+                                        aggItem.fieldNames = new ArrayList<>();
+                                        aggItem.fieldNames.add(aggItem.fieldName);
+                                        aggItem.fieldName = null;
+                                    }
+                                    aggItem.fieldNames.add((y != null ? y.getText() : null));
+
+                                }
+                                break;
+
+                                default:
+                                    break loop113;
+                            }
                         }
-                        switch (alt111) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:96: WS
+
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:327:6: ( WS )?
+                        int alt114 = 2;
+                        int LA114_0 = input.LA(1);
+                        if ((LA114_0 == WS)) {
+                            alt114 = 1;
+                        }
+                        switch (alt114) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:327:6: WS
                             {
-                                match(input, WS, FOLLOW_WS_in_aggCallSite1947);
+                                match(input, WS, FOLLOW_WS_in_aggCallSite1964);
                             }
                             break;
 
                         }
 
-                        match(input, RPARAN, FOLLOW_RPARAN_in_aggCallSite1950);
+                        match(input, RPARAN, FOLLOW_RPARAN_in_aggCallSite1967);
                     }
 
                 }
                 break;
-                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:321:4: COUNT ( '(*)' )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:4: COUNT ( '(*)' )
                 {
-                    match(input, COUNT, FOLLOW_COUNT_in_aggCallSite1957);
+                    match(input, COUNT, FOLLOW_COUNT_in_aggCallSite1974);
                     aggItem.setAggType("count");
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:321:41: ( '(*)' )
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:321:42: '(*)'
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:41: ( '(*)' )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:42: '(*)'
                     {
-                        match(input, 70, FOLLOW_70_in_aggCallSite1962);
+                        match(input, 70, FOLLOW_70_in_aggCallSite1979);
                     }
 
                 }
@@ -3738,77 +3805,77 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggCallSite"
 
 	// $ANTLR start "aggFunc"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:324:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:331:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT );
     public final String aggFunc() throws RecognitionException {
         String name = null;
 
         try {
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:325:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT )
-            int alt113 = 6;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | MIN | MAX | JAVASCRIPT )
+            int alt116 = 6;
             switch (input.LA(1)) {
                 case LONG_SUM: {
-                    alt113 = 1;
+                    alt116 = 1;
                 }
                 break;
                 case DOUBLE_SUM: {
-                    alt113 = 2;
+                    alt116 = 2;
                 }
                 break;
                 case UNIQUE: {
-                    alt113 = 3;
+                    alt116 = 3;
                 }
                 break;
                 case MIN: {
-                    alt113 = 4;
+                    alt116 = 4;
                 }
                 break;
                 case MAX: {
-                    alt113 = 5;
+                    alt116 = 5;
                 }
                 break;
                 case JAVASCRIPT: {
-                    alt113 = 6;
+                    alt116 = 6;
                 }
                 break;
                 default:
                     NoViableAltException nvae
-                            = new NoViableAltException("", 113, 0, input);
+                            = new NoViableAltException("", 116, 0, input);
                     throw nvae;
             }
-            switch (alt113) {
-                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:325:4: LONG_SUM
+            switch (alt116) {
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:4: LONG_SUM
                 {
-                    match(input, LONG_SUM, FOLLOW_LONG_SUM_in_aggFunc1980);
+                    match(input, LONG_SUM, FOLLOW_LONG_SUM_in_aggFunc1997);
                     name = "longSum";
                 }
                 break;
-                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:326:4: DOUBLE_SUM
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:333:4: DOUBLE_SUM
                 {
-                    match(input, DOUBLE_SUM, FOLLOW_DOUBLE_SUM_in_aggFunc1987);
+                    match(input, DOUBLE_SUM, FOLLOW_DOUBLE_SUM_in_aggFunc2004);
                     name = "doubleSum";
                 }
                 break;
-                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:327:4: UNIQUE
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:334:4: UNIQUE
                 {
-                    match(input, UNIQUE, FOLLOW_UNIQUE_in_aggFunc1994);
+                    match(input, UNIQUE, FOLLOW_UNIQUE_in_aggFunc2011);
                     name = "hyperUnique";
                 }
                 break;
-                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:4: MIN
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:335:4: MIN
                 {
-                    match(input, MIN, FOLLOW_MIN_in_aggFunc2001);
+                    match(input, MIN, FOLLOW_MIN_in_aggFunc2018);
                     name = "min";
                 }
                 break;
-                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:329:4: MAX
+                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:336:4: MAX
                 {
-                    match(input, MAX, FOLLOW_MAX_in_aggFunc2008);
+                    match(input, MAX, FOLLOW_MAX_in_aggFunc2025);
                     name = "max";
                 }
                 break;
-                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:330:4: JAVASCRIPT
+                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:337:4: JAVASCRIPT
                 {
-                    match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_aggFunc2015);
+                    match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_aggFunc2032);
                     name = "javascript";
                 }
                 break;
@@ -3825,7 +3892,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "aggFunc"
 
 	// $ANTLR start "postAggItem"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:336:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:343:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
     public final PostAggItem postAggItem() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -3834,78 +3901,78 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("arithmetic");
         try {
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
-            int alt123 = 2;
-            int LA123_0 = input.LA(1);
-            if ((LA123_0 == FLOAT || LA123_0 == ID || LA123_0 == JAVASCRIPT || LA123_0 == LONG || LA123_0 == UNIQUE)) {
-                alt123 = 1;
-            } else if ((LA123_0 == LPARAN)) {
-                alt123 = 2;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
+            int alt126 = 2;
+            int LA126_0 = input.LA(1);
+            if ((LA126_0 == FLOAT || LA126_0 == ID || LA126_0 == JAVASCRIPT || LA126_0 == LONG || LA126_0 == UNIQUE)) {
+                alt126 = 1;
+            } else if ((LA126_0 == LPARAN)) {
+                alt126 = 2;
             } else {
                 NoViableAltException nvae
-                        = new NoViableAltException("", 123, 0, input);
+                        = new NoViableAltException("", 126, 0, input);
                 throw nvae;
             }
 
-            switch (alt123) {
-                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+            switch (alt126) {
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
                 {
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                     {
-                        pushFollow(FOLLOW_simpleArith_in_postAggItem2043);
+                        pushFollow(FOLLOW_simpleArith_in_postAggItem2060);
                         a = simpleArith();
                         state._fsp--;
 
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-                        int alt116 = 2;
-                        int LA116_0 = input.LA(1);
-                        if ((LA116_0 == WS)) {
-                            int LA116_1 = input.LA(2);
-                            if ((LA116_1 == ARITH_OPER)) {
-                                alt116 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+                        int alt119 = 2;
+                        int LA119_0 = input.LA(1);
+                        if ((LA119_0 == WS)) {
+                            int LA119_1 = input.LA(2);
+                            if ((LA119_1 == ARITH_OPER)) {
+                                alt119 = 1;
                             }
-                        } else if ((LA116_0 == ARITH_OPER)) {
-                            alt116 = 1;
+                        } else if ((LA119_0 == ARITH_OPER)) {
+                            alt119 = 1;
                         }
-                        switch (alt116) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+                        switch (alt119) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
                             {
-                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:21: ( WS )?
-                                int alt114 = 2;
-                                int LA114_0 = input.LA(1);
-                                if ((LA114_0 == WS)) {
-                                    alt114 = 1;
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:21: ( WS )?
+                                int alt117 = 2;
+                                int LA117_0 = input.LA(1);
+                                if ((LA117_0 == WS)) {
+                                    alt117 = 1;
                                 }
-                                switch (alt114) {
-                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:21: WS
+                                switch (alt117) {
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:21: WS
                                     {
-                                        match(input, WS, FOLLOW_WS_in_postAggItem2047);
+                                        match(input, WS, FOLLOW_WS_in_postAggItem2064);
                                     }
                                     break;
 
                                 }
 
-                                pushFollow(FOLLOW_postAggArithOper_in_postAggItem2050);
+                                pushFollow(FOLLOW_postAggArithOper_in_postAggItem2067);
                                 postAggArithOper(postAggItem);
                                 state._fsp--;
 
-                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:55: ( WS )?
-                                int alt115 = 2;
-                                int LA115_0 = input.LA(1);
-                                if ((LA115_0 == WS)) {
-                                    alt115 = 1;
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:55: ( WS )?
+                                int alt118 = 2;
+                                int LA118_0 = input.LA(1);
+                                if ((LA118_0 == WS)) {
+                                    alt118 = 1;
                                 }
-                                switch (alt115) {
-                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:338:55: WS
+                                switch (alt118) {
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:55: WS
                                     {
-                                        match(input, WS, FOLLOW_WS_in_postAggItem2053);
+                                        match(input, WS, FOLLOW_WS_in_postAggItem2070);
                                     }
                                     break;
 
                                 }
 
-                                pushFollow(FOLLOW_postAggItem_in_postAggItem2058);
+                                pushFollow(FOLLOW_postAggItem_in_postAggItem2075);
                                 b = postAggItem();
                                 state._fsp--;
 
@@ -3924,62 +3991,62 @@ public class druidGParser extends Parser {
 
                 }
                 break;
-                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
                 {
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
                     {
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
                         {
-                            match(input, LPARAN, FOLLOW_LPARAN_in_postAggItem2076);
-                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:13: ( WS )?
-                            int alt117 = 2;
-                            int LA117_0 = input.LA(1);
-                            if ((LA117_0 == WS)) {
-                                alt117 = 1;
+                            match(input, LPARAN, FOLLOW_LPARAN_in_postAggItem2093);
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:13: ( WS )?
+                            int alt120 = 2;
+                            int LA120_0 = input.LA(1);
+                            if ((LA120_0 == WS)) {
+                                alt120 = 1;
                             }
-                            switch (alt117) {
-                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:13: WS
+                            switch (alt120) {
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:13: WS
                                 {
-                                    match(input, WS, FOLLOW_WS_in_postAggItem2078);
+                                    match(input, WS, FOLLOW_WS_in_postAggItem2095);
                                 }
                                 break;
 
                             }
 
-                            pushFollow(FOLLOW_postAggItem_in_postAggItem2083);
+                            pushFollow(FOLLOW_postAggItem_in_postAggItem2100);
                             a = postAggItem();
                             state._fsp--;
 
-                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:31: ( WS )?
-                            int alt118 = 2;
-                            int LA118_0 = input.LA(1);
-                            if ((LA118_0 == WS)) {
-                                alt118 = 1;
+                            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:31: ( WS )?
+                            int alt121 = 2;
+                            int LA121_0 = input.LA(1);
+                            if ((LA121_0 == WS)) {
+                                alt121 = 1;
                             }
-                            switch (alt118) {
-                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:31: WS
+                            switch (alt121) {
+                                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:31: WS
                                 {
-                                    match(input, WS, FOLLOW_WS_in_postAggItem2085);
+                                    match(input, WS, FOLLOW_WS_in_postAggItem2102);
                                 }
                                 break;
 
                             }
 
-                            match(input, RPARAN, FOLLOW_RPARAN_in_postAggItem2088);
+                            match(input, RPARAN, FOLLOW_RPARAN_in_postAggItem2105);
                         }
 
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:43: ( postAggLabel[postAggItem] )?
-                        int alt119 = 2;
-                        int LA119_0 = input.LA(1);
-                        if ((LA119_0 == AS)) {
-                            alt119 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:43: ( postAggLabel[postAggItem] )?
+                        int alt122 = 2;
+                        int LA122_0 = input.LA(1);
+                        if ((LA122_0 == AS)) {
+                            alt122 = 1;
                         }
-                        switch (alt119) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:44: postAggLabel[postAggItem]
+                        switch (alt122) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:44: postAggLabel[postAggItem]
                             {
-                                pushFollow(FOLLOW_postAggLabel_in_postAggItem2092);
+                                pushFollow(FOLLOW_postAggLabel_in_postAggItem2109);
                                 postAggLabel(postAggItem);
                                 state._fsp--;
 
@@ -3988,55 +4055,55 @@ public class druidGParser extends Parser {
 
                         }
 
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-                        int alt122 = 2;
-                        int LA122_0 = input.LA(1);
-                        if ((LA122_0 == WS)) {
-                            int LA122_1 = input.LA(2);
-                            if ((LA122_1 == ARITH_OPER)) {
-                                alt122 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+                        int alt125 = 2;
+                        int LA125_0 = input.LA(1);
+                        if ((LA125_0 == WS)) {
+                            int LA125_1 = input.LA(2);
+                            if ((LA125_1 == ARITH_OPER)) {
+                                alt125 = 1;
                             }
-                        } else if ((LA122_0 == ARITH_OPER)) {
-                            alt122 = 1;
+                        } else if ((LA125_0 == ARITH_OPER)) {
+                            alt125 = 1;
                         }
-                        switch (alt122) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+                        switch (alt125) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
                             {
-                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:73: ( WS )?
-                                int alt120 = 2;
-                                int LA120_0 = input.LA(1);
-                                if ((LA120_0 == WS)) {
-                                    alt120 = 1;
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:73: ( WS )?
+                                int alt123 = 2;
+                                int LA123_0 = input.LA(1);
+                                if ((LA123_0 == WS)) {
+                                    alt123 = 1;
                                 }
-                                switch (alt120) {
-                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:73: WS
+                                switch (alt123) {
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:73: WS
                                     {
-                                        match(input, WS, FOLLOW_WS_in_postAggItem2098);
+                                        match(input, WS, FOLLOW_WS_in_postAggItem2115);
                                     }
                                     break;
 
                                 }
 
-                                pushFollow(FOLLOW_postAggArithOper_in_postAggItem2101);
+                                pushFollow(FOLLOW_postAggArithOper_in_postAggItem2118);
                                 postAggArithOper(postAggItem);
                                 state._fsp--;
 
-                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:107: ( WS )?
-                                int alt121 = 2;
-                                int LA121_0 = input.LA(1);
-                                if ((LA121_0 == WS)) {
-                                    alt121 = 1;
+                                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:107: ( WS )?
+                                int alt124 = 2;
+                                int LA124_0 = input.LA(1);
+                                if ((LA124_0 == WS)) {
+                                    alt124 = 1;
                                 }
-                                switch (alt121) {
-                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:345:107: WS
+                                switch (alt124) {
+                                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:352:107: WS
                                     {
-                                        match(input, WS, FOLLOW_WS_in_postAggItem2104);
+                                        match(input, WS, FOLLOW_WS_in_postAggItem2121);
                                     }
                                     break;
 
                                 }
 
-                                pushFollow(FOLLOW_postAggItem_in_postAggItem2109);
+                                pushFollow(FOLLOW_postAggItem_in_postAggItem2126);
                                 b = postAggItem();
                                 state._fsp--;
 
@@ -4068,7 +4135,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggItem"
 
 	// $ANTLR start "simpleArith"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:356:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:363:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
     public final PostAggItem simpleArith() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4077,60 +4144,60 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("arithmetic");
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
             {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:4: (a= simplePostAggAccess )
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:5: a= simplePostAggAccess
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:4: (a= simplePostAggAccess )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:5: a= simplePostAggAccess
                 {
-                    pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2145);
+                    pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2162);
                     a = simplePostAggAccess();
                     state._fsp--;
 
                     postAggItem = a;
                 }
 
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
-                int alt126 = 2;
-                alt126 = dfa126.predict(input);
-                switch (alt126) {
-                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+                int alt129 = 2;
+                alt129 = dfa129.predict(input);
+                switch (alt129) {
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
                     {
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:46: ( WS )?
-                        int alt124 = 2;
-                        int LA124_0 = input.LA(1);
-                        if ((LA124_0 == WS)) {
-                            alt124 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:46: ( WS )?
+                        int alt127 = 2;
+                        int LA127_0 = input.LA(1);
+                        if ((LA127_0 == WS)) {
+                            alt127 = 1;
                         }
-                        switch (alt124) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:46: WS
+                        switch (alt127) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:46: WS
                             {
-                                match(input, WS, FOLLOW_WS_in_simpleArith2151);
+                                match(input, WS, FOLLOW_WS_in_simpleArith2168);
                             }
                             break;
 
                         }
 
-                        pushFollow(FOLLOW_postAggArithOper_in_simpleArith2154);
+                        pushFollow(FOLLOW_postAggArithOper_in_simpleArith2171);
                         postAggArithOper(postAggItem);
                         state._fsp--;
 
-                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:80: ( WS )?
-                        int alt125 = 2;
-                        int LA125_0 = input.LA(1);
-                        if ((LA125_0 == WS)) {
-                            alt125 = 1;
+                        // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:80: ( WS )?
+                        int alt128 = 2;
+                        int LA128_0 = input.LA(1);
+                        if ((LA128_0 == WS)) {
+                            alt128 = 1;
                         }
-                        switch (alt125) {
-                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:358:80: WS
+                        switch (alt128) {
+                            case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:365:80: WS
                             {
-                                match(input, WS, FOLLOW_WS_in_simpleArith2157);
+                                match(input, WS, FOLLOW_WS_in_simpleArith2174);
                             }
                             break;
 
                         }
 
-                        pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2162);
+                        pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2179);
                         b = simplePostAggAccess();
                         state._fsp--;
 
@@ -4159,7 +4226,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simpleArith"
 
 	// $ANTLR start "simplePostAggAccess"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:370:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:377:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
     public final PostAggItem simplePostAggAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4169,62 +4236,62 @@ public class druidGParser extends Parser {
         PostAggItem js = null;
 
         try {
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:371:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
-            int alt127 = 4;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:378:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
+            int alt130 = 4;
             switch (input.LA(1)) {
                 case FLOAT:
                 case LONG: {
-                    alt127 = 1;
+                    alt130 = 1;
                 }
                 break;
                 case ID: {
-                    alt127 = 2;
+                    alt130 = 2;
                 }
                 break;
                 case UNIQUE: {
-                    alt127 = 3;
+                    alt130 = 3;
                 }
                 break;
                 case JAVASCRIPT: {
-                    alt127 = 4;
+                    alt130 = 4;
                 }
                 break;
                 default:
                     NoViableAltException nvae
-                            = new NoViableAltException("", 127, 0, input);
+                            = new NoViableAltException("", 130, 0, input);
                     throw nvae;
             }
-            switch (alt127) {
-                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:371:4: c= constantAccess
+            switch (alt130) {
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:378:4: c= constantAccess
                 {
-                    pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess2191);
+                    pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess2208);
                     c = constantAccess();
                     state._fsp--;
 
                     postAggItem = c;
                 }
                 break;
-                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:372:4: f= fieldAccess
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: f= fieldAccess
                 {
-                    pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess2208);
+                    pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess2225);
                     f = fieldAccess();
                     state._fsp--;
 
                     postAggItem = f;
                 }
                 break;
-                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:373:4: h= hyperUniqueCardinality
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:380:4: h= hyperUniqueCardinality
                 {
-                    pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2221);
+                    pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2238);
                     h = hyperUniqueCardinality();
                     state._fsp--;
 
                     postAggItem = h;
                 }
                 break;
-                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: js= postAggJavascriptDef
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:4: js= postAggJavascriptDef
                 {
-                    pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2230);
+                    pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2247);
                     js = postAggJavascriptDef();
                     state._fsp--;
 
@@ -4244,7 +4311,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "simplePostAggAccess"
 
 	// $ANTLR start "constantAccess"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
     public final PostAggItem constantAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4252,54 +4319,54 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("constant");
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
             {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
                 {
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:5: (a= FLOAT |a= LONG )
-                    int alt128 = 2;
-                    int LA128_0 = input.LA(1);
-                    if ((LA128_0 == FLOAT)) {
-                        alt128 = 1;
-                    } else if ((LA128_0 == LONG)) {
-                        alt128 = 2;
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:5: (a= FLOAT |a= LONG )
+                    int alt131 = 2;
+                    int LA131_0 = input.LA(1);
+                    if ((LA131_0 == FLOAT)) {
+                        alt131 = 1;
+                    } else if ((LA131_0 == LONG)) {
+                        alt131 = 2;
                     } else {
                         NoViableAltException nvae
-                                = new NoViableAltException("", 128, 0, input);
+                                = new NoViableAltException("", 131, 0, input);
                         throw nvae;
                     }
 
-                    switch (alt128) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:6: a= FLOAT
+                    switch (alt131) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:6: a= FLOAT
                         {
-                            a = (Token) match(input, FLOAT, FOLLOW_FLOAT_in_constantAccess2260);
+                            a = (Token) match(input, FLOAT, FOLLOW_FLOAT_in_constantAccess2277);
                         }
                         break;
-                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:381:16: a= LONG
+                        case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:16: a= LONG
                         {
-                            a = (Token) match(input, LONG, FOLLOW_LONG_in_constantAccess2266);
+                            a = (Token) match(input, LONG, FOLLOW_LONG_in_constantAccess2283);
                         }
                         break;
 
                     }
 
                     postAggItem.constantValue = Double.valueOf((a != null ? a.getText() : null));
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:383:5: ( WS postAggLabel[postAggItem] )?
-                    int alt129 = 2;
-                    int LA129_0 = input.LA(1);
-                    if ((LA129_0 == WS)) {
-                        int LA129_1 = input.LA(2);
-                        if ((LA129_1 == AS)) {
-                            alt129 = 1;
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:5: ( WS postAggLabel[postAggItem] )?
+                    int alt132 = 2;
+                    int LA132_0 = input.LA(1);
+                    if ((LA132_0 == WS)) {
+                        int LA132_1 = input.LA(2);
+                        if ((LA132_1 == AS)) {
+                            alt132 = 1;
                         }
                     }
-                    switch (alt129) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:383:6: WS postAggLabel[postAggItem]
+                    switch (alt132) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:390:6: WS postAggLabel[postAggItem]
                         {
-                            match(input, WS, FOLLOW_WS_in_constantAccess2279);
-                            pushFollow(FOLLOW_postAggLabel_in_constantAccess2281);
+                            match(input, WS, FOLLOW_WS_in_constantAccess2296);
+                            pushFollow(FOLLOW_postAggLabel_in_constantAccess2298);
                             postAggLabel(postAggItem);
                             state._fsp--;
 
@@ -4323,7 +4390,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "constantAccess"
 
 	// $ANTLR start "fieldAccess"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:386:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
     public final PostAggItem fieldAccess() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4331,27 +4398,27 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("fieldAccess");
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:4: (a= ID ( WS postAggLabel[postAggItem] )? )
             {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:4: (a= ID ( WS postAggLabel[postAggItem] )? )
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:5: a= ID ( WS postAggLabel[postAggItem] )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:5: a= ID ( WS postAggLabel[postAggItem] )?
                 {
-                    a = (Token) match(input, ID, FOLLOW_ID_in_fieldAccess2309);
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:10: ( WS postAggLabel[postAggItem] )?
-                    int alt130 = 2;
-                    int LA130_0 = input.LA(1);
-                    if ((LA130_0 == WS)) {
-                        int LA130_1 = input.LA(2);
-                        if ((LA130_1 == AS)) {
-                            alt130 = 1;
+                    a = (Token) match(input, ID, FOLLOW_ID_in_fieldAccess2326);
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:10: ( WS postAggLabel[postAggItem] )?
+                    int alt133 = 2;
+                    int LA133_0 = input.LA(1);
+                    if ((LA133_0 == WS)) {
+                        int LA133_1 = input.LA(2);
+                        if ((LA133_1 == AS)) {
+                            alt133 = 1;
                         }
                     }
-                    switch (alt130) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:388:11: WS postAggLabel[postAggItem]
+                    switch (alt133) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:395:11: WS postAggLabel[postAggItem]
                         {
-                            match(input, WS, FOLLOW_WS_in_fieldAccess2312);
-                            pushFollow(FOLLOW_postAggLabel_in_fieldAccess2314);
+                            match(input, WS, FOLLOW_WS_in_fieldAccess2329);
+                            pushFollow(FOLLOW_postAggLabel_in_fieldAccess2331);
                             postAggLabel(postAggItem);
                             state._fsp--;
 
@@ -4376,7 +4443,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "fieldAccess"
 
 	// $ANTLR start "hyperUniqueCardinality"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:391:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:398:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
     public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4384,61 +4451,61 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("hyperUniqueCardinality");
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
             {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
                 {
-                    match(input, UNIQUE, FOLLOW_UNIQUE_in_hyperUniqueCardinality2343);
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:12: ( WS )?
-                    int alt131 = 2;
-                    int LA131_0 = input.LA(1);
-                    if ((LA131_0 == WS)) {
-                        alt131 = 1;
+                    match(input, UNIQUE, FOLLOW_UNIQUE_in_hyperUniqueCardinality2360);
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:12: ( WS )?
+                    int alt134 = 2;
+                    int LA134_0 = input.LA(1);
+                    if ((LA134_0 == WS)) {
+                        alt134 = 1;
                     }
-                    switch (alt131) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:12: WS
+                    switch (alt134) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:12: WS
                         {
-                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2345);
+                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2362);
                         }
                         break;
 
                     }
 
-                    match(input, LPARAN, FOLLOW_LPARAN_in_hyperUniqueCardinality2348);
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:23: ( WS )?
-                    int alt132 = 2;
-                    int LA132_0 = input.LA(1);
-                    if ((LA132_0 == WS)) {
-                        alt132 = 1;
+                    match(input, LPARAN, FOLLOW_LPARAN_in_hyperUniqueCardinality2365);
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:23: ( WS )?
+                    int alt135 = 2;
+                    int LA135_0 = input.LA(1);
+                    if ((LA135_0 == WS)) {
+                        alt135 = 1;
                     }
-                    switch (alt132) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:23: WS
+                    switch (alt135) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:23: WS
                         {
-                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2350);
+                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2367);
                         }
                         break;
 
                     }
 
-                    a = (Token) match(input, ID, FOLLOW_ID_in_hyperUniqueCardinality2355);
-                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:32: ( WS )?
-                    int alt133 = 2;
-                    int LA133_0 = input.LA(1);
-                    if ((LA133_0 == WS)) {
-                        alt133 = 1;
+                    a = (Token) match(input, ID, FOLLOW_ID_in_hyperUniqueCardinality2372);
+                    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:32: ( WS )?
+                    int alt136 = 2;
+                    int LA136_0 = input.LA(1);
+                    if ((LA136_0 == WS)) {
+                        alt136 = 1;
                     }
-                    switch (alt133) {
-                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:393:32: WS
+                    switch (alt136) {
+                        case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:32: WS
                         {
-                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2357);
+                            match(input, WS, FOLLOW_WS_in_hyperUniqueCardinality2374);
                         }
                         break;
 
                     }
 
-                    match(input, RPARAN, FOLLOW_RPARAN_in_hyperUniqueCardinality2360);
+                    match(input, RPARAN, FOLLOW_RPARAN_in_hyperUniqueCardinality2377);
                     postAggItem.fieldName = (a != null ? a.getText() : null);
                 }
 
@@ -4455,7 +4522,7 @@ public class druidGParser extends Parser {
 	// $ANTLR end "hyperUniqueCardinality"
 
 	// $ANTLR start "postAggJavascriptDef"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:398:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:405:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
     public final PostAggItem postAggJavascriptDef() throws RecognitionException {
         PostAggItem postAggItem = null;
 
@@ -4463,26 +4530,26 @@ public class druidGParser extends Parser {
 
         postAggItem = new PostAggItem("javascript");
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
             {
-                match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2386);
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:15: ( WS )?
-                int alt134 = 2;
-                int LA134_0 = input.LA(1);
-                if ((LA134_0 == WS)) {
-                    alt134 = 1;
+                match(input, JAVASCRIPT, FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2403);
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:15: ( WS )?
+                int alt137 = 2;
+                int LA137_0 = input.LA(1);
+                if ((LA137_0 == WS)) {
+                    alt137 = 1;
                 }
-                switch (alt134) {
-                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:400:15: WS
+                switch (alt137) {
+                    case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:15: WS
                     {
-                        match(input, WS, FOLLOW_WS_in_postAggJavascriptDef2388);
+                        match(input, WS, FOLLOW_WS_in_postAggJavascriptDef2405);
                     }
                     break;
 
                 }
 
-                str = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2393);
+                str = (Token) match(input, SINGLE_QUOTE_STRING, FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2410);
                 postAggItem.parseToJs((str != null ? str.getText() : null));
             }
 
@@ -4497,20 +4564,20 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggJavascriptDef"
 
 	// $ANTLR start "postAggLabel"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:403:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:410:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
     public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
         Token id = null;
 
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:2: ( ( AS WS id= ID ) )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:4: ( AS WS id= ID )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:2: ( ( AS WS id= ID ) )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:4: ( AS WS id= ID )
             {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:4: ( AS WS id= ID )
-                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:404:5: AS WS id= ID
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:4: ( AS WS id= ID )
+                // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:411:5: AS WS id= ID
                 {
-                    match(input, AS, FOLLOW_AS_in_postAggLabel2409);
-                    match(input, WS, FOLLOW_WS_in_postAggLabel2411);
-                    id = (Token) match(input, ID, FOLLOW_ID_in_postAggLabel2415);
+                    match(input, AS, FOLLOW_AS_in_postAggLabel2426);
+                    match(input, WS, FOLLOW_WS_in_postAggLabel2428);
+                    id = (Token) match(input, ID, FOLLOW_ID_in_postAggLabel2432);
                 }
 
                 postAggItem.name = (id != null ? id.getText() : null);
@@ -4526,15 +4593,15 @@ public class druidGParser extends Parser {
 	// $ANTLR end "postAggLabel"
 
 	// $ANTLR start "postAggArithOper"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:414:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
     public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
         Token arith = null;
 
         try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:408:2: (arith= ARITH_OPER )
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:408:3: arith= ARITH_OPER
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:415:2: (arith= ARITH_OPER )
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:415:3: arith= ARITH_OPER
             {
-                arith = (Token) match(input, ARITH_OPER, FOLLOW_ARITH_OPER_in_postAggArithOper2431);
+                arith = (Token) match(input, ARITH_OPER, FOLLOW_ARITH_OPER_in_postAggArithOper2448);
                 postAggItem.fn = (arith != null ? arith.getText() : null);
             }
 
@@ -4553,7 +4620,7 @@ public class druidGParser extends Parser {
     };
 
 	// $ANTLR start "isoTime"
-    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:413:1: isoTime returns [String date] : (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
+    // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:420:1: isoTime returns [String date] : (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
     public final druidGParser.isoTime_return isoTime() throws RecognitionException {
         druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
         retval.start = input.LT(1);
@@ -4561,82 +4628,82 @@ public class druidGParser extends Parser {
         Token d = null;
 
         try {
-            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:414:2: (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
-            int alt135 = 7;
+            // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:2: (d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
+            int alt138 = 7;
             switch (input.LA(1)) {
                 case DATE: {
-                    alt135 = 1;
+                    alt138 = 1;
                 }
                 break;
                 case DATE_HOUR: {
-                    alt135 = 2;
+                    alt138 = 2;
                 }
                 break;
                 case DATE_HOUR_MIN: {
-                    alt135 = 3;
+                    alt138 = 3;
                 }
                 break;
                 case DATE_HOUR_MIN_SEC: {
-                    alt135 = 4;
+                    alt138 = 4;
                 }
                 break;
                 case DATE_HOUR_MIN_SEC_SUB: {
-                    alt135 = 5;
+                    alt138 = 5;
                 }
                 break;
                 case DATE_HOUR_MIN_SEC_SUB_TZ: {
-                    alt135 = 6;
+                    alt138 = 6;
                 }
                 break;
                 case DATE_HOUR_MIN_SEC_SUB_UTC_TZ: {
-                    alt135 = 7;
+                    alt138 = 7;
                 }
                 break;
                 default:
                     NoViableAltException nvae
-                            = new NoViableAltException("", 135, 0, input);
+                            = new NoViableAltException("", 138, 0, input);
                     throw nvae;
             }
-            switch (alt135) {
-                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:414:3: d= DATE
+            switch (alt138) {
+                case 1: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:3: d= DATE
                 {
-                    d = (Token) match(input, DATE, FOLLOW_DATE_in_isoTime2450);
+                    d = (Token) match(input, DATE, FOLLOW_DATE_in_isoTime2467);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:415:3: d= DATE_HOUR
+                case 2: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:3: d= DATE_HOUR
                 {
-                    d = (Token) match(input, DATE_HOUR, FOLLOW_DATE_HOUR_in_isoTime2458);
+                    d = (Token) match(input, DATE_HOUR, FOLLOW_DATE_HOUR_in_isoTime2475);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:416:3: d= DATE_HOUR_MIN
+                case 3: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:3: d= DATE_HOUR_MIN
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN, FOLLOW_DATE_HOUR_MIN_in_isoTime2466);
+                    d = (Token) match(input, DATE_HOUR_MIN, FOLLOW_DATE_HOUR_MIN_in_isoTime2483);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:417:3: d= DATE_HOUR_MIN_SEC
+                case 4: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:424:3: d= DATE_HOUR_MIN_SEC
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC, FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2474);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC, FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2491);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:418:3: d= DATE_HOUR_MIN_SEC_SUB
+                case 5: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:425:3: d= DATE_HOUR_MIN_SEC_SUB
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB, FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2482);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB, FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2499);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:419:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
+                case 6: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:426:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2490);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2507);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
-                case 7: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:420:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+                case 7: // /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:427:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
                 {
-                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_UTC_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2498);
+                    d = (Token) match(input, DATE_HOUR_MIN_SEC_SUB_UTC_TZ, FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2515);
                     retval.date = (d != null ? d.getText() : null);
                 }
                 break;
@@ -4657,7 +4724,7 @@ public class druidGParser extends Parser {
 	// Delegated rules
     protected DFA96 dfa96 = new DFA96(this);
     protected DFA106 dfa106 = new DFA106(this);
-    protected DFA126 dfa126 = new DFA126(this);
+    protected DFA129 dfa129 = new DFA129(this);
     static final String DFA96_eotS
             = "\176\uffff";
     static final String DFA96_eofS
@@ -5027,29 +5094,29 @@ public class druidGParser extends Parser {
         }
     }
 
-    static final String DFA126_eotS
+    static final String DFA129_eotS
             = "\134\uffff";
-    static final String DFA126_eofS
+    static final String DFA129_eofS
             = "\2\3\132\uffff";
-    static final String DFA126_minS
+    static final String DFA129_minS
             = "\2\5\1\33\6\uffff\1\33\3\uffff\1\33\3\uffff\1\53\1\75\1\uffff\1\33\3\uffff"
             + "\1\53\1\75\4\uffff\1\53\1\75\1\uffff\1\53\1\41\1\75\4\uffff\1\53\1\75"
             + "\1\uffff\1\53\1\41\1\75\1\uffff\1\53\1\41\1\75\1\uffff\2\41\1\72\1\uffff"
             + "\1\53\1\41\1\75\1\uffff\2\41\1\72\1\uffff\2\41\1\72\1\uffff\1\41\3\72"
             + "\25\uffff";
-    static final String DFA126_maxS
+    static final String DFA129_maxS
             = "\1\105\1\104\1\105\6\uffff\1\105\3\uffff\1\102\3\uffff\2\105\1\uffff\1"
             + "\102\3\uffff\2\105\4\uffff\2\105\1\uffff\1\53\1\105\1\75\4\uffff\2\105"
             + "\1\uffff\1\53\1\105\1\75\1\uffff\1\53\1\105\1\75\1\uffff\1\105\1\41\1"
             + "\105\1\uffff\1\53\1\105\1\75\1\uffff\1\105\1\41\1\105\1\uffff\1\105\1"
             + "\41\1\105\1\uffff\1\41\2\105\1\72\25\uffff";
-    static final String DFA126_acceptS
+    static final String DFA129_acceptS
             = "\3\uffff\1\2\12\uffff\3\1\4\uffff\3\1\3\uffff\3\1\6\uffff\4\1\6\uffff"
             + "\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\4\uffff"
             + "\25\1";
-    static final String DFA126_specialS
+    static final String DFA129_specialS
             = "\134\uffff}>";
-    static final String[] DFA126_transitionS = {
+    static final String[] DFA129_transitionS = {
         "\1\2\56\uffff\1\3\5\uffff\1\3\12\uffff\1\1",
         "\1\11\32\uffff\1\3\3\uffff\1\3\1\uffff\1\3\15\uffff\1\3\4\uffff\2\3"
         + "\11\uffff\1\3",
@@ -5149,39 +5216,39 @@ public class druidGParser extends Parser {
         ""
     };
 
-    static final short[] DFA126_eot = DFA.unpackEncodedString(DFA126_eotS);
-    static final short[] DFA126_eof = DFA.unpackEncodedString(DFA126_eofS);
-    static final char[] DFA126_min = DFA.unpackEncodedStringToUnsignedChars(DFA126_minS);
-    static final char[] DFA126_max = DFA.unpackEncodedStringToUnsignedChars(DFA126_maxS);
-    static final short[] DFA126_accept = DFA.unpackEncodedString(DFA126_acceptS);
-    static final short[] DFA126_special = DFA.unpackEncodedString(DFA126_specialS);
-    static final short[][] DFA126_transition;
+    static final short[] DFA129_eot = DFA.unpackEncodedString(DFA129_eotS);
+    static final short[] DFA129_eof = DFA.unpackEncodedString(DFA129_eofS);
+    static final char[] DFA129_min = DFA.unpackEncodedStringToUnsignedChars(DFA129_minS);
+    static final char[] DFA129_max = DFA.unpackEncodedStringToUnsignedChars(DFA129_maxS);
+    static final short[] DFA129_accept = DFA.unpackEncodedString(DFA129_acceptS);
+    static final short[] DFA129_special = DFA.unpackEncodedString(DFA129_specialS);
+    static final short[][] DFA129_transition;
 
     static {
-        int numStates = DFA126_transitionS.length;
-        DFA126_transition = new short[numStates][];
+        int numStates = DFA129_transitionS.length;
+        DFA129_transition = new short[numStates][];
         for (int i = 0; i < numStates; i++) {
-            DFA126_transition[i] = DFA.unpackEncodedString(DFA126_transitionS[i]);
+            DFA129_transition[i] = DFA.unpackEncodedString(DFA129_transitionS[i]);
         }
     }
 
-    protected class DFA126 extends DFA {
+    protected class DFA129 extends DFA {
 
-        public DFA126(BaseRecognizer recognizer) {
+        public DFA129(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 126;
-            this.eot = DFA126_eot;
-            this.eof = DFA126_eof;
-            this.min = DFA126_min;
-            this.max = DFA126_max;
-            this.accept = DFA126_accept;
-            this.special = DFA126_special;
-            this.transition = DFA126_transition;
+            this.decisionNumber = 129;
+            this.eot = DFA129_eot;
+            this.eof = DFA129_eof;
+            this.min = DFA129_min;
+            this.max = DFA129_max;
+            this.accept = DFA129_accept;
+            this.special = DFA129_special;
+            this.transition = DFA129_transition;
         }
 
         @Override
         public String getDescription() {
-            return "358:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
+            return "365:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
         }
     }
 
@@ -5453,67 +5520,71 @@ public class druidGParser extends Parser {
     public static final BitSet FOLLOW_WS_in_aggCallSite1930 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_LPARAN_in_aggCallSite1933 = new BitSet(new long[]{0x0000000200000000L, 0x0000000000000020L});
     public static final BitSet FOLLOW_WS_in_aggCallSite1935 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_ID_in_aggCallSite1942 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_aggCallSite1947 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_RPARAN_in_aggCallSite1950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COUNT_in_aggCallSite1957 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_aggCallSite1962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONG_SUM_in_aggFunc1980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc1987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNIQUE_in_aggFunc1994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MIN_in_aggFunc2001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MAX_in_aggFunc2008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc2015 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleArith_in_postAggItem2043 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2047 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2050 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2053 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
-    public static final BitSet FOLLOW_postAggItem_in_postAggItem2058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPARAN_in_postAggItem2076 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2078 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
-    public static final BitSet FOLLOW_postAggItem_in_postAggItem2083 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2085 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_RPARAN_in_postAggItem2088 = new BitSet(new long[]{0x0000000000000062L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_postAggLabel_in_postAggItem2092 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2098 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2101 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
-    public static final BitSet FOLLOW_WS_in_postAggItem2104 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
-    public static final BitSet FOLLOW_postAggItem_in_postAggItem2109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2145 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_simpleArith2151 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_postAggArithOper_in_simpleArith2154 = new BitSet(new long[]{0x0000020A08000000L, 0x0000000000000024L});
-    public static final BitSet FOLLOW_WS_in_simpleArith2157 = new BitSet(new long[]{0x0000020A08000000L, 0x0000000000000004L});
-    public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2162 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess2191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess2208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_constantAccess2260 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_LONG_in_constantAccess2266 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_constantAccess2279 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_postAggLabel_in_constantAccess2281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_fieldAccess2309 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_fieldAccess2312 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_postAggLabel_in_fieldAccess2314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality2343 = new BitSet(new long[]{0x0000080000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2345 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality2348 = new BitSet(new long[]{0x0000000200000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2350 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality2355 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2357 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality2360 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2386 = new BitSet(new long[]{0x2000000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_postAggJavascriptDef2388 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2393 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AS_in_postAggLabel2409 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
-    public static final BitSet FOLLOW_WS_in_postAggLabel2411 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_ID_in_postAggLabel2415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper2431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_in_isoTime2450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2482 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_aggCallSite1942 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000120L});
+    public static final BitSet FOLLOW_WS_in_aggCallSite1948 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_aggCallSite1951 = new BitSet(new long[]{0x0000000200000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_aggCallSite1953 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_ID_in_aggCallSite1958 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000120L});
+    public static final BitSet FOLLOW_WS_in_aggCallSite1964 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_RPARAN_in_aggCallSite1967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COUNT_in_aggCallSite1974 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_aggCallSite1979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONG_SUM_in_aggFunc1997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc2004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNIQUE_in_aggFunc2011 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MIN_in_aggFunc2018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MAX_in_aggFunc2025 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc2032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleArith_in_postAggItem2060 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2064 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2067 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2070 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
+    public static final BitSet FOLLOW_postAggItem_in_postAggItem2075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPARAN_in_postAggItem2093 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2095 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
+    public static final BitSet FOLLOW_postAggItem_in_postAggItem2100 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2102 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_RPARAN_in_postAggItem2105 = new BitSet(new long[]{0x0000000000000062L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_postAggLabel_in_postAggItem2109 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2115 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2118 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000024L});
+    public static final BitSet FOLLOW_WS_in_postAggItem2121 = new BitSet(new long[]{0x00000A0A08000000L, 0x0000000000000004L});
+    public static final BitSet FOLLOW_postAggItem_in_postAggItem2126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2162 = new BitSet(new long[]{0x0000000000000022L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_simpleArith2168 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_postAggArithOper_in_simpleArith2171 = new BitSet(new long[]{0x0000020A08000000L, 0x0000000000000024L});
+    public static final BitSet FOLLOW_WS_in_simpleArith2174 = new BitSet(new long[]{0x0000020A08000000L, 0x0000000000000004L});
+    public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess2208 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess2225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOAT_in_constantAccess2277 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_LONG_in_constantAccess2283 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_constantAccess2296 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_postAggLabel_in_constantAccess2298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_fieldAccess2326 = new BitSet(new long[]{0x0000000000000002L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_fieldAccess2329 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_postAggLabel_in_fieldAccess2331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality2360 = new BitSet(new long[]{0x0000080000000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2362 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality2365 = new BitSet(new long[]{0x0000000200000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2367 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality2372 = new BitSet(new long[]{0x0400000000000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2374 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality2377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2403 = new BitSet(new long[]{0x2000000000000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_postAggJavascriptDef2405 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AS_in_postAggLabel2426 = new BitSet(new long[]{0x0000000000000000L, 0x0000000000000020L});
+    public static final BitSet FOLLOW_WS_in_postAggLabel2428 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_ID_in_postAggLabel2432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper2448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_in_isoTime2467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2515 = new BitSet(new long[]{0x0000000000000002L});
 }

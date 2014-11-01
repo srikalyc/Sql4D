@@ -10,6 +10,7 @@
  */
 package com.yahoo.sql4d.query.nodes;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ import org.json.JSONObject;
  * @author srikalyan
  */
 public class AggItem  {
-    public String type;
+    public String type;// longSum, doubleSum, hyperUnique(use cardinality instead), min, max, javascript
     public String fieldName;
     public String asName;
 
@@ -81,11 +82,22 @@ public class AggItem  {
     
     public Map<String, Object> getJsonMap() {
         Map<String, Object> map = new LinkedHashMap<>();
+        //TODO: hack right now. Make all the future unique requests into cardinality instead of hyperUnique(in the compiler grammar itself). See here for difference https://groups.google.com/forum/#!topic/druid-development/so-GCEne7Jk
+        if ("hyperUnique".equals(type)) {
+            type = "cardinality";// Cardinality requires fieldNames instead of fieldName
+            if (fieldName != null) {
+                fieldNames = new ArrayList<>();
+                fieldNames.add(fieldName);
+                fieldName = null;
+            }
+            
+        }
         map.put("type", type);
         map.put("name", asName);
         if (fieldName != null) {
             map.put("fieldName", fieldName);
         }
+        
         if (fieldNames != null) {
             JSONArray fieldNamesArray = new JSONArray();
             for (String item:fieldNames) {
