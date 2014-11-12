@@ -12,7 +12,6 @@ package com.yahoo.sql4d;
 
 import com.yahoo.sql4d.converter.druidGLexer;
 import com.yahoo.sql4d.converter.druidGParser;
-import com.yahoo.sql4d.query.Program;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.antlr.runtime.ANTLRStringStream;

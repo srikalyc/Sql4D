@@ -10,10 +10,9 @@
  */
 package com.yahoo.sql4d.query.nodes;
 
+import com.yahoo.sql4d.TimeUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Interval (start,end) times as text. Can construct new intervals out of existing.
@@ -21,14 +20,6 @@ import org.joda.time.format.DateTimeFormatter;
  * @author srikalyan
  */
 public class Interval {
-    private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd").withOffsetParsed();
-    private static final DateTimeFormatter dateHourOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH").withOffsetParsed();
-    private static final DateTimeFormatter dateHourMinOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZ").withOffsetParsed();
-
     public String startTime;
     public String endTime;
     public int days;// Includes partial days as well.
@@ -40,11 +31,11 @@ public class Interval {
     }
 
     public DateTime getStartTime() {
-        return getDateTime(startTime);
+        return TimeUtils.getDateTime(startTime);
     }
 
     public DateTime getEndTime() {
-        return getDateTime(endTime);
+        return TimeUtils.getDateTime(endTime);
     }
 
     public int getDays() {
@@ -56,35 +47,9 @@ public class Interval {
         return new Interval(baseDateTime.plusHours(startHourOffset).toString(), 
                 baseDateTime.plusHours(endHourOffset).minusSeconds(1).toString());
     }
-            
-    private DateTime getDateTime(String strTime) {
-        DateTime dateTime = null;
-        if ((dateTime = tryFormat(strTime, dateTimeWithSubSecAndTZFormat)) == null) {
-            if ((dateTime = tryFormat(strTime, dateTimeAndTZFormat)) == null) {
-                if ((dateTime = tryFormat(strTime, dateTimeWithSubSecFormat)) == null) {
-                    if ((dateTime = tryFormat(strTime, dateTimeFormat)) == null) {
-                        if ((dateTime = tryFormat(strTime, dateHourMinOnlyFormat)) == null) {
-                            if ((dateTime = tryFormat(strTime, dateHourOnlyFormat)) == null) {
-                                if ((dateTime = tryFormat(strTime, dateOnlyFormat)) == null) {
-                                    return dateTime;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return dateTime;
-    }
-    
-    private DateTime tryFormat(String timeStr, DateTimeFormatter formatter) {
-        DateTime result = null;
-        try {
-            result = formatter.parseDateTime(timeStr);
-        } catch (UnsupportedOperationException | IllegalArgumentException e) {
-            //TODO: Log this instead of dumping to console.
-            //System.err.println("Date Format error " + e);
-        }
-        return result;
+
+    @Override
+    public String toString() {
+        return String.format("%s/%s", startTime, endTime);
     }
 }

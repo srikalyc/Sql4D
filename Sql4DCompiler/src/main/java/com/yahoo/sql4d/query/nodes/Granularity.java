@@ -10,11 +10,15 @@
  */
 package com.yahoo.sql4d.query.nodes;
 
+import static com.yahoo.sql4d.Utils.*;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
+import scala.Either;
+import scala.Left;
+import scala.Right;
 
 /**
  * Ex:
@@ -27,39 +31,37 @@ import org.json.JSONObject;
  * @author srikalyan
  */
 public class Granularity {
-    private static final List<String> validGStrings = Arrays.asList("all", "none", "minute", "fifteen_minute", "thirty_minute", "hour" , "day");
-    public String gString = "all";
+    private static final List<String> validGSimpleStrings = Arrays.asList("all", "none", "minute", "fifteen_minute", "thirty_minute", "hour" , "day");
+    public String gSimple = "all";
     
-    public String type;
-    public String duration;
-    public String origin;
+    public Either<String, String> gComplex;// Duration/Period types.
 
-    public String period;
+    public String origin;
     public String timeZone;
 
     public Granularity() {
-        gString = null;// Because this constructor is intented to be used for typed granularity(duration/period)
+        gSimple = null;// Because this constructor is intented to be used for typed granularity(duration/period)
     }
 
     
     public Granularity(String gString) {
-        this.gString = gString.replace("'", "");
+        this.gSimple = unquote(gString);
     }
 
     public void setDuration(String duration) {
-        this.duration = duration.replace("'", "");
+        this.gComplex = new Left<>(unquote(duration));
     }
 
     public void setOrigin(String origin) {
-        this.origin = origin.replace("'", "");
+        this.origin = unquote(origin);
     }
 
     public void setPeriod(String period) {
-        this.period = period.replace("'", "");
+        this.gComplex = new Right<>(unquote(period));
     }
 
     public void setTimeZone(String timeZone) {
-        this.timeZone = timeZone.replace("'", "");
+        this.timeZone = unquote(timeZone);
     }
 
     
@@ -73,10 +75,10 @@ public class Granularity {
     }
 
     public void setgString(String gString) {
-        if (!validGStrings.contains(gString)) {
+        if (!validGSimpleStrings.contains(gString)) {
             System.err.println("Ivalid granularity " + gString);
         }
-        this.gString = gString;
+        this.gSimple = gString;
     }
     
     
@@ -88,16 +90,15 @@ public class Granularity {
     public Map<String, Object> getJsonMap() {
         Map<String, Object> map = new LinkedHashMap<>();
         
-        map.put("type", type);
-        if (type.equals("duration") || type.equals("period")) {
-            if (duration != null) {
-                map.put("duration", duration);
+        map.put("type", gComplex!=null && gComplex.isLeft()? "duration":"period");
+        if (gComplex != null) {
+            if (gComplex.isLeft()) {
+                map.put("duration", gComplex.left().get());
+            } else {
+                map.put("period", gComplex.right().get());
             }
             if (origin != null) {
                 map.put("origin", origin);
-            }
-            if (period != null) {
-                map.put("period", period);
             }
             if (timeZone != null) {
                 map.put("timeZone", timeZone);

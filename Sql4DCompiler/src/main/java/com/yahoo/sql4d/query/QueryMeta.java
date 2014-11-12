@@ -10,11 +10,12 @@
  */
 package com.yahoo.sql4d.query;
 
+import com.yahoo.sql4d.Pair;
+import com.yahoo.sql4d.BaseStatementMeta;
 import com.yahoo.sql4d.query.nodes.Interval;
 import com.yahoo.sql4d.query.nodes.Filter;
 import com.yahoo.sql4d.query.nodes.Granularity;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
@@ -24,20 +25,19 @@ import org.json.JSONObject;
  * Base class for all query types.
  * @author srikalyan
  */
-public class QueryMeta {
-    public String dataSource;
+public class QueryMeta extends BaseStatementMeta {
     public Granularity granularity = new Granularity("all");
     public Filter filter;
     public List<Interval> intervals = new ArrayList<>(); 
-    public List<Pair<Integer>> microIntervals = new ArrayList<>(); // If empty or if intervals list size > 1 then this is not used.
+    public List<Pair<Integer, Integer>> microIntervals = new ArrayList<>(); // If empty or if intervals list size > 1 then this is not used.
     public RequestType queryType;
     
     public QueryMeta() {
     }
 
     
-    public QueryMeta(String dataSource, Granularity granularity, Filter filter, List<Interval> intervals, List<Pair<Integer>> microIntervals) {
-        this.dataSource = dataSource;
+    public QueryMeta(String dataSource, Granularity granularity, Filter filter, List<Interval> intervals, List<Pair<Integer, Integer>> microIntervals) {
+        super(dataSource);
         this.granularity = granularity;
         this.filter = filter;
         this.intervals = intervals;
@@ -50,22 +50,20 @@ public class QueryMeta {
         return getJson().toString(2);
     }
     
+    @Override
     public JSONObject getJson() {
         return new JSONObject(getJsonMap());
     }
+    @Override
     public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = new LinkedHashMap<>();
+        Map<String, Object> map = super.getJsonMap();
         map.put("queryType", queryType.getName());
-        JSONObject dataSourceJson = new JSONObject();
-        dataSourceJson.put("type", "table");
-        dataSourceJson.put("name", dataSource);
-        map.put("dataSource", dataSourceJson);
         if (queryType == RequestType.TIMEBOUNDARY) {
             return map;
         }
         if (granularity != null) {
-            if (granularity.gString != null) {
-                map.put("granularity", granularity.gString);
+            if (granularity.gSimple != null) {
+                map.put("granularity", granularity.gSimple);
             } else {
                 map.put("granularity", granularity.getJson());
             }
@@ -75,31 +73,29 @@ public class QueryMeta {
         }
 
         JSONArray intervalsArray = new JSONArray();
-        if (intervals.size() == 1) {
-            Interval grandInterval = intervals.get(0);
-            if (microIntervals.isEmpty()) {
-                intervalsArray.put(grandInterval.startTime + "/" + grandInterval.endTime);
-            } else {// Break the single interval into micro intervals.
-                for (int i = 0; i < grandInterval.getDays();i++) {
-                    for (Pair<Integer> pair:microIntervals) {
-                        Interval microInterval = grandInterval.getInterval(i, pair.a, pair.a + pair.b);// a = start hour of day, b = number of hours from there of.
-                        intervalsArray.put(microInterval.startTime + "/" + microInterval.endTime);
+        if (!intervals.isEmpty()) {
+            if (intervals.size() == 1) {
+                Interval grandInterval = intervals.get(0);
+                if (!microIntervals.isEmpty()) {
+                    // Break the single interval into micro intervals.
+                    for (int i = 0; i < grandInterval.getDays();i++) {
+                        for (Pair<Integer, Integer> pair:microIntervals) {
+                            Interval microInterval = grandInterval.getInterval(i, pair.a, pair.a + pair.b);// a = start hour of day, b = number of hours from there of.
+                            intervalsArray.put(microInterval.toString());
+                        }
                     }
                 }
+            } else {
+                for (Interval interval:intervals) {
+                    intervalsArray.put(interval.toString());
+                }
             }
-        } else {
-            for (Interval interval:intervals) {
-                intervalsArray.put(interval.startTime + "/" + interval.endTime);
-            }
+            JSONObject finalIntervalJson = new JSONObject();
+            finalIntervalJson.put("type", "intervals");
+            finalIntervalJson.put("intervals", intervalsArray);
+            map.put("intervals", finalIntervalJson);
         }
-        JSONObject finalIntervalJson = new JSONObject();
-        finalIntervalJson.put("type", "intervals");
-        finalIntervalJson.put("intervals", intervalsArray);
-        map.put("intervals", finalIntervalJson);
         return map;
     }
     
-    public <T> void postProcess(T anyContext) {
-        
-    }
 }

@@ -8,19 +8,24 @@
  * specific language governing permissions and limitations under the License. 
  * See accompanying LICENSE file.
  */
-package com.yahoo.sql4d.query;
+package com.yahoo.sql4d;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.yahoo.sql4d.query.nodes.AggItem;
+import java.util.List;
 
 /**
  *
  * @author srikalyan
  */
-public class Pair<T> {
-    public T a;
-    public T b;
-
-    public Pair(T a, T b) {
-        this.a = a;
-        this.b = b;
+public class DruidUtils {
+    public static List<String> getMetrics(List<AggItem> aggItems) {
+        return Lists.transform(aggItems, new Function<AggItem, String>() {
+            @Override
+            public String apply(AggItem f) {
+                return f.fieldName;
+            }
+        });
     }
-    
 }

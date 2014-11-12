@@ -10,15 +10,17 @@
  */
 package com.yahoo.sql4d.sql4ddriver;
 
+import com.yahoo.sql4d.BaseStatementMeta;
 import com.yahoo.sql4d.query.RequestType;
 import static com.yahoo.sql4d.sql4ddriver.Util.*;
 
 import com.yahoo.sql4d.DCompiler;
-import com.yahoo.sql4d.query.Program;
+import com.yahoo.sql4d.Program;
+import com.yahoo.sql4d.QueryProgram;
+import com.yahoo.sql4d.insert.InsertMeta;
 import com.yahoo.sql4d.query.QueryMeta;
 import com.yahoo.sql4d.query.select.SelectQueryMeta;
 import com.yahoo.sql4d.sql4ddriver.rowmapper.DruidBaseBean;
-import com.yahoo.sql4d.sql4ddriver.rowmapper.TimeSeriesBean;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -113,15 +115,19 @@ public class DDataSource {
      */
     public <T extends DruidBaseBean> Either<String,Either<List<T>, Map<Object, T>>> query(String sqlQuery, Class<T> rowMapper, boolean printToConsole) {
         Program pgm = getCompiledAST(sqlQuery);
-        if (pgm.listOfQueries.size() > 2) {
+        if (!(pgm instanceof QueryProgram)) {
+            throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
+        }
+        QueryProgram qPgm = (QueryProgram)pgm;
+        if (qPgm.numStmnts() > 2) {
             println("Currently join for more than 2 Sqls not supported....");
             return null;
         }
         if (printToConsole) {
-            println(pgm.toString());
+            println(qPgm.toString());
         }
-        if (pgm.listOfQueries.size() == 1) {
-            QueryMeta query = pgm.listOfQueries.get(0);
+        if (qPgm.numStmnts() == 1) {
+            QueryMeta query = qPgm.nthStmnt(0);
             Either<String, Either<Mapper4All, JSONArray>> result = fireQuery(query.toString(), false);
             if (result.isLeft()) {
                 return new Left<>(result.left().get());
@@ -131,16 +137,16 @@ public class DDataSource {
         }
         Joiner4Bean<T> joiner = null;
         int i = 0;// Index for join hooks.
-        for (QueryMeta query : pgm.listOfQueries) {// List of queries = 2 
+        for (QueryMeta query : qPgm.getAllStmnts()) {// List of queries = 2 
             Either<String, Either<Mapper4All, JSONArray>> result = fireQuery(query.toString(), false);
             if (result.isLeft()) {
                 return new Left<>(result.left().get());
             }
             Either<Mapper4All, JSONArray> goodResult = result.right().get();
             if (joiner == null) {
-                joiner = new Joiner4Bean(goodResult.right().get(), pgm.primaryJoinableHooks, rowMapper);
+                joiner = new Joiner4Bean(goodResult.right().get(), qPgm.primaryJoinableHooks, rowMapper);
             } else {
-                joiner.join(goodResult.right().get(), pgm.primaryJoinableHooks, Joiner4All.ActionType.valueOf(pgm.joinTypes.get(i++)));
+                joiner.join(goodResult.right().get(), qPgm.primaryJoinableHooks, Joiner4All.ActionType.valueOf(((QueryProgram)pgm).joinTypes.get(i++)));
             }
         }
         return new Right<String,Either<List<T>, Map<Object, T>>>(new Right<List<T>, Map<Object, T>>(joiner.baseAllRows));
@@ -151,22 +157,26 @@ public class DDataSource {
      * @param sqlQuery
      * @return 
      */
-    public Program getCompiledAST(String sqlQuery) {
-        Program pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery));
-        for (QueryMeta query:pgm.listOfQueries) {
-            if (query.queryType == RequestType.SELECT) {//classifyColumnsToDimAndMetrics
-                Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = aboutDataSource(query.dataSource);
-                if (dataSourceDescRes.isLeft()) {
-                    println(dataSourceDescRes.left().get());
+    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery) {
+        Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery));
+        for (BaseStatementMeta stmnt:pgm.getAllStmnts()) {
+            if (stmnt instanceof QueryMeta) {
+                QueryMeta query = (QueryMeta)stmnt;
+                if (query.queryType == RequestType.SELECT) {//classifyColumnsToDimAndMetrics
+                    Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = aboutDataSource(stmnt.dataSource);
+                    if (dataSourceDescRes.isLeft()) {
+                        println(dataSourceDescRes.left().get());
+                    }
+                    ((SelectQueryMeta)query).postProcess(dataSourceDescRes.right().get());
                 }
-                ((SelectQueryMeta)query).postProcess(dataSourceDescRes.right().get());
+            } else if (stmnt instanceof InsertMeta) {//TODO: Handle this.
+                
             }
         }
         try {
             pgm.isValid();
         } catch (Exception ex) {
             ex.printStackTrace();
-            println(ex.toString());
         }
         return pgm;
     }
@@ -192,15 +202,19 @@ public class DDataSource {
             return new Right<String, Either<Joiner4All, Mapper4All>>(new Right<Joiner4All, Mapper4All>(result.right().get().left().get()));
         }        
         Program pgm = getCompiledAST(sqlOrJsonQuery);
-        if (pgm.listOfQueries.size() > 2) {
+        if (!(pgm instanceof QueryProgram)) {
+            throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
+        }
+        QueryProgram qPgm = (QueryProgram)pgm;
+        if (qPgm.numStmnts() > 2) {
             return new Left<>("Currently join for more than 2 Sqls not supported....");
         }
         if (printToConsole) {
             println(pgm.toString());
         }
         Joiner4All joiner = null;
-        if (pgm.listOfQueries.size() == 1) {
-            QueryMeta query = pgm.listOfQueries.get(0);
+        if (qPgm.numStmnts() == 1) {
+            QueryMeta query = qPgm.nthStmnt(0);
             Either<String, Either<Mapper4All,JSONArray>> result = fireQuery(query.toString(), true);
             if (result.isLeft()) {
                 return new Left<>(result.left().get());
@@ -211,16 +225,16 @@ public class DDataSource {
             return new Right<String, Either<Joiner4All, Mapper4All>>(new Right<Joiner4All, Mapper4All>(result.right().get().left().get()));
         }
         int i = 0;// Index for join hooks.
-        for (QueryMeta query : pgm.listOfQueries) {// List of queries = 2 
+        for (QueryMeta query : qPgm.getAllStmnts()) {// List of queries = 2 
             Either<String, Either<Mapper4All,JSONArray>> resp = fireQuery(query.toString(), false);
             if (resp.isLeft()) {// Not expected
                 return new Left<>(resp.left().get());
             } 
             JSONArray result = resp.right().get().right().get();
             if (joiner == null) {
-                joiner = new Joiner4All(result, pgm.primaryJoinableHooks);
+                joiner = new Joiner4All(result, qPgm.primaryJoinableHooks);
             } else {
-                joiner.join(result, pgm.primaryJoinableHooks, Joiner4All.ActionType.valueOf(pgm.joinTypes.get(i++)));
+                joiner.join(result, qPgm.primaryJoinableHooks, Joiner4All.ActionType.valueOf(qPgm.joinTypes.get(i++)));
             }
         }
         return new Right<String, Either<Joiner4All, Mapper4All>>(new Left<Joiner4All, Mapper4All>(joiner));
