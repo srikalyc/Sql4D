@@ -74,15 +74,13 @@ public class QueryMeta extends BaseStatementMeta {
 
         JSONArray intervalsArray = new JSONArray();
         if (!intervals.isEmpty()) {
-            if (intervals.size() == 1) {
+            if (intervals.size() == 1 && !microIntervals.isEmpty()) {
                 Interval grandInterval = intervals.get(0);
-                if (!microIntervals.isEmpty()) {
-                    // Break the single interval into micro intervals.
-                    for (int i = 0; i < grandInterval.getDays();i++) {
-                        for (Pair<Integer, Integer> pair:microIntervals) {
-                            Interval microInterval = grandInterval.getInterval(i, pair.a, pair.a + pair.b);// a = start hour of day, b = number of hours from there of.
-                            intervalsArray.put(microInterval.toString());
-                        }
+                // Break the single interval into micro intervals.
+                for (int i = 0; i < grandInterval.getDays();i++) {
+                    for (Pair<Integer, Integer> pair:microIntervals) {
+                        Interval microInterval = grandInterval.getInterval(i, pair.a, pair.a + pair.b);// a = start hour of day, b = number of hours from there of.
+                        intervalsArray.put(microInterval.toString());
                     }
                 }
             } else {

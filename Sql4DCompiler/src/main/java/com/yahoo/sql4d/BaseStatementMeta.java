@@ -10,12 +10,8 @@
  */
 package com.yahoo.sql4d;
 
-import com.yahoo.sql4d.query.nodes.Interval;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**

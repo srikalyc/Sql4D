@@ -1,8 +1,7 @@
-// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-11-11 19:30:18
+// $ANTLR 3.5 /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g 2014-11-11 21:25:30
 
 	package com.yahoo.sql4d.converter;
 
-import com.yahoo.sql4d.insert.nodes.GranularitySpec;
 	import org.antlr.runtime.*;
 	import java.util.ArrayList;
 	import java.util.Arrays;
@@ -1167,12 +1166,12 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:99:6: WS BREAK WS BY WS gran= granularityClause
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt562); 
-							match(input,BREAK,FOLLOW_BREAK_in_queryStmnt564); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt566); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt568); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt570); 
-							pushFollow(FOLLOW_granularityClause_in_queryStmnt574);
+							match(input,WS,FOLLOW_WS_in_queryStmnt563); 
+							match(input,BREAK,FOLLOW_BREAK_in_queryStmnt565); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt567); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt569); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt571); 
+							pushFollow(FOLLOW_granularityClause_in_queryStmnt575);
 							gran=granularityClause();
 							state._fsp--;
 
@@ -1200,11 +1199,11 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:106:6: WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )?
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt591); 
-							match(input,GROUP,FOLLOW_GROUP_in_queryStmnt593); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt595); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt597); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt599); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt592); 
+							match(input,GROUP,FOLLOW_GROUP_in_queryStmnt594); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt596); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt598); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt600); 
 
 									       qMeta = GroupByQueryMeta.promote(qMeta);
 									       if (((GroupByQueryMeta)qMeta).fetchDimensions == null) {
@@ -1214,7 +1213,7 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:113:10: (id= ID ( ( WS )? ',' ( WS )? id= ID )* )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:113:11: id= ID ( ( WS )? ',' ( WS )? id= ID )*
 							{
-							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt625); 
+							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt626); 
 
 									              if (!((GroupByQueryMeta)qMeta).checkDimOrAlias((id!=null?id.getText():null))) {
 									                 System.err.println("Dimension/Alias " + (id!=null?id.getText():null) + " not valid..");
@@ -1250,13 +1249,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:119:15: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt657); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt658); 
 											}
 											break;
 
 									}
 
-									match(input,88,FOLLOW_88_in_queryStmnt660); 
+									match(input,88,FOLLOW_88_in_queryStmnt661); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:119:23: ( WS )?
 									int alt39=2;
 									int LA39_0 = input.LA(1);
@@ -1267,13 +1266,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:119:23: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt662); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt663); 
 											}
 											break;
 
 									}
 
-									id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt667); 
+									id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt668); 
 
 												              if (!((GroupByQueryMeta)qMeta).checkDimOrAlias((id!=null?id.getText():null))) {
 												                 System.err.println("Dimension/Alias " + (id!=null?id.getText():null) + " not valid..");
@@ -1302,10 +1301,10 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:127:11: WS HAVING WS h= havingClause
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt724); 
-									match(input,HAVING,FOLLOW_HAVING_in_queryStmnt726); 
-									match(input,WS,FOLLOW_WS_in_queryStmnt728); 
-									pushFollow(FOLLOW_havingClause_in_queryStmnt732);
+									match(input,WS,FOLLOW_WS_in_queryStmnt725); 
+									match(input,HAVING,FOLLOW_HAVING_in_queryStmnt727); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt729); 
+									pushFollow(FOLLOW_havingClause_in_queryStmnt733);
 									h=havingClause();
 									state._fsp--;
 
@@ -1334,15 +1333,15 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:131:6: WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )?
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt776); 
-							match(input,ORDER,FOLLOW_ORDER_in_queryStmnt778); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt780); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt782); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt784); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt777); 
+							match(input,ORDER,FOLLOW_ORDER_in_queryStmnt779); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt781); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt783); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt785); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:131:24: (id= ID )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:131:25: id= ID
 							{
-							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt789); 
+							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt790); 
 							}
 
 								
@@ -1367,7 +1366,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:142:10: WS dir= ( ASC | DESC )
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt822); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt823); 
 									dir=input.LT(1);
 									if ( input.LA(1)==ASC||input.LA(1)==DESC ) {
 										input.consume();
@@ -1419,13 +1418,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:164:6: WS LIMIT WS (l= LONG )
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt876); 
-							match(input,LIMIT,FOLLOW_LIMIT_in_queryStmnt878); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt880); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt877); 
+							match(input,LIMIT,FOLLOW_LIMIT_in_queryStmnt879); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt881); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:164:18: (l= LONG )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:164:19: l= LONG
 							{
-							l=(Token)match(input,LONG,FOLLOW_LONG_in_queryStmnt885); 
+							l=(Token)match(input,LONG,FOLLOW_LONG_in_queryStmnt886); 
 							}
 
 								
@@ -1457,10 +1456,10 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:178:8: WS THEN WS p= postAggItem
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt923); 
-							match(input,THEN,FOLLOW_THEN_in_queryStmnt925); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt927); 
-							pushFollow(FOLLOW_postAggItem_in_queryStmnt931);
+							match(input,WS,FOLLOW_WS_in_queryStmnt924); 
+							match(input,THEN,FOLLOW_THEN_in_queryStmnt926); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt928); 
+							pushFollow(FOLLOW_postAggItem_in_queryStmnt932);
 							p=postAggItem();
 							state._fsp--;
 
@@ -1485,10 +1484,10 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:5: WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt946); 
-							match(input,WHICH,FOLLOW_WHICH_in_queryStmnt948); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt950); 
-							match(input,CONTAINS,FOLLOW_CONTAINS_in_queryStmnt952); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt947); 
+							match(input,WHICH,FOLLOW_WHICH_in_queryStmnt949); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt951); 
+							match(input,CONTAINS,FOLLOW_CONTAINS_in_queryStmnt953); 
 							qMeta = SearchQueryMeta.promote(qMeta);
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:68: ( WS )?
 							int alt47=2;
@@ -1500,13 +1499,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:68: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt956); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt957); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt959); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt960); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:79: ( WS )?
 							int alt48=2;
 							int LA48_0 = input.LA(1);
@@ -1517,7 +1516,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:79: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt961); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt962); 
 									}
 									break;
 
@@ -1526,7 +1525,7 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:83: (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:84: s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
 							{
-							s1=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt967); 
+							s1=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt968); 
 							((SearchQueryMeta)qMeta).type = "insensitive_contains";((SearchQueryMeta)qMeta).addValue((s1!=null?s1.getText():null));
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:208: ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
 							loop51:
@@ -1558,13 +1557,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:209: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt971); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt972); 
 											}
 											break;
 
 									}
 
-									match(input,88,FOLLOW_88_in_queryStmnt974); 
+									match(input,88,FOLLOW_88_in_queryStmnt975); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:217: ( WS )?
 									int alt50=2;
 									int LA50_0 = input.LA(1);
@@ -1575,13 +1574,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:217: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt976); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt977); 
 											}
 											break;
 
 									}
 
-									s2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt981); 
+									s2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt982); 
 									((SearchQueryMeta)qMeta).type = "fragment";((SearchQueryMeta)qMeta).addValue((s2!=null?s2.getText():null));
 									}
 									break;
@@ -1603,15 +1602,15 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:180:337: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt988); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt989); 
 									}
 									break;
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt991); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt997); 
-							match(input,SORT,FOLLOW_SORT_in_queryStmnt999); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt992); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt998); 
+							match(input,SORT,FOLLOW_SORT_in_queryStmnt1000); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:13: ( WS )?
 							int alt53=2;
 							int LA53_0 = input.LA(1);
@@ -1622,13 +1621,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:13: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1001); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1002); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1004); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1005); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:24: ( WS )?
 							int alt54=2;
 							int LA54_0 = input.LA(1);
@@ -1639,7 +1638,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:24: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1006); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1007); 
 									}
 									break;
 
@@ -1648,7 +1647,7 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:28: (s= SINGLE_QUOTE_STRING )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:29: s= SINGLE_QUOTE_STRING
 							{
-							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1012); 
+							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1013); 
 							}
 
 							((SearchQueryMeta)qMeta).setSort((s!=null?s.getText():null));
@@ -1662,13 +1661,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:181:97: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1017); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1018); 
 									}
 									break;
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1020); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1021); 
 							}
 							break;
 
@@ -1687,8 +1686,8 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:5: WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1032); 
-							match(input,HINT,FOLLOW_HINT_in_queryStmnt1034); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1033); 
+							match(input,HINT,FOLLOW_HINT_in_queryStmnt1035); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:13: ( WS )?
 							int alt57=2;
 							int LA57_0 = input.LA(1);
@@ -1699,13 +1698,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:13: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1036); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1037); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1039); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1040); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:24: ( WS )?
 							int alt58=2;
 							int LA58_0 = input.LA(1);
@@ -1716,13 +1715,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:24: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1041); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1042); 
 									}
 									break;
 
 							}
 
-							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1046); 
+							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1047); 
 							qMeta = HintProcessor.process(qMeta, (s!=null?s.getText():null));
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:99: ( WS )?
 							int alt59=2;
@@ -1734,13 +1733,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:183:99: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1050); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1051); 
 									}
 									break;
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1053); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1054); 
 							}
 							break;
 
@@ -1802,7 +1801,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:194:3: a= SINGLE_QUOTE_STRING
 					{
-					a=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1087); 
+					a=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1088); 
 					obj = unquote((a!=null?a.getText():null));
 					}
 					break;
@@ -1864,7 +1863,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:198:5: ai= aggItem
 					{
-					pushFollow(FOLLOW_aggItem_in_selectItems1118);
+					pushFollow(FOLLOW_aggItem_in_selectItems1119);
 					ai=aggItem();
 					state._fsp--;
 
@@ -1880,7 +1879,7 @@ public class druidGParser extends Parser {
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:205:5: sd= simpleDim
 					{
-					pushFollow(FOLLOW_simpleDim_in_selectItems1128);
+					pushFollow(FOLLOW_simpleDim_in_selectItems1129);
 					sd=simpleDim();
 					state._fsp--;
 
@@ -1924,7 +1923,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:215:4: (a= ID ( WS AS WS b= ID )? )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:215:5: a= ID ( WS AS WS b= ID )?
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1148); 
+			a=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1149); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:215:10: ( WS AS WS b= ID )?
 			int alt64=2;
 			int LA64_0 = input.LA(1);
@@ -1938,10 +1937,10 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:215:11: WS AS WS b= ID
 					{
-					match(input,WS,FOLLOW_WS_in_simpleDim1151); 
-					match(input,AS,FOLLOW_AS_in_simpleDim1153); 
-					match(input,WS,FOLLOW_WS_in_simpleDim1155); 
-					b=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1159); 
+					match(input,WS,FOLLOW_WS_in_simpleDim1152); 
+					match(input,AS,FOLLOW_AS_in_simpleDim1154); 
+					match(input,WS,FOLLOW_WS_in_simpleDim1156); 
+					b=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1160); 
 					}
 					break;
 
@@ -1969,21 +1968,21 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "whereClause"
-	// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:222:1: whereClause[QueryMeta qMeta] : i= intervalClause ( WS AND WS f= grandFilter )? ;
+	// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:222:1: whereClause[QueryMeta qMeta] : intls= intervalClause ( WS AND WS f= grandFilter )? ;
 	public final void whereClause(QueryMeta qMeta)  throws RecognitionException {
-		List<Interval> i =null;
+		List<Interval> intls =null;
 		Filter f =null;
 
 		try {
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:2: (i= intervalClause ( WS AND WS f= grandFilter )? )
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:3: i= intervalClause ( WS AND WS f= grandFilter )?
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:2: (intls= intervalClause ( WS AND WS f= grandFilter )? )
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:3: intls= intervalClause ( WS AND WS f= grandFilter )?
 			{
-			pushFollow(FOLLOW_intervalClause_in_whereClause1182);
-			i=intervalClause();
+			pushFollow(FOLLOW_intervalClause_in_whereClause1183);
+			intls=intervalClause();
 			state._fsp--;
 
-			qMeta.intervals.addAll(i);
-			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:49: ( WS AND WS f= grandFilter )?
+			qMeta.intervals.addAll(intls);
+			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:57: ( WS AND WS f= grandFilter )?
 			int alt65=2;
 			int LA65_0 = input.LA(1);
 			if ( (LA65_0==WS) ) {
@@ -1994,12 +1993,12 @@ public class druidGParser extends Parser {
 			}
 			switch (alt65) {
 				case 1 :
-					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:50: WS AND WS f= grandFilter
+					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:223:58: WS AND WS f= grandFilter
 					{
-					match(input,WS,FOLLOW_WS_in_whereClause1187); 
-					match(input,AND,FOLLOW_AND_in_whereClause1189); 
-					match(input,WS,FOLLOW_WS_in_whereClause1191); 
-					pushFollow(FOLLOW_grandFilter_in_whereClause1195);
+					match(input,WS,FOLLOW_WS_in_whereClause1188); 
+					match(input,AND,FOLLOW_AND_in_whereClause1190); 
+					match(input,WS,FOLLOW_WS_in_whereClause1192); 
+					pushFollow(FOLLOW_grandFilter_in_whereClause1196);
 					f=grandFilter();
 					state._fsp--;
 
@@ -2042,10 +2041,10 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:229:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
 			{
-			match(input,89,FOLLOW_89_in_intervalClause1221); 
-			match(input,WS,FOLLOW_WS_in_intervalClause1223); 
-			match(input,BETWEEN,FOLLOW_BETWEEN_in_intervalClause1225); 
-			match(input,WS,FOLLOW_WS_in_intervalClause1227); 
+			match(input,89,FOLLOW_89_in_intervalClause1222); 
+			match(input,WS,FOLLOW_WS_in_intervalClause1224); 
+			match(input,BETWEEN,FOLLOW_BETWEEN_in_intervalClause1226); 
+			match(input,WS,FOLLOW_WS_in_intervalClause1228); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:230:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
 			int alt73=2;
 			int LA73_0 = input.LA(1);
@@ -2092,7 +2091,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:8: st= isoTime
 							{
-							pushFollow(FOLLOW_isoTime_in_intervalClause1247);
+							pushFollow(FOLLOW_isoTime_in_intervalClause1248);
 							st=isoTime();
 							state._fsp--;
 
@@ -2101,15 +2100,15 @@ public class druidGParser extends Parser {
 						case 2 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:22: st2= SINGLE_QUOTE_STRING
 							{
-							st2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1254); 
+							st2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1255); 
 							}
 							break;
 
 					}
 
-					match(input,WS,FOLLOW_WS_in_intervalClause1258); 
-					match(input,AND,FOLLOW_AND_in_intervalClause1260); 
-					match(input,WS,FOLLOW_WS_in_intervalClause1262); 
+					match(input,WS,FOLLOW_WS_in_intervalClause1259); 
+					match(input,AND,FOLLOW_AND_in_intervalClause1261); 
+					match(input,WS,FOLLOW_WS_in_intervalClause1263); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
 					int alt67=2;
 					int LA67_0 = input.LA(1);
@@ -2130,7 +2129,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:59: et= isoTime
 							{
-							pushFollow(FOLLOW_isoTime_in_intervalClause1267);
+							pushFollow(FOLLOW_isoTime_in_intervalClause1268);
 							et=isoTime();
 							state._fsp--;
 
@@ -2139,7 +2138,7 @@ public class druidGParser extends Parser {
 						case 2 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:232:73: et2= SINGLE_QUOTE_STRING
 							{
-							et2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1274); 
+							et2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1275); 
 							}
 							break;
 
@@ -2171,7 +2170,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:249:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:249:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_intervalClause1299); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_intervalClause1301); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:249:12: ( WS )?
 					int alt68=2;
 					int LA68_0 = input.LA(1);
@@ -2182,13 +2181,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:249:12: WS
 							{
-							match(input,WS,FOLLOW_WS_in_intervalClause1301); 
+							match(input,WS,FOLLOW_WS_in_intervalClause1303); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_pairString_in_intervalClause1306);
+					pushFollow(FOLLOW_pairString_in_intervalClause1308);
 					p1=pairString();
 					state._fsp--;
 
@@ -2223,13 +2222,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:8: WS
 									{
-									match(input,WS,FOLLOW_WS_in_intervalClause1318); 
+									match(input,WS,FOLLOW_WS_in_intervalClause1320); 
 									}
 									break;
 
 							}
 
-							match(input,88,FOLLOW_88_in_intervalClause1321); 
+							match(input,88,FOLLOW_88_in_intervalClause1323); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:16: ( WS )?
 							int alt70=2;
 							int LA70_0 = input.LA(1);
@@ -2240,13 +2239,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:16: WS
 									{
-									match(input,WS,FOLLOW_WS_in_intervalClause1323); 
+									match(input,WS,FOLLOW_WS_in_intervalClause1325); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_pairString_in_intervalClause1328);
+							pushFollow(FOLLOW_pairString_in_intervalClause1330);
 							p2=pairString();
 							state._fsp--;
 
@@ -2269,13 +2268,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:250:79: WS
 							{
-							match(input,WS,FOLLOW_WS_in_intervalClause1334); 
+							match(input,WS,FOLLOW_WS_in_intervalClause1336); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_intervalClause1337); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_intervalClause1339); 
 					}
 
 					}
@@ -2315,7 +2314,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_getEquals1360); 
+			a=(Token)match(input,ID,FOLLOW_ID_in_getEquals1362); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:10: ( WS )?
 			int alt74=2;
 			int LA74_0 = input.LA(1);
@@ -2326,13 +2325,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:10: WS
 					{
-					match(input,WS,FOLLOW_WS_in_getEquals1362); 
+					match(input,WS,FOLLOW_WS_in_getEquals1364); 
 					}
 					break;
 
 			}
 
-			match(input,EQUALS,FOLLOW_EQUALS_in_getEquals1365); 
+			match(input,EQUALS,FOLLOW_EQUALS_in_getEquals1367); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:21: ( WS )?
 			int alt75=2;
 			int LA75_0 = input.LA(1);
@@ -2343,7 +2342,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:256:21: WS
 					{
-					match(input,WS,FOLLOW_WS_in_getEquals1367); 
+					match(input,WS,FOLLOW_WS_in_getEquals1369); 
 					}
 					break;
 
@@ -2418,7 +2417,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:263:4: (s= SINGLE_QUOTE_STRING )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:263:5: s= SINGLE_QUOTE_STRING
 					{
-					s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1412); 
+					s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1414); 
 					}
 
 					granularity = new Granularity((s!=null?s.getText():null));clause = new Pair<>(granularity, null);
@@ -2452,7 +2451,7 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
-							match(input,DURATION,FOLLOW_DURATION_in_granularityClause1436); 
+							match(input,DURATION,FOLLOW_DURATION_in_granularityClause1438); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:16: ( WS )?
 							int alt76=2;
 							int LA76_0 = input.LA(1);
@@ -2463,13 +2462,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:16: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1438); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1440); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause1441); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause1443); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:27: ( WS )?
 							int alt77=2;
 							int LA77_0 = input.LA(1);
@@ -2480,13 +2479,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:27: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1443); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1445); 
 									}
 									break;
 
 							}
 
-							dur=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1448); 
+							dur=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1450); 
 							granularity.setDuration((dur!=null?dur.getText():null));
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:93: ( WS )?
 							int alt78=2;
@@ -2498,7 +2497,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:93: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1452); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1454); 
 									}
 									break;
 
@@ -2523,7 +2522,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:98: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
-									match(input,88,FOLLOW_88_in_granularityClause1456); 
+									match(input,88,FOLLOW_88_in_granularityClause1458); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:102: ( WS )?
 									int alt79=2;
 									int LA79_0 = input.LA(1);
@@ -2534,13 +2533,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:102: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1458); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1460); 
 											}
 											break;
 
 									}
 
-									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1463); 
+									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1465); 
 									granularity.setOrigin((orig!=null?orig.getText():null));
 									}
 									break;
@@ -2568,13 +2567,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:212: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1471); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1473); 
 											}
 											break;
 
 									}
 
-									match(input,88,FOLLOW_88_in_granularityClause1474); 
+									match(input,88,FOLLOW_88_in_granularityClause1476); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:220: ( WS )?
 									int alt82=2;
 									int LA82_0 = input.LA(1);
@@ -2588,13 +2587,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:220: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1476); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1478); 
 											}
 											break;
 
 									}
 
-									pushFollow(FOLLOW_granularityInclude_in_granularityClause1481);
+									pushFollow(FOLLOW_granularityInclude_in_granularityClause1483);
 									inc=granularityInclude();
 									state._fsp--;
 
@@ -2609,7 +2608,7 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:266:288: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1485); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1487); 
 											}
 											break;
 
@@ -2620,7 +2619,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause1490); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause1492); 
 							}
 
 							}
@@ -2631,7 +2630,7 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
-							match(input,PERIOD,FOLLOW_PERIOD_in_granularityClause1509); 
+							match(input,PERIOD,FOLLOW_PERIOD_in_granularityClause1511); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:14: ( WS )?
 							int alt85=2;
 							int LA85_0 = input.LA(1);
@@ -2642,13 +2641,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:14: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1511); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1513); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause1514); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause1516); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:25: ( WS )?
 							int alt86=2;
 							int LA86_0 = input.LA(1);
@@ -2659,13 +2658,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:25: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1516); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1518); 
 									}
 									break;
 
 							}
 
-							per=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1521); 
+							per=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1523); 
 							granularity.setPeriod((per!=null?per.getText():null));
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:89: ( WS )?
 							int alt87=2;
@@ -2677,7 +2676,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:89: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1525); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1527); 
 									}
 									break;
 
@@ -2702,7 +2701,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:94: ',' ( WS )? tz= SINGLE_QUOTE_STRING
 									{
-									match(input,88,FOLLOW_88_in_granularityClause1529); 
+									match(input,88,FOLLOW_88_in_granularityClause1531); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:98: ( WS )?
 									int alt88=2;
 									int LA88_0 = input.LA(1);
@@ -2713,13 +2712,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:98: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1531); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1533); 
 											}
 											break;
 
 									}
 
-									tz=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1536); 
+									tz=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1538); 
 									granularity.setTimeZone((tz!=null?tz.getText():null));
 									}
 									break;
@@ -2736,7 +2735,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:164: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause1542); 
+									match(input,WS,FOLLOW_WS_in_granularityClause1544); 
 									}
 									break;
 
@@ -2761,7 +2760,7 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:169: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
-									match(input,88,FOLLOW_88_in_granularityClause1546); 
+									match(input,88,FOLLOW_88_in_granularityClause1548); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:173: ( WS )?
 									int alt91=2;
 									int LA91_0 = input.LA(1);
@@ -2772,13 +2771,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:173: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1548); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1550); 
 											}
 											break;
 
 									}
 
-									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1553); 
+									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1555); 
 									granularity.setOrigin((orig!=null?orig.getText():null));
 									}
 									break;
@@ -2806,13 +2805,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:284: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1562); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1564); 
 											}
 											break;
 
 									}
 
-									match(input,88,FOLLOW_88_in_granularityClause1565); 
+									match(input,88,FOLLOW_88_in_granularityClause1567); 
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:292: ( WS )?
 									int alt94=2;
 									int LA94_0 = input.LA(1);
@@ -2826,13 +2825,13 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:292: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1567); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1569); 
 											}
 											break;
 
 									}
 
-									pushFollow(FOLLOW_granularityInclude_in_granularityClause1572);
+									pushFollow(FOLLOW_granularityInclude_in_granularityClause1574);
 									inc=granularityInclude();
 									state._fsp--;
 
@@ -2847,7 +2846,7 @@ public class druidGParser extends Parser {
 										case 1 :
 											// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:268:360: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause1576); 
+											match(input,WS,FOLLOW_WS_in_granularityClause1578); 
 											}
 											break;
 
@@ -2858,7 +2857,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause1581); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause1583); 
 							}
 
 							}
@@ -2901,8 +2900,8 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
 			{
-			match(input,WS,FOLLOW_WS_in_granularityInclude1609); 
-			match(input,INCLUDE,FOLLOW_INCLUDE_in_granularityInclude1611); 
+			match(input,WS,FOLLOW_WS_in_granularityInclude1611); 
+			match(input,INCLUDE,FOLLOW_INCLUDE_in_granularityInclude1613); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:15: ( WS )?
 			int alt99=2;
 			int LA99_0 = input.LA(1);
@@ -2913,13 +2912,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:15: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude1613); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude1615); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_granularityInclude1616); 
+			match(input,LPARAN,FOLLOW_LPARAN_in_granularityInclude1618); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:26: ( WS )?
 			int alt100=2;
 			int LA100_0 = input.LA(1);
@@ -2930,7 +2929,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:26: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude1618); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude1620); 
 					}
 					break;
 
@@ -2939,7 +2938,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:30: (p1= pairNums ( ',' p2= pairNums )* )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:31: p1= pairNums ( ',' p2= pairNums )*
 			{
-			pushFollow(FOLLOW_pairNums_in_granularityInclude1624);
+			pushFollow(FOLLOW_pairNums_in_granularityInclude1626);
 			p1=pairNums();
 			state._fsp--;
 
@@ -2957,8 +2956,8 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:70: ',' p2= pairNums
 					{
-					match(input,88,FOLLOW_88_in_granularityInclude1629); 
-					pushFollow(FOLLOW_pairNums_in_granularityInclude1633);
+					match(input,88,FOLLOW_88_in_granularityInclude1631); 
+					pushFollow(FOLLOW_pairNums_in_granularityInclude1635);
 					p2=pairNums();
 					state._fsp--;
 
@@ -2983,13 +2982,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:275:115: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude1640); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude1642); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_granularityInclude1643); 
+			match(input,RPARAN,FOLLOW_RPARAN_in_granularityInclude1645); 
 			}
 
 			}
@@ -3024,7 +3023,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
 			{
-			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairNums1662); 
+			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairNums1664); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:13: ( WS )?
 			int alt103=2;
 			int LA103_0 = input.LA(1);
@@ -3035,13 +3034,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:13: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums1664); 
+					match(input,WS,FOLLOW_WS_in_pairNums1666); 
 					}
 					break;
 
 			}
 
-			i=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums1669); 
+			i=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums1671); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:25: ( WS )?
 			int alt104=2;
 			int LA104_0 = input.LA(1);
@@ -3052,13 +3051,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:25: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums1672); 
+					match(input,WS,FOLLOW_WS_in_pairNums1674); 
 					}
 					break;
 
 			}
 
-			match(input,88,FOLLOW_88_in_pairNums1675); 
+			match(input,88,FOLLOW_88_in_pairNums1677); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:33: ( WS )?
 			int alt105=2;
 			int LA105_0 = input.LA(1);
@@ -3069,13 +3068,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:33: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums1677); 
+					match(input,WS,FOLLOW_WS_in_pairNums1679); 
 					}
 					break;
 
 			}
 
-			j=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums1682); 
+			j=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums1684); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:44: ( WS )?
 			int alt106=2;
 			int LA106_0 = input.LA(1);
@@ -3086,13 +3085,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:279:44: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums1684); 
+					match(input,WS,FOLLOW_WS_in_pairNums1686); 
 					}
 					break;
 
 			}
 
-			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairNums1687); 
+			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairNums1689); 
 			}
 
 			 pair = new Pair<>(Integer.parseInt((i!=null?i.getText():null)), Integer.parseInt((j!=null?j.getText():null)));
@@ -3128,7 +3127,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
 			{
-			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairString1707); 
+			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairString1709); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:13: ( WS )?
 			int alt107=2;
 			int LA107_0 = input.LA(1);
@@ -3139,13 +3138,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:13: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString1709); 
+					match(input,WS,FOLLOW_WS_in_pairString1711); 
 					}
 					break;
 
 			}
 
-			i=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString1714); 
+			i=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString1716); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:40: ( WS )?
 			int alt108=2;
 			int LA108_0 = input.LA(1);
@@ -3156,13 +3155,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:40: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString1717); 
+					match(input,WS,FOLLOW_WS_in_pairString1719); 
 					}
 					break;
 
 			}
 
-			match(input,88,FOLLOW_88_in_pairString1720); 
+			match(input,88,FOLLOW_88_in_pairString1722); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:48: ( WS )?
 			int alt109=2;
 			int LA109_0 = input.LA(1);
@@ -3173,13 +3172,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:48: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString1722); 
+					match(input,WS,FOLLOW_WS_in_pairString1724); 
 					}
 					break;
 
 			}
 
-			j=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString1727); 
+			j=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString1729); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:74: ( WS )?
 			int alt110=2;
 			int LA110_0 = input.LA(1);
@@ -3190,13 +3189,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:283:74: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString1729); 
+					match(input,WS,FOLLOW_WS_in_pairString1731); 
 					}
 					break;
 
 			}
 
-			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairString1732); 
+			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairString1734); 
 			}
 
 			 pair = new Pair<>(((i!=null?i.getText():null)).replaceAll("'", ""), ((j!=null?j.getText():null)).replaceAll("'", ""));
@@ -3228,7 +3227,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:291:2: (h= complexHaving )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:291:4: h= complexHaving
 			{
-			pushFollow(FOLLOW_complexHaving_in_havingClause1757);
+			pushFollow(FOLLOW_complexHaving_in_havingClause1759);
 			h=complexHaving();
 			state._fsp--;
 
@@ -3332,7 +3331,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
-					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving1778); 
+					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving1780); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:10: ( WS )?
 					int alt111=2;
 					int LA111_0 = input.LA(1);
@@ -3343,13 +3342,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:10: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving1780); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving1782); 
 							}
 							break;
 
 					}
 
-					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving1785); 
+					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving1787); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:29: ( WS )?
 					int alt112=2;
 					int LA112_0 = input.LA(1);
@@ -3360,7 +3359,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:295:29: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving1787); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving1789); 
 							}
 							break;
 
@@ -3386,7 +3385,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:296:4: (e= getEquals )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:296:5: e= getEquals
 					{
-					pushFollow(FOLLOW_getEquals_in_simpleHaving1809);
+					pushFollow(FOLLOW_getEquals_in_simpleHaving1811);
 					e=getEquals();
 					state._fsp--;
 
@@ -3401,9 +3400,9 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
-					n=(Token)match(input,NOT,FOLLOW_NOT_in_simpleHaving1820); 
-					match(input,WS,FOLLOW_WS_in_simpleHaving1822); 
-					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving1826); 
+					n=(Token)match(input,NOT,FOLLOW_NOT_in_simpleHaving1822); 
+					match(input,WS,FOLLOW_WS_in_simpleHaving1824); 
+					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving1828); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:19: ( WS )?
 					int alt113=2;
 					int LA113_0 = input.LA(1);
@@ -3414,13 +3413,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:19: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving1828); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving1830); 
 							}
 							break;
 
 					}
 
-					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving1833); 
+					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving1835); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:38: ( WS )?
 					int alt114=2;
 					int LA114_0 = input.LA(1);
@@ -3431,7 +3430,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:297:38: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving1835); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving1837); 
 							}
 							break;
 
@@ -3489,7 +3488,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:301:4: (s= simpleHaving )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:301:5: s= simpleHaving
 					{
-					pushFollow(FOLLOW_simpleHaving_in_complexHaving1868);
+					pushFollow(FOLLOW_simpleHaving_in_complexHaving1870);
 					s=simpleHaving();
 					state._fsp--;
 
@@ -3504,11 +3503,11 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:302:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:302:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
 					{
-					pushFollow(FOLLOW_simpleHaving_in_complexHaving1879);
+					pushFollow(FOLLOW_simpleHaving_in_complexHaving1881);
 					a=simpleHaving();
 					state._fsp--;
 
-					match(input,WS,FOLLOW_WS_in_complexHaving1881); 
+					match(input,WS,FOLLOW_WS_in_complexHaving1883); 
 					o=input.LT(1);
 					if ( input.LA(1)==AND||input.LA(1)==OR ) {
 						input.consume();
@@ -3518,8 +3517,8 @@ public class druidGParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					match(input,WS,FOLLOW_WS_in_complexHaving1891); 
-					pushFollow(FOLLOW_complexHaving_in_complexHaving1895);
+					match(input,WS,FOLLOW_WS_in_complexHaving1893); 
+					pushFollow(FOLLOW_complexHaving_in_complexHaving1897);
 					b=complexHaving();
 					state._fsp--;
 
@@ -3557,7 +3556,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:312:2: (e= getEquals )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:312:4: e= getEquals
 			{
-			pushFollow(FOLLOW_getEquals_in_selectorFilter1932);
+			pushFollow(FOLLOW_getEquals_in_selectorFilter1934);
 			e=getEquals();
 			state._fsp--;
 
@@ -3597,14 +3596,14 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter1961); 
-			match(input,WS,FOLLOW_WS_in_regexFilter1963); 
-			match(input,LIKE,FOLLOW_LIKE_in_regexFilter1965); 
-			match(input,WS,FOLLOW_WS_in_regexFilter1967); 
+			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter1963); 
+			match(input,WS,FOLLOW_WS_in_regexFilter1965); 
+			match(input,LIKE,FOLLOW_LIKE_in_regexFilter1967); 
+			match(input,WS,FOLLOW_WS_in_regexFilter1969); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:24: ( SINGLE_QUOTE_STRING )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:320:25: SINGLE_QUOTE_STRING
 			{
-			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter1973); 
+			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter1975); 
 			}
 
 			}
@@ -3714,7 +3713,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:327:5: a= selectorFilter
 							{
-							pushFollow(FOLLOW_selectorFilter_in_simpleFilter1998);
+							pushFollow(FOLLOW_selectorFilter_in_simpleFilter2000);
 							a=selectorFilter();
 							state._fsp--;
 
@@ -3723,7 +3722,7 @@ public class druidGParser extends Parser {
 						case 2 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:327:24: a= regexFilter
 							{
-							pushFollow(FOLLOW_regexFilter_in_simpleFilter2004);
+							pushFollow(FOLLOW_regexFilter_in_simpleFilter2006);
 							a=regexFilter();
 							state._fsp--;
 
@@ -3741,7 +3740,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:6: LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_simpleFilter2014); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_simpleFilter2016); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:13: ( WS )?
 					int alt118=2;
 					int LA118_0 = input.LA(1);
@@ -3752,7 +3751,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:13: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleFilter2016); 
+							match(input,WS,FOLLOW_WS_in_simpleFilter2018); 
 							}
 							break;
 
@@ -3815,7 +3814,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:18: a= selectorFilter
 							{
-							pushFollow(FOLLOW_selectorFilter_in_simpleFilter2022);
+							pushFollow(FOLLOW_selectorFilter_in_simpleFilter2024);
 							a=selectorFilter();
 							state._fsp--;
 
@@ -3824,7 +3823,7 @@ public class druidGParser extends Parser {
 						case 2 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:37: a= regexFilter
 							{
-							pushFollow(FOLLOW_regexFilter_in_simpleFilter2028);
+							pushFollow(FOLLOW_regexFilter_in_simpleFilter2030);
 							a=regexFilter();
 							state._fsp--;
 
@@ -3843,13 +3842,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:328:52: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleFilter2031); 
+							match(input,WS,FOLLOW_WS_in_simpleFilter2033); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_simpleFilter2034); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_simpleFilter2036); 
 					}
 
 					filter = a;
@@ -4355,11 +4354,11 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
 							{
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2055);
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2057);
 							a=simpleFilter();
 							state._fsp--;
 
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2057); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2059); 
 							o=input.LT(1);
 							if ( input.LA(1)==AND||input.LA(1)==OR ) {
 								input.consume();
@@ -4369,8 +4368,8 @@ public class druidGParser extends Parser {
 								MismatchedSetException mse = new MismatchedSetException(null,input);
 								throw mse;
 							}
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2067); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2071);
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2069); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2073);
 							b=simpleFilter();
 							state._fsp--;
 
@@ -4384,9 +4383,9 @@ public class druidGParser extends Parser {
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:55: (o= NOT WS b= simpleFilter )
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:332:56: o= NOT WS b= simpleFilter
 							{
-							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2079); 
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2081); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2085);
+							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2081); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2083); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2087);
 							b=simpleFilter();
 							state._fsp--;
 
@@ -4412,7 +4411,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:340:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:340:5: LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_simpleLogicalFilter2098); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_simpleLogicalFilter2100); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:340:12: ( WS )?
 					int alt123=2;
 					int LA123_0 = input.LA(1);
@@ -4423,13 +4422,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:340:12: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2100); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2102); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2105);
+					pushFollow(FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2107);
 					s=simpleLogicalFilter();
 					state._fsp--;
 
@@ -4443,13 +4442,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:340:38: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2107); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2109); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_simpleLogicalFilter2110); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_simpleLogicalFilter2112); 
 					}
 
 					filter = s;
@@ -4492,7 +4491,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:346:5: a= simpleFilter
 					{
-					pushFollow(FOLLOW_simpleFilter_in_grandFilter2134);
+					pushFollow(FOLLOW_simpleFilter_in_grandFilter2136);
 					a=simpleFilter();
 					state._fsp--;
 
@@ -4501,7 +4500,7 @@ public class druidGParser extends Parser {
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:346:22: a= simpleLogicalFilter
 					{
-					pushFollow(FOLLOW_simpleLogicalFilter_in_grandFilter2140);
+					pushFollow(FOLLOW_simpleLogicalFilter_in_grandFilter2142);
 					a=simpleLogicalFilter();
 					state._fsp--;
 
@@ -4524,7 +4523,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:346:61: WS o= ( AND | OR ) WS b= grandFilter
 					{
-					match(input,WS,FOLLOW_WS_in_grandFilter2147); 
+					match(input,WS,FOLLOW_WS_in_grandFilter2149); 
 					o=input.LT(1);
 					if ( input.LA(1)==AND||input.LA(1)==OR ) {
 						input.consume();
@@ -4534,8 +4533,8 @@ public class druidGParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					match(input,WS,FOLLOW_WS_in_grandFilter2157); 
-					pushFollow(FOLLOW_grandFilter_in_grandFilter2161);
+					match(input,WS,FOLLOW_WS_in_grandFilter2159); 
+					pushFollow(FOLLOW_grandFilter_in_grandFilter2163);
 					b=grandFilter();
 					state._fsp--;
 
@@ -4578,7 +4577,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:359:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:359:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
 			{
-			pushFollow(FOLLOW_aggCallSite_in_aggItem2198);
+			pushFollow(FOLLOW_aggCallSite_in_aggItem2200);
 			aggCallSite(aggItem);
 			state._fsp--;
 
@@ -4595,10 +4594,10 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:359:26: WS AS WS x= ID
 					{
-					match(input,WS,FOLLOW_WS_in_aggItem2202); 
-					match(input,AS,FOLLOW_AS_in_aggItem2204); 
-					match(input,WS,FOLLOW_WS_in_aggItem2206); 
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem2210); 
+					match(input,WS,FOLLOW_WS_in_aggItem2204); 
+					match(input,AS,FOLLOW_AS_in_aggItem2206); 
+					match(input,WS,FOLLOW_WS_in_aggItem2208); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem2212); 
 					aggItem.setAsName((x!=null?x.getText():null));
 					}
 					break;
@@ -4649,7 +4648,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
 					{
-					pushFollow(FOLLOW_aggFunc_in_aggCallSite2229);
+					pushFollow(FOLLOW_aggFunc_in_aggCallSite2231);
 					p=aggFunc();
 					state._fsp--;
 
@@ -4667,13 +4666,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:40: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite2234); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite2236); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite2237); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite2239); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:51: ( WS )?
 					int alt130=2;
 					int LA130_0 = input.LA(1);
@@ -4684,7 +4683,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:51: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite2239); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite2241); 
 							}
 							break;
 
@@ -4693,7 +4692,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:55: (x= ID )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:57: x= ID
 					{
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite2246); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite2248); 
 					aggItem.setFieldName((x!=null?x.getText():null));
 					}
 
@@ -4727,13 +4726,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:97: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite2252); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite2254); 
 									}
 									break;
 
 							}
 
-							match(input,88,FOLLOW_88_in_aggCallSite2255); 
+							match(input,88,FOLLOW_88_in_aggCallSite2257); 
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:105: ( WS )?
 							int alt132=2;
 							int LA132_0 = input.LA(1);
@@ -4744,13 +4743,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:362:105: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite2257); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite2259); 
 									}
 									break;
 
 							}
 
-							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite2262); 
+							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite2264); 
 
 								    if (aggItem.fieldNames == null || aggItem.fieldNames.isEmpty()) {
 								       aggItem.fieldNames = new ArrayList<>();
@@ -4777,13 +4776,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:369:6: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite2268); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite2270); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite2271); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite2273); 
 					}
 
 					}
@@ -4791,12 +4790,12 @@ public class druidGParser extends Parser {
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:370:4: COUNT ( '(*)' )
 					{
-					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite2278); 
+					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite2280); 
 					aggItem.setAggType("count");
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:370:41: ( '(*)' )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:370:42: '(*)'
 					{
-					match(input,86,FOLLOW_86_in_aggCallSite2283); 
+					match(input,86,FOLLOW_86_in_aggCallSite2285); 
 					}
 
 					}
@@ -4865,42 +4864,42 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:374:4: LONG_SUM
 					{
-					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc2301); 
+					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc2303); 
 					name = "longSum";
 					}
 					break;
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:375:4: DOUBLE_SUM
 					{
-					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc2308); 
+					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc2310); 
 					name = "doubleSum";
 					}
 					break;
 				case 3 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:376:4: UNIQUE
 					{
-					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc2315); 
+					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc2317); 
 					name = "hyperUnique";
 					}
 					break;
 				case 4 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:377:4: MIN
 					{
-					match(input,MIN,FOLLOW_MIN_in_aggFunc2322); 
+					match(input,MIN,FOLLOW_MIN_in_aggFunc2324); 
 					name = "min";
 					}
 					break;
 				case 5 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:378:4: MAX
 					{
-					match(input,MAX,FOLLOW_MAX_in_aggFunc2329); 
+					match(input,MAX,FOLLOW_MAX_in_aggFunc2331); 
 					name = "max";
 					}
 					break;
 				case 6 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:379:4: JAVASCRIPT
 					{
-					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc2336); 
+					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc2338); 
 					name = "javascript";
 					}
 					break;
@@ -4954,7 +4953,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:387:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:387:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					pushFollow(FOLLOW_simpleArith_in_postAggItem2364);
+					pushFollow(FOLLOW_simpleArith_in_postAggItem2366);
 					a=simpleArith();
 					state._fsp--;
 
@@ -4984,13 +4983,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:387:21: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem2368); 
+									match(input,WS,FOLLOW_WS_in_postAggItem2370); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem2371);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem2373);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
@@ -5004,13 +5003,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:387:55: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem2374); 
+									match(input,WS,FOLLOW_WS_in_postAggItem2376); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem2379);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem2381);
 							b=postAggItem();
 							state._fsp--;
 
@@ -5038,7 +5037,7 @@ public class druidGParser extends Parser {
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem2397); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem2399); 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:13: ( WS )?
 					int alt140=2;
 					int LA140_0 = input.LA(1);
@@ -5049,13 +5048,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:13: WS
 							{
-							match(input,WS,FOLLOW_WS_in_postAggItem2399); 
+							match(input,WS,FOLLOW_WS_in_postAggItem2401); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_postAggItem_in_postAggItem2404);
+					pushFollow(FOLLOW_postAggItem_in_postAggItem2406);
 					a=postAggItem();
 					state._fsp--;
 
@@ -5069,13 +5068,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:31: WS
 							{
-							match(input,WS,FOLLOW_WS_in_postAggItem2406); 
+							match(input,WS,FOLLOW_WS_in_postAggItem2408); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem2409); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem2411); 
 					}
 
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:43: ( postAggLabel[postAggItem] )?
@@ -5088,7 +5087,7 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:44: postAggLabel[postAggItem]
 							{
-							pushFollow(FOLLOW_postAggLabel_in_postAggItem2413);
+							pushFollow(FOLLOW_postAggLabel_in_postAggItem2415);
 							postAggLabel(postAggItem);
 							state._fsp--;
 
@@ -5123,13 +5122,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:73: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem2419); 
+									match(input,WS,FOLLOW_WS_in_postAggItem2421); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem2422);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem2424);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
@@ -5143,13 +5142,13 @@ public class druidGParser extends Parser {
 								case 1 :
 									// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:394:107: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem2425); 
+									match(input,WS,FOLLOW_WS_in_postAggItem2427); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem2430);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem2432);
 							b=postAggItem();
 							state._fsp--;
 
@@ -5201,7 +5200,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:4: (a= simplePostAggAccess )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:5: a= simplePostAggAccess
 			{
-			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2466);
+			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2468);
 			a=simplePostAggAccess();
 			state._fsp--;
 
@@ -5225,13 +5224,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:46: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith2472); 
+							match(input,WS,FOLLOW_WS_in_simpleArith2474); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_postAggArithOper_in_simpleArith2475);
+					pushFollow(FOLLOW_postAggArithOper_in_simpleArith2477);
 					postAggArithOper(postAggItem);
 					state._fsp--;
 
@@ -5245,13 +5244,13 @@ public class druidGParser extends Parser {
 						case 1 :
 							// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:407:80: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith2478); 
+							match(input,WS,FOLLOW_WS_in_simpleArith2480); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2483);
+					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith2485);
 					b=simplePostAggAccess();
 					state._fsp--;
 
@@ -5329,7 +5328,7 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:420:4: c= constantAccess
 					{
-					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess2512);
+					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess2514);
 					c=constantAccess();
 					state._fsp--;
 
@@ -5339,7 +5338,7 @@ public class druidGParser extends Parser {
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:421:4: f= fieldAccess
 					{
-					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess2529);
+					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess2531);
 					f=fieldAccess();
 					state._fsp--;
 
@@ -5349,7 +5348,7 @@ public class druidGParser extends Parser {
 				case 3 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:422:4: h= hyperUniqueCardinality
 					{
-					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2542);
+					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2544);
 					h=hyperUniqueCardinality();
 					state._fsp--;
 
@@ -5359,7 +5358,7 @@ public class druidGParser extends Parser {
 				case 4 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:423:4: js= postAggJavascriptDef
 					{
-					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2551);
+					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2553);
 					js=postAggJavascriptDef();
 					state._fsp--;
 
@@ -5418,13 +5417,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:6: a= FLOAT
 					{
-					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess2581); 
+					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess2583); 
 					}
 					break;
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:430:16: a= LONG
 					{
-					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess2587); 
+					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess2589); 
 					}
 					break;
 
@@ -5444,8 +5443,8 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:432:6: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_constantAccess2600); 
-					pushFollow(FOLLOW_postAggLabel_in_constantAccess2602);
+					match(input,WS,FOLLOW_WS_in_constantAccess2602); 
+					pushFollow(FOLLOW_postAggLabel_in_constantAccess2604);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -5488,7 +5487,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:4: (a= ID ( WS postAggLabel[postAggItem] )? )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:5: a= ID ( WS postAggLabel[postAggItem] )?
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess2630); 
+			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess2632); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:10: ( WS postAggLabel[postAggItem] )?
 			int alt153=2;
 			int LA153_0 = input.LA(1);
@@ -5502,8 +5501,8 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:437:11: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_fieldAccess2633); 
-					pushFollow(FOLLOW_postAggLabel_in_fieldAccess2635);
+					match(input,WS,FOLLOW_WS_in_fieldAccess2635); 
+					pushFollow(FOLLOW_postAggLabel_in_fieldAccess2637);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -5547,7 +5546,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
 			{
-			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality2664); 
+			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality2666); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:12: ( WS )?
 			int alt154=2;
 			int LA154_0 = input.LA(1);
@@ -5558,13 +5557,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:12: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2666); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2668); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality2669); 
+			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality2671); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:23: ( WS )?
 			int alt155=2;
 			int LA155_0 = input.LA(1);
@@ -5575,13 +5574,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:23: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2671); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2673); 
 					}
 					break;
 
 			}
 
-			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality2676); 
+			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality2678); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:32: ( WS )?
 			int alt156=2;
 			int LA156_0 = input.LA(1);
@@ -5592,13 +5591,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:442:32: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2678); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality2680); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality2681); 
+			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality2683); 
 			postAggItem.fieldName = (a!=null?a.getText():null);
 			}
 
@@ -5631,7 +5630,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
 			{
-			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2707); 
+			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2709); 
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:15: ( WS )?
 			int alt157=2;
 			int LA157_0 = input.LA(1);
@@ -5642,13 +5641,13 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:449:15: WS
 					{
-					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef2709); 
+					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef2711); 
 					}
 					break;
 
 			}
 
-			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2714); 
+			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2716); 
 			postAggItem.parseToJs((str!=null?str.getText():null));
 			}
 
@@ -5678,9 +5677,9 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:4: ( AS WS id= ID )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:453:5: AS WS id= ID
 			{
-			match(input,AS,FOLLOW_AS_in_postAggLabel2730); 
-			match(input,WS,FOLLOW_WS_in_postAggLabel2732); 
-			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel2736); 
+			match(input,AS,FOLLOW_AS_in_postAggLabel2732); 
+			match(input,WS,FOLLOW_WS_in_postAggLabel2734); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel2738); 
 			}
 
 			postAggItem.name = (id!=null?id.getText():null);
@@ -5708,7 +5707,7 @@ public class druidGParser extends Parser {
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:2: (arith= ARITH_OPER )
 			// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:457:3: arith= ARITH_OPER
 			{
-			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper2752); 
+			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper2754); 
 			postAggItem.fn = (arith!=null?arith.getText():null);
 			}
 
@@ -5795,63 +5794,63 @@ public class druidGParser extends Parser {
 				case 1 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:463:3: d= DATE_YEAR_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime2771); 
+					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime2773); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 2 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:464:3: d= DATE_YEAR_MONTH_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime2779); 
+					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime2781); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 3 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:465:3: d= DATE
 					{
-					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime2787); 
+					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime2789); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 4 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:466:3: d= DATE_HOUR
 					{
-					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime2795); 
+					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime2797); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 5 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:467:3: d= DATE_HOUR_MIN
 					{
-					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime2803); 
+					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime2805); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 6 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:468:3: d= DATE_HOUR_MIN_SEC
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2811); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2813); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 7 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:469:3: d= DATE_HOUR_MIN_SEC_SUB
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2819); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2821); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 8 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:470:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2827); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2829); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 9 :
 					// /Users/srikalyan/publicSql4D/Sql4D/Sql4DCompiler/src/main/java/com/yahoo/sql4d/druidG.g:471:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2835); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2837); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
@@ -6484,303 +6483,303 @@ public class druidGParser extends Parser {
 	public static final BitSet FOLLOW_WHERE_in_queryStmnt541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
 	public static final BitSet FOLLOW_WS_in_queryStmnt543 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
 	public static final BitSet FOLLOW_whereClause_in_queryStmnt545 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt562 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_BREAK_in_queryStmnt564 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt566 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt568 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt570 = new BitSet(new long[]{0x0000000020000000L,0x0000000000000820L});
-	public static final BitSet FOLLOW_granularityClause_in_queryStmnt574 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt591 = new BitSet(new long[]{0x0000000800000000L});
-	public static final BitSet FOLLOW_GROUP_in_queryStmnt593 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt595 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt597 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt599 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt625 = new BitSet(new long[]{0x0000000000000002L,0x0000000001200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt657 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_queryStmnt660 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt662 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt667 = new BitSet(new long[]{0x0000000000000002L,0x0000000001200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt724 = new BitSet(new long[]{0x0000001000000000L});
-	public static final BitSet FOLLOW_HAVING_in_queryStmnt726 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt728 = new BitSet(new long[]{0x2000008000000000L});
-	public static final BitSet FOLLOW_havingClause_in_queryStmnt732 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt776 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_ORDER_in_queryStmnt778 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt780 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt782 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt784 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt789 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt822 = new BitSet(new long[]{0x0000000004000080L});
-	public static final BitSet FOLLOW_set_in_queryStmnt826 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt876 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LIMIT_in_queryStmnt878 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt880 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LONG_in_queryStmnt885 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt923 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_THEN_in_queryStmnt925 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt927 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
-	public static final BitSet FOLLOW_postAggItem_in_queryStmnt931 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt946 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_WHICH_in_queryStmnt948 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt950 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_CONTAINS_in_queryStmnt952 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt956 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt959 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt961 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt967 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt971 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_queryStmnt974 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt976 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt981 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt988 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt991 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt997 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_SORT_in_queryStmnt999 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1001 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1004 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1006 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1012 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1017 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1020 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1032 = new BitSet(new long[]{0x0000004000000000L});
-	public static final BitSet FOLLOW_HINT_in_queryStmnt1034 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1036 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1039 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1041 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1046 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1050 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1053 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1087 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_anyValue1095 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggItem_in_selectItems1118 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleDim_in_selectItems1128 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_simpleDim1148 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleDim1151 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_AS_in_simpleDim1153 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleDim1155 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_simpleDim1159 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_intervalClause_in_whereClause1182 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_whereClause1187 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_AND_in_whereClause1189 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_whereClause1191 = new BitSet(new long[]{0x2080008000000000L});
-	public static final BitSet FOLLOW_grandFilter_in_whereClause1195 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_89_in_intervalClause1221 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1223 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_BETWEEN_in_intervalClause1225 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1227 = new BitSet(new long[]{0x0080000000FF8000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_isoTime_in_intervalClause1247 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1254 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1258 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_AND_in_intervalClause1260 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1262 = new BitSet(new long[]{0x0000000000FF8000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_isoTime_in_intervalClause1267 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1274 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_intervalClause1299 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1301 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_pairString_in_intervalClause1306 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1318 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_intervalClause1321 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1323 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_pairString_in_intervalClause1328 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_intervalClause1334 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_intervalClause1337 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_getEquals1360 = new BitSet(new long[]{0x0000000040000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_getEquals1362 = new BitSet(new long[]{0x0000000040000000L});
-	public static final BitSet FOLLOW_EQUALS_in_getEquals1365 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_getEquals1367 = new BitSet(new long[]{0x0020000200000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_set_in_getEquals1373 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1412 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DURATION_in_granularityClause1436 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1438 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityClause1441 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1443 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1448 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1452 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_88_in_granularityClause1456 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1458 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1463 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1471 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_granularityClause1474 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1476 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_granularityInclude_in_granularityClause1481 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1485 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityClause1490 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PERIOD_in_granularityClause1509 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1511 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityClause1514 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1516 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1521 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1525 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_88_in_granularityClause1529 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1531 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1536 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1542 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_88_in_granularityClause1546 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1548 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1553 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1562 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_granularityClause1565 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1567 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_granularityInclude_in_granularityClause1572 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_granularityClause1576 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityClause1581 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude1609 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_INCLUDE_in_granularityInclude1611 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude1613 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityInclude1616 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude1618 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_pairNums_in_granularityInclude1624 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_88_in_granularityInclude1629 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_pairNums_in_granularityInclude1633 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude1640 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityInclude1643 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LSQUARE_in_pairNums1662 = new BitSet(new long[]{0x0020000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_pairNums1664 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LONG_in_pairNums1669 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
-	public static final BitSet FOLLOW_WS_in_pairNums1672 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_pairNums1675 = new BitSet(new long[]{0x0020000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_pairNums1677 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LONG_in_pairNums1682 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200200L});
-	public static final BitSet FOLLOW_WS_in_pairNums1684 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-	public static final BitSet FOLLOW_RSQUARE_in_pairNums1687 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LSQUARE_in_pairString1707 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_pairString1709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString1714 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
-	public static final BitSet FOLLOW_WS_in_pairString1717 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_pairString1720 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_pairString1722 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString1727 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200200L});
-	public static final BitSet FOLLOW_WS_in_pairString1729 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-	public static final BitSet FOLLOW_RSQUARE_in_pairString1732 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_complexHaving_in_havingClause1757 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_simpleHaving1778 = new BitSet(new long[]{0x0000000000001000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving1780 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving1785 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving1787 = new BitSet(new long[]{0x0020000200000000L});
-	public static final BitSet FOLLOW_set_in_simpleHaving1792 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_getEquals_in_simpleHaving1809 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_simpleHaving1820 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving1822 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_simpleHaving1826 = new BitSet(new long[]{0x0000000000001000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving1828 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving1833 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving1835 = new BitSet(new long[]{0x0020000200000000L});
-	public static final BitSet FOLLOW_set_in_simpleHaving1840 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleHaving_in_complexHaving1868 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleHaving_in_complexHaving1879 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_complexHaving1881 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
-	public static final BitSet FOLLOW_set_in_complexHaving1885 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_complexHaving1891 = new BitSet(new long[]{0x2000008000000000L});
-	public static final BitSet FOLLOW_complexHaving_in_complexHaving1895 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_getEquals_in_selectorFilter1932 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_regexFilter1961 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter1963 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_LIKE_in_regexFilter1965 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter1967 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter1973 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter1998 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2004 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_simpleFilter2014 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleFilter2016 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2022 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2028 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_simpleFilter2031 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_simpleFilter2034 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2055 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2057 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
-	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2061 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2067 = new BitSet(new long[]{0x0080008000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2071 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2079 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2081 = new BitSet(new long[]{0x0080008000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2085 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_simpleLogicalFilter2098 = new BitSet(new long[]{0x2080008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2100 = new BitSet(new long[]{0x2080008000000000L});
-	public static final BitSet FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2105 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2107 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_simpleLogicalFilter2110 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_grandFilter2134 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_simpleLogicalFilter_in_grandFilter2140 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2147 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
-	public static final BitSet FOLLOW_set_in_grandFilter2151 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2157 = new BitSet(new long[]{0x2080008000000000L});
-	public static final BitSet FOLLOW_grandFilter_in_grandFilter2161 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggCallSite_in_aggItem2198 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_aggItem2202 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_AS_in_aggItem2204 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_aggItem2206 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_aggItem2210 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggFunc_in_aggCallSite2229 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite2234 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_aggCallSite2237 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite2239 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite2246 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite2252 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_88_in_aggCallSite2255 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite2257 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite2262 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite2268 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_aggCallSite2271 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_aggCallSite2278 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_86_in_aggCallSite2283 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc2301 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc2308 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_aggFunc2315 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MIN_in_aggFunc2322 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MAX_in_aggFunc2329 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc2336 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleArith_in_postAggItem2364 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2368 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2371 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2374 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem2379 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_postAggItem2397 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2399 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem2404 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2406 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_postAggItem2409 = new BitSet(new long[]{0x0000000000000062L,0x0000000000200000L});
-	public static final BitSet FOLLOW_postAggLabel_in_postAggItem2413 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2419 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2422 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem2425 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem2430 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2466 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith2472 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith2475 = new BitSet(new long[]{0x0020408200000000L,0x0000000000220000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith2478 = new BitSet(new long[]{0x0020408200000000L,0x0000000000020000L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2483 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess2512 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess2529 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2542 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2551 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_constantAccess2581 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_LONG_in_constantAccess2587 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_constantAccess2600 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_constantAccess2602 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_fieldAccess2630 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_fieldAccess2633 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess2635 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality2664 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2666 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality2669 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2671 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality2676 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2678 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality2681 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2707 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
-	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef2709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2714 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AS_in_postAggLabel2730 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_WS_in_postAggLabel2732 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_ID_in_postAggLabel2736 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper2752 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime2771 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime2779 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_in_isoTime2787 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2795 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2803 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2811 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2819 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2827 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2835 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt563 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_BREAK_in_queryStmnt565 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt567 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt569 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt571 = new BitSet(new long[]{0x0000000020000000L,0x0000000000000820L});
+	public static final BitSet FOLLOW_granularityClause_in_queryStmnt575 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt592 = new BitSet(new long[]{0x0000000800000000L});
+	public static final BitSet FOLLOW_GROUP_in_queryStmnt594 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt596 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt598 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt600 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt626 = new BitSet(new long[]{0x0000000000000002L,0x0000000001200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt658 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_queryStmnt661 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt663 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt668 = new BitSet(new long[]{0x0000000000000002L,0x0000000001200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt725 = new BitSet(new long[]{0x0000001000000000L});
+	public static final BitSet FOLLOW_HAVING_in_queryStmnt727 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt729 = new BitSet(new long[]{0x2000008000000000L});
+	public static final BitSet FOLLOW_havingClause_in_queryStmnt733 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt777 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+	public static final BitSet FOLLOW_ORDER_in_queryStmnt779 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt781 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt783 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt785 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt790 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt823 = new BitSet(new long[]{0x0000000004000080L});
+	public static final BitSet FOLLOW_set_in_queryStmnt827 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt877 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_LIMIT_in_queryStmnt879 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt881 = new BitSet(new long[]{0x0020000000000000L});
+	public static final BitSet FOLLOW_LONG_in_queryStmnt886 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt924 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+	public static final BitSet FOLLOW_THEN_in_queryStmnt926 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt928 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_postAggItem_in_queryStmnt932 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt947 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_WHICH_in_queryStmnt949 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt951 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_CONTAINS_in_queryStmnt953 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt957 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt960 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt962 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt968 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt972 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_queryStmnt975 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt977 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt982 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt989 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt992 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt998 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+	public static final BitSet FOLLOW_SORT_in_queryStmnt1000 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1002 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1005 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1007 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1013 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1018 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1021 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1033 = new BitSet(new long[]{0x0000004000000000L});
+	public static final BitSet FOLLOW_HINT_in_queryStmnt1035 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1037 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1040 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1042 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1047 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1051 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1054 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1088 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_anyValue1096 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggItem_in_selectItems1119 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleDim_in_selectItems1129 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_simpleDim1149 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleDim1152 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_AS_in_simpleDim1154 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleDim1156 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_simpleDim1160 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_intervalClause_in_whereClause1183 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_whereClause1188 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_AND_in_whereClause1190 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_whereClause1192 = new BitSet(new long[]{0x2080008000000000L});
+	public static final BitSet FOLLOW_grandFilter_in_whereClause1196 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_89_in_intervalClause1222 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1224 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_BETWEEN_in_intervalClause1226 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1228 = new BitSet(new long[]{0x0080000000FF8000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_isoTime_in_intervalClause1248 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1255 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1259 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_AND_in_intervalClause1261 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1263 = new BitSet(new long[]{0x0000000000FF8000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_isoTime_in_intervalClause1268 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause1275 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_intervalClause1301 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1303 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_pairString_in_intervalClause1308 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1320 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_intervalClause1323 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1325 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_pairString_in_intervalClause1330 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_intervalClause1336 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_intervalClause1339 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_getEquals1362 = new BitSet(new long[]{0x0000000040000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_getEquals1364 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_EQUALS_in_getEquals1367 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_getEquals1369 = new BitSet(new long[]{0x0020000200000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_set_in_getEquals1375 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1414 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DURATION_in_granularityClause1438 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1440 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityClause1443 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1445 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1450 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1454 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_88_in_granularityClause1458 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1460 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1465 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1473 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_granularityClause1476 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1478 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_granularityInclude_in_granularityClause1483 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1487 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityClause1492 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PERIOD_in_granularityClause1511 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1513 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityClause1516 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1518 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1523 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1527 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_88_in_granularityClause1531 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1533 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1538 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1544 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_88_in_granularityClause1548 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1550 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause1555 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1564 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_granularityClause1567 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1569 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_granularityInclude_in_granularityClause1574 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_granularityClause1578 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityClause1583 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude1611 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_INCLUDE_in_granularityInclude1613 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude1615 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityInclude1618 = new BitSet(new long[]{0x0100000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude1620 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_pairNums_in_granularityInclude1626 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_88_in_granularityInclude1631 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_pairNums_in_granularityInclude1635 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude1642 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityInclude1645 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LSQUARE_in_pairNums1664 = new BitSet(new long[]{0x0020000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_pairNums1666 = new BitSet(new long[]{0x0020000000000000L});
+	public static final BitSet FOLLOW_LONG_in_pairNums1671 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
+	public static final BitSet FOLLOW_WS_in_pairNums1674 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_pairNums1677 = new BitSet(new long[]{0x0020000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_pairNums1679 = new BitSet(new long[]{0x0020000000000000L});
+	public static final BitSet FOLLOW_LONG_in_pairNums1684 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200200L});
+	public static final BitSet FOLLOW_WS_in_pairNums1686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_RSQUARE_in_pairNums1689 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LSQUARE_in_pairString1709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_pairString1711 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString1716 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
+	public static final BitSet FOLLOW_WS_in_pairString1719 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_pairString1722 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_pairString1724 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString1729 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200200L});
+	public static final BitSet FOLLOW_WS_in_pairString1731 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_RSQUARE_in_pairString1734 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_complexHaving_in_havingClause1759 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_simpleHaving1780 = new BitSet(new long[]{0x0000000000001000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving1782 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving1787 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving1789 = new BitSet(new long[]{0x0020000200000000L});
+	public static final BitSet FOLLOW_set_in_simpleHaving1794 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_getEquals_in_simpleHaving1811 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_simpleHaving1822 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving1824 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_simpleHaving1828 = new BitSet(new long[]{0x0000000000001000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving1830 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving1835 = new BitSet(new long[]{0x0020000200000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving1837 = new BitSet(new long[]{0x0020000200000000L});
+	public static final BitSet FOLLOW_set_in_simpleHaving1842 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleHaving_in_complexHaving1870 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleHaving_in_complexHaving1881 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_complexHaving1883 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
+	public static final BitSet FOLLOW_set_in_complexHaving1887 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_complexHaving1893 = new BitSet(new long[]{0x2000008000000000L});
+	public static final BitSet FOLLOW_complexHaving_in_complexHaving1897 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_getEquals_in_selectorFilter1934 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_regexFilter1963 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter1965 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_LIKE_in_regexFilter1967 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter1969 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter1975 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2000 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2006 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_simpleFilter2016 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleFilter2018 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2024 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2030 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_simpleFilter2033 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_simpleFilter2036 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2057 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2059 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
+	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2063 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2069 = new BitSet(new long[]{0x0080008000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2073 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2081 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2083 = new BitSet(new long[]{0x0080008000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2087 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_simpleLogicalFilter2100 = new BitSet(new long[]{0x2080008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2102 = new BitSet(new long[]{0x2080008000000000L});
+	public static final BitSet FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2107 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2109 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_simpleLogicalFilter2112 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_grandFilter2136 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_simpleLogicalFilter_in_grandFilter2142 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2149 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000004L});
+	public static final BitSet FOLLOW_set_in_grandFilter2153 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2159 = new BitSet(new long[]{0x2080008000000000L});
+	public static final BitSet FOLLOW_grandFilter_in_grandFilter2163 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggCallSite_in_aggItem2200 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_aggItem2204 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_AS_in_aggItem2206 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_aggItem2208 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_aggItem2212 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggFunc_in_aggCallSite2231 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite2236 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_aggCallSite2239 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite2241 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite2248 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite2254 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_88_in_aggCallSite2257 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite2259 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite2264 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200100L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite2270 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_aggCallSite2273 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_aggCallSite2280 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+	public static final BitSet FOLLOW_86_in_aggCallSite2285 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc2303 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc2310 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_aggFunc2317 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MIN_in_aggFunc2324 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MAX_in_aggFunc2331 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc2338 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleArith_in_postAggItem2366 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2370 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2373 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2376 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem2381 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_postAggItem2399 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2401 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem2406 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2408 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_postAggItem2411 = new BitSet(new long[]{0x0000000000000062L,0x0000000000200000L});
+	public static final BitSet FOLLOW_postAggLabel_in_postAggItem2415 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2421 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem2424 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000220000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem2427 = new BitSet(new long[]{0x00A0408200000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem2432 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2468 = new BitSet(new long[]{0x0000000000000022L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith2474 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith2477 = new BitSet(new long[]{0x0020408200000000L,0x0000000000220000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith2480 = new BitSet(new long[]{0x0020408200000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith2485 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess2514 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess2531 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess2544 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess2553 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_constantAccess2583 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_LONG_in_constantAccess2589 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_constantAccess2602 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_constantAccess2604 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_fieldAccess2632 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_fieldAccess2635 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess2637 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality2666 = new BitSet(new long[]{0x0080000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2668 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality2671 = new BitSet(new long[]{0x0000008000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2673 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality2678 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200100L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality2680 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality2683 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef2709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200800L});
+	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef2711 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef2716 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AS_in_postAggLabel2732 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_WS_in_postAggLabel2734 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_ID_in_postAggLabel2738 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper2754 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime2773 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime2781 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_in_isoTime2789 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime2797 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime2805 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime2813 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime2821 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime2829 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime2837 = new BitSet(new long[]{0x0000000000000002L});
 }

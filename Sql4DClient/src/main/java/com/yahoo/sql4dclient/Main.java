@@ -54,6 +54,8 @@ public class Main {
     private static int brokerPort = 4080;
     private static String coordinatorHost = "";
     private static int coordinatorPort = 8082;
+    private static String overlordHost = "";
+    private static int overlordPort = 8087;
     private static String proxyHost = null;
     private static int proxyPort = 3128;
     
@@ -84,6 +86,8 @@ public class Main {
         options.addOption("bp", "broker_port", true, "Druid broker node port");
         options.addOption("ch", "coordinator_host", true, "Druid coordinator node hostname/Ip");
         options.addOption("cp", "coordinator_port", true, "Druid coordinator node port");
+        options.addOption("oh", "overlord_host", true, "Druid overlord node hostname/Ip");
+        options.addOption("op", "overlord_port", true, "Druid overlord node port");
         options.addOption("ph", "proxy_host", true, "Druid proxy node hostname/Ip");
         options.addOption("pp", "proxy_port", true, "Druid proxy node port");
         options.addOption("i", "history", true, "Number of commands in history");
@@ -113,8 +117,9 @@ public class Main {
         defineOptions();
         try {
             CommandLine cmd = parser.parse(options, args);
-            if (!(cmd.hasOption("bh") || cmd.hasOption("broker_host")) || !(cmd.hasOption("bp") || cmd.hasOption("broker_port"))
-                    || !(cmd.hasOption("ch") || cmd.hasOption("coordinator_host")) || !(cmd.hasOption("cp") || cmd.hasOption("coordinator_port"))
+            if (!cmd.hasOption("bh") || !cmd.hasOption("bp")
+                    || !cmd.hasOption("ch") || !cmd.hasOption("cp")
+                    || !cmd.hasOption("oh") || !cmd.hasOption("op")
                      || !cmd.hasOption("i")) {
                 printUsage();
             }
@@ -122,15 +127,18 @@ public class Main {
             brokerPort = Integer.parseInt(getOptionValue(cmd, "bp", "broker_port"));
             coordinatorHost = getOptionValue(cmd, "ch", "coordinator_host");
             coordinatorPort = Integer.parseInt(getOptionValue(cmd, "cp", "coordinator_port"));
+            overlordHost = getOptionValue(cmd, "oh", "overlord_host");
+            overlordPort = Integer.parseInt(getOptionValue(cmd, "op", "overlord_port"));
             
+            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, overlordPort);
             proxyHost = getOptionValue(cmd, "ph", "proxy_host");
             if (proxyHost != null) {
                 proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port"));
+                dDriver.setProxy(proxyHost, proxyPort);
             }
             
             history = new CircularBuffer<>(Integer.parseInt(getOptionValue(cmd, "i", "history")));
-
-            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, proxyHost, proxyPort);
+            
         } catch (ParseException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

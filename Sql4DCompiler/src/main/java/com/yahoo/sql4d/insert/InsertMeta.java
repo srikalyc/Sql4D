@@ -15,6 +15,7 @@ import com.yahoo.sql4d.insert.nodes.GranularitySpec;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import static com.google.common.collect.Iterables.*;
+import com.google.common.collect.Lists;
 import com.yahoo.sql4d.BaseStatementMeta;
 import static com.yahoo.sql4d.DruidUtils.*;
 import com.yahoo.sql4d.TimeUtils;
@@ -76,7 +77,7 @@ public class InsertMeta extends BaseStatementMeta {
         for (AggItem item : aggregations) {
             aggregationsArray.put(item.getJson());
         }
-        map.put("aggregations", aggregationsArray);
+        map.put("aggregators", aggregationsArray);
         map.put("firehose", getFireHose());
         return map;
     }
@@ -108,7 +109,7 @@ public class InsertMeta extends BaseStatementMeta {
             Map<String, Object> data = ImmutableMap.<String, Object>builder().
                     put("format", "csv").
                     put("dimensions", dims.subList(1, dims.size())).
-                    put("columns", concat(dims, metrics)).build();
+                    put("columns", Lists.newArrayList(concat(dims, metrics))).build();
             parserMap.put("data", data);
         } catch (IOException ex) {
             Logger.getLogger(InsertMeta.class.getName()).log(Level.SEVERE, null, ex);

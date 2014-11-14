@@ -23,6 +23,8 @@ options { k=6; }
 	import static com.yahoo.sql4d.Utils.*;
 	import com.yahoo.sql4d.beans.*;
 	import com.yahoo.sql4d.insert.*;
+	import com.yahoo.sql4d.delete.*;
+	import com.yahoo.sql4d.drop.*;
 	import com.yahoo.sql4d.insert.nodes.*;
 	import com.yahoo.sql4d.query.*;
 	import com.yahoo.sql4d.query.nodes.*;
@@ -42,16 +44,71 @@ program	returns [Program program]
 	| (s2=grandInsert) { program = s2; } 
 	;
 
+grandDelete  returns [DeleteProgram program]
+@init { program = null; }
+	: (s1=deleteStmnt) { program = new DeleteProgram();program.addStmnt(s1); } 
+	  WS? OPT_SEMI_COLON? {}
+	;
 	
+grandDrop  returns [DropProgram program]
+@init { program = null; }
+	: (s1=dropStmnt) { program = new DropProgram();program.addStmnt(s1); } 
+	  WS? OPT_SEMI_COLON? {}
+	;
+
 grandInsert  returns [InsertProgram program]
 @init { program = null; }
 	: (s1=insertStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s1); } 
+	| (s2=insertHStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s2); } 
+	| (s3=insertRTStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s3); } 
 	  WS? OPT_SEMI_COLON? {}
+	;
+
+deleteStmnt returns [DeleteMeta dMeta]
+@init { dMeta = new DeleteMeta();      }
+	:DELETE WS FROM WS (id=ID {iMeta.dataSource = $id.text; })
+	 WHERE WS i=intervalClause	  
+	{ // We set this later after granularitySpec object is fully formed.
+	  if (i!= null && !i.isEmpty()) {
+	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
+	  }
+	}  
+	;
+	
+dropStmnt returns [DropMeta dMeta]
+@init { dMeta = new DropMeta();      }
+	:DROP WS TABLE WS (id=ID {iMeta.dataSource = $id.text; })   
 	;
 	
 insertStmnt returns [InsertMeta iMeta]
 @init { iMeta = new InsertMeta();      }
 	:(INSERT WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
+	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
+	 (WHERE WS i=intervalClause)?
+	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
+	{ // We set this later after granularitySpec object is fully formed.
+	  if (i!= null && !i.isEmpty()) {
+	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
+	  }
+	}  
+	;
+
+insertHStmnt returns [InsertMeta iMeta]
+@init { iMeta = new InsertMeta();      }
+	:(INSERT_HADOOP WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
+	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
+	 (WHERE WS i=intervalClause)?
+	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
+	{ // We set this later after granularitySpec object is fully formed.
+	  if (i!= null && !i.isEmpty()) {
+	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
+	  }
+	}  
+	;
+
+insertRTStmnt returns [InsertMeta iMeta]
+@init { iMeta = new InsertMeta();      }
+	:(INSERT_REALTIME WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
 	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
 	 (WHERE WS i=intervalClause)?
 	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
@@ -94,7 +151,7 @@ queryStmnt returns [QueryMeta qMeta]
 	    } 
 	  
 	(
-	  WS WHERE WS whereClause[qMeta]
+	  WS WHERE WS whereClause[qMeta] 
 	  (		  
 		  (WS BREAK WS BY WS gran=granularityClause {
 		      qMeta.granularity = gran.a;
@@ -220,7 +277,7 @@ simpleDim returns [Pair<String, String> dims]
 
 // After interval any filter followed must be associated through AND.
 whereClause[QueryMeta qMeta]
-	:i=intervalClause {qMeta.intervals.addAll(i);} (WS AND WS f=grandFilter {qMeta.filter = f;} )?
+	:intls=intervalClause {qMeta.intervals.addAll(intls);} (WS AND WS f=grandFilter {qMeta.filter = f;} )?
 	;
 	
 // interval defined in the WHERE clause is not part of the filter(thats how druid is)
@@ -244,7 +301,7 @@ intervalClause returns [List<Interval> intervals]
 			}
 		   }
 		}
-	  )
+	  ) 
 	  |
 	  (LPARAN WS? p1=pairString {intervals.add(new Interval(p1.a, p1.b));} 
 	     (WS? ',' WS? p2=pairString {intervals.add(new Interval(p2.a, p2.b));})* WS? RPARAN)

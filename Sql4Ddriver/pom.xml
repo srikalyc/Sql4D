@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4Ddriver</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
@@ -20,13 +20,21 @@
         <dependency>
             <groupId>com.yahoo.sql4d</groupId>
             <artifactId>Sql4DCompiler</artifactId>
-            <version>3.0.0</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
         </dependency>
     </dependencies>
 </project>

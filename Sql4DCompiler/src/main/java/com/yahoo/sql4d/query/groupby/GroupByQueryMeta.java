@@ -104,6 +104,8 @@ public class GroupByQueryMeta  extends BaseAggQueryMeta {
     }
 
     public static GroupByQueryMeta promote(QueryMeta qMeta) {
+        if (qMeta instanceof GroupByQueryMeta)
+            return (GroupByQueryMeta)qMeta;
         return new GroupByQueryMeta(qMeta);
     }
     
