@@ -14,6 +14,7 @@ package com.yahoo.sql4d.sql4ddriver;
 import com.yahoo.sql4d.insert.InsertMeta;
 import java.io.IOException;
 import static java.lang.String.format;
+import java.util.concurrent.TimeUnit;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
@@ -28,6 +29,8 @@ public class OverlordAccessor extends DruidNodeAccessor {
     private final String overlordUrl = "http://%s:%d/druid/indexer/v1/task";
     private final String overlordHost;
     private int overlordPort = 8087;
+    private static final int MAX_WAIT_TIME = 10000;// 10 secs
+    
     public OverlordAccessor(String host, int port) {
         this.overlordHost = host;
         this.overlordPort = port;
@@ -54,20 +57,35 @@ public class OverlordAccessor extends DruidNodeAccessor {
         }
     }
 
+    //TODO: Return Status instead of String. Fix this.
     public String waitForTask(String taskId) {
-        Response resp = null;        
-        String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
-        try {
-            Request req = Request.Get(url).connectTimeout(1000).socketTimeout(1000);
-            if (PROXY_HOST != null) {
-                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
+        long startT = System.currentTimeMillis();
+        long endT = System.currentTimeMillis();
+        String finalStatus = "Task failed ..";
+        while (endT - startT < MAX_WAIT_TIME) {
+            Response resp = null;        
+            String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
+            try {
+                Request req = Request.Get(url).connectTimeout(1000).socketTimeout(1000);
+                if (PROXY_HOST != null) {
+                    req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
+                }
+                resp = req.execute();
+                JSONObject respJson = new JSONObject(resp.returnContent().asString());
+                JSONObject status = respJson.getJSONObject("status");
+                if ("SUCCESS".equals(status.getString("status"))) {
+                    finalStatus = "Task succeeded ..";
+                    break;
+                } else if ("RUNNING".equals(status.getString("status"))) {
+                    continue;
+                } else {//TODO: handle failure more elegantly.
+                    break;
+                }
+            } catch (IOException ex) {
+                return format("Http %s \n", ex);
             }
-            resp = req.execute();
-            JSONObject respJson = new JSONObject(resp.returnContent().asString());
-            return "Data inserted successfully , task Id " + respJson;
-        } catch (IOException ex) {
-            return format("Http %s \n", ex);
         }
+        return finalStatus;
     }
 
 }
