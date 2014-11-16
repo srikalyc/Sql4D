@@ -8,46 +8,38 @@
  * specific language governing permissions and limitations under the License. 
  * See accompanying LICENSE file.
  */
-package com.yahoo.sql4d;
+package com.yahoo.sql4d.insert.nodes;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * Base class for all sql statement types.
+ * Ex: Used in data ingestion.
+ *"partitionsSpec": {
+    "type": "hashed"
+    "targetPartitionSize": 5000000
+  },
+ * 
  * @author srikalyan
  */
-public abstract class BaseStatementMeta {
-    public String dataSource;
-    
-    public BaseStatementMeta() {
-    }
-
-    
-    public BaseStatementMeta(String dataSource) {
-        this.dataSource = dataSource;
-    }
-
+public class PartitionsSpec {
+    public long targetPartitionSize = 5000000;
+    public String type = "hashed";//TODO: Check out what are other types.
     
     @Override
     public String toString() {
-        return getJson().toString(2);
+        return String.format(getJson().toString(2));
     }
     
     public JSONObject getJson() {
         return new JSONObject(getDataMap());
     }
+
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
-        JSONObject dataSourceJson = new JSONObject();
-        dataSourceJson.put("type", "table");
-        dataSourceJson.put("name", dataSource);
-        map.put("dataSource", dataSourceJson);
+        map.put("type", type);
+        map.put("targetPartitionSize", targetPartitionSize);
         return map;
-    }
-    
-    public <T> void postProcess(T anyContext) {
-        
     }
 }

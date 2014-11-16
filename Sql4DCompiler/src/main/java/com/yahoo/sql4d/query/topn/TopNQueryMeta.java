@@ -100,12 +100,12 @@ public class TopNQueryMeta  extends BaseAggQueryMeta {
     
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
     
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         map.put("queryType", "topN");
         map.remove("dimensions");// During promotion from GroupBy dimensions may have sneaked in so remove it.
         if (dimension != null) {

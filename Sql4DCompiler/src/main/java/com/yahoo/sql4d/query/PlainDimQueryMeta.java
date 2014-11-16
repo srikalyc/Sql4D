@@ -40,12 +40,12 @@ public class PlainDimQueryMeta  extends QueryMeta {
     
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
     
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         if (fetchDimensions != null) {
             JSONArray dimensionsArray = new JSONArray();
             for (String dim:fetchDimensions.keySet()) {

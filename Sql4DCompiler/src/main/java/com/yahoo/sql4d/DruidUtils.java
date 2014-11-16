@@ -11,15 +11,21 @@
 package com.yahoo.sql4d;
 
 import com.google.common.base.Function;
+import static com.google.common.collect.Iterables.concat;
 import com.google.common.collect.Lists;
 import com.yahoo.sql4d.query.nodes.AggItem;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author srikalyan
  */
 public class DruidUtils {
+    public static List<String> getDimensions(Map<String, String> fetchDimensions) {
+        return new ArrayList<>(fetchDimensions.keySet());
+    }
     public static List<String> getMetrics(List<AggItem> aggItems) {
         return Lists.transform(aggItems, new Function<AggItem, String>() {
             @Override
@@ -27,5 +33,8 @@ public class DruidUtils {
                 return f.fieldName;
             }
         });
+    }
+    public static List<String> getColumns(Map<String, String> fetchDimensions, List<AggItem> aggItems) {
+        return Lists.newArrayList(concat(getDimensions(fetchDimensions), getMetrics(aggItems)));
     }
 }

@@ -10,36 +10,41 @@
  */
 package com.yahoo.sql4d.insert.nodes;
 
-import com.yahoo.sql4d.query.nodes.*;
-import static com.yahoo.sql4d.Utils.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
  * Ex: Used in data ingestion.
- *"granularitySpec" : {
-    "type" : "uniform",
-    "gran" : "DAY",
-    "interval" : [ "2010/2020" ]
-  }
+ *"dataSpec" : {
+      "format" : "json",// Can also be csv, tsv etc .
+      "dimensions" : ["dim1","dim2","dim3"],
+      "columns" : ["dim1","dim2","dim3"],
+      "delimiter": "\u0001",// The delimiter and list delimiter may be needed when format is tsv
+      "listDelimiter": "\u0002",
+    },
  * 
  * @author srikalyan
  */
-public class GranularitySpec {
-    private static final List<String> validGSimpleStrings = Arrays.asList("none", "minute", "fifteen_minute", "thirty_minute", "hour" , "day");
-    public String gran = "day";
-    public String type = "uniform";//TODO: Check out what are other types.
-    public Interval interval = new Interval("2000-01-01", "2050-12-31");
-    
-    public GranularitySpec(String gString) {
-        this.gran = unquote(gString);
-        isValid(this.gran);
-    }
+public class DataSpec {
 
+    public String format = "csv";//
+    public String delimiter = null;
+    public String listDelimiter = null;
+    public List<String> dimensions = new ArrayList<>();
+    public List<String> columns = new ArrayList<>();
+    
+    public void inferFormat(String fileExtension) {
+        if (fileExtension.endsWith("csv")) {
+            format = "csv";
+        } else if (fileExtension.endsWith("json")) {
+            format = "json";
+        } else {
+            format = "tsv";
+        }
+    }
     @Override
     public String toString() {
         return String.format(getJson().toString(2));
@@ -49,21 +54,17 @@ public class GranularitySpec {
         return new JSONObject(getDataMap());
     }
 
-    private void isValid(String gString) {
-        if (!validGSimpleStrings.contains(gString)) {
-            throw new IllegalArgumentException("Ivalid granularity " + gString);
-        }
-        this.gran = gString;
-    }
-    
-    
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
-        JSONArray intervalArr = new JSONArray();
-        intervalArr.put(interval.toString());
-        map.put("gran", gran);
-        map.put("type", type);
-        map.put("intervals", intervalArr);
+        map.put("format", format);
+        map.put("dimensions", dimensions);
+        map.put("columns", columns);
+        if (delimiter != null) {
+            map.put("delimiter", delimiter);
+        }
+        if (listDelimiter != null) {
+            map.put("listDelimiter", listDelimiter);
+        }
         return map;
     }
 }

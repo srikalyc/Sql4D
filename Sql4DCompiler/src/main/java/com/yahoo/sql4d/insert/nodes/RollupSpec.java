@@ -10,9 +10,8 @@
  */
 package com.yahoo.sql4d.insert.nodes;
 
-import com.yahoo.sql4d.query.nodes.*;
-import static com.yahoo.sql4d.Utils.*;
-import java.util.Arrays;
+import com.yahoo.sql4d.query.nodes.AggItem;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,25 +20,26 @@ import org.json.JSONObject;
 
 /**
  * Ex: Used in data ingestion.
- *"granularitySpec" : {
-    "type" : "uniform",
-    "gran" : "DAY",
-    "interval" : [ "2010/2020" ]
-  }
+ *"rollupSpec" : {
+      "aggs": [{
+          "type" : "count",
+          "name" : "count"
+        }, {
+          "type" : "doubleSum",
+          "name" : "added",
+          "fieldName" : "added"
+        }],
+      "rowFlushBoundary": 100000,// THIS IS OPTIONAL
+      "rollupGranularity" : "none"// can also be hour etc. NOTE this is different from segment granularity.
+    }
  * 
  * @author srikalyan
  */
-public class GranularitySpec {
-    private static final List<String> validGSimpleStrings = Arrays.asList("none", "minute", "fifteen_minute", "thirty_minute", "hour" , "day");
-    public String gran = "day";
-    public String type = "uniform";//TODO: Check out what are other types.
-    public Interval interval = new Interval("2000-01-01", "2050-12-31");
+public class RollupSpec {
+    public String rollupGranularity = "none";//TODO: Can be hour etc. Validate for other types.
+    public long rowFlushBoundary = 100000;//TODO: 
+    public List<AggItem> aggs = new ArrayList<>();
     
-    public GranularitySpec(String gString) {
-        this.gran = unquote(gString);
-        isValid(this.gran);
-    }
-
     @Override
     public String toString() {
         return String.format(getJson().toString(2));
@@ -49,21 +49,15 @@ public class GranularitySpec {
         return new JSONObject(getDataMap());
     }
 
-    private void isValid(String gString) {
-        if (!validGSimpleStrings.contains(gString)) {
-            throw new IllegalArgumentException("Ivalid granularity " + gString);
-        }
-        this.gran = gString;
-    }
-    
-    
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
-        JSONArray intervalArr = new JSONArray();
-        intervalArr.put(interval.toString());
-        map.put("gran", gran);
-        map.put("type", type);
-        map.put("intervals", intervalArr);
+        map.put("rowFlushBoundary", rowFlushBoundary);
+        map.put("rollupGranularity", rollupGranularity);
+        JSONArray aggsArray = new JSONArray();
+        for (AggItem aggItem:aggs) {
+            aggsArray.put(aggItem.getJson());
+        }
+        map.put("aggs", aggsArray);
         return map;
     }
 }

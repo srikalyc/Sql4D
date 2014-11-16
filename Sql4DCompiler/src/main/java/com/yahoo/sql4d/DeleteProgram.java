@@ -17,8 +17,8 @@ import com.yahoo.sql4d.delete.DeleteMeta;
  * @author srikalyan
  */
 public class DeleteProgram extends Program<DeleteMeta>{
-        
-    private DeleteProgram() {
+    public boolean waitForCompletion = false;
+    public DeleteProgram() {
         this.type = Type.DELETE;
     }
     

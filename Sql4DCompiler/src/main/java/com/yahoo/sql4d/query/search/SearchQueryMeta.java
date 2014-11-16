@@ -87,11 +87,11 @@ public class SearchQueryMeta  extends PlainDimQueryMeta {
     
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         map.put("queryType", "search");
         map.remove("dimensions");// Because it is called searchDimensions here.
         if (fetchDimensions != null) {

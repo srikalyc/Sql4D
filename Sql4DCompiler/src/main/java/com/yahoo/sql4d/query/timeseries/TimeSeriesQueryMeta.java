@@ -78,14 +78,14 @@ public class TimeSeriesQueryMeta  extends GroupByQueryMeta {
     
     @Override
     public JSONObject getJson() {
-        JSONObject json = new JSONObject(getJsonMap());
+        JSONObject json = new JSONObject(getDataMap());
         json.put("context", JSONObject.NULL);
         return json;
     }
     
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         map.put("queryType", "timeseries");
         map.remove("dimensions");
         return map;

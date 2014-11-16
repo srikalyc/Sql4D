@@ -18,9 +18,7 @@ options { k=6; }
 	import org.antlr.runtime.*;
 	import java.util.ArrayList;
 	import java.util.Arrays;
-
 	import com.yahoo.sql4d.*;
-	import static com.yahoo.sql4d.Utils.*;
 	import com.yahoo.sql4d.beans.*;
 	import com.yahoo.sql4d.insert.*;
 	import com.yahoo.sql4d.delete.*;
@@ -35,6 +33,8 @@ options { k=6; }
 	import com.yahoo.sql4d.query.topn.*;
 	import com.yahoo.sql4d.query.timeboundary.*;
 	import com.yahoo.sql4d.query.*;
+	import static com.yahoo.sql4d.Utils.*;
+	import static com.yahoo.sql4d.DruidUtils.*;
 }
 
 
@@ -47,43 +47,47 @@ program	returns [Program program]
 grandDelete  returns [DeleteProgram program]
 @init { program = null; }
 	: (s1=deleteStmnt) { program = new DeleteProgram();program.addStmnt(s1); } 
-	  WS? OPT_SEMI_COLON? {}
+	  WS? (OPT_SEMI_COLON? | (OPT_AMPERSAND {program.waitForCompletion = false;})?) {}
 	;
 	
 grandDrop  returns [DropProgram program]
 @init { program = null; }
 	: (s1=dropStmnt) { program = new DropProgram();program.addStmnt(s1); } 
-	  WS? OPT_SEMI_COLON? {}
+	  WS? (OPT_SEMI_COLON? | (OPT_AMPERSAND {program.waitForCompletion = false;})?) {}
 	;
 
 grandInsert  returns [InsertProgram program]
 @init { program = null; }
 	: (s1=insertStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s1); } 
-	| (s2=insertHStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s2); } 
-	| (s3=insertRTStmnt) { program = InsertProgram.getInsertInstance();program.addStmnt(s3); } 
-	  WS? OPT_SEMI_COLON? {}
+	| (s2=insertHStmnt) { program = InsertProgram.getInsertHadoopInstance();program.addStmnt(s2); } 
+	| (s3=insertRTStmnt) { program = InsertProgram.getInsertRTInstance();program.addStmnt(s3); } 
+	  WS? (OPT_SEMI_COLON? | (OPT_AMPERSAND {program.waitForCompletion = false;})?) {}
 	;
 
 deleteStmnt returns [DeleteMeta dMeta]
 @init { dMeta = new DeleteMeta();      }
-	:DELETE WS FROM WS (id=ID {iMeta.dataSource = $id.text; })
+	:DELETE WS FROM WS (id=ID {dMeta.dataSource = $id.text; })
 	 WHERE WS i=intervalClause	  
 	{ // We set this later after granularitySpec object is fully formed.
 	  if (i!= null && !i.isEmpty()) {
-	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
+	     dMeta.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 	  }
 	}  
 	;
 	
 dropStmnt returns [DropMeta dMeta]
 @init { dMeta = new DropMeta();      }
-	:DROP WS TABLE WS (id=ID {iMeta.dataSource = $id.text; })   
+	:DROP WS TABLE WS (id=ID {dMeta.dataSource = $id.text; })   
 	;
 	
-insertStmnt returns [InsertMeta iMeta]
-@init { iMeta = new InsertMeta();      }
+insertStmnt returns [BasicInsertMeta iMeta]
+@init { iMeta = new BasicInsertMeta();      }
 	:(INSERT WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
-	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
+	 (
+	   (VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?)
+	     |
+	   (FROM WS (paths=SINGLE_QUOTE_STRING {iMeta.dataPath = unquote($paths.text);}) WS)
+	 )
 	 (WHERE WS i=intervalClause)?
 	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
 	{ // We set this later after granularitySpec object is fully formed.
@@ -91,23 +95,32 @@ insertStmnt returns [InsertMeta iMeta]
 	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 	  }
 	}  
+	(DELIMITOR WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{iMeta.delimiter=unquote($delim.text);} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {iMeta.listDelimiter=unquote($listDelim.text);})? WS? RPARAN WS?)? 
 	;
 
-insertHStmnt returns [InsertMeta iMeta]
-@init { iMeta = new InsertMeta();      }
-	:(INSERT_HADOOP WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
-	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
-	 (WHERE WS i=intervalClause)?
-	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
+insertHStmnt returns [BatchInsertMeta bMeta]
+@init { bMeta = new BatchInsertMeta();      }
+	:(INSERT_HADOOP WS INTO WS (id=ID {bMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[bMeta] (WS? ',' WS? selectItems[bMeta])* WS? RPARAN WS?) 
+	{
+	  bMeta.rollupSpec.aggs=bMeta.aggregations;
+	  bMeta.dataSpec.dimensions=getDimensions(bMeta.fetchDimensions);
+	  bMeta.dataSpec.columns=getColumns(bMeta.fetchDimensions, bMeta.aggregations);
+	}
+	 FROM WS (paths=SINGLE_QUOTE_STRING {bMeta.pathSpec.setPath(unquote($paths.text));bMeta.dataSpec.inferFormat(unquote($paths.text));}) WS
+	 (WHERE WS i=intervalClause WS)?
+	  (BREAK WS BY WS gran=SINGLE_QUOTE_STRING { bMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
 	{ // We set this later after granularitySpec object is fully formed.
 	  if (i!= null && !i.isEmpty()) {
-	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
+	     bMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 	  }
 	}  
+	 (DELIMITOR WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{bMeta.dataSpec.delimiter=unquote($delim.text);} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {bMeta.dataSpec.listDelimiter=unquote($listDelim.text);})? WS? RPARAN WS?)? 
+	 (PARTITION WS? LPARAN WS? type=SINGLE_QUOTE_STRING WS? ',' WS? size=LONG {bMeta.partitionsSpec.type=unquote($type.text);bMeta.partitionsSpec.targetPartitionSize=Long.valueOf($size.text); } WS? RPARAN WS?)?
+	 (ROLLUP WS? LPARAN WS? gran=SINGLE_QUOTE_STRING WS? ',' WS? boundary=LONG {bMeta.rollupSpec.rollupGranularity=unquote($gran.text);bMeta.rollupSpec.rowFlushBoundary=Long.valueOf($boundary.text); } WS? RPARAN WS?)?
 	;
 
-insertRTStmnt returns [InsertMeta iMeta]
-@init { iMeta = new InsertMeta();      }
+insertRTStmnt returns [RTInsertMeta iMeta]
+@init { iMeta = new RTInsertMeta();      }
 	:(INSERT_REALTIME WS INTO WS (id=ID {iMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[iMeta] (WS? ',' WS? selectItems[iMeta])* WS? RPARAN WS?)
 	 VALUES WS? LPARAN WS? (a=anyValue {iMeta.values.add(a);} ) (WS? ',' WS? a=anyValue {iMeta.values.add(a);})* WS? RPARAN WS?
 	 (WHERE WS i=intervalClause)?
@@ -545,10 +558,11 @@ INTO 	        :('INTO'|'into');
 VALUES          :('VALUES'|'values');
 
 
-PARTITION_SIZE  :('PARTITION_SIZE'|'partition_size');
 MAX_WINDOW      :('MAX_WINDOW'|'max_window');
 
-DELIMITED       :('DELIMITED'|'delimited');
+DELIMITOR       :('DELIMITOR'|'delimitor');
+PARTITION       :('PARTITION'|'partition');
+ROLLUP          :('ROLLUP'   |'rollup');
 
 DROP            :('DROP'|'drop');
 TABLE           :('TABLE'|'table');
@@ -619,6 +633,9 @@ ON 	:	('ON')
 /////////////  Tokens   ///////////////
 OPT_SEMI_COLON
 	: ';';
+
+OPT_AMPERSAND
+	: '&';
 
 WS 
 	: (' ' | '\t')+

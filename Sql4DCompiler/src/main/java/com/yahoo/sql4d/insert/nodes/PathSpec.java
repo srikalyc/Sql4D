@@ -8,46 +8,52 @@
  * specific language governing permissions and limitations under the License. 
  * See accompanying LICENSE file.
  */
-package com.yahoo.sql4d;
+package com.yahoo.sql4d.insert.nodes;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * Base class for all sql statement types.
+ * Ex: Used in data ingestion.
+ *"pathSpec" : {
+      "type" : "static",
+      "paths" : "data.json",// This can be just a folder(comma separated list of paths)
+      "filePattern": "*.gz"// This is optional if the paths has full path of file
+    },
+ * 
  * @author srikalyan
  */
-public abstract class BaseStatementMeta {
-    public String dataSource;
+public class PathSpec {
+    private String path = null;//TODO: This should be a list(right now we support only one path)
+    public String type = "static";//TODO: Check out what are other types.
+    private String filePattern = null;
     
-    public BaseStatementMeta() {
+    public void setPath(String p) {
+        path = p;
+        int starIndex = p.indexOf("*");
+        if (starIndex >= 0) {
+            filePattern = p.substring(starIndex);
+            path = p.substring(0, starIndex);
+        }
     }
-
-    
-    public BaseStatementMeta(String dataSource) {
-        this.dataSource = dataSource;
-    }
-
     
     @Override
     public String toString() {
-        return getJson().toString(2);
+        return String.format(getJson().toString(2));
     }
     
     public JSONObject getJson() {
         return new JSONObject(getDataMap());
     }
+
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
-        JSONObject dataSourceJson = new JSONObject();
-        dataSourceJson.put("type", "table");
-        dataSourceJson.put("name", dataSource);
-        map.put("dataSource", dataSourceJson);
+        map.put("paths", path);
+        map.put("type", type);
+        if (filePattern != null) {
+            map.put("filePattern", filePattern);
+        }
         return map;
-    }
-    
-    public <T> void postProcess(T anyContext) {
-        
     }
 }

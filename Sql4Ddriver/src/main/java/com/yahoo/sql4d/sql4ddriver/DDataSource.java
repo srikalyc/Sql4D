@@ -205,7 +205,7 @@ public class DDataSource {
         }
         if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
-            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0)));
+            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), iPgm.waitForCompletion));
             //throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
         }
         QueryProgram qPgm = (QueryProgram) pgm;

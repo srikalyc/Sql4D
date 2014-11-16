@@ -67,12 +67,12 @@ public class SelectQueryMeta  extends PlainDimQueryMeta {
     
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
     
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         Map<String, Object> pagingSpecMap = new LinkedHashMap<>();
         if (pagingSpec != null) {
             if (pagingSpec.pagingIdentifiers == null) {
@@ -90,7 +90,7 @@ public class SelectQueryMeta  extends PlainDimQueryMeta {
     }
     
     /**
-     * This method must be called prior to calling {@link SelectQueryMeta#getJsonMap() }.
+     * This method must be called prior to calling {@link SelectQueryMeta#getDataMap() }.
      * Essentially splits columns into Dimensions and Metrics.
      * @param <T>
      * @param anyContext

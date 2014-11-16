@@ -44,12 +44,12 @@ public class BaseAggQueryMeta  extends PlainDimQueryMeta {
     
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
     
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
 
         JSONArray aggregationsArray = new JSONArray();
         for (AggItem item:aggregations) {

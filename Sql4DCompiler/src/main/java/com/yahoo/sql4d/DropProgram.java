@@ -17,8 +17,8 @@ import com.yahoo.sql4d.drop.DropMeta;
  * @author srikalyan
  */
 public class DropProgram extends Program<DropMeta>{
-        
-    private DropProgram() {
+    public boolean waitForCompletion = false;
+    public DropProgram() {
         this.type = Type.DROP;
     }
     

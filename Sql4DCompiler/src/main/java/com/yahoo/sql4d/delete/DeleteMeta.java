@@ -43,12 +43,12 @@ public class DeleteMeta extends BaseStatementMeta {
 
     @Override
     public JSONObject getJson() {
-        return new JSONObject(getJsonMap());
+        return new JSONObject(getDataMap());
     }
 
     @Override
-    public Map<String, Object> getJsonMap() {
-        Map<String, Object> map = super.getJsonMap();
+    public Map<String, Object> getDataMap() {
+        Map<String, Object> map = super.getDataMap();
         map.put("type", "delete");
         map.put("dataSource", dataSource);
         map.put("interval", interval.toString());
