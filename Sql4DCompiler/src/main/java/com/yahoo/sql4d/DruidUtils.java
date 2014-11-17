@@ -23,6 +23,7 @@ import java.util.Map;
  * @author srikalyan
  */
 public class DruidUtils {
+    // This method actually returns everything(including timestamp which is first field.
     public static List<String> getDimensions(Map<String, String> fetchDimensions) {
         return new ArrayList<>(fetchDimensions.keySet());
     }

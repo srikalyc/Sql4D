@@ -78,7 +78,7 @@ public class BasicInsertMeta extends InsertMeta {
         Map<String, Object> finalMap = new LinkedHashMap<>();
         Map<String, Object> parserMap = new LinkedHashMap<>();
         String timestampFormat = null;
-        String dataFormat = "csv";
+        String dataFormat = "tsv";
         
         finalMap.put("type", "local");
         if (dataPath != null) {
@@ -87,13 +87,14 @@ public class BasicInsertMeta extends InsertMeta {
             finalMap.put("filter", (folderEndIndex == dataPath.length() - 1)?"*":dataPath.substring(folderEndIndex + 1));
             if (dataPath.endsWith("json")) {
                 dataFormat = "json";
-            } else if (dataPath.endsWith("gz")) {
-                dataFormat = "tsv";
+            } else if (dataPath.endsWith("csv")) {
+                dataFormat = "csv";
             } 
         } else {
             finalMap.put("baseDir", tmpFolder);
             String fileName = UUID.randomUUID().toString() + ".csv";
             finalMap.put("filter", fileName);
+            dataFormat = "csv";
             if (values.isEmpty()) {
                 throw new IllegalStateException("No values to insert !!");
             }
@@ -116,15 +117,15 @@ public class BasicInsertMeta extends InsertMeta {
         List<String> metrics = getMetrics(aggregations);
 
         Map<String, Object> data = new LinkedHashMap<>();
-            data.put("format", dataFormat);
-            data.put("dimensions", dims.subList(1, dims.size()));
-            if (delimiter != null) {
-                data.put("delimiter", delimiter);
-            }
-            if (listDelimiter != null) {
-                data.put("listDelimiter", listDelimiter);
-            }
-            data.put("columns", getColumns(fetchDimensions, aggregations));
+        data.put("format", dataFormat);
+        data.put("dimensions", dims.subList(1, dims.size()));
+        if (delimiter != null) {
+            data.put("delimiter", delimiter);
+        }
+        if (listDelimiter != null) {
+            data.put("listDelimiter", listDelimiter);
+        }
+        data.put("columns", getColumns(fetchDimensions, aggregations));
         parserMap.put("data", data);
         finalMap.put("parser", parserMap);
         return new JSONObject(finalMap);
