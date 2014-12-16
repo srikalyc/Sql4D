@@ -10,7 +10,8 @@
  */
 package com.yahoo.sql4d.query.nodes;
 
-import com.yahoo.sql4d.TimeUtils;
+import com.google.common.base.Preconditions;
+import com.yahoo.sql4d.utils.TimeUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -27,6 +28,18 @@ public class Interval {
     public Interval(String startTime, String endTime) {
         this.startTime = startTime.replaceAll("'", "");
         this.endTime = endTime.replaceAll("'", "");
+        days = Days.daysBetween(getStartTime().withTimeAtStartOfDay() , getEndTime().withTimeAtStartOfDay() ).getDays() + 1;
+    }
+
+    /**
+     * Interval should be of form 2014-10-31T00:00:00.000-07:00/2014-11-01T00:00:00.000-07:00
+     * @param interval 
+     */
+    public Interval(String interval) {
+        String[] dates = interval.split("/");
+        Preconditions.checkArgument(dates.length == 2);
+        this.startTime = dates[0].replaceAll("'", "");
+        this.endTime = dates[1].replaceAll("'", "");
         days = Days.daysBetween(getStartTime().withTimeAtStartOfDay() , getEndTime().withTimeAtStartOfDay() ).getDays() + 1;
     }
 
@@ -51,5 +64,9 @@ public class Interval {
     @Override
     public String toString() {
         return String.format("%s/%s", startTime, endTime);
+    }
+    
+    public boolean fallsIn(Interval range) {
+        return range.getStartTime().isBefore(getStartTime()) && range.getEndTime().isAfter(getEndTime());
     }
 }

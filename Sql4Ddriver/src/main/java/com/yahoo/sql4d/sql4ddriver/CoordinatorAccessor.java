@@ -11,6 +11,8 @@
  */
 package com.yahoo.sql4d.sql4ddriver;
 
+import com.google.common.collect.Lists;
+import com.yahoo.sql4d.query.nodes.Interval;
 import java.io.IOException;
 import static java.lang.String.format;
 import java.util.ArrayList;
@@ -30,20 +32,23 @@ import scala.Tuple2;
 
 /**
  * Coordinator commands.
+ *
  * @author srikalyan
  */
 public class CoordinatorAccessor extends DruidNodeAccessor {
+
     private final String coordinatorUrl = "http://%s:%d/";
     private final String coordinatorHost;
     private int coordinatorPort = 8082;
+
     public CoordinatorAccessor(String host, int port) {
         this.coordinatorHost = host;
         this.coordinatorPort = port;
     }
-    
+
     /**
-     * All commands.
-     * If data is null then GET else POST.
+     * All commands. If data is null then GET else POST.
+     *
      * @return
      */
     private Either<String, Either<JSONArray, JSONObject>> fireCommand(String endPoint, String optData) {
@@ -51,20 +56,20 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
         String respStr;
         String url = format(coordinatorUrl + endPoint, coordinatorHost, coordinatorPort);
         try {
-            Request req = (optData != null)?Request.Post(url).bodyString(optData, ContentType.APPLICATION_JSON):Request.Get(url);
-                    req = req.connectTimeout(1000).socketTimeout(1000);
+            Request req = (optData != null) ? Request.Post(url).bodyString(optData, ContentType.APPLICATION_JSON) : Request.Get(url);
+            req = req.connectTimeout(1000).socketTimeout(1000);
             if (PROXY_HOST != null) {
-                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
+                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));
             }
             resp = req.execute();
             respStr = resp.returnContent().asString();
         } catch (IOException ex) {
-            return new Left<>(format("Http %s \n", resp));        
+            return new Left<>(format("Http %s \n", resp));
         }
         try {
             return new Right<>(asJsonType(respStr));
         } catch (JSONException je) {
-            return new Left<>(format("Recieved data %s not in json format. \n",respStr));
+            return new Left<>(format("Recieved data %s not in json format. \n", respStr));
         }
     }
 
@@ -113,6 +118,50 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
             }
         }
         return new Left<>("Unexpected response " + goodResp.left().get().toString());
+    }
+
+    public List<String> getDimensions(String name) {
+        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name);
+        if (aboutDataSource.isLeft()) {
+            return Lists.newArrayList();
+        } 
+        return aboutDataSource.right().get()._1();
+    }
+
+    public List<String> getMetrics(String name) {
+        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name);
+        if (aboutDataSource.isLeft()) {
+            return Lists.newArrayList();
+        } 
+        return aboutDataSource.right().get()._2();
+    }
+    /**
+     * Ex:response looks something like this.
+     * [{"dataSource":"abf2","interval":"2014-10-31T00:00:00.000-07:00/2014-11-01T00:00:00.000-07:00","version":"2014-11-13T21:53:23.982-08:00","loadSpec":{..},..},
+     * {"dataSource":"abf2","interval":"2014-11-01T00:00:00.000-07:00/2014-11-02T00:00:00.000-07:00","version":"2014-11-13T22:01:23.554-08:00","loadSpec":{..},..}
+     * .... ]
+     *
+     * @param dataSource
+     * @return List[intervals] Ex:
+     * ["2014-10-31T00:00:00.000-07:00/2014-11-01T00:00:00.000-07:00",
+     * "2014-11-01T00:00:00.000-07:00/2014-11-02T00:00:00.000-07:00" .. ]
+     */
+    public Either<String, List<Interval>> segments(String dataSource) {
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + dataSource + "/segments?full", null);
+        if (resp.isLeft()) {
+            return new Left<>(resp.left().get());
+        }
+        Either<JSONArray, JSONObject> mayBgoodResp = resp.right().get();
+        if (mayBgoodResp.isLeft()) {
+            JSONArray segments = mayBgoodResp.left().get();
+            List<Interval> segmentsList = new ArrayList<>();
+            for (int i = 0; i < segments.length(); i++) {
+                JSONObject segment = segments.getJSONObject(i);
+                segmentsList.add(new Interval(segment.getString("interval")));
+            }
+            return new Right<>(segmentsList);
+        }
+        return new Left<>(mayBgoodResp.right().get().toString());
     }
 
     private Either<JSONArray, JSONObject> asJsonType(String str) throws JSONException {

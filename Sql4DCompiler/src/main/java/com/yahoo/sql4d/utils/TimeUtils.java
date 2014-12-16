@@ -9,7 +9,7 @@
  * governing permissions and limitations under the License. See accompanying
  * LICENSE file.
  */
-package com.yahoo.sql4d;
+package com.yahoo.sql4d.utils;
 
 import com.google.common.collect.ImmutableMap;
 import org.joda.time.DateTime;

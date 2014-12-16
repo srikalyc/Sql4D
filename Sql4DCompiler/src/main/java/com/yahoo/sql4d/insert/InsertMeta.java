@@ -12,6 +12,7 @@
 package com.yahoo.sql4d.insert;
 
 import com.yahoo.sql4d.BaseStatementMeta;
+import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.query.nodes.AggItem;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
  *
  * @author srikalyan
  */
-public class InsertMeta extends BaseStatementMeta {
+public class InsertMeta extends CrudStatementMeta {
 
     public List<AggItem> aggregations = new ArrayList<>();
     public Map<String, String> fetchDimensions = new LinkedHashMap<>();

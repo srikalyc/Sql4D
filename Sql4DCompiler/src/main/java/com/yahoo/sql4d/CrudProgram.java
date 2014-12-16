@@ -10,32 +10,11 @@
  */
 package com.yahoo.sql4d;
 
-import com.yahoo.sql4d.delete.DeleteMeta;
-
 /**
- * One Delete Meta.
+ * One or more insert meta.
  * @author srikalyan
+ * @param <T>
  */
-public class DeleteProgram extends CrudProgram<DeleteMeta>{
-    public DeleteProgram() {
-        this.type = Type.DELETE;
-    }
-    
-    @Override
-    public String toString() {
-        StringBuilder buffer = new StringBuilder();
-        for (DeleteMeta dMeta: getAllStmnts()) {
-            System.out.println(dMeta.toString());
-        }
-        return buffer.toString();
-    }
-    
-    /**
-     * TODO: Do all semantic checks here. 1st field should be timestamp.
-     * @throws java.lang.Exception
-     */
-    @Override
-    public void isValid() throws Exception {
-    }
-
+public abstract class CrudProgram<T extends CrudStatementMeta> extends Program<T>{
+    public boolean waitForCompletion = true;
 }

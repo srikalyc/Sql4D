@@ -42,6 +42,8 @@ program	returns [Program program]
 @init { program = null; }
 	: (s1=grandQuery) { program = s1; } 
 	| (s2=grandInsert) { program = s2; } 
+	| (s3=grandDelete) { program = s3; } 
+	| (s4=grandDrop) { program = s4; } 
 	;
 
 grandDelete  returns [DeleteProgram program]
@@ -66,7 +68,7 @@ grandInsert  returns [InsertProgram program]
 
 deleteStmnt returns [DeleteMeta dMeta]
 @init { dMeta = new DeleteMeta();      }
-	:DELETE WS FROM WS (id=ID {dMeta.dataSource = $id.text; })
+	:DELETE WS FROM WS (id=ID {dMeta.dataSource = $id.text; } WS)
 	 WHERE WS i=intervalClause	  
 	{ // We set this later after granularitySpec object is fully formed.
 	  if (i!= null && !i.isEmpty()) {

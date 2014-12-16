@@ -11,7 +11,7 @@
 package com.yahoo.sql4d.delete;
 
 import com.yahoo.sql4d.query.nodes.*;
-import static com.yahoo.sql4d.Utils.*;
+import static com.yahoo.sql4d.utils.Utils.*;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;

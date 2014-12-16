@@ -45,6 +45,12 @@ public abstract class Program<T extends BaseStatementMeta> {
     public int numStmnts() {
         return stmnts.size();
     }
+    
+    public void print(boolean toConsole) {
+        if (toConsole) {
+            System.out.println(toString());
+        }
+    }
     /**
      * Do all semantic checks here.
      * @throws java.lang.Exception

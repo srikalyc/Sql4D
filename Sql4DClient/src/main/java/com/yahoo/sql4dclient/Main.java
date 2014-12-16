@@ -56,6 +56,11 @@ public class Main {
     private static int coordinatorPort = 8082;
     private static String overlordHost = "";
     private static int overlordPort = 8087;
+    private static String mysqlHost = "";
+    private static int mysqlPort = 3306;
+    private static String mysqlId = "";
+    private static String mysqlPasswd = "";
+    private static String mysqlDbName = "";
     private static String proxyHost = null;
     private static int proxyPort = 3128;
     
@@ -88,7 +93,11 @@ public class Main {
         options.addOption("cp", "coordinator_port", true, "Druid coordinator node port");
         options.addOption("oh", "overlord_host", true, "Druid overlord node hostname/Ip");
         options.addOption("op", "overlord_port", true, "Druid overlord node port");
-        options.addOption("ph", "proxy_host", true, "Druid proxy node hostname/Ip");
+        options.addOption("mh", "mysql_host", true, "Druid MySql hostname/Ip");
+        options.addOption("mp", "mysql_port", true, "Druid MySql node port");
+        options.addOption("mid", "mysql_id", true, "Druid MySql user Id");
+        options.addOption("mpw", "mysql_passwd", true, "Druid MySql password");
+        options.addOption("mdb", "mysql_dbname", true, "Druid MySql db name");
         options.addOption("pp", "proxy_port", true, "Druid proxy node port");
         options.addOption("i", "history", true, "Number of commands in history");
         parser = new BasicParser();
@@ -102,7 +111,7 @@ public class Main {
     }
     
     private static void printHelp() {
-        println(" 1. select queries        (GroupBy, TimeSeries, TopN, Select, Search). See wiki for examples: https://github.com/srikalyc/Sql4D/wiki/Sql4DCompiler");
+        println(" 1. select/crud statements   (GroupBy, TimeSeries, TopN, Select, Search, Insert). See wiki for examples: https://github.com/srikalyc/Sql4D/wiki/Sql4DCompiler");
         println(" 2. generatebean=BeanName (This command must be preceding a SQL, it generates a java source file BeanName.java which extends DruidBaseBean.");
         println(" 3. trace=[true|false]    (When enabled prints out compiled JSON query)");
         println(" 4. querymode=[sql|json]  (Default is sql, when mode is json it is fired directly)");
@@ -129,8 +138,14 @@ public class Main {
             coordinatorPort = Integer.parseInt(getOptionValue(cmd, "cp", "coordinator_port"));
             overlordHost = getOptionValue(cmd, "oh", "overlord_host");
             overlordPort = Integer.parseInt(getOptionValue(cmd, "op", "overlord_port"));
+            mysqlHost = getOptionValue(cmd, "mh", "mysql_host");
+            mysqlPort = Integer.parseInt(getOptionValue(cmd, "mp", "mysql_port"));
+            mysqlId = getOptionValue(cmd, "mid", "mysql_id");
+            mysqlPasswd = getOptionValue(cmd, "mpw", "mysql_passwd");
+            mysqlDbName = getOptionValue(cmd, "mdb", "mysql_dbname");
             
-            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, overlordPort);
+            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, 
+                    overlordPort, mysqlHost, mysqlPort, mysqlId, mysqlPasswd, mysqlDbName);
             proxyHost = getOptionValue(cmd, "ph", "proxy_host");
             if (proxyHost != null) {
                 proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port"));
@@ -360,9 +375,6 @@ public class Main {
     
     public static void main(String[] args) {
         init(args);
-        history = new CircularBuffer<>(10);
-//        trace = true;
-//        runCommand("SELECT LONG_SUM(count) AS count, content_thumbnail_url AS content_thumb, content_uuid AS content_uuid, uri AS content_click_url, content_publish_time AS content_published_date, is_deleted AS content_deleted, content_type AS content_type FROM cmeta_v5 WHERE interval BETWEEN 2012-05-30T00:00:00.000-04:00 AND 2014-05-31T23:00:00.000-04:00 AND provider_id='wall_street_journal_733' AND content_type='cavideo' BREAK BY 'all' GROUP BY content_uuid,content_click_url,content_published_date,content_deleted,content_thumb,content_type ORDER BY count LIMIT 5;");
         readCommands();
     }
 }

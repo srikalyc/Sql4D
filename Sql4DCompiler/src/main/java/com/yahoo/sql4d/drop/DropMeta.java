@@ -11,7 +11,7 @@
  */
 package com.yahoo.sql4d.drop;
 
-import com.yahoo.sql4d.BaseStatementMeta;
+import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.query.nodes.Interval;
 import java.util.Map;
 import org.joda.time.DateTime;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
  *
  * @author srikalyan
  */
-public class DropMeta extends BaseStatementMeta {
+public class DropMeta extends CrudStatementMeta {
 
     public String id;// UUid
     private Interval interval = null;// This could be filled with time boundary result.

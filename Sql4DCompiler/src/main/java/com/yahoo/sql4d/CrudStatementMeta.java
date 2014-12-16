@@ -10,32 +10,15 @@
  */
 package com.yahoo.sql4d;
 
-import com.yahoo.sql4d.delete.DeleteMeta;
-
 /**
- * One Delete Meta.
+ * Base class for all CRUD sql statement types.
  * @author srikalyan
  */
-public class DeleteProgram extends CrudProgram<DeleteMeta>{
-    public DeleteProgram() {
-        this.type = Type.DELETE;
-    }
-    
-    @Override
-    public String toString() {
-        StringBuilder buffer = new StringBuilder();
-        for (DeleteMeta dMeta: getAllStmnts()) {
-            System.out.println(dMeta.toString());
-        }
-        return buffer.toString();
-    }
-    
-    /**
-     * TODO: Do all semantic checks here. 1st field should be timestamp.
-     * @throws java.lang.Exception
-     */
-    @Override
-    public void isValid() throws Exception {
+public abstract class CrudStatementMeta extends BaseStatementMeta {
+    public CrudStatementMeta() {
     }
 
+    public CrudStatementMeta(String dataSource) {
+        this.dataSource = dataSource;
+    }
 }

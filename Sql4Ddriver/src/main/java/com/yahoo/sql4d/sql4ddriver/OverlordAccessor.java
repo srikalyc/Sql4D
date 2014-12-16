@@ -11,7 +11,7 @@
  */
 package com.yahoo.sql4d.sql4ddriver;
 
-import com.yahoo.sql4d.insert.InsertMeta;
+import com.yahoo.sql4d.CrudStatementMeta;
 import java.io.IOException;
 import static java.lang.String.format;
 import org.apache.http.HttpHost;
@@ -41,7 +41,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
      * @param wait 
      * @return  
      */
-    public String fireTask(InsertMeta meta, boolean wait) {
+    public String fireTask(CrudStatementMeta meta, boolean wait) {
         Response resp = null;
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
@@ -60,6 +60,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
                 return "Task submitted , task Id " + respJson;
             }
         } catch (IOException ex) {
+            ex.printStackTrace();
             return format("Http %s \n", ex);
         }
     }

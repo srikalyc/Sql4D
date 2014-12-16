@@ -16,8 +16,7 @@ import com.yahoo.sql4d.drop.DropMeta;
  * One Drop Meta.
  * @author srikalyan
  */
-public class DropProgram extends Program<DropMeta>{
-    public boolean waitForCompletion = false;
+public class DropProgram extends CrudProgram<DropMeta>{
     public DropProgram() {
         this.type = Type.DROP;
     }

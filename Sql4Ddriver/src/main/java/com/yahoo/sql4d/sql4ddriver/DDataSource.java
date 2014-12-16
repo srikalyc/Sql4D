@@ -12,10 +12,13 @@
 package com.yahoo.sql4d.sql4ddriver;
 
 import com.yahoo.sql4d.BaseStatementMeta;
+import com.yahoo.sql4d.CrudProgram;
+import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.query.RequestType;
 import static com.yahoo.sql4d.sql4ddriver.Util.*;
 
 import com.yahoo.sql4d.DCompiler;
+import com.yahoo.sql4d.DeleteProgram;
 import com.yahoo.sql4d.InsertProgram;
 import com.yahoo.sql4d.Program;
 import com.yahoo.sql4d.QueryProgram;
@@ -23,8 +26,10 @@ import com.yahoo.sql4d.delete.DeleteMeta;
 import com.yahoo.sql4d.drop.DropMeta;
 import com.yahoo.sql4d.insert.InsertMeta;
 import com.yahoo.sql4d.query.QueryMeta;
+import com.yahoo.sql4d.query.nodes.Interval;
 import com.yahoo.sql4d.query.select.SelectQueryMeta;
 import com.yahoo.sql4d.sql4ddriver.rowmapper.DruidBaseBean;
+import com.yahoo.sql4d.sql4ddriver.sql.MysqlAccessor;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
@@ -32,6 +37,7 @@ import scala.Either;
 import scala.Left;
 import scala.Right;
 import scala.Tuple2;
+
 /**
  * TODO: Use logger. Database driver interface for druid SQL. Does not conform
  * to DataSource. Druid response can be like
@@ -57,19 +63,25 @@ public class DDataSource {
     private OverlordAccessor overlord; 
     
     private NamedParameters namedParams;
-
+    private MysqlAccessor dbAccessor;
+    
     public DDataSource(String bHost, int bPort) {
-        broker = new BrokerAccessor(bHost, bPort);
+        this(bHost, bPort, null, 0);
     }
 
     public DDataSource(String bHost, int bPort, String cHost, int cPort) {
-        this(bHost, bPort);
-        coordinator = new CoordinatorAccessor(cHost, cPort);
+        this(bHost, bPort, cHost, cPort, null, 0);
     }
 
     public DDataSource(String bHost, int bPort, String cHost, int cPort, String oHost, int oPort) {
-        this(bHost, bPort, cHost, cPort);
+        this(bHost, bPort, cHost, cPort, oHost, oPort, "localhost", 3306, "druid", "diurd", "druid");
+    }
+
+    public DDataSource(String bHost, int bPort, String cHost, int cPort, String oHost, int oPort, String sqlHost, int sqlPort, String sqlId, String sqlPasswd, String dbName) {
+        broker = new BrokerAccessor(bHost, bPort);
+        coordinator = new CoordinatorAccessor(cHost, cPort);
         overlord = new OverlordAccessor(oHost, oPort);
+        dbAccessor = new MysqlAccessor(sqlHost, sqlPort, sqlId, sqlPasswd, dbName);
     }
 
     public void setProxy(String pHost, int pPort) {
@@ -93,8 +105,9 @@ public class DDataSource {
      *
      * @param sqlQuery
      * @return
+     * @throws java.lang.Exception
      */
-    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery) {
+    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery) throws Exception {
         Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery));
         for (BaseStatementMeta stmnt : pgm.getAllStmnts()) {
             if (stmnt instanceof QueryMeta) {
@@ -102,9 +115,10 @@ public class DDataSource {
                 if (query.queryType == RequestType.SELECT) {//classifyColumnsToDimAndMetrics
                     Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = coordinator.aboutDataSource(stmnt.dataSource);
                     if (dataSourceDescRes.isLeft()) {
-                        println(dataSourceDescRes.left().get());
+                        throw new Exception("Datasource info either not available (or)could not be loaded ." + dataSourceDescRes.left().get());
+                    } else {
+                        ((SelectQueryMeta) query).postProcess(dataSourceDescRes.right().get());
                     }
-                    ((SelectQueryMeta) query).postProcess(dataSourceDescRes.right().get());
                 }
             } else if (stmnt instanceof InsertMeta) {//TODO: Handle this.
 
@@ -114,11 +128,8 @@ public class DDataSource {
 
             }
         }
-        try {
-            pgm.isValid();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        //TODO: Do something if pgm is invalid !!!
+        pgm.isValid();
         return pgm;
     }
 
@@ -134,7 +145,12 @@ public class DDataSource {
      * @return
      */
     public <T extends DruidBaseBean> Either<String, Either<List<T>, Map<Object, T>>> query(String sqlQuery, Class<T> rowMapper, boolean printToConsole) {
-        Program pgm = getCompiledAST(sqlQuery);
+        Program pgm;
+        try {
+            pgm = getCompiledAST(sqlQuery);
+        } catch (Exception ex) {
+            return new Left<>(ex.getMessage());
+        }
         if (!(pgm instanceof QueryProgram)) {
             throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
         }
@@ -183,6 +199,33 @@ public class DDataSource {
     }
 
     /**
+     * TODO: This method is still buggy and fully implemented.
+     * Common interface to Insert , Delete, Drop(but not coordinator commands).
+     * @param sqlOrJsonQuery
+     * @param printToConsole
+     * @param queryMode
+     * @param forceAsync
+     * @return 
+     */
+    public String crud(String sqlOrJsonQuery, boolean printToConsole, String queryMode, boolean forceAsync) {
+        if ("json".equals(queryMode)) {//TODO : #19
+        }
+        Program pgm;
+        try {
+            pgm = getCompiledAST(sqlOrJsonQuery);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+        if (printToConsole) {
+            println(pgm.toString());
+        }
+        if (pgm instanceof CrudProgram) {
+            CrudProgram cPgm = (CrudProgram) pgm;
+            return overlord.fireTask((CrudStatementMeta)cPgm.nthStmnt(0), cPgm.waitForCompletion && !forceAsync);
+        }
+        return "Could not execute the program " + pgm;
+    }
+    /**
      * Common interface to Query, Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
      * @param printToConsole
@@ -190,19 +233,55 @@ public class DDataSource {
      * @return 
      */
     public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, boolean printToConsole, String queryMode) {
-        if ("json".equals(queryMode)) {
+        if ("json".equals(queryMode)) {//TODO : #19
             Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(sqlOrJsonQuery, true);
             if (result.isLeft()) return new Left<>(result.left().get());
-            
             if (printToConsole) {
                 println(result.right().get().left().get().toString());
             }
             return new Right<String, Either<Joiner4All, Mapper4All>>(new Right<Joiner4All, Mapper4All>(result.right().get().left().get()));
         }
-        Program pgm = getCompiledAST(sqlOrJsonQuery);
-        if (printToConsole) {
-            println(pgm.toString());
+        Program pgm;
+        try {
+            pgm = getCompiledAST(sqlOrJsonQuery);
+        } catch (Exception ex) {
+            return new Left<>(ex.getMessage());
         }
+        if (pgm instanceof DeleteProgram) {
+            DeleteProgram dPgm = (DeleteProgram) pgm;
+            DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
+//            Either<String, List<Interval>> allSegments = segments(dMeta.dataSource);
+//            if (allSegments.isLeft()) {
+//                return new Left<>(allSegments.left().get());
+//            }
+//            dMeta.filterSegments(allSegments.right().get());
+            
+            dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
+
+            //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
+            dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
+            dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+            pgm.print(printToConsole);
+            return new Left<>(overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion));
+        } else if (pgm instanceof DeleteProgram) {
+            DeleteProgram dPgm = (DeleteProgram) pgm;
+            DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
+//            Either<String, List<Interval>> allSegments = segments(dMeta.dataSource);
+//            if (allSegments.isLeft()) {
+//                return new Left<>(allSegments.left().get());
+//            }
+//            dMeta.filterSegments(allSegments.right().get());
+            
+            dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
+
+            //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
+            dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
+            dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+            pgm.print(printToConsole);
+            return new Left<>(overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion));
+        }
+
+        pgm.print(printToConsole);
         if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
             return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), iPgm.waitForCompletion));
@@ -245,6 +324,10 @@ public class DDataSource {
         return coordinator.aboutDataSource(dataSrc);
     }
     
+    public Either<String, List<Interval>> segments(String dataSource) {
+        return coordinator.segments(dataSource);
+    }
+    
     public static void main(String[] args) {
         String q = "SELECT timestamp, LONG_SUM(count) AS edit_count, DOUBLE_SUM(added) AS chars_added FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z BREAK BY 'minute' HINT('timeseries');";
         String q1 = "SELECT timestamp, page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01 AND 2020-01-01 AND country='United States' BREAK BY 'all' GROUP BY page  ORDER BY edit_count DESC LIMIT 10;";
@@ -252,17 +335,5 @@ public class DDataSource {
         DDataSource driver = new DDataSource("localhost", 4080, "localhost", 8082, null, 3128);
         Either<String, Either<Joiner4All, Mapper4All>> result = driver.query(q, true, "sql");
         System.out.println(result.right().get().right().get());
-//        Either<String,Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>>> result2 = driver.query(join, TimeSeriesBean.class, true);
-//        if (result2.isRight()) {
-//            Either<List<TimeSeriesBean>,Map<Object,TimeSeriesBean>> grandRes =  result2.right().get();
-//             if (grandRes.isLeft()) {
-//                 List<TimeSeriesBean> joiner4All = grandRes.left().get();
-//                 PrettyPrint.print(joiner4All);
-//             } else {
-//                 Map<Object,TimeSeriesBean> mapper4All = grandRes.right().get();
-//                 println(mapper4All.toString());
-//             }
-//        }
-
     }
 }

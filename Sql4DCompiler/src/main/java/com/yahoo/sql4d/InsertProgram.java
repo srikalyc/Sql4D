@@ -16,8 +16,7 @@ import com.yahoo.sql4d.insert.InsertMeta;
  * One or more insert meta.
  * @author srikalyan
  */
-public class InsertProgram extends Program<InsertMeta>{
-    public boolean waitForCompletion = true;
+public class InsertProgram extends CrudProgram<InsertMeta>{
     public static InsertProgram getInsertInstance() {
         return new InsertProgram(Type.INSERT);
     } 

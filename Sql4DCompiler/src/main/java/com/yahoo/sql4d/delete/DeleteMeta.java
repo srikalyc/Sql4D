@@ -11,8 +11,13 @@
  */
 package com.yahoo.sql4d.delete;
 
-import com.yahoo.sql4d.BaseStatementMeta;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.query.nodes.Interval;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
 import org.json.JSONObject;
@@ -22,10 +27,13 @@ import org.json.JSONObject;
  *
  * @author srikalyan
  */
-public class DeleteMeta extends BaseStatementMeta {
+public class DeleteMeta extends CrudStatementMeta {
 
     public String id;// UUid
     public Interval interval = null;
+    public List<Interval> segmentsToDelete = null;// This will be determined at runtime.
+    public List<String> dimensions = new ArrayList<>();// This will be determined at runtime.
+    public List<String> metrics = new ArrayList<>();// This will be determined at runtime.
 
     public DeleteMeta() {
     }
@@ -33,7 +41,6 @@ public class DeleteMeta extends BaseStatementMeta {
     public DeleteMeta(String dataSource, Interval interval) {
         super(dataSource);
         this.interval = interval;
-        id = String.format("delete_%s_%s_%s_%s", dataSource, interval.getStartTime(), interval.getEndTime(), new DateTime().toString());
     }
 
     @Override
@@ -45,11 +52,25 @@ public class DeleteMeta extends BaseStatementMeta {
     public JSONObject getJson() {
         return new JSONObject(getDataMap());
     }
+    /**
+     * Retain segments only overlapping with the range.
+     * @param allSegments 
+     */
+    public void filterSegments(List<Interval> allSegments) {
+        segmentsToDelete = Lists.newArrayList(Iterables.filter(allSegments, new Predicate<Interval>() {
+            @Override
+            public boolean apply(Interval i) {
+                return i.fallsIn(interval);
+            }
+        }));
+    }
 
     @Override
     public Map<String, Object> getDataMap() {
+        // For each instance of data generation generate a new id.
+        id = String.format("kill_%s_%s_%s_%s", dataSource, interval.getStartTime(), interval.getEndTime(), new DateTime().toString());
         Map<String, Object> map = super.getDataMap();
-        map.put("type", "delete");
+        map.put("type", "kill");
         map.put("dataSource", dataSource);
         map.put("interval", interval.toString());
         map.put("id", id);
