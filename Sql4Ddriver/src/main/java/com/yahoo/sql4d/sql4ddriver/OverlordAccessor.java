@@ -14,10 +14,8 @@ package com.yahoo.sql4d.sql4ddriver;
 import com.yahoo.sql4d.CrudStatementMeta;
 import java.io.IOException;
 import static java.lang.String.format;
-import org.apache.http.HttpHost;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
-import org.apache.http.entity.ContentType;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONObject;
 
 /**
@@ -31,6 +29,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
     private static final int MAX_WAIT_TIME = 10000;// 10 secs
     
     public OverlordAccessor(String host, int port) {
+        super(host, port);
         this.overlordHost = host;
         this.overlordPort = port;
     }
@@ -42,15 +41,12 @@ public class OverlordAccessor extends DruidNodeAccessor {
      * @return  
      */
     public String fireTask(CrudStatementMeta meta, boolean wait) {
-        Response resp = null;
+        CloseableHttpResponse resp = null;
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
-            Request req = Request.Post(url).bodyString(meta.toString(), ContentType.APPLICATION_JSON).connectTimeout(1000).socketTimeout(1000);
-            if (PROXY_HOST != null) {
-                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
-            }
-            resp = req.execute();
-            JSONObject respJson = new JSONObject(resp.returnContent().asString());
+            resp = postJson(url, meta.toString());
+            //TODO: Check for nulls in the following.
+            JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
             if (wait) {
                 if (waitForTask(respJson.getString("task"))) {
                     return "Task completed successfully , task Id " + respJson;
@@ -62,6 +58,8 @@ public class OverlordAccessor extends DruidNodeAccessor {
         } catch (IOException ex) {
             ex.printStackTrace();
             return format("Http %s \n", ex);
+        } finally {
+            returnClient(resp);
         }
     }
 
@@ -72,15 +70,12 @@ public class OverlordAccessor extends DruidNodeAccessor {
         String statusStr = "Task failed ..";
         OUTER:
         while (endT - startT < MAX_WAIT_TIME) {
-            Response resp = null;        
+            CloseableHttpResponse resp = null;
             String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
             try {
-                Request req = Request.Get(url).connectTimeout(1000).socketTimeout(1000);
-                if (PROXY_HOST != null) {
-                    req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
-                }
-                resp = req.execute();
-                JSONObject respJson = new JSONObject(resp.returnContent().asString());
+                resp = get(url);
+                //TODO: Check for nulls in the following.
+                JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
                 JSONObject status = respJson.getJSONObject("status");
                 endT = System.currentTimeMillis();
                 if (null != status.getString("status")) {
@@ -95,8 +90,10 @@ public class OverlordAccessor extends DruidNodeAccessor {
                             break OUTER;
                     }
                 }
-            }catch (IOException ex) {
+            } catch (IOException ex) {
                 System.err.println(format("Http %s \n", ex));
+            } finally {
+                returnClient(resp);
             }
         }
         System.err.println(statusStr);

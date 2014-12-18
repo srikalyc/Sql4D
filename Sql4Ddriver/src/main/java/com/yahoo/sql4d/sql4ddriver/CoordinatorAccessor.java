@@ -18,10 +18,8 @@ import static java.lang.String.format;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.http.HttpHost;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
-import org.apache.http.entity.ContentType;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +40,7 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
     private int coordinatorPort = 8082;
 
     public CoordinatorAccessor(String host, int port) {
+        super(host, port);
         this.coordinatorHost = host;
         this.coordinatorPort = port;
     }
@@ -52,19 +51,20 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * @return
      */
     private Either<String, Either<JSONArray, JSONObject>> fireCommand(String endPoint, String optData) {
-        Response resp = null;
+        CloseableHttpResponse resp = null;
         String respStr;
         String url = format(coordinatorUrl + endPoint, coordinatorHost, coordinatorPort);
         try {
-            Request req = (optData != null) ? Request.Post(url).bodyString(optData, ContentType.APPLICATION_JSON) : Request.Get(url);
-            req = req.connectTimeout(1000).socketTimeout(1000);
-            if (PROXY_HOST != null) {
-                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));
+            if (optData != null) {// POST
+                resp = postJson(url, optData);
+            } else {// GET
+                resp = get(url);
             }
-            resp = req.execute();
-            respStr = resp.returnContent().asString();
+            respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
             return new Left<>(format("Http %s \n", resp));
+        } finally {
+            returnClient(resp);
         }
         try {
             return new Right<>(asJsonType(respStr));

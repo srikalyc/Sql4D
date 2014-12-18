@@ -37,7 +37,7 @@ import scala.Tuple2;
  *
  * @author srikalyan
  */
-public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, Connection>>{
+public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, Connection>> {
 
     private final String connectorUrl = "jdbc:mysql://%s:%d/%s?autoReconnectForPools=true";
     private String host = "localhost";
@@ -45,7 +45,7 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
     private String id = "druid";//druid by default.
     private String password = "diurd";//diurd by default.
     private String db = "druid";//druid by default
-    private ObjectPool<Connection> pool = null ;
+    private ObjectPool<Tuple2<DataSource, Connection>> pool = null ;
 
     static {
         try {
@@ -92,7 +92,27 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
         return new Tuple2<>(ds, ds.getConnection());
     }
 
-    public Connection getConnection() {
+    @Override
+    public void destroyObject(Tuple2<DataSource, Connection> connTuple) throws Exception {
+        connTuple._2().close();
+    }
+
+    @Override
+    public boolean validateObject(Tuple2<DataSource, Connection> conn) {
+        try {
+            return conn._2().isValid(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            try {//Could be due to stale connection. Invalidate the object.
+                pool.invalidateObject(conn);
+            } catch (Exception ex1) {//TODO: Something serious with DB.
+                Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        return false;
+    }
+    
+    public Tuple2<DataSource, Connection> getConnection() {
         try {
             return pool.borrowObject();
         } catch (Exception ex) {
@@ -100,9 +120,20 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
         }
         return null;
     }
-    
+
+    public void returnConnection(Tuple2<DataSource, Connection> con) {
+        try {
+            if (con != null) {
+                pool.returnObject(con);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void shutdown() {
         try {
+            pool.clear();
             pool.close();
         } catch (Exception ex) {
             Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,12 +142,15 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
     
     public List<Map<String, Object>> query(Map<String, String> params, String query) {
         List<Map<String, Object>> result = null;
+        Tuple2<DataSource, Connection> conn = null;
         try {
-            Tuple2<DataSource, Connection> conn = makeObject();
+            conn = getConnection();
             NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(conn._1());
             result = jdbcTemplate.queryForList(query, params);
         } catch (Exception ex) {
             Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            returnConnection(conn);
         }
         return result;
     }
@@ -129,8 +163,9 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
      */
     public boolean execute(Map<String, String> params, String query) {
         final AtomicBoolean result = new AtomicBoolean(false);
+        Tuple2<DataSource, Connection> conn = null;
         try {
-            Tuple2<DataSource, Connection> conn = makeObject();
+            conn = getConnection();
             NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(conn._1());
             jdbcTemplate.execute(query, params, new PreparedStatementCallback<Void>() {
                 @Override
@@ -146,6 +181,8 @@ public class MysqlAccessor extends BasePoolableObjectFactory<Tuple2<DataSource, 
         } catch (Exception ex) {
             Logger.getLogger(MysqlAccessor.class.getName()).log(Level.SEVERE, null, ex);
             result.set(false);
+        } finally {
+            returnConnection(conn);
         }
         return result.get();
     }

@@ -15,10 +15,8 @@ import com.yahoo.sql4d.query.nodes.Interval;
 import java.io.IOException;
 import static java.lang.String.format;
 import java.util.List;
-import org.apache.http.HttpHost;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
-import org.apache.http.entity.ContentType;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import scala.Either;
@@ -34,6 +32,7 @@ public class BrokerAccessor extends DruidNodeAccessor {
     private int brokerPort = 4080;
     private final String brokerUrl = "http://%s:%d/druid/v2/?pretty";
     public BrokerAccessor(String host, int port) {
+        super(host, port);
         this.brokerHost = host;
         this.brokerPort = port;
     }
@@ -46,18 +45,16 @@ public class BrokerAccessor extends DruidNodeAccessor {
      * @return
      */
     public Either<String, Either<Mapper4All, JSONArray>> fireQuery(String jsonQuery, boolean requiresMapping) {
-        Response resp = null;
+        CloseableHttpResponse resp = null;
         String respStr;
         String url = format(brokerUrl, brokerHost, brokerPort);
         try {
-            Request req = Request.Post(url).bodyString(jsonQuery, ContentType.APPLICATION_JSON).connectTimeout(1000).socketTimeout(1000);
-            if (PROXY_HOST != null) {
-                req = req.viaProxy(new HttpHost(PROXY_HOST, PROXY_PORT));          
-            }
-            resp = req.execute();
-            respStr = resp.returnContent().asString();
+            resp = postJson(url, jsonQuery);
+            respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
             return new Left<>(format("Http %s \n", resp));        
+        } finally {
+            returnClient(resp);
         }
         JSONArray possibleResArray = null;
         try {
