@@ -132,40 +132,40 @@ public class Main {
                      || !cmd.hasOption("i")) {
                 printUsage();
             }
-            brokerHost = getOptionValue(cmd, "bh", "broker_host");
-            brokerPort = Integer.parseInt(getOptionValue(cmd, "bp", "broker_port"));
-            coordinatorHost = getOptionValue(cmd, "ch", "coordinator_host");
-            coordinatorPort = Integer.parseInt(getOptionValue(cmd, "cp", "coordinator_port"));
-            overlordHost = getOptionValue(cmd, "oh", "overlord_host");
-            overlordPort = Integer.parseInt(getOptionValue(cmd, "op", "overlord_port"));
-            mysqlHost = getOptionValue(cmd, "mh", "mysql_host");
-            mysqlPort = Integer.parseInt(getOptionValue(cmd, "mp", "mysql_port"));
-            mysqlId = getOptionValue(cmd, "mid", "mysql_id");
-            mysqlPasswd = getOptionValue(cmd, "mpw", "mysql_passwd");
-            mysqlDbName = getOptionValue(cmd, "mdb", "mysql_dbname");
+            brokerHost = getOptionValue(cmd, "bh", "broker_host", null);
+            brokerPort = Integer.parseInt(getOptionValue(cmd, "bp", "broker_port", null));
+            coordinatorHost = getOptionValue(cmd, "ch", "coordinator_host", null);
+            coordinatorPort = Integer.parseInt(getOptionValue(cmd, "cp", "coordinator_port", null));
+            overlordHost = getOptionValue(cmd, "oh", "overlord_host", null);
+            overlordPort = Integer.parseInt(getOptionValue(cmd, "op", "overlord_port", null));
+            mysqlHost = getOptionValue(cmd, "mh", "mysql_host", "localhost");
+            mysqlPort = Integer.parseInt(getOptionValue(cmd, "mp", "mysql_port", "3306"));
+            mysqlId = getOptionValue(cmd, "mid", "mysql_id", "druid");
+            mysqlPasswd = getOptionValue(cmd, "mpw", "mysql_passwd", "diurd");
+            mysqlDbName = getOptionValue(cmd, "mdb", "mysql_dbname", "druid");
             
             dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, 
                     overlordPort, mysqlHost, mysqlPort, mysqlId, mysqlPasswd, mysqlDbName);
-            proxyHost = getOptionValue(cmd, "ph", "proxy_host");
+            proxyHost = getOptionValue(cmd, "ph", "proxy_host", null);
             if (proxyHost != null) {
-                proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port"));
+                proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port", "1234"));
                 dDriver.setProxy(proxyHost, proxyPort);
             }
             
-            history = new CircularBuffer<>(Integer.parseInt(getOptionValue(cmd, "i", "history")));
+            history = new CircularBuffer<>(Integer.parseInt(getOptionValue(cmd, "i", "history", "50")));
             
         } catch (ParseException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
    
-    private static String getOptionValue(CommandLine cmd, String opt1, String opt2) {
+    private static String getOptionValue(CommandLine cmd, String opt1, String opt2, String defaultVal) {
         if (opt1 != null && cmd.hasOption(opt1)) {
             return cmd.getOptionValue(opt1);
         } else if (opt2 != null && cmd.hasOption(opt2)) {
             return cmd.getOptionValue(opt2);
         }
-        return null;
+        return defaultVal;
     }
         
     private static void readCommands() {
