@@ -278,22 +278,23 @@ public class Main {
                 Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = dDriver.aboutDataSource(tableName);
                 if (dataSourceDescRes.isLeft()) {
                     println(dataSourceDescRes.left().get());
+                } else {
+                    List<String> dims = dataSourceDescRes.right().get()._1();
+                    Collections.sort(dims);
+                    List<String> metrics = dataSourceDescRes.right().get()._2();
+                    Collections.sort(metrics);
+                    String [][] table = new String[dims.size() + metrics.size() + 2][];// 1 for header + 1 for timestamp
+                    table[0] = new String[] {"Field", "Type"};
+                    table[1] = new String[] {"timestamp", "Implicit_Dimension"};
+                    int i = 2;
+                    for (;i < dims.size() + 2;i++) {
+                        table[i] = new String[] {dims.get(i - 2), "Dimension"};
+                    }
+                    for (;i < dims.size() + metrics.size() + 2;i++) {
+                        table[i] = new String[] {metrics.get(i - dims.size() - 2), "Metric"};
+                    }
+                    PrettyPrint.print(table);
                 }
-                List<String> dims = dataSourceDescRes.right().get()._1();
-                Collections.sort(dims);
-                List<String> metrics = dataSourceDescRes.right().get()._2();
-                Collections.sort(metrics);
-                String [][] table = new String[dims.size() + metrics.size() + 2][];// 1 for header + 1 for timestamp
-                table[0] = new String[] {"Field", "Type"};
-                table[1] = new String[] {"timestamp", "Implicit_Dimension"};
-                int i = 2;
-                for (;i < dims.size() + 2;i++) {
-                    table[i] = new String[] {dims.get(i - 2), "Dimension"};
-                }
-                for (;i < dims.size() + metrics.size() + 2;i++) {
-                    table[i] = new String[] {metrics.get(i - dims.size() - 2), "Metric"};
-                }
-                PrettyPrint.print(table);
             }                      
         } else {// Sql/json command.
             long start = System.currentTimeMillis();

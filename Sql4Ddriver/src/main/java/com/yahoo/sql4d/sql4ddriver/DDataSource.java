@@ -19,6 +19,7 @@ import static com.yahoo.sql4d.sql4ddriver.Util.*;
 
 import com.yahoo.sql4d.DCompiler;
 import com.yahoo.sql4d.DeleteProgram;
+import com.yahoo.sql4d.DropProgram;
 import com.yahoo.sql4d.InsertProgram;
 import com.yahoo.sql4d.Program;
 import com.yahoo.sql4d.QueryProgram;
@@ -32,6 +33,8 @@ import com.yahoo.sql4d.sql4ddriver.rowmapper.DruidBaseBean;
 import com.yahoo.sql4d.sql4ddriver.sql.MysqlAccessor;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONArray;
 import scala.Either;
 import scala.Left;
@@ -151,7 +154,7 @@ public class DDataSource {
         } catch (Exception ex) {
             return new Left<>(ex.getMessage());
         }
-        if (!(pgm instanceof QueryProgram)) {
+        if (!(pgm instanceof QueryProgram)) {// Reason is that only select queries results in a data response.
             throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
         }
         QueryProgram qPgm = (QueryProgram) pgm;
@@ -199,7 +202,7 @@ public class DDataSource {
     }
 
     /**
-     * TODO: This method is still buggy and fully implemented.
+     * TODO: This method is still buggy and not fully implemented.
      * Common interface to Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
      * @param printToConsole
@@ -248,54 +251,57 @@ public class DDataSource {
             return new Left<>(ex.getMessage());
         }
         if (pgm instanceof DeleteProgram) {
-            DeleteProgram dPgm = (DeleteProgram) pgm;
-            DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
-//            Either<String, List<Interval>> allSegments = segments(dMeta.dataSource);
-//            if (allSegments.isLeft()) {
-//                return new Left<>(allSegments.left().get());
-//            }
-//            dMeta.filterSegments(allSegments.right().get());
-            
-            dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
-
-            //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
-            dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
-            dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
-            pgm.print(printToConsole);
-            return new Left<>(overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion));
-        } else if (pgm instanceof DeleteProgram) {
-            DeleteProgram dPgm = (DeleteProgram) pgm;
-            DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
-//            Either<String, List<Interval>> allSegments = segments(dMeta.dataSource);
-//            if (allSegments.isLeft()) {
-//                return new Left<>(allSegments.left().get());
-//            }
-//            dMeta.filterSegments(allSegments.right().get());
-            
-            dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
-
-            //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
-            dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
-            dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
-            pgm.print(printToConsole);
-            return new Left<>(overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion));
-        }
-
-        pgm.print(printToConsole);
-        if (pgm instanceof InsertProgram) {
+            return new Left<>(deleteRows((DeleteProgram) pgm, printToConsole));
+        } else if (pgm instanceof DropProgram) {
+            return new Left<>(dropTable((DropProgram) pgm, printToConsole));
+        } else if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
             return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), iPgm.waitForCompletion));
-            //throw new IllegalAccessError("Only SELECT queries can be sent out as query!!");
+        } else {
+            return selectRows((QueryProgram) pgm, printToConsole);
         }
-        QueryProgram qPgm = (QueryProgram) pgm;
+    }
+    
+    private String deleteRows(DeleteProgram dPgm, boolean printToConsole) {
+        DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
+        dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
+        //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
+        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
+        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+        dPgm.print(printToConsole);
+        return overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion);
+    }
+    
+    private String dropTable(DropProgram dPgm, boolean printToConsole) {
+        DropMeta dMeta = (DropMeta)dPgm.nthStmnt(0);
+        try {
+            dMeta.interval = broker.getTimeBoundary(dMeta.dataSource);// Set the boundary to max possible for the table.
+        } catch (IllegalAccessException ex) {
+            return ex.toString();
+        }
+        //TODO: Time boundary returns start Time of 1st segment and start time of last segment which means 
+        // getting rid just that interval is insufficient, so increase the end time
+        // by 62 days this will ensure we delete the table if the max segment granularity
+        // is 2 months. For bigger segments drop will not work properly.
+        Interval expandedInterval = dMeta.interval.expandEndTimeByDay(62);
+        dMeta.interval = expandedInterval;
+        dbAccessor.disableAllSegments(dMeta.dataSource);
+
+        //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
+        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
+        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+        dPgm.print(printToConsole);
+        return overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion);
+    }
+
+    private Either<String, Either<Joiner4All, Mapper4All>> selectRows(QueryProgram qPgm, boolean printToConsole) {
         if (qPgm.numStmnts() > 2) return new Left<>("Currently join for more than 2 Sqls not supported....");
-        
+        qPgm.print(printToConsole);
         Joiner4All joiner = null;
         if (qPgm.numStmnts() == 1) {
             QueryMeta query = qPgm.nthStmnt(0);
             Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), true);
             if (result.isLeft()) return new Left<>(result.left().get());
-            
             if (printToConsole) {
                 println(result.right().get().left().get().toString());
             }

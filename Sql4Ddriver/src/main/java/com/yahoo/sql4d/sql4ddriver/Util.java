@@ -19,7 +19,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import scala.Either;
+import scala.Left;
+import scala.Right;
 
 /**
  * Simple utils.
@@ -223,4 +227,14 @@ public class Util {
         return buff.toString().replace("_", "");
     }
 
+    public static Either<JSONArray, JSONObject> asJsonType(String str) throws JSONException {
+        JSONArray possibleResArray = null;
+        try {
+            possibleResArray = new JSONArray(str);
+            return new Left<>(possibleResArray);
+        } catch (JSONException je) {
+            JSONObject possibleResObj = new JSONObject(str);
+            return new Right<>(possibleResObj);
+        }
+    }    
 }

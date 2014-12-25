@@ -62,14 +62,14 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
             }
             respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
-            return new Left<>(format("Http %s \n", resp));
+            return new Left<>(format("Http %s, faced exception %s\n", resp, ex));
         } finally {
             returnClient(resp);
         }
         try {
-            return new Right<>(asJsonType(respStr));
+            return new Right<>(Util.asJsonType(respStr));
         } catch (JSONException je) {
-            return new Left<>(format("Recieved data %s not in json format. \n", respStr));
+            return new Left<>(format("Recieved data %s not in json format, faced exception %s\n", respStr, je));
         }
     }
 
@@ -163,16 +163,4 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
         }
         return new Left<>(mayBgoodResp.right().get().toString());
     }
-
-    private Either<JSONArray, JSONObject> asJsonType(String str) throws JSONException {
-        JSONArray possibleResArray = null;
-        try {
-            possibleResArray = new JSONArray(str);
-            return new Left<>(possibleResArray);
-        } catch (JSONException je) {
-            JSONObject possibleResObj = new JSONObject(str);
-            return new Right<>(possibleResObj);
-        }
-    }
-
 }
