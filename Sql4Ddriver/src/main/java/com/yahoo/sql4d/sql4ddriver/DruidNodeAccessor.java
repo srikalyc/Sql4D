@@ -29,7 +29,8 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
 /**
- * Base class for all druid types.
+ * Base class for all druid types. 
+ * TODO: Make the configuration malleable for pool.
  * @author srikalyan
  */
 public class DruidNodeAccessor {

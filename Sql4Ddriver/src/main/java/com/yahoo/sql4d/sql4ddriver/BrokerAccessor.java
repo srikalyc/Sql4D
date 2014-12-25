@@ -11,6 +11,9 @@
  */
 package com.yahoo.sql4d.sql4ddriver;
 
+import com.yahoo.sql4d.BaseStatementMeta;
+import com.yahoo.sql4d.DCompiler;
+import com.yahoo.sql4d.Program;
 import com.yahoo.sql4d.query.nodes.Interval;
 import java.io.IOException;
 import static java.lang.String.format;
@@ -24,7 +27,7 @@ import scala.Left;
 import scala.Right;
 
 /**
- *
+ * Query interface to druid broker.
  * @author srikalyan
  */
 public class BrokerAccessor extends DruidNodeAccessor {
@@ -52,7 +55,7 @@ public class BrokerAccessor extends DruidNodeAccessor {
             resp = postJson(url, jsonQuery);
             respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
-            return new Left<>(format("Http %s \n", resp));        
+            return new Left<>(format("Http %s, faced exception %s\n", resp, ex));        
         } finally {
             returnClient(resp);
         }
@@ -73,16 +76,20 @@ public class BrokerAccessor extends DruidNodeAccessor {
      *
      * @param dataSource 
      * @return
-     * @throws java.lang.Exception
+     * @throws java.lang.IllegalAccessException
      */
-    public Interval getTimeBoundary(String dataSource) throws Exception {
-        Either<String,Either<Mapper4All,JSONArray>> res = fireQuery("SELECT FROM " + dataSource, true);
+    public Interval getTimeBoundary(String dataSource) throws IllegalAccessException {
+        Program<BaseStatementMeta> pgm = DCompiler.compileSql(format("SELECT FROM %s", dataSource));
+        Either<String,Either<Mapper4All,JSONArray>> res = fireQuery(pgm.nthStmnt(0).toString(), true);
         if (res.isLeft()) {
-            throw new IllegalArgumentException(format("DataSource %s does not exist(or) check if druid is accessible", dataSource));
+            throw new IllegalAccessException(format("DataSource %s does not exist(or) check if druid is accessible, faced exception %s", dataSource, res.left().get()));
         }
         Mapper4All finalRes = res.right().get().left().get();// Thats because we know Time boundary cannot be a Join result!!
         int min = finalRes.baseFieldNames.indexOf("minTime");
         int max = finalRes.baseFieldNames.indexOf("maxTime");
+        if (finalRes.baseAllRows.isEmpty()) {// Possible when table does not exist.
+            throw new IllegalAccessException("Either table does not exist(or) druid is not accessible");
+        }
         List<Object> row = finalRes.baseAllRows.get(0);// Only 1 element is returned in Timeboundary.
         return new Interval(row.get(min).toString(), row.get(max).toString());
     }

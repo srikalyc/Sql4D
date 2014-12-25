@@ -13,33 +13,31 @@ package com.yahoo.sql4d.drop;
 
 import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.query.nodes.Interval;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
 import org.json.JSONObject;
 
 /**
- * Base class for all drop types.
- *
+ * Drop statement's meta data.
  * @author srikalyan
  */
 public class DropMeta extends CrudStatementMeta {
 
     public String id;// UUid
-    private Interval interval = null;// This could be filled with time boundary result.
+    public Interval interval = null;// This should be filled with time boundary at runtime.
+    public List<String> dimensions = new ArrayList<>();// This will be determined at runtime.
+    public List<String> metrics = new ArrayList<>();// This will be determined at runtime.
 
     public DropMeta() {
     }
 
-    public DropMeta(String dataSource) {
+    public DropMeta(String dataSource, Interval interval) {
         super(dataSource);
+        this.interval = interval;
     }
 
-    public void setInterval(Interval interval) {
-        this.interval = interval;
-        id = String.format("kill_%s_%s_%s_%s", dataSource, interval.getStartTime(), interval.getEndTime(), new DateTime().toString());
-    }
-    
-    
     @Override
     public String toString() {
         return getJson().toString(2);
@@ -52,6 +50,8 @@ public class DropMeta extends CrudStatementMeta {
 
     @Override
     public Map<String, Object> getDataMap() {
+        // For each instance of data generation generate a new id.
+        id = String.format("kill_%s_%s_%s_%s", dataSource, interval.getStartTime(), interval.getEndTime(), new DateTime().toString());
         Map<String, Object> map = super.getDataMap();
         map.put("type", "kill");
         map.put("dataSource", dataSource);

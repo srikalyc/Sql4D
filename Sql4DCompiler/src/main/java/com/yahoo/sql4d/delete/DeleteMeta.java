@@ -23,7 +23,7 @@ import org.joda.time.DateTime;
 import org.json.JSONObject;
 
 /**
- * Base class for all delete types.
+ * Delete statement's meta data.
  *
  * @author srikalyan
  */

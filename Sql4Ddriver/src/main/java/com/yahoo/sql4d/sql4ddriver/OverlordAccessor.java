@@ -26,7 +26,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
     private final String overlordUrl = "http://%s:%d/druid/indexer/v1/task";
     private final String overlordHost;
     private int overlordPort = 8087;
-    private static final int MAX_WAIT_TIME = 10000;// 10 secs
+    private static final int MAX_WAIT_TIME = 30000;// 30 secs
     
     public OverlordAccessor(String host, int port) {
         super(host, port);
@@ -45,6 +45,9 @@ public class OverlordAccessor extends DruidNodeAccessor {
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
             resp = postJson(url, meta.toString());
+            if (resp.getStatusLine().getStatusCode() == 500) {
+                return "Task failed with server error, " + IOUtils.toString(resp.getEntity().getContent());
+            }
             //TODO: Check for nulls in the following.
             JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
             if (wait) {

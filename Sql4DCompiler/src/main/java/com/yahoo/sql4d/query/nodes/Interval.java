@@ -61,6 +61,21 @@ public class Interval {
                 baseDateTime.plusHours(endHourOffset).minusSeconds(1).toString());
     }
 
+    public Interval expandIntervalByDay(int days) {
+        return new Interval(getStartTime().minusDays(days).toString(), 
+                getEndTime().plusDays(days).toString());
+    }
+
+    public Interval expandEndTimeByDay(int days) {
+        return new Interval(getStartTime().toString(), 
+                getEndTime().plusDays(days).toString());
+    }
+
+    public Interval expandIntervalBySec(int secs) {
+        return new Interval(getStartTime().minusSeconds(secs).toString(), 
+                getEndTime().plusSeconds(secs).toString());
+    }
+
     @Override
     public String toString() {
         return String.format("%s/%s", startTime, endTime);
@@ -69,4 +84,5 @@ public class Interval {
     public boolean fallsIn(Interval range) {
         return range.getStartTime().isBefore(getStartTime()) && range.getEndTime().isAfter(getEndTime());
     }
+
 }
