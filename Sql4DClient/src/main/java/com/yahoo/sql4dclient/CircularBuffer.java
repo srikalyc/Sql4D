@@ -10,7 +10,8 @@
  */
 package com.yahoo.sql4dclient;
 
-import scala.actors.threadpool.Arrays;
+import java.util.Arrays;
+
 
 /**
  * A general purpose circular buffer whose size is fixed. Any item added will replace

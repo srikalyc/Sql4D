@@ -33,8 +33,6 @@ import com.yahoo.sql4d.sql4ddriver.rowmapper.DruidBaseBean;
 import com.yahoo.sql4d.sql4ddriver.sql.MysqlAccessor;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import scala.Either;
 import scala.Left;
