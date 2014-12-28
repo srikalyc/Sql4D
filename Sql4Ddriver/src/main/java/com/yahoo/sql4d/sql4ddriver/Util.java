@@ -16,11 +16,11 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scala.Either;
 import scala.Left;
 import scala.Right;
@@ -30,6 +30,8 @@ import scala.Right;
  * @author srikalyan
  */
 public class Util {
+    private static final Logger logger = LoggerFactory.getLogger(Util.class);
+
     public static final void newLine() {
         System.out.println();
     }
@@ -177,7 +179,7 @@ public class Util {
                 try {
                     printf("%-10s  |", getter.invoke(row));
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                    Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+                    logger.error("cannot print table", ex);
                 }
             }
             newLine();

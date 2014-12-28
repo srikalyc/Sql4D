@@ -10,18 +10,21 @@
  */
 package com.yahoo.sql4d;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Date formatting utilities.
  * @author srikalyan
  */
 public class DateFormatUtils {
+    private static final Logger logger = LoggerFactory.getLogger(DateFormatUtils.class);
+
     private static final String DATE_HOUR = "yyyy-MM-dd'T'HH";
     private static final String DATE_HOUR_MIN = "yyyy-MM-dd'T'HH:mm";
     private static final String DATE_HOUR_MIN_SEC = "yyyy-MM-dd'T'HH:mm:ss";
@@ -52,7 +55,7 @@ public class DateFormatUtils {
         try {
             return formatter.parse(date);
         } catch (ParseException ex) {
-            Logger.getLogger(DateFormatUtils.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("get date error", ex);
         }
         return null;
     }

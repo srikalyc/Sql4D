@@ -12,17 +12,19 @@ package com.yahoo.sql4d;
 
 import com.yahoo.sql4d.converter.druidGLexer;
 import com.yahoo.sql4d.converter.druidGParser;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A rudimentary compiler for Druid Dql -> Druid Json.
  * @author srikalyan
  */
 public class DCompiler {
+    private static final Logger logger = LoggerFactory.getLogger(DCompiler.class);
+
     /**
      * To avoid instantiation.
      */
@@ -42,7 +44,7 @@ public class DCompiler {
             Program pgm = parser.program();
             return pgm;
         } catch (RecognitionException ex) {
-            Logger.getLogger(DCompiler.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("compile sql error -> {}", query, ex);
         }
         return null;
     }

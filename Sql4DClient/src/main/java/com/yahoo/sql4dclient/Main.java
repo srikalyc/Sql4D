@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.cli.BasicParser;
@@ -30,6 +28,8 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scala.Either;
 import scala.Tuple2;
 
@@ -39,6 +39,7 @@ import scala.Tuple2;
  * @author srikalyan
  */
 public class Main {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     private static String ttyConfig;
 
@@ -155,7 +156,7 @@ public class Main {
             history = new CircularBuffer<>(Integer.parseInt(getOptionValue(cmd, "i", "history", "50")));
             
         } catch (ParseException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("init error", ex);
         }
     }
    
@@ -340,7 +341,7 @@ public class Main {
             stty("-echoprt");
             
         } catch (IOException | InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("set setNonCanonicalTTY error", ex);
         }
     }
 

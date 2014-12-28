@@ -24,11 +24,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Insert Meta for simple insertions(non batch and non realtime)
@@ -36,6 +36,7 @@ import org.json.JSONObject;
  * @author srikalyan
  */
 public class BasicInsertMeta extends InsertMeta {
+    private static final Logger logger = LoggerFactory.getLogger(BasicInsertMeta.class);
 
     public GranularitySpec granularitySpec = new GranularitySpec("day");
     
@@ -105,7 +106,7 @@ public class BasicInsertMeta extends InsertMeta {
                 Object timestamp = values.get(0);
                 timestampFormat = TimeUtils.detectFormat(timestamp.toString());
             } catch (IOException ex) {
-                Logger.getLogger(BasicInsertMeta.class.getName()).log(Level.SEVERE, null, ex);
+                logger.error("get firehose error", ex);
             }
 
         }

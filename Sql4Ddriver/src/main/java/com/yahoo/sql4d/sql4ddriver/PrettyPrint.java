@@ -11,12 +11,13 @@
 package com.yahoo.sql4d.sql4ddriver;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static java.lang.String.format;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Partial code modified from a publication here
@@ -24,6 +25,7 @@ import java.util.logging.Logger;
  * @author srikalyan
  */
 public final class PrettyPrint {
+    private static final Logger logger = LoggerFactory.getLogger(Mapper4Bean.class);
 
     private static final char BORDER_KNOT = '+';
     private static final char HORIZONTAL_BORDER = '-';
@@ -219,7 +221,7 @@ public final class PrettyPrint {
                     return value.toString();
                 }
             } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                Logger.getLogger(PrettyPrint.class.getName()).log(Level.SEVERE, null, ex);
+                logger.error("safe get error {}", bean.toString(), ex);
             }
         }
         return defaultValue;
