@@ -17,10 +17,10 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scala.Tuple2;
 
 /**
@@ -29,6 +29,8 @@ import scala.Tuple2;
  * @param <T>
  */
 public class Joiner4Bean<T extends DruidBaseBean> extends BaseJoiner {
+    private static final Logger logger = LoggerFactory.getLogger(Joiner4Bean.class);
+
 
     public Map<Object, T> baseAllRows = new LinkedHashMap<>();// Each entry = <key value, list of all values>
     private Class<T> rowMapper;
@@ -78,7 +80,7 @@ public class Joiner4Bean<T extends DruidBaseBean> extends BaseJoiner {
                                 Method setterMethod = rowVal.getClass().getMethod(Util.setterMethodName(jsonKey.toString()), rowVal.getClass().getDeclaredField(jsonKey.toString()).getType());
                                 setterMethod.invoke(baseAllRows.get(pk), eachRow.get(jsonKey.toString()));
                             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchFieldException ex) {
-                                Logger.getLogger(Joiner4Bean.class.getName()).log(Level.SEVERE, null, ex);
+                                logger.error("try to invoke method error", ex);
                             }
                         }
                     }
@@ -126,7 +128,7 @@ public class Joiner4Bean<T extends DruidBaseBean> extends BaseJoiner {
                 joinValue = (joinValue == null)?timestamp:(joinValue + "\u0001" + timestamp);
             }
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(Joiner4Bean.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("map PK to row error.", ex);
         }
         return new Tuple2<>(joinValue, rowValues);
     }

@@ -26,11 +26,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Insert Meta for realtime ingestions.
@@ -42,6 +42,7 @@ public class RTInsertMeta extends InsertMeta {
     public GranularitySpec granularitySpec = new GranularitySpec("all");
     public List<Object> values = new ArrayList<>();
     private final String tmpFolder = System.getProperty("java.io.tmpdir");
+    private static final Logger logger = LoggerFactory.getLogger(RTInsertMeta.class);
 
     public RTInsertMeta() {
     }
@@ -107,7 +108,7 @@ public class RTInsertMeta extends InsertMeta {
                     put("columns", Lists.newArrayList(concat(dims, metrics))).build();
             parserMap.put("data", data);
         } catch (IOException ex) {
-            Logger.getLogger(RTInsertMeta.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("system err.", ex);
         }
         finalMap.put("parser", parserMap);
         return new JSONObject(finalMap);

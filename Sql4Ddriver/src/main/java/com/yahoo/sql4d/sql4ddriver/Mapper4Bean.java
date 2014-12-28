@@ -15,10 +15,10 @@ import com.yahoo.sql4d.sql4ddriver.rowmapper.DruidBaseBean;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Simply maps JSON to bean .
@@ -27,6 +27,7 @@ import org.json.JSONObject;
  * @param <T>
  */
 public class Mapper4Bean<T extends DruidBaseBean> extends BaseMapper {
+    private static final Logger logger = LoggerFactory.getLogger(Mapper4Bean.class);
 
     public List<T> baseAllRows = new ArrayList<>();// Each entry = Bean of type T
     private Class<T> rowMapper;
@@ -87,7 +88,7 @@ public class Mapper4Bean<T extends DruidBaseBean> extends BaseMapper {
             }
 
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(Mapper4Bean.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("extract err {}", jsonRow.toString(), ex);
         }
         return rowValues;
     }

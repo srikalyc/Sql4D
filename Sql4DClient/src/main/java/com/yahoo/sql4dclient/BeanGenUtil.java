@@ -15,17 +15,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * To auto generate Bean java class for a SQL.
  * @author srikalyan
  */
 public class BeanGenUtil {
+    private static final Logger logger = LoggerFactory.getLogger(BeanGenUtil.class);
+
     //TODO: Extend the following to address join sqls as well.
     private static final Pattern joinSqlPattern = Pattern.compile("(?i)select (.*) from (.*) (join|right_join|left_join) \\((.*)\\) on \\((.*)\\)(;)?");
     private static final Pattern sqlPattern = Pattern.compile("(?i)select (.*) from (.*)(;)?");
@@ -94,9 +96,9 @@ public class BeanGenUtil {
         try {
             FileUtils.write(new File(System.getenv("HOME") + File.separator + beanClassName + ".java"), javaClass);
         } catch (IOException ex) {
-            Logger.getLogger(BeanGenUtil.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("generate error {}", javaClass.toString(), ex);
         }
-        System.out.println(javaClass.toString());
+        logger.info(javaClass.toString());
     }
     
     private static void genGetter(String name, String type, StringBuilder buff) {

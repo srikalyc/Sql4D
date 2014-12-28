@@ -15,12 +15,15 @@ import com.google.common.collect.ImmutableMap;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Utils to auto detect time format, auto resolve string time to Joda DateTime etc.
  * @author srikalyan
  */
 public class TimeUtils {
+    private static final Logger logger = LoggerFactory.getLogger(TimeUtils.class);
 
     private static final DateTimeFormatter yearOnlyFormat = DateTimeFormat.forPattern("yyyy").withOffsetParsed();
     private static final DateTimeFormatter yearMonthOnlyFormat = DateTimeFormat.forPattern("yyyy-MM").withOffsetParsed();
@@ -138,8 +141,7 @@ public class TimeUtils {
         try {
             result = formatter.parseDateTime(timeStr);
         } catch (UnsupportedOperationException | IllegalArgumentException e) {
-            //TODO: Log this instead of dumping to console.
-            //System.err.println("Date Format error " + e);
+            logger.error("Date Format error {}", timeStr,  e);
         }
         return result;
     }
@@ -150,8 +152,7 @@ public class TimeUtils {
             formatter.parseDateTime(timeStr);
             result = formatterMap.get(formatter);
         } catch (UnsupportedOperationException | IllegalArgumentException e) {
-            //TODO: Log this instead of dumping to console.
-            //System.err.println("Date Format error " + e);
+            logger.error("Date Format error {}", timeStr,  e);
         }
         return result;
     }
