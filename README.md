@@ -21,6 +21,12 @@ A first look at druid with Sql
 See here http://selftechrambling.blogspot.com/2014/09/a-first-look-at-druid-with-sql.html
 
 
+Insert and deleting data in druid with Sql
+===========================================
+See here http://druidwithsql.tumblr.com/post/108054375927/simple-insert-deleting-data-drop-table-in-druid
+
+
+
 
 
 
