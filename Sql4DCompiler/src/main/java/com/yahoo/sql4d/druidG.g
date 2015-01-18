@@ -10,7 +10,7 @@
  */
 grammar druidG;
 
-options { k=6; }
+options { k=6;}
 
 @header {
 	package com.yahoo.sql4d.converter;
@@ -33,8 +33,8 @@ options { k=6; }
 	import com.yahoo.sql4d.query.topn.*;
 	import com.yahoo.sql4d.query.timeboundary.*;
 	import com.yahoo.sql4d.query.*;
-	import static com.yahoo.sql4d.Utils.*;
-	import static com.yahoo.sql4d.DruidUtils.*;
+	import static com.yahoo.sql4d.utils.Utils.*;
+	import static com.yahoo.sql4d.utils.DruidUtils.*;
 }
 
 
@@ -644,8 +644,8 @@ WS
 	: (' ' | '\t')+
 	;
 
-
-DATE_YEAR_ONLY	
+// IF the following is not made a fragment then, any 4 digit number would become a DATE_YEAR_ONLY token(even when you want to consider as token LONG)
+fragment DATE_YEAR_ONLY	
 	: NUM NUM NUM NUM; 	
 	
 DATE_YEAR_MONTH_ONLY	
@@ -703,7 +703,7 @@ SINGLE_QUOTE_STRING
     ;
 
 LONG : NUM+;
-FLOAT    :    LONG ('.' LONG)?;
+FLOAT    :    NUM* '.' NUM+;
 
 fragment NUM : ('0'..'9') ;
 
