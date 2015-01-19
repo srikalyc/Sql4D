@@ -53,4 +53,24 @@
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     <name>Sql4DCompiler</name>
+    <build>
+        <plugins>
+            <plugin>
+              <groupId>org.antlr</groupId>
+              <artifactId>antlr3-maven-plugin</artifactId>
+              <version>3.5.2</version>      
+              <configuration> 
+                  <sourceDirectory>${basedir}/src/main/java/com/yahoo/sql4d</sourceDirectory>
+                  <outputDirectory>${basedir}/src/main/java/com/yahoo/sql4d/converter</outputDirectory>
+              </configuration> 
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>antlr</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
