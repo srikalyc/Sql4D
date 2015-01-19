@@ -11,7 +11,9 @@
 grammar druidG;
 
 options { k=6;}
-
+@lexer::header  {
+	package com.yahoo.sql4d.converter;
+}
 @header {
 	package com.yahoo.sql4d.converter;
 
