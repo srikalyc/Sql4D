@@ -39,8 +39,8 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
     private final String coordinatorHost;
     private int coordinatorPort = 8082;
 
-    public CoordinatorAccessor(String host, int port) {
-        super(host, port);
+    public CoordinatorAccessor(String host, int port, int maxConns) {
+        super(host, port, maxConns);
         this.coordinatorHost = host;
         this.coordinatorPort = port;
     }

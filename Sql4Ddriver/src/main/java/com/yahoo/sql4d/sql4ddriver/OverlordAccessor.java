@@ -28,8 +28,8 @@ public class OverlordAccessor extends DruidNodeAccessor {
     private int overlordPort = 8087;
     private static final int MAX_WAIT_TIME = 30000;// 30 secs
     
-    public OverlordAccessor(String host, int port) {
-        super(host, port);
+    public OverlordAccessor(String host, int port, int maxConns) {
+        super(host, port, maxConns);
         this.overlordHost = host;
         this.overlordPort = port;
     }

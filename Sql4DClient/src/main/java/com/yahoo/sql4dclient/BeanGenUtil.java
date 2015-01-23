@@ -67,7 +67,9 @@ public class BeanGenUtil {
                     fields.put(alias, "long");
                 } else if (actual.matches("(DOUBLE_SUM|double_sum)\\((.*)\\)(.*)")) {
                     fields.put(alias, "double");
-                } else {
+                } else if (actual.matches("(UNIQUE|HYPER_UNIQUE)\\((.*)\\)(.*)")) {
+                    fields.put(alias, "double");
+                }  else {
                     fields.put(alias, "String");
                 }
             } else {// Type cannot be inferred.
