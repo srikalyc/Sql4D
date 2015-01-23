@@ -448,7 +448,8 @@ aggCallSite [AggItem aggItem]
 aggFunc returns [String name]
 	: LONG_SUM {$name = "longSum";}
 	| DOUBLE_SUM {$name = "doubleSum";}
-	| UNIQUE {$name = "hyperUnique";}
+	| UNIQUE {$name = "unique";}
+	| HYPER_UNIQUE {$name = "hyperUnique";}
 	| MIN {$name = "min";}
 	| MAX {$name = "max";}
 	| JAVASCRIPT {$name = "javascript";}
@@ -587,6 +588,7 @@ COUNT 	:	('COUNT');
 LONG_SUM :	('LONG_SUM');
 DOUBLE_SUM :	('DOUBLE_SUM');
 UNIQUE  :	('UNIQUE');
+HYPER_UNIQUE  :	('HYPER_UNIQUE');
 MIN 	:	('MIN');
 MAX	:	('MAX');
 
