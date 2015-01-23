@@ -23,7 +23,7 @@ public abstract class AnalyticsDruidTestBase {
     DDataSource source = null;
 
     public void testPositive(String query) throws Exception {
-        Either<String, Either<Joiner4All, Mapper4All>> result = source.query(query);
+        Either<String, Either<Joiner4All, Mapper4All>> result = source.query(query, null);
         if (result.isLeft()) {
             throw new Exception(result.left().get());
         }

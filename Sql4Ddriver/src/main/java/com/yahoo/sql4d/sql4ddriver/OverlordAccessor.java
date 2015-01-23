@@ -14,6 +14,7 @@ package com.yahoo.sql4d.sql4ddriver;
 import com.yahoo.sql4d.CrudStatementMeta;
 import java.io.IOException;
 import static java.lang.String.format;
+import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONObject;
@@ -37,21 +38,22 @@ public class OverlordAccessor extends DruidNodeAccessor {
     /**
      * Task means an indexer task(goes straight to overlord).
      * @param meta 
+     * @param reqHeaders 
      * @param wait 
      * @return  
      */
-    public String fireTask(CrudStatementMeta meta, boolean wait) {
+    public String fireTask(CrudStatementMeta meta, Map<String, String> reqHeaders, boolean wait) {
         CloseableHttpResponse resp = null;
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
-            resp = postJson(url, meta.toString());
+            resp = postJson(url, meta.toString(), reqHeaders);
             if (resp.getStatusLine().getStatusCode() == 500) {
                 return "Task failed with server error, " + IOUtils.toString(resp.getEntity().getContent());
             }
             //TODO: Check for nulls in the following.
             JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
             if (wait) {
-                if (waitForTask(respJson.getString("task"))) {
+                if (waitForTask(respJson.getString("task"), reqHeaders)) {
                     return "Task completed successfully , task Id " + respJson;
                 }
                 return "Task failed/still running, task Id " + respJson;
@@ -66,7 +68,13 @@ public class OverlordAccessor extends DruidNodeAccessor {
         }
     }
 
-    public boolean waitForTask(String taskId) {
+    /**
+     *
+     * @param taskId
+     * @param reqHeaders
+     * @return
+     */
+    public boolean waitForTask(String taskId, Map<String, String> reqHeaders) {
         long startT = System.currentTimeMillis();
         long endT = System.currentTimeMillis();
         boolean finalStatus = false;
@@ -76,7 +84,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
             CloseableHttpResponse resp = null;
             String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
             try {
-                resp = get(url);
+                resp = get(url, reqHeaders);
                 //TODO: Check for nulls in the following.
                 JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
                 JSONObject status = respJson.getJSONObject("status");

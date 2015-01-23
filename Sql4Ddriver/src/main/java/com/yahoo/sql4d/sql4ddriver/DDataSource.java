@@ -124,20 +124,23 @@ public class DDataSource {
     }
 
     /**
-     * Get an in memory representation of broken SQL query.
+     * Get an in memory representation of broken SQL query. This may require 
+     * contacting druid for resolving dimensions Vs metrics for SELECT queries
+     * hence it also optionally accepts HTTP request headers to be sent out.
      *
      * @param sqlQuery
      * @param namedParams
+     * @param reqHeaders
      * @return
      * @throws java.lang.Exception
      */
-    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery, NamedParameters namedParams) throws Exception {
+    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery, NamedParameters namedParams, Map<String, String> reqHeaders) throws Exception {
         Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery, namedParams));
         for (BaseStatementMeta stmnt : pgm.getAllStmnts()) {
             if (stmnt instanceof QueryMeta) {
                 QueryMeta query = (QueryMeta) stmnt;
                 if (query.queryType == RequestType.SELECT) {//classifyColumnsToDimAndMetrics
-                    Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = coordinator.aboutDataSource(stmnt.dataSource);
+                    Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = coordinator.aboutDataSource(stmnt.dataSource, reqHeaders);
                     if (dataSourceDescRes.isLeft()) {
                         throw new Exception("Datasource info either not available (or)could not be loaded ." + dataSourceDescRes.left().get());
                     } else {
@@ -166,13 +169,14 @@ public class DDataSource {
      * @param sqlQuery
      * @param namedParams
      * @param rowMapper
+     * @param reqHeaders
      * @param printToConsole
      * @return
      */
-    public <T extends DruidBaseBean> Either<String, Either<List<T>, Map<Object, T>>> query(String sqlQuery, NamedParameters namedParams, Class<T> rowMapper, boolean printToConsole) {
+    public <T extends DruidBaseBean> Either<String, Either<List<T>, Map<Object, T>>> query(String sqlQuery, NamedParameters namedParams, Class<T> rowMapper, Map<String, String> reqHeaders, boolean printToConsole) {
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlQuery, namedParams);
+            pgm = getCompiledAST(sqlQuery, namedParams, reqHeaders);
         } catch (Exception ex) {
             return new Left<>(ex.getMessage());
         }
@@ -189,7 +193,7 @@ public class DDataSource {
         }
         if (qPgm.numStmnts() == 1) {
             QueryMeta query = qPgm.nthStmnt(0);
-            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), false);
+            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), reqHeaders, false);
             if (result.isLeft()) {
                 return new Left<>(result.left().get());
             }
@@ -199,7 +203,7 @@ public class DDataSource {
         Joiner4Bean<T> joiner = null;
         int i = 0;// Index for join hooks.
         for (QueryMeta query : qPgm.getAllStmnts()) {// List of queries = 2 
-            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), false);
+            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), reqHeaders, false);
             if (result.isLeft()) {
                 return new Left<>(result.left().get());
             }
@@ -217,10 +221,11 @@ public class DDataSource {
      * Query and return the Json response.
      *
      * @param sqlQuery
+     * @param reqHeaders
      * @return
      */
-    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlQuery) {
-        return query(sqlQuery, null, false, "sql");
+    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlQuery, Map<String, String> reqHeaders) {
+        return query(sqlQuery, null, reqHeaders, false, "sql");
     }
 
     /**
@@ -228,17 +233,18 @@ public class DDataSource {
      * Common interface to Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
      * @param namedParams
+     * @param reqHeaders
      * @param printToConsole
      * @param queryMode
      * @param forceAsync
      * @return 
      */
-    public String crud(String sqlOrJsonQuery, NamedParameters namedParams, boolean printToConsole, String queryMode, boolean forceAsync) {
+    public String crud(String sqlOrJsonQuery, NamedParameters namedParams, Map<String, String> reqHeaders, boolean printToConsole, String queryMode, boolean forceAsync) {
         if ("json".equals(queryMode)) {//TODO : #19
         }
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlOrJsonQuery, namedParams);
+            pgm = getCompiledAST(sqlOrJsonQuery, namedParams, reqHeaders);
         } catch (Exception ex) {
             return ex.getMessage();
         }
@@ -247,7 +253,7 @@ public class DDataSource {
         }
         if (pgm instanceof CrudProgram) {
             CrudProgram cPgm = (CrudProgram) pgm;
-            return overlord.fireTask((CrudStatementMeta)cPgm.nthStmnt(0), cPgm.waitForCompletion && !forceAsync);
+            return overlord.fireTask((CrudStatementMeta)cPgm.nthStmnt(0), reqHeaders, cPgm.waitForCompletion && !forceAsync);
         }
         return "Could not execute the program " + pgm;
     }
@@ -255,13 +261,14 @@ public class DDataSource {
      * Common interface to Query, Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
      * @param namedParams
+     * @param reqHeaders
      * @param printToConsole
      * @param queryMode
      * @return 
      */
-    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, NamedParameters namedParams, boolean printToConsole, String queryMode) {
+    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, NamedParameters namedParams, Map<String, String> reqHeaders, boolean printToConsole, String queryMode) {
         if ("json".equals(queryMode)) {//TODO : #19
-            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(sqlOrJsonQuery, true);
+            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(sqlOrJsonQuery, reqHeaders, true);
             if (result.isLeft()) return new Left<>(result.left().get());
             if (printToConsole) {
                 println(result.right().get().left().get().toString());
@@ -270,36 +277,36 @@ public class DDataSource {
         }
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlOrJsonQuery, namedParams);
+            pgm = getCompiledAST(sqlOrJsonQuery, namedParams, reqHeaders);
         } catch (Exception ex) {
             return new Left<>(ex.getMessage());
         }
         if (pgm instanceof DeleteProgram) {
-            return new Left<>(deleteRows((DeleteProgram) pgm, printToConsole));
+            return new Left<>(deleteRows((DeleteProgram) pgm, reqHeaders, printToConsole));
         } else if (pgm instanceof DropProgram) {
-            return new Left<>(dropTable((DropProgram) pgm, printToConsole));
+            return new Left<>(dropTable((DropProgram) pgm, reqHeaders, printToConsole));
         } else if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
-            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), iPgm.waitForCompletion));
+            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), reqHeaders, iPgm.waitForCompletion));
         } else {
-            return selectRows((QueryProgram) pgm, printToConsole);
+            return selectRows((QueryProgram) pgm, reqHeaders, printToConsole);
         }
     }
     
-    private String deleteRows(DeleteProgram dPgm, boolean printToConsole) {
+    private String deleteRows(DeleteProgram dPgm, Map<String, String> reqHeaders, boolean printToConsole) {
         DeleteMeta dMeta = (DeleteMeta)dPgm.nthStmnt(0);
         dbAccessor.disableSegmentsInRange(dMeta.dataSource, dMeta.interval);
         //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
-        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
-        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource, reqHeaders);
+        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource, reqHeaders);
         dPgm.print(printToConsole);
-        return overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion);
+        return overlord.fireTask((CrudStatementMeta)dMeta, reqHeaders, dPgm.waitForCompletion);
     }
     
-    private String dropTable(DropProgram dPgm, boolean printToConsole) {
+    private String dropTable(DropProgram dPgm, Map<String, String> reqHeaders, boolean printToConsole) {
         DropMeta dMeta = (DropMeta)dPgm.nthStmnt(0);
         try {
-            dMeta.interval = broker.getTimeBoundary(dMeta.dataSource);// Set the boundary to max possible for the table.
+            dMeta.interval = broker.getTimeBoundary(dMeta.dataSource, reqHeaders);// Set the boundary to max possible for the table.
         } catch (IllegalAccessException ex) {
             return ex.toString();
         }
@@ -312,19 +319,19 @@ public class DDataSource {
         dbAccessor.disableAllSegments(dMeta.dataSource);
 
         //TODO: Optimize the following 2 makes 1 call each to coordinator(replace with aboutDataSource single call)
-        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource);
-        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource);
+        dMeta.dimensions = coordinator.getDimensions(dMeta.dataSource, reqHeaders);
+        dMeta.metrics = coordinator.getMetrics(dMeta.dataSource, reqHeaders);
         dPgm.print(printToConsole);
-        return overlord.fireTask((CrudStatementMeta)dMeta, dPgm.waitForCompletion);
+        return overlord.fireTask((CrudStatementMeta)dMeta, reqHeaders, dPgm.waitForCompletion);
     }
 
-    private Either<String, Either<Joiner4All, Mapper4All>> selectRows(QueryProgram qPgm, boolean printToConsole) {
+    private Either<String, Either<Joiner4All, Mapper4All>> selectRows(QueryProgram qPgm, Map<String, String> reqHeaders, boolean printToConsole) {
         if (qPgm.numStmnts() > 2) return new Left<>("Currently join for more than 2 Sqls not supported....");
         qPgm.print(printToConsole);
         Joiner4All joiner = null;
         if (qPgm.numStmnts() == 1) {
             QueryMeta query = qPgm.nthStmnt(0);
-            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), true);
+            Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(query.toString(), reqHeaders, true);
             if (result.isLeft()) return new Left<>(result.left().get());
             if (printToConsole) {
                 println(result.right().get().left().get().toString());
@@ -333,7 +340,7 @@ public class DDataSource {
         }
         int i = 0;// Index for join hooks.
         for (QueryMeta query : qPgm.getAllStmnts()) {// List of queries = 2 
-            Either<String, Either<Mapper4All, JSONArray>> resp = broker.fireQuery(query.toString(), false);
+            Either<String, Either<Mapper4All, JSONArray>> resp = broker.fireQuery(query.toString(), reqHeaders, false);
             if (resp.isLeft()) return new Left<>(resp.left().get());// Not expected
             
             JSONArray result = resp.right().get().right().get();
@@ -346,16 +353,16 @@ public class DDataSource {
         return new Right<String, Either<Joiner4All, Mapper4All>>(new Left<Joiner4All, Mapper4All>(joiner));
     }
     
-    public Either<String,List<String>> dataSources() {
-        return coordinator.dataSources();
+    public Either<String,List<String>> dataSources(Map<String, String> reqHeaders) {
+        return coordinator.dataSources(reqHeaders);
     }
     
-    public Either<String, Tuple2<List<String>, List<String>>> aboutDataSource(String dataSrc) {
-        return coordinator.aboutDataSource(dataSrc);
+    public Either<String, Tuple2<List<String>, List<String>>> aboutDataSource(String dataSrc, Map<String, String> reqHeaders) {
+        return coordinator.aboutDataSource(dataSrc, reqHeaders);
     }
     
-    public Either<String, List<Interval>> segments(String dataSource) {
-        return coordinator.segments(dataSource);
+    public Either<String, List<Interval>> segments(String dataSource, Map<String, String> reqHeaders) {
+        return coordinator.segments(dataSource, reqHeaders);
     }
     
     public static void main(String[] args) {
@@ -363,7 +370,7 @@ public class DDataSource {
         String q1 = "SELECT timestamp, page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01 AND 2020-01-01 AND country='United States' BREAK BY 'all' GROUP BY page  ORDER BY edit_count DESC LIMIT 10;";
         String q2 = "SELECT page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z AND country='United States' BREAK BY 'minute' GROUP BY page  LIMIT 10;";
         DDataSource driver = new DDataSource("localhost", 4080, "localhost", 8082, null, 3128);
-        Either<String, Either<Joiner4All, Mapper4All>> result = driver.query(q, null, true, "sql");
+        Either<String, Either<Joiner4All, Mapper4All>> result = driver.query(q, null, null, true, "sql");
         System.out.println(result.right().get().right().get());
     }
 }
