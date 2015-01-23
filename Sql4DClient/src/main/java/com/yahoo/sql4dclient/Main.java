@@ -144,13 +144,13 @@ public class Main {
             mysqlPasswd = getOptionValue(cmd, "mpw", "mysql_passwd", "diurd");
             mysqlDbName = getOptionValue(cmd, "mdb", "mysql_dbname", "druid");
             
-            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, 
-                    overlordPort, mysqlHost, mysqlPort, mysqlId, mysqlPasswd, mysqlDbName);
             proxyHost = getOptionValue(cmd, "ph", "proxy_host", null);
             if (proxyHost != null) {
                 proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port", "1234"));
-                dDriver.setProxy(proxyHost, proxyPort);
+                DDataSource.setProxy(proxyHost, proxyPort);
             }
+            dDriver = new DDataSource(brokerHost, brokerPort, coordinatorHost, coordinatorPort, overlordHost, 
+                    overlordPort, mysqlHost, mysqlPort, mysqlId, mysqlPasswd, mysqlDbName);
             
             history = new CircularBuffer<>(Integer.parseInt(getOptionValue(cmd, "i", "history", "50")));
             
@@ -298,7 +298,7 @@ public class Main {
             }                      
         } else {// Sql/json command.
             long start = System.currentTimeMillis();
-            Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, trace, queryMode);
+            Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, null, trace, queryMode);
             long queryTime = System.currentTimeMillis() - start;
             if (result.isLeft()) {
                 println("Error : " + result.left().get());

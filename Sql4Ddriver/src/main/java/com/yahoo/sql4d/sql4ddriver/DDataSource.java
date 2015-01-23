@@ -63,9 +63,13 @@ public class DDataSource {
     private CoordinatorAccessor coordinator; 
     private OverlordAccessor overlord; 
     
-    private NamedParameters namedParams;
     private MysqlAccessor dbAccessor;
     
+    private static int MAX_CONNS_IN_POOL = 150;
+    private static int MAX_BROKER_CONNS = 50;
+    private static int MAX_COORD_CONNS = 50;
+    private static int MAX_OVERLORD_CONNS = 50;
+
     public DDataSource(String bHost, int bPort) {
         this(bHost, bPort, null, 0);
     }
@@ -79,22 +83,40 @@ public class DDataSource {
     }
 
     public DDataSource(String bHost, int bPort, String cHost, int cPort, String oHost, int oPort, String sqlHost, int sqlPort, String sqlId, String sqlPasswd, String dbName) {
-        broker = new BrokerAccessor(bHost, bPort);
-        coordinator = new CoordinatorAccessor(cHost, cPort);
-        overlord = new OverlordAccessor(oHost, oPort);
+        broker = new BrokerAccessor(bHost, bPort, MAX_BROKER_CONNS);
+        coordinator = new CoordinatorAccessor(cHost, cPort, MAX_COORD_CONNS);
+        overlord = new OverlordAccessor(oHost, oPort, MAX_OVERLORD_CONNS);
         dbAccessor = new MysqlAccessor(sqlHost, sqlPort, sqlId, sqlPasswd, dbName);
     }
 
-    public void setProxy(String pHost, int pPort) {
-        DruidNodeAccessor.PROXY_HOST = pHost;
-        DruidNodeAccessor.PROXY_PORT = pPort;
+    /**
+     * Call if a custom pool size, and fine grained control on connections per route.
+     * NOTE: This must be called prior to instantiating DDataSource for the settings
+     * to be effective.
+     * @param maxConnsInPool
+     * @param maxBrokerConns
+     * @param maxCoordConns
+     * @param maxOverlordConns 
+     */
+    public static void adjustPoolSettings(int maxConnsInPool, int maxBrokerConns, int maxCoordConns, int maxOverlordConns) {
+        MAX_CONNS_IN_POOL = maxConnsInPool;
+        MAX_BROKER_CONNS = maxBrokerConns;
+        MAX_COORD_CONNS = maxCoordConns;
+        MAX_OVERLORD_CONNS = maxOverlordConns;
+        DruidNodeAccessor.setMaxConnections(MAX_CONNS_IN_POOL);
     }
     
-    public void setNamedParams(NamedParameters namedParams) {
-        this.namedParams = namedParams;
+    /**
+     * NOTE: This must be called prior to instantiating DDataSource for the settings
+     * to be effective.
+     * @param pHost
+     * @param pPort 
+     */
+    public static void setProxy(String pHost, int pPort) {
+        DruidNodeAccessor.setProxy(pHost, pPort);
     }
-
-    private String preprocessSqlQuery(String sqlQuery) {
+    
+    private String preprocessSqlQuery(String sqlQuery, NamedParameters namedParams) {
         if (namedParams != null) {
             return namedParams.deParameterize(sqlQuery);
         }
@@ -105,11 +127,12 @@ public class DDataSource {
      * Get an in memory representation of broken SQL query.
      *
      * @param sqlQuery
+     * @param namedParams
      * @return
      * @throws java.lang.Exception
      */
-    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery) throws Exception {
-        Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery));
+    public Program<BaseStatementMeta> getCompiledAST(String sqlQuery, NamedParameters namedParams) throws Exception {
+        Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery, namedParams));
         for (BaseStatementMeta stmnt : pgm.getAllStmnts()) {
             if (stmnt instanceof QueryMeta) {
                 QueryMeta query = (QueryMeta) stmnt;
@@ -141,14 +164,15 @@ public class DDataSource {
      *
      * @param <T>
      * @param sqlQuery
+     * @param namedParams
      * @param rowMapper
      * @param printToConsole
      * @return
      */
-    public <T extends DruidBaseBean> Either<String, Either<List<T>, Map<Object, T>>> query(String sqlQuery, Class<T> rowMapper, boolean printToConsole) {
+    public <T extends DruidBaseBean> Either<String, Either<List<T>, Map<Object, T>>> query(String sqlQuery, NamedParameters namedParams, Class<T> rowMapper, boolean printToConsole) {
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlQuery);
+            pgm = getCompiledAST(sqlQuery, namedParams);
         } catch (Exception ex) {
             return new Left<>(ex.getMessage());
         }
@@ -196,24 +220,25 @@ public class DDataSource {
      * @return
      */
     public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlQuery) {
-        return query(sqlQuery, false, "sql");
+        return query(sqlQuery, null, false, "sql");
     }
 
     /**
      * TODO: This method is still buggy and not fully implemented.
      * Common interface to Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
+     * @param namedParams
      * @param printToConsole
      * @param queryMode
      * @param forceAsync
      * @return 
      */
-    public String crud(String sqlOrJsonQuery, boolean printToConsole, String queryMode, boolean forceAsync) {
+    public String crud(String sqlOrJsonQuery, NamedParameters namedParams, boolean printToConsole, String queryMode, boolean forceAsync) {
         if ("json".equals(queryMode)) {//TODO : #19
         }
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlOrJsonQuery);
+            pgm = getCompiledAST(sqlOrJsonQuery, namedParams);
         } catch (Exception ex) {
             return ex.getMessage();
         }
@@ -229,11 +254,12 @@ public class DDataSource {
     /**
      * Common interface to Query, Insert , Delete, Drop(but not coordinator commands).
      * @param sqlOrJsonQuery
+     * @param namedParams
      * @param printToConsole
      * @param queryMode
      * @return 
      */
-    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, boolean printToConsole, String queryMode) {
+    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, NamedParameters namedParams, boolean printToConsole, String queryMode) {
         if ("json".equals(queryMode)) {//TODO : #19
             Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(sqlOrJsonQuery, true);
             if (result.isLeft()) return new Left<>(result.left().get());
@@ -244,7 +270,7 @@ public class DDataSource {
         }
         Program pgm;
         try {
-            pgm = getCompiledAST(sqlOrJsonQuery);
+            pgm = getCompiledAST(sqlOrJsonQuery, namedParams);
         } catch (Exception ex) {
             return new Left<>(ex.getMessage());
         }
@@ -337,7 +363,7 @@ public class DDataSource {
         String q1 = "SELECT timestamp, page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01 AND 2020-01-01 AND country='United States' BREAK BY 'all' GROUP BY page  ORDER BY edit_count DESC LIMIT 10;";
         String q2 = "SELECT page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z AND country='United States' BREAK BY 'minute' GROUP BY page  LIMIT 10;";
         DDataSource driver = new DDataSource("localhost", 4080, "localhost", 8082, null, 3128);
-        Either<String, Either<Joiner4All, Mapper4All>> result = driver.query(q, true, "sql");
+        Either<String, Either<Joiner4All, Mapper4All>> result = driver.query(q, null, true, "sql");
         System.out.println(result.right().get().right().get());
     }
 }

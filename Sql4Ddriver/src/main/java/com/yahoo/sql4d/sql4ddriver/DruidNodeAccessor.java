@@ -34,27 +34,47 @@ import org.apache.http.util.EntityUtils;
  * @author srikalyan
  */
 public class DruidNodeAccessor {
-    public static String PROXY_HOST;
-    public static int PROXY_PORT;
-    private PoolingHttpClientConnectionManager pool = null;
-    private DefaultProxyRoutePlanner customRouterPlanner = null;
+    private static String PROXY_HOST;
+    private static int PROXY_PORT;
+    private static final PoolingHttpClientConnectionManager pool = new PoolingHttpClientConnectionManager();
+    private static DefaultProxyRoutePlanner customRouterPlanner = null;
     
-    public DruidNodeAccessor(String host, int port) {
-        init();
-        HttpHost targetHost = new HttpHost(host, port);
-        pool.setMaxPerRoute(new HttpRoute(targetHost), 50);
-    }
-    
-    private void init() {
-        pool = new PoolingHttpClientConnectionManager();
+    static {
         pool.setMaxTotal(50);
         pool.setDefaultMaxPerRoute(50);
-        if (PROXY_HOST != null) {
+    }
+    
+    /**
+     * For each route we explicitly set max Connections.
+     * @param host
+     * @param port
+     * @param maxConnsPerRout 
+     */
+    public DruidNodeAccessor(String host, int port, int maxConnsPerRout) {
+        proxyInit();
+        HttpHost targetHost = new HttpHost(host, port);
+        pool.setMaxPerRoute(new HttpRoute(targetHost), maxConnsPerRout);
+    }
+
+    public static void setProxy(String h, int p) {
+        PROXY_HOST = h;
+        PROXY_PORT = p;
+        proxyInit();
+    }
+    
+    public static void setMaxConnections(int max) {
+        pool.setMaxTotal(max);
+    }
+
+    /**
+     * To ensure customRouterPlanner is initialized only once.
+     */
+    private static synchronized void proxyInit() {
+        if (PROXY_HOST != null && customRouterPlanner == null) {
             HttpHost proxy = new HttpHost(PROXY_HOST, PROXY_PORT);
             customRouterPlanner = new DefaultProxyRoutePlanner(proxy);
         }
     }
-
     
     public CloseableHttpClient getClient() {
         HttpClientBuilder builder = HttpClients.custom().setConnectionManager(pool);

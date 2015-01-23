@@ -34,8 +34,8 @@ public class BrokerAccessor extends DruidNodeAccessor {
     private final String brokerHost;
     private int brokerPort = 4080;
     private final String brokerUrl = "http://%s:%d/druid/v2/?pretty";
-    public BrokerAccessor(String host, int port) {
-        super(host, port);
+    public BrokerAccessor(String host, int port, int maxConns) {
+        super(host, port, maxConns);
         this.brokerHost = host;
         this.brokerPort = port;
     }
