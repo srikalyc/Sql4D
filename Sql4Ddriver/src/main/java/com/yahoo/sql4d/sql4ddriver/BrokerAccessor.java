@@ -18,6 +18,7 @@ import com.yahoo.sql4d.query.nodes.Interval;
 import java.io.IOException;
 import static java.lang.String.format;
 import java.util.List;
+import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONArray;
@@ -44,15 +45,16 @@ public class BrokerAccessor extends DruidNodeAccessor {
      * For firing simple queries(i.e non join queries).
      *
      * @param jsonQuery
+     * @param reqHeaders
      * @param requiresMapping
      * @return
      */
-    public Either<String, Either<Mapper4All, JSONArray>> fireQuery(String jsonQuery, boolean requiresMapping) {
+    public Either<String, Either<Mapper4All, JSONArray>> fireQuery(String jsonQuery, Map<String, String> reqHeaders, boolean requiresMapping) {
         CloseableHttpResponse resp = null;
         String respStr;
         String url = format(brokerUrl, brokerHost, brokerPort);
         try {
-            resp = postJson(url, jsonQuery);
+            resp = postJson(url, jsonQuery, reqHeaders);
             respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
             return new Left<>(format("Http %s, faced exception %s\n", resp, ex));        
@@ -75,12 +77,13 @@ public class BrokerAccessor extends DruidNodeAccessor {
      * Get timeboundary.
      *
      * @param dataSource 
+     * @param reqHeaders 
      * @return
      * @throws java.lang.IllegalAccessException
      */
-    public Interval getTimeBoundary(String dataSource) throws IllegalAccessException {
+    public Interval getTimeBoundary(String dataSource, Map<String, String> reqHeaders) throws IllegalAccessException {
         Program<BaseStatementMeta> pgm = DCompiler.compileSql(format("SELECT FROM %s", dataSource));
-        Either<String,Either<Mapper4All,JSONArray>> res = fireQuery(pgm.nthStmnt(0).toString(), true);
+        Either<String,Either<Mapper4All,JSONArray>> res = fireQuery(pgm.nthStmnt(0).toString(), reqHeaders, true);
         if (res.isLeft()) {
             throw new IllegalAccessException(format("DataSource %s does not exist(or) check if druid is accessible, faced exception %s", dataSource, res.left().get()));
         }

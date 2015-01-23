@@ -10,6 +10,7 @@
  */
 package com.yahoo.sql4dclient;
 
+import com.google.common.base.Splitter;
 import com.yahoo.sql4d.sql4ddriver.DDataSource;
 import com.yahoo.sql4d.sql4ddriver.Joiner4All;
 import com.yahoo.sql4d.sql4ddriver.Mapper4All;
@@ -19,7 +20,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -63,6 +66,7 @@ public class Main {
     private static String mysqlDbName = "";
     private static String proxyHost = null;
     private static int proxyPort = 3128;
+    private static Map<String, String> httpHeaders = new HashMap<>();
     
     private static CircularBuffer<String> history;
     
@@ -100,6 +104,7 @@ public class Main {
         options.addOption("mdb", "mysql_dbname", true, "Druid MySql db name");
         options.addOption("pp", "proxy_port", true, "Druid proxy node port");
         options.addOption("i", "history", true, "Number of commands in history");
+        options.addOption("hh", "http_headers", true, "Http Headers if any to pass");
         parser = new BasicParser();
     }
 
@@ -144,6 +149,8 @@ public class Main {
             mysqlPasswd = getOptionValue(cmd, "mpw", "mysql_passwd", "diurd");
             mysqlDbName = getOptionValue(cmd, "mdb", "mysql_dbname", "druid");
             
+            httpHeaders = extractHeaders(getOptionValue(cmd, "hh", "http_headers", null));
+            
             proxyHost = getOptionValue(cmd, "ph", "proxy_host", null);
             if (proxyHost != null) {
                 proxyPort = Integer.parseInt(getOptionValue(cmd, "pp", "proxy_port", "1234"));
@@ -168,6 +175,17 @@ public class Main {
         return defaultVal;
     }
         
+    /**
+     * HeaderKey1:value1|HeaderKey2:value2...
+     * @param value
+     * @return 
+     */
+    private static Map<String, String> extractHeaders(String value) {
+        if (value == null) 
+            return null;
+        return Splitter.on("|").withKeyValueSeparator(":").split(value);
+    }
+    
     private static void readCommands() {
         try {
             int ip = -1;
@@ -258,24 +276,25 @@ public class Main {
         } else if (frozenCommand.matches(allTablesRegex)) {
             Matcher matcher = allTablesPattern.matcher(frozenCommand);
             if (matcher.matches()) {// Show tables command.
-                Either<String,List<String>> dataSourcesRes = dDriver.dataSources();
+                Either<String,List<String>> dataSourcesRes = dDriver.dataSources(httpHeaders);
                 if (dataSourcesRes.isLeft()) {
                     println(dataSourcesRes.left().get());
+                } else {
+                    List<String> dataSources = dataSourcesRes.right().get();
+                    Collections.sort(dataSources);
+                    String [][] dataSourcesTable = new String[dataSources.size() + 1][];
+                    dataSourcesTable[0] = new String[] {"Tables"};
+                    for (int i = 0;i < dataSources.size();i++) {
+                        dataSourcesTable[i + 1] = new String[] {dataSources.get(i)};
+                    }
+                    PrettyPrint.print(dataSourcesTable);
                 }
-                List<String> dataSources = dataSourcesRes.right().get();
-                Collections.sort(dataSources);
-                String [][] dataSourcesTable = new String[dataSources.size() + 1][];
-                dataSourcesTable[0] = new String[] {"Tables"};
-                for (int i = 0;i < dataSources.size();i++) {
-                    dataSourcesTable[i + 1] = new String[] {dataSources.get(i)};
-                }
-                PrettyPrint.print(dataSourcesTable);
             }                      
         } else if (frozenCommand.matches(descTableRegex)) {
             Matcher matcher = descTablePattern.matcher(frozenCommand);
             if (matcher.matches()) {// Show tables command.
                 String tableName = matcher.group(1);
-                Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = dDriver.aboutDataSource(tableName);
+                Either<String, Tuple2<List<String>, List<String>>> dataSourceDescRes = dDriver.aboutDataSource(tableName, httpHeaders);
                 if (dataSourceDescRes.isLeft()) {
                     println(dataSourceDescRes.left().get());
                 } else {
@@ -298,7 +317,7 @@ public class Main {
             }                      
         } else {// Sql/json command.
             long start = System.currentTimeMillis();
-            Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, null, trace, queryMode);
+            Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, null, httpHeaders, trace, queryMode);
             long queryTime = System.currentTimeMillis() - start;
             if (result.isLeft()) {
                 println("Error : " + result.left().get());

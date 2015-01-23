@@ -18,6 +18,7 @@ import static java.lang.String.format;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONArray;
@@ -50,15 +51,15 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      *
      * @return
      */
-    private Either<String, Either<JSONArray, JSONObject>> fireCommand(String endPoint, String optData) {
+    private Either<String, Either<JSONArray, JSONObject>> fireCommand(String endPoint, String optData, Map<String, String> reqHeaders) {
         CloseableHttpResponse resp = null;
         String respStr;
         String url = format(coordinatorUrl + endPoint, coordinatorHost, coordinatorPort);
         try {
             if (optData != null) {// POST
-                resp = postJson(url, optData);
+                resp = postJson(url, optData, reqHeaders);
             } else {// GET
-                resp = get(url);
+                resp = get(url, reqHeaders);
             }
             respStr = IOUtils.toString(resp.getEntity().getContent());
         } catch (IOException ex) {
@@ -73,8 +74,13 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
         }
     }
 
-    public Either<String, List<String>> dataSources() {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources", null);
+    /**
+     * Retrieve all the datasources provisioned in Druid.
+     * @param reqHeaders
+     * @return 
+     */
+    public Either<String, List<String>> dataSources(Map<String, String> reqHeaders) {
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources", null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }
@@ -94,10 +100,11 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * Left is error Right is Tuple <dimensions, metrics>
      *
      * @param name
+     * @param reqHeaders
      * @return
      */
-    public Either<String, Tuple2<List<String>, List<String>>> aboutDataSource(String name) {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + name, null);
+    public Either<String, Tuple2<List<String>, List<String>>> aboutDataSource(String name, Map<String, String> reqHeaders) {
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + name, null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }
@@ -120,16 +127,16 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
         return new Left<>("Unexpected response " + goodResp.left().get().toString());
     }
 
-    public List<String> getDimensions(String name) {
-        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name);
+    public List<String> getDimensions(String name, Map<String, String> reqHeaders) {
+        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name, reqHeaders);
         if (aboutDataSource.isLeft()) {
             return Lists.newArrayList();
         } 
         return aboutDataSource.right().get()._1();
     }
 
-    public List<String> getMetrics(String name) {
-        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name);
+    public List<String> getMetrics(String name, Map<String, String> reqHeaders) {
+        Either<String,Tuple2<List<String>,List<String>>> aboutDataSource = aboutDataSource(name, reqHeaders);
         if (aboutDataSource.isLeft()) {
             return Lists.newArrayList();
         } 
@@ -142,12 +149,13 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * .... ]
      *
      * @param dataSource
+     * @param reqHeaders
      * @return List[intervals] Ex:
      * ["2014-10-31T00:00:00.000-07:00/2014-11-01T00:00:00.000-07:00",
      * "2014-11-01T00:00:00.000-07:00/2014-11-02T00:00:00.000-07:00" .. ]
      */
-    public Either<String, List<Interval>> segments(String dataSource) {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + dataSource + "/segments?full", null);
+    public Either<String, List<Interval>> segments(String dataSource, Map<String, String> reqHeaders) {
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + dataSource + "/segments?full", null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }

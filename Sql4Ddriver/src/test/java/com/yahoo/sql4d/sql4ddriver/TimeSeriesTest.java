@@ -29,7 +29,7 @@ public class TimeSeriesTest extends AnalyticsDruidTestBase {
 
     @Test
     public void testTimeSeriesBean() throws Exception {
-        Either<String, Either<List<TimeSeriesBean>, Map<Object, TimeSeriesBean>>> mapperRes = source.query(tsJoin, null, TimeSeriesBean.class, false);
+        Either<String, Either<List<TimeSeriesBean>, Map<Object, TimeSeriesBean>>> mapperRes = source.query(tsJoin, null, TimeSeriesBean.class, null, false);
         if (mapperRes.isLeft()) {
             throw new Exception(mapperRes.left().get());
         }
