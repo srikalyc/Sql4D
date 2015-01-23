@@ -301,7 +301,7 @@ public class Main {
             Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, trace, queryMode);
             long queryTime = System.currentTimeMillis() - start;
             if (result.isLeft()) {
-                println(result.left().get());
+                println("Error : " + result.left().get());
                 printf("(%f sec)\n", queryTime/1000.0);
             } else {
                 Either<Joiner4All, Mapper4All> goodResult = result.right().get();
