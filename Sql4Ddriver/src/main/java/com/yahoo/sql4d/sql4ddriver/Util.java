@@ -21,9 +21,9 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import scala.Either;
-import scala.Left;
-import scala.Right;
+import scala.util.Either;
+import scala.util.Left;
+import scala.util.Right;
 
 /**
  * Simple utils.
