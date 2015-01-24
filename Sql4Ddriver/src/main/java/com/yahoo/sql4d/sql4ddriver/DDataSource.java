@@ -34,9 +34,9 @@ import com.yahoo.sql4d.sql4ddriver.sql.MysqlAccessor;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
-import scala.Either;
-import scala.Left;
-import scala.Right;
+import scala.util.Either;
+import scala.util.Left;
+import scala.util.Right;
 import scala.Tuple2;
 
 /**

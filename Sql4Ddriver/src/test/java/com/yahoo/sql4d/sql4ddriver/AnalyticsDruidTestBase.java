@@ -12,7 +12,7 @@ package com.yahoo.sql4d.sql4ddriver;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import scala.Either;
+import scala.util.Either;
 
 /**
  * TestBase for druid based API.

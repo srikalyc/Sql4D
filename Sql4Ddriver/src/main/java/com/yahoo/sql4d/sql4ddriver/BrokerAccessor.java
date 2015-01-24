@@ -23,9 +23,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
-import scala.Either;
-import scala.Left;
-import scala.Right;
+import scala.util.Either;
+import scala.util.Left;
+import scala.util.Right;
 
 /**
  * Query interface to druid broker.
