@@ -40,18 +40,23 @@ import scala.util.Right;
 import scala.Tuple2;
 
 /**
- * TODO: Use logger. Database driver interface for druid SQL. Does not conform
- * to DataSource. Druid response can be like
+ * TODO: Use logger. Database driver for druid. Does not conform
+ * to javax.sql.DataSource. 
+ * 
+ * Possible druid responses :
  *
  * For groupBy the response is as follows. [ { "version" : "v1", "timestamp" :
  * "2013-07-12T04:00:00.000Z", "event" : { ... } }, { "version" : "v1",
- * "timestamp" : "2013-07-12T04:00:00.000Z", "event" : { ... } },... ] For
- * timeseries the response is as follows [ { "timestamp":
+ * "timestamp" : "2013-07-12T04:00:00.000Z", "event" : { ... } },... ] 
+ * 
+ * For timeseries the response is as follows [ { "timestamp":
  * "2012-01-01T00:00:00.000Z", "result": { "sample_name1": <some_value>,
  * "sample_name2": <some_value>, "sample_divide": <some_value> } }, {
  * "timestamp": "2012-01-02T00:00:00.000Z", "result": { "sample_name1":
  * <some_value>, "sample_name2": <some_value>, "sample_divide": <some_value> } }
- * ] For TopN query the response is as follows [ { "timestamp":
+ * ]
+ * 
+ * For TopN query the response is as follows [ { "timestamp":
  * "2013-08-31T00:00:00.000Z", "result": [ { "dim1": "dim1_val", "count": 111,
  * "some_metrics": 10669, "average": 96.11711711711712 }, {.... } ] } ]
  *
@@ -66,7 +71,7 @@ public class DDataSource {
     private MysqlAccessor dbAccessor;
     
     private static int MAX_CONNS_IN_POOL = 150;
-    private static int MAX_BROKER_CONNS = 50;
+    private static int MAX_BROKER_CONNS = 100;
     private static int MAX_COORD_CONNS = 50;
     private static int MAX_OVERLORD_CONNS = 50;
 

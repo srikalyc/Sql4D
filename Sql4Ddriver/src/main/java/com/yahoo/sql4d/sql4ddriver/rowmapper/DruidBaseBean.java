@@ -10,6 +10,8 @@
  */
 package com.yahoo.sql4d.sql4ddriver.rowmapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -41,5 +43,8 @@ public class DruidBaseBean {
     public String getTimestamp() {
         return timestamp;
     }
-
+    
+    public Map<String, Object> toMap() {
+        return new ObjectMapper().convertValue(this, Map.class);        
+    }
 }

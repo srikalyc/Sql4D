@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4D</artifactId>
-    <version>3.2.2</version>
+    <version>3.3.2</version>
     <packaging>pom</packaging>
     <modules>
         <module>Sql4DCompiler</module>
@@ -12,8 +12,8 @@
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <build.version>3.2.2</build.version>
-        <yinst.build.version>3.2.2</yinst.build.version>
+        <build.version>3.3.2</build.version>
+        <yinst.build.version>3.3.2</yinst.build.version>
         <buildtype>release</buildtype>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -95,7 +95,11 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>5.1.34</version>
             </dependency>
-            
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>18.0</version>
+            </dependency>            
         </dependencies>
     </dependencyManagement>
     <name>Sql4D</name>
