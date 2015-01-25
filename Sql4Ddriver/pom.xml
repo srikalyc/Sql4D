@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4Ddriver</artifactId>
-    <version>3.2.2</version>
+    <version>3.3.2</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>3.2.2</version>
+        <version>3.3.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.yahoo.sql4d</groupId>
             <artifactId>Sql4DCompiler</artifactId>
-            <version>3.2.2</version>
+            <version>3.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -44,6 +44,21 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>4.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.5.0</version>
         </dependency>
         
         <dependency>

@@ -30,26 +30,50 @@ public class NamedParameters {
     
     private final Map<String, Object> namedParams = new HashMap<>();
     private static final TimeZone utcTz = TimeZone.getTimeZone("UTC");
+    private static final TimeZone estTz = TimeZone.getTimeZone("EST");
+    private static final TimeZone est5edtTz = TimeZone.getTimeZone("EST5EDT");
     private static final DateFormat javaDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
     
     private static final DateTimeZone jodaUtcTz = DateTimeZone.forTimeZone(utcTz);
+    private static final DateTimeZone jodaEstTz = DateTimeZone.forTimeZone(estTz);
+    private static final DateTimeZone jodaEst5edtTz = DateTimeZone.forTimeZone(est5edtTz);
     private static final DateTimeFormatter jodaDateFormat = ISODateTimeFormat.dateTime().withZone(jodaUtcTz);
+    private static final DateTimeFormatter jodaEstDateFormat = ISODateTimeFormat.dateTime().withZone(jodaEstTz);
+    private static final DateTimeFormatter jodaEst5EDTDateFormat = ISODateTimeFormat.dateTime().withZone(jodaEst5edtTz);
+    
+    private final DateFormat currentJavaDateFormat;
+    private final DateTimeFormatter currentJodaDateFormat;
+    
     
     public NamedParameters() {
         javaDateFormat.setTimeZone(utcTz);
+        currentJavaDateFormat = javaDateFormat;
+        currentJodaDateFormat = jodaDateFormat;
     }
-
+    //TODO: Must be able to handle all timezones types.
+    public NamedParameters(String timeZone) {
+        if (timeZone.equalsIgnoreCase("est")) {
+            javaDateFormat.setTimeZone(estTz);
+            currentJodaDateFormat = jodaEstDateFormat;
+        } else if (timeZone.equalsIgnoreCase("est5edt")) {
+            javaDateFormat.setTimeZone(est5edtTz);
+            currentJodaDateFormat = jodaEst5EDTDateFormat;
+        } else {
+            currentJodaDateFormat = jodaDateFormat;
+        } 
+        currentJavaDateFormat = javaDateFormat;
+    }
     
     public void add(String key, Object value) {
         namedParams.put(key, value);
     }
-
+    
     /**
      * TODO: Make it more efficient.
      * @param sqlQuery
      * @return 
      */
-    protected String deParameterize(String sqlQuery) {
+    public String deParameterize(String sqlQuery) {
         String result = sqlQuery;
         for (String key:namedParams.keySet()) {
             Object value = namedParams.get(key);
@@ -58,9 +82,9 @@ public class NamedParameters {
             } else if (value instanceof BigDecimal)  {
                 result = result.replaceAll(String.format(":%s", key), String.format("%f", ((BigDecimal)value).doubleValue()));
             } else if (value instanceof Date)  {
-                result = result.replaceAll(String.format(":%s", key), javaDateFormat.format(value));
+                result = result.replaceAll(String.format(":%s", key), currentJavaDateFormat.format(value));
             } else if (value instanceof DateTime)  {
-                result = result.replaceAll(String.format(":%s", key), jodaDateFormat.print(((DateTime)value).getMillis()));
+                result = result.replaceAll(String.format(":%s", key), currentJodaDateFormat.print(((DateTime)value).getMillis()));
             } else {
                 result = result.replaceAll(String.format(":%s", key), value.toString());
             }
