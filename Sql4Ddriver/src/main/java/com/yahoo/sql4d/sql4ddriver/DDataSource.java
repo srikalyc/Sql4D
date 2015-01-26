@@ -370,6 +370,13 @@ public class DDataSource {
         return coordinator.segments(dataSource, reqHeaders);
     }
     
+    /**
+     * TODO: Add more statistics than just connection pool details as <k,v> pairs.
+     * @return 
+     */
+    public Map<String,Integer> getNetworkStatistics() {
+        return DruidNodeAccessor.getConnectionPoolStats();
+    }
     public static void main(String[] args) {
         String q = "SELECT timestamp, LONG_SUM(count) AS edit_count, DOUBLE_SUM(added) AS chars_added FROM wikipedia WHERE interval BETWEEN 2010-01-01T00:00:00.000Z AND 2020-01-01T00:00:00.000Z BREAK BY 'minute' HINT('timeseries');";
         String q1 = "SELECT timestamp, page, LONG_SUM(count) AS edit_count FROM wikipedia WHERE interval BETWEEN 2010-01-01 AND 2020-01-01 AND country='United States' BREAK BY 'all' GROUP BY page  ORDER BY edit_count DESC LIMIT 10;";

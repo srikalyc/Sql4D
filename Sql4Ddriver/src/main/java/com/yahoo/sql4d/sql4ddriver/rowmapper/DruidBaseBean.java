@@ -47,4 +47,5 @@ public class DruidBaseBean {
     public Map<String, Object> toMap() {
         return new ObjectMapper().convertValue(this, Map.class);        
     }
+    
 }
