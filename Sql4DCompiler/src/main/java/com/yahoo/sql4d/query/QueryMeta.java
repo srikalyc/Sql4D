@@ -62,10 +62,10 @@ public class QueryMeta extends BaseStatementMeta {
             return map;
         }
         if (granularity != null) {
-            if (granularity.gSimple != null) {
-                map.put("granularity", granularity.gSimple);
-            } else {
+            if (granularity.gComplex != null) {
                 map.put("granularity", granularity.getJson());
+            } else {
+                map.put("granularity", granularity.gSimple);
             }
         }
         if (filter != null) {

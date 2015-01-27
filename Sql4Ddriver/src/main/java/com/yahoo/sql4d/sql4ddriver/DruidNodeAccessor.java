@@ -62,8 +62,10 @@ public class DruidNodeAccessor {
      */
     public DruidNodeAccessor(String host, int port, int maxConnsPerRout) {
         proxyInit();
-        HttpHost targetHost = new HttpHost(host, port);
-        pool.setMaxPerRoute(new HttpRoute(targetHost), maxConnsPerRout);
+        if (host != null) {
+            HttpHost targetHost = new HttpHost(host, port);
+            pool.setMaxPerRoute(new HttpRoute(targetHost), maxConnsPerRout);
+        }
     }
 
     public static void setProxy(String h, int p) {
@@ -76,6 +78,9 @@ public class DruidNodeAccessor {
         pool.setMaxTotal(max);
     }
 
+    public static void setDefaultMaxConnectionsPerRout(int max) {
+        pool.setDefaultMaxPerRoute(max);
+    }
     /**
      * To ensure customRouterPlanner is initialized only once.
      */
