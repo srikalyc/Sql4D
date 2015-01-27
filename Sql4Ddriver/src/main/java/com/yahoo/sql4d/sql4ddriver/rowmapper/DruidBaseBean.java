@@ -16,15 +16,18 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 /**
- * Has timestamp which is always available in druid response.
+ * Has timestamp which is always available in druid response. All the subclasses 
+ * must ensure they provide getter and setter for every instance variable. Do not
+ * use Boxed types like Integer,  Long etc. Must define a constructor without 
+ * arguments in case you define one with arguments.
  * @author srikalyan
  */
 public class DruidBaseBean {
-    private static DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
-    private static DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
-    private static DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
-    private static DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ");
-    private static DateTimeFormatter dateTimeWithSubSecAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZ");
+    private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
+    private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
+    private static final DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ");
+    private static final DateTimeFormatter dateTimeWithSubSecAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZ");
 
     public static void main(String[] args) {
         System.out.println(dateTimeFormat.parseDateTime("2014-05-25T16:45:49"));
@@ -46,6 +49,11 @@ public class DruidBaseBean {
     
     public Map<String, Object> toMap() {
         return new ObjectMapper().convertValue(this, Map.class);        
+    }
+
+    @Override
+    public String toString() {
+        return toMap().toString();
     }
     
 }

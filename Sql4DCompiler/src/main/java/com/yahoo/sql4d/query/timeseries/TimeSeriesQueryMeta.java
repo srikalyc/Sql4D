@@ -63,7 +63,7 @@ public class TimeSeriesQueryMeta  extends GroupByQueryMeta {
 
     
     public TimeSeriesQueryMeta(QueryMeta q) {
-        super(q);
+        super(q);        
         if (q instanceof GroupByQueryMeta) {
             fetchDimensions = ((GroupByQueryMeta)q).fetchDimensions;
             having = ((GroupByQueryMeta)q).having;
