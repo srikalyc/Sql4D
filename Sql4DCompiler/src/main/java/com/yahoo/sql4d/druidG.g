@@ -161,12 +161,15 @@ queryStmnt returns [QueryMeta qMeta]
 	      |
 	      (WS '*')
 	     )?
-	  WS FROM WS id=ID  { 
-	  	qMeta.dataSource = $id.text; 
+	  WS FROM WS 
+	     (id=ID {qMeta.dataSource = $id.text; }) //Select from a datasource.
+	       | 
+	     (WS LPARAN (innerQuery=queryStmnt) RPARAN {qMeta.queryDataSource = innerQuery;} )// Or select from another query(called as Query data source ). See http://druid.io/docs/latest/DataSource.html.	      
+	     { 
   	  	if (((BaseAggQueryMeta)qMeta).aggregations.isEmpty()) {
 	  		qMeta = SelectQueryMeta.promote(qMeta);
 	  	}
-	    } 
+	     } 
 	  
 	(
 	  WS WHERE WS whereClause[qMeta] 
@@ -645,7 +648,7 @@ OPT_AMPERSAND
 	: '&';
 
 WS 
-	: (' ' | '\t')+
+	: (' ' | '\t' | NEWLINE)+
 	;
 
 // IF the following is not made a fragment then, any 4 digit number would become a DATE_YEAR_ONLY token(even when you want to consider as token LONG)
@@ -692,13 +695,10 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
 
-NEWLINE   :  ( '\r\n' // DOS
+fragment NEWLINE   :  ( '\r\n' // DOS
                | '\r'   // MAC
                | '\n'   // Unix
              )
-             { 
-                $channel = HIDDEN;
-             }
           ;
     
 

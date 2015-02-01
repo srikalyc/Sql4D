@@ -227,6 +227,10 @@ public class Main {
                     if (readyCommand) {
                         readyCommand = false;
                         runCommand(frozenCommand);// Execute command.
+                    } else {
+                        // Make sure to append the newline if we aren't executing right now, since it needs to act like a whitespace.                        
+                        // Thanks to Ethan Wolf (ethan.wolf@alum.mit.edu) for the fix.
+                        cmdBuffer.append(ipChar);
                     }
                     print(PROMPT);
                 } else {
@@ -320,7 +324,7 @@ public class Main {
             Either<String, Either<Joiner4All, Mapper4All>> result = dDriver.query(frozenCommand, null, httpHeaders, trace, queryMode);
             long queryTime = System.currentTimeMillis() - start;
             if (result.isLeft()) {
-                println("Error : " + result.left().get());
+                println("Status : " + result.left().get());
                 printf("(%f sec)\n", queryTime/1000.0);
             } else {
                 Either<Joiner4All, Mapper4All> goodResult = result.right().get();
