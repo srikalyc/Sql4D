@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 druidG.g 2015-01-26 14:26:13
+// $ANTLR 3.5.2 druidG.g 2015-02-01 15:54:16
 
 	package com.yahoo.sql4d.converter;
 
@@ -203,8 +203,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LPARAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:552:8: ( '(' )
-			// druidG.g:552:11: '('
+			// druidG.g:555:8: ( '(' )
+			// druidG.g:555:11: '('
 			{
 			match('('); 
 			}
@@ -223,8 +223,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RPARAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:553:8: ( ')' )
-			// druidG.g:553:11: ')'
+			// druidG.g:556:8: ( ')' )
+			// druidG.g:556:11: ')'
 			{
 			match(')'); 
 			}
@@ -243,8 +243,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LCURLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:554:8: ( '{' )
-			// druidG.g:554:11: '{'
+			// druidG.g:557:8: ( '{' )
+			// druidG.g:557:11: '{'
 			{
 			match('{'); 
 			}
@@ -263,8 +263,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RCURLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:555:8: ( '}' )
-			// druidG.g:555:11: '}'
+			// druidG.g:558:8: ( '}' )
+			// druidG.g:558:11: '}'
 			{
 			match('}'); 
 			}
@@ -283,8 +283,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LSQUARE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:556:9: ( '[' )
-			// druidG.g:556:12: '['
+			// druidG.g:559:9: ( '[' )
+			// druidG.g:559:12: '['
 			{
 			match('['); 
 			}
@@ -303,8 +303,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RSQUARE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:557:9: ( ']' )
-			// druidG.g:557:12: ']'
+			// druidG.g:560:9: ( ']' )
+			// druidG.g:560:12: ']'
 			{
 			match(']'); 
 			}
@@ -323,10 +323,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INSERT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:560:11: ( ( 'INSERT' | 'insert' ) )
-			// druidG.g:560:12: ( 'INSERT' | 'insert' )
+			// druidG.g:563:11: ( ( 'INSERT' | 'insert' ) )
+			// druidG.g:563:12: ( 'INSERT' | 'insert' )
 			{
-			// druidG.g:560:12: ( 'INSERT' | 'insert' )
+			// druidG.g:563:12: ( 'INSERT' | 'insert' )
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='I') ) {
@@ -344,14 +344,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt1) {
 				case 1 :
-					// druidG.g:560:13: 'INSERT'
+					// druidG.g:563:13: 'INSERT'
 					{
 					match("INSERT"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:560:22: 'insert'
+					// druidG.g:563:22: 'insert'
 					{
 					match("insert"); 
 
@@ -376,10 +376,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INSERT_HADOOP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:561:15: ( ( 'INSERT_HADOOP' | 'insert_hadoop' ) )
-			// druidG.g:561:16: ( 'INSERT_HADOOP' | 'insert_hadoop' )
+			// druidG.g:564:15: ( ( 'INSERT_HADOOP' | 'insert_hadoop' ) )
+			// druidG.g:564:16: ( 'INSERT_HADOOP' | 'insert_hadoop' )
 			{
-			// druidG.g:561:16: ( 'INSERT_HADOOP' | 'insert_hadoop' )
+			// druidG.g:564:16: ( 'INSERT_HADOOP' | 'insert_hadoop' )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0=='I') ) {
@@ -397,14 +397,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt2) {
 				case 1 :
-					// druidG.g:561:17: 'INSERT_HADOOP'
+					// druidG.g:564:17: 'INSERT_HADOOP'
 					{
 					match("INSERT_HADOOP"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:561:33: 'insert_hadoop'
+					// druidG.g:564:33: 'insert_hadoop'
 					{
 					match("insert_hadoop"); 
 
@@ -429,10 +429,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INSERT_REALTIME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:562:17: ( ( 'INSERT_REALTIME' | 'insert_realtime' ) )
-			// druidG.g:562:18: ( 'INSERT_REALTIME' | 'insert_realtime' )
+			// druidG.g:565:17: ( ( 'INSERT_REALTIME' | 'insert_realtime' ) )
+			// druidG.g:565:18: ( 'INSERT_REALTIME' | 'insert_realtime' )
 			{
-			// druidG.g:562:18: ( 'INSERT_REALTIME' | 'insert_realtime' )
+			// druidG.g:565:18: ( 'INSERT_REALTIME' | 'insert_realtime' )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='I') ) {
@@ -450,14 +450,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt3) {
 				case 1 :
-					// druidG.g:562:19: 'INSERT_REALTIME'
+					// druidG.g:565:19: 'INSERT_REALTIME'
 					{
 					match("INSERT_REALTIME"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:562:37: 'insert_realtime'
+					// druidG.g:565:37: 'insert_realtime'
 					{
 					match("insert_realtime"); 
 
@@ -482,10 +482,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INTO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:563:15: ( ( 'INTO' | 'into' ) )
-			// druidG.g:563:16: ( 'INTO' | 'into' )
+			// druidG.g:566:15: ( ( 'INTO' | 'into' ) )
+			// druidG.g:566:16: ( 'INTO' | 'into' )
 			{
-			// druidG.g:563:16: ( 'INTO' | 'into' )
+			// druidG.g:566:16: ( 'INTO' | 'into' )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0=='I') ) {
@@ -503,14 +503,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt4) {
 				case 1 :
-					// druidG.g:563:17: 'INTO'
+					// druidG.g:566:17: 'INTO'
 					{
 					match("INTO"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:563:24: 'into'
+					// druidG.g:566:24: 'into'
 					{
 					match("into"); 
 
@@ -535,10 +535,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = VALUES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:564:17: ( ( 'VALUES' | 'values' ) )
-			// druidG.g:564:18: ( 'VALUES' | 'values' )
+			// druidG.g:567:17: ( ( 'VALUES' | 'values' ) )
+			// druidG.g:567:18: ( 'VALUES' | 'values' )
 			{
-			// druidG.g:564:18: ( 'VALUES' | 'values' )
+			// druidG.g:567:18: ( 'VALUES' | 'values' )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='V') ) {
@@ -556,14 +556,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// druidG.g:564:19: 'VALUES'
+					// druidG.g:567:19: 'VALUES'
 					{
 					match("VALUES"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:564:28: 'values'
+					// druidG.g:567:28: 'values'
 					{
 					match("values"); 
 
@@ -588,10 +588,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = MAX_WINDOW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:567:17: ( ( 'MAX_WINDOW' | 'max_window' ) )
-			// druidG.g:567:18: ( 'MAX_WINDOW' | 'max_window' )
+			// druidG.g:570:17: ( ( 'MAX_WINDOW' | 'max_window' ) )
+			// druidG.g:570:18: ( 'MAX_WINDOW' | 'max_window' )
 			{
-			// druidG.g:567:18: ( 'MAX_WINDOW' | 'max_window' )
+			// druidG.g:570:18: ( 'MAX_WINDOW' | 'max_window' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='M') ) {
@@ -609,14 +609,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// druidG.g:567:19: 'MAX_WINDOW'
+					// druidG.g:570:19: 'MAX_WINDOW'
 					{
 					match("MAX_WINDOW"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:567:32: 'max_window'
+					// druidG.g:570:32: 'max_window'
 					{
 					match("max_window"); 
 
@@ -641,10 +641,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DELIMITER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:569:17: ( ( 'DELIMITER' | 'delimiter' ) )
-			// druidG.g:569:18: ( 'DELIMITER' | 'delimiter' )
+			// druidG.g:572:17: ( ( 'DELIMITER' | 'delimiter' ) )
+			// druidG.g:572:18: ( 'DELIMITER' | 'delimiter' )
 			{
-			// druidG.g:569:18: ( 'DELIMITER' | 'delimiter' )
+			// druidG.g:572:18: ( 'DELIMITER' | 'delimiter' )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='D') ) {
@@ -662,14 +662,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// druidG.g:569:19: 'DELIMITER'
+					// druidG.g:572:19: 'DELIMITER'
 					{
 					match("DELIMITER"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:569:31: 'delimiter'
+					// druidG.g:572:31: 'delimiter'
 					{
 					match("delimiter"); 
 
@@ -694,10 +694,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = PARTITION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:570:17: ( ( 'PARTITION' | 'partition' ) )
-			// druidG.g:570:18: ( 'PARTITION' | 'partition' )
+			// druidG.g:573:17: ( ( 'PARTITION' | 'partition' ) )
+			// druidG.g:573:18: ( 'PARTITION' | 'partition' )
 			{
-			// druidG.g:570:18: ( 'PARTITION' | 'partition' )
+			// druidG.g:573:18: ( 'PARTITION' | 'partition' )
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='P') ) {
@@ -715,14 +715,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt8) {
 				case 1 :
-					// druidG.g:570:19: 'PARTITION'
+					// druidG.g:573:19: 'PARTITION'
 					{
 					match("PARTITION"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:570:31: 'partition'
+					// druidG.g:573:31: 'partition'
 					{
 					match("partition"); 
 
@@ -747,10 +747,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ROLLUP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:571:17: ( ( 'ROLLUP' | 'rollup' ) )
-			// druidG.g:571:18: ( 'ROLLUP' | 'rollup' )
+			// druidG.g:574:17: ( ( 'ROLLUP' | 'rollup' ) )
+			// druidG.g:574:18: ( 'ROLLUP' | 'rollup' )
 			{
-			// druidG.g:571:18: ( 'ROLLUP' | 'rollup' )
+			// druidG.g:574:18: ( 'ROLLUP' | 'rollup' )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0=='R') ) {
@@ -768,14 +768,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt9) {
 				case 1 :
-					// druidG.g:571:19: 'ROLLUP'
+					// druidG.g:574:19: 'ROLLUP'
 					{
 					match("ROLLUP"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:571:31: 'rollup'
+					// druidG.g:574:31: 'rollup'
 					{
 					match("rollup"); 
 
@@ -800,10 +800,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DROP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:573:17: ( ( 'DROP' | 'drop' ) )
-			// druidG.g:573:18: ( 'DROP' | 'drop' )
+			// druidG.g:576:17: ( ( 'DROP' | 'drop' ) )
+			// druidG.g:576:18: ( 'DROP' | 'drop' )
 			{
-			// druidG.g:573:18: ( 'DROP' | 'drop' )
+			// druidG.g:576:18: ( 'DROP' | 'drop' )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0=='D') ) {
@@ -821,14 +821,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt10) {
 				case 1 :
-					// druidG.g:573:19: 'DROP'
+					// druidG.g:576:19: 'DROP'
 					{
 					match("DROP"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:573:26: 'drop'
+					// druidG.g:576:26: 'drop'
 					{
 					match("drop"); 
 
@@ -853,10 +853,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = TABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:574:17: ( ( 'TABLE' | 'table' ) )
-			// druidG.g:574:18: ( 'TABLE' | 'table' )
+			// druidG.g:577:17: ( ( 'TABLE' | 'table' ) )
+			// druidG.g:577:18: ( 'TABLE' | 'table' )
 			{
-			// druidG.g:574:18: ( 'TABLE' | 'table' )
+			// druidG.g:577:18: ( 'TABLE' | 'table' )
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0=='T') ) {
@@ -874,14 +874,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt11) {
 				case 1 :
-					// druidG.g:574:19: 'TABLE'
+					// druidG.g:577:19: 'TABLE'
 					{
 					match("TABLE"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:574:27: 'table'
+					// druidG.g:577:27: 'table'
 					{
 					match("table"); 
 
@@ -906,10 +906,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DELETE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:575:17: ( ( 'DELETE' | 'delete' ) )
-			// druidG.g:575:18: ( 'DELETE' | 'delete' )
+			// druidG.g:578:17: ( ( 'DELETE' | 'delete' ) )
+			// druidG.g:578:18: ( 'DELETE' | 'delete' )
 			{
-			// druidG.g:575:18: ( 'DELETE' | 'delete' )
+			// druidG.g:578:18: ( 'DELETE' | 'delete' )
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0=='D') ) {
@@ -927,14 +927,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt12) {
 				case 1 :
-					// druidG.g:575:19: 'DELETE'
+					// druidG.g:578:19: 'DELETE'
 					{
 					match("DELETE"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:575:28: 'delete'
+					// druidG.g:578:28: 'delete'
 					{
 					match("delete"); 
 
@@ -959,10 +959,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = KAFKA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:576:17: ( ( 'KAFKA' | 'kafka' ) )
-			// druidG.g:576:18: ( 'KAFKA' | 'kafka' )
+			// druidG.g:579:17: ( ( 'KAFKA' | 'kafka' ) )
+			// druidG.g:579:18: ( 'KAFKA' | 'kafka' )
 			{
-			// druidG.g:576:18: ( 'KAFKA' | 'kafka' )
+			// druidG.g:579:18: ( 'KAFKA' | 'kafka' )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='K') ) {
@@ -980,14 +980,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// druidG.g:576:19: 'KAFKA'
+					// druidG.g:579:19: 'KAFKA'
 					{
 					match("KAFKA"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:576:27: 'kafka'
+					// druidG.g:579:27: 'kafka'
 					{
 					match("kafka"); 
 
@@ -1012,11 +1012,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:580:9: ( ( 'STRING' ) )
-			// druidG.g:580:10: ( 'STRING' )
+			// druidG.g:583:9: ( ( 'STRING' ) )
+			// druidG.g:583:10: ( 'STRING' )
 			{
-			// druidG.g:580:10: ( 'STRING' )
-			// druidG.g:580:11: 'STRING'
+			// druidG.g:583:10: ( 'STRING' )
+			// druidG.g:583:11: 'STRING'
 			{
 			match("STRING"); 
 
@@ -1038,11 +1038,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ISO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:581:6: ( ( 'ISO' ) )
-			// druidG.g:581:7: ( 'ISO' )
+			// druidG.g:584:6: ( ( 'ISO' ) )
+			// druidG.g:584:7: ( 'ISO' )
 			{
-			// druidG.g:581:7: ( 'ISO' )
-			// druidG.g:581:8: 'ISO'
+			// druidG.g:584:7: ( 'ISO' )
+			// druidG.g:584:8: 'ISO'
 			{
 			match("ISO"); 
 
@@ -1064,11 +1064,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = AUTO_ISO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:582:10: ( ( 'AUTO_ISO' ) )
-			// druidG.g:582:11: ( 'AUTO_ISO' )
+			// druidG.g:585:10: ( ( 'AUTO_ISO' ) )
+			// druidG.g:585:11: ( 'AUTO_ISO' )
 			{
-			// druidG.g:582:11: ( 'AUTO_ISO' )
-			// druidG.g:582:12: 'AUTO_ISO'
+			// druidG.g:585:11: ( 'AUTO_ISO' )
+			// druidG.g:585:12: 'AUTO_ISO'
 			{
 			match("AUTO_ISO"); 
 
@@ -1090,10 +1090,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = SELECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:585:9: ( ( 'SELECT' | 'select' ) )
-			// druidG.g:585:11: ( 'SELECT' | 'select' )
+			// druidG.g:588:9: ( ( 'SELECT' | 'select' ) )
+			// druidG.g:588:11: ( 'SELECT' | 'select' )
 			{
-			// druidG.g:585:11: ( 'SELECT' | 'select' )
+			// druidG.g:588:11: ( 'SELECT' | 'select' )
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0=='S') ) {
@@ -1111,14 +1111,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt14) {
 				case 1 :
-					// druidG.g:585:12: 'SELECT'
+					// druidG.g:588:12: 'SELECT'
 					{
 					match("SELECT"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:585:21: 'select'
+					// druidG.g:588:21: 'select'
 					{
 					match("select"); 
 
@@ -1143,11 +1143,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = COUNT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:587:8: ( ( 'COUNT' ) )
-			// druidG.g:587:10: ( 'COUNT' )
+			// druidG.g:590:8: ( ( 'COUNT' ) )
+			// druidG.g:590:10: ( 'COUNT' )
 			{
-			// druidG.g:587:10: ( 'COUNT' )
-			// druidG.g:587:11: 'COUNT'
+			// druidG.g:590:10: ( 'COUNT' )
+			// druidG.g:590:11: 'COUNT'
 			{
 			match("COUNT"); 
 
@@ -1169,11 +1169,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LONG_SUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:588:10: ( ( 'LONG_SUM' ) )
-			// druidG.g:588:12: ( 'LONG_SUM' )
+			// druidG.g:591:10: ( ( 'LONG_SUM' ) )
+			// druidG.g:591:12: ( 'LONG_SUM' )
 			{
-			// druidG.g:588:12: ( 'LONG_SUM' )
-			// druidG.g:588:13: 'LONG_SUM'
+			// druidG.g:591:12: ( 'LONG_SUM' )
+			// druidG.g:591:13: 'LONG_SUM'
 			{
 			match("LONG_SUM"); 
 
@@ -1195,11 +1195,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DOUBLE_SUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:589:12: ( ( 'DOUBLE_SUM' ) )
-			// druidG.g:589:14: ( 'DOUBLE_SUM' )
+			// druidG.g:592:12: ( ( 'DOUBLE_SUM' ) )
+			// druidG.g:592:14: ( 'DOUBLE_SUM' )
 			{
-			// druidG.g:589:14: ( 'DOUBLE_SUM' )
-			// druidG.g:589:15: 'DOUBLE_SUM'
+			// druidG.g:592:14: ( 'DOUBLE_SUM' )
+			// druidG.g:592:15: 'DOUBLE_SUM'
 			{
 			match("DOUBLE_SUM"); 
 
@@ -1221,11 +1221,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = UNIQUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:590:9: ( ( 'UNIQUE' ) )
-			// druidG.g:590:11: ( 'UNIQUE' )
+			// druidG.g:593:9: ( ( 'UNIQUE' ) )
+			// druidG.g:593:11: ( 'UNIQUE' )
 			{
-			// druidG.g:590:11: ( 'UNIQUE' )
-			// druidG.g:590:12: 'UNIQUE'
+			// druidG.g:593:11: ( 'UNIQUE' )
+			// druidG.g:593:12: 'UNIQUE'
 			{
 			match("UNIQUE"); 
 
@@ -1247,11 +1247,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = HYPER_UNIQUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:591:15: ( ( 'HYPER_UNIQUE' ) )
-			// druidG.g:591:17: ( 'HYPER_UNIQUE' )
+			// druidG.g:594:15: ( ( 'HYPER_UNIQUE' ) )
+			// druidG.g:594:17: ( 'HYPER_UNIQUE' )
 			{
-			// druidG.g:591:17: ( 'HYPER_UNIQUE' )
-			// druidG.g:591:18: 'HYPER_UNIQUE'
+			// druidG.g:594:17: ( 'HYPER_UNIQUE' )
+			// druidG.g:594:18: 'HYPER_UNIQUE'
 			{
 			match("HYPER_UNIQUE"); 
 
@@ -1273,11 +1273,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = MIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:592:6: ( ( 'MIN' ) )
-			// druidG.g:592:8: ( 'MIN' )
+			// druidG.g:595:6: ( ( 'MIN' ) )
+			// druidG.g:595:8: ( 'MIN' )
 			{
-			// druidG.g:592:8: ( 'MIN' )
-			// druidG.g:592:9: 'MIN'
+			// druidG.g:595:8: ( 'MIN' )
+			// druidG.g:595:9: 'MIN'
 			{
 			match("MIN"); 
 
@@ -1299,11 +1299,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = MAX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:593:5: ( ( 'MAX' ) )
-			// druidG.g:593:7: ( 'MAX' )
+			// druidG.g:596:5: ( ( 'MAX' ) )
+			// druidG.g:596:7: ( 'MAX' )
 			{
-			// druidG.g:593:7: ( 'MAX' )
-			// druidG.g:593:8: 'MAX'
+			// druidG.g:596:7: ( 'MAX' )
+			// druidG.g:596:8: 'MAX'
 			{
 			match("MAX"); 
 
@@ -1325,11 +1325,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DURATION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:595:9: ( ( 'DURATION' ) )
-			// druidG.g:595:11: ( 'DURATION' )
+			// druidG.g:598:9: ( ( 'DURATION' ) )
+			// druidG.g:598:11: ( 'DURATION' )
 			{
-			// druidG.g:595:11: ( 'DURATION' )
-			// druidG.g:595:12: 'DURATION'
+			// druidG.g:598:11: ( 'DURATION' )
+			// druidG.g:598:12: 'DURATION'
 			{
 			match("DURATION"); 
 
@@ -1351,11 +1351,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = PERIOD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:596:8: ( ( 'PERIOD' ) )
-			// druidG.g:596:10: ( 'PERIOD' )
+			// druidG.g:599:8: ( ( 'PERIOD' ) )
+			// druidG.g:599:10: ( 'PERIOD' )
 			{
-			// druidG.g:596:10: ( 'PERIOD' )
-			// druidG.g:596:11: 'PERIOD'
+			// druidG.g:599:10: ( 'PERIOD' )
+			// druidG.g:599:11: 'PERIOD'
 			{
 			match("PERIOD"); 
 
@@ -1377,11 +1377,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = INCLUDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:597:9: ( ( 'INCLUDE' ) )
-			// druidG.g:597:11: ( 'INCLUDE' )
+			// druidG.g:600:9: ( ( 'INCLUDE' ) )
+			// druidG.g:600:11: ( 'INCLUDE' )
 			{
-			// druidG.g:597:11: ( 'INCLUDE' )
-			// druidG.g:597:12: 'INCLUDE'
+			// druidG.g:600:11: ( 'INCLUDE' )
+			// druidG.g:600:12: 'INCLUDE'
 			{
 			match("INCLUDE"); 
 
@@ -1403,11 +1403,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WHICH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:599:7: ( ( 'WHICH' ) )
-			// druidG.g:599:9: ( 'WHICH' )
+			// druidG.g:602:7: ( ( 'WHICH' ) )
+			// druidG.g:602:9: ( 'WHICH' )
 			{
-			// druidG.g:599:9: ( 'WHICH' )
-			// druidG.g:599:10: 'WHICH'
+			// druidG.g:602:9: ( 'WHICH' )
+			// druidG.g:602:10: 'WHICH'
 			{
 			match("WHICH"); 
 
@@ -1429,11 +1429,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = CONTAINS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:600:9: ( ( 'CONTAINS' ) )
-			// druidG.g:600:11: ( 'CONTAINS' )
+			// druidG.g:603:9: ( ( 'CONTAINS' ) )
+			// druidG.g:603:11: ( 'CONTAINS' )
 			{
-			// druidG.g:600:11: ( 'CONTAINS' )
-			// druidG.g:600:12: 'CONTAINS'
+			// druidG.g:603:11: ( 'CONTAINS' )
+			// druidG.g:603:12: 'CONTAINS'
 			{
 			match("CONTAINS"); 
 
@@ -1455,11 +1455,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = SORT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:601:6: ( ( 'SORT' ) )
-			// druidG.g:601:8: ( 'SORT' )
+			// druidG.g:604:6: ( ( 'SORT' ) )
+			// druidG.g:604:8: ( 'SORT' )
 			{
-			// druidG.g:601:8: ( 'SORT' )
-			// druidG.g:601:9: 'SORT'
+			// druidG.g:604:8: ( 'SORT' )
+			// druidG.g:604:9: 'SORT'
 			{
 			match("SORT"); 
 
@@ -1481,11 +1481,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = HINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:603:6: ( ( 'HINT' ) )
-			// druidG.g:603:8: ( 'HINT' )
+			// druidG.g:606:6: ( ( 'HINT' ) )
+			// druidG.g:606:8: ( 'HINT' )
 			{
-			// druidG.g:603:8: ( 'HINT' )
-			// druidG.g:603:9: 'HINT'
+			// druidG.g:606:8: ( 'HINT' )
+			// druidG.g:606:9: 'HINT'
 			{
 			match("HINT"); 
 
@@ -1507,10 +1507,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = AS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:605:5: ( ( 'AS' | 'as' ) )
-			// druidG.g:605:7: ( 'AS' | 'as' )
+			// druidG.g:608:5: ( ( 'AS' | 'as' ) )
+			// druidG.g:608:7: ( 'AS' | 'as' )
 			{
-			// druidG.g:605:7: ( 'AS' | 'as' )
+			// druidG.g:608:7: ( 'AS' | 'as' )
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0=='A') ) {
@@ -1528,14 +1528,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt15) {
 				case 1 :
-					// druidG.g:605:8: 'AS'
+					// druidG.g:608:8: 'AS'
 					{
 					match("AS"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:605:13: 'as'
+					// druidG.g:608:13: 'as'
 					{
 					match("as"); 
 
@@ -1560,10 +1560,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = FIELD_ACCESS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:606:14: ( ( 'FIELD_ACCESS' | 'field_access' ) )
-			// druidG.g:606:16: ( 'FIELD_ACCESS' | 'field_access' )
+			// druidG.g:609:14: ( ( 'FIELD_ACCESS' | 'field_access' ) )
+			// druidG.g:609:16: ( 'FIELD_ACCESS' | 'field_access' )
 			{
-			// druidG.g:606:16: ( 'FIELD_ACCESS' | 'field_access' )
+			// druidG.g:609:16: ( 'FIELD_ACCESS' | 'field_access' )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='F') ) {
@@ -1581,14 +1581,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt16) {
 				case 1 :
-					// druidG.g:606:17: 'FIELD_ACCESS'
+					// druidG.g:609:17: 'FIELD_ACCESS'
 					{
 					match("FIELD_ACCESS"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:606:32: 'field_access'
+					// druidG.g:609:32: 'field_access'
 					{
 					match("field_access"); 
 
@@ -1613,10 +1613,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = FROM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:607:7: ( ( 'FROM' | 'from' ) )
-			// druidG.g:607:9: ( 'FROM' | 'from' )
+			// druidG.g:610:7: ( ( 'FROM' | 'from' ) )
+			// druidG.g:610:9: ( 'FROM' | 'from' )
 			{
-			// druidG.g:607:9: ( 'FROM' | 'from' )
+			// druidG.g:610:9: ( 'FROM' | 'from' )
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0=='F') ) {
@@ -1634,14 +1634,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt17) {
 				case 1 :
-					// druidG.g:607:10: 'FROM'
+					// druidG.g:610:10: 'FROM'
 					{
 					match("FROM"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:607:17: 'from'
+					// druidG.g:610:17: 'from'
 					{
 					match("from"); 
 
@@ -1666,10 +1666,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WHERE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:608:8: ( ( 'WHERE' | 'where' ) )
-			// druidG.g:608:10: ( 'WHERE' | 'where' )
+			// druidG.g:611:8: ( ( 'WHERE' | 'where' ) )
+			// druidG.g:611:10: ( 'WHERE' | 'where' )
 			{
-			// druidG.g:608:10: ( 'WHERE' | 'where' )
+			// druidG.g:611:10: ( 'WHERE' | 'where' )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='W') ) {
@@ -1687,14 +1687,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt18) {
 				case 1 :
-					// druidG.g:608:11: 'WHERE'
+					// druidG.g:611:11: 'WHERE'
 					{
 					match("WHERE"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:608:19: 'where'
+					// druidG.g:611:19: 'where'
 					{
 					match("where"); 
 
@@ -1719,10 +1719,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BETWEEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:609:9: ( ( 'BETWEEN' | 'between' ) )
-			// druidG.g:609:11: ( 'BETWEEN' | 'between' )
+			// druidG.g:612:9: ( ( 'BETWEEN' | 'between' ) )
+			// druidG.g:612:11: ( 'BETWEEN' | 'between' )
 			{
-			// druidG.g:609:11: ( 'BETWEEN' | 'between' )
+			// druidG.g:612:11: ( 'BETWEEN' | 'between' )
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0=='B') ) {
@@ -1740,14 +1740,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt19) {
 				case 1 :
-					// druidG.g:609:12: 'BETWEEN'
+					// druidG.g:612:12: 'BETWEEN'
 					{
 					match("BETWEEN"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:609:22: 'between'
+					// druidG.g:612:22: 'between'
 					{
 					match("between"); 
 
@@ -1772,10 +1772,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:610:6: ( ( 'AND' | 'and' ) )
-			// druidG.g:610:8: ( 'AND' | 'and' )
+			// druidG.g:613:6: ( ( 'AND' | 'and' ) )
+			// druidG.g:613:8: ( 'AND' | 'and' )
 			{
-			// druidG.g:610:8: ( 'AND' | 'and' )
+			// druidG.g:613:8: ( 'AND' | 'and' )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0=='A') ) {
@@ -1793,14 +1793,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt20) {
 				case 1 :
-					// druidG.g:610:9: 'AND'
+					// druidG.g:613:9: 'AND'
 					{
 					match("AND"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:610:15: 'and'
+					// druidG.g:613:15: 'and'
 					{
 					match("and"); 
 
@@ -1825,10 +1825,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:611:5: ( ( 'OR' | 'or' ) )
-			// druidG.g:611:7: ( 'OR' | 'or' )
+			// druidG.g:614:5: ( ( 'OR' | 'or' ) )
+			// druidG.g:614:7: ( 'OR' | 'or' )
 			{
-			// druidG.g:611:7: ( 'OR' | 'or' )
+			// druidG.g:614:7: ( 'OR' | 'or' )
 			int alt21=2;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0=='O') ) {
@@ -1846,14 +1846,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt21) {
 				case 1 :
-					// druidG.g:611:8: 'OR'
+					// druidG.g:614:8: 'OR'
 					{
 					match("OR"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:611:13: 'or'
+					// druidG.g:614:13: 'or'
 					{
 					match("or"); 
 
@@ -1878,10 +1878,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:612:6: ( ( 'NOT' | 'not' ) )
-			// druidG.g:612:8: ( 'NOT' | 'not' )
+			// druidG.g:615:6: ( ( 'NOT' | 'not' ) )
+			// druidG.g:615:8: ( 'NOT' | 'not' )
 			{
-			// druidG.g:612:8: ( 'NOT' | 'not' )
+			// druidG.g:615:8: ( 'NOT' | 'not' )
 			int alt22=2;
 			int LA22_0 = input.LA(1);
 			if ( (LA22_0=='N') ) {
@@ -1899,14 +1899,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt22) {
 				case 1 :
-					// druidG.g:612:9: 'NOT'
+					// druidG.g:615:9: 'NOT'
 					{
 					match("NOT"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:612:15: 'not'
+					// druidG.g:615:15: 'not'
 					{
 					match("not"); 
 
@@ -1931,10 +1931,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = GROUP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:613:7: ( ( 'GROUP' | 'group' ) )
-			// druidG.g:613:9: ( 'GROUP' | 'group' )
+			// druidG.g:616:7: ( ( 'GROUP' | 'group' ) )
+			// druidG.g:616:9: ( 'GROUP' | 'group' )
 			{
-			// druidG.g:613:9: ( 'GROUP' | 'group' )
+			// druidG.g:616:9: ( 'GROUP' | 'group' )
 			int alt23=2;
 			int LA23_0 = input.LA(1);
 			if ( (LA23_0=='G') ) {
@@ -1952,14 +1952,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt23) {
 				case 1 :
-					// druidG.g:613:10: 'GROUP'
+					// druidG.g:616:10: 'GROUP'
 					{
 					match("GROUP"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:613:20: 'group'
+					// druidG.g:616:20: 'group'
 					{
 					match("group"); 
 
@@ -1984,10 +1984,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ASC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:614:5: ( ( 'ASC' | 'asc' ) )
-			// druidG.g:614:7: ( 'ASC' | 'asc' )
+			// druidG.g:617:5: ( ( 'ASC' | 'asc' ) )
+			// druidG.g:617:7: ( 'ASC' | 'asc' )
 			{
-			// druidG.g:614:7: ( 'ASC' | 'asc' )
+			// druidG.g:617:7: ( 'ASC' | 'asc' )
 			int alt24=2;
 			int LA24_0 = input.LA(1);
 			if ( (LA24_0=='A') ) {
@@ -2005,14 +2005,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt24) {
 				case 1 :
-					// druidG.g:614:8: 'ASC'
+					// druidG.g:617:8: 'ASC'
 					{
 					match("ASC"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:614:16: 'asc'
+					// druidG.g:617:16: 'asc'
 					{
 					match("asc"); 
 
@@ -2037,10 +2037,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DESC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:615:6: ( ( 'DESC' | 'desc' ) )
-			// druidG.g:615:8: ( 'DESC' | 'desc' )
+			// druidG.g:618:6: ( ( 'DESC' | 'desc' ) )
+			// druidG.g:618:8: ( 'DESC' | 'desc' )
 			{
-			// druidG.g:615:8: ( 'DESC' | 'desc' )
+			// druidG.g:618:8: ( 'DESC' | 'desc' )
 			int alt25=2;
 			int LA25_0 = input.LA(1);
 			if ( (LA25_0=='D') ) {
@@ -2058,14 +2058,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt25) {
 				case 1 :
-					// druidG.g:615:9: 'DESC'
+					// druidG.g:618:9: 'DESC'
 					{
 					match("DESC"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:615:18: 'desc'
+					// druidG.g:618:18: 'desc'
 					{
 					match("desc"); 
 
@@ -2090,10 +2090,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ORDER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:616:7: ( ( 'ORDER' | 'order' ) )
-			// druidG.g:616:9: ( 'ORDER' | 'order' )
+			// druidG.g:619:7: ( ( 'ORDER' | 'order' ) )
+			// druidG.g:619:9: ( 'ORDER' | 'order' )
 			{
-			// druidG.g:616:9: ( 'ORDER' | 'order' )
+			// druidG.g:619:9: ( 'ORDER' | 'order' )
 			int alt26=2;
 			int LA26_0 = input.LA(1);
 			if ( (LA26_0=='O') ) {
@@ -2111,14 +2111,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt26) {
 				case 1 :
-					// druidG.g:616:10: 'ORDER'
+					// druidG.g:619:10: 'ORDER'
 					{
 					match("ORDER"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:616:20: 'order'
+					// druidG.g:619:20: 'order'
 					{
 					match("order"); 
 
@@ -2143,10 +2143,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = HAVING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:617:8: ( ( 'HAVING' | 'having' ) )
-			// druidG.g:617:10: ( 'HAVING' | 'having' )
+			// druidG.g:620:8: ( ( 'HAVING' | 'having' ) )
+			// druidG.g:620:10: ( 'HAVING' | 'having' )
 			{
-			// druidG.g:617:10: ( 'HAVING' | 'having' )
+			// druidG.g:620:10: ( 'HAVING' | 'having' )
 			int alt27=2;
 			int LA27_0 = input.LA(1);
 			if ( (LA27_0=='H') ) {
@@ -2164,14 +2164,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt27) {
 				case 1 :
-					// druidG.g:617:11: 'HAVING'
+					// druidG.g:620:11: 'HAVING'
 					{
 					match("HAVING"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:617:22: 'having'
+					// druidG.g:620:22: 'having'
 					{
 					match("having"); 
 
@@ -2196,10 +2196,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BREAK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:618:7: ( ( 'BREAK' | 'break' ) )
-			// druidG.g:618:9: ( 'BREAK' | 'break' )
+			// druidG.g:621:7: ( ( 'BREAK' | 'break' ) )
+			// druidG.g:621:9: ( 'BREAK' | 'break' )
 			{
-			// druidG.g:618:9: ( 'BREAK' | 'break' )
+			// druidG.g:621:9: ( 'BREAK' | 'break' )
 			int alt28=2;
 			int LA28_0 = input.LA(1);
 			if ( (LA28_0=='B') ) {
@@ -2217,14 +2217,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt28) {
 				case 1 :
-					// druidG.g:618:10: 'BREAK'
+					// druidG.g:621:10: 'BREAK'
 					{
 					match("BREAK"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:618:20: 'break'
+					// druidG.g:621:20: 'break'
 					{
 					match("break"); 
 
@@ -2249,10 +2249,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = BY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:619:4: ( ( 'BY' | 'by' ) )
-			// druidG.g:619:6: ( 'BY' | 'by' )
+			// druidG.g:622:4: ( ( 'BY' | 'by' ) )
+			// druidG.g:622:6: ( 'BY' | 'by' )
 			{
-			// druidG.g:619:6: ( 'BY' | 'by' )
+			// druidG.g:622:6: ( 'BY' | 'by' )
 			int alt29=2;
 			int LA29_0 = input.LA(1);
 			if ( (LA29_0=='B') ) {
@@ -2270,14 +2270,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt29) {
 				case 1 :
-					// druidG.g:619:7: 'BY'
+					// druidG.g:622:7: 'BY'
 					{
 					match("BY"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:619:14: 'by'
+					// druidG.g:622:14: 'by'
 					{
 					match("by"); 
 
@@ -2302,10 +2302,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LIMIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:621:7: ( ( 'LIMIT' | 'limit' ) )
-			// druidG.g:621:9: ( 'LIMIT' | 'limit' )
+			// druidG.g:624:7: ( ( 'LIMIT' | 'limit' ) )
+			// druidG.g:624:9: ( 'LIMIT' | 'limit' )
 			{
-			// druidG.g:621:9: ( 'LIMIT' | 'limit' )
+			// druidG.g:624:9: ( 'LIMIT' | 'limit' )
 			int alt30=2;
 			int LA30_0 = input.LA(1);
 			if ( (LA30_0=='L') ) {
@@ -2323,14 +2323,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt30) {
 				case 1 :
-					// druidG.g:621:10: 'LIMIT'
+					// druidG.g:624:10: 'LIMIT'
 					{
 					match("LIMIT"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:621:20: 'limit'
+					// druidG.g:624:20: 'limit'
 					{
 					match("limit"); 
 
@@ -2355,10 +2355,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LIKE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:622:6: ( ( 'LIKE' | 'like' ) )
-			// druidG.g:622:8: ( 'LIKE' | 'like' )
+			// druidG.g:625:6: ( ( 'LIKE' | 'like' ) )
+			// druidG.g:625:8: ( 'LIKE' | 'like' )
 			{
-			// druidG.g:622:8: ( 'LIKE' | 'like' )
+			// druidG.g:625:8: ( 'LIKE' | 'like' )
 			int alt31=2;
 			int LA31_0 = input.LA(1);
 			if ( (LA31_0=='L') ) {
@@ -2376,14 +2376,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt31) {
 				case 1 :
-					// druidG.g:622:9: 'LIKE'
+					// druidG.g:625:9: 'LIKE'
 					{
 					match("LIKE"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:622:18: 'like'
+					// druidG.g:625:18: 'like'
 					{
 					match("like"); 
 
@@ -2408,10 +2408,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:623:6: ( ( 'THEN' | 'then' ) )
-			// druidG.g:623:8: ( 'THEN' | 'then' )
+			// druidG.g:626:6: ( ( 'THEN' | 'then' ) )
+			// druidG.g:626:8: ( 'THEN' | 'then' )
 			{
-			// druidG.g:623:8: ( 'THEN' | 'then' )
+			// druidG.g:626:8: ( 'THEN' | 'then' )
 			int alt32=2;
 			int LA32_0 = input.LA(1);
 			if ( (LA32_0=='T') ) {
@@ -2429,14 +2429,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt32) {
 				case 1 :
-					// druidG.g:623:9: 'THEN'
+					// druidG.g:626:9: 'THEN'
 					{
 					match("THEN"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:623:18: 'then'
+					// druidG.g:626:18: 'then'
 					{
 					match("then"); 
 
@@ -2461,10 +2461,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = JAVASCRIPT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:626:2: ( ( 'JAVASCRIPT:' | 'javascript:' ) )
-			// druidG.g:626:5: ( 'JAVASCRIPT:' | 'javascript:' )
+			// druidG.g:629:2: ( ( 'JAVASCRIPT:' | 'javascript:' ) )
+			// druidG.g:629:5: ( 'JAVASCRIPT:' | 'javascript:' )
 			{
-			// druidG.g:626:5: ( 'JAVASCRIPT:' | 'javascript:' )
+			// druidG.g:629:5: ( 'JAVASCRIPT:' | 'javascript:' )
 			int alt33=2;
 			int LA33_0 = input.LA(1);
 			if ( (LA33_0=='J') ) {
@@ -2482,14 +2482,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt33) {
 				case 1 :
-					// druidG.g:626:6: 'JAVASCRIPT:'
+					// druidG.g:629:6: 'JAVASCRIPT:'
 					{
 					match("JAVASCRIPT:"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:626:21: 'javascript:'
+					// druidG.g:629:21: 'javascript:'
 					{
 					match("javascript:"); 
 
@@ -2514,10 +2514,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:628:7: ( ( 'JOIN' | 'join' ) )
-			// druidG.g:628:9: ( 'JOIN' | 'join' )
+			// druidG.g:631:7: ( ( 'JOIN' | 'join' ) )
+			// druidG.g:631:9: ( 'JOIN' | 'join' )
 			{
-			// druidG.g:628:9: ( 'JOIN' | 'join' )
+			// druidG.g:631:9: ( 'JOIN' | 'join' )
 			int alt34=2;
 			int LA34_0 = input.LA(1);
 			if ( (LA34_0=='J') ) {
@@ -2535,14 +2535,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt34) {
 				case 1 :
-					// druidG.g:628:10: 'JOIN'
+					// druidG.g:631:10: 'JOIN'
 					{
 					match("JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:628:19: 'join'
+					// druidG.g:631:19: 'join'
 					{
 					match("join"); 
 
@@ -2567,10 +2567,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = LEFT_JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:631:12: ( ( 'LEFT_JOIN' | 'left_join' ) )
-			// druidG.g:631:14: ( 'LEFT_JOIN' | 'left_join' )
+			// druidG.g:634:12: ( ( 'LEFT_JOIN' | 'left_join' ) )
+			// druidG.g:634:14: ( 'LEFT_JOIN' | 'left_join' )
 			{
-			// druidG.g:631:14: ( 'LEFT_JOIN' | 'left_join' )
+			// druidG.g:634:14: ( 'LEFT_JOIN' | 'left_join' )
 			int alt35=2;
 			int LA35_0 = input.LA(1);
 			if ( (LA35_0=='L') ) {
@@ -2588,14 +2588,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt35) {
 				case 1 :
-					// druidG.g:631:15: 'LEFT_JOIN'
+					// druidG.g:634:15: 'LEFT_JOIN'
 					{
 					match("LEFT_JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:631:29: 'left_join'
+					// druidG.g:634:29: 'left_join'
 					{
 					match("left_join"); 
 
@@ -2620,10 +2620,10 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = RIGHT_JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:634:13: ( ( 'RIGHT_JOIN' | 'right_join' ) )
-			// druidG.g:634:15: ( 'RIGHT_JOIN' | 'right_join' )
+			// druidG.g:637:13: ( ( 'RIGHT_JOIN' | 'right_join' ) )
+			// druidG.g:637:15: ( 'RIGHT_JOIN' | 'right_join' )
 			{
-			// druidG.g:634:15: ( 'RIGHT_JOIN' | 'right_join' )
+			// druidG.g:637:15: ( 'RIGHT_JOIN' | 'right_join' )
 			int alt36=2;
 			int LA36_0 = input.LA(1);
 			if ( (LA36_0=='R') ) {
@@ -2641,14 +2641,14 @@ public class druidGLexer extends Lexer {
 
 			switch (alt36) {
 				case 1 :
-					// druidG.g:634:16: 'RIGHT_JOIN'
+					// druidG.g:637:16: 'RIGHT_JOIN'
 					{
 					match("RIGHT_JOIN"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:634:31: 'right_join'
+					// druidG.g:637:31: 'right_join'
 					{
 					match("right_join"); 
 
@@ -2673,11 +2673,11 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:637:5: ( ( 'ON' ) )
-			// druidG.g:637:7: ( 'ON' )
+			// druidG.g:640:5: ( ( 'ON' ) )
+			// druidG.g:640:7: ( 'ON' )
 			{
-			// druidG.g:637:7: ( 'ON' )
-			// druidG.g:637:8: 'ON'
+			// druidG.g:640:7: ( 'ON' )
+			// druidG.g:640:8: 'ON'
 			{
 			match("ON"); 
 
@@ -2699,8 +2699,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = OPT_SEMI_COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:642:2: ( ';' )
-			// druidG.g:642:4: ';'
+			// druidG.g:645:2: ( ';' )
+			// druidG.g:645:4: ';'
 			{
 			match(';'); 
 			}
@@ -2719,8 +2719,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = OPT_AMPERSAND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:645:2: ( '&' )
-			// druidG.g:645:4: '&'
+			// druidG.g:648:2: ( '&' )
+			// druidG.g:648:4: '&'
 			{
 			match('&'); 
 			}
@@ -2739,31 +2739,50 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:648:2: ( ( ' ' | '\\t' )+ )
-			// druidG.g:648:4: ( ' ' | '\\t' )+
+			// druidG.g:651:2: ( ( ' ' | '\\t' | NEWLINE )+ )
+			// druidG.g:651:4: ( ' ' | '\\t' | NEWLINE )+
 			{
-			// druidG.g:648:4: ( ' ' | '\\t' )+
+			// druidG.g:651:4: ( ' ' | '\\t' | NEWLINE )+
 			int cnt37=0;
 			loop37:
 			while (true) {
-				int alt37=2;
-				int LA37_0 = input.LA(1);
-				if ( (LA37_0=='\t'||LA37_0==' ') ) {
+				int alt37=4;
+				switch ( input.LA(1) ) {
+				case ' ':
+					{
 					alt37=1;
+					}
+					break;
+				case '\t':
+					{
+					alt37=2;
+					}
+					break;
+				case '\n':
+				case '\r':
+					{
+					alt37=3;
+					}
+					break;
 				}
-
 				switch (alt37) {
 				case 1 :
-					// druidG.g:
+					// druidG.g:651:5: ' '
 					{
-					if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
-						input.consume();
+					match(' '); 
 					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
+					break;
+				case 2 :
+					// druidG.g:651:11: '\\t'
+					{
+					match('\t'); 
 					}
+					break;
+				case 3 :
+					// druidG.g:651:18: NEWLINE
+					{
+					mNEWLINE(); 
+
 					}
 					break;
 
@@ -2789,8 +2808,8 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "DATE_YEAR_ONLY"
 	public final void mDATE_YEAR_ONLY() throws RecognitionException {
 		try {
-			// druidG.g:653:2: ( NUM NUM NUM NUM )
-			// druidG.g:653:4: NUM NUM NUM NUM
+			// druidG.g:656:2: ( NUM NUM NUM NUM )
+			// druidG.g:656:4: NUM NUM NUM NUM
 			{
 			mNUM(); 
 
@@ -2814,8 +2833,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_YEAR_MONTH_ONLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:656:2: ( DATE_YEAR_ONLY '-' NUM NUM )
-			// druidG.g:656:4: DATE_YEAR_ONLY '-' NUM NUM
+			// druidG.g:659:2: ( DATE_YEAR_ONLY '-' NUM NUM )
+			// druidG.g:659:4: DATE_YEAR_ONLY '-' NUM NUM
 			{
 			mDATE_YEAR_ONLY(); 
 
@@ -2840,8 +2859,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:659:2: ( DATE_YEAR_MONTH_ONLY '-' NUM NUM )
-			// druidG.g:659:4: DATE_YEAR_MONTH_ONLY '-' NUM NUM
+			// druidG.g:662:2: ( DATE_YEAR_MONTH_ONLY '-' NUM NUM )
+			// druidG.g:662:4: DATE_YEAR_MONTH_ONLY '-' NUM NUM
 			{
 			mDATE_YEAR_MONTH_ONLY(); 
 
@@ -2866,8 +2885,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:662:2: ( DATE 'T' NUM NUM )
-			// druidG.g:662:4: DATE 'T' NUM NUM
+			// druidG.g:665:2: ( DATE 'T' NUM NUM )
+			// druidG.g:665:4: DATE 'T' NUM NUM
 			{
 			mDATE(); 
 
@@ -2892,8 +2911,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:665:2: ( DATE_HOUR ':' NUM NUM )
-			// druidG.g:665:5: DATE_HOUR ':' NUM NUM
+			// druidG.g:668:2: ( DATE_HOUR ':' NUM NUM )
+			// druidG.g:668:5: DATE_HOUR ':' NUM NUM
 			{
 			mDATE_HOUR(); 
 
@@ -2918,8 +2937,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:668:2: ( DATE_HOUR_MIN ':' NUM NUM )
-			// druidG.g:668:5: DATE_HOUR_MIN ':' NUM NUM
+			// druidG.g:671:2: ( DATE_HOUR_MIN ':' NUM NUM )
+			// druidG.g:671:5: DATE_HOUR_MIN ':' NUM NUM
 			{
 			mDATE_HOUR_MIN(); 
 
@@ -2944,8 +2963,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:671:2: ( DATE_HOUR_MIN_SEC '.' NUM NUM NUM )
-			// druidG.g:671:5: DATE_HOUR_MIN_SEC '.' NUM NUM NUM
+			// druidG.g:674:2: ( DATE_HOUR_MIN_SEC '.' NUM NUM NUM )
+			// druidG.g:674:5: DATE_HOUR_MIN_SEC '.' NUM NUM NUM
 			{
 			mDATE_HOUR_MIN_SEC(); 
 
@@ -2972,8 +2991,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB_TZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:674:2: ( DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM )
-			// druidG.g:674:5: DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM
+			// druidG.g:677:2: ( DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM )
+			// druidG.g:677:5: DATE_HOUR_MIN_SEC_SUB ( '+' | '-' ) NUM NUM ':' NUM NUM
 			{
 			mDATE_HOUR_MIN_SEC_SUB(); 
 
@@ -3010,7 +3029,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = DATE_HOUR_MIN_SEC_SUB_UTC_TZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:677:2: ( DATE_HOUR_MIN 'Z' | DATE_HOUR_MIN_SEC 'Z' | DATE_HOUR_MIN_SEC_SUB 'Z' )
+			// druidG.g:680:2: ( DATE_HOUR_MIN 'Z' | DATE_HOUR_MIN_SEC 'Z' | DATE_HOUR_MIN_SEC_SUB 'Z' )
 			int alt38=3;
 			int LA38_0 = input.LA(1);
 			if ( ((LA38_0 >= '0' && LA38_0 <= '9')) ) {
@@ -3371,7 +3390,7 @@ public class druidGLexer extends Lexer {
 
 			switch (alt38) {
 				case 1 :
-					// druidG.g:677:5: DATE_HOUR_MIN 'Z'
+					// druidG.g:680:5: DATE_HOUR_MIN 'Z'
 					{
 					mDATE_HOUR_MIN(); 
 
@@ -3379,7 +3398,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// druidG.g:678:6: DATE_HOUR_MIN_SEC 'Z'
+					// druidG.g:681:6: DATE_HOUR_MIN_SEC 'Z'
 					{
 					mDATE_HOUR_MIN_SEC(); 
 
@@ -3387,7 +3406,7 @@ public class druidGLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// druidG.g:679:6: DATE_HOUR_MIN_SEC_SUB 'Z'
+					// druidG.g:682:6: DATE_HOUR_MIN_SEC_SUB 'Z'
 					{
 					mDATE_HOUR_MIN_SEC_SUB(); 
 
@@ -3410,7 +3429,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ARITH_OPER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:682:13: ( ( '*' | '+' | '/' | '-' ) )
+			// druidG.g:685:13: ( ( '*' | '+' | '/' | '-' ) )
 			// druidG.g:
 			{
 			if ( (input.LA(1) >= '*' && input.LA(1) <= '+')||input.LA(1)=='-'||input.LA(1)=='/' ) {
@@ -3437,8 +3456,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = EQUALS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:685:9: ( '=' )
-			// druidG.g:685:11: '='
+			// druidG.g:688:9: ( '=' )
+			// druidG.g:688:11: '='
 			{
 			match('='); 
 			}
@@ -3457,7 +3476,7 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = COMPARE_OPER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:687:15: ( ( '<' | '>' ) )
+			// druidG.g:690:15: ( ( '<' | '>' ) )
 			// druidG.g:
 			{
 			if ( input.LA(1)=='<'||input.LA(1)=='>' ) {
@@ -3484,8 +3503,8 @@ public class druidGLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:691:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-			// druidG.g:691:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// druidG.g:694:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+			// druidG.g:694:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -3495,7 +3514,7 @@ public class druidGLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// druidG.g:691:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// druidG.g:694:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			loop39:
 			while (true) {
 				int alt39=2;
@@ -3538,12 +3557,10 @@ public class druidGLexer extends Lexer {
 	// $ANTLR start "NEWLINE"
 	public final void mNEWLINE() throws RecognitionException {
 		try {
-			int _type = NEWLINE;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// druidG.g:695:11: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-			// druidG.g:695:14: ( '\\r\\n' | '\\r' | '\\n' )
+			// druidG.g:698:20: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+			// druidG.g:698:23: ( '\\r\\n' | '\\r' | '\\n' )
 			{
-			// druidG.g:695:14: ( '\\r\\n' | '\\r' | '\\n' )
+			// druidG.g:698:23: ( '\\r\\n' | '\\r' | '\\n' )
 			int alt40=3;
 			int LA40_0 = input.LA(1);
 			if ( (LA40_0=='\r') ) {
@@ -3569,20 +3586,20 @@ public class druidGLexer extends Lexer {
 
 			switch (alt40) {
 				case 1 :
-					// druidG.g:695:16: '\\r\\n'
+					// druidG.g:698:25: '\\r\\n'
 					{
 					match("\r\n"); 
 
 					}
 					break;
 				case 2 :
-					// druidG.g:696:18: '\\r'
+					// druidG.g:699:18: '\\r'
 					{
 					match('\r'); 
 					}
 					break;
 				case 3 :
-					// druidG.g:697:18: '\\n'
+					// druidG.g:700:18: '\\n'
 					{
 					match('\n'); 
 					}
@@ -3590,13 +3607,8 @@ public class druidGLexer extends Lexer {
 
 			}
 
-			 
-			                _channel = HIDDEN;
-			             
 			}
 
-			state.type = _type;
-			state.channel = _channel;
 		}
 		finally {
 			// do for sure before leaving
@@ -4100,8 +4112,8 @@ public class druidGLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// druidG.g:1:8: ( T__89 | T__90 | T__91 | T__92 | LPARAN | RPARAN | LCURLY | RCURLY | LSQUARE | RSQUARE | INSERT | INSERT_HADOOP | INSERT_REALTIME | INTO | VALUES | MAX_WINDOW | DELIMITER | PARTITION | ROLLUP | DROP | TABLE | DELETE | KAFKA | STRING | ISO | AUTO_ISO | SELECT | COUNT | LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | DURATION | PERIOD | INCLUDE | WHICH | CONTAINS | SORT | HINT | AS | FIELD_ACCESS | FROM | WHERE | BETWEEN | AND | OR | NOT | GROUP | ASC | DESC | ORDER | HAVING | BREAK | BY | LIMIT | LIKE | THEN | JAVASCRIPT | JOIN | LEFT_JOIN | RIGHT_JOIN | ON | OPT_SEMI_COLON | OPT_AMPERSAND | WS | DATE_YEAR_MONTH_ONLY | DATE | DATE_HOUR | DATE_HOUR_MIN | DATE_HOUR_MIN_SEC | DATE_HOUR_MIN_SEC_SUB | DATE_HOUR_MIN_SEC_SUB_TZ | DATE_HOUR_MIN_SEC_SUB_UTC_TZ | ARITH_OPER | EQUALS | COMPARE_OPER | ID | NEWLINE | SINGLE_QUOTE_STRING | LONG | FLOAT )
-		int alt47=83;
+		// druidG.g:1:8: ( T__89 | T__90 | T__91 | T__92 | LPARAN | RPARAN | LCURLY | RCURLY | LSQUARE | RSQUARE | INSERT | INSERT_HADOOP | INSERT_REALTIME | INTO | VALUES | MAX_WINDOW | DELIMITER | PARTITION | ROLLUP | DROP | TABLE | DELETE | KAFKA | STRING | ISO | AUTO_ISO | SELECT | COUNT | LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | DURATION | PERIOD | INCLUDE | WHICH | CONTAINS | SORT | HINT | AS | FIELD_ACCESS | FROM | WHERE | BETWEEN | AND | OR | NOT | GROUP | ASC | DESC | ORDER | HAVING | BREAK | BY | LIMIT | LIKE | THEN | JAVASCRIPT | JOIN | LEFT_JOIN | RIGHT_JOIN | ON | OPT_SEMI_COLON | OPT_AMPERSAND | WS | DATE_YEAR_MONTH_ONLY | DATE | DATE_HOUR | DATE_HOUR_MIN | DATE_HOUR_MIN_SEC | DATE_HOUR_MIN_SEC_SUB | DATE_HOUR_MIN_SEC_SUB_TZ | DATE_HOUR_MIN_SEC_SUB_UTC_TZ | ARITH_OPER | EQUALS | COMPARE_OPER | ID | SINGLE_QUOTE_STRING | LONG | FLOAT )
+		int alt47=82;
 		alt47 = dfa47.predict(input);
 		switch (alt47) {
 			case 1 :
@@ -4658,28 +4670,21 @@ public class druidGLexer extends Lexer {
 				}
 				break;
 			case 80 :
-				// druidG.g:1:668: NEWLINE
-				{
-				mNEWLINE(); 
-
-				}
-				break;
-			case 81 :
-				// druidG.g:1:676: SINGLE_QUOTE_STRING
+				// druidG.g:1:668: SINGLE_QUOTE_STRING
 				{
 				mSINGLE_QUOTE_STRING(); 
 
 				}
 				break;
-			case 82 :
-				// druidG.g:1:696: LONG
+			case 81 :
+				// druidG.g:1:688: LONG
 				{
 				mLONG(); 
 
 				}
 				break;
-			case 83 :
-				// druidG.g:1:701: FLOAT
+			case 82 :
+				// druidG.g:1:693: FLOAT
 				{
 				mFLOAT(); 
 
@@ -4692,36 +4697,36 @@ public class druidGLexer extends Lexer {
 
 	protected DFA47 dfa47 = new DFA47(this);
 	static final String DFA47_eotS =
-		"\1\uffff\1\75\2\uffff\1\70\5\uffff\47\70\3\uffff\1\u0085\12\uffff\37\70"+
-		"\1\u00ac\13\70\1\u00ac\10\70\1\u00c4\2\70\1\u00c4\1\u00c8\1\u00c9\1\u00c8"+
-		"\13\70\1\uffff\1\u0085\5\70\1\u00de\2\70\1\u00e2\1\u00e3\32\70\1\u0100"+
-		"\1\uffff\1\u0101\15\70\1\u0100\1\u0101\7\70\1\uffff\3\70\2\uffff\1\70"+
-		"\2\u011a\12\70\1\u0085\1\70\1\u0127\2\70\1\u0127\1\70\1\uffff\3\70\2\uffff"+
-		"\3\70\1\u0131\1\u0132\4\70\1\u0131\1\u0132\10\70\1\u013f\1\70\1\u013f"+
-		"\4\70\1\u0145\1\70\2\uffff\5\70\1\u014c\3\70\1\u0150\4\70\1\u0155\1\70"+
-		"\1\u0155\7\70\1\uffff\4\70\1\u014c\2\70\1\u0164\1\70\1\u0164\1\u0085\1"+
-		"\70\1\uffff\11\70\2\uffff\13\70\1\u017d\1\uffff\1\u017d\2\u017e\2\70\1"+
-		"\uffff\2\70\1\u0183\2\70\1\u0186\1\uffff\3\70\1\uffff\1\70\1\u018b\1\u018c"+
-		"\1\70\1\uffff\1\70\1\u018c\1\70\1\u0190\1\70\1\u0190\2\u0192\2\u0193\1"+
-		"\70\1\u0186\2\70\1\uffff\1\70\1\uffff\1\u0085\1\70\2\u019b\1\70\2\u019e"+
-		"\3\70\1\u01a2\3\70\1\u01a2\1\70\1\u01a7\1\70\1\u01a9\1\70\1\u01a9\1\70"+
-		"\2\uffff\1\u01ac\1\u01ad\1\70\1\u01ad\1\uffff\2\70\1\uffff\1\70\1\u01b2"+
-		"\1\70\1\u01b4\2\uffff\3\70\1\uffff\1\70\2\uffff\1\u01b4\3\70\1\uffff\2"+
-		"\70\1\uffff\1\70\1\u01c2\1\uffff\3\70\1\uffff\4\70\1\uffff\1\70\1\uffff"+
-		"\2\70\2\uffff\4\70\1\uffff\1\70\1\uffff\2\70\2\u01d4\3\70\1\u01d8\1\u01da"+
-		"\4\70\1\uffff\4\70\1\u01e3\5\70\1\u01e9\1\u01ea\1\u01eb\4\70\1\uffff\3"+
-		"\70\3\uffff\6\70\1\u01fa\1\70\1\uffff\1\u01fa\2\u01fc\2\70\3\uffff\1\u01ff"+
-		"\3\70\1\u01ff\2\70\1\uffff\4\70\2\u020a\1\uffff\1\u020b\1\uffff\2\u020c"+
-		"\1\uffff\5\70\1\u0211\4\70\3\uffff\3\70\3\uffff\4\70\1\u021f\2\u0220\1"+
-		"\uffff\1\u0222\1\70\1\u0222\1\70\2\uffff\1\u0225\1\uffff\2\70\2\uffff"+
-		"\2\u022a\2\uffff\1\u022c\4\uffff\1\u0231\4\uffff\1\u0236\2\uffff";
+		"\1\uffff\1\74\2\uffff\1\70\5\uffff\47\70\3\uffff\1\u0084\11\uffff\37\70"+
+		"\1\u00ab\13\70\1\u00ab\10\70\1\u00c3\2\70\1\u00c3\1\u00c7\1\u00c8\1\u00c7"+
+		"\13\70\1\uffff\1\u0084\5\70\1\u00dd\2\70\1\u00e1\1\u00e2\32\70\1\u00ff"+
+		"\1\uffff\1\u0100\15\70\1\u00ff\1\u0100\7\70\1\uffff\3\70\2\uffff\1\70"+
+		"\2\u0119\12\70\1\u0084\1\70\1\u0126\2\70\1\u0126\1\70\1\uffff\3\70\2\uffff"+
+		"\3\70\1\u0130\1\u0131\4\70\1\u0130\1\u0131\10\70\1\u013e\1\70\1\u013e"+
+		"\4\70\1\u0144\1\70\2\uffff\5\70\1\u014b\3\70\1\u014f\4\70\1\u0154\1\70"+
+		"\1\u0154\7\70\1\uffff\4\70\1\u014b\2\70\1\u0163\1\70\1\u0163\1\u0084\1"+
+		"\70\1\uffff\11\70\2\uffff\13\70\1\u017c\1\uffff\1\u017c\2\u017d\2\70\1"+
+		"\uffff\2\70\1\u0182\2\70\1\u0185\1\uffff\3\70\1\uffff\1\70\1\u018a\1\u018b"+
+		"\1\70\1\uffff\1\70\1\u018b\1\70\1\u018f\1\70\1\u018f\2\u0191\2\u0192\1"+
+		"\70\1\u0185\2\70\1\uffff\1\70\1\uffff\1\u0084\1\70\2\u019a\1\70\2\u019d"+
+		"\3\70\1\u01a1\3\70\1\u01a1\1\70\1\u01a6\1\70\1\u01a8\1\70\1\u01a8\1\70"+
+		"\2\uffff\1\u01ab\1\u01ac\1\70\1\u01ac\1\uffff\2\70\1\uffff\1\70\1\u01b1"+
+		"\1\70\1\u01b3\2\uffff\3\70\1\uffff\1\70\2\uffff\1\u01b3\3\70\1\uffff\2"+
+		"\70\1\uffff\1\70\1\u01c1\1\uffff\3\70\1\uffff\4\70\1\uffff\1\70\1\uffff"+
+		"\2\70\2\uffff\4\70\1\uffff\1\70\1\uffff\2\70\2\u01d3\3\70\1\u01d7\1\u01d9"+
+		"\4\70\1\uffff\4\70\1\u01e2\5\70\1\u01e8\1\u01e9\1\u01ea\4\70\1\uffff\3"+
+		"\70\3\uffff\6\70\1\u01f9\1\70\1\uffff\1\u01f9\2\u01fb\2\70\3\uffff\1\u01fe"+
+		"\3\70\1\u01fe\2\70\1\uffff\4\70\2\u0209\1\uffff\1\u020a\1\uffff\2\u020b"+
+		"\1\uffff\5\70\1\u0210\4\70\3\uffff\3\70\3\uffff\4\70\1\u021e\2\u021f\1"+
+		"\uffff\1\u0221\1\70\1\u0221\1\70\2\uffff\1\u0224\1\uffff\2\70\2\uffff"+
+		"\2\u0229\2\uffff\1\u022b\4\uffff\1\u0230\4\uffff\1\u0235\2\uffff";
 	static final String DFA47_eofS =
-		"\u0238\uffff";
+		"\u0237\uffff";
 	static final String DFA47_minS =
 		"\1\11\1\52\2\uffff\1\156\5\uffff\1\116\1\101\1\141\1\101\1\141\1\105\1"+
 		"\145\1\101\1\141\1\111\1\151\1\101\1\141\1\101\1\141\1\105\1\116\1\145"+
 		"\1\117\1\105\1\116\1\101\1\110\1\156\1\111\1\151\1\150\1\105\1\145\1\116"+
-		"\1\162\1\117\1\157\1\122\1\162\1\141\1\145\1\101\1\141\3\uffff\1\56\12"+
+		"\1\162\1\117\1\157\1\122\1\162\1\141\1\145\1\101\1\141\3\uffff\1\56\11"+
 		"\uffff\1\163\1\103\1\117\1\114\1\154\1\130\1\116\1\170\1\114\1\117\1\125"+
 		"\1\122\1\154\1\157\2\122\1\162\1\114\1\107\1\154\1\147\1\102\1\105\1\142"+
 		"\1\145\1\106\1\146\1\122\1\114\1\122\1\124\1\60\1\104\1\154\2\116\1\113"+
@@ -4765,7 +4770,7 @@ public class druidGLexer extends Lexer {
 		"\1\175\1\52\2\uffff\1\156\5\uffff\1\123\1\101\1\141\1\111\1\141\1\125"+
 		"\1\162\1\105\1\141\1\117\1\157\1\110\1\150\1\101\1\141\1\124\1\125\1\145"+
 		"\2\117\1\116\1\131\1\110\1\163\1\122\1\162\1\150\1\131\1\171\1\122\1\162"+
-		"\1\117\1\157\1\122\1\162\1\141\1\151\1\117\1\157\3\uffff\1\71\12\uffff"+
+		"\1\117\1\157\1\122\1\162\1\141\1\151\1\117\1\157\3\uffff\1\71\11\uffff"+
 		"\1\164\1\124\1\117\1\114\1\154\1\130\1\116\1\170\1\123\1\117\1\125\1\122"+
 		"\1\163\1\157\2\122\1\162\1\114\1\107\1\154\1\147\1\102\1\105\1\142\1\145"+
 		"\1\106\1\146\1\122\1\114\1\122\1\124\1\172\1\104\1\154\1\125\1\116\1\115"+
@@ -4808,82 +4813,80 @@ public class druidGLexer extends Lexer {
 		"\1\uffff\1\71\1\uffff\1\71\1\132\1\uffff\3\71\1\132\2\uffff";
 	static final String DFA47_acceptS =
 		"\2\uffff\1\2\1\3\1\uffff\1\6\1\7\1\10\1\11\1\12\47\uffff\1\101\1\102\1"+
-		"\103\1\uffff\1\114\1\115\1\116\1\117\1\120\1\121\1\123\1\1\1\5\1\2\106"+
-		"\uffff\1\122\46\uffff\1\52\27\uffff\1\70\3\uffff\1\60\1\100\24\uffff\1"+
-		"\31\3\uffff\1\42\1\41\34\uffff\1\63\1\57\30\uffff\1\61\14\uffff\1\16\11"+
-		"\uffff\1\64\1\24\14\uffff\1\73\5\uffff\1\50\6\uffff\1\72\3\uffff\1\51"+
-		"\4\uffff\1\54\16\uffff\1\75\30\uffff\1\25\1\27\4\uffff\1\34\2\uffff\1"+
-		"\71\4\uffff\1\46\1\55\3\uffff\1\67\1\uffff\1\65\1\62\7\uffff\1\13\2\uffff"+
-		"\1\17\3\uffff\1\26\4\uffff\1\44\1\uffff\1\23\2\uffff\1\30\1\33\4\uffff"+
-		"\1\37\1\uffff\1\66\15\uffff\1\45\21\uffff\1\56\3\uffff\1\104\1\uffff\1"+
-		"\4\10\uffff\1\43\5\uffff\1\32\1\47\1\35\16\uffff\1\21\1\uffff\1\22\2\uffff"+
-		"\1\76\12\uffff\1\20\1\36\1\77\3\uffff\1\74\1\105\15\uffff\1\40\1\53\1"+
-		"\uffff\1\14\2\uffff\1\106\4\uffff\1\15\1\uffff\1\107\1\uffff\1\113\2\uffff"+
-		"\1\110\4\uffff\1\111\1\112";
+		"\103\1\uffff\1\114\1\115\1\116\1\117\1\120\1\122\1\1\1\5\1\2\106\uffff"+
+		"\1\121\46\uffff\1\52\27\uffff\1\70\3\uffff\1\60\1\100\24\uffff\1\31\3"+
+		"\uffff\1\42\1\41\34\uffff\1\63\1\57\30\uffff\1\61\14\uffff\1\16\11\uffff"+
+		"\1\64\1\24\14\uffff\1\73\5\uffff\1\50\6\uffff\1\72\3\uffff\1\51\4\uffff"+
+		"\1\54\16\uffff\1\75\30\uffff\1\25\1\27\4\uffff\1\34\2\uffff\1\71\4\uffff"+
+		"\1\46\1\55\3\uffff\1\67\1\uffff\1\65\1\62\7\uffff\1\13\2\uffff\1\17\3"+
+		"\uffff\1\26\4\uffff\1\44\1\uffff\1\23\2\uffff\1\30\1\33\4\uffff\1\37\1"+
+		"\uffff\1\66\15\uffff\1\45\21\uffff\1\56\3\uffff\1\104\1\uffff\1\4\10\uffff"+
+		"\1\43\5\uffff\1\32\1\47\1\35\16\uffff\1\21\1\uffff\1\22\2\uffff\1\76\12"+
+		"\uffff\1\20\1\36\1\77\3\uffff\1\74\1\105\15\uffff\1\40\1\53\1\uffff\1"+
+		"\14\2\uffff\1\106\4\uffff\1\15\1\uffff\1\107\1\uffff\1\113\2\uffff\1\110"+
+		"\4\uffff\1\111\1\112";
 	static final String DFA47_specialS =
-		"\u0238\uffff}>";
+		"\u0237\uffff}>";
 	static final String[] DFA47_transitionS = {
-			"\1\63\1\71\2\uffff\1\71\22\uffff\1\63\5\uffff\1\62\1\72\1\1\1\5\1\2\1"+
-			"\65\1\3\1\65\1\73\1\65\12\64\1\uffff\1\61\1\67\1\66\1\67\2\uffff\1\32"+
-			"\1\45\1\34\1\17\1\70\1\42\1\53\1\37\1\12\1\57\1\27\1\35\1\15\1\51\1\47"+
-			"\1\21\1\70\1\23\1\31\1\25\1\36\1\13\1\40\3\70\1\10\1\uffff\1\11\1\uffff"+
-			"\1\70\1\uffff\1\41\1\46\1\70\1\20\1\70\1\43\1\54\1\55\1\4\1\60\1\30\1"+
-			"\56\1\16\1\52\1\50\1\22\1\70\1\24\1\33\1\26\1\70\1\14\1\44\3\70\1\6\1"+
-			"\uffff\1\7",
-			"\1\74",
+			"\2\63\2\uffff\1\63\22\uffff\1\63\5\uffff\1\62\1\71\1\1\1\5\1\2\1\65\1"+
+			"\3\1\65\1\72\1\65\12\64\1\uffff\1\61\1\67\1\66\1\67\2\uffff\1\32\1\45"+
+			"\1\34\1\17\1\70\1\42\1\53\1\37\1\12\1\57\1\27\1\35\1\15\1\51\1\47\1\21"+
+			"\1\70\1\23\1\31\1\25\1\36\1\13\1\40\3\70\1\10\1\uffff\1\11\1\uffff\1"+
+			"\70\1\uffff\1\41\1\46\1\70\1\20\1\70\1\43\1\54\1\55\1\4\1\60\1\30\1\56"+
+			"\1\16\1\52\1\50\1\22\1\70\1\24\1\33\1\26\1\70\1\14\1\44\3\70\1\6\1\uffff"+
+			"\1\7",
+			"\1\73",
 			"",
 			"",
-			"\1\77",
+			"\1\76",
 			"",
 			"",
 			"",
 			"",
 			"",
-			"\1\100\4\uffff\1\101",
+			"\1\77\4\uffff\1\100",
+			"\1\101",
 			"\1\102",
-			"\1\103",
-			"\1\104\7\uffff\1\105",
-			"\1\106",
-			"\1\107\11\uffff\1\111\2\uffff\1\110\2\uffff\1\112",
-			"\1\113\14\uffff\1\114",
-			"\1\115\3\uffff\1\116",
-			"\1\117",
-			"\1\121\5\uffff\1\120",
-			"\1\123\5\uffff\1\122",
-			"\1\124\6\uffff\1\125",
-			"\1\126\6\uffff\1\127",
+			"\1\103\7\uffff\1\104",
+			"\1\105",
+			"\1\106\11\uffff\1\110\2\uffff\1\107\2\uffff\1\111",
+			"\1\112\14\uffff\1\113",
+			"\1\114\3\uffff\1\115",
+			"\1\116",
+			"\1\120\5\uffff\1\117",
+			"\1\122\5\uffff\1\121",
+			"\1\123\6\uffff\1\124",
+			"\1\125\6\uffff\1\126",
+			"\1\127",
 			"\1\130",
-			"\1\131",
-			"\1\133\11\uffff\1\134\4\uffff\1\132",
-			"\1\137\4\uffff\1\136\1\uffff\1\135",
+			"\1\132\11\uffff\1\133\4\uffff\1\131",
+			"\1\136\4\uffff\1\135\1\uffff\1\134",
+			"\1\137",
 			"\1\140",
-			"\1\141",
-			"\1\144\3\uffff\1\143\5\uffff\1\142",
-			"\1\145",
-			"\1\150\7\uffff\1\147\17\uffff\1\146",
-			"\1\151",
-			"\1\153\4\uffff\1\152",
-			"\1\154\10\uffff\1\155",
-			"\1\156\10\uffff\1\157",
-			"\1\160",
-			"\1\161\14\uffff\1\162\6\uffff\1\163",
-			"\1\164\14\uffff\1\165\6\uffff\1\166",
-			"\1\170\3\uffff\1\167",
+			"\1\143\3\uffff\1\142\5\uffff\1\141",
+			"\1\144",
+			"\1\147\7\uffff\1\146\17\uffff\1\145",
+			"\1\150",
+			"\1\152\4\uffff\1\151",
+			"\1\153\10\uffff\1\154",
+			"\1\155\10\uffff\1\156",
+			"\1\157",
+			"\1\160\14\uffff\1\161\6\uffff\1\162",
+			"\1\163\14\uffff\1\164\6\uffff\1\165",
+			"\1\167\3\uffff\1\166",
+			"\1\170",
 			"\1\171",
 			"\1\172",
 			"\1\173",
 			"\1\174",
 			"\1\175",
-			"\1\176",
-			"\1\u0080\3\uffff\1\177",
-			"\1\u0081\15\uffff\1\u0082",
-			"\1\u0083\15\uffff\1\u0084",
+			"\1\177\3\uffff\1\176",
+			"\1\u0080\15\uffff\1\u0081",
+			"\1\u0082\15\uffff\1\u0083",
 			"",
 			"",
 			"",
-			"\1\73\1\uffff\12\u0086",
-			"",
-			"",
+			"\1\72\1\uffff\12\u0085",
 			"",
 			"",
 			"",
@@ -4892,19 +4895,21 @@ public class druidGLexer extends Lexer {
 			"",
 			"",
 			"",
-			"\1\u0088\1\u0087",
-			"\1\u008b\17\uffff\1\u0089\1\u008a",
+			"",
+			"\1\u0087\1\u0086",
+			"\1\u008a\17\uffff\1\u0088\1\u0089",
+			"\1\u008b",
 			"\1\u008c",
 			"\1\u008d",
 			"\1\u008e",
 			"\1\u008f",
 			"\1\u0090",
-			"\1\u0091",
-			"\1\u0092\6\uffff\1\u0093",
+			"\1\u0091\6\uffff\1\u0092",
+			"\1\u0093",
 			"\1\u0094",
 			"\1\u0095",
-			"\1\u0096",
-			"\1\u0097\6\uffff\1\u0098",
+			"\1\u0096\6\uffff\1\u0097",
+			"\1\u0098",
 			"\1\u0099",
 			"\1\u009a",
 			"\1\u009b",
@@ -4922,20 +4927,20 @@ public class druidGLexer extends Lexer {
 			"\1\u00a7",
 			"\1\u00a8",
 			"\1\u00a9",
-			"\1\u00aa",
-			"\12\70\7\uffff\2\70\1\u00ab\27\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\2\70\1\u00aa\27\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u00ac",
 			"\1\u00ad",
-			"\1\u00ae",
-			"\1\u00b0\6\uffff\1\u00af",
-			"\1\u00b1",
-			"\1\u00b3\1\uffff\1\u00b2",
+			"\1\u00af\6\uffff\1\u00ae",
+			"\1\u00b0",
+			"\1\u00b2\1\uffff\1\u00b1",
+			"\1\u00b3",
 			"\1\u00b4",
 			"\1\u00b5",
 			"\1\u00b6",
 			"\1\u00b7",
-			"\1\u00b8",
-			"\1\u00ba\3\uffff\1\u00b9",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\2\70\1\u00bb\27\70",
+			"\1\u00b9\3\uffff\1\u00b8",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\2\70\1\u00ba\27\70",
+			"\1\u00bb",
 			"\1\u00bc",
 			"\1\u00bd",
 			"\1\u00be",
@@ -4943,44 +4948,44 @@ public class druidGLexer extends Lexer {
 			"\1\u00c0",
 			"\1\u00c1",
 			"\1\u00c2",
-			"\1\u00c3",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u00c4",
 			"\1\u00c5",
-			"\1\u00c6",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\70\7\uffff\3\70\1\u00c7\26\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\3\70\1\u00c6\26\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\3\70\1\u00ca\26\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\3\70\1\u00c9\26\70",
+			"\1\u00ca",
 			"\1\u00cb",
 			"\1\u00cc",
 			"\1\u00cd",
 			"\1\u00ce",
-			"\1\u00cf",
-			"\1\u00d1\1\uffff\1\u00d0",
+			"\1\u00d0\1\uffff\1\u00cf",
+			"\1\u00d1",
 			"\1\u00d2",
 			"\1\u00d3",
 			"\1\u00d4",
 			"\1\u00d5",
-			"\1\u00d6",
 			"",
-			"\1\73\1\uffff\12\u00d7",
-			"\1\u00d8\11\uffff\1\u00d9",
+			"\1\72\1\uffff\12\u00d6",
+			"\1\u00d7\11\uffff\1\u00d8",
+			"\1\u00d9",
 			"\1\u00da",
 			"\1\u00db",
 			"\1\u00dc",
-			"\1\u00dd",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u00de",
 			"\1\u00df",
-			"\1\u00e0",
-			"\12\70\7\uffff\32\70\4\uffff\1\u00e1\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\u00e0\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u00e4",
-			"\1\u00e6\3\uffff\1\u00e5",
+			"\1\u00e3",
+			"\1\u00e5\3\uffff\1\u00e4",
+			"\1\u00e6",
 			"\1\u00e7",
 			"\1\u00e8",
 			"\1\u00e9",
-			"\1\u00ea",
-			"\1\u00ec\3\uffff\1\u00eb",
+			"\1\u00eb\3\uffff\1\u00ea",
+			"\1\u00ec",
 			"\1\u00ed",
 			"\1\u00ee",
 			"\1\u00ef",
@@ -4999,10 +5004,10 @@ public class druidGLexer extends Lexer {
 			"\1\u00fc",
 			"\1\u00fd",
 			"\1\u00fe",
-			"\1\u00ff",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0101",
 			"\1\u0102",
 			"\1\u0103",
 			"\1\u0104",
@@ -5015,25 +5020,25 @@ public class druidGLexer extends Lexer {
 			"\1\u010b",
 			"\1\u010c",
 			"\1\u010d",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u010e",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u010f",
 			"\1\u0110",
 			"\1\u0111",
 			"\1\u0112",
 			"\1\u0113",
 			"\1\u0114",
-			"\1\u0115",
 			"",
+			"\1\u0115",
 			"\1\u0116",
 			"\1\u0117",
+			"",
+			"",
 			"\1\u0118",
-			"",
-			"",
-			"\1\u0119",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u011a",
 			"\1\u011b",
 			"\1\u011c",
 			"\1\u011d",
@@ -5043,31 +5048,31 @@ public class druidGLexer extends Lexer {
 			"\1\u0121",
 			"\1\u0122",
 			"\1\u0123",
-			"\1\u0124",
-			"\1\73\1\uffff\12\u0125",
-			"\1\u0126",
+			"\1\72\1\uffff\12\u0124",
+			"\1\u0125",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0127",
 			"\1\u0128",
-			"\1\u0129",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u012a",
+			"\1\u0129",
 			"",
+			"\1\u012a",
 			"\1\u012b",
 			"\1\u012c",
+			"",
+			"",
 			"\1\u012d",
-			"",
-			"",
 			"\1\u012e",
 			"\1\u012f",
-			"\1\u0130",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0132",
 			"\1\u0133",
 			"\1\u0134",
 			"\1\u0135",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0136",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0137",
 			"\1\u0138",
 			"\1\u0139",
@@ -5075,56 +5080,56 @@ public class druidGLexer extends Lexer {
 			"\1\u013b",
 			"\1\u013c",
 			"\1\u013d",
-			"\1\u013e",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u013f",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0140",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0141",
 			"\1\u0142",
 			"\1\u0143",
-			"\1\u0144",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0145",
+			"",
+			"",
 			"\1\u0146",
-			"",
-			"",
 			"\1\u0147",
 			"\1\u0148",
 			"\1\u0149",
 			"\1\u014a",
-			"\1\u014b",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u014c",
 			"\1\u014d",
 			"\1\u014e",
-			"\1\u014f",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0150",
 			"\1\u0151",
 			"\1\u0152",
 			"\1\u0153",
-			"\1\u0154",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0155",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0156",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0157",
 			"\1\u0158",
 			"\1\u0159",
 			"\1\u015a",
 			"\1\u015b",
 			"\1\u015c",
-			"\1\u015d",
 			"",
+			"\1\u015d",
 			"\1\u015e",
 			"\1\u015f",
 			"\1\u0160",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0161",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0162",
-			"\1\u0163",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u0165",
+			"\1\u0164",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u0166\1\73\1\uffff\12\u0167",
-			"\1\u0168",
+			"\1\u0165\1\72\1\uffff\12\u0166",
+			"\1\u0167",
 			"",
+			"\1\u0168",
 			"\1\u0169",
 			"\1\u016a",
 			"\1\u016b",
@@ -5133,9 +5138,9 @@ public class druidGLexer extends Lexer {
 			"\1\u016e",
 			"\1\u016f",
 			"\1\u0170",
+			"",
+			"",
 			"\1\u0171",
-			"",
-			"",
 			"\1\u0172",
 			"\1\u0173",
 			"\1\u0174",
@@ -5146,193 +5151,192 @@ public class druidGLexer extends Lexer {
 			"\1\u0179",
 			"\1\u017a",
 			"\1\u017b",
-			"\1\u017c",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u017e",
 			"\1\u017f",
+			"",
 			"\1\u0180",
-			"",
 			"\1\u0181",
-			"\1\u0182",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0183",
 			"\1\u0184",
-			"\1\u0185",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
+			"\1\u0186",
 			"\1\u0187",
 			"\1\u0188",
+			"",
 			"\1\u0189",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u018c",
 			"",
-			"\1\u018a",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u018d",
-			"",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u018e",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u018f",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u0191",
+			"\1\u0190",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0193",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0194",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0195",
-			"\1\u0196",
 			"",
-			"\1\u0197",
-			"\12\u0198",
-			"\1\73\1\uffff\12\u0167",
-			"\1\u0199",
-			"\12\70\7\uffff\32\70\4\uffff\1\u019a\1\uffff\32\70",
-			"\12\70\7\uffff\32\70\4\uffff\1\u019c\1\uffff\32\70",
-			"\1\u019d",
+			"\1\u0196",
+			"\12\u0197",
+			"\1\72\1\uffff\12\u0166",
+			"\1\u0198",
+			"\12\70\7\uffff\32\70\4\uffff\1\u0199\1\uffff\32\70",
+			"\12\70\7\uffff\32\70\4\uffff\1\u019b\1\uffff\32\70",
+			"\1\u019c",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u019e",
 			"\1\u019f",
 			"\1\u01a0",
-			"\1\u01a1",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01a2",
 			"\1\u01a3",
 			"\1\u01a4",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u01a5",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u01a6",
+			"\1\u01a7",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u01a8",
+			"\1\u01a9",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u01aa",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u01ab",
 			"",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01ad",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"",
 			"\1\u01ae",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"",
 			"\1\u01af",
+			"",
 			"\1\u01b0",
-			"",
-			"\1\u01b1",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u01b3",
+			"\1\u01b2",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
 			"",
+			"\1\u01b4",
 			"\1\u01b5",
 			"\1\u01b6",
+			"",
 			"\1\u01b7",
 			"",
-			"\1\u01b8",
-			"",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01b8",
 			"\1\u01b9",
 			"\1\u01ba",
-			"\1\u01bb",
-			"\12\u01bc",
-			"\1\u01bd",
-			"\1\u01be\11\uffff\1\u01bf",
+			"\12\u01bb",
+			"\1\u01bc",
+			"\1\u01bd\11\uffff\1\u01be",
 			"",
-			"\1\u01c0\11\uffff\1\u01c1",
+			"\1\u01bf\11\uffff\1\u01c0",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
+			"\1\u01c2",
 			"\1\u01c3",
 			"\1\u01c4",
-			"\1\u01c5",
 			"",
+			"\1\u01c5",
 			"\1\u01c6",
 			"\1\u01c7",
 			"\1\u01c8",
+			"",
 			"\1\u01c9",
 			"",
 			"\1\u01ca",
-			"",
 			"\1\u01cb",
+			"",
+			"",
 			"\1\u01cc",
-			"",
-			"",
 			"\1\u01cd",
 			"\1\u01ce",
 			"\1\u01cf",
+			"",
 			"\1\u01d0",
 			"",
 			"\1\u01d1",
-			"",
 			"\1\u01d2",
-			"\1\u01d3",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01d4",
 			"\1\u01d5",
 			"\1\u01d6",
-			"\1\u01d7",
-			"\1\u01d9",
+			"\1\u01d8",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01da",
 			"\1\u01db",
 			"\1\u01dc",
 			"\1\u01dd",
-			"\1\u01de",
 			"",
+			"\1\u01de",
 			"\1\u01df",
 			"\1\u01e0",
 			"\1\u01e1",
-			"\1\u01e2",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01e3",
 			"\1\u01e4",
 			"\1\u01e5",
 			"\1\u01e6",
 			"\1\u01e7",
-			"\1\u01e8",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01eb",
 			"\1\u01ec",
 			"\1\u01ed",
 			"\1\u01ee",
-			"\1\u01ef",
 			"",
+			"\1\u01ef",
 			"\1\u01f0",
 			"\1\u01f1",
-			"\1\u01f2",
 			"",
-			"\12\u01f3",
+			"\12\u01f2",
 			"",
+			"\1\u01f3",
 			"\1\u01f4",
 			"\1\u01f5",
 			"\1\u01f6",
 			"\1\u01f7",
 			"\1\u01f8",
-			"\1\u01f9",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u01fb",
+			"\1\u01fa",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01fc",
 			"\1\u01fd",
-			"\1\u01fe",
 			"",
 			"",
 			"",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u01ff",
 			"\1\u0200",
 			"\1\u0201",
-			"\1\u0202",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0202",
 			"\1\u0203",
-			"\1\u0204",
-			"\12\u0205",
+			"\12\u0204",
+			"\1\u0205",
 			"\1\u0206",
 			"\1\u0207",
 			"\1\u0208",
-			"\1\u0209",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
@@ -5341,60 +5345,60 @@ public class druidGLexer extends Lexer {
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"",
+			"\1\u020c",
 			"\1\u020d",
 			"\1\u020e",
 			"\1\u020f",
-			"\1\u0210",
-			"\1\u0210",
+			"\1\u020f",
+			"\1\u0211",
 			"\1\u0212",
 			"\1\u0213",
 			"\1\u0214",
 			"\1\u0215",
+			"",
+			"",
+			"",
 			"\1\u0216",
-			"",
-			"",
-			"",
 			"\1\u0217",
 			"\1\u0218",
-			"\1\u0219",
 			"",
 			"",
-			"\12\u021a",
+			"\12\u0219",
+			"\1\u021a",
 			"\1\u021b",
 			"\1\u021c",
 			"\1\u021d",
-			"\1\u021e",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\u0221",
+			"\12\u0220",
+			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
+			"\1\u0222",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\1\u0223",
-			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\1\u0224",
 			"",
+			"",
+			"\1\u0225",
 			"",
 			"\1\u0226",
-			"",
 			"\1\u0227",
-			"\1\u0228",
 			"",
-			"\12\u0229",
+			"\12\u0228",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
 			"\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-			"\12\u022b",
+			"\12\u022a",
 			"",
-			"\1\u022d\37\uffff\1\u022e",
+			"\1\u022c\37\uffff\1\u022d",
+			"",
+			"\12\u022e",
 			"",
 			"\12\u022f",
+			"\1\u0231\53\uffff\1\u022d",
 			"",
-			"\12\u0230",
-			"\1\u0232\53\uffff\1\u022e",
-			"",
+			"\12\u0232",
 			"\12\u0233",
 			"\12\u0234",
-			"\12\u0235",
-			"\1\u0237\1\uffff\1\u0237\54\uffff\1\u022e",
+			"\1\u0236\1\uffff\1\u0236\54\uffff\1\u022d",
 			"",
 			""
 	};
@@ -5430,7 +5434,7 @@ public class druidGLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( T__89 | T__90 | T__91 | T__92 | LPARAN | RPARAN | LCURLY | RCURLY | LSQUARE | RSQUARE | INSERT | INSERT_HADOOP | INSERT_REALTIME | INTO | VALUES | MAX_WINDOW | DELIMITER | PARTITION | ROLLUP | DROP | TABLE | DELETE | KAFKA | STRING | ISO | AUTO_ISO | SELECT | COUNT | LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | DURATION | PERIOD | INCLUDE | WHICH | CONTAINS | SORT | HINT | AS | FIELD_ACCESS | FROM | WHERE | BETWEEN | AND | OR | NOT | GROUP | ASC | DESC | ORDER | HAVING | BREAK | BY | LIMIT | LIKE | THEN | JAVASCRIPT | JOIN | LEFT_JOIN | RIGHT_JOIN | ON | OPT_SEMI_COLON | OPT_AMPERSAND | WS | DATE_YEAR_MONTH_ONLY | DATE | DATE_HOUR | DATE_HOUR_MIN | DATE_HOUR_MIN_SEC | DATE_HOUR_MIN_SEC_SUB | DATE_HOUR_MIN_SEC_SUB_TZ | DATE_HOUR_MIN_SEC_SUB_UTC_TZ | ARITH_OPER | EQUALS | COMPARE_OPER | ID | NEWLINE | SINGLE_QUOTE_STRING | LONG | FLOAT );";
+			return "1:1: Tokens : ( T__89 | T__90 | T__91 | T__92 | LPARAN | RPARAN | LCURLY | RCURLY | LSQUARE | RSQUARE | INSERT | INSERT_HADOOP | INSERT_REALTIME | INTO | VALUES | MAX_WINDOW | DELIMITER | PARTITION | ROLLUP | DROP | TABLE | DELETE | KAFKA | STRING | ISO | AUTO_ISO | SELECT | COUNT | LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | DURATION | PERIOD | INCLUDE | WHICH | CONTAINS | SORT | HINT | AS | FIELD_ACCESS | FROM | WHERE | BETWEEN | AND | OR | NOT | GROUP | ASC | DESC | ORDER | HAVING | BREAK | BY | LIMIT | LIKE | THEN | JAVASCRIPT | JOIN | LEFT_JOIN | RIGHT_JOIN | ON | OPT_SEMI_COLON | OPT_AMPERSAND | WS | DATE_YEAR_MONTH_ONLY | DATE | DATE_HOUR | DATE_HOUR_MIN | DATE_HOUR_MIN_SEC | DATE_HOUR_MIN_SEC_SUB | DATE_HOUR_MIN_SEC_SUB_TZ | DATE_HOUR_MIN_SEC_SUB_UTC_TZ | ARITH_OPER | EQUALS | COMPARE_OPER | ID | SINGLE_QUOTE_STRING | LONG | FLOAT );";
 		}
 	}
 
