@@ -20,10 +20,15 @@ import org.json.JSONObject;
  */
 public abstract class BaseStatementMeta {
     public String dataSource;
+    public BaseStatementMeta queryDataSource;  // http://druid.io/docs/latest/DataSource.html  Query Datasource
     
     public BaseStatementMeta() {
     }
 
+    public BaseStatementMeta(BaseStatementMeta meta) {
+        this.dataSource = meta.dataSource;
+        this.queryDataSource = meta.queryDataSource;
+    }
     
     public BaseStatementMeta(String dataSource) {
         this.dataSource = dataSource;
@@ -41,8 +46,13 @@ public abstract class BaseStatementMeta {
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
         JSONObject dataSourceJson = new JSONObject();
-        dataSourceJson.put("type", "table");
-        dataSourceJson.put("name", dataSource);
+        if (dataSource != null) {
+            dataSourceJson.put("type", "table");
+            dataSourceJson.put("name", dataSource);
+        } else if (queryDataSource != null) {
+            dataSourceJson.put("type", "query");
+            dataSourceJson.put("query", queryDataSource.getDataMap());            
+        }
         map.put("dataSource", dataSourceJson);
         return map;
     }

@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4DCompiler</artifactId>
-    <version>3.5.0</version>
+    <version>3.5.1</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
