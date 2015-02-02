@@ -227,6 +227,9 @@ public class Main {
                     if (readyCommand) {
                         readyCommand = false;
                         runCommand(frozenCommand);// Execute command.
+                    } else {
+                        // Make sure to append the newline if we aren't executing right now, since it needs to act like a whitespace.
+                        cmdBuffer.append(ipChar);
                     }
                     print(PROMPT);
                 } else {
@@ -250,6 +253,7 @@ public class Main {
     }
     
     private static boolean runCommand(String frozenCommand) {
+        frozenCommand = frozenCommand.replaceAll("\n", "");
         if (frozenCommand.matches(quitRegex)) {
             println("Good Bye !!");
             System.exit(0);

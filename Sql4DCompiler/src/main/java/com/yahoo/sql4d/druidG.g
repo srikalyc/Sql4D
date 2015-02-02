@@ -161,13 +161,16 @@ queryStmnt returns [QueryMeta qMeta]
 	      |
 	      (WS '*')
 	     )?
-	  WS FROM WS id=ID  { 
-	  	qMeta.dataSource = $id.text; 
-  	  	if (((BaseAggQueryMeta)qMeta).aggregations.isEmpty()) {
-	  		qMeta = SelectQueryMeta.promote(qMeta);
-	  	}
-	    } 
-	  
+	  WS FROM 
+	  (// Can either select from a table
+  	         (WS id=ID  { qMeta.dataSource = $id.text; })
+   	             | // Or select from another query.
+	         (WS LPARAN (fromQuery=queryStmnt) RPARAN {qMeta.queryDataSource = fromQuery;}) 
+	  ) {
+             if (((BaseAggQueryMeta)qMeta).aggregations.isEmpty()) {
+	  		     qMeta = SelectQueryMeta.promote(qMeta);
+	  	     }
+	     }
 	(
 	  WS WHERE WS whereClause[qMeta] 
 	  (		  
@@ -285,7 +288,7 @@ selectItems[BaseStatementMeta meta]
 	      }
 	   }
 	;
-
+	
 simpleDim returns [Pair<String, String> dims]
 	: (a=ID (WS AS WS b=ID)? {
 	     dims = (b != null)? new Pair<String, String>($a.text, $b.text): new Pair<String, String>($a.text, null);
@@ -645,7 +648,7 @@ OPT_AMPERSAND
 	: '&';
 
 WS 
-	: (' ' | '\t')+
+	: (' ' | '\t' | NEWLINE)+
 	;
 
 // IF the following is not made a fragment then, any 4 digit number would become a DATE_YEAR_ONLY token(even when you want to consider as token LONG)
@@ -692,13 +695,10 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
 
-NEWLINE   :  ( '\r\n' // DOS
+fragment NEWLINE   :  ( '\r\n' // DOS
                | '\r'   // MAC
                | '\n'   // Unix
              )
-             { 
-                $channel = HIDDEN;
-             }
           ;
     
 
