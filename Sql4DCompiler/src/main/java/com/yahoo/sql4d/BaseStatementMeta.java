@@ -16,23 +16,19 @@ import org.json.JSONObject;
 
 /**
  * Base class for all sql statement types.
- * @author srikalyan, ethan.wolf@alum.mit.edu
+ * @author srikalyan
  */
 public abstract class BaseStatementMeta {
     public String dataSource;
-    public BaseStatementMeta queryDataSource;  // http://druid.io/docs/latest/DataSource.html  Query Datasource
     
     public BaseStatementMeta() {
     }
 
+    
     public BaseStatementMeta(String dataSource) {
         this.dataSource = dataSource;
     }
 
-    public BaseStatementMeta(BaseStatementMeta meta) {
-        this.dataSource = meta.dataSource;
-        this.queryDataSource = meta.queryDataSource;
-    }
     
     @Override
     public String toString() {
@@ -45,13 +41,8 @@ public abstract class BaseStatementMeta {
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new LinkedHashMap<>();
         JSONObject dataSourceJson = new JSONObject();
-        if (dataSource != null) {
-            dataSourceJson.put("type", "table");
-            dataSourceJson.put("name", dataSource);            
-        } else if (queryDataSource != null) {
-            dataSourceJson.put("type", "query");
-            dataSourceJson.put("query", queryDataSource.getDataMap());            
-        }
+        dataSourceJson.put("type", "table");
+        dataSourceJson.put("name", dataSource);
         map.put("dataSource", dataSourceJson);
         return map;
     }

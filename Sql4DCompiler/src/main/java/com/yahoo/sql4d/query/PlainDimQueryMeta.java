@@ -27,7 +27,7 @@ public class PlainDimQueryMeta  extends QueryMeta {
 
     
     public PlainDimQueryMeta(QueryMeta q) {
-        super(q);
+        super(q.dataSource, q.granularity, q.filter, q.intervals, q.microIntervals);
         if (q instanceof PlainDimQueryMeta) {
             fetchDimensions = ((PlainDimQueryMeta)q).fetchDimensions;
         }

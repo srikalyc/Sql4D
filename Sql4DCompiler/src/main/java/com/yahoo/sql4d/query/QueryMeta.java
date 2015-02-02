@@ -36,14 +36,6 @@ public class QueryMeta extends BaseStatementMeta {
     }
 
     
-    public QueryMeta(QueryMeta q) {
-        super(q);
-        this.granularity = q.granularity;
-        this.filter = q.filter;
-        this.intervals = q.intervals;
-        this.microIntervals = q.microIntervals;
-    }
-
     public QueryMeta(String dataSource, Granularity granularity, Filter filter, List<Interval> intervals, List<Pair<Integer, Integer>> microIntervals) {
         super(dataSource);
         this.granularity = granularity;
