@@ -66,22 +66,26 @@ public class Joiner4All extends BaseJoiner {
             Object pk = row._1();// Primary key.
             List<Object> rowVal = row._2();
             if (action == ActionType.FIRST_CUT) {// First cut (no join).
-                baseAllRows.put(pk, rowVal);
+                if (pk != null) {//TODO: Only non-nulls will go through. Address this later.
+                    baseAllRows.put(pk, rowVal);
+                }
             } else {// Some Join action.
-                if (baseAllRows.containsKey(pk)) {// If any item in set B exist in set A.
-                    rowVal.removeAll(splitCompositeKeys(pk.toString()));// Remove key(which is already available in baseAllRows)
-                    if (!joinFields.contains("timestamp")) {// If join field is not "timestamp" then remove timestamp data value from to be joined set.
-                        rowVal.remove(0);// Because the 1st field is always timestamp.(See extractKeyAndRow() method)
-                    }
-                    if (action == ActionType.JOIN || action == ActionType.RIGHT_JOIN) {
-                        newBaseAllRows.put(pk, baseAllRows.remove(pk));// Remove from existing map and add to new map.
-                        newBaseAllRows.get(pk).addAll(rowVal);// Update the new map with partial to be joined data.
-                    } else if (action == ActionType.LEFT_JOIN) {// Left join
-                        baseAllRows.get(pk).addAll(rowVal);
-                    }
-                } else {// For right join we still need to continue with each row in set B.
-                    if (action == ActionType.RIGHT_JOIN) {// Right join
-                        newBaseAllRows.put(pk, rowVal);
+                if (pk != null) {//TODO: Only non-nulls will go through. Address this later.
+                    if (baseAllRows.containsKey(pk)) {// If any item in set B exist in set A.
+                        rowVal.removeAll(splitCompositeKeys(pk.toString()));// Remove key(which is already available in baseAllRows)
+                        if (!joinFields.contains("timestamp")) {// If join field is not "timestamp" then remove timestamp data value from to be joined set.
+                            rowVal.remove(0);// Because the 1st field is always timestamp.(See extractKeyAndRow() method)
+                        }
+                        if (action == ActionType.JOIN || action == ActionType.RIGHT_JOIN) {
+                            newBaseAllRows.put(pk, baseAllRows.remove(pk));// Remove from existing map and add to new map.
+                            newBaseAllRows.get(pk).addAll(rowVal);// Update the new map with partial to be joined data.
+                        } else if (action == ActionType.LEFT_JOIN) {// Left join
+                            baseAllRows.get(pk).addAll(rowVal);
+                        }
+                    } else {// For right join we still need to continue with each row in set B.
+                        if (action == ActionType.RIGHT_JOIN) {// Right join
+                            newBaseAllRows.put(pk, rowVal);
+                        }
                     }
                 }
             }
