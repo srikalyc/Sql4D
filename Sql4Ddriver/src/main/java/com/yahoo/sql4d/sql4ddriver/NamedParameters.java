@@ -82,9 +82,9 @@ public class NamedParameters {
             } else if (value instanceof BigDecimal)  {
                 result = result.replaceAll(String.format(":%s", key), String.format("%f", ((BigDecimal)value).doubleValue()));
             } else if (value instanceof Date)  {
-                result = result.replaceAll(String.format(":%s", key), currentJavaDateFormat.format(value));
+                result = result.replaceAll(String.format(":%s", key), currentJavaDateFormat.format(value)).replace("Z", "");
             } else if (value instanceof DateTime)  {
-                result = result.replaceAll(String.format(":%s", key), currentJodaDateFormat.print(((DateTime)value).getMillis()));
+                result = result.replaceAll(String.format(":%s", key), currentJodaDateFormat.print(((DateTime)value).getMillis())).replace("Z", "");
             } else {
                 result = result.replaceAll(String.format(":%s", key), value.toString());
             }

@@ -42,6 +42,7 @@ public class DCompiler {
             Program pgm = parser.program();
             return pgm;
         } catch (RecognitionException ex) {
+            System.out.println(ex);
             Logger.getLogger(DCompiler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
