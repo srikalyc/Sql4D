@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4DClient</artifactId>
-    <version>3.5.3</version>
+    <version>3.5.4</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>3.5.3</version>
+        <version>3.5.4</version>
         <relativePath>../pom.xml</relativePath>
-    </parent>
+    </parent>    
     <build>
         <plugins>
             <plugin>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.yahoo.sql4d</groupId>
             <artifactId>Sql4Ddriver</artifactId>
-            <version>3.5.3</version>
+            <version>3.5.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
