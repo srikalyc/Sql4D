@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yahoo.sql4d</groupId>
     <artifactId>Sql4D</artifactId>
-    <version>3.5.3</version>
+    <version>3.5.4</version>
     <packaging>pom</packaging>
     <modules>
         <module>Sql4DCompiler</module>
@@ -12,13 +12,40 @@
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <build.version>3.5.3</build.version>
-        <yinst.build.version>3.5.3</yinst.build.version>
+        <build.version>3.5.4</build.version>
+        <yinst.build.version>3.5.4</yinst.build.version>
         <buildtype>release</buildtype>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-
+    <description>A Sql layer for Druid.</description>
+    <url>https://github.com/srikalyan/Sql4D</url>
+    <scm>
+      <connection>scm:git:git@github.com:srikalyc/Sql4D.git</connection>
+      <developerConnection>scm:git:git@github.com:srikalyc/Sql4D.git</developerConnection>
+      <url>git@github.com:srikalyc/Sql4D.git</url>
+    </scm>    
+    <developers>
+       <developer>
+         <name>Srikalyan Chandrashekar</name>
+         <email>srikalyan.chandrashekar@gmail.com</email>
+         <organization>Yahoo</organization>
+         <organizationUrl>http://www.yahoo.com</organizationUrl>
+       </developer>
+    </developers>    
+    <licenses>
+      <license>
+        <name>The Apache License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      </license>
+    </licenses>
+    <distributionManagement>
+      <repository>
+        <id>sonatype</id>
+        <name>SONATYPE repository for staging releases.</name>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      </repository>
+    </distributionManagement>
     <repositories>
         <repository>
             <id>central</id>
@@ -106,6 +133,49 @@
     <build>
          <pluginManagement>
              <plugins>
+                <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-source-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>attach-sources</id>
+                      <goals>
+                        <goal>jar</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <executions>
+                      <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                          <goal>jar</goal>
+                        </goals>
+                      </execution>
+                    </executions>
+                 <!-- TODO: Uncomment the below if you are using JDK 8 -->
+                 <!--
+                    <configuration>
+                      <additionalparam>-Xdoclint:none</additionalparam>
+                    </configuration>
+                 -->
+                </plugin>                
+                <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-gpg-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>sign-artifacts</id>
+                      <phase>verify</phase>
+                      <goals>
+                        <goal>sign</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+                </plugin>
                 <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-shade-plugin</artifactId>
