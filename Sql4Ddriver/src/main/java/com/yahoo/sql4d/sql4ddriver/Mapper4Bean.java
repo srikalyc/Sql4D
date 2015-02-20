@@ -83,7 +83,7 @@ public class Mapper4Bean<T extends DruidBaseBean> extends BaseMapper {
             rowValues = rowMapper.newInstance();
             rowValues.getClass().getMethod("setTimestamp", String.class).invoke(rowValues, timestamp);
             for (Object key : jsonRow.keySet()) {
-                applyKVToBean(rowValues, key.toString(), jsonRow.get(key.toString()));
+                Util.applyKVToBean(rowValues, key.toString(), jsonRow.get(key.toString()));
             }
 
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {

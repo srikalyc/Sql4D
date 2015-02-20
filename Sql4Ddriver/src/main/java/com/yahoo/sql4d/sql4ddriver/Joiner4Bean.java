@@ -117,7 +117,7 @@ public class Joiner4Bean<T extends DruidBaseBean> extends BaseJoiner {
             rowValues.getClass().getMethod("setTimestamp", String.class).invoke(rowValues, timestamp);
             for (Object key : jsonRow.keySet()) {
                 String colValue = key.toString();
-                applyKVToBean(rowValues, colValue, jsonRow.get(colValue));
+                Util.applyKVToBean(rowValues, colValue, jsonRow.get(colValue));
                 if (joinFields.contains(colValue)) {
                     joinValue = (joinValue == null)?jsonRow.get(colValue):(joinValue + "\u0001" + jsonRow.get(colValue));
                 }

@@ -11,8 +11,6 @@
 package com.yahoo.sql4d.sql4ddriver;
 
 import com.yahoo.sql4d.query.RequestType;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -81,22 +79,4 @@ public class BaseMapper {
         }
     }
     
-    /**
-     * More granular(sets the property of a bean based on a json key value
-     * pair).
-     *
-     * @param bean
-     * @param key
-     * @param value
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws InvocationTargetException
-     */
-    public static void applyKVToBean(Object bean, String key, Object value) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Method getterMethod = bean.getClass().getMethod(Util.getterMethodName(key));
-        Method setterMethod = bean.getClass().getMethod(Util.setterMethodName(key), getterMethod.getReturnType());
-        setterMethod.invoke(bean, value);
-    }
-
 }

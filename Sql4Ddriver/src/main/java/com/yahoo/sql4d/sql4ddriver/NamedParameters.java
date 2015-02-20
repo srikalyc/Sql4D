@@ -77,8 +77,8 @@ public class NamedParameters {
         String result = sqlQuery;
         for (String key:namedParams.keySet()) {
             Object value = namedParams.get(key);
-            if (value instanceof String) {
-                result = result.replaceAll(String.format(":%s", key), String.format("'%s'", value));
+            if (value instanceof String) {// This could be combined with last else(but mostly we encounter String)
+                result = result.replaceAll(String.format(":%s", key), String.format("%s", value));
             } else if (value instanceof BigDecimal)  {
                 result = result.replaceAll(String.format(":%s", key), String.format("%f", ((BigDecimal)value).doubleValue()));
             } else if (value instanceof Date)  {
@@ -91,4 +91,9 @@ public class NamedParameters {
         }
         return result;
     }
+    public static void main(String[] args) {
+        
+        
+    }
+    
 }
