@@ -237,4 +237,22 @@ public class Util {
             return new Right<>(possibleResObj);
         }
     }    
+    
+    /**
+     * More granular(sets the property of a bean based on a key value).
+     *
+     * @param bean
+     * @param key
+     * @param value
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws InvocationTargetException
+     */
+    public static void applyKVToBean(Object bean, String key, Object value) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Method getterMethod = bean.getClass().getMethod(Util.getterMethodName(key));
+        Method setterMethod = bean.getClass().getMethod(Util.setterMethodName(key), getterMethod.getReturnType());
+        setterMethod.invoke(bean, value);
+    }
+    
 }

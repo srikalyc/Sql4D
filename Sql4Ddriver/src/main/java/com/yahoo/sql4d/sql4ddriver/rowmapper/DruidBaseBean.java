@@ -10,8 +10,18 @@
  */
 package com.yahoo.sql4d.sql4ddriver.rowmapper;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.Registration;
+import com.esotericsoftware.kryo.Serializer;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yahoo.sql4d.sql4ddriver.Util;
+import java.lang.reflect.InvocationTargetException;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -19,10 +29,12 @@ import org.joda.time.format.DateTimeFormatter;
  * Has timestamp which is always available in druid response. All the subclasses 
  * must ensure they provide getter and setter for every instance variable. Do not
  * use Boxed types like Integer,  Long etc. Must define a constructor without 
- * arguments in case you define one with arguments.
+ * arguments in case you define one with arguments. Any bean of this type is Kryo
+ * serializable.
  * @author srikalyan
+ * @param <T>
  */
-public class DruidBaseBean {
+public class DruidBaseBean<T extends DruidBaseBean> extends Serializer<T> {
     private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
     private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
     private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
@@ -48,12 +60,42 @@ public class DruidBaseBean {
     }
     
     public Map<String, Object> toMap() {
-        return new ObjectMapper().convertValue(this, Map.class);        
+        Map<String, Object> map = new ObjectMapper().convertValue(this, Map.class);
+        // The following 2 comes from Serializer.
+        map.remove("acceptsNull");
+        map.remove("immutable");
+        return map;        
     }
 
     @Override
     public String toString() {
         return toMap().toString();
+    }
+
+    @Override
+    public void write(Kryo kryo, Output output, T t) {
+        Map<String, Object> map = toMap();
+        for (String key:map.keySet()) {
+            Object value = map.get(key);
+            kryo.writeClass(output, value.getClass());
+            kryo.writeObjectOrNull(output, key, String.class);
+            kryo.writeObjectOrNull(output, value, value.getClass());
+        }
+    }
+
+    @Override
+    public T read(Kryo kryo, Input input, Class<T> type) {
+        T retValue = null;
+        try {
+            retValue = type.newInstance();
+            Registration reg = kryo.readClass(input);
+            String key = kryo.readObjectOrNull(input, String.class);
+            Object value = kryo.readObjectOrNull(input, reg.getType());
+            Util.applyKVToBean(retValue, key, value);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException ex) {
+            Logger.getLogger(DruidBaseBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retValue;
     }
     
 }
