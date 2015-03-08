@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 druidG.g 2015-02-15 18:47:44
+// $ANTLR 3.5.2 druidG.g 2015-03-08 16:50:11
 
 	package com.yahoo.sql4d.converter;
 
@@ -5316,8 +5316,467 @@ public class druidGParser extends Parser {
 
 
 
+	// $ANTLR start "grandFilter"
+	// druidG.g:387:1: grandFilter returns [Filter filter] : a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ;
+	public final Filter grandFilter() throws RecognitionException {
+		Filter filter = null;
+
+
+		Token o=null;
+		Filter a =null;
+		Filter b =null;
+
+		try {
+			// druidG.g:388:2: (a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* )
+			// druidG.g:388:3: a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			{
+			pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2748);
+			a=semiGrandFilter();
+			state._fsp--;
+
+			filter = a;
+			// druidG.g:388:35: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			loop185:
+			while (true) {
+				int alt185=2;
+				int LA185_0 = input.LA(1);
+				if ( (LA185_0==WS) ) {
+					int LA185_1 = input.LA(2);
+					if ( (LA185_1==AND||LA185_1==OR) ) {
+						alt185=1;
+					}
+
+				}
+
+				switch (alt185) {
+				case 1 :
+					// druidG.g:388:36: WS o= ( AND | OR ) WS b= semiGrandFilter
+					{
+					match(input,WS,FOLLOW_WS_in_grandFilter2753); 
+					o=input.LT(1);
+					if ( input.LA(1)==AND||input.LA(1)==OR ) {
+						input.consume();
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+					match(input,WS,FOLLOW_WS_in_grandFilter2763); 
+					pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2767);
+					b=semiGrandFilter();
+					state._fsp--;
+
+
+						         Filter tmpFilter = filter;
+						         filter = new Filter((o!=null?o.getText():null).toLowerCase());
+							 filter.fields = new ArrayList<>();
+							 filter.fields.add(tmpFilter);
+							 if (b != null) {
+							    filter.fields.add(b);
+							 }
+							
+					}
+					break;
+
+				default :
+					break loop185;
+				}
+			}
+
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return filter;
+	}
+	// $ANTLR end "grandFilter"
+
+
+
+	// $ANTLR start "semiGrandFilter"
+	// druidG.g:400:1: semiGrandFilter returns [Filter filter] : (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN );
+	public final Filter semiGrandFilter() throws RecognitionException {
+		Filter filter = null;
+
+
+		Token o=null;
+		Filter a =null;
+		Filter b =null;
+
+		try {
+			// druidG.g:401:2: (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN )
+			int alt189=2;
+			int LA189_0 = input.LA(1);
+			if ( (LA189_0==ID||LA189_0==NOT) ) {
+				alt189=1;
+			}
+			else if ( (LA189_0==LPARAN) ) {
+				alt189=2;
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 189, 0, input);
+				throw nvae;
+			}
+
+			switch (alt189) {
+				case 1 :
+					// druidG.g:402:2: a= simpleLogicalFilter
+					{
+					pushFollow(FOLLOW_simpleLogicalFilter_in_semiGrandFilter2798);
+					a=simpleLogicalFilter();
+					state._fsp--;
+
+					filter = a;
+					}
+					break;
+				case 2 :
+					// druidG.g:403:3: LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN
+					{
+					match(input,LPARAN,FOLLOW_LPARAN_in_semiGrandFilter2805); 
+					// druidG.g:403:10: ( WS )?
+					int alt186=2;
+					int LA186_0 = input.LA(1);
+					if ( (LA186_0==WS) ) {
+						alt186=1;
+					}
+					switch (alt186) {
+						case 1 :
+							// druidG.g:403:10: WS
+							{
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2807); 
+							}
+							break;
+
+					}
+
+					pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2812);
+					a=semiGrandFilter();
+					state._fsp--;
+
+					filter = a;
+					// druidG.g:403:47: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+					loop187:
+					while (true) {
+						int alt187=2;
+						int LA187_0 = input.LA(1);
+						if ( (LA187_0==WS) ) {
+							int LA187_1 = input.LA(2);
+							if ( (LA187_1==AND||LA187_1==OR) ) {
+								alt187=1;
+							}
+
+						}
+
+						switch (alt187) {
+						case 1 :
+							// druidG.g:403:48: WS o= ( AND | OR ) WS b= semiGrandFilter
+							{
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2818); 
+							o=input.LT(1);
+							if ( input.LA(1)==AND||input.LA(1)==OR ) {
+								input.consume();
+								state.errorRecovery=false;
+							}
+							else {
+								MismatchedSetException mse = new MismatchedSetException(null,input);
+								throw mse;
+							}
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2828); 
+							pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2832);
+							b=semiGrandFilter();
+							state._fsp--;
+
+							Filter tmpFilter = filter;
+								         filter = new Filter((o!=null?o.getText():null).toLowerCase());
+									 filter.fields = new ArrayList<>();
+									 filter.fields.add(tmpFilter);
+									 if (b != null) {
+									    filter.fields.add(b);
+									 }
+									
+							}
+							break;
+
+						default :
+							break loop187;
+						}
+					}
+
+					// druidG.g:411:7: ( WS )?
+					int alt188=2;
+					int LA188_0 = input.LA(1);
+					if ( (LA188_0==WS) ) {
+						alt188=1;
+					}
+					switch (alt188) {
+						case 1 :
+							// druidG.g:411:7: WS
+							{
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2848); 
+							}
+							break;
+
+					}
+
+					match(input,RPARAN,FOLLOW_RPARAN_in_semiGrandFilter2851); 
+					}
+					break;
+
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return filter;
+	}
+	// $ANTLR end "semiGrandFilter"
+
+
+
+	// $ANTLR start "simpleLogicalFilter"
+	// druidG.g:414:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );
+	public final Filter simpleLogicalFilter() throws RecognitionException {
+		Filter filter = null;
+
+
+		Token o=null;
+		Filter a =null;
+		Filter b =null;
+
+		try {
+			// druidG.g:415:2: ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) )
+			int alt191=2;
+			alt191 = dfa191.predict(input);
+			switch (alt191) {
+				case 1 :
+					// druidG.g:416:2: (a= simpleFilter )
+					{
+					// druidG.g:416:2: (a= simpleFilter )
+					// druidG.g:416:3: a= simpleFilter
+					{
+					pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2870);
+					a=simpleFilter();
+					state._fsp--;
+
+					}
+
+					filter = a;
+					}
+					break;
+				case 2 :
+					// druidG.g:417:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					{
+					// druidG.g:417:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					int alt190=2;
+					int LA190_0 = input.LA(1);
+					if ( (LA190_0==ID) ) {
+						alt190=1;
+					}
+					else if ( (LA190_0==NOT) ) {
+						alt190=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 190, 0, input);
+						throw nvae;
+					}
+
+					switch (alt190) {
+						case 1 :
+							// druidG.g:417:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							{
+							// druidG.g:417:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							// druidG.g:417:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
+							{
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2882);
+							a=simpleFilter();
+							state._fsp--;
+
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2884); 
+							o=input.LT(1);
+							if ( input.LA(1)==AND||input.LA(1)==OR ) {
+								input.consume();
+								state.errorRecovery=false;
+							}
+							else {
+								MismatchedSetException mse = new MismatchedSetException(null,input);
+								throw mse;
+							}
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2894); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2898);
+							b=simpleFilter();
+							state._fsp--;
+
+							}
+
+							}
+							break;
+						case 2 :
+							// druidG.g:417:55: (o= NOT WS b= simpleFilter )
+							{
+							// druidG.g:417:55: (o= NOT WS b= simpleFilter )
+							// druidG.g:417:56: o= NOT WS b= simpleFilter
+							{
+							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2906); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2908); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2912);
+							b=simpleFilter();
+							state._fsp--;
+
+							}
+
+							}
+							break;
+
+					}
+
+					filter = new Filter((o!=null?o.getText():null).toLowerCase());
+							 filter.fields = new ArrayList<>();
+							 if (a != null) {
+							    filter.fields.add(a);
+							 }
+							 if (b != null) {		 
+					   	 	    filter.fields.add(b);
+							 }
+							
+					}
+					break;
+
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return filter;
+	}
+	// $ANTLR end "simpleLogicalFilter"
+
+
+
+	// $ANTLR start "simpleFilter"
+	// druidG.g:430:1: simpleFilter returns [Filter filter] : (a= selectorFilter |a= regexFilter ) ;
+	public final Filter simpleFilter() throws RecognitionException {
+		Filter filter = null;
+
+
+		Filter a =null;
+
+		try {
+			// druidG.g:431:2: ( (a= selectorFilter |a= regexFilter ) )
+			// druidG.g:431:4: (a= selectorFilter |a= regexFilter )
+			{
+			// druidG.g:431:4: (a= selectorFilter |a= regexFilter )
+			int alt192=2;
+			int LA192_0 = input.LA(1);
+			if ( (LA192_0==ID) ) {
+				int LA192_1 = input.LA(2);
+				if ( (LA192_1==WS) ) {
+					int LA192_2 = input.LA(3);
+					if ( (LA192_2==LIKE) ) {
+						alt192=2;
+					}
+					else if ( (LA192_2==EQUALS) ) {
+						alt192=1;
+					}
+
+					else {
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
+								input.consume();
+							}
+							NoViableAltException nvae =
+								new NoViableAltException("", 192, 2, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+
+				}
+				else if ( (LA192_1==EQUALS) ) {
+					alt192=1;
+				}
+
+				else {
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 192, 1, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 192, 0, input);
+				throw nvae;
+			}
+
+			switch (alt192) {
+				case 1 :
+					// druidG.g:431:5: a= selectorFilter
+					{
+					pushFollow(FOLLOW_selectorFilter_in_simpleFilter2939);
+					a=selectorFilter();
+					state._fsp--;
+
+					}
+					break;
+				case 2 :
+					// druidG.g:431:24: a= regexFilter
+					{
+					pushFollow(FOLLOW_regexFilter_in_simpleFilter2945);
+					a=regexFilter();
+					state._fsp--;
+
+					}
+					break;
+
+			}
+
+			filter = a;
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return filter;
+	}
+	// $ANTLR end "simpleFilter"
+
+
+
 	// $ANTLR start "selectorFilter"
-	// druidG.g:388:1: selectorFilter returns [Filter filter] : e= getEquals ;
+	// druidG.g:434:1: selectorFilter returns [Filter filter] : e= getEquals ;
 	public final Filter selectorFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5326,10 +5785,10 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("selector");
 		try {
-			// druidG.g:390:2: (e= getEquals )
-			// druidG.g:390:4: e= getEquals
+			// druidG.g:436:2: (e= getEquals )
+			// druidG.g:436:4: e= getEquals
 			{
-			pushFollow(FOLLOW_getEquals_in_selectorFilter2756);
+			pushFollow(FOLLOW_getEquals_in_selectorFilter2970);
 			e=getEquals();
 			state._fsp--;
 
@@ -5353,7 +5812,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "regexFilter"
-	// druidG.g:396:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
+	// druidG.g:442:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
 	public final Filter regexFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5363,20 +5822,20 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("regex");
 		try {
-			// druidG.g:398:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
-			// druidG.g:398:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:444:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
+			// druidG.g:444:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
 			{
-			// druidG.g:398:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
-			// druidG.g:398:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
+			// druidG.g:444:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:444:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter2785); 
-			match(input,WS,FOLLOW_WS_in_regexFilter2787); 
-			match(input,LIKE,FOLLOW_LIKE_in_regexFilter2789); 
-			match(input,WS,FOLLOW_WS_in_regexFilter2791); 
-			// druidG.g:398:24: ( SINGLE_QUOTE_STRING )
-			// druidG.g:398:25: SINGLE_QUOTE_STRING
+			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter2999); 
+			match(input,WS,FOLLOW_WS_in_regexFilter3001); 
+			match(input,LIKE,FOLLOW_LIKE_in_regexFilter3003); 
+			match(input,WS,FOLLOW_WS_in_regexFilter3005); 
+			// druidG.g:444:24: ( SINGLE_QUOTE_STRING )
+			// druidG.g:444:25: SINGLE_QUOTE_STRING
 			{
-			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter2797); 
+			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3011); 
 			}
 
 			}
@@ -5400,945 +5859,8 @@ public class druidGParser extends Parser {
 
 
 
-	// $ANTLR start "simpleFilter"
-	// druidG.g:404:1: simpleFilter returns [Filter filter] : ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) );
-	public final Filter simpleFilter() throws RecognitionException {
-		Filter filter = null;
-
-
-		Filter a =null;
-
-		try {
-			// druidG.g:405:2: ( (a= selectorFilter |a= regexFilter ) | ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN ) )
-			int alt189=2;
-			int LA189_0 = input.LA(1);
-			if ( (LA189_0==ID) ) {
-				alt189=1;
-			}
-			else if ( (LA189_0==LPARAN) ) {
-				alt189=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 189, 0, input);
-				throw nvae;
-			}
-
-			switch (alt189) {
-				case 1 :
-					// druidG.g:405:4: (a= selectorFilter |a= regexFilter )
-					{
-					// druidG.g:405:4: (a= selectorFilter |a= regexFilter )
-					int alt185=2;
-					int LA185_0 = input.LA(1);
-					if ( (LA185_0==ID) ) {
-						int LA185_1 = input.LA(2);
-						if ( (LA185_1==WS) ) {
-							int LA185_2 = input.LA(3);
-							if ( (LA185_2==LIKE) ) {
-								alt185=2;
-							}
-							else if ( (LA185_2==EQUALS) ) {
-								alt185=1;
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 185, 2, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-						else if ( (LA185_1==EQUALS) ) {
-							alt185=1;
-						}
-
-						else {
-							int nvaeMark = input.mark();
-							try {
-								input.consume();
-								NoViableAltException nvae =
-									new NoViableAltException("", 185, 1, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-
-					}
-
-					else {
-						NoViableAltException nvae =
-							new NoViableAltException("", 185, 0, input);
-						throw nvae;
-					}
-
-					switch (alt185) {
-						case 1 :
-							// druidG.g:405:5: a= selectorFilter
-							{
-							pushFollow(FOLLOW_selectorFilter_in_simpleFilter2822);
-							a=selectorFilter();
-							state._fsp--;
-
-							}
-							break;
-						case 2 :
-							// druidG.g:405:24: a= regexFilter
-							{
-							pushFollow(FOLLOW_regexFilter_in_simpleFilter2828);
-							a=regexFilter();
-							state._fsp--;
-
-							}
-							break;
-
-					}
-
-					filter = a;
-					}
-					break;
-				case 2 :
-					// druidG.g:406:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
-					{
-					// druidG.g:406:5: ( LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN )
-					// druidG.g:406:6: LPARAN ( WS )? (a= selectorFilter |a= regexFilter ) ( WS )? RPARAN
-					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_simpleFilter2838); 
-					// druidG.g:406:13: ( WS )?
-					int alt186=2;
-					int LA186_0 = input.LA(1);
-					if ( (LA186_0==WS) ) {
-						alt186=1;
-					}
-					switch (alt186) {
-						case 1 :
-							// druidG.g:406:13: WS
-							{
-							match(input,WS,FOLLOW_WS_in_simpleFilter2840); 
-							}
-							break;
-
-					}
-
-					// druidG.g:406:17: (a= selectorFilter |a= regexFilter )
-					int alt187=2;
-					int LA187_0 = input.LA(1);
-					if ( (LA187_0==ID) ) {
-						int LA187_1 = input.LA(2);
-						if ( (LA187_1==WS) ) {
-							int LA187_2 = input.LA(3);
-							if ( (LA187_2==LIKE) ) {
-								alt187=2;
-							}
-							else if ( (LA187_2==EQUALS) ) {
-								alt187=1;
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 187, 2, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-						else if ( (LA187_1==EQUALS) ) {
-							alt187=1;
-						}
-
-						else {
-							int nvaeMark = input.mark();
-							try {
-								input.consume();
-								NoViableAltException nvae =
-									new NoViableAltException("", 187, 1, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-
-					}
-
-					else {
-						NoViableAltException nvae =
-							new NoViableAltException("", 187, 0, input);
-						throw nvae;
-					}
-
-					switch (alt187) {
-						case 1 :
-							// druidG.g:406:18: a= selectorFilter
-							{
-							pushFollow(FOLLOW_selectorFilter_in_simpleFilter2846);
-							a=selectorFilter();
-							state._fsp--;
-
-							}
-							break;
-						case 2 :
-							// druidG.g:406:37: a= regexFilter
-							{
-							pushFollow(FOLLOW_regexFilter_in_simpleFilter2852);
-							a=regexFilter();
-							state._fsp--;
-
-							}
-							break;
-
-					}
-
-					// druidG.g:406:52: ( WS )?
-					int alt188=2;
-					int LA188_0 = input.LA(1);
-					if ( (LA188_0==WS) ) {
-						alt188=1;
-					}
-					switch (alt188) {
-						case 1 :
-							// druidG.g:406:52: WS
-							{
-							match(input,WS,FOLLOW_WS_in_simpleFilter2855); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_simpleFilter2858); 
-					}
-
-					filter = a;
-					}
-					break;
-
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return filter;
-	}
-	// $ANTLR end "simpleFilter"
-
-
-
-	// $ANTLR start "simpleLogicalFilter"
-	// druidG.g:409:1: simpleLogicalFilter returns [Filter filter] : ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) );
-	public final Filter simpleLogicalFilter() throws RecognitionException {
-		Filter filter = null;
-
-
-		Token o=null;
-		Filter a =null;
-		Filter b =null;
-		Filter s =null;
-
-		try {
-			// druidG.g:410:2: ( ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) | ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN ) )
-			int alt193=2;
-			int LA193_0 = input.LA(1);
-			if ( (LA193_0==ID||LA193_0==NOT) ) {
-				alt193=1;
-			}
-			else if ( (LA193_0==LPARAN) ) {
-				switch ( input.LA(2) ) {
-				case WS:
-					{
-					int LA193_4 = input.LA(3);
-					if ( (LA193_4==ID) ) {
-						int LA193_8 = input.LA(4);
-						if ( (LA193_8==WS) ) {
-							int LA193_13 = input.LA(5);
-							if ( (LA193_13==LIKE) ) {
-								int LA193_19 = input.LA(6);
-								if ( (LA193_19==WS) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 19, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-							else if ( (LA193_13==EQUALS) ) {
-								int LA193_20 = input.LA(6);
-								if ( (LA193_20==WS) ) {
-									alt193=1;
-								}
-								else if ( (LA193_20==FLOAT||LA193_20==LONG||LA193_20==SINGLE_QUOTE_STRING) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 20, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 13, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-						else if ( (LA193_8==EQUALS) ) {
-							int LA193_14 = input.LA(5);
-							if ( (LA193_14==WS) ) {
-								int LA193_21 = input.LA(6);
-								if ( (LA193_21==FLOAT||LA193_21==LONG||LA193_21==SINGLE_QUOTE_STRING) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 21, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-							else if ( (LA193_14==FLOAT||LA193_14==LONG||LA193_14==SINGLE_QUOTE_STRING) ) {
-								int LA193_22 = input.LA(6);
-								if ( (LA193_22==WS) ) {
-									alt193=1;
-								}
-								else if ( (LA193_22==RPARAN) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 22, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 14, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-
-						else {
-							int nvaeMark = input.mark();
-							try {
-								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++) {
-									input.consume();
-								}
-								NoViableAltException nvae =
-									new NoViableAltException("", 193, 8, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-
-					}
-					else if ( (LA193_4==LPARAN||LA193_4==NOT) ) {
-						alt193=2;
-					}
-
-					else {
-						int nvaeMark = input.mark();
-						try {
-							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
-								input.consume();
-							}
-							NoViableAltException nvae =
-								new NoViableAltException("", 193, 4, input);
-							throw nvae;
-						} finally {
-							input.rewind(nvaeMark);
-						}
-					}
-
-					}
-					break;
-				case ID:
-					{
-					int LA193_5 = input.LA(3);
-					if ( (LA193_5==WS) ) {
-						int LA193_11 = input.LA(4);
-						if ( (LA193_11==LIKE) ) {
-							int LA193_15 = input.LA(5);
-							if ( (LA193_15==WS) ) {
-								int LA193_23 = input.LA(6);
-								if ( (LA193_23==SINGLE_QUOTE_STRING) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 23, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 15, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-						else if ( (LA193_11==EQUALS) ) {
-							int LA193_16 = input.LA(5);
-							if ( (LA193_16==WS) ) {
-								int LA193_24 = input.LA(6);
-								if ( (LA193_24==FLOAT||LA193_24==LONG||LA193_24==SINGLE_QUOTE_STRING) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 24, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-							else if ( (LA193_16==FLOAT||LA193_16==LONG||LA193_16==SINGLE_QUOTE_STRING) ) {
-								int LA193_25 = input.LA(6);
-								if ( (LA193_25==WS) ) {
-									alt193=1;
-								}
-								else if ( (LA193_25==RPARAN) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 25, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 16, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-
-						else {
-							int nvaeMark = input.mark();
-							try {
-								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++) {
-									input.consume();
-								}
-								NoViableAltException nvae =
-									new NoViableAltException("", 193, 11, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-
-					}
-					else if ( (LA193_5==EQUALS) ) {
-						int LA193_12 = input.LA(4);
-						if ( (LA193_12==WS) ) {
-							int LA193_17 = input.LA(5);
-							if ( (LA193_17==FLOAT||LA193_17==LONG||LA193_17==SINGLE_QUOTE_STRING) ) {
-								int LA193_26 = input.LA(6);
-								if ( (LA193_26==WS) ) {
-									alt193=1;
-								}
-								else if ( (LA193_26==RPARAN) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 26, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 17, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-						else if ( (LA193_12==FLOAT||LA193_12==LONG||LA193_12==SINGLE_QUOTE_STRING) ) {
-							int LA193_18 = input.LA(5);
-							if ( (LA193_18==WS) ) {
-								int LA193_27 = input.LA(6);
-								if ( (LA193_27==AND||LA193_27==OR) ) {
-									alt193=2;
-								}
-								else if ( (LA193_27==RPARAN) ) {
-									alt193=1;
-								}
-
-								else {
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++) {
-											input.consume();
-										}
-										NoViableAltException nvae =
-											new NoViableAltException("", 193, 27, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-
-							}
-							else if ( (LA193_18==RPARAN) ) {
-								alt193=1;
-							}
-
-							else {
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++) {
-										input.consume();
-									}
-									NoViableAltException nvae =
-										new NoViableAltException("", 193, 18, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-
-						}
-
-						else {
-							int nvaeMark = input.mark();
-							try {
-								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++) {
-									input.consume();
-								}
-								NoViableAltException nvae =
-									new NoViableAltException("", 193, 12, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-
-					}
-
-					else {
-						int nvaeMark = input.mark();
-						try {
-							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
-								input.consume();
-							}
-							NoViableAltException nvae =
-								new NoViableAltException("", 193, 5, input);
-							throw nvae;
-						} finally {
-							input.rewind(nvaeMark);
-						}
-					}
-
-					}
-					break;
-				case LPARAN:
-				case NOT:
-					{
-					alt193=2;
-					}
-					break;
-				default:
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 193, 2, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 193, 0, input);
-				throw nvae;
-			}
-
-			switch (alt193) {
-				case 1 :
-					// druidG.g:410:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
-					{
-					// druidG.g:410:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
-					int alt190=2;
-					int LA190_0 = input.LA(1);
-					if ( (LA190_0==ID||LA190_0==LPARAN) ) {
-						alt190=1;
-					}
-					else if ( (LA190_0==NOT) ) {
-						alt190=2;
-					}
-
-					else {
-						NoViableAltException nvae =
-							new NoViableAltException("", 190, 0, input);
-						throw nvae;
-					}
-
-					switch (alt190) {
-						case 1 :
-							// druidG.g:410:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
-							{
-							// druidG.g:410:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
-							// druidG.g:410:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
-							{
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2879);
-							a=simpleFilter();
-							state._fsp--;
-
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2881); 
-							o=input.LT(1);
-							if ( input.LA(1)==AND||input.LA(1)==OR ) {
-								input.consume();
-								state.errorRecovery=false;
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								throw mse;
-							}
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2891); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2895);
-							b=simpleFilter();
-							state._fsp--;
-
-							}
-
-							}
-							break;
-						case 2 :
-							// druidG.g:410:55: (o= NOT WS b= simpleFilter )
-							{
-							// druidG.g:410:55: (o= NOT WS b= simpleFilter )
-							// druidG.g:410:56: o= NOT WS b= simpleFilter
-							{
-							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2903); 
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2905); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2909);
-							b=simpleFilter();
-							state._fsp--;
-
-							}
-
-							}
-							break;
-
-					}
-
-					filter = new Filter((o!=null?o.getText():null).toLowerCase());
-							 filter.fields = new ArrayList<>();
-							 if (a != null) {
-							    filter.fields.add(a);
-							 }
-							 filter.fields.add(b);
-							
-					}
-					break;
-				case 2 :
-					// druidG.g:418:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
-					{
-					// druidG.g:418:4: ( LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN )
-					// druidG.g:418:5: LPARAN ( WS )? s= simpleLogicalFilter ( WS )? RPARAN
-					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_simpleLogicalFilter2922); 
-					// druidG.g:418:12: ( WS )?
-					int alt191=2;
-					int LA191_0 = input.LA(1);
-					if ( (LA191_0==WS) ) {
-						alt191=1;
-					}
-					switch (alt191) {
-						case 1 :
-							// druidG.g:418:12: WS
-							{
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2924); 
-							}
-							break;
-
-					}
-
-					pushFollow(FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2929);
-					s=simpleLogicalFilter();
-					state._fsp--;
-
-					// druidG.g:418:38: ( WS )?
-					int alt192=2;
-					int LA192_0 = input.LA(1);
-					if ( (LA192_0==WS) ) {
-						alt192=1;
-					}
-					switch (alt192) {
-						case 1 :
-							// druidG.g:418:38: WS
-							{
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2931); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_simpleLogicalFilter2934); 
-					}
-
-					filter = s;
-					}
-					break;
-
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return filter;
-	}
-	// $ANTLR end "simpleLogicalFilter"
-
-
-
-	// $ANTLR start "grandFilter"
-	// druidG.g:423:1: grandFilter returns [Filter filter] : (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? ;
-	public final Filter grandFilter() throws RecognitionException {
-		Filter filter = null;
-
-
-		Token o=null;
-		Filter a =null;
-		Filter b =null;
-
-		try {
-			// druidG.g:424:2: ( (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )? )
-			// druidG.g:424:4: (a= simpleFilter |a= simpleLogicalFilter ) ( WS o= ( AND | OR ) WS b= grandFilter )?
-			{
-			// druidG.g:424:4: (a= simpleFilter |a= simpleLogicalFilter )
-			int alt194=2;
-			alt194 = dfa194.predict(input);
-			switch (alt194) {
-				case 1 :
-					// druidG.g:424:5: a= simpleFilter
-					{
-					pushFollow(FOLLOW_simpleFilter_in_grandFilter2958);
-					a=simpleFilter();
-					state._fsp--;
-
-					}
-					break;
-				case 2 :
-					// druidG.g:424:22: a= simpleLogicalFilter
-					{
-					pushFollow(FOLLOW_simpleLogicalFilter_in_grandFilter2964);
-					a=simpleLogicalFilter();
-					state._fsp--;
-
-					}
-					break;
-
-			}
-
-			filter = a;
-			// druidG.g:424:60: ( WS o= ( AND | OR ) WS b= grandFilter )?
-			int alt195=2;
-			int LA195_0 = input.LA(1);
-			if ( (LA195_0==WS) ) {
-				int LA195_1 = input.LA(2);
-				if ( (LA195_1==AND||LA195_1==OR) ) {
-					alt195=1;
-				}
-			}
-			switch (alt195) {
-				case 1 :
-					// druidG.g:424:61: WS o= ( AND | OR ) WS b= grandFilter
-					{
-					match(input,WS,FOLLOW_WS_in_grandFilter2971); 
-					o=input.LT(1);
-					if ( input.LA(1)==AND||input.LA(1)==OR ) {
-						input.consume();
-						state.errorRecovery=false;
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						throw mse;
-					}
-					match(input,WS,FOLLOW_WS_in_grandFilter2981); 
-					pushFollow(FOLLOW_grandFilter_in_grandFilter2985);
-					b=grandFilter();
-					state._fsp--;
-
-					filter = new Filter((o!=null?o.getText():null).toLowerCase());
-							 filter.fields = new ArrayList<>();
-							 filter.fields.add(a);
-							 filter.fields.add(b);
-							
-					}
-					break;
-
-			}
-
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return filter;
-	}
-	// $ANTLR end "grandFilter"
-
-
-
 	// $ANTLR start "aggItem"
-	// druidG.g:435:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
+	// druidG.g:454:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
 	public final AggItem aggItem() throws RecognitionException {
 		AggItem aggItem = null;
 
@@ -6347,30 +5869,30 @@ public class druidGParser extends Parser {
 
 		  aggItem = new AggItem(); 
 		try {
-			// druidG.g:437:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
-			// druidG.g:437:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
+			// druidG.g:456:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
+			// druidG.g:456:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
 			{
-			pushFollow(FOLLOW_aggCallSite_in_aggItem3022);
+			pushFollow(FOLLOW_aggCallSite_in_aggItem3042);
 			aggCallSite(aggItem);
 			state._fsp--;
 
-			// druidG.g:437:25: ( WS AS WS x= ID )?
-			int alt196=2;
-			int LA196_0 = input.LA(1);
-			if ( (LA196_0==WS) ) {
-				int LA196_1 = input.LA(2);
-				if ( (LA196_1==AS) ) {
-					alt196=1;
+			// druidG.g:456:25: ( WS AS WS x= ID )?
+			int alt193=2;
+			int LA193_0 = input.LA(1);
+			if ( (LA193_0==WS) ) {
+				int LA193_1 = input.LA(2);
+				if ( (LA193_1==AS) ) {
+					alt193=1;
 				}
 			}
-			switch (alt196) {
+			switch (alt193) {
 				case 1 :
-					// druidG.g:437:26: WS AS WS x= ID
+					// druidG.g:456:26: WS AS WS x= ID
 					{
-					match(input,WS,FOLLOW_WS_in_aggItem3026); 
-					match(input,AS,FOLLOW_AS_in_aggItem3028); 
-					match(input,WS,FOLLOW_WS_in_aggItem3030); 
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem3034); 
+					match(input,WS,FOLLOW_WS_in_aggItem3046); 
+					match(input,AS,FOLLOW_AS_in_aggItem3048); 
+					match(input,WS,FOLLOW_WS_in_aggItem3050); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem3054); 
 					aggItem.setAsName((x!=null?x.getText():null));
 					}
 					break;
@@ -6394,135 +5916,135 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggCallSite"
-	// druidG.g:439:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
+	// druidG.g:458:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
 	public final void aggCallSite(AggItem aggItem) throws RecognitionException {
 		Token x=null;
 		Token y=null;
 		String p =null;
 
 		try {
-			// druidG.g:440:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
-			int alt203=2;
-			int LA203_0 = input.LA(1);
-			if ( (LA203_0==DOUBLE_SUM||LA203_0==HYPER_UNIQUE||LA203_0==JAVASCRIPT||LA203_0==LONG_SUM||LA203_0==MAX||LA203_0==MIN||LA203_0==UNIQUE) ) {
-				alt203=1;
+			// druidG.g:459:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
+			int alt200=2;
+			int LA200_0 = input.LA(1);
+			if ( (LA200_0==DOUBLE_SUM||LA200_0==HYPER_UNIQUE||LA200_0==JAVASCRIPT||LA200_0==LONG_SUM||LA200_0==MAX||LA200_0==MIN||LA200_0==UNIQUE) ) {
+				alt200=1;
 			}
-			else if ( (LA203_0==COUNT) ) {
-				alt203=2;
+			else if ( (LA200_0==COUNT) ) {
+				alt200=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 203, 0, input);
+					new NoViableAltException("", 200, 0, input);
 				throw nvae;
 			}
 
-			switch (alt203) {
+			switch (alt200) {
 				case 1 :
-					// druidG.g:440:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:459:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
 					{
-					pushFollow(FOLLOW_aggFunc_in_aggCallSite3053);
+					pushFollow(FOLLOW_aggFunc_in_aggCallSite3073);
 					p=aggFunc();
 					state._fsp--;
 
 					aggItem.setAggType(p);
-					// druidG.g:440:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
-					// druidG.g:440:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
+					// druidG.g:459:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:459:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
 					{
-					// druidG.g:440:40: ( WS )?
-					int alt197=2;
-					int LA197_0 = input.LA(1);
-					if ( (LA197_0==WS) ) {
-						alt197=1;
+					// druidG.g:459:40: ( WS )?
+					int alt194=2;
+					int LA194_0 = input.LA(1);
+					if ( (LA194_0==WS) ) {
+						alt194=1;
 					}
-					switch (alt197) {
+					switch (alt194) {
 						case 1 :
-							// druidG.g:440:40: WS
+							// druidG.g:459:40: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3058); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3078); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite3061); 
-					// druidG.g:440:51: ( WS )?
-					int alt198=2;
-					int LA198_0 = input.LA(1);
-					if ( (LA198_0==WS) ) {
-						alt198=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite3081); 
+					// druidG.g:459:51: ( WS )?
+					int alt195=2;
+					int LA195_0 = input.LA(1);
+					if ( (LA195_0==WS) ) {
+						alt195=1;
 					}
-					switch (alt198) {
+					switch (alt195) {
 						case 1 :
-							// druidG.g:440:51: WS
+							// druidG.g:459:51: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3063); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3083); 
 							}
 							break;
 
 					}
 
-					// druidG.g:440:55: (x= ID )
-					// druidG.g:440:57: x= ID
+					// druidG.g:459:55: (x= ID )
+					// druidG.g:459:57: x= ID
 					{
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3070); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3090); 
 					aggItem.setFieldName((x!=null?x.getText():null));
 					}
 
-					// druidG.g:440:96: ( ( WS )? ',' ( WS )? y= ID )*
-					loop201:
+					// druidG.g:459:96: ( ( WS )? ',' ( WS )? y= ID )*
+					loop198:
 					while (true) {
-						int alt201=2;
-						int LA201_0 = input.LA(1);
-						if ( (LA201_0==WS) ) {
-							int LA201_1 = input.LA(2);
-							if ( (LA201_1==91) ) {
-								alt201=1;
+						int alt198=2;
+						int LA198_0 = input.LA(1);
+						if ( (LA198_0==WS) ) {
+							int LA198_1 = input.LA(2);
+							if ( (LA198_1==91) ) {
+								alt198=1;
 							}
 
 						}
-						else if ( (LA201_0==91) ) {
-							alt201=1;
+						else if ( (LA198_0==91) ) {
+							alt198=1;
 						}
 
-						switch (alt201) {
+						switch (alt198) {
 						case 1 :
-							// druidG.g:440:97: ( WS )? ',' ( WS )? y= ID
+							// druidG.g:459:97: ( WS )? ',' ( WS )? y= ID
 							{
-							// druidG.g:440:97: ( WS )?
-							int alt199=2;
-							int LA199_0 = input.LA(1);
-							if ( (LA199_0==WS) ) {
-								alt199=1;
+							// druidG.g:459:97: ( WS )?
+							int alt196=2;
+							int LA196_0 = input.LA(1);
+							if ( (LA196_0==WS) ) {
+								alt196=1;
 							}
-							switch (alt199) {
+							switch (alt196) {
 								case 1 :
-									// druidG.g:440:97: WS
+									// druidG.g:459:97: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite3076); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite3096); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_aggCallSite3079); 
-							// druidG.g:440:105: ( WS )?
-							int alt200=2;
-							int LA200_0 = input.LA(1);
-							if ( (LA200_0==WS) ) {
-								alt200=1;
+							match(input,91,FOLLOW_91_in_aggCallSite3099); 
+							// druidG.g:459:105: ( WS )?
+							int alt197=2;
+							int LA197_0 = input.LA(1);
+							if ( (LA197_0==WS) ) {
+								alt197=1;
 							}
-							switch (alt200) {
+							switch (alt197) {
 								case 1 :
-									// druidG.g:440:105: WS
+									// druidG.g:459:105: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite3081); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite3101); 
 									}
 									break;
 
 							}
 
-							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3086); 
+							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3106); 
 
 								    if (aggItem.fieldNames == null || aggItem.fieldNames.isEmpty()) {
 								       aggItem.fieldNames = new ArrayList<>();
@@ -6535,40 +6057,40 @@ public class druidGParser extends Parser {
 							break;
 
 						default :
-							break loop201;
+							break loop198;
 						}
 					}
 
-					// druidG.g:447:6: ( WS )?
-					int alt202=2;
-					int LA202_0 = input.LA(1);
-					if ( (LA202_0==WS) ) {
-						alt202=1;
+					// druidG.g:466:6: ( WS )?
+					int alt199=2;
+					int LA199_0 = input.LA(1);
+					if ( (LA199_0==WS) ) {
+						alt199=1;
 					}
-					switch (alt202) {
+					switch (alt199) {
 						case 1 :
-							// druidG.g:447:6: WS
+							// druidG.g:466:6: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3092); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3112); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite3095); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite3115); 
 					}
 
 					}
 					break;
 				case 2 :
-					// druidG.g:448:4: COUNT ( '(*)' )
+					// druidG.g:467:4: COUNT ( '(*)' )
 					{
-					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite3102); 
+					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite3122); 
 					aggItem.setAggType("count");
-					// druidG.g:448:41: ( '(*)' )
-					// druidG.g:448:42: '(*)'
+					// druidG.g:467:41: ( '(*)' )
+					// druidG.g:467:42: '(*)'
 					{
-					match(input,89,FOLLOW_89_in_aggCallSite3107); 
+					match(input,89,FOLLOW_89_in_aggCallSite3127); 
 					}
 
 					}
@@ -6589,102 +6111,102 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggFunc"
-	// druidG.g:451:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
+	// druidG.g:470:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
 	public final String aggFunc() throws RecognitionException {
 		String name = null;
 
 
 		try {
-			// druidG.g:452:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
-			int alt204=7;
+			// druidG.g:471:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
+			int alt201=7;
 			switch ( input.LA(1) ) {
 			case LONG_SUM:
 				{
-				alt204=1;
+				alt201=1;
 				}
 				break;
 			case DOUBLE_SUM:
 				{
-				alt204=2;
+				alt201=2;
 				}
 				break;
 			case UNIQUE:
 				{
-				alt204=3;
+				alt201=3;
 				}
 				break;
 			case HYPER_UNIQUE:
 				{
-				alt204=4;
+				alt201=4;
 				}
 				break;
 			case MIN:
 				{
-				alt204=5;
+				alt201=5;
 				}
 				break;
 			case MAX:
 				{
-				alt204=6;
+				alt201=6;
 				}
 				break;
 			case JAVASCRIPT:
 				{
-				alt204=7;
+				alt201=7;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 204, 0, input);
+					new NoViableAltException("", 201, 0, input);
 				throw nvae;
 			}
-			switch (alt204) {
+			switch (alt201) {
 				case 1 :
-					// druidG.g:452:4: LONG_SUM
+					// druidG.g:471:4: LONG_SUM
 					{
-					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc3125); 
+					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc3145); 
 					name = "longSum";
 					}
 					break;
 				case 2 :
-					// druidG.g:453:4: DOUBLE_SUM
+					// druidG.g:472:4: DOUBLE_SUM
 					{
-					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc3132); 
+					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc3152); 
 					name = "doubleSum";
 					}
 					break;
 				case 3 :
-					// druidG.g:454:4: UNIQUE
+					// druidG.g:473:4: UNIQUE
 					{
-					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc3139); 
+					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc3159); 
 					name = "unique";
 					}
 					break;
 				case 4 :
-					// druidG.g:455:4: HYPER_UNIQUE
+					// druidG.g:474:4: HYPER_UNIQUE
 					{
-					match(input,HYPER_UNIQUE,FOLLOW_HYPER_UNIQUE_in_aggFunc3146); 
+					match(input,HYPER_UNIQUE,FOLLOW_HYPER_UNIQUE_in_aggFunc3166); 
 					name = "hyperUnique";
 					}
 					break;
 				case 5 :
-					// druidG.g:456:4: MIN
+					// druidG.g:475:4: MIN
 					{
-					match(input,MIN,FOLLOW_MIN_in_aggFunc3153); 
+					match(input,MIN,FOLLOW_MIN_in_aggFunc3173); 
 					name = "min";
 					}
 					break;
 				case 6 :
-					// druidG.g:457:4: MAX
+					// druidG.g:476:4: MAX
 					{
-					match(input,MAX,FOLLOW_MAX_in_aggFunc3160); 
+					match(input,MAX,FOLLOW_MAX_in_aggFunc3180); 
 					name = "max";
 					}
 					break;
 				case 7 :
-					// druidG.g:458:4: JAVASCRIPT
+					// druidG.g:477:4: JAVASCRIPT
 					{
-					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc3167); 
+					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc3187); 
 					name = "javascript";
 					}
 					break;
@@ -6705,7 +6227,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggItem"
-	// druidG.g:464:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
+	// druidG.g:483:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
 	public final PostAggItem postAggItem() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6715,86 +6237,86 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:466:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
-			int alt214=2;
-			int LA214_0 = input.LA(1);
-			if ( (LA214_0==FLOAT||LA214_0==ID||LA214_0==JAVASCRIPT||LA214_0==LONG||LA214_0==UNIQUE) ) {
-				alt214=1;
+			// druidG.g:485:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
+			int alt211=2;
+			int LA211_0 = input.LA(1);
+			if ( (LA211_0==FLOAT||LA211_0==ID||LA211_0==JAVASCRIPT||LA211_0==LONG||LA211_0==UNIQUE) ) {
+				alt211=1;
 			}
-			else if ( (LA214_0==LPARAN) ) {
-				alt214=2;
+			else if ( (LA211_0==LPARAN) ) {
+				alt211=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 214, 0, input);
+					new NoViableAltException("", 211, 0, input);
 				throw nvae;
 			}
 
-			switch (alt214) {
+			switch (alt211) {
 				case 1 :
-					// druidG.g:466:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:485:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:466:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:466:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:485:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:485:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					pushFollow(FOLLOW_simpleArith_in_postAggItem3195);
+					pushFollow(FOLLOW_simpleArith_in_postAggItem3215);
 					a=simpleArith();
 					state._fsp--;
 
-					// druidG.g:466:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-					int alt207=2;
-					int LA207_0 = input.LA(1);
-					if ( (LA207_0==WS) ) {
-						int LA207_1 = input.LA(2);
-						if ( (LA207_1==ARITH_OPER) ) {
-							alt207=1;
+					// druidG.g:485:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					int alt204=2;
+					int LA204_0 = input.LA(1);
+					if ( (LA204_0==WS) ) {
+						int LA204_1 = input.LA(2);
+						if ( (LA204_1==ARITH_OPER) ) {
+							alt204=1;
 						}
 					}
-					else if ( (LA207_0==ARITH_OPER) ) {
-						alt207=1;
+					else if ( (LA204_0==ARITH_OPER) ) {
+						alt204=1;
 					}
-					switch (alt207) {
+					switch (alt204) {
 						case 1 :
-							// druidG.g:466:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:485:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:466:21: ( WS )?
-							int alt205=2;
-							int LA205_0 = input.LA(1);
-							if ( (LA205_0==WS) ) {
-								alt205=1;
+							// druidG.g:485:21: ( WS )?
+							int alt202=2;
+							int LA202_0 = input.LA(1);
+							if ( (LA202_0==WS) ) {
+								alt202=1;
 							}
-							switch (alt205) {
+							switch (alt202) {
 								case 1 :
-									// druidG.g:466:21: WS
+									// druidG.g:485:21: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3199); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3219); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3202);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3222);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:466:55: ( WS )?
-							int alt206=2;
-							int LA206_0 = input.LA(1);
-							if ( (LA206_0==WS) ) {
-								alt206=1;
+							// druidG.g:485:55: ( WS )?
+							int alt203=2;
+							int LA203_0 = input.LA(1);
+							if ( (LA203_0==WS) ) {
+								alt203=1;
 							}
-							switch (alt206) {
+							switch (alt203) {
 								case 1 :
-									// druidG.g:466:55: WS
+									// druidG.g:485:55: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3205); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3225); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem3210);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem3230);
 							b=postAggItem();
 							state._fsp--;
 
@@ -6814,65 +6336,65 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:473:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:492:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:473:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:473:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:492:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:492:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					// druidG.g:473:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
-					// druidG.g:473:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
+					// druidG.g:492:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
+					// druidG.g:492:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem3228); 
-					// druidG.g:473:13: ( WS )?
-					int alt208=2;
-					int LA208_0 = input.LA(1);
-					if ( (LA208_0==WS) ) {
-						alt208=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem3248); 
+					// druidG.g:492:13: ( WS )?
+					int alt205=2;
+					int LA205_0 = input.LA(1);
+					if ( (LA205_0==WS) ) {
+						alt205=1;
 					}
-					switch (alt208) {
+					switch (alt205) {
 						case 1 :
-							// druidG.g:473:13: WS
+							// druidG.g:492:13: WS
 							{
-							match(input,WS,FOLLOW_WS_in_postAggItem3230); 
+							match(input,WS,FOLLOW_WS_in_postAggItem3250); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_postAggItem_in_postAggItem3235);
+					pushFollow(FOLLOW_postAggItem_in_postAggItem3255);
 					a=postAggItem();
 					state._fsp--;
 
-					// druidG.g:473:31: ( WS )?
-					int alt209=2;
-					int LA209_0 = input.LA(1);
-					if ( (LA209_0==WS) ) {
-						alt209=1;
+					// druidG.g:492:31: ( WS )?
+					int alt206=2;
+					int LA206_0 = input.LA(1);
+					if ( (LA206_0==WS) ) {
+						alt206=1;
 					}
-					switch (alt209) {
+					switch (alt206) {
 						case 1 :
-							// druidG.g:473:31: WS
+							// druidG.g:492:31: WS
 							{
-							match(input,WS,FOLLOW_WS_in_postAggItem3237); 
+							match(input,WS,FOLLOW_WS_in_postAggItem3257); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem3240); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem3260); 
 					}
 
-					// druidG.g:473:43: ( postAggLabel[postAggItem] )?
-					int alt210=2;
-					int LA210_0 = input.LA(1);
-					if ( (LA210_0==AS) ) {
-						alt210=1;
+					// druidG.g:492:43: ( postAggLabel[postAggItem] )?
+					int alt207=2;
+					int LA207_0 = input.LA(1);
+					if ( (LA207_0==AS) ) {
+						alt207=1;
 					}
-					switch (alt210) {
+					switch (alt207) {
 						case 1 :
-							// druidG.g:473:44: postAggLabel[postAggItem]
+							// druidG.g:492:44: postAggLabel[postAggItem]
 							{
-							pushFollow(FOLLOW_postAggLabel_in_postAggItem3244);
+							pushFollow(FOLLOW_postAggLabel_in_postAggItem3264);
 							postAggLabel(postAggItem);
 							state._fsp--;
 
@@ -6881,59 +6403,59 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:473:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-					int alt213=2;
-					int LA213_0 = input.LA(1);
-					if ( (LA213_0==WS) ) {
-						int LA213_1 = input.LA(2);
-						if ( (LA213_1==ARITH_OPER) ) {
-							alt213=1;
+					// druidG.g:492:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					int alt210=2;
+					int LA210_0 = input.LA(1);
+					if ( (LA210_0==WS) ) {
+						int LA210_1 = input.LA(2);
+						if ( (LA210_1==ARITH_OPER) ) {
+							alt210=1;
 						}
 					}
-					else if ( (LA213_0==ARITH_OPER) ) {
-						alt213=1;
+					else if ( (LA210_0==ARITH_OPER) ) {
+						alt210=1;
 					}
-					switch (alt213) {
+					switch (alt210) {
 						case 1 :
-							// druidG.g:473:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:492:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:473:73: ( WS )?
-							int alt211=2;
-							int LA211_0 = input.LA(1);
-							if ( (LA211_0==WS) ) {
-								alt211=1;
+							// druidG.g:492:73: ( WS )?
+							int alt208=2;
+							int LA208_0 = input.LA(1);
+							if ( (LA208_0==WS) ) {
+								alt208=1;
 							}
-							switch (alt211) {
+							switch (alt208) {
 								case 1 :
-									// druidG.g:473:73: WS
+									// druidG.g:492:73: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3250); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3270); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3253);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3273);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:473:107: ( WS )?
-							int alt212=2;
-							int LA212_0 = input.LA(1);
-							if ( (LA212_0==WS) ) {
-								alt212=1;
+							// druidG.g:492:107: ( WS )?
+							int alt209=2;
+							int LA209_0 = input.LA(1);
+							if ( (LA209_0==WS) ) {
+								alt209=1;
 							}
-							switch (alt212) {
+							switch (alt209) {
 								case 1 :
-									// druidG.g:473:107: WS
+									// druidG.g:492:107: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3256); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3276); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem3261);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem3281);
 							b=postAggItem();
 							state._fsp--;
 
@@ -6969,7 +6491,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleArith"
-	// druidG.g:484:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
+	// druidG.g:503:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
 	public final PostAggItem simpleArith() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6979,63 +6501,63 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:486:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
-			// druidG.g:486:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// druidG.g:505:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
+			// druidG.g:505:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
 			{
-			// druidG.g:486:4: (a= simplePostAggAccess )
-			// druidG.g:486:5: a= simplePostAggAccess
+			// druidG.g:505:4: (a= simplePostAggAccess )
+			// druidG.g:505:5: a= simplePostAggAccess
 			{
-			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3297);
+			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3317);
 			a=simplePostAggAccess();
 			state._fsp--;
 
 			postAggItem=a;
 			}
 
-			// druidG.g:486:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
-			int alt217=2;
-			alt217 = dfa217.predict(input);
-			switch (alt217) {
+			// druidG.g:505:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			int alt214=2;
+			alt214 = dfa214.predict(input);
+			switch (alt214) {
 				case 1 :
-					// druidG.g:486:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
+					// druidG.g:505:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
 					{
-					// druidG.g:486:46: ( WS )?
-					int alt215=2;
-					int LA215_0 = input.LA(1);
-					if ( (LA215_0==WS) ) {
-						alt215=1;
+					// druidG.g:505:46: ( WS )?
+					int alt212=2;
+					int LA212_0 = input.LA(1);
+					if ( (LA212_0==WS) ) {
+						alt212=1;
 					}
-					switch (alt215) {
+					switch (alt212) {
 						case 1 :
-							// druidG.g:486:46: WS
+							// druidG.g:505:46: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith3303); 
+							match(input,WS,FOLLOW_WS_in_simpleArith3323); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_postAggArithOper_in_simpleArith3306);
+					pushFollow(FOLLOW_postAggArithOper_in_simpleArith3326);
 					postAggArithOper(postAggItem);
 					state._fsp--;
 
-					// druidG.g:486:80: ( WS )?
-					int alt216=2;
-					int LA216_0 = input.LA(1);
-					if ( (LA216_0==WS) ) {
-						alt216=1;
+					// druidG.g:505:80: ( WS )?
+					int alt213=2;
+					int LA213_0 = input.LA(1);
+					if ( (LA213_0==WS) ) {
+						alt213=1;
 					}
-					switch (alt216) {
+					switch (alt213) {
 						case 1 :
-							// druidG.g:486:80: WS
+							// druidG.g:505:80: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith3309); 
+							match(input,WS,FOLLOW_WS_in_simpleArith3329); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3314);
+					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3334);
 					b=simplePostAggAccess();
 					state._fsp--;
 
@@ -7069,7 +6591,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simplePostAggAccess"
-	// druidG.g:498:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
+	// druidG.g:517:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
 	public final PostAggItem simplePostAggAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -7080,40 +6602,40 @@ public class druidGParser extends Parser {
 		PostAggItem js =null;
 
 		try {
-			// druidG.g:499:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
-			int alt218=4;
+			// druidG.g:518:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
+			int alt215=4;
 			switch ( input.LA(1) ) {
 			case FLOAT:
 			case LONG:
 				{
-				alt218=1;
+				alt215=1;
 				}
 				break;
 			case ID:
 				{
-				alt218=2;
+				alt215=2;
 				}
 				break;
 			case UNIQUE:
 				{
-				alt218=3;
+				alt215=3;
 				}
 				break;
 			case JAVASCRIPT:
 				{
-				alt218=4;
+				alt215=4;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 218, 0, input);
+					new NoViableAltException("", 215, 0, input);
 				throw nvae;
 			}
-			switch (alt218) {
+			switch (alt215) {
 				case 1 :
-					// druidG.g:499:4: c= constantAccess
+					// druidG.g:518:4: c= constantAccess
 					{
-					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess3343);
+					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess3363);
 					c=constantAccess();
 					state._fsp--;
 
@@ -7121,9 +6643,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:500:4: f= fieldAccess
+					// druidG.g:519:4: f= fieldAccess
 					{
-					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess3360);
+					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess3380);
 					f=fieldAccess();
 					state._fsp--;
 
@@ -7131,9 +6653,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 3 :
-					// druidG.g:501:4: h= hyperUniqueCardinality
+					// druidG.g:520:4: h= hyperUniqueCardinality
 					{
-					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3373);
+					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3393);
 					h=hyperUniqueCardinality();
 					state._fsp--;
 
@@ -7141,9 +6663,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 4 :
-					// druidG.g:502:4: js= postAggJavascriptDef
+					// druidG.g:521:4: js= postAggJavascriptDef
 					{
-					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3382);
+					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3402);
 					js=postAggJavascriptDef();
 					state._fsp--;
 
@@ -7167,7 +6689,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "constantAccess"
-	// druidG.g:507:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:526:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem constantAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -7176,60 +6698,60 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("constant"); 
 		try {
-			// druidG.g:509:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:509:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:528:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:528:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:509:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:509:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
+			// druidG.g:528:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:528:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
 			{
-			// druidG.g:509:5: (a= FLOAT |a= LONG )
-			int alt219=2;
-			int LA219_0 = input.LA(1);
-			if ( (LA219_0==FLOAT) ) {
-				alt219=1;
+			// druidG.g:528:5: (a= FLOAT |a= LONG )
+			int alt216=2;
+			int LA216_0 = input.LA(1);
+			if ( (LA216_0==FLOAT) ) {
+				alt216=1;
 			}
-			else if ( (LA219_0==LONG) ) {
-				alt219=2;
+			else if ( (LA216_0==LONG) ) {
+				alt216=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 219, 0, input);
+					new NoViableAltException("", 216, 0, input);
 				throw nvae;
 			}
 
-			switch (alt219) {
+			switch (alt216) {
 				case 1 :
-					// druidG.g:509:6: a= FLOAT
+					// druidG.g:528:6: a= FLOAT
 					{
-					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess3412); 
+					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess3432); 
 					}
 					break;
 				case 2 :
-					// druidG.g:509:16: a= LONG
+					// druidG.g:528:16: a= LONG
 					{
-					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess3418); 
+					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess3438); 
 					}
 					break;
 
 			}
 
 			postAggItem.constantValue = Double.valueOf((a!=null?a.getText():null));
-			// druidG.g:511:5: ( WS postAggLabel[postAggItem] )?
-			int alt220=2;
-			int LA220_0 = input.LA(1);
-			if ( (LA220_0==WS) ) {
-				int LA220_1 = input.LA(2);
-				if ( (LA220_1==AS) ) {
-					alt220=1;
+			// druidG.g:530:5: ( WS postAggLabel[postAggItem] )?
+			int alt217=2;
+			int LA217_0 = input.LA(1);
+			if ( (LA217_0==WS) ) {
+				int LA217_1 = input.LA(2);
+				if ( (LA217_1==AS) ) {
+					alt217=1;
 				}
 			}
-			switch (alt220) {
+			switch (alt217) {
 				case 1 :
-					// druidG.g:511:6: WS postAggLabel[postAggItem]
+					// druidG.g:530:6: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_constantAccess3431); 
-					pushFollow(FOLLOW_postAggLabel_in_constantAccess3433);
+					match(input,WS,FOLLOW_WS_in_constantAccess3451); 
+					pushFollow(FOLLOW_postAggLabel_in_constantAccess3453);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -7257,7 +6779,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "fieldAccess"
-	// druidG.g:514:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:533:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem fieldAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -7266,28 +6788,28 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("fieldAccess"); 
 		try {
-			// druidG.g:516:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:516:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:535:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:535:4: (a= ID ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:516:4: (a= ID ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:516:5: a= ID ( WS postAggLabel[postAggItem] )?
+			// druidG.g:535:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:535:5: a= ID ( WS postAggLabel[postAggItem] )?
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess3461); 
-			// druidG.g:516:10: ( WS postAggLabel[postAggItem] )?
-			int alt221=2;
-			int LA221_0 = input.LA(1);
-			if ( (LA221_0==WS) ) {
-				int LA221_1 = input.LA(2);
-				if ( (LA221_1==AS) ) {
-					alt221=1;
+			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess3481); 
+			// druidG.g:535:10: ( WS postAggLabel[postAggItem] )?
+			int alt218=2;
+			int LA218_0 = input.LA(1);
+			if ( (LA218_0==WS) ) {
+				int LA218_1 = input.LA(2);
+				if ( (LA218_1==AS) ) {
+					alt218=1;
 				}
 			}
-			switch (alt221) {
+			switch (alt218) {
 				case 1 :
-					// druidG.g:516:11: WS postAggLabel[postAggItem]
+					// druidG.g:535:11: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_fieldAccess3464); 
-					pushFollow(FOLLOW_postAggLabel_in_fieldAccess3466);
+					match(input,WS,FOLLOW_WS_in_fieldAccess3484); 
+					pushFollow(FOLLOW_postAggLabel_in_fieldAccess3486);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -7316,7 +6838,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "hyperUniqueCardinality"
-	// druidG.g:519:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
+	// druidG.g:538:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
 	public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -7325,64 +6847,64 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("hyperUniqueCardinality"); 
 		try {
-			// druidG.g:521:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
-			// druidG.g:521:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:540:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
+			// druidG.g:540:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
 			{
-			// druidG.g:521:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
-			// druidG.g:521:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
+			// druidG.g:540:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:540:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
 			{
-			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality3495); 
-			// druidG.g:521:12: ( WS )?
-			int alt222=2;
-			int LA222_0 = input.LA(1);
-			if ( (LA222_0==WS) ) {
-				alt222=1;
+			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality3515); 
+			// druidG.g:540:12: ( WS )?
+			int alt219=2;
+			int LA219_0 = input.LA(1);
+			if ( (LA219_0==WS) ) {
+				alt219=1;
 			}
-			switch (alt222) {
+			switch (alt219) {
 				case 1 :
-					// druidG.g:521:12: WS
+					// druidG.g:540:12: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3497); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3517); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality3500); 
-			// druidG.g:521:23: ( WS )?
-			int alt223=2;
-			int LA223_0 = input.LA(1);
-			if ( (LA223_0==WS) ) {
-				alt223=1;
+			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality3520); 
+			// druidG.g:540:23: ( WS )?
+			int alt220=2;
+			int LA220_0 = input.LA(1);
+			if ( (LA220_0==WS) ) {
+				alt220=1;
 			}
-			switch (alt223) {
+			switch (alt220) {
 				case 1 :
-					// druidG.g:521:23: WS
+					// druidG.g:540:23: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3502); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3522); 
 					}
 					break;
 
 			}
 
-			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality3507); 
-			// druidG.g:521:32: ( WS )?
-			int alt224=2;
-			int LA224_0 = input.LA(1);
-			if ( (LA224_0==WS) ) {
-				alt224=1;
+			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality3527); 
+			// druidG.g:540:32: ( WS )?
+			int alt221=2;
+			int LA221_0 = input.LA(1);
+			if ( (LA221_0==WS) ) {
+				alt221=1;
 			}
-			switch (alt224) {
+			switch (alt221) {
 				case 1 :
-					// druidG.g:521:32: WS
+					// druidG.g:540:32: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3509); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3529); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality3512); 
+			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality3532); 
 			postAggItem.fieldName = (a!=null?a.getText():null);
 			}
 
@@ -7403,7 +6925,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggJavascriptDef"
-	// druidG.g:526:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
+	// druidG.g:545:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
 	public final PostAggItem postAggJavascriptDef() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -7412,27 +6934,27 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("javascript"); 
 		try {
-			// druidG.g:528:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
-			// druidG.g:528:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
+			// druidG.g:547:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
+			// druidG.g:547:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
 			{
-			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3538); 
-			// druidG.g:528:15: ( WS )?
-			int alt225=2;
-			int LA225_0 = input.LA(1);
-			if ( (LA225_0==WS) ) {
-				alt225=1;
+			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3558); 
+			// druidG.g:547:15: ( WS )?
+			int alt222=2;
+			int LA222_0 = input.LA(1);
+			if ( (LA222_0==WS) ) {
+				alt222=1;
 			}
-			switch (alt225) {
+			switch (alt222) {
 				case 1 :
-					// druidG.g:528:15: WS
+					// druidG.g:547:15: WS
 					{
-					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef3540); 
+					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef3560); 
 					}
 					break;
 
 			}
 
-			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3545); 
+			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3565); 
 			postAggItem.parseToJs((str!=null?str.getText():null));
 			}
 
@@ -7451,20 +6973,20 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggLabel"
-	// druidG.g:531:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
+	// druidG.g:550:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
 	public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
 		Token id=null;
 
 		try {
-			// druidG.g:532:2: ( ( AS WS id= ID ) )
-			// druidG.g:532:4: ( AS WS id= ID )
+			// druidG.g:551:2: ( ( AS WS id= ID ) )
+			// druidG.g:551:4: ( AS WS id= ID )
 			{
-			// druidG.g:532:4: ( AS WS id= ID )
-			// druidG.g:532:5: AS WS id= ID
+			// druidG.g:551:4: ( AS WS id= ID )
+			// druidG.g:551:5: AS WS id= ID
 			{
-			match(input,AS,FOLLOW_AS_in_postAggLabel3561); 
-			match(input,WS,FOLLOW_WS_in_postAggLabel3563); 
-			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel3567); 
+			match(input,AS,FOLLOW_AS_in_postAggLabel3581); 
+			match(input,WS,FOLLOW_WS_in_postAggLabel3583); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel3587); 
 			}
 
 			postAggItem.name = (id!=null?id.getText():null);
@@ -7484,15 +7006,15 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggArithOper"
-	// druidG.g:535:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
+	// druidG.g:554:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
 	public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
 		Token arith=null;
 
 		try {
-			// druidG.g:536:2: (arith= ARITH_OPER )
-			// druidG.g:536:3: arith= ARITH_OPER
+			// druidG.g:555:2: (arith= ARITH_OPER )
+			// druidG.g:555:3: arith= ARITH_OPER
 			{
-			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper3583); 
+			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper3603); 
 			postAggItem.fn = (arith!=null?arith.getText():null);
 			}
 
@@ -7514,7 +7036,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "isoTime"
-	// druidG.g:541:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
+	// druidG.g:560:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
 	public final druidGParser.isoTime_return isoTime() throws RecognitionException {
 		druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
 		retval.start = input.LT(1);
@@ -7522,120 +7044,120 @@ public class druidGParser extends Parser {
 		Token d=null;
 
 		try {
-			// druidG.g:542:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
-			int alt226=9;
+			// druidG.g:561:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
+			int alt223=9;
 			switch ( input.LA(1) ) {
 			case DATE_YEAR_ONLY:
 				{
-				alt226=1;
+				alt223=1;
 				}
 				break;
 			case DATE_YEAR_MONTH_ONLY:
 				{
-				alt226=2;
+				alt223=2;
 				}
 				break;
 			case DATE:
 				{
-				alt226=3;
+				alt223=3;
 				}
 				break;
 			case DATE_HOUR:
 				{
-				alt226=4;
+				alt223=4;
 				}
 				break;
 			case DATE_HOUR_MIN:
 				{
-				alt226=5;
+				alt223=5;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC:
 				{
-				alt226=6;
+				alt223=6;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB:
 				{
-				alt226=7;
+				alt223=7;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB_TZ:
 				{
-				alt226=8;
+				alt223=8;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB_UTC_TZ:
 				{
-				alt226=9;
+				alt223=9;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 226, 0, input);
+					new NoViableAltException("", 223, 0, input);
 				throw nvae;
 			}
-			switch (alt226) {
+			switch (alt223) {
 				case 1 :
-					// druidG.g:542:3: d= DATE_YEAR_ONLY
+					// druidG.g:561:3: d= DATE_YEAR_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime3602); 
+					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime3622); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 2 :
-					// druidG.g:543:3: d= DATE_YEAR_MONTH_ONLY
+					// druidG.g:562:3: d= DATE_YEAR_MONTH_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3610); 
+					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3630); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 3 :
-					// druidG.g:544:3: d= DATE
+					// druidG.g:563:3: d= DATE
 					{
-					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime3618); 
+					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime3638); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 4 :
-					// druidG.g:545:3: d= DATE_HOUR
+					// druidG.g:564:3: d= DATE_HOUR
 					{
-					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime3626); 
+					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime3646); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 5 :
-					// druidG.g:546:3: d= DATE_HOUR_MIN
+					// druidG.g:565:3: d= DATE_HOUR_MIN
 					{
-					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime3634); 
+					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime3654); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 6 :
-					// druidG.g:547:3: d= DATE_HOUR_MIN_SEC
+					// druidG.g:566:3: d= DATE_HOUR_MIN_SEC
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3642); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3662); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 7 :
-					// druidG.g:548:3: d= DATE_HOUR_MIN_SEC_SUB
+					// druidG.g:567:3: d= DATE_HOUR_MIN_SEC_SUB
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3650); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3670); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 8 :
-					// druidG.g:549:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
+					// druidG.g:568:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3658); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3678); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 9 :
-					// druidG.g:550:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+					// druidG.g:569:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3666); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3686); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
@@ -7659,8 +7181,8 @@ public class druidGParser extends Parser {
 
 
 	protected DFA184 dfa184 = new DFA184(this);
-	protected DFA194 dfa194 = new DFA194(this);
-	protected DFA217 dfa217 = new DFA217(this);
+	protected DFA191 dfa191 = new DFA191(this);
+	protected DFA214 dfa214 = new DFA214(this);
 	static final String DFA184_eotS =
 		"\176\uffff";
 	static final String DFA184_eofS =
@@ -7849,105 +7371,56 @@ public class druidGParser extends Parser {
 		}
 	}
 
-	static final String DFA194_eotS =
-		"\164\uffff";
-	static final String DFA194_eofS =
-		"\15\uffff\1\30\7\uffff\3\30\11\uffff\3\30\3\uffff\1\30\30\uffff\1\30\63"+
-		"\uffff";
-	static final String DFA194_minS =
-		"\1\50\1\36\1\50\1\uffff\1\36\1\41\1\50\1\36\2\uffff\1\130\2\41\1\103\1"+
-		"\36\2\uffff\1\36\1\41\1\116\1\41\2\103\1\4\3\uffff\1\36\1\41\1\130\2\41"+
-		"\1\113\2\103\1\4\3\uffff\1\4\3\uffff\1\130\13\uffff\1\130\2\41\1\113\1"+
-		"\116\1\41\2\113\1\4\1\103\63\uffff";
-	static final String DFA194_maxS =
-		"\1\76\2\130\1\uffff\1\64\1\130\1\76\1\130\2\uffff\2\130\1\116\2\130\2"+
-		"\uffff\1\64\1\130\2\116\2\130\1\127\3\uffff\1\64\3\130\1\116\3\130\1\127"+
-		"\3\uffff\1\127\3\uffff\1\130\13\uffff\2\130\1\116\1\130\2\116\2\130\1"+
-		"\113\1\130\63\uffff";
-	static final String DFA194_acceptS =
-		"\3\uffff\1\2\24\uffff\1\1\50\uffff\1\1\3\uffff\1\1\3\uffff\1\1\13\uffff"+
-		"\1\1\13\uffff\15\1\1\uffff\2\1\3\uffff";
-	static final String DFA194_specialS =
-		"\164\uffff}>";
-	static final String[] DFA194_transitionS = {
-			"\1\1\17\uffff\1\2\5\uffff\1\3",
-			"\1\5\71\uffff\1\4",
-			"\1\7\17\uffff\1\3\5\uffff\1\3\31\uffff\1\6",
+	static final String DFA191_eotS =
+		"\110\uffff";
+	static final String DFA191_eofS =
+		"\10\uffff\1\16\2\uffff\3\16\3\uffff\3\16\3\uffff\1\16\60\uffff";
+	static final String DFA191_minS =
+		"\1\50\1\36\1\uffff\1\36\1\41\1\130\2\41\1\103\1\116\1\41\2\103\1\4\3\uffff"+
+		"\2\103\1\4\3\uffff\1\4\3\uffff\1\130\54\uffff";
+	static final String DFA191_maxS =
+		"\1\76\1\130\1\uffff\1\64\3\130\1\116\1\130\2\116\2\130\1\127\3\uffff\2"+
+		"\130\1\127\3\uffff\1\127\3\uffff\1\130\54\uffff";
+	static final String DFA191_acceptS =
+		"\2\uffff\1\2\13\uffff\1\1\30\uffff\1\1\3\uffff\1\1\3\uffff\1\1\13\uffff"+
+		"\1\1\13\uffff\1\1";
+	static final String DFA191_specialS =
+		"\110\uffff}>";
+	static final String[] DFA191_transitionS = {
+			"\1\1\25\uffff\1\2",
+			"\1\4\71\uffff\1\3",
 			"",
-			"\1\13\25\uffff\1\12",
-			"\1\15\24\uffff\1\15\27\uffff\1\15\11\uffff\1\14",
-			"\1\16\17\uffff\1\3\5\uffff\1\3",
-			"\1\22\71\uffff\1\21",
-			"",
-			"",
-			"\1\23",
-			"\1\25\24\uffff\1\25\27\uffff\1\25\11\uffff\1\24",
-			"\1\26\24\uffff\1\26\27\uffff\1\26",
-			"\1\30\7\uffff\1\30\14\uffff\1\27",
-			"\1\34\71\uffff\1\33",
-			"",
-			"",
-			"\1\36\25\uffff\1\35",
-			"\1\40\24\uffff\1\40\27\uffff\1\40\11\uffff\1\37",
-			"\1\41",
-			"\1\42\24\uffff\1\42\27\uffff\1\42",
-			"\1\30\7\uffff\1\30\14\uffff\1\43",
-			"\1\30\7\uffff\1\30\14\uffff\1\47",
-			"\1\53\5\uffff\1\30\30\uffff\1\30\2\uffff\1\30\11\uffff\1\30\2\uffff"+
-			"\1\30\1\uffff\1\30\15\uffff\1\30\1\53\1\30\3\uffff\1\30\1\uffff\1\30"+
-			"\6\uffff\1\30\4\uffff\1\30",
+			"\1\6\25\uffff\1\5",
+			"\1\10\24\uffff\1\10\27\uffff\1\10\11\uffff\1\7",
+			"\1\11",
+			"\1\13\24\uffff\1\13\27\uffff\1\13\11\uffff\1\12",
+			"\1\14\24\uffff\1\14\27\uffff\1\14",
+			"\1\16\7\uffff\1\16\14\uffff\1\15",
+			"\1\21",
+			"\1\22\24\uffff\1\22\27\uffff\1\22",
+			"\1\16\7\uffff\1\16\14\uffff\1\23",
+			"\1\16\7\uffff\1\16\14\uffff\1\27",
+			"\1\33\5\uffff\1\16\30\uffff\1\16\2\uffff\1\16\11\uffff\1\16\2\uffff"+
+			"\1\16\1\uffff\1\16\15\uffff\1\16\1\33\1\16\3\uffff\1\16\1\uffff\1\16"+
+			"\6\uffff\1\16\4\uffff\1\16",
 			"",
 			"",
 			"",
-			"\1\70\25\uffff\1\67",
-			"\1\72\24\uffff\1\72\27\uffff\1\72\11\uffff\1\71",
-			"\1\73",
-			"\1\75\24\uffff\1\75\27\uffff\1\75\11\uffff\1\74",
-			"\1\76\24\uffff\1\76\27\uffff\1\76",
-			"\1\100\14\uffff\1\77",
-			"\1\30\7\uffff\1\30\14\uffff\1\101",
-			"\1\30\7\uffff\1\30\14\uffff\1\105",
-			"\1\111\5\uffff\1\30\30\uffff\1\30\2\uffff\1\30\11\uffff\1\30\2\uffff"+
-			"\1\30\1\uffff\1\30\15\uffff\1\30\1\111\1\30\3\uffff\1\30\1\uffff\1\30"+
-			"\6\uffff\1\30\4\uffff\1\30",
+			"\1\16\7\uffff\1\16\14\uffff\1\47",
+			"\1\16\7\uffff\1\16\14\uffff\1\53",
+			"\1\57\5\uffff\1\16\30\uffff\1\16\2\uffff\1\16\11\uffff\1\16\2\uffff"+
+			"\1\16\1\uffff\1\16\15\uffff\1\16\1\57\1\16\3\uffff\1\16\1\uffff\1\16"+
+			"\6\uffff\1\16\4\uffff\1\16",
 			"",
 			"",
 			"",
-			"\1\125\5\uffff\1\30\30\uffff\1\30\2\uffff\1\30\11\uffff\1\30\2\uffff"+
-			"\1\30\1\uffff\1\30\15\uffff\1\30\1\125\1\30\3\uffff\1\30\1\uffff\1\30"+
-			"\6\uffff\1\30\4\uffff\1\30",
+			"\1\73\5\uffff\1\16\30\uffff\1\16\2\uffff\1\16\11\uffff\1\16\2\uffff"+
+			"\1\16\1\uffff\1\16\15\uffff\1\16\1\73\1\16\3\uffff\1\16\1\uffff\1\16"+
+			"\6\uffff\1\16\4\uffff\1\16",
 			"",
 			"",
 			"",
-			"\1\141",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"\1\142",
-			"\1\144\24\uffff\1\144\27\uffff\1\144\11\uffff\1\143",
-			"\1\145\24\uffff\1\145\27\uffff\1\145",
-			"\1\147\14\uffff\1\146",
-			"\1\150",
-			"\1\151\24\uffff\1\151\27\uffff\1\151",
-			"\1\153\14\uffff\1\152",
-			"\1\155\14\uffff\1\154",
-			"\1\3\77\uffff\1\3\6\uffff\1\157",
-			"\1\30\7\uffff\1\30\14\uffff\1\160",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
+			"\1\107",
 			"",
 			"",
 			"",
@@ -7994,64 +7467,64 @@ public class druidGParser extends Parser {
 			""
 	};
 
-	static final short[] DFA194_eot = DFA.unpackEncodedString(DFA194_eotS);
-	static final short[] DFA194_eof = DFA.unpackEncodedString(DFA194_eofS);
-	static final char[] DFA194_min = DFA.unpackEncodedStringToUnsignedChars(DFA194_minS);
-	static final char[] DFA194_max = DFA.unpackEncodedStringToUnsignedChars(DFA194_maxS);
-	static final short[] DFA194_accept = DFA.unpackEncodedString(DFA194_acceptS);
-	static final short[] DFA194_special = DFA.unpackEncodedString(DFA194_specialS);
-	static final short[][] DFA194_transition;
+	static final short[] DFA191_eot = DFA.unpackEncodedString(DFA191_eotS);
+	static final short[] DFA191_eof = DFA.unpackEncodedString(DFA191_eofS);
+	static final char[] DFA191_min = DFA.unpackEncodedStringToUnsignedChars(DFA191_minS);
+	static final char[] DFA191_max = DFA.unpackEncodedStringToUnsignedChars(DFA191_maxS);
+	static final short[] DFA191_accept = DFA.unpackEncodedString(DFA191_acceptS);
+	static final short[] DFA191_special = DFA.unpackEncodedString(DFA191_specialS);
+	static final short[][] DFA191_transition;
 
 	static {
-		int numStates = DFA194_transitionS.length;
-		DFA194_transition = new short[numStates][];
+		int numStates = DFA191_transitionS.length;
+		DFA191_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA194_transition[i] = DFA.unpackEncodedString(DFA194_transitionS[i]);
+			DFA191_transition[i] = DFA.unpackEncodedString(DFA191_transitionS[i]);
 		}
 	}
 
-	protected class DFA194 extends DFA {
+	protected class DFA191 extends DFA {
 
-		public DFA194(BaseRecognizer recognizer) {
+		public DFA191(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 194;
-			this.eot = DFA194_eot;
-			this.eof = DFA194_eof;
-			this.min = DFA194_min;
-			this.max = DFA194_max;
-			this.accept = DFA194_accept;
-			this.special = DFA194_special;
-			this.transition = DFA194_transition;
+			this.decisionNumber = 191;
+			this.eot = DFA191_eot;
+			this.eof = DFA191_eof;
+			this.min = DFA191_min;
+			this.max = DFA191_max;
+			this.accept = DFA191_accept;
+			this.special = DFA191_special;
+			this.transition = DFA191_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "424:4: (a= simpleFilter |a= simpleLogicalFilter )";
+			return "414:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );";
 		}
 	}
 
-	static final String DFA217_eotS =
+	static final String DFA214_eotS =
 		"\134\uffff";
-	static final String DFA217_eofS =
+	static final String DFA214_eofS =
 		"\2\3\132\uffff";
-	static final String DFA217_minS =
+	static final String DFA214_minS =
 		"\2\5\1\41\6\uffff\1\41\3\uffff\1\41\3\uffff\1\70\1\116\1\uffff\1\41\3"+
 		"\uffff\1\70\1\116\4\uffff\1\70\1\116\1\uffff\1\70\1\50\1\116\4\uffff\1"+
 		"\70\1\116\1\uffff\1\70\1\50\1\116\1\uffff\1\70\1\50\1\116\1\uffff\2\50"+
 		"\1\113\1\uffff\1\70\1\50\1\116\1\uffff\2\50\1\113\1\uffff\2\50\1\113\1"+
 		"\uffff\1\50\3\113\25\uffff";
-	static final String DFA217_maxS =
+	static final String DFA214_maxS =
 		"\1\130\1\127\1\130\6\uffff\1\130\3\uffff\1\124\3\uffff\2\130\1\uffff\1"+
 		"\124\3\uffff\2\130\4\uffff\2\130\1\uffff\1\70\1\130\1\116\4\uffff\2\130"+
 		"\1\uffff\1\70\1\130\1\116\1\uffff\1\70\1\130\1\116\1\uffff\1\130\1\50"+
 		"\1\130\1\uffff\1\70\1\130\1\116\1\uffff\1\130\1\50\1\130\1\uffff\1\130"+
 		"\1\50\1\130\1\uffff\1\50\2\130\1\113\25\uffff";
-	static final String DFA217_acceptS =
+	static final String DFA214_acceptS =
 		"\3\uffff\1\2\12\uffff\3\1\4\uffff\3\1\3\uffff\3\1\6\uffff\4\1\6\uffff"+
 		"\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\4\uffff"+
 		"\25\1";
-	static final String DFA217_specialS =
+	static final String DFA214_specialS =
 		"\134\uffff}>";
-	static final String[] DFA217_transitionS = {
+	static final String[] DFA214_transitionS = {
 			"\1\2\75\uffff\1\3\7\uffff\1\3\14\uffff\1\1",
 			"\1\11\40\uffff\1\3\11\uffff\1\3\2\uffff\1\3\17\uffff\1\3\5\uffff\1\3"+
 			"\1\uffff\1\3\13\uffff\1\3",
@@ -8151,38 +7624,38 @@ public class druidGParser extends Parser {
 			""
 	};
 
-	static final short[] DFA217_eot = DFA.unpackEncodedString(DFA217_eotS);
-	static final short[] DFA217_eof = DFA.unpackEncodedString(DFA217_eofS);
-	static final char[] DFA217_min = DFA.unpackEncodedStringToUnsignedChars(DFA217_minS);
-	static final char[] DFA217_max = DFA.unpackEncodedStringToUnsignedChars(DFA217_maxS);
-	static final short[] DFA217_accept = DFA.unpackEncodedString(DFA217_acceptS);
-	static final short[] DFA217_special = DFA.unpackEncodedString(DFA217_specialS);
-	static final short[][] DFA217_transition;
+	static final short[] DFA214_eot = DFA.unpackEncodedString(DFA214_eotS);
+	static final short[] DFA214_eof = DFA.unpackEncodedString(DFA214_eofS);
+	static final char[] DFA214_min = DFA.unpackEncodedStringToUnsignedChars(DFA214_minS);
+	static final char[] DFA214_max = DFA.unpackEncodedStringToUnsignedChars(DFA214_maxS);
+	static final short[] DFA214_accept = DFA.unpackEncodedString(DFA214_acceptS);
+	static final short[] DFA214_special = DFA.unpackEncodedString(DFA214_specialS);
+	static final short[][] DFA214_transition;
 
 	static {
-		int numStates = DFA217_transitionS.length;
-		DFA217_transition = new short[numStates][];
+		int numStates = DFA214_transitionS.length;
+		DFA214_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA217_transition[i] = DFA.unpackEncodedString(DFA217_transitionS[i]);
+			DFA214_transition[i] = DFA.unpackEncodedString(DFA214_transitionS[i]);
 		}
 	}
 
-	protected class DFA217 extends DFA {
+	protected class DFA214 extends DFA {
 
-		public DFA217(BaseRecognizer recognizer) {
+		public DFA214(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 217;
-			this.eot = DFA217_eot;
-			this.eof = DFA217_eof;
-			this.min = DFA217_min;
-			this.max = DFA217_max;
-			this.accept = DFA217_accept;
-			this.special = DFA217_special;
-			this.transition = DFA217_transition;
+			this.decisionNumber = 214;
+			this.eot = DFA214_eot;
+			this.eof = DFA214_eof;
+			this.min = DFA214_min;
+			this.max = DFA214_max;
+			this.accept = DFA214_accept;
+			this.special = DFA214_special;
+			this.transition = DFA214_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "486:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
+			return "505:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
 		}
 	}
 
@@ -8605,116 +8078,115 @@ public class druidGParser extends Parser {
 	public static final BitSet FOLLOW_set_in_complexHaving2709 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
 	public static final BitSet FOLLOW_WS_in_complexHaving2715 = new BitSet(new long[]{0x4000010000000000L});
 	public static final BitSet FOLLOW_complexHaving_in_complexHaving2719 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_getEquals_in_selectorFilter2756 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_regexFilter2785 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter2787 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LIKE_in_regexFilter2789 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter2791 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter2797 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2822 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2828 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_simpleFilter2838 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleFilter2840 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2846 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2852 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_simpleFilter2855 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_simpleFilter2858 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2879 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2881 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2885 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2891 = new BitSet(new long[]{0x0100010000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2895 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2903 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2905 = new BitSet(new long[]{0x0100010000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2909 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_simpleLogicalFilter2922 = new BitSet(new long[]{0x4100010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2924 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_simpleLogicalFilter_in_simpleLogicalFilter2929 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2931 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_simpleLogicalFilter2934 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_grandFilter2958 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_simpleLogicalFilter_in_grandFilter2964 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2971 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_grandFilter2975 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2981 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_grandFilter_in_grandFilter2985 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggCallSite_in_aggItem3022 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggItem3026 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_AS_in_aggItem3028 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggItem3030 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggItem3034 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggFunc_in_aggCallSite3053 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3058 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_aggCallSite3061 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3063 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite3070 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3076 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_aggCallSite3079 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3081 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite3086 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3092 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_aggCallSite3095 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_aggCallSite3102 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-	public static final BitSet FOLLOW_89_in_aggCallSite3107 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc3125 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc3132 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_aggFunc3139 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HYPER_UNIQUE_in_aggFunc3146 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MIN_in_aggFunc3153 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MAX_in_aggFunc3160 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc3167 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleArith_in_postAggItem3195 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3199 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3202 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3205 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3210 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_postAggItem3228 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3230 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3235 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3237 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_postAggItem3240 = new BitSet(new long[]{0x0000000000000062L,0x0000000001000000L});
-	public static final BitSet FOLLOW_postAggLabel_in_postAggItem3244 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3250 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3253 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3256 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3261 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3297 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith3303 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith3306 = new BitSet(new long[]{0x0040810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith3309 = new BitSet(new long[]{0x0040810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3314 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess3343 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess3360 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3373 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3382 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_constantAccess3412 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_LONG_in_constantAccess3418 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_constantAccess3431 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_constantAccess3433 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_fieldAccess3461 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_fieldAccess3464 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess3466 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality3495 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3497 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality3500 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3502 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality3507 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3509 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality3512 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3538 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef3540 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3545 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AS_in_postAggLabel3561 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggLabel3563 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_postAggLabel3567 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper3583 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime3602 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3610 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_in_isoTime3618 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime3626 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime3634 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3642 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3650 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3658 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3666 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2748 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2753 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_grandFilter2757 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2763 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2767 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_simpleLogicalFilter_in_semiGrandFilter2798 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_semiGrandFilter2805 = new BitSet(new long[]{0x4100010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2807 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2812 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2818 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_semiGrandFilter2822 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2828 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2832 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2848 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_semiGrandFilter2851 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2870 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2882 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2884 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2888 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2894 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2898 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2906 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2908 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2912 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2939 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2945 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_getEquals_in_selectorFilter2970 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_regexFilter2999 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter3001 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_LIKE_in_regexFilter3003 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter3005 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3011 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggCallSite_in_aggItem3042 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggItem3046 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_AS_in_aggItem3048 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggItem3050 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggItem3054 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggFunc_in_aggCallSite3073 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3078 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_aggCallSite3081 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3083 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite3090 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3096 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_aggCallSite3099 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3101 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite3106 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3112 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_aggCallSite3115 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_aggCallSite3122 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+	public static final BitSet FOLLOW_89_in_aggCallSite3127 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc3145 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc3152 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_aggFunc3159 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HYPER_UNIQUE_in_aggFunc3166 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MIN_in_aggFunc3173 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MAX_in_aggFunc3180 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc3187 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleArith_in_postAggItem3215 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3219 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3222 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3225 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3230 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_postAggItem3248 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3250 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3255 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3257 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_postAggItem3260 = new BitSet(new long[]{0x0000000000000062L,0x0000000001000000L});
+	public static final BitSet FOLLOW_postAggLabel_in_postAggItem3264 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3270 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3273 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3276 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3281 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3317 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith3323 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith3326 = new BitSet(new long[]{0x0040810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith3329 = new BitSet(new long[]{0x0040810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3334 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess3363 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess3380 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3393 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3402 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_constantAccess3432 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_LONG_in_constantAccess3438 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_constantAccess3451 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_constantAccess3453 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_fieldAccess3481 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_fieldAccess3484 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess3486 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality3515 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3517 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality3520 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3522 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality3527 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3529 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality3532 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3558 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef3560 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3565 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AS_in_postAggLabel3581 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggLabel3583 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_postAggLabel3587 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper3603 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime3622 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3630 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_in_isoTime3638 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime3646 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime3654 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3662 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3670 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3678 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3686 = new BitSet(new long[]{0x0000000000000002L});
 }
