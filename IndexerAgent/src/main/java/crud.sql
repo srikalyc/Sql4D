@@ -1,0 +1,20 @@
+-- FIFTEEN_MINUTELY, THIRTY_MINUTELY, HOURLY, DAILY, MONTHLY
+CREATE TABLE DataSource (
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    data_source VARCHAR(64) NOT NULL,
+    feed_type VARCHAR(24),
+    begin_time VARCHAR(10),
+    current_run_time VARCHAR(10),
+    end_time VARCHAR(10),
+    CONSTRAINT dataSource_pk PRIMARY KEY (id)
+) ;
+-- NOT_STARTED, IN_PROGRESS, DONE, FAILED, TIMED_OUT
+CREATE TABLE StatusTrail (
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    data_source_id INTEGER CONSTRAINT dataSource_fk  REFERENCES DataSource (id) ON DELETE CASCADE ON UPDATE RESTRICT,
+    task_nominal_time VARCHAR(10),
+    status VARCHAR(24), 
+    current_attempt_count INTEGER DEFAULT 0, 
+    task_id VARCHAR(32), 
+    CONSTRAINT status_trail_pk PRIMARY KEY (id)
+) ;

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yahoo.sql4d</groupId>
-    <artifactId>Sql4DCompiler</artifactId>
-    <version>3.5.6</version>
-    <packaging>jar</packaging>
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>3.5.6</version>
+        <version>3.5.4</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-
+    <version>3.5.4</version>
+    <artifactId>IndexerAgent</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>joda-time</groupId>
@@ -38,13 +36,57 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.11.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.11.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbynet</artifactId>
+            <version>10.11.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbytools</artifactId>
+            <version>10.11.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.10</artifactId>
+            <version>2.3.9</version>
+        </dependency>
+
     </dependencies>
     
     <properties>
@@ -52,25 +94,4 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <name>Sql4DCompiler</name>
-    <build>
-        <plugins>
-            <plugin>
-              <groupId>org.antlr</groupId>
-              <artifactId>antlr3-maven-plugin</artifactId>
-              <version>3.5.2</version>      
-              <configuration> 
-                  <sourceDirectory>${basedir}/src/main/java/com/yahoo/sql4d</sourceDirectory>
-                  <outputDirectory>${basedir}/src/main/java/com/yahoo/sql4d/converter</outputDirectory>
-              </configuration> 
-              <executions>
-                  <execution>
-                      <goals>
-                          <goal>antlr</goal>
-                      </goals>
-                  </execution>
-              </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -46,11 +46,14 @@ public class OverlordAccessor extends DruidNodeAccessor {
         CloseableHttpResponse resp = null;
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
+            System.out.println(url);
+            System.out.println(meta.toString());
             resp = postJson(url, meta.toString(), reqHeaders);
             if (resp.getStatusLine().getStatusCode() == 500) {
                 return "Task failed with server error, " + IOUtils.toString(resp.getEntity().getContent());
             }
             //TODO: Check for nulls in the following.
+            System.out.println(IOUtils.toString(resp.getEntity().getContent()));
             JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
             if (wait) {
                 if (waitForTask(respJson.getString("task"), reqHeaders)) {

@@ -384,7 +384,53 @@ complexHaving  returns [Having having]
 /////////////////////////////////////////////////////////	  
 /////////////////// Logical Filters        //////////////////	
 /////////////////////////////////////////////////////////	
+grandFilter returns [Filter filter]
+	:a=semiGrandFilter {filter = a;} (WS o=(AND|OR) WS b=semiGrandFilter
+	       {
+	         Filter tmpFilter = filter;
+	         filter = new Filter($o.text.toLowerCase());
+		 filter.fields = new ArrayList<>();
+		 filter.fields.add(tmpFilter);
+		 if (b != null) {
+		    filter.fields.add(b);
+		 }
+		})*
+	;
+
+semiGrandFilter returns [Filter filter]
+	:	
+	a=simpleLogicalFilter  {filter = a;}
+	|LPARAN WS? a=semiGrandFilter  {filter = a;} (WS o=(AND|OR) WS b=semiGrandFilter 
+	        {Filter tmpFilter = filter;
+	         filter = new Filter($o.text.toLowerCase());
+		 filter.fields = new ArrayList<>();
+		 filter.fields.add(tmpFilter);
+		 if (b != null) {
+		    filter.fields.add(b);
+		 }
+		})* WS? RPARAN
+	;
+
+simpleLogicalFilter returns [Filter filter]
+	:
+	(a=simpleFilter ) {filter = a;}
+	|((a=simpleFilter WS o=(AND|OR) WS b=simpleFilter) | (o=NOT WS b=simpleFilter) )
+		{filter = new Filter($o.text.toLowerCase());
+		 filter.fields = new ArrayList<>();
+		 if (a != null) {
+		    filter.fields.add(a);
+		 }
+		 if (b != null) {		 
+   	 	    filter.fields.add(b);
+		 }
+		}
+	;
+
 	
+simpleFilter returns [Filter filter]
+	:	(a=selectorFilter | a=regexFilter) {filter = a;}
+	;
+
 selectorFilter returns [Filter filter]
 @init {filter = new Filter("selector");}
 	:	e=getEquals  
@@ -401,33 +447,6 @@ regexFilter returns [Filter filter]
 		}
 	;
 
-simpleFilter returns [Filter filter]
-	:	(a=selectorFilter | a=regexFilter) {filter = a;}
-	|  (LPARAN WS? (a=selectorFilter | a=regexFilter) WS? RPARAN) {filter = a;}
-	;
-
-simpleLogicalFilter returns [Filter filter]
-	:((a=simpleFilter WS o=(AND|OR) WS b=simpleFilter) | (o=NOT WS b=simpleFilter) )
-		{filter = new Filter($o.text.toLowerCase());
-		 filter.fields = new ArrayList<>();
-		 if (a != null) {
-		    filter.fields.add(a);
-		 }
-		 filter.fields.add(b);
-		}
-	| (LPARAN WS? s=simpleLogicalFilter WS? RPARAN) {filter = s;}
-	
-	;
-
-
-grandFilter returns [Filter filter]
-	: (a=simpleFilter | a=simpleLogicalFilter ) {filter = a;} (WS o=(AND|OR) WS b=grandFilter 
-	        {filter = new Filter($o.text.toLowerCase());
-		 filter.fields = new ArrayList<>();
-		 filter.fields.add(a);
-		 filter.fields.add(b);
-		})?
-	;
 
 /////////////////////////////////////////////////////////	  
 ///////////////////  Aggregation rules  //////////////////	
