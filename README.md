@@ -9,6 +9,12 @@ SQL interface to druid(see http://druid.io/ ), has 3 sub projects
 2) Terminal based SQL client interface,
 3) Java JDBC like driver for druid.
 
+Compatibiltiy with druid
+=========================
+  If you are using Druid 0.6.X then use Sql4D version 3.5.6 from maven central (or) clone the Sql4D, and build against the tag v3.5.6 .
+  If you are using Druid 0.7.X then use Sql4D version 4.0.0 from maven central (or) clone the Sql4D, and build against the master.
+
+
 Getting started guide
 =====================
 https://github.com/srikalyc/Sql4D/wiki
