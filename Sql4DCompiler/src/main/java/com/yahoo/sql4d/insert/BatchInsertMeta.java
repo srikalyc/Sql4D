@@ -12,12 +12,11 @@
 package com.yahoo.sql4d.insert;
 
 import com.google.common.collect.ImmutableMap;
-import com.yahoo.sql4d.insert.nodes.GranularitySpec;
-import com.yahoo.sql4d.insert.nodes.DataSpec;
 import com.yahoo.sql4d.insert.nodes.PartitionsSpec;
-import com.yahoo.sql4d.insert.nodes.PathSpec;
+import com.yahoo.sql4d.insert.nodes.InputSpec;
 import com.yahoo.sql4d.insert.nodes.RollupSpec;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -28,12 +27,12 @@ import org.json.JSONObject;
  */
 public class BatchInsertMeta extends InsertMeta {
 
-    public GranularitySpec granularitySpec = new GranularitySpec("day");
-    public DataSpec dataSpec = new DataSpec();
-    public PathSpec pathSpec = new PathSpec();
+    public InputSpec inputSpec = new InputSpec();
     public PartitionsSpec partitionsSpec = new PartitionsSpec();
-    public RollupSpec rollupSpec = new RollupSpec();
-
+    public RollupSpec rollupSpec = new RollupSpec();//TODO: Figure out its validity and where to put this ?
+    public List<String> dimensions = new ArrayList<>();
+    public List<String> columns = new ArrayList<>();
+    
     public BatchInsertMeta() {
     }
 
@@ -47,27 +46,49 @@ public class BatchInsertMeta extends InsertMeta {
         return new JSONObject(getDataMap());
     }
 
+
     @Override
     public Map<String, Object> getDataMap() {
-        Map<String, Object> map = super.getDataMap();
-        map.put("type", "index_hadoop");
-        Map<String, Object> config = new LinkedHashMap<>();
-        if (granularitySpec != null) {
-            config.put("granularitySpec", granularitySpec.getJson());
-        }
-        Map<String, String> tsSpec = ImmutableMap.<String, String>builder().
-            put("column", "timestamp").
-            put("format", "auto").build();
-        config.put("timestampSpec", tsSpec);
-        config.put("dataSpec", dataSpec.getDataMap());
-        config.put("pathSpec", pathSpec.getDataMap());
-        config.put("partitionsSpec", partitionsSpec.getDataMap());
-        config.put("rollupSpec", rollupSpec.getDataMap());
-        config.put("dataSource", map.remove("dataSource"));// dataSource by default will appear at top level, move it inside "config" json element.
-        map.put("config", config);
-        return map;
+        return ImmutableMap.<String, Object>of(
+                "type", "index_hadoop",
+                "spec", getSpec());
     }
 
+    public void inferFormat(String fileExtension) {
+        if (fileExtension.endsWith("csv")) {
+            dataFormat = "csv";
+        } else if (fileExtension.endsWith("json")) {
+            dataFormat = "json";
+        } else {
+            dataFormat = "tsv";
+        }
+    }
+    
+    @Override
+    public Map<String, Object> getTimestampSpec() {
+        return ImmutableMap.<String, Object>of(
+                "column", "timestamp",
+                "format", "auto");
+    }
+
+    @Override
+    public Map<String, Object> getIoConfig() {
+        return ImmutableMap.<String, Object>of(
+                "type", "hadoop",
+                "inputSpec", inputSpec.getDataMap());
+    }
+   
+    /**
+     * Optional
+     * @return 
+     */
+    @Override
+    public Map<String, Object> getTuningConfig() {
+        return ImmutableMap.<String, Object>of(
+                "type", "hadoop",
+                "partitionsSpec", partitionsSpec.getDataMap());
+    }
+    
 
     public <T> void postProcess(T anyContext) {
 

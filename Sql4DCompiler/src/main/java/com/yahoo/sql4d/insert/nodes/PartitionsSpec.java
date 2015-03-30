@@ -15,17 +15,21 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * Ex: Used in data ingestion.
- *"partitionsSpec": {
-    "type": "hashed"
-    "targetPartitionSize": 5000000
-  },
+ * Ex: Used in batch data ingestion.
+ * "partitionsSpec" : {
+      "type" : "dimension", 
+      "partitionDimension" : null,
+      "targetPartitionSize" : 5000000,
+      "maxPartitionSize" : 7500000,
+      "assumeGrouped" : false,
+      "numShards" : -1
+    }
  * 
  * @author srikalyan
  */
 public class PartitionsSpec {
     public long targetPartitionSize = 5000000;
-    public String type = "hashed";//TODO: Check out what are other types.
+    public String type = "hashed";// dimension/hashed
     
     @Override
     public String toString() {

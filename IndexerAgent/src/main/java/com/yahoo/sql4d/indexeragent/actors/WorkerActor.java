@@ -18,9 +18,9 @@ import com.yahoo.sql4d.indexeragent.work.Work;
  *
  * @author srikalyan
  */
-public class Worker extends UntypedActor {
+public class WorkerActor extends UntypedActor {
 
-    public Worker() {
+    public WorkerActor() {
     }
 
     @Override

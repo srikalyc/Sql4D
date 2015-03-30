@@ -20,14 +20,14 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONObject;
 
 /**
- *
+ * Submit tasks to druid. Both Synchronous(with timeout) and asynchronous are supported.
  * @author srikalyan
  */
 public class OverlordAccessor extends DruidNodeAccessor {
     private final String overlordUrl = "http://%s:%d/druid/indexer/v1/task";
     private final String overlordHost;
     private int overlordPort = 8087;
-    private static final int MAX_WAIT_TIME = 30000;// 30 secs
+    private static final int MAX_WAIT_TIME = 60000;// 30 secs
     
     public OverlordAccessor(String host, int port, int maxConns) {
         super(host, port, maxConns);
@@ -46,15 +46,13 @@ public class OverlordAccessor extends DruidNodeAccessor {
         CloseableHttpResponse resp = null;
         String url = format(overlordUrl, overlordHost, overlordPort);
         try {
-            System.out.println(url);
-            System.out.println(meta.toString());
             resp = postJson(url, meta.toString(), reqHeaders);
             if (resp.getStatusLine().getStatusCode() == 500) {
                 return "Task failed with server error, " + IOUtils.toString(resp.getEntity().getContent());
             }
             //TODO: Check for nulls in the following.
-            System.out.println(IOUtils.toString(resp.getEntity().getContent()));
-            JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
+            String strResp = IOUtils.toString(resp.getEntity().getContent());
+            JSONObject respJson = new JSONObject(strResp);
             if (wait) {
                 if (waitForTask(respJson.getString("task"), reqHeaders)) {
                     return "Task completed successfully , task Id " + respJson;

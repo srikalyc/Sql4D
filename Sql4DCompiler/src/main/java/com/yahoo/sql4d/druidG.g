@@ -92,36 +92,30 @@ insertStmnt returns [BasicInsertMeta iMeta]
 	     |
 	   (FROM WS (paths=SINGLE_QUOTE_STRING {iMeta.dataPath = unquote($paths.text);}) WS)
 	 )
-	 (WHERE WS i=intervalClause WS)?
-	  (BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
+	 (WHERE WS i=intervalClause)
+	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { iMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
 	{ // We set this later after granularitySpec object is fully formed.
 	  if (i!= null && !i.isEmpty()) {
 	     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 	  }
 	}  
-	(DELIMITER WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{iMeta.delimiter=unicode(unquote($delim.text));} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {iMeta.listDelimiter=unicode(unquote($listDelim.text));})? WS? RPARAN WS?)? 
+	(WS DELIMITER WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{iMeta.delimiter=unicode(unquote($delim.text));} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {iMeta.listDelimiter=unicode(unquote($listDelim.text));})? WS? RPARAN WS?)? 
 	;
 
 insertHStmnt returns [BatchInsertMeta bMeta]
 @init { bMeta = new BatchInsertMeta();      }
 	:(INSERT_HADOOP WS INTO WS (id=ID {bMeta.dataSource = $id.text; }) WS? LPARAN WS? selectItems[bMeta] (WS? ',' WS? selectItems[bMeta])* WS? RPARAN WS?) 
-	{
-	  bMeta.rollupSpec.aggs=bMeta.aggregations;
-	  List<String> dims = getDimensions(bMeta.fetchDimensions);
-	  bMeta.dataSpec.dimensions=dims.subList(1, dims.size());
-	  bMeta.dataSpec.columns=getColumns(bMeta.fetchDimensions, bMeta.aggregations);
-	}
-	 FROM WS (paths=SINGLE_QUOTE_STRING {bMeta.pathSpec.setPath(unquote($paths.text));bMeta.dataSpec.inferFormat(unquote($paths.text));}) WS
-	 (WHERE WS i=intervalClause WS)?
-	  (BREAK WS BY WS gran=SINGLE_QUOTE_STRING { bMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
+	 FROM WS (paths=SINGLE_QUOTE_STRING {bMeta.inputSpec.setPath(unquote($paths.text));bMeta.inferFormat(unquote($paths.text));}) WS
+	 (WHERE WS i=intervalClause)
+	  (WS BREAK WS BY WS gran=SINGLE_QUOTE_STRING { bMeta.granularitySpec = new GranularitySpec(unquote($gran.text));})? // Default granularity is all 
 	{ // We set this later after granularitySpec object is fully formed.
 	  if (i!= null && !i.isEmpty()) {
 	     bMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 	  }
 	}  
-	 (DELIMITER WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{bMeta.dataSpec.delimiter=unicode(unquote($delim.text));} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {bMeta.dataSpec.listDelimiter=unicode(unquote($listDelim.text));})? WS? RPARAN WS?)? 
-	 (PARTITION WS? LPARAN WS? type=SINGLE_QUOTE_STRING WS? ',' WS? size=LONG {bMeta.partitionsSpec.type=unquote($type.text);bMeta.partitionsSpec.targetPartitionSize=Long.valueOf($size.text); } WS? RPARAN WS?)?
-	 (ROLLUP WS? LPARAN WS? gran=SINGLE_QUOTE_STRING WS? ',' WS? boundary=LONG {bMeta.rollupSpec.rollupGranularity=unquote($gran.text);bMeta.rollupSpec.rowFlushBoundary=Long.valueOf($boundary.text); } WS? RPARAN WS?)?
+	 (WS DELIMITER WS? LPARAN WS? delim=SINGLE_QUOTE_STRING{bMeta.delimiter=unicode(unquote($delim.text));} (WS? ',' WS? listDelim=SINGLE_QUOTE_STRING {bMeta.listDelimiter=unicode(unquote($listDelim.text));})? WS? RPARAN WS?)? 
+	 (WS PARTITION WS? LPARAN WS? type=SINGLE_QUOTE_STRING WS? ',' WS? size=LONG {bMeta.partitionsSpec.type=unquote($type.text);bMeta.partitionsSpec.targetPartitionSize=Long.valueOf($size.text); } WS? RPARAN WS?)?
+	 (WS ROLLUP WS? LPARAN WS? gran=SINGLE_QUOTE_STRING WS? ',' WS? boundary=LONG {bMeta.rollupSpec.rollupGranularity=unquote($gran.text);bMeta.rollupSpec.rowFlushBoundary=Long.valueOf($boundary.text); } WS? RPARAN WS?)?
 	;
 
 insertRTStmnt returns [RTInsertMeta iMeta]

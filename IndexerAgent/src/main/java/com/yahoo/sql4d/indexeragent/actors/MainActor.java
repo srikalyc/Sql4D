@@ -21,11 +21,11 @@ import java.util.concurrent.TimeUnit;
 import scala.concurrent.duration.Duration;
 
 /**
- * Upon receiving "startSignal" the Main actor starts a scheduler and schedules
- * tasks(if any) to Workers by sending Work messages.
+ * Upon receiving "startSignal" the MainActor actor starts a scheduler and schedules
+ tasks(if any) to Workers by sending Work messages.
  * @author srikalyan
  */
-public class Main extends UntypedActor {
+public class MainActor extends UntypedActor {
 
     private static final int INITIAL_DELAY = 1;// In secs
     private static final int CRON_INTERVAL = 10;// In secs
@@ -35,8 +35,8 @@ public class Main extends UntypedActor {
     
     private Cancellable tick;
 
-    public Main() {
-        workerRouter = getContext().actorOf(Props.create(Worker.class).
+    public MainActor() {
+        workerRouter = getContext().actorOf(Props.create(WorkerActor.class).
                 withRouter(new RoundRobinPool(MAX_CONCURRENCY)),"workerRouter");    
     }
     
