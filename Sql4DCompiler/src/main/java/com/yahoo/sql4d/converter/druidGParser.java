@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 druidG.g 2015-03-08 16:50:11
+// $ANTLR 3.5.2 druidG.g 2015-03-29 17:04:52
 
 	package com.yahoo.sql4d.converter;
 
@@ -818,7 +818,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "insertStmnt"
-	// druidG.g:87:1: insertStmnt returns [BasicInsertMeta iMeta] : ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ;
+	// druidG.g:87:1: insertStmnt returns [BasicInsertMeta iMeta] : ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ;
 	public final BasicInsertMeta insertStmnt() throws RecognitionException {
 		BasicInsertMeta iMeta = null;
 
@@ -833,8 +833,8 @@ public class druidGParser extends Parser {
 
 		 iMeta = new BasicInsertMeta();      
 		try {
-			// druidG.g:89:2: ( ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? )
-			// druidG.g:89:3: ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
+			// druidG.g:89:2: ( ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? )
+			// druidG.g:89:3: ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) ( ( VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ) | ( FROM WS (paths= SINGLE_QUOTE_STRING ) WS ) ) ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
 			{
 			// druidG.g:89:3: ( INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? )
 			// druidG.g:89:4: INSERT WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )?
@@ -1180,43 +1180,36 @@ public class druidGParser extends Parser {
 
 			}
 
-			// druidG.g:95:3: ( WHERE WS i= intervalClause WS )?
+			// druidG.g:95:3: ( WHERE WS i= intervalClause )
+			// druidG.g:95:4: WHERE WS i= intervalClause
+			{
+			match(input,WHERE,FOLLOW_WHERE_in_insertStmnt514); 
+			match(input,WS,FOLLOW_WS_in_insertStmnt516); 
+			pushFollow(FOLLOW_intervalClause_in_insertStmnt520);
+			i=intervalClause();
+			state._fsp--;
+
+			}
+
+			// druidG.g:96:4: ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
 			int alt30=2;
 			int LA30_0 = input.LA(1);
-			if ( (LA30_0==WHERE) ) {
-				alt30=1;
+			if ( (LA30_0==WS) ) {
+				int LA30_1 = input.LA(2);
+				if ( (LA30_1==BREAK) ) {
+					alt30=1;
+				}
 			}
 			switch (alt30) {
 				case 1 :
-					// druidG.g:95:4: WHERE WS i= intervalClause WS
+					// druidG.g:96:5: WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING
 					{
-					match(input,WHERE,FOLLOW_WHERE_in_insertStmnt514); 
-					match(input,WS,FOLLOW_WS_in_insertStmnt516); 
-					pushFollow(FOLLOW_intervalClause_in_insertStmnt520);
-					i=intervalClause();
-					state._fsp--;
-
-					match(input,WS,FOLLOW_WS_in_insertStmnt522); 
-					}
-					break;
-
-			}
-
-			// druidG.g:96:4: ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
-			int alt31=2;
-			int LA31_0 = input.LA(1);
-			if ( (LA31_0==BREAK) ) {
-				alt31=1;
-			}
-			switch (alt31) {
-				case 1 :
-					// druidG.g:96:5: BREAK WS BY WS gran= SINGLE_QUOTE_STRING
-					{
-					match(input,BREAK,FOLLOW_BREAK_in_insertStmnt530); 
-					match(input,WS,FOLLOW_WS_in_insertStmnt532); 
-					match(input,BY,FOLLOW_BY_in_insertStmnt534); 
-					match(input,WS,FOLLOW_WS_in_insertStmnt536); 
-					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt540); 
+					match(input,WS,FOLLOW_WS_in_insertStmnt527); 
+					match(input,BREAK,FOLLOW_BREAK_in_insertStmnt529); 
+					match(input,WS,FOLLOW_WS_in_insertStmnt531); 
+					match(input,BY,FOLLOW_BY_in_insertStmnt533); 
+					match(input,WS,FOLLOW_WS_in_insertStmnt535); 
+					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt539); 
 					 iMeta.granularitySpec = new GranularitySpec(unquote((gran!=null?gran.getText():null)));
 					}
 					break;
@@ -1228,18 +1221,36 @@ public class druidGParser extends Parser {
 				     iMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 				  }
 				
-			// druidG.g:102:2: ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
-			int alt39=2;
-			int LA39_0 = input.LA(1);
-			if ( (LA39_0==DELIMITER) ) {
-				alt39=1;
+			// druidG.g:102:2: ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
+			int alt38=2;
+			int LA38_0 = input.LA(1);
+			if ( (LA38_0==WS) ) {
+				alt38=1;
 			}
-			switch (alt39) {
+			switch (alt38) {
 				case 1 :
-					// druidG.g:102:3: DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )?
+					// druidG.g:102:3: WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )?
 					{
-					match(input,DELIMITER,FOLLOW_DELIMITER_in_insertStmnt554); 
-					// druidG.g:102:13: ( WS )?
+					match(input,WS,FOLLOW_WS_in_insertStmnt553); 
+					match(input,DELIMITER,FOLLOW_DELIMITER_in_insertStmnt555); 
+					// druidG.g:102:16: ( WS )?
+					int alt31=2;
+					int LA31_0 = input.LA(1);
+					if ( (LA31_0==WS) ) {
+						alt31=1;
+					}
+					switch (alt31) {
+						case 1 :
+							// druidG.g:102:16: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertStmnt557); 
+							}
+							break;
+
+					}
+
+					match(input,LPARAN,FOLLOW_LPARAN_in_insertStmnt560); 
+					// druidG.g:102:27: ( WS )?
 					int alt32=2;
 					int LA32_0 = input.LA(1);
 					if ( (LA32_0==WS) ) {
@@ -1247,50 +1258,50 @@ public class druidGParser extends Parser {
 					}
 					switch (alt32) {
 						case 1 :
-							// druidG.g:102:13: WS
+							// druidG.g:102:27: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertStmnt556); 
+							match(input,WS,FOLLOW_WS_in_insertStmnt562); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_insertStmnt559); 
-					// druidG.g:102:24: ( WS )?
-					int alt33=2;
-					int LA33_0 = input.LA(1);
-					if ( (LA33_0==WS) ) {
-						alt33=1;
-					}
-					switch (alt33) {
-						case 1 :
-							// druidG.g:102:24: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertStmnt561); 
-							}
-							break;
-
-					}
-
-					delim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt566); 
+					delim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt567); 
 					iMeta.delimiter=unicode(unquote((delim!=null?delim.getText():null)));
-					// druidG.g:102:102: ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )?
-					int alt36=2;
-					int LA36_0 = input.LA(1);
-					if ( (LA36_0==WS) ) {
-						int LA36_1 = input.LA(2);
-						if ( (LA36_1==91) ) {
-							alt36=1;
+					// druidG.g:102:105: ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )?
+					int alt35=2;
+					int LA35_0 = input.LA(1);
+					if ( (LA35_0==WS) ) {
+						int LA35_1 = input.LA(2);
+						if ( (LA35_1==91) ) {
+							alt35=1;
 						}
 					}
-					else if ( (LA36_0==91) ) {
-						alt36=1;
+					else if ( (LA35_0==91) ) {
+						alt35=1;
 					}
-					switch (alt36) {
+					switch (alt35) {
 						case 1 :
-							// druidG.g:102:103: ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING
+							// druidG.g:102:106: ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING
 							{
-							// druidG.g:102:103: ( WS )?
+							// druidG.g:102:106: ( WS )?
+							int alt33=2;
+							int LA33_0 = input.LA(1);
+							if ( (LA33_0==WS) ) {
+								alt33=1;
+							}
+							switch (alt33) {
+								case 1 :
+									// druidG.g:102:106: WS
+									{
+									match(input,WS,FOLLOW_WS_in_insertStmnt571); 
+									}
+									break;
+
+							}
+
+							match(input,91,FOLLOW_91_in_insertStmnt574); 
+							// druidG.g:102:114: ( WS )?
 							int alt34=2;
 							int LA34_0 = input.LA(1);
 							if ( (LA34_0==WS) ) {
@@ -1298,39 +1309,39 @@ public class druidGParser extends Parser {
 							}
 							switch (alt34) {
 								case 1 :
-									// druidG.g:102:103: WS
+									// druidG.g:102:114: WS
 									{
-									match(input,WS,FOLLOW_WS_in_insertStmnt570); 
+									match(input,WS,FOLLOW_WS_in_insertStmnt576); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_insertStmnt573); 
-							// druidG.g:102:111: ( WS )?
-							int alt35=2;
-							int LA35_0 = input.LA(1);
-							if ( (LA35_0==WS) ) {
-								alt35=1;
-							}
-							switch (alt35) {
-								case 1 :
-									// druidG.g:102:111: WS
-									{
-									match(input,WS,FOLLOW_WS_in_insertStmnt575); 
-									}
-									break;
-
-							}
-
-							listDelim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt580); 
+							listDelim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt581); 
 							iMeta.listDelimiter=unicode(unquote((listDelim!=null?listDelim.getText():null)));
 							}
 							break;
 
 					}
 
-					// druidG.g:102:204: ( WS )?
+					// druidG.g:102:207: ( WS )?
+					int alt36=2;
+					int LA36_0 = input.LA(1);
+					if ( (LA36_0==WS) ) {
+						alt36=1;
+					}
+					switch (alt36) {
+						case 1 :
+							// druidG.g:102:207: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertStmnt587); 
+							}
+							break;
+
+					}
+
+					match(input,RPARAN,FOLLOW_RPARAN_in_insertStmnt590); 
+					// druidG.g:102:218: ( WS )?
 					int alt37=2;
 					int LA37_0 = input.LA(1);
 					if ( (LA37_0==WS) ) {
@@ -1338,26 +1349,9 @@ public class druidGParser extends Parser {
 					}
 					switch (alt37) {
 						case 1 :
-							// druidG.g:102:204: WS
+							// druidG.g:102:218: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertStmnt586); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_insertStmnt589); 
-					// druidG.g:102:215: ( WS )?
-					int alt38=2;
-					int LA38_0 = input.LA(1);
-					if ( (LA38_0==WS) ) {
-						alt38=1;
-					}
-					switch (alt38) {
-						case 1 :
-							// druidG.g:102:215: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertStmnt591); 
+							match(input,WS,FOLLOW_WS_in_insertStmnt592); 
 							}
 							break;
 
@@ -1385,7 +1379,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "insertHStmnt"
-	// druidG.g:105:1: insertHStmnt returns [BatchInsertMeta bMeta] : ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )? ;
+	// druidG.g:105:1: insertHStmnt returns [BatchInsertMeta bMeta] : ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( WS PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( WS ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )? ;
 	public final BatchInsertMeta insertHStmnt() throws RecognitionException {
 		BatchInsertMeta bMeta = null;
 
@@ -1402,24 +1396,41 @@ public class druidGParser extends Parser {
 
 		 bMeta = new BatchInsertMeta();      
 		try {
-			// druidG.g:107:2: ( ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )? )
-			// druidG.g:107:3: ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause WS )? ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )?
+			// druidG.g:107:2: ( ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( WS PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( WS ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )? )
+			// druidG.g:107:3: ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? ) FROM WS (paths= SINGLE_QUOTE_STRING ) WS ( WHERE WS i= intervalClause ) ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )? ( WS PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )? ( WS ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )?
 			{
 			// druidG.g:107:3: ( INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )? )
 			// druidG.g:107:4: INSERT_HADOOP WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[bMeta] ( ( WS )? ',' ( WS )? selectItems[bMeta] )* ( WS )? RPARAN ( WS )?
 			{
-			match(input,INSERT_HADOOP,FOLLOW_INSERT_HADOOP_in_insertHStmnt615); 
-			match(input,WS,FOLLOW_WS_in_insertHStmnt617); 
-			match(input,INTO,FOLLOW_INTO_in_insertHStmnt619); 
-			match(input,WS,FOLLOW_WS_in_insertHStmnt621); 
+			match(input,INSERT_HADOOP,FOLLOW_INSERT_HADOOP_in_insertHStmnt616); 
+			match(input,WS,FOLLOW_WS_in_insertHStmnt618); 
+			match(input,INTO,FOLLOW_INTO_in_insertHStmnt620); 
+			match(input,WS,FOLLOW_WS_in_insertHStmnt622); 
 			// druidG.g:107:29: (id= ID )
 			// druidG.g:107:30: id= ID
 			{
-			id=(Token)match(input,ID,FOLLOW_ID_in_insertHStmnt626); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_insertHStmnt627); 
 			bMeta.dataSource = (id!=null?id.getText():null); 
 			}
 
 			// druidG.g:107:69: ( WS )?
+			int alt39=2;
+			int LA39_0 = input.LA(1);
+			if ( (LA39_0==WS) ) {
+				alt39=1;
+			}
+			switch (alt39) {
+				case 1 :
+					// druidG.g:107:69: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertHStmnt632); 
+					}
+					break;
+
+			}
+
+			match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt635); 
+			// druidG.g:107:80: ( WS )?
 			int alt40=2;
 			int LA40_0 = input.LA(1);
 			if ( (LA40_0==WS) ) {
@@ -1427,56 +1438,56 @@ public class druidGParser extends Parser {
 			}
 			switch (alt40) {
 				case 1 :
-					// druidG.g:107:69: WS
-					{
-					match(input,WS,FOLLOW_WS_in_insertHStmnt631); 
-					}
-					break;
-
-			}
-
-			match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt634); 
-			// druidG.g:107:80: ( WS )?
-			int alt41=2;
-			int LA41_0 = input.LA(1);
-			if ( (LA41_0==WS) ) {
-				alt41=1;
-			}
-			switch (alt41) {
-				case 1 :
 					// druidG.g:107:80: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertHStmnt636); 
+					match(input,WS,FOLLOW_WS_in_insertHStmnt637); 
 					}
 					break;
 
 			}
 
-			pushFollow(FOLLOW_selectItems_in_insertHStmnt639);
+			pushFollow(FOLLOW_selectItems_in_insertHStmnt640);
 			selectItems(bMeta);
 			state._fsp--;
 
 			// druidG.g:107:103: ( ( WS )? ',' ( WS )? selectItems[bMeta] )*
-			loop44:
+			loop43:
 			while (true) {
-				int alt44=2;
-				int LA44_0 = input.LA(1);
-				if ( (LA44_0==WS) ) {
-					int LA44_1 = input.LA(2);
-					if ( (LA44_1==91) ) {
-						alt44=1;
+				int alt43=2;
+				int LA43_0 = input.LA(1);
+				if ( (LA43_0==WS) ) {
+					int LA43_1 = input.LA(2);
+					if ( (LA43_1==91) ) {
+						alt43=1;
 					}
 
 				}
-				else if ( (LA44_0==91) ) {
-					alt44=1;
+				else if ( (LA43_0==91) ) {
+					alt43=1;
 				}
 
-				switch (alt44) {
+				switch (alt43) {
 				case 1 :
 					// druidG.g:107:104: ( WS )? ',' ( WS )? selectItems[bMeta]
 					{
 					// druidG.g:107:104: ( WS )?
+					int alt41=2;
+					int LA41_0 = input.LA(1);
+					if ( (LA41_0==WS) ) {
+						alt41=1;
+					}
+					switch (alt41) {
+						case 1 :
+							// druidG.g:107:104: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertHStmnt644); 
+							}
+							break;
+
+					}
+
+					match(input,91,FOLLOW_91_in_insertHStmnt647); 
+					// druidG.g:107:112: ( WS )?
 					int alt42=2;
 					int LA42_0 = input.LA(1);
 					if ( (LA42_0==WS) ) {
@@ -1484,32 +1495,15 @@ public class druidGParser extends Parser {
 					}
 					switch (alt42) {
 						case 1 :
-							// druidG.g:107:104: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt643); 
-							}
-							break;
-
-					}
-
-					match(input,91,FOLLOW_91_in_insertHStmnt646); 
-					// druidG.g:107:112: ( WS )?
-					int alt43=2;
-					int LA43_0 = input.LA(1);
-					if ( (LA43_0==WS) ) {
-						alt43=1;
-					}
-					switch (alt43) {
-						case 1 :
 							// druidG.g:107:112: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt648); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt649); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_selectItems_in_insertHStmnt651);
+					pushFollow(FOLLOW_selectItems_in_insertHStmnt652);
 					selectItems(bMeta);
 					state._fsp--;
 
@@ -1517,11 +1511,28 @@ public class druidGParser extends Parser {
 					break;
 
 				default :
-					break loop44;
+					break loop43;
 				}
 			}
 
 			// druidG.g:107:137: ( WS )?
+			int alt44=2;
+			int LA44_0 = input.LA(1);
+			if ( (LA44_0==WS) ) {
+				alt44=1;
+			}
+			switch (alt44) {
+				case 1 :
+					// druidG.g:107:137: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertHStmnt657); 
+					}
+					break;
+
+			}
+
+			match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt660); 
+			// druidG.g:107:148: ( WS )?
 			int alt45=2;
 			int LA45_0 = input.LA(1);
 			if ( (LA45_0==WS) ) {
@@ -1529,86 +1540,56 @@ public class druidGParser extends Parser {
 			}
 			switch (alt45) {
 				case 1 :
-					// druidG.g:107:137: WS
+					// druidG.g:107:148: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertHStmnt656); 
+					match(input,WS,FOLLOW_WS_in_insertHStmnt662); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt659); 
-			// druidG.g:107:148: ( WS )?
+			}
+
+			match(input,FROM,FOLLOW_FROM_in_insertHStmnt669); 
+			match(input,WS,FOLLOW_WS_in_insertHStmnt671); 
+			// druidG.g:108:11: (paths= SINGLE_QUOTE_STRING )
+			// druidG.g:108:12: paths= SINGLE_QUOTE_STRING
+			{
+			paths=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt676); 
+			bMeta.inputSpec.setPath(unquote((paths!=null?paths.getText():null)));bMeta.inferFormat(unquote((paths!=null?paths.getText():null)));
+			}
+
+			match(input,WS,FOLLOW_WS_in_insertHStmnt681); 
+			// druidG.g:109:3: ( WHERE WS i= intervalClause )
+			// druidG.g:109:4: WHERE WS i= intervalClause
+			{
+			match(input,WHERE,FOLLOW_WHERE_in_insertHStmnt686); 
+			match(input,WS,FOLLOW_WS_in_insertHStmnt688); 
+			pushFollow(FOLLOW_intervalClause_in_insertHStmnt692);
+			i=intervalClause();
+			state._fsp--;
+
+			}
+
+			// druidG.g:110:4: ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
 			int alt46=2;
 			int LA46_0 = input.LA(1);
 			if ( (LA46_0==WS) ) {
-				alt46=1;
+				int LA46_1 = input.LA(2);
+				if ( (LA46_1==BREAK) ) {
+					alt46=1;
+				}
 			}
 			switch (alt46) {
 				case 1 :
-					// druidG.g:107:148: WS
+					// druidG.g:110:5: WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING
 					{
-					match(input,WS,FOLLOW_WS_in_insertHStmnt661); 
-					}
-					break;
-
-			}
-
-			}
-
-
-				  bMeta.rollupSpec.aggs=bMeta.aggregations;
-				  List<String> dims = getDimensions(bMeta.fetchDimensions);
-				  bMeta.dataSpec.dimensions=dims.subList(1, dims.size());
-				  bMeta.dataSpec.columns=getColumns(bMeta.fetchDimensions, bMeta.aggregations);
-				
-			match(input,FROM,FOLLOW_FROM_in_insertHStmnt671); 
-			match(input,WS,FOLLOW_WS_in_insertHStmnt673); 
-			// druidG.g:114:11: (paths= SINGLE_QUOTE_STRING )
-			// druidG.g:114:12: paths= SINGLE_QUOTE_STRING
-			{
-			paths=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt678); 
-			bMeta.pathSpec.setPath(unquote((paths!=null?paths.getText():null)));bMeta.dataSpec.inferFormat(unquote((paths!=null?paths.getText():null)));
-			}
-
-			match(input,WS,FOLLOW_WS_in_insertHStmnt683); 
-			// druidG.g:115:3: ( WHERE WS i= intervalClause WS )?
-			int alt47=2;
-			int LA47_0 = input.LA(1);
-			if ( (LA47_0==WHERE) ) {
-				alt47=1;
-			}
-			switch (alt47) {
-				case 1 :
-					// druidG.g:115:4: WHERE WS i= intervalClause WS
-					{
-					match(input,WHERE,FOLLOW_WHERE_in_insertHStmnt688); 
-					match(input,WS,FOLLOW_WS_in_insertHStmnt690); 
-					pushFollow(FOLLOW_intervalClause_in_insertHStmnt694);
-					i=intervalClause();
-					state._fsp--;
-
-					match(input,WS,FOLLOW_WS_in_insertHStmnt696); 
-					}
-					break;
-
-			}
-
-			// druidG.g:116:4: ( BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
-			int alt48=2;
-			int LA48_0 = input.LA(1);
-			if ( (LA48_0==BREAK) ) {
-				alt48=1;
-			}
-			switch (alt48) {
-				case 1 :
-					// druidG.g:116:5: BREAK WS BY WS gran= SINGLE_QUOTE_STRING
-					{
-					match(input,BREAK,FOLLOW_BREAK_in_insertHStmnt704); 
-					match(input,WS,FOLLOW_WS_in_insertHStmnt706); 
-					match(input,BY,FOLLOW_BY_in_insertHStmnt708); 
-					match(input,WS,FOLLOW_WS_in_insertHStmnt710); 
-					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt714); 
+					match(input,WS,FOLLOW_WS_in_insertHStmnt699); 
+					match(input,BREAK,FOLLOW_BREAK_in_insertHStmnt701); 
+					match(input,WS,FOLLOW_WS_in_insertHStmnt703); 
+					match(input,BY,FOLLOW_BY_in_insertHStmnt705); 
+					match(input,WS,FOLLOW_WS_in_insertHStmnt707); 
+					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt711); 
 					 bMeta.granularitySpec = new GranularitySpec(unquote((gran!=null?gran.getText():null)));
 					}
 					break;
@@ -1620,126 +1601,169 @@ public class druidGParser extends Parser {
 				     bMeta.granularitySpec.interval = i.get(0);// We already checked for list's emptiness(it is safe to access get(0).
 				  }
 				
-			// druidG.g:122:3: ( DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
-			int alt56=2;
-			int LA56_0 = input.LA(1);
-			if ( (LA56_0==DELIMITER) ) {
-				alt56=1;
+			// druidG.g:116:3: ( WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )? )?
+			int alt54=2;
+			int LA54_0 = input.LA(1);
+			if ( (LA54_0==WS) ) {
+				int LA54_1 = input.LA(2);
+				if ( (LA54_1==DELIMITER) ) {
+					alt54=1;
+				}
 			}
-			switch (alt56) {
+			switch (alt54) {
 				case 1 :
-					// druidG.g:122:4: DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )?
+					// druidG.g:116:4: WS DELIMITER ( WS )? LPARAN ( WS )? delim= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )? ( WS )? RPARAN ( WS )?
 					{
-					match(input,DELIMITER,FOLLOW_DELIMITER_in_insertHStmnt729); 
-					// druidG.g:122:14: ( WS )?
-					int alt49=2;
-					int LA49_0 = input.LA(1);
-					if ( (LA49_0==WS) ) {
-						alt49=1;
+					match(input,WS,FOLLOW_WS_in_insertHStmnt726); 
+					match(input,DELIMITER,FOLLOW_DELIMITER_in_insertHStmnt728); 
+					// druidG.g:116:17: ( WS )?
+					int alt47=2;
+					int LA47_0 = input.LA(1);
+					if ( (LA47_0==WS) ) {
+						alt47=1;
 					}
-					switch (alt49) {
+					switch (alt47) {
 						case 1 :
-							// druidG.g:122:14: WS
+							// druidG.g:116:17: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt731); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt730); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt734); 
-					// druidG.g:122:25: ( WS )?
-					int alt50=2;
-					int LA50_0 = input.LA(1);
-					if ( (LA50_0==WS) ) {
-						alt50=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt733); 
+					// druidG.g:116:28: ( WS )?
+					int alt48=2;
+					int LA48_0 = input.LA(1);
+					if ( (LA48_0==WS) ) {
+						alt48=1;
 					}
-					switch (alt50) {
+					switch (alt48) {
 						case 1 :
-							// druidG.g:122:25: WS
+							// druidG.g:116:28: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt736); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt735); 
 							}
 							break;
 
 					}
 
-					delim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt741); 
-					bMeta.dataSpec.delimiter=unicode(unquote((delim!=null?delim.getText():null)));
-					// druidG.g:122:112: ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )?
+					delim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt740); 
+					bMeta.delimiter=unicode(unquote((delim!=null?delim.getText():null)));
+					// druidG.g:116:106: ( ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING )?
+					int alt51=2;
+					int LA51_0 = input.LA(1);
+					if ( (LA51_0==WS) ) {
+						int LA51_1 = input.LA(2);
+						if ( (LA51_1==91) ) {
+							alt51=1;
+						}
+					}
+					else if ( (LA51_0==91) ) {
+						alt51=1;
+					}
+					switch (alt51) {
+						case 1 :
+							// druidG.g:116:107: ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING
+							{
+							// druidG.g:116:107: ( WS )?
+							int alt49=2;
+							int LA49_0 = input.LA(1);
+							if ( (LA49_0==WS) ) {
+								alt49=1;
+							}
+							switch (alt49) {
+								case 1 :
+									// druidG.g:116:107: WS
+									{
+									match(input,WS,FOLLOW_WS_in_insertHStmnt744); 
+									}
+									break;
+
+							}
+
+							match(input,91,FOLLOW_91_in_insertHStmnt747); 
+							// druidG.g:116:115: ( WS )?
+							int alt50=2;
+							int LA50_0 = input.LA(1);
+							if ( (LA50_0==WS) ) {
+								alt50=1;
+							}
+							switch (alt50) {
+								case 1 :
+									// druidG.g:116:115: WS
+									{
+									match(input,WS,FOLLOW_WS_in_insertHStmnt749); 
+									}
+									break;
+
+							}
+
+							listDelim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt754); 
+							bMeta.listDelimiter=unicode(unquote((listDelim!=null?listDelim.getText():null)));
+							}
+							break;
+
+					}
+
+					// druidG.g:116:208: ( WS )?
+					int alt52=2;
+					int LA52_0 = input.LA(1);
+					if ( (LA52_0==WS) ) {
+						alt52=1;
+					}
+					switch (alt52) {
+						case 1 :
+							// druidG.g:116:208: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertHStmnt760); 
+							}
+							break;
+
+					}
+
+					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt763); 
+					// druidG.g:116:219: ( WS )?
 					int alt53=2;
 					int LA53_0 = input.LA(1);
 					if ( (LA53_0==WS) ) {
 						int LA53_1 = input.LA(2);
-						if ( (LA53_1==91) ) {
+						if ( (LA53_1==EOF||LA53_1==WS) ) {
 							alt53=1;
 						}
 					}
-					else if ( (LA53_0==91) ) {
-						alt53=1;
-					}
 					switch (alt53) {
 						case 1 :
-							// druidG.g:122:113: ( WS )? ',' ( WS )? listDelim= SINGLE_QUOTE_STRING
+							// druidG.g:116:219: WS
 							{
-							// druidG.g:122:113: ( WS )?
-							int alt51=2;
-							int LA51_0 = input.LA(1);
-							if ( (LA51_0==WS) ) {
-								alt51=1;
-							}
-							switch (alt51) {
-								case 1 :
-									// druidG.g:122:113: WS
-									{
-									match(input,WS,FOLLOW_WS_in_insertHStmnt745); 
-									}
-									break;
-
-							}
-
-							match(input,91,FOLLOW_91_in_insertHStmnt748); 
-							// druidG.g:122:121: ( WS )?
-							int alt52=2;
-							int LA52_0 = input.LA(1);
-							if ( (LA52_0==WS) ) {
-								alt52=1;
-							}
-							switch (alt52) {
-								case 1 :
-									// druidG.g:122:121: WS
-									{
-									match(input,WS,FOLLOW_WS_in_insertHStmnt750); 
-									}
-									break;
-
-							}
-
-							listDelim=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt755); 
-							bMeta.dataSpec.listDelimiter=unicode(unquote((listDelim!=null?listDelim.getText():null)));
+							match(input,WS,FOLLOW_WS_in_insertHStmnt765); 
 							}
 							break;
 
 					}
 
-					// druidG.g:122:223: ( WS )?
-					int alt54=2;
-					int LA54_0 = input.LA(1);
-					if ( (LA54_0==WS) ) {
-						alt54=1;
 					}
-					switch (alt54) {
-						case 1 :
-							// druidG.g:122:223: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt761); 
-							}
-							break;
+					break;
 
-					}
+			}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt764); 
-					// druidG.g:122:234: ( WS )?
+			// druidG.g:117:3: ( WS PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )?
+			int alt61=2;
+			int LA61_0 = input.LA(1);
+			if ( (LA61_0==WS) ) {
+				int LA61_1 = input.LA(2);
+				if ( (LA61_1==PARTITION) ) {
+					alt61=1;
+				}
+			}
+			switch (alt61) {
+				case 1 :
+					// druidG.g:117:4: WS PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )?
+					{
+					match(input,WS,FOLLOW_WS_in_insertHStmnt774); 
+					match(input,PARTITION,FOLLOW_PARTITION_in_insertHStmnt776); 
+					// druidG.g:117:17: ( WS )?
 					int alt55=2;
 					int LA55_0 = input.LA(1);
 					if ( (LA55_0==WS) ) {
@@ -1747,31 +1771,33 @@ public class druidGParser extends Parser {
 					}
 					switch (alt55) {
 						case 1 :
-							// druidG.g:122:234: WS
+							// druidG.g:117:17: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt766); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt778); 
 							}
 							break;
 
 					}
 
+					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt781); 
+					// druidG.g:117:28: ( WS )?
+					int alt56=2;
+					int LA56_0 = input.LA(1);
+					if ( (LA56_0==WS) ) {
+						alt56=1;
 					}
-					break;
+					switch (alt56) {
+						case 1 :
+							// druidG.g:117:28: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertHStmnt783); 
+							}
+							break;
 
-			}
+					}
 
-			// druidG.g:123:3: ( PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )? )?
-			int alt63=2;
-			int LA63_0 = input.LA(1);
-			if ( (LA63_0==PARTITION) ) {
-				alt63=1;
-			}
-			switch (alt63) {
-				case 1 :
-					// druidG.g:123:4: PARTITION ( WS )? LPARAN ( WS )? type= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? size= LONG ( WS )? RPARAN ( WS )?
-					{
-					match(input,PARTITION,FOLLOW_PARTITION_in_insertHStmnt775); 
-					// druidG.g:123:14: ( WS )?
+					type=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt788); 
+					// druidG.g:117:57: ( WS )?
 					int alt57=2;
 					int LA57_0 = input.LA(1);
 					if ( (LA57_0==WS) ) {
@@ -1779,16 +1805,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt57) {
 						case 1 :
-							// druidG.g:123:14: WS
+							// druidG.g:117:57: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt777); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt790); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt780); 
-					// druidG.g:123:25: ( WS )?
+					match(input,91,FOLLOW_91_in_insertHStmnt793); 
+					// druidG.g:117:65: ( WS )?
 					int alt58=2;
 					int LA58_0 = input.LA(1);
 					if ( (LA58_0==WS) ) {
@@ -1796,16 +1822,17 @@ public class druidGParser extends Parser {
 					}
 					switch (alt58) {
 						case 1 :
-							// druidG.g:123:25: WS
+							// druidG.g:117:65: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt782); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt795); 
 							}
 							break;
 
 					}
 
-					type=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt787); 
-					// druidG.g:123:54: ( WS )?
+					size=(Token)match(input,LONG,FOLLOW_LONG_in_insertHStmnt800); 
+					bMeta.partitionsSpec.type=unquote((type!=null?type.getText():null));bMeta.partitionsSpec.targetPartitionSize=Long.valueOf((size!=null?size.getText():null)); 
+					// druidG.g:117:195: ( WS )?
 					int alt59=2;
 					int LA59_0 = input.LA(1);
 					if ( (LA59_0==WS) ) {
@@ -1813,61 +1840,29 @@ public class druidGParser extends Parser {
 					}
 					switch (alt59) {
 						case 1 :
-							// druidG.g:123:54: WS
+							// druidG.g:117:195: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt789); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt804); 
 							}
 							break;
 
 					}
 
-					match(input,91,FOLLOW_91_in_insertHStmnt792); 
-					// druidG.g:123:62: ( WS )?
+					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt807); 
+					// druidG.g:117:206: ( WS )?
 					int alt60=2;
 					int LA60_0 = input.LA(1);
 					if ( (LA60_0==WS) ) {
-						alt60=1;
+						int LA60_1 = input.LA(2);
+						if ( (LA60_1==EOF||LA60_1==WS) ) {
+							alt60=1;
+						}
 					}
 					switch (alt60) {
 						case 1 :
-							// druidG.g:123:62: WS
+							// druidG.g:117:206: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt794); 
-							}
-							break;
-
-					}
-
-					size=(Token)match(input,LONG,FOLLOW_LONG_in_insertHStmnt799); 
-					bMeta.partitionsSpec.type=unquote((type!=null?type.getText():null));bMeta.partitionsSpec.targetPartitionSize=Long.valueOf((size!=null?size.getText():null)); 
-					// druidG.g:123:192: ( WS )?
-					int alt61=2;
-					int LA61_0 = input.LA(1);
-					if ( (LA61_0==WS) ) {
-						alt61=1;
-					}
-					switch (alt61) {
-						case 1 :
-							// druidG.g:123:192: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt803); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt806); 
-					// druidG.g:123:203: ( WS )?
-					int alt62=2;
-					int LA62_0 = input.LA(1);
-					if ( (LA62_0==WS) ) {
-						alt62=1;
-					}
-					switch (alt62) {
-						case 1 :
-							// druidG.g:123:203: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt808); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt809); 
 							}
 							break;
 
@@ -1878,18 +1873,53 @@ public class druidGParser extends Parser {
 
 			}
 
-			// druidG.g:124:3: ( ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )?
-			int alt70=2;
-			int LA70_0 = input.LA(1);
-			if ( (LA70_0==ROLLUP) ) {
-				alt70=1;
+			// druidG.g:118:3: ( WS ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )? )?
+			int alt68=2;
+			int LA68_0 = input.LA(1);
+			if ( (LA68_0==WS) ) {
+				alt68=1;
 			}
-			switch (alt70) {
+			switch (alt68) {
 				case 1 :
-					// druidG.g:124:4: ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )?
+					// druidG.g:118:4: WS ROLLUP ( WS )? LPARAN ( WS )? gran= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? boundary= LONG ( WS )? RPARAN ( WS )?
 					{
-					match(input,ROLLUP,FOLLOW_ROLLUP_in_insertHStmnt816); 
-					// druidG.g:124:11: ( WS )?
+					match(input,WS,FOLLOW_WS_in_insertHStmnt817); 
+					match(input,ROLLUP,FOLLOW_ROLLUP_in_insertHStmnt819); 
+					// druidG.g:118:14: ( WS )?
+					int alt62=2;
+					int LA62_0 = input.LA(1);
+					if ( (LA62_0==WS) ) {
+						alt62=1;
+					}
+					switch (alt62) {
+						case 1 :
+							// druidG.g:118:14: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertHStmnt821); 
+							}
+							break;
+
+					}
+
+					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt824); 
+					// druidG.g:118:25: ( WS )?
+					int alt63=2;
+					int LA63_0 = input.LA(1);
+					if ( (LA63_0==WS) ) {
+						alt63=1;
+					}
+					switch (alt63) {
+						case 1 :
+							// druidG.g:118:25: WS
+							{
+							match(input,WS,FOLLOW_WS_in_insertHStmnt826); 
+							}
+							break;
+
+					}
+
+					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt831); 
+					// druidG.g:118:54: ( WS )?
 					int alt64=2;
 					int LA64_0 = input.LA(1);
 					if ( (LA64_0==WS) ) {
@@ -1897,16 +1927,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt64) {
 						case 1 :
-							// druidG.g:124:11: WS
+							// druidG.g:118:54: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt818); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt833); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_insertHStmnt821); 
-					// druidG.g:124:22: ( WS )?
+					match(input,91,FOLLOW_91_in_insertHStmnt836); 
+					// druidG.g:118:62: ( WS )?
 					int alt65=2;
 					int LA65_0 = input.LA(1);
 					if ( (LA65_0==WS) ) {
@@ -1914,16 +1944,17 @@ public class druidGParser extends Parser {
 					}
 					switch (alt65) {
 						case 1 :
-							// druidG.g:124:22: WS
+							// druidG.g:118:62: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt823); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt838); 
 							}
 							break;
 
 					}
 
-					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt828); 
-					// druidG.g:124:51: ( WS )?
+					boundary=(Token)match(input,LONG,FOLLOW_LONG_in_insertHStmnt843); 
+					bMeta.rollupSpec.rollupGranularity=unquote((gran!=null?gran.getText():null));bMeta.rollupSpec.rowFlushBoundary=Long.valueOf((boundary!=null?boundary.getText():null)); 
+					// druidG.g:118:202: ( WS )?
 					int alt66=2;
 					int LA66_0 = input.LA(1);
 					if ( (LA66_0==WS) ) {
@@ -1931,16 +1962,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt66) {
 						case 1 :
-							// druidG.g:124:51: WS
+							// druidG.g:118:202: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt830); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt847); 
 							}
 							break;
 
 					}
 
-					match(input,91,FOLLOW_91_in_insertHStmnt833); 
-					// druidG.g:124:59: ( WS )?
+					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt850); 
+					// druidG.g:118:213: ( WS )?
 					int alt67=2;
 					int LA67_0 = input.LA(1);
 					if ( (LA67_0==WS) ) {
@@ -1948,44 +1979,9 @@ public class druidGParser extends Parser {
 					}
 					switch (alt67) {
 						case 1 :
-							// druidG.g:124:59: WS
+							// druidG.g:118:213: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt835); 
-							}
-							break;
-
-					}
-
-					boundary=(Token)match(input,LONG,FOLLOW_LONG_in_insertHStmnt840); 
-					bMeta.rollupSpec.rollupGranularity=unquote((gran!=null?gran.getText():null));bMeta.rollupSpec.rowFlushBoundary=Long.valueOf((boundary!=null?boundary.getText():null)); 
-					// druidG.g:124:199: ( WS )?
-					int alt68=2;
-					int LA68_0 = input.LA(1);
-					if ( (LA68_0==WS) ) {
-						alt68=1;
-					}
-					switch (alt68) {
-						case 1 :
-							// druidG.g:124:199: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt844); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_insertHStmnt847); 
-					// druidG.g:124:210: ( WS )?
-					int alt69=2;
-					int LA69_0 = input.LA(1);
-					if ( (LA69_0==WS) ) {
-						alt69=1;
-					}
-					switch (alt69) {
-						case 1 :
-							// druidG.g:124:210: WS
-							{
-							match(input,WS,FOLLOW_WS_in_insertHStmnt849); 
+							match(input,WS,FOLLOW_WS_in_insertHStmnt852); 
 							}
 							break;
 
@@ -2013,7 +2009,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "insertRTStmnt"
-	// druidG.g:127:1: insertRTStmnt returns [RTInsertMeta iMeta] : ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ;
+	// druidG.g:121:1: insertRTStmnt returns [RTInsertMeta iMeta] : ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? ;
 	public final RTInsertMeta insertRTStmnt() throws RecognitionException {
 		RTInsertMeta iMeta = null;
 
@@ -2025,114 +2021,114 @@ public class druidGParser extends Parser {
 
 		 iMeta = new RTInsertMeta();      
 		try {
-			// druidG.g:129:2: ( ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? )
-			// druidG.g:129:3: ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
+			// druidG.g:123:2: ( ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )? )
+			// druidG.g:123:3: ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? ) VALUES ( WS )? LPARAN ( WS )? (a= anyValue ) ( ( WS )? ',' ( WS )? a= anyValue )* ( WS )? RPARAN ( WS )? ( WHERE WS i= intervalClause )? ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
 			{
-			// druidG.g:129:3: ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? )
-			// druidG.g:129:4: INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )?
+			// druidG.g:123:3: ( INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )? )
+			// druidG.g:123:4: INSERT_REALTIME WS INTO WS (id= ID ) ( WS )? LPARAN ( WS )? selectItems[iMeta] ( ( WS )? ',' ( WS )? selectItems[iMeta] )* ( WS )? RPARAN ( WS )?
 			{
-			match(input,INSERT_REALTIME,FOLLOW_INSERT_REALTIME_in_insertRTStmnt872); 
-			match(input,WS,FOLLOW_WS_in_insertRTStmnt874); 
-			match(input,INTO,FOLLOW_INTO_in_insertRTStmnt876); 
-			match(input,WS,FOLLOW_WS_in_insertRTStmnt878); 
-			// druidG.g:129:31: (id= ID )
-			// druidG.g:129:32: id= ID
+			match(input,INSERT_REALTIME,FOLLOW_INSERT_REALTIME_in_insertRTStmnt875); 
+			match(input,WS,FOLLOW_WS_in_insertRTStmnt877); 
+			match(input,INTO,FOLLOW_INTO_in_insertRTStmnt879); 
+			match(input,WS,FOLLOW_WS_in_insertRTStmnt881); 
+			// druidG.g:123:31: (id= ID )
+			// druidG.g:123:32: id= ID
 			{
-			id=(Token)match(input,ID,FOLLOW_ID_in_insertRTStmnt883); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_insertRTStmnt886); 
 			iMeta.dataSource = (id!=null?id.getText():null); 
 			}
 
-			// druidG.g:129:71: ( WS )?
-			int alt71=2;
-			int LA71_0 = input.LA(1);
-			if ( (LA71_0==WS) ) {
-				alt71=1;
+			// druidG.g:123:71: ( WS )?
+			int alt69=2;
+			int LA69_0 = input.LA(1);
+			if ( (LA69_0==WS) ) {
+				alt69=1;
 			}
-			switch (alt71) {
+			switch (alt69) {
 				case 1 :
-					// druidG.g:129:71: WS
+					// druidG.g:123:71: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt888); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt891); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_insertRTStmnt891); 
-			// druidG.g:129:82: ( WS )?
-			int alt72=2;
-			int LA72_0 = input.LA(1);
-			if ( (LA72_0==WS) ) {
-				alt72=1;
+			match(input,LPARAN,FOLLOW_LPARAN_in_insertRTStmnt894); 
+			// druidG.g:123:82: ( WS )?
+			int alt70=2;
+			int LA70_0 = input.LA(1);
+			if ( (LA70_0==WS) ) {
+				alt70=1;
 			}
-			switch (alt72) {
+			switch (alt70) {
 				case 1 :
-					// druidG.g:129:82: WS
+					// druidG.g:123:82: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt893); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt896); 
 					}
 					break;
 
 			}
 
-			pushFollow(FOLLOW_selectItems_in_insertRTStmnt896);
+			pushFollow(FOLLOW_selectItems_in_insertRTStmnt899);
 			selectItems(iMeta);
 			state._fsp--;
 
-			// druidG.g:129:105: ( ( WS )? ',' ( WS )? selectItems[iMeta] )*
-			loop75:
+			// druidG.g:123:105: ( ( WS )? ',' ( WS )? selectItems[iMeta] )*
+			loop73:
 			while (true) {
-				int alt75=2;
-				int LA75_0 = input.LA(1);
-				if ( (LA75_0==WS) ) {
-					int LA75_1 = input.LA(2);
-					if ( (LA75_1==91) ) {
-						alt75=1;
-					}
-
-				}
-				else if ( (LA75_0==91) ) {
-					alt75=1;
-				}
-
-				switch (alt75) {
-				case 1 :
-					// druidG.g:129:106: ( WS )? ',' ( WS )? selectItems[iMeta]
-					{
-					// druidG.g:129:106: ( WS )?
-					int alt73=2;
-					int LA73_0 = input.LA(1);
-					if ( (LA73_0==WS) ) {
+				int alt73=2;
+				int LA73_0 = input.LA(1);
+				if ( (LA73_0==WS) ) {
+					int LA73_1 = input.LA(2);
+					if ( (LA73_1==91) ) {
 						alt73=1;
 					}
-					switch (alt73) {
+
+				}
+				else if ( (LA73_0==91) ) {
+					alt73=1;
+				}
+
+				switch (alt73) {
+				case 1 :
+					// druidG.g:123:106: ( WS )? ',' ( WS )? selectItems[iMeta]
+					{
+					// druidG.g:123:106: ( WS )?
+					int alt71=2;
+					int LA71_0 = input.LA(1);
+					if ( (LA71_0==WS) ) {
+						alt71=1;
+					}
+					switch (alt71) {
 						case 1 :
-							// druidG.g:129:106: WS
+							// druidG.g:123:106: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertRTStmnt900); 
+							match(input,WS,FOLLOW_WS_in_insertRTStmnt903); 
 							}
 							break;
 
 					}
 
-					match(input,91,FOLLOW_91_in_insertRTStmnt903); 
-					// druidG.g:129:114: ( WS )?
-					int alt74=2;
-					int LA74_0 = input.LA(1);
-					if ( (LA74_0==WS) ) {
-						alt74=1;
+					match(input,91,FOLLOW_91_in_insertRTStmnt906); 
+					// druidG.g:123:114: ( WS )?
+					int alt72=2;
+					int LA72_0 = input.LA(1);
+					if ( (LA72_0==WS) ) {
+						alt72=1;
 					}
-					switch (alt74) {
+					switch (alt72) {
 						case 1 :
-							// druidG.g:129:114: WS
+							// druidG.g:123:114: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertRTStmnt905); 
+							match(input,WS,FOLLOW_WS_in_insertRTStmnt908); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_selectItems_in_insertRTStmnt908);
+					pushFollow(FOLLOW_selectItems_in_insertRTStmnt911);
 					selectItems(iMeta);
 					state._fsp--;
 
@@ -2140,11 +2136,47 @@ public class druidGParser extends Parser {
 					break;
 
 				default :
-					break loop75;
+					break loop73;
 				}
 			}
 
-			// druidG.g:129:139: ( WS )?
+			// druidG.g:123:139: ( WS )?
+			int alt74=2;
+			int LA74_0 = input.LA(1);
+			if ( (LA74_0==WS) ) {
+				alt74=1;
+			}
+			switch (alt74) {
+				case 1 :
+					// druidG.g:123:139: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt916); 
+					}
+					break;
+
+			}
+
+			match(input,RPARAN,FOLLOW_RPARAN_in_insertRTStmnt919); 
+			// druidG.g:123:150: ( WS )?
+			int alt75=2;
+			int LA75_0 = input.LA(1);
+			if ( (LA75_0==WS) ) {
+				alt75=1;
+			}
+			switch (alt75) {
+				case 1 :
+					// druidG.g:123:150: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt921); 
+					}
+					break;
+
+			}
+
+			}
+
+			match(input,VALUES,FOLLOW_VALUES_in_insertRTStmnt927); 
+			// druidG.g:124:10: ( WS )?
 			int alt76=2;
 			int LA76_0 = input.LA(1);
 			if ( (LA76_0==WS) ) {
@@ -2152,16 +2184,16 @@ public class druidGParser extends Parser {
 			}
 			switch (alt76) {
 				case 1 :
-					// druidG.g:129:139: WS
+					// druidG.g:124:10: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt913); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt929); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_insertRTStmnt916); 
-			// druidG.g:129:150: ( WS )?
+			match(input,LPARAN,FOLLOW_LPARAN_in_insertRTStmnt932); 
+			// druidG.g:124:21: ( WS )?
 			int alt77=2;
 			int LA77_0 = input.LA(1);
 			if ( (LA77_0==WS) ) {
@@ -2169,114 +2201,78 @@ public class druidGParser extends Parser {
 			}
 			switch (alt77) {
 				case 1 :
-					// druidG.g:129:150: WS
+					// druidG.g:124:21: WS
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt918); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt934); 
 					}
 					break;
 
 			}
 
-			}
-
-			match(input,VALUES,FOLLOW_VALUES_in_insertRTStmnt924); 
-			// druidG.g:130:10: ( WS )?
-			int alt78=2;
-			int LA78_0 = input.LA(1);
-			if ( (LA78_0==WS) ) {
-				alt78=1;
-			}
-			switch (alt78) {
-				case 1 :
-					// druidG.g:130:10: WS
-					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt926); 
-					}
-					break;
-
-			}
-
-			match(input,LPARAN,FOLLOW_LPARAN_in_insertRTStmnt929); 
-			// druidG.g:130:21: ( WS )?
-			int alt79=2;
-			int LA79_0 = input.LA(1);
-			if ( (LA79_0==WS) ) {
-				alt79=1;
-			}
-			switch (alt79) {
-				case 1 :
-					// druidG.g:130:21: WS
-					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt931); 
-					}
-					break;
-
-			}
-
-			// druidG.g:130:25: (a= anyValue )
-			// druidG.g:130:26: a= anyValue
+			// druidG.g:124:25: (a= anyValue )
+			// druidG.g:124:26: a= anyValue
 			{
-			pushFollow(FOLLOW_anyValue_in_insertRTStmnt937);
+			pushFollow(FOLLOW_anyValue_in_insertRTStmnt940);
 			a=anyValue();
 			state._fsp--;
 
 			iMeta.values.add(a);
 			}
 
-			// druidG.g:130:62: ( ( WS )? ',' ( WS )? a= anyValue )*
-			loop82:
+			// druidG.g:124:62: ( ( WS )? ',' ( WS )? a= anyValue )*
+			loop80:
 			while (true) {
-				int alt82=2;
-				int LA82_0 = input.LA(1);
-				if ( (LA82_0==WS) ) {
-					int LA82_1 = input.LA(2);
-					if ( (LA82_1==91) ) {
-						alt82=1;
-					}
-
-				}
-				else if ( (LA82_0==91) ) {
-					alt82=1;
-				}
-
-				switch (alt82) {
-				case 1 :
-					// druidG.g:130:63: ( WS )? ',' ( WS )? a= anyValue
-					{
-					// druidG.g:130:63: ( WS )?
-					int alt80=2;
-					int LA80_0 = input.LA(1);
-					if ( (LA80_0==WS) ) {
+				int alt80=2;
+				int LA80_0 = input.LA(1);
+				if ( (LA80_0==WS) ) {
+					int LA80_1 = input.LA(2);
+					if ( (LA80_1==91) ) {
 						alt80=1;
 					}
-					switch (alt80) {
+
+				}
+				else if ( (LA80_0==91) ) {
+					alt80=1;
+				}
+
+				switch (alt80) {
+				case 1 :
+					// druidG.g:124:63: ( WS )? ',' ( WS )? a= anyValue
+					{
+					// druidG.g:124:63: ( WS )?
+					int alt78=2;
+					int LA78_0 = input.LA(1);
+					if ( (LA78_0==WS) ) {
+						alt78=1;
+					}
+					switch (alt78) {
 						case 1 :
-							// druidG.g:130:63: WS
+							// druidG.g:124:63: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertRTStmnt944); 
+							match(input,WS,FOLLOW_WS_in_insertRTStmnt947); 
 							}
 							break;
 
 					}
 
-					match(input,91,FOLLOW_91_in_insertRTStmnt947); 
-					// druidG.g:130:71: ( WS )?
-					int alt81=2;
-					int LA81_0 = input.LA(1);
-					if ( (LA81_0==WS) ) {
-						alt81=1;
+					match(input,91,FOLLOW_91_in_insertRTStmnt950); 
+					// druidG.g:124:71: ( WS )?
+					int alt79=2;
+					int LA79_0 = input.LA(1);
+					if ( (LA79_0==WS) ) {
+						alt79=1;
 					}
-					switch (alt81) {
+					switch (alt79) {
 						case 1 :
-							// druidG.g:130:71: WS
+							// druidG.g:124:71: WS
 							{
-							match(input,WS,FOLLOW_WS_in_insertRTStmnt949); 
+							match(input,WS,FOLLOW_WS_in_insertRTStmnt952); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_anyValue_in_insertRTStmnt954);
+					pushFollow(FOLLOW_anyValue_in_insertRTStmnt957);
 					a=anyValue();
 					state._fsp--;
 
@@ -2285,56 +2281,56 @@ public class druidGParser extends Parser {
 					break;
 
 				default :
-					break loop82;
+					break loop80;
 				}
 			}
 
-			// druidG.g:130:111: ( WS )?
+			// druidG.g:124:111: ( WS )?
+			int alt81=2;
+			int LA81_0 = input.LA(1);
+			if ( (LA81_0==WS) ) {
+				alt81=1;
+			}
+			switch (alt81) {
+				case 1 :
+					// druidG.g:124:111: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt963); 
+					}
+					break;
+
+			}
+
+			match(input,RPARAN,FOLLOW_RPARAN_in_insertRTStmnt966); 
+			// druidG.g:124:122: ( WS )?
+			int alt82=2;
+			int LA82_0 = input.LA(1);
+			if ( (LA82_0==WS) ) {
+				alt82=1;
+			}
+			switch (alt82) {
+				case 1 :
+					// druidG.g:124:122: WS
+					{
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt968); 
+					}
+					break;
+
+			}
+
+			// druidG.g:125:3: ( WHERE WS i= intervalClause )?
 			int alt83=2;
 			int LA83_0 = input.LA(1);
-			if ( (LA83_0==WS) ) {
+			if ( (LA83_0==WHERE) ) {
 				alt83=1;
 			}
 			switch (alt83) {
 				case 1 :
-					// druidG.g:130:111: WS
+					// druidG.g:125:4: WHERE WS i= intervalClause
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt960); 
-					}
-					break;
-
-			}
-
-			match(input,RPARAN,FOLLOW_RPARAN_in_insertRTStmnt963); 
-			// druidG.g:130:122: ( WS )?
-			int alt84=2;
-			int LA84_0 = input.LA(1);
-			if ( (LA84_0==WS) ) {
-				alt84=1;
-			}
-			switch (alt84) {
-				case 1 :
-					// druidG.g:130:122: WS
-					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt965); 
-					}
-					break;
-
-			}
-
-			// druidG.g:131:3: ( WHERE WS i= intervalClause )?
-			int alt85=2;
-			int LA85_0 = input.LA(1);
-			if ( (LA85_0==WHERE) ) {
-				alt85=1;
-			}
-			switch (alt85) {
-				case 1 :
-					// druidG.g:131:4: WHERE WS i= intervalClause
-					{
-					match(input,WHERE,FOLLOW_WHERE_in_insertRTStmnt971); 
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt973); 
-					pushFollow(FOLLOW_intervalClause_in_insertRTStmnt977);
+					match(input,WHERE,FOLLOW_WHERE_in_insertRTStmnt974); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt976); 
+					pushFollow(FOLLOW_intervalClause_in_insertRTStmnt980);
 					i=intervalClause();
 					state._fsp--;
 
@@ -2343,25 +2339,25 @@ public class druidGParser extends Parser {
 
 			}
 
-			// druidG.g:132:4: ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
-			int alt86=2;
-			int LA86_0 = input.LA(1);
-			if ( (LA86_0==WS) ) {
-				int LA86_1 = input.LA(2);
-				if ( (LA86_1==BREAK) ) {
-					alt86=1;
+			// druidG.g:126:4: ( WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING )?
+			int alt84=2;
+			int LA84_0 = input.LA(1);
+			if ( (LA84_0==WS) ) {
+				int LA84_1 = input.LA(2);
+				if ( (LA84_1==BREAK) ) {
+					alt84=1;
 				}
 			}
-			switch (alt86) {
+			switch (alt84) {
 				case 1 :
-					// druidG.g:132:5: WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING
+					// druidG.g:126:5: WS BREAK WS BY WS gran= SINGLE_QUOTE_STRING
 					{
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt985); 
-					match(input,BREAK,FOLLOW_BREAK_in_insertRTStmnt987); 
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt989); 
-					match(input,BY,FOLLOW_BY_in_insertRTStmnt991); 
-					match(input,WS,FOLLOW_WS_in_insertRTStmnt993); 
-					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertRTStmnt997); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt988); 
+					match(input,BREAK,FOLLOW_BREAK_in_insertRTStmnt990); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt992); 
+					match(input,BY,FOLLOW_BY_in_insertRTStmnt994); 
+					match(input,WS,FOLLOW_WS_in_insertRTStmnt996); 
+					gran=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_insertRTStmnt1000); 
 					 iMeta.granularitySpec = new GranularitySpec(unquote((gran!=null?gran.getText():null)));
 					}
 					break;
@@ -2390,7 +2386,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "grandQuery"
-	// druidG.g:140:1: grandQuery returns [QueryProgram program] : (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? ;
+	// druidG.g:134:1: grandQuery returns [QueryProgram program] : (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? ;
 	public final QueryProgram grandQuery() throws RecognitionException {
 		QueryProgram program = null;
 
@@ -2402,33 +2398,33 @@ public class druidGParser extends Parser {
 
 		 program = null; 
 		try {
-			// druidG.g:142:2: ( (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? )
-			// druidG.g:142:4: (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )?
+			// druidG.g:136:2: ( (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? )
+			// druidG.g:136:4: (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )?
 			{
-			// druidG.g:142:4: (s1= queryStmnt )
-			// druidG.g:142:5: s1= queryStmnt
+			// druidG.g:136:4: (s1= queryStmnt )
+			// druidG.g:136:5: s1= queryStmnt
 			{
-			pushFollow(FOLLOW_queryStmnt_in_grandQuery1031);
+			pushFollow(FOLLOW_queryStmnt_in_grandQuery1034);
 			s1=queryStmnt();
 			state._fsp--;
 
 			}
 
 			 program = new QueryProgram();program.addStmnt(s1); 
-			// druidG.g:143:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )?
-			int alt97=2;
-			int LA97_0 = input.LA(1);
-			if ( (LA97_0==WS) ) {
-				int LA97_1 = input.LA(2);
-				if ( (LA97_1==JOIN||LA97_1==LEFT_JOIN||LA97_1==RIGHT_JOIN) ) {
-					alt97=1;
+			// druidG.g:137:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )?
+			int alt95=2;
+			int LA95_0 = input.LA(1);
+			if ( (LA95_0==WS) ) {
+				int LA95_1 = input.LA(2);
+				if ( (LA95_1==JOIN||LA95_1==LEFT_JOIN||LA95_1==RIGHT_JOIN) ) {
+					alt95=1;
 				}
 			}
-			switch (alt97) {
+			switch (alt95) {
 				case 1 :
-					// druidG.g:143:5: WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN
+					// druidG.g:137:5: WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN
 					{
-					match(input,WS,FOLLOW_WS_in_grandQuery1041); 
+					match(input,WS,FOLLOW_WS_in_grandQuery1044); 
 					j=input.LT(1);
 					if ( input.LA(1)==JOIN||input.LA(1)==LEFT_JOIN||input.LA(1)==RIGHT_JOIN ) {
 						input.consume();
@@ -2439,7 +2435,50 @@ public class druidGParser extends Parser {
 						throw mse;
 					}
 					program.addJoinType((j!=null?j.getText():null).toUpperCase());
-					// druidG.g:145:5: ( WS )?
+					// druidG.g:139:5: ( WS )?
+					int alt85=2;
+					int LA85_0 = input.LA(1);
+					if ( (LA85_0==WS) ) {
+						alt85=1;
+					}
+					switch (alt85) {
+						case 1 :
+							// druidG.g:139:5: WS
+							{
+							match(input,WS,FOLLOW_WS_in_grandQuery1069); 
+							}
+							break;
+
+					}
+
+					match(input,LPARAN,FOLLOW_LPARAN_in_grandQuery1072); 
+					// druidG.g:139:16: ( WS )?
+					int alt86=2;
+					int LA86_0 = input.LA(1);
+					if ( (LA86_0==WS) ) {
+						alt86=1;
+					}
+					switch (alt86) {
+						case 1 :
+							// druidG.g:139:16: WS
+							{
+							match(input,WS,FOLLOW_WS_in_grandQuery1074); 
+							}
+							break;
+
+					}
+
+					// druidG.g:139:20: (s2= queryStmnt )
+					// druidG.g:139:21: s2= queryStmnt
+					{
+					pushFollow(FOLLOW_queryStmnt_in_grandQuery1080);
+					s2=queryStmnt();
+					state._fsp--;
+
+					}
+
+					program.addStmnt(s2);
+					// druidG.g:139:60: ( WS )?
 					int alt87=2;
 					int LA87_0 = input.LA(1);
 					if ( (LA87_0==WS) ) {
@@ -2447,16 +2486,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt87) {
 						case 1 :
-							// druidG.g:145:5: WS
+							// druidG.g:139:60: WS
 							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1066); 
+							match(input,WS,FOLLOW_WS_in_grandQuery1085); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_grandQuery1069); 
-					// druidG.g:145:16: ( WS )?
+					match(input,RPARAN,FOLLOW_RPARAN_in_grandQuery1088); 
+					// druidG.g:139:71: ( WS )?
 					int alt88=2;
 					int LA88_0 = input.LA(1);
 					if ( (LA88_0==WS) ) {
@@ -2464,25 +2503,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt88) {
 						case 1 :
-							// druidG.g:145:16: WS
+							// druidG.g:139:71: WS
 							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1071); 
+							match(input,WS,FOLLOW_WS_in_grandQuery1090); 
 							}
 							break;
 
 					}
 
-					// druidG.g:145:20: (s2= queryStmnt )
-					// druidG.g:145:21: s2= queryStmnt
-					{
-					pushFollow(FOLLOW_queryStmnt_in_grandQuery1077);
-					s2=queryStmnt();
-					state._fsp--;
-
-					}
-
-					program.addStmnt(s2);
-					// druidG.g:145:60: ( WS )?
+					match(input,ON,FOLLOW_ON_in_grandQuery1093); 
+					// druidG.g:140:5: ( WS )?
 					int alt89=2;
 					int LA89_0 = input.LA(1);
 					if ( (LA89_0==WS) ) {
@@ -2490,16 +2520,16 @@ public class druidGParser extends Parser {
 					}
 					switch (alt89) {
 						case 1 :
-							// druidG.g:145:60: WS
+							// druidG.g:140:5: WS
 							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1082); 
+							match(input,WS,FOLLOW_WS_in_grandQuery1100); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_grandQuery1085); 
-					// druidG.g:145:71: ( WS )?
+					match(input,LPARAN,FOLLOW_LPARAN_in_grandQuery1103); 
+					// druidG.g:140:16: ( WS )?
 					int alt90=2;
 					int LA90_0 = input.LA(1);
 					if ( (LA90_0==WS) ) {
@@ -2507,167 +2537,133 @@ public class druidGParser extends Parser {
 					}
 					switch (alt90) {
 						case 1 :
-							// druidG.g:145:71: WS
+							// druidG.g:140:16: WS
 							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1087); 
+							match(input,WS,FOLLOW_WS_in_grandQuery1105); 
 							}
 							break;
 
 					}
 
-					match(input,ON,FOLLOW_ON_in_grandQuery1090); 
-					// druidG.g:146:5: ( WS )?
-					int alt91=2;
-					int LA91_0 = input.LA(1);
-					if ( (LA91_0==WS) ) {
-						alt91=1;
-					}
-					switch (alt91) {
-						case 1 :
-							// druidG.g:146:5: WS
-							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1097); 
-							}
-							break;
-
-					}
-
-					match(input,LPARAN,FOLLOW_LPARAN_in_grandQuery1100); 
-					// druidG.g:146:16: ( WS )?
-					int alt92=2;
-					int LA92_0 = input.LA(1);
-					if ( (LA92_0==WS) ) {
-						alt92=1;
-					}
-					switch (alt92) {
-						case 1 :
-							// druidG.g:146:16: WS
-							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1102); 
-							}
-							break;
-
-					}
-
-					// druidG.g:146:20: (a= ID )
-					// druidG.g:146:21: a= ID
+					// druidG.g:140:20: (a= ID )
+					// druidG.g:140:21: a= ID
 					{
-					a=(Token)match(input,ID,FOLLOW_ID_in_grandQuery1108); 
+					a=(Token)match(input,ID,FOLLOW_ID_in_grandQuery1111); 
 					 program.addJoinHook((a!=null?a.getText():null)); 
 					}
 
-					// druidG.g:146:60: ( ( WS )? ',' ( WS )? a= ID )*
-					loop95:
+					// druidG.g:140:60: ( ( WS )? ',' ( WS )? a= ID )*
+					loop93:
 					while (true) {
-						int alt95=2;
-						int LA95_0 = input.LA(1);
-						if ( (LA95_0==WS) ) {
-							int LA95_1 = input.LA(2);
-							if ( (LA95_1==91) ) {
-								alt95=1;
-							}
-
-						}
-						else if ( (LA95_0==91) ) {
-							alt95=1;
-						}
-
-						switch (alt95) {
-						case 1 :
-							// druidG.g:146:61: ( WS )? ',' ( WS )? a= ID
-							{
-							// druidG.g:146:61: ( WS )?
-							int alt93=2;
-							int LA93_0 = input.LA(1);
-							if ( (LA93_0==WS) ) {
+						int alt93=2;
+						int LA93_0 = input.LA(1);
+						if ( (LA93_0==WS) ) {
+							int LA93_1 = input.LA(2);
+							if ( (LA93_1==91) ) {
 								alt93=1;
 							}
-							switch (alt93) {
+
+						}
+						else if ( (LA93_0==91) ) {
+							alt93=1;
+						}
+
+						switch (alt93) {
+						case 1 :
+							// druidG.g:140:61: ( WS )? ',' ( WS )? a= ID
+							{
+							// druidG.g:140:61: ( WS )?
+							int alt91=2;
+							int LA91_0 = input.LA(1);
+							if ( (LA91_0==WS) ) {
+								alt91=1;
+							}
+							switch (alt91) {
 								case 1 :
-									// druidG.g:146:61: WS
+									// druidG.g:140:61: WS
 									{
-									match(input,WS,FOLLOW_WS_in_grandQuery1113); 
+									match(input,WS,FOLLOW_WS_in_grandQuery1116); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_grandQuery1116); 
-							// druidG.g:146:69: ( WS )?
-							int alt94=2;
-							int LA94_0 = input.LA(1);
-							if ( (LA94_0==WS) ) {
-								alt94=1;
+							match(input,91,FOLLOW_91_in_grandQuery1119); 
+							// druidG.g:140:69: ( WS )?
+							int alt92=2;
+							int LA92_0 = input.LA(1);
+							if ( (LA92_0==WS) ) {
+								alt92=1;
 							}
-							switch (alt94) {
+							switch (alt92) {
 								case 1 :
-									// druidG.g:146:69: WS
+									// druidG.g:140:69: WS
 									{
-									match(input,WS,FOLLOW_WS_in_grandQuery1118); 
+									match(input,WS,FOLLOW_WS_in_grandQuery1121); 
 									}
 									break;
 
 							}
 
-							a=(Token)match(input,ID,FOLLOW_ID_in_grandQuery1123); 
+							a=(Token)match(input,ID,FOLLOW_ID_in_grandQuery1126); 
 							 program.addJoinHook((a!=null?a.getText():null)); 
 							}
 							break;
 
 						default :
-							break loop95;
+							break loop93;
 						}
 					}
 
-					// druidG.g:146:114: ( WS )?
-					int alt96=2;
-					int LA96_0 = input.LA(1);
-					if ( (LA96_0==WS) ) {
-						alt96=1;
+					// druidG.g:140:114: ( WS )?
+					int alt94=2;
+					int LA94_0 = input.LA(1);
+					if ( (LA94_0==WS) ) {
+						alt94=1;
 					}
-					switch (alt96) {
+					switch (alt94) {
 						case 1 :
-							// druidG.g:146:114: WS
+							// druidG.g:140:114: WS
 							{
-							match(input,WS,FOLLOW_WS_in_grandQuery1129); 
+							match(input,WS,FOLLOW_WS_in_grandQuery1132); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_grandQuery1132); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_grandQuery1135); 
 					}
 					break;
 
 			}
 
-			// druidG.g:148:4: ( WS )?
-			int alt98=2;
-			int LA98_0 = input.LA(1);
-			if ( (LA98_0==WS) ) {
-				alt98=1;
+			// druidG.g:142:4: ( WS )?
+			int alt96=2;
+			int LA96_0 = input.LA(1);
+			if ( (LA96_0==WS) ) {
+				alt96=1;
 			}
-			switch (alt98) {
+			switch (alt96) {
 				case 1 :
-					// druidG.g:148:4: WS
+					// druidG.g:142:4: WS
 					{
-					match(input,WS,FOLLOW_WS_in_grandQuery1151); 
+					match(input,WS,FOLLOW_WS_in_grandQuery1154); 
 					}
 					break;
 
 			}
 
-			// druidG.g:148:8: ( OPT_SEMI_COLON )?
-			int alt99=2;
-			int LA99_0 = input.LA(1);
-			if ( (LA99_0==OPT_SEMI_COLON) ) {
-				alt99=1;
+			// druidG.g:142:8: ( OPT_SEMI_COLON )?
+			int alt97=2;
+			int LA97_0 = input.LA(1);
+			if ( (LA97_0==OPT_SEMI_COLON) ) {
+				alt97=1;
 			}
-			switch (alt99) {
+			switch (alt97) {
 				case 1 :
-					// druidG.g:148:8: OPT_SEMI_COLON
+					// druidG.g:142:8: OPT_SEMI_COLON
 					{
-					match(input,OPT_SEMI_COLON,FOLLOW_OPT_SEMI_COLON_in_grandQuery1154); 
+					match(input,OPT_SEMI_COLON,FOLLOW_OPT_SEMI_COLON_in_grandQuery1157); 
 					}
 					break;
 
@@ -2691,7 +2687,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "queryStmnt"
-	// druidG.g:151:1: queryStmnt returns [QueryMeta qMeta] : SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )? ;
+	// druidG.g:145:1: queryStmnt returns [QueryMeta qMeta] : SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )? ;
 	public final QueryMeta queryStmnt() throws RecognitionException {
 		QueryMeta qMeta = null;
 
@@ -2712,88 +2708,88 @@ public class druidGParser extends Parser {
 			qMeta.intervals = new ArrayList<>();
 		      
 		try {
-			// druidG.g:156:2: ( SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )? )
-			// druidG.g:156:4: SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )?
+			// druidG.g:150:2: ( SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )? )
+			// druidG.g:150:4: SELECT ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )? WS FROM ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) ) ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )?
 			{
-			match(input,SELECT,FOLLOW_SELECT_in_queryStmnt1177); 
-			// druidG.g:157:7: ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )?
-			int alt103=3;
-			int LA103_0 = input.LA(1);
-			if ( (LA103_0==WS) ) {
-				int LA103_1 = input.LA(2);
-				if ( (LA103_1==90) ) {
-					alt103=2;
+			match(input,SELECT,FOLLOW_SELECT_in_queryStmnt1180); 
+			// druidG.g:151:7: ( ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* ) | ( WS '*' ) )?
+			int alt101=3;
+			int LA101_0 = input.LA(1);
+			if ( (LA101_0==WS) ) {
+				int LA101_1 = input.LA(2);
+				if ( (LA101_1==90) ) {
+					alt101=2;
 				}
-				else if ( (LA103_1==COUNT||LA103_1==DOUBLE_SUM||(LA103_1 >= HYPER_UNIQUE && LA103_1 <= ID)||LA103_1==JAVASCRIPT||LA103_1==LONG_SUM||LA103_1==MAX||LA103_1==MIN||LA103_1==UNIQUE) ) {
-					alt103=1;
+				else if ( (LA101_1==COUNT||LA101_1==DOUBLE_SUM||(LA101_1 >= HYPER_UNIQUE && LA101_1 <= ID)||LA101_1==JAVASCRIPT||LA101_1==LONG_SUM||LA101_1==MAX||LA101_1==MIN||LA101_1==UNIQUE) ) {
+					alt101=1;
 				}
 			}
-			switch (alt103) {
+			switch (alt101) {
 				case 1 :
-					// druidG.g:158:8: ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
+					// druidG.g:152:8: ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
 					{
-					// druidG.g:158:8: ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
-					// druidG.g:159:9: WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
+					// druidG.g:152:8: ( WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )* )
+					// druidG.g:153:9: WS selectItems[qMeta] ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
 					{
-					match(input,WS,FOLLOW_WS_in_queryStmnt1205); 
-					pushFollow(FOLLOW_selectItems_in_queryStmnt1207);
+					match(input,WS,FOLLOW_WS_in_queryStmnt1208); 
+					pushFollow(FOLLOW_selectItems_in_queryStmnt1210);
 					selectItems(qMeta);
 					state._fsp--;
 
-					// druidG.g:159:31: ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
-					loop102:
+					// druidG.g:153:31: ( ( WS )? ',' ( WS )? selectItems[qMeta] )*
+					loop100:
 					while (true) {
-						int alt102=2;
-						int LA102_0 = input.LA(1);
-						if ( (LA102_0==WS) ) {
-							int LA102_1 = input.LA(2);
-							if ( (LA102_1==91) ) {
-								alt102=1;
-							}
-
-						}
-						else if ( (LA102_0==91) ) {
-							alt102=1;
-						}
-
-						switch (alt102) {
-						case 1 :
-							// druidG.g:159:32: ( WS )? ',' ( WS )? selectItems[qMeta]
-							{
-							// druidG.g:159:32: ( WS )?
-							int alt100=2;
-							int LA100_0 = input.LA(1);
-							if ( (LA100_0==WS) ) {
+						int alt100=2;
+						int LA100_0 = input.LA(1);
+						if ( (LA100_0==WS) ) {
+							int LA100_1 = input.LA(2);
+							if ( (LA100_1==91) ) {
 								alt100=1;
 							}
-							switch (alt100) {
+
+						}
+						else if ( (LA100_0==91) ) {
+							alt100=1;
+						}
+
+						switch (alt100) {
+						case 1 :
+							// druidG.g:153:32: ( WS )? ',' ( WS )? selectItems[qMeta]
+							{
+							// druidG.g:153:32: ( WS )?
+							int alt98=2;
+							int LA98_0 = input.LA(1);
+							if ( (LA98_0==WS) ) {
+								alt98=1;
+							}
+							switch (alt98) {
 								case 1 :
-									// druidG.g:159:32: WS
+									// druidG.g:153:32: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1211); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1214); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_queryStmnt1214); 
-							// druidG.g:159:40: ( WS )?
-							int alt101=2;
-							int LA101_0 = input.LA(1);
-							if ( (LA101_0==WS) ) {
-								alt101=1;
+							match(input,91,FOLLOW_91_in_queryStmnt1217); 
+							// druidG.g:153:40: ( WS )?
+							int alt99=2;
+							int LA99_0 = input.LA(1);
+							if ( (LA99_0==WS) ) {
+								alt99=1;
 							}
-							switch (alt101) {
+							switch (alt99) {
 								case 1 :
-									// druidG.g:159:40: WS
+									// druidG.g:153:40: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1216); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1219); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_selectItems_in_queryStmnt1219);
+							pushFollow(FOLLOW_selectItems_in_queryStmnt1222);
 							selectItems(qMeta);
 							state._fsp--;
 
@@ -2801,7 +2797,7 @@ public class druidGParser extends Parser {
 							break;
 
 						default :
-							break loop102;
+							break loop100;
 						}
 					}
 
@@ -2810,13 +2806,13 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:162:8: ( WS '*' )
+					// druidG.g:156:8: ( WS '*' )
 					{
-					// druidG.g:162:8: ( WS '*' )
-					// druidG.g:162:9: WS '*'
+					// druidG.g:156:8: ( WS '*' )
+					// druidG.g:156:9: WS '*'
 					{
-					match(input,WS,FOLLOW_WS_in_queryStmnt1250); 
-					match(input,90,FOLLOW_90_in_queryStmnt1252); 
+					match(input,WS,FOLLOW_WS_in_queryStmnt1253); 
+					match(input,90,FOLLOW_90_in_queryStmnt1255); 
 					}
 
 					}
@@ -2824,18 +2820,18 @@ public class druidGParser extends Parser {
 
 			}
 
-			match(input,WS,FOLLOW_WS_in_queryStmnt1267); 
-			match(input,FROM,FOLLOW_FROM_in_queryStmnt1269); 
-			// druidG.g:165:4: ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) )
-			int alt104=2;
-			int LA104_0 = input.LA(1);
-			if ( (LA104_0==WS) ) {
-				int LA104_1 = input.LA(2);
-				if ( (LA104_1==ID) ) {
-					alt104=1;
+			match(input,WS,FOLLOW_WS_in_queryStmnt1270); 
+			match(input,FROM,FOLLOW_FROM_in_queryStmnt1272); 
+			// druidG.g:159:4: ( ( WS id= ID ) | ( WS LPARAN (fromQuery= queryStmnt ) RPARAN ) )
+			int alt102=2;
+			int LA102_0 = input.LA(1);
+			if ( (LA102_0==WS) ) {
+				int LA102_1 = input.LA(2);
+				if ( (LA102_1==ID) ) {
+					alt102=1;
 				}
-				else if ( (LA104_1==LPARAN) ) {
-					alt104=2;
+				else if ( (LA102_1==LPARAN) ) {
+					alt102=2;
 				}
 
 				else {
@@ -2843,7 +2839,7 @@ public class druidGParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 104, 1, input);
+							new NoViableAltException("", 102, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -2854,42 +2850,42 @@ public class druidGParser extends Parser {
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 104, 0, input);
+					new NoViableAltException("", 102, 0, input);
 				throw nvae;
 			}
 
-			switch (alt104) {
+			switch (alt102) {
 				case 1 :
-					// druidG.g:166:13: ( WS id= ID )
+					// druidG.g:160:13: ( WS id= ID )
 					{
-					// druidG.g:166:13: ( WS id= ID )
-					// druidG.g:166:14: WS id= ID
+					// druidG.g:160:13: ( WS id= ID )
+					// druidG.g:160:14: WS id= ID
 					{
-					match(input,WS,FOLLOW_WS_in_queryStmnt1290); 
-					id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1294); 
+					match(input,WS,FOLLOW_WS_in_queryStmnt1293); 
+					id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1297); 
 					 qMeta.dataSource = (id!=null?id.getText():null); 
 					}
 
 					}
 					break;
 				case 2 :
-					// druidG.g:168:11: ( WS LPARAN (fromQuery= queryStmnt ) RPARAN )
+					// druidG.g:162:11: ( WS LPARAN (fromQuery= queryStmnt ) RPARAN )
 					{
-					// druidG.g:168:11: ( WS LPARAN (fromQuery= queryStmnt ) RPARAN )
-					// druidG.g:168:12: WS LPARAN (fromQuery= queryStmnt ) RPARAN
+					// druidG.g:162:11: ( WS LPARAN (fromQuery= queryStmnt ) RPARAN )
+					// druidG.g:162:12: WS LPARAN (fromQuery= queryStmnt ) RPARAN
 					{
-					match(input,WS,FOLLOW_WS_in_queryStmnt1331); 
-					match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1333); 
-					// druidG.g:168:22: (fromQuery= queryStmnt )
-					// druidG.g:168:23: fromQuery= queryStmnt
+					match(input,WS,FOLLOW_WS_in_queryStmnt1334); 
+					match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1336); 
+					// druidG.g:162:22: (fromQuery= queryStmnt )
+					// druidG.g:162:23: fromQuery= queryStmnt
 					{
-					pushFollow(FOLLOW_queryStmnt_in_queryStmnt1338);
+					pushFollow(FOLLOW_queryStmnt_in_queryStmnt1341);
 					fromQuery=queryStmnt();
 					state._fsp--;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1341); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1344); 
 					qMeta.queryDataSource = fromQuery;
 					}
 
@@ -2903,48 +2899,48 @@ public class druidGParser extends Parser {
 				  		     qMeta = SelectQueryMeta.promote(qMeta);
 				  	     }
 				     
-			// druidG.g:174:2: ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )?
-			int alt129=2;
-			int LA129_0 = input.LA(1);
-			if ( (LA129_0==WS) ) {
-				int LA129_1 = input.LA(2);
-				if ( (LA129_1==WHERE) ) {
-					alt129=1;
+			// druidG.g:168:2: ( WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )? )?
+			int alt127=2;
+			int LA127_0 = input.LA(1);
+			if ( (LA127_0==WS) ) {
+				int LA127_1 = input.LA(2);
+				if ( (LA127_1==WHERE) ) {
+					alt127=1;
 				}
 			}
-			switch (alt129) {
+			switch (alt127) {
 				case 1 :
-					// druidG.g:175:4: WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
+					// druidG.g:169:4: WS WHERE WS whereClause[qMeta] ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? ) ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )? ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
 					{
-					match(input,WS,FOLLOW_WS_in_queryStmnt1360); 
-					match(input,WHERE,FOLLOW_WHERE_in_queryStmnt1362); 
-					match(input,WS,FOLLOW_WS_in_queryStmnt1364); 
-					pushFollow(FOLLOW_whereClause_in_queryStmnt1366);
+					match(input,WS,FOLLOW_WS_in_queryStmnt1363); 
+					match(input,WHERE,FOLLOW_WHERE_in_queryStmnt1365); 
+					match(input,WS,FOLLOW_WS_in_queryStmnt1367); 
+					pushFollow(FOLLOW_whereClause_in_queryStmnt1369);
 					whereClause(qMeta);
 					state._fsp--;
 
-					// druidG.g:176:4: ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? )
-					// druidG.g:177:5: ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )?
+					// druidG.g:170:4: ( ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )? )
+					// druidG.g:171:5: ( WS BREAK WS BY WS gran= granularityClause )? ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )? ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )? ( WS LIMIT WS (l= LONG ) )? ( WS THEN WS p= postAggItem )?
 					{
-					// druidG.g:177:5: ( WS BREAK WS BY WS gran= granularityClause )?
-					int alt105=2;
-					int LA105_0 = input.LA(1);
-					if ( (LA105_0==WS) ) {
-						int LA105_1 = input.LA(2);
-						if ( (LA105_1==BREAK) ) {
-							alt105=1;
+					// druidG.g:171:5: ( WS BREAK WS BY WS gran= granularityClause )?
+					int alt103=2;
+					int LA103_0 = input.LA(1);
+					if ( (LA103_0==WS) ) {
+						int LA103_1 = input.LA(2);
+						if ( (LA103_1==BREAK) ) {
+							alt103=1;
 						}
 					}
-					switch (alt105) {
+					switch (alt103) {
 						case 1 :
-							// druidG.g:177:6: WS BREAK WS BY WS gran= granularityClause
+							// druidG.g:171:6: WS BREAK WS BY WS gran= granularityClause
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1384); 
-							match(input,BREAK,FOLLOW_BREAK_in_queryStmnt1386); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1388); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt1390); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1392); 
-							pushFollow(FOLLOW_granularityClause_in_queryStmnt1396);
+							match(input,WS,FOLLOW_WS_in_queryStmnt1387); 
+							match(input,BREAK,FOLLOW_BREAK_in_queryStmnt1389); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1391); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt1393); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1395); 
+							pushFollow(FOLLOW_granularityClause_in_queryStmnt1399);
 							gran=granularityClause();
 							state._fsp--;
 
@@ -2959,93 +2955,93 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:184:5: ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )?
-					int alt110=2;
-					int LA110_0 = input.LA(1);
-					if ( (LA110_0==WS) ) {
-						int LA110_1 = input.LA(2);
-						if ( (LA110_1==GROUP) ) {
-							alt110=1;
+					// druidG.g:178:5: ( WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )? )?
+					int alt108=2;
+					int LA108_0 = input.LA(1);
+					if ( (LA108_0==WS) ) {
+						int LA108_1 = input.LA(2);
+						if ( (LA108_1==GROUP) ) {
+							alt108=1;
 						}
 					}
-					switch (alt110) {
+					switch (alt108) {
 						case 1 :
-							// druidG.g:184:6: WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )?
+							// druidG.g:178:6: WS GROUP WS BY WS (id= ID ( ( WS )? ',' ( WS )? id= ID )* ) ( WS HAVING WS h= havingClause )?
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1413); 
-							match(input,GROUP,FOLLOW_GROUP_in_queryStmnt1415); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1417); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt1419); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1421); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1416); 
+							match(input,GROUP,FOLLOW_GROUP_in_queryStmnt1418); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1420); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt1422); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1424); 
 
 									       qMeta = GroupByQueryMeta.promote(qMeta);
 									       if (((GroupByQueryMeta)qMeta).fetchDimensions == null) {
 									          System.err.println("No dimensions !! ");
 									       }
 									      
-							// druidG.g:191:10: (id= ID ( ( WS )? ',' ( WS )? id= ID )* )
-							// druidG.g:191:11: id= ID ( ( WS )? ',' ( WS )? id= ID )*
+							// druidG.g:185:10: (id= ID ( ( WS )? ',' ( WS )? id= ID )* )
+							// druidG.g:185:11: id= ID ( ( WS )? ',' ( WS )? id= ID )*
 							{
-							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1447); 
+							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1450); 
 
 									              if (!((GroupByQueryMeta)qMeta).checkDimOrAlias((id!=null?id.getText():null))) {
 									                 System.err.println("Dimension/Alias " + (id!=null?id.getText():null) + " not valid..");
 									              }   
 									           
-							// druidG.g:197:14: ( ( WS )? ',' ( WS )? id= ID )*
-							loop108:
+							// druidG.g:191:14: ( ( WS )? ',' ( WS )? id= ID )*
+							loop106:
 							while (true) {
-								int alt108=2;
-								int LA108_0 = input.LA(1);
-								if ( (LA108_0==WS) ) {
-									int LA108_1 = input.LA(2);
-									if ( (LA108_1==91) ) {
-										alt108=1;
-									}
-
-								}
-								else if ( (LA108_0==91) ) {
-									alt108=1;
-								}
-
-								switch (alt108) {
-								case 1 :
-									// druidG.g:197:15: ( WS )? ',' ( WS )? id= ID
-									{
-									// druidG.g:197:15: ( WS )?
-									int alt106=2;
-									int LA106_0 = input.LA(1);
-									if ( (LA106_0==WS) ) {
+								int alt106=2;
+								int LA106_0 = input.LA(1);
+								if ( (LA106_0==WS) ) {
+									int LA106_1 = input.LA(2);
+									if ( (LA106_1==91) ) {
 										alt106=1;
 									}
-									switch (alt106) {
+
+								}
+								else if ( (LA106_0==91) ) {
+									alt106=1;
+								}
+
+								switch (alt106) {
+								case 1 :
+									// druidG.g:191:15: ( WS )? ',' ( WS )? id= ID
+									{
+									// druidG.g:191:15: ( WS )?
+									int alt104=2;
+									int LA104_0 = input.LA(1);
+									if ( (LA104_0==WS) ) {
+										alt104=1;
+									}
+									switch (alt104) {
 										case 1 :
-											// druidG.g:197:15: WS
+											// druidG.g:191:15: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt1479); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt1482); 
 											}
 											break;
 
 									}
 
-									match(input,91,FOLLOW_91_in_queryStmnt1482); 
-									// druidG.g:197:23: ( WS )?
-									int alt107=2;
-									int LA107_0 = input.LA(1);
-									if ( (LA107_0==WS) ) {
-										alt107=1;
+									match(input,91,FOLLOW_91_in_queryStmnt1485); 
+									// druidG.g:191:23: ( WS )?
+									int alt105=2;
+									int LA105_0 = input.LA(1);
+									if ( (LA105_0==WS) ) {
+										alt105=1;
 									}
-									switch (alt107) {
+									switch (alt105) {
 										case 1 :
-											// druidG.g:197:23: WS
+											// druidG.g:191:23: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt1484); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt1487); 
 											}
 											break;
 
 									}
 
-									id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1489); 
+									id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1492); 
 
 												              if (!((GroupByQueryMeta)qMeta).checkDimOrAlias((id!=null?id.getText():null))) {
 												                 System.err.println("Dimension/Alias " + (id!=null?id.getText():null) + " not valid..");
@@ -3055,29 +3051,29 @@ public class druidGParser extends Parser {
 									break;
 
 								default :
-									break loop108;
+									break loop106;
 								}
 							}
 
 							}
 
-							// druidG.g:205:10: ( WS HAVING WS h= havingClause )?
-							int alt109=2;
-							int LA109_0 = input.LA(1);
-							if ( (LA109_0==WS) ) {
-								int LA109_1 = input.LA(2);
-								if ( (LA109_1==HAVING) ) {
-									alt109=1;
+							// druidG.g:199:10: ( WS HAVING WS h= havingClause )?
+							int alt107=2;
+							int LA107_0 = input.LA(1);
+							if ( (LA107_0==WS) ) {
+								int LA107_1 = input.LA(2);
+								if ( (LA107_1==HAVING) ) {
+									alt107=1;
 								}
 							}
-							switch (alt109) {
+							switch (alt107) {
 								case 1 :
-									// druidG.g:205:11: WS HAVING WS h= havingClause
+									// druidG.g:199:11: WS HAVING WS h= havingClause
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1546); 
-									match(input,HAVING,FOLLOW_HAVING_in_queryStmnt1548); 
-									match(input,WS,FOLLOW_WS_in_queryStmnt1550); 
-									pushFollow(FOLLOW_havingClause_in_queryStmnt1554);
+									match(input,WS,FOLLOW_WS_in_queryStmnt1549); 
+									match(input,HAVING,FOLLOW_HAVING_in_queryStmnt1551); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1553); 
+									pushFollow(FOLLOW_havingClause_in_queryStmnt1557);
 									h=havingClause();
 									state._fsp--;
 
@@ -3093,28 +3089,28 @@ public class druidGParser extends Parser {
 					}
 
 					qMeta = QueryUtils.checkAndPromoteToTimeSeries(qMeta);
-					// druidG.g:209:5: ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )?
-					int alt112=2;
-					int LA112_0 = input.LA(1);
-					if ( (LA112_0==WS) ) {
-						int LA112_1 = input.LA(2);
-						if ( (LA112_1==ORDER) ) {
-							alt112=1;
+					// druidG.g:203:5: ( WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )? )?
+					int alt110=2;
+					int LA110_0 = input.LA(1);
+					if ( (LA110_0==WS) ) {
+						int LA110_1 = input.LA(2);
+						if ( (LA110_1==ORDER) ) {
+							alt110=1;
 						}
 					}
-					switch (alt112) {
+					switch (alt110) {
 						case 1 :
-							// druidG.g:209:6: WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )?
+							// druidG.g:203:6: WS ORDER WS BY WS (id= ID ) ( WS dir= ( ASC | DESC ) )?
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1598); 
-							match(input,ORDER,FOLLOW_ORDER_in_queryStmnt1600); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1602); 
-							match(input,BY,FOLLOW_BY_in_queryStmnt1604); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1606); 
-							// druidG.g:209:24: (id= ID )
-							// druidG.g:209:25: id= ID
+							match(input,WS,FOLLOW_WS_in_queryStmnt1601); 
+							match(input,ORDER,FOLLOW_ORDER_in_queryStmnt1603); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1605); 
+							match(input,BY,FOLLOW_BY_in_queryStmnt1607); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1609); 
+							// druidG.g:203:24: (id= ID )
+							// druidG.g:203:25: id= ID
 							{
-							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1611); 
+							id=(Token)match(input,ID,FOLLOW_ID_in_queryStmnt1614); 
 							}
 
 								
@@ -3126,20 +3122,20 @@ public class druidGParser extends Parser {
 								        	   ((TopNQueryMeta)qMeta).metric = (id!=null?id.getText():null);
 									      	}
 									      
-							// druidG.g:220:9: ( WS dir= ( ASC | DESC ) )?
-							int alt111=2;
-							int LA111_0 = input.LA(1);
-							if ( (LA111_0==WS) ) {
-								int LA111_1 = input.LA(2);
-								if ( (LA111_1==ASC||LA111_1==DESC) ) {
-									alt111=1;
+							// druidG.g:214:9: ( WS dir= ( ASC | DESC ) )?
+							int alt109=2;
+							int LA109_0 = input.LA(1);
+							if ( (LA109_0==WS) ) {
+								int LA109_1 = input.LA(2);
+								if ( (LA109_1==ASC||LA109_1==DESC) ) {
+									alt109=1;
 								}
 							}
-							switch (alt111) {
+							switch (alt109) {
 								case 1 :
-									// druidG.g:220:10: WS dir= ( ASC | DESC )
+									// druidG.g:214:10: WS dir= ( ASC | DESC )
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1644); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1647); 
 									dir=input.LT(1);
 									if ( input.LA(1)==ASC||input.LA(1)==DESC ) {
 										input.consume();
@@ -3178,26 +3174,26 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:241:5: ( WS LIMIT WS (l= LONG ) )?
-					int alt113=2;
-					int LA113_0 = input.LA(1);
-					if ( (LA113_0==WS) ) {
-						int LA113_1 = input.LA(2);
-						if ( (LA113_1==LIMIT) ) {
-							alt113=1;
+					// druidG.g:235:5: ( WS LIMIT WS (l= LONG ) )?
+					int alt111=2;
+					int LA111_0 = input.LA(1);
+					if ( (LA111_0==WS) ) {
+						int LA111_1 = input.LA(2);
+						if ( (LA111_1==LIMIT) ) {
+							alt111=1;
 						}
 					}
-					switch (alt113) {
+					switch (alt111) {
 						case 1 :
-							// druidG.g:242:6: WS LIMIT WS (l= LONG )
+							// druidG.g:236:6: WS LIMIT WS (l= LONG )
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1698); 
-							match(input,LIMIT,FOLLOW_LIMIT_in_queryStmnt1700); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1702); 
-							// druidG.g:242:18: (l= LONG )
-							// druidG.g:242:19: l= LONG
+							match(input,WS,FOLLOW_WS_in_queryStmnt1701); 
+							match(input,LIMIT,FOLLOW_LIMIT_in_queryStmnt1703); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1705); 
+							// druidG.g:236:18: (l= LONG )
+							// druidG.g:236:19: l= LONG
 							{
-							l=(Token)match(input,LONG,FOLLOW_LONG_in_queryStmnt1707); 
+							l=(Token)match(input,LONG,FOLLOW_LONG_in_queryStmnt1710); 
 							}
 
 								
@@ -3216,23 +3212,23 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:256:7: ( WS THEN WS p= postAggItem )?
-					int alt114=2;
-					int LA114_0 = input.LA(1);
-					if ( (LA114_0==WS) ) {
-						int LA114_1 = input.LA(2);
-						if ( (LA114_1==THEN) ) {
-							alt114=1;
+					// druidG.g:250:7: ( WS THEN WS p= postAggItem )?
+					int alt112=2;
+					int LA112_0 = input.LA(1);
+					if ( (LA112_0==WS) ) {
+						int LA112_1 = input.LA(2);
+						if ( (LA112_1==THEN) ) {
+							alt112=1;
 						}
 					}
-					switch (alt114) {
+					switch (alt112) {
 						case 1 :
-							// druidG.g:256:8: WS THEN WS p= postAggItem
+							// druidG.g:250:8: WS THEN WS p= postAggItem
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1745); 
-							match(input,THEN,FOLLOW_THEN_in_queryStmnt1747); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1749); 
-							pushFollow(FOLLOW_postAggItem_in_queryStmnt1753);
+							match(input,WS,FOLLOW_WS_in_queryStmnt1748); 
+							match(input,THEN,FOLLOW_THEN_in_queryStmnt1750); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1752); 
+							pushFollow(FOLLOW_postAggItem_in_queryStmnt1756);
 							p=postAggItem();
 							state._fsp--;
 
@@ -3244,128 +3240,164 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:258:4: ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )?
-					int alt124=2;
-					int LA124_0 = input.LA(1);
-					if ( (LA124_0==WS) ) {
-						int LA124_1 = input.LA(2);
-						if ( (LA124_1==WHICH) ) {
-							alt124=1;
+					// druidG.g:252:4: ( WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN )?
+					int alt122=2;
+					int LA122_0 = input.LA(1);
+					if ( (LA122_0==WS) ) {
+						int LA122_1 = input.LA(2);
+						if ( (LA122_1==WHICH) ) {
+							alt122=1;
 						}
 					}
-					switch (alt124) {
+					switch (alt122) {
 						case 1 :
-							// druidG.g:258:5: WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN
+							// druidG.g:252:5: WS WHICH WS CONTAINS ( WS )? LPARAN ( WS )? (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* ) ( WS )? RPARAN WS SORT ( WS )? LPARAN ( WS )? (s= SINGLE_QUOTE_STRING ) ( WS )? RPARAN
 							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1768); 
-							match(input,WHICH,FOLLOW_WHICH_in_queryStmnt1770); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1772); 
-							match(input,CONTAINS,FOLLOW_CONTAINS_in_queryStmnt1774); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1771); 
+							match(input,WHICH,FOLLOW_WHICH_in_queryStmnt1773); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1775); 
+							match(input,CONTAINS,FOLLOW_CONTAINS_in_queryStmnt1777); 
 							qMeta = SearchQueryMeta.promote(qMeta);
-							// druidG.g:258:68: ( WS )?
-							int alt115=2;
-							int LA115_0 = input.LA(1);
-							if ( (LA115_0==WS) ) {
-								alt115=1;
+							// druidG.g:252:68: ( WS )?
+							int alt113=2;
+							int LA113_0 = input.LA(1);
+							if ( (LA113_0==WS) ) {
+								alt113=1;
 							}
-							switch (alt115) {
+							switch (alt113) {
 								case 1 :
-									// druidG.g:258:68: WS
+									// druidG.g:252:68: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1778); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1781); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1781); 
-							// druidG.g:258:79: ( WS )?
-							int alt116=2;
-							int LA116_0 = input.LA(1);
-							if ( (LA116_0==WS) ) {
-								alt116=1;
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1784); 
+							// druidG.g:252:79: ( WS )?
+							int alt114=2;
+							int LA114_0 = input.LA(1);
+							if ( (LA114_0==WS) ) {
+								alt114=1;
 							}
-							switch (alt116) {
+							switch (alt114) {
 								case 1 :
-									// druidG.g:258:79: WS
+									// druidG.g:252:79: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1783); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1786); 
 									}
 									break;
 
 							}
 
-							// druidG.g:258:83: (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* )
-							// druidG.g:258:84: s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
+							// druidG.g:252:83: (s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )* )
+							// druidG.g:252:84: s1= SINGLE_QUOTE_STRING ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
 							{
-							s1=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1789); 
+							s1=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1792); 
 							((SearchQueryMeta)qMeta).type = "insensitive_contains";((SearchQueryMeta)qMeta).addValue((s1!=null?s1.getText():null));
-							// druidG.g:258:208: ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
-							loop119:
+							// druidG.g:252:208: ( ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING )*
+							loop117:
 							while (true) {
-								int alt119=2;
-								int LA119_0 = input.LA(1);
-								if ( (LA119_0==WS) ) {
-									int LA119_1 = input.LA(2);
-									if ( (LA119_1==91) ) {
-										alt119=1;
-									}
-
-								}
-								else if ( (LA119_0==91) ) {
-									alt119=1;
-								}
-
-								switch (alt119) {
-								case 1 :
-									// druidG.g:258:209: ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING
-									{
-									// druidG.g:258:209: ( WS )?
-									int alt117=2;
-									int LA117_0 = input.LA(1);
-									if ( (LA117_0==WS) ) {
+								int alt117=2;
+								int LA117_0 = input.LA(1);
+								if ( (LA117_0==WS) ) {
+									int LA117_1 = input.LA(2);
+									if ( (LA117_1==91) ) {
 										alt117=1;
 									}
-									switch (alt117) {
+
+								}
+								else if ( (LA117_0==91) ) {
+									alt117=1;
+								}
+
+								switch (alt117) {
+								case 1 :
+									// druidG.g:252:209: ( WS )? ',' ( WS )? s2= SINGLE_QUOTE_STRING
+									{
+									// druidG.g:252:209: ( WS )?
+									int alt115=2;
+									int LA115_0 = input.LA(1);
+									if ( (LA115_0==WS) ) {
+										alt115=1;
+									}
+									switch (alt115) {
 										case 1 :
-											// druidG.g:258:209: WS
+											// druidG.g:252:209: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt1793); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt1796); 
 											}
 											break;
 
 									}
 
-									match(input,91,FOLLOW_91_in_queryStmnt1796); 
-									// druidG.g:258:217: ( WS )?
-									int alt118=2;
-									int LA118_0 = input.LA(1);
-									if ( (LA118_0==WS) ) {
-										alt118=1;
+									match(input,91,FOLLOW_91_in_queryStmnt1799); 
+									// druidG.g:252:217: ( WS )?
+									int alt116=2;
+									int LA116_0 = input.LA(1);
+									if ( (LA116_0==WS) ) {
+										alt116=1;
 									}
-									switch (alt118) {
+									switch (alt116) {
 										case 1 :
-											// druidG.g:258:217: WS
+											// druidG.g:252:217: WS
 											{
-											match(input,WS,FOLLOW_WS_in_queryStmnt1798); 
+											match(input,WS,FOLLOW_WS_in_queryStmnt1801); 
 											}
 											break;
 
 									}
 
-									s2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1803); 
+									s2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1806); 
 									((SearchQueryMeta)qMeta).type = "fragment";((SearchQueryMeta)qMeta).addValue((s2!=null?s2.getText():null));
 									}
 									break;
 
 								default :
-									break loop119;
+									break loop117;
 								}
 							}
 
 							}
 
-							// druidG.g:258:337: ( WS )?
+							// druidG.g:252:337: ( WS )?
+							int alt118=2;
+							int LA118_0 = input.LA(1);
+							if ( (LA118_0==WS) ) {
+								alt118=1;
+							}
+							switch (alt118) {
+								case 1 :
+									// druidG.g:252:337: WS
+									{
+									match(input,WS,FOLLOW_WS_in_queryStmnt1813); 
+									}
+									break;
+
+							}
+
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1816); 
+							match(input,WS,FOLLOW_WS_in_queryStmnt1822); 
+							match(input,SORT,FOLLOW_SORT_in_queryStmnt1824); 
+							// druidG.g:253:13: ( WS )?
+							int alt119=2;
+							int LA119_0 = input.LA(1);
+							if ( (LA119_0==WS) ) {
+								alt119=1;
+							}
+							switch (alt119) {
+								case 1 :
+									// druidG.g:253:13: WS
+									{
+									match(input,WS,FOLLOW_WS_in_queryStmnt1826); 
+									}
+									break;
+
+							}
+
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1829); 
+							// druidG.g:253:24: ( WS )?
 							int alt120=2;
 							int LA120_0 = input.LA(1);
 							if ( (LA120_0==WS) ) {
@@ -3373,18 +3405,22 @@ public class druidGParser extends Parser {
 							}
 							switch (alt120) {
 								case 1 :
-									// druidG.g:258:337: WS
+									// druidG.g:253:24: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1810); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1831); 
 									}
 									break;
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1813); 
-							match(input,WS,FOLLOW_WS_in_queryStmnt1819); 
-							match(input,SORT,FOLLOW_SORT_in_queryStmnt1821); 
-							// druidG.g:259:13: ( WS )?
+							// druidG.g:253:28: (s= SINGLE_QUOTE_STRING )
+							// druidG.g:253:29: s= SINGLE_QUOTE_STRING
+							{
+							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1837); 
+							}
+
+							((SearchQueryMeta)qMeta).setSort((s!=null?s.getText():null));
+							// druidG.g:253:97: ( WS )?
 							int alt121=2;
 							int LA121_0 = input.LA(1);
 							if ( (LA121_0==WS) ) {
@@ -3392,39 +3428,36 @@ public class druidGParser extends Parser {
 							}
 							switch (alt121) {
 								case 1 :
-									// druidG.g:259:13: WS
+									// druidG.g:253:97: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1823); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1842); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1826); 
-							// druidG.g:259:24: ( WS )?
-							int alt122=2;
-							int LA122_0 = input.LA(1);
-							if ( (LA122_0==WS) ) {
-								alt122=1;
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1845); 
 							}
-							switch (alt122) {
-								case 1 :
-									// druidG.g:259:24: WS
-									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1828); 
-									}
-									break;
+							break;
 
-							}
+					}
 
-							// druidG.g:259:28: (s= SINGLE_QUOTE_STRING )
-							// druidG.g:259:29: s= SINGLE_QUOTE_STRING
+					// druidG.g:255:4: ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
+					int alt126=2;
+					int LA126_0 = input.LA(1);
+					if ( (LA126_0==WS) ) {
+						int LA126_1 = input.LA(2);
+						if ( (LA126_1==HINT) ) {
+							alt126=1;
+						}
+					}
+					switch (alt126) {
+						case 1 :
+							// druidG.g:255:5: WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN
 							{
-							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1834); 
-							}
-
-							((SearchQueryMeta)qMeta).setSort((s!=null?s.getText():null));
-							// druidG.g:259:97: ( WS )?
+							match(input,WS,FOLLOW_WS_in_queryStmnt1857); 
+							match(input,HINT,FOLLOW_HINT_in_queryStmnt1859); 
+							// druidG.g:255:13: ( WS )?
 							int alt123=2;
 							int LA123_0 = input.LA(1);
 							if ( (LA123_0==WS) ) {
@@ -3432,36 +3465,34 @@ public class druidGParser extends Parser {
 							}
 							switch (alt123) {
 								case 1 :
-									// druidG.g:259:97: WS
+									// druidG.g:255:13: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1839); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1861); 
 									}
 									break;
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1842); 
+							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1864); 
+							// druidG.g:255:24: ( WS )?
+							int alt124=2;
+							int LA124_0 = input.LA(1);
+							if ( (LA124_0==WS) ) {
+								alt124=1;
 							}
-							break;
+							switch (alt124) {
+								case 1 :
+									// druidG.g:255:24: WS
+									{
+									match(input,WS,FOLLOW_WS_in_queryStmnt1866); 
+									}
+									break;
 
-					}
+							}
 
-					// druidG.g:261:4: ( WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN )?
-					int alt128=2;
-					int LA128_0 = input.LA(1);
-					if ( (LA128_0==WS) ) {
-						int LA128_1 = input.LA(2);
-						if ( (LA128_1==HINT) ) {
-							alt128=1;
-						}
-					}
-					switch (alt128) {
-						case 1 :
-							// druidG.g:261:5: WS HINT ( WS )? LPARAN ( WS )? s= SINGLE_QUOTE_STRING ( WS )? RPARAN
-							{
-							match(input,WS,FOLLOW_WS_in_queryStmnt1854); 
-							match(input,HINT,FOLLOW_HINT_in_queryStmnt1856); 
-							// druidG.g:261:13: ( WS )?
+							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1871); 
+							qMeta = HintProcessor.process(qMeta, (s!=null?s.getText():null));
+							// druidG.g:255:99: ( WS )?
 							int alt125=2;
 							int LA125_0 = input.LA(1);
 							if ( (LA125_0==WS) ) {
@@ -3469,50 +3500,15 @@ public class druidGParser extends Parser {
 							}
 							switch (alt125) {
 								case 1 :
-									// druidG.g:261:13: WS
+									// druidG.g:255:99: WS
 									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1858); 
+									match(input,WS,FOLLOW_WS_in_queryStmnt1875); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_queryStmnt1861); 
-							// druidG.g:261:24: ( WS )?
-							int alt126=2;
-							int LA126_0 = input.LA(1);
-							if ( (LA126_0==WS) ) {
-								alt126=1;
-							}
-							switch (alt126) {
-								case 1 :
-									// druidG.g:261:24: WS
-									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1863); 
-									}
-									break;
-
-							}
-
-							s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1868); 
-							qMeta = HintProcessor.process(qMeta, (s!=null?s.getText():null));
-							// druidG.g:261:99: ( WS )?
-							int alt127=2;
-							int LA127_0 = input.LA(1);
-							if ( (LA127_0==WS) ) {
-								alt127=1;
-							}
-							switch (alt127) {
-								case 1 :
-									// druidG.g:261:99: WS
-									{
-									match(input,WS,FOLLOW_WS_in_queryStmnt1872); 
-									}
-									break;
-
-							}
-
-							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1875); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_queryStmnt1878); 
 							}
 							break;
 
@@ -3545,7 +3541,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "anyValue"
-	// druidG.g:271:1: anyValue returns [Object obj] : (a= SINGLE_QUOTE_STRING |b= ( LONG | FLOAT ) );
+	// druidG.g:265:1: anyValue returns [Object obj] : (a= SINGLE_QUOTE_STRING |b= ( LONG | FLOAT ) );
 	public final Object anyValue() throws RecognitionException {
 		Object obj = null;
 
@@ -3554,32 +3550,32 @@ public class druidGParser extends Parser {
 		Token b=null;
 
 		try {
-			// druidG.g:272:2: (a= SINGLE_QUOTE_STRING |b= ( LONG | FLOAT ) )
-			int alt130=2;
-			int LA130_0 = input.LA(1);
-			if ( (LA130_0==SINGLE_QUOTE_STRING) ) {
-				alt130=1;
+			// druidG.g:266:2: (a= SINGLE_QUOTE_STRING |b= ( LONG | FLOAT ) )
+			int alt128=2;
+			int LA128_0 = input.LA(1);
+			if ( (LA128_0==SINGLE_QUOTE_STRING) ) {
+				alt128=1;
 			}
-			else if ( (LA130_0==FLOAT||LA130_0==LONG) ) {
-				alt130=2;
+			else if ( (LA128_0==FLOAT||LA128_0==LONG) ) {
+				alt128=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 130, 0, input);
+					new NoViableAltException("", 128, 0, input);
 				throw nvae;
 			}
 
-			switch (alt130) {
+			switch (alt128) {
 				case 1 :
-					// druidG.g:272:3: a= SINGLE_QUOTE_STRING
+					// druidG.g:266:3: a= SINGLE_QUOTE_STRING
 					{
-					a=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1909); 
+					a=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1912); 
 					obj = unquote((a!=null?a.getText():null));
 					}
 					break;
 				case 2 :
-					// druidG.g:272:53: b= ( LONG | FLOAT )
+					// druidG.g:266:53: b= ( LONG | FLOAT )
 					{
 					b=input.LT(1);
 					if ( input.LA(1)==FLOAT||input.LA(1)==LONG ) {
@@ -3610,33 +3606,33 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "selectItems"
-	// druidG.g:275:1: selectItems[BaseStatementMeta meta] : (ai= aggItem |sd= simpleDim );
+	// druidG.g:269:1: selectItems[BaseStatementMeta meta] : (ai= aggItem |sd= simpleDim );
 	public final void selectItems(BaseStatementMeta meta) throws RecognitionException {
 		AggItem ai =null;
 		Pair<String, String> sd =null;
 
 		try {
-			// druidG.g:276:2: (ai= aggItem |sd= simpleDim )
-			int alt131=2;
-			int LA131_0 = input.LA(1);
-			if ( (LA131_0==COUNT||LA131_0==DOUBLE_SUM||LA131_0==HYPER_UNIQUE||LA131_0==JAVASCRIPT||LA131_0==LONG_SUM||LA131_0==MAX||LA131_0==MIN||LA131_0==UNIQUE) ) {
-				alt131=1;
+			// druidG.g:270:2: (ai= aggItem |sd= simpleDim )
+			int alt129=2;
+			int LA129_0 = input.LA(1);
+			if ( (LA129_0==COUNT||LA129_0==DOUBLE_SUM||LA129_0==HYPER_UNIQUE||LA129_0==JAVASCRIPT||LA129_0==LONG_SUM||LA129_0==MAX||LA129_0==MIN||LA129_0==UNIQUE) ) {
+				alt129=1;
 			}
-			else if ( (LA131_0==ID) ) {
-				alt131=2;
+			else if ( (LA129_0==ID) ) {
+				alt129=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 131, 0, input);
+					new NoViableAltException("", 129, 0, input);
 				throw nvae;
 			}
 
-			switch (alt131) {
+			switch (alt129) {
 				case 1 :
-					// druidG.g:276:5: ai= aggItem
+					// druidG.g:270:5: ai= aggItem
 					{
-					pushFollow(FOLLOW_aggItem_in_selectItems1940);
+					pushFollow(FOLLOW_aggItem_in_selectItems1943);
 					ai=aggItem();
 					state._fsp--;
 
@@ -3650,9 +3646,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:283:5: sd= simpleDim
+					// druidG.g:277:5: sd= simpleDim
 					{
-					pushFollow(FOLLOW_simpleDim_in_selectItems1950);
+					pushFollow(FOLLOW_simpleDim_in_selectItems1953);
 					sd=simpleDim();
 					state._fsp--;
 
@@ -3681,7 +3677,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleDim"
-	// druidG.g:292:1: simpleDim returns [Pair<String, String> dims] : (a= ID ( WS AS WS b= ID )? ) ;
+	// druidG.g:286:1: simpleDim returns [Pair<String, String> dims] : (a= ID ( WS AS WS b= ID )? ) ;
 	public final Pair<String, String> simpleDim() throws RecognitionException {
 		Pair<String, String> dims = null;
 
@@ -3690,30 +3686,30 @@ public class druidGParser extends Parser {
 		Token b=null;
 
 		try {
-			// druidG.g:293:2: ( (a= ID ( WS AS WS b= ID )? ) )
-			// druidG.g:293:4: (a= ID ( WS AS WS b= ID )? )
+			// druidG.g:287:2: ( (a= ID ( WS AS WS b= ID )? ) )
+			// druidG.g:287:4: (a= ID ( WS AS WS b= ID )? )
 			{
-			// druidG.g:293:4: (a= ID ( WS AS WS b= ID )? )
-			// druidG.g:293:5: a= ID ( WS AS WS b= ID )?
+			// druidG.g:287:4: (a= ID ( WS AS WS b= ID )? )
+			// druidG.g:287:5: a= ID ( WS AS WS b= ID )?
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1971); 
-			// druidG.g:293:10: ( WS AS WS b= ID )?
-			int alt132=2;
-			int LA132_0 = input.LA(1);
-			if ( (LA132_0==WS) ) {
-				int LA132_1 = input.LA(2);
-				if ( (LA132_1==AS) ) {
-					alt132=1;
+			a=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1974); 
+			// druidG.g:287:10: ( WS AS WS b= ID )?
+			int alt130=2;
+			int LA130_0 = input.LA(1);
+			if ( (LA130_0==WS) ) {
+				int LA130_1 = input.LA(2);
+				if ( (LA130_1==AS) ) {
+					alt130=1;
 				}
 			}
-			switch (alt132) {
+			switch (alt130) {
 				case 1 :
-					// druidG.g:293:11: WS AS WS b= ID
+					// druidG.g:287:11: WS AS WS b= ID
 					{
-					match(input,WS,FOLLOW_WS_in_simpleDim1974); 
-					match(input,AS,FOLLOW_AS_in_simpleDim1976); 
-					match(input,WS,FOLLOW_WS_in_simpleDim1978); 
-					b=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1982); 
+					match(input,WS,FOLLOW_WS_in_simpleDim1977); 
+					match(input,AS,FOLLOW_AS_in_simpleDim1979); 
+					match(input,WS,FOLLOW_WS_in_simpleDim1981); 
+					b=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1985); 
 					}
 					break;
 
@@ -3741,37 +3737,37 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "whereClause"
-	// druidG.g:300:1: whereClause[QueryMeta qMeta] : intls= intervalClause ( WS AND WS f= grandFilter )? ;
+	// druidG.g:294:1: whereClause[QueryMeta qMeta] : intls= intervalClause ( WS AND WS f= grandFilter )? ;
 	public final void whereClause(QueryMeta qMeta) throws RecognitionException {
 		List<Interval> intls =null;
 		Filter f =null;
 
 		try {
-			// druidG.g:301:2: (intls= intervalClause ( WS AND WS f= grandFilter )? )
-			// druidG.g:301:3: intls= intervalClause ( WS AND WS f= grandFilter )?
+			// druidG.g:295:2: (intls= intervalClause ( WS AND WS f= grandFilter )? )
+			// druidG.g:295:3: intls= intervalClause ( WS AND WS f= grandFilter )?
 			{
-			pushFollow(FOLLOW_intervalClause_in_whereClause2005);
+			pushFollow(FOLLOW_intervalClause_in_whereClause2008);
 			intls=intervalClause();
 			state._fsp--;
 
 			qMeta.intervals.addAll(intls);
-			// druidG.g:301:57: ( WS AND WS f= grandFilter )?
-			int alt133=2;
-			int LA133_0 = input.LA(1);
-			if ( (LA133_0==WS) ) {
-				int LA133_1 = input.LA(2);
-				if ( (LA133_1==AND) ) {
-					alt133=1;
+			// druidG.g:295:57: ( WS AND WS f= grandFilter )?
+			int alt131=2;
+			int LA131_0 = input.LA(1);
+			if ( (LA131_0==WS) ) {
+				int LA131_1 = input.LA(2);
+				if ( (LA131_1==AND) ) {
+					alt131=1;
 				}
 			}
-			switch (alt133) {
+			switch (alt131) {
 				case 1 :
-					// druidG.g:301:58: WS AND WS f= grandFilter
+					// druidG.g:295:58: WS AND WS f= grandFilter
 					{
-					match(input,WS,FOLLOW_WS_in_whereClause2010); 
-					match(input,AND,FOLLOW_AND_in_whereClause2012); 
-					match(input,WS,FOLLOW_WS_in_whereClause2014); 
-					pushFollow(FOLLOW_grandFilter_in_whereClause2018);
+					match(input,WS,FOLLOW_WS_in_whereClause2013); 
+					match(input,AND,FOLLOW_AND_in_whereClause2015); 
+					match(input,WS,FOLLOW_WS_in_whereClause2017); 
+					pushFollow(FOLLOW_grandFilter_in_whereClause2021);
 					f=grandFilter();
 					state._fsp--;
 
@@ -3797,7 +3793,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "intervalClause"
-	// druidG.g:305:1: intervalClause returns [List<Interval> intervals] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
+	// druidG.g:299:1: intervalClause returns [List<Interval> intervals] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
 	public final List<Interval> intervalClause() throws RecognitionException {
 		List<Interval> intervals = null;
 
@@ -3811,107 +3807,107 @@ public class druidGParser extends Parser {
 
 		 intervals = new ArrayList<>();
 		try {
-			// druidG.g:307:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
-			// druidG.g:307:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+			// druidG.g:301:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
+			// druidG.g:301:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
 			{
-			match(input,92,FOLLOW_92_in_intervalClause2044); 
-			match(input,WS,FOLLOW_WS_in_intervalClause2046); 
-			match(input,BETWEEN,FOLLOW_BETWEEN_in_intervalClause2048); 
-			match(input,WS,FOLLOW_WS_in_intervalClause2050); 
-			// druidG.g:308:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
-			int alt141=2;
-			int LA141_0 = input.LA(1);
-			if ( ((LA141_0 >= DATE && LA141_0 <= DATE_YEAR_ONLY)||LA141_0==SINGLE_QUOTE_STRING) ) {
-				alt141=1;
+			match(input,92,FOLLOW_92_in_intervalClause2047); 
+			match(input,WS,FOLLOW_WS_in_intervalClause2049); 
+			match(input,BETWEEN,FOLLOW_BETWEEN_in_intervalClause2051); 
+			match(input,WS,FOLLOW_WS_in_intervalClause2053); 
+			// druidG.g:302:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+			int alt139=2;
+			int LA139_0 = input.LA(1);
+			if ( ((LA139_0 >= DATE && LA139_0 <= DATE_YEAR_ONLY)||LA139_0==SINGLE_QUOTE_STRING) ) {
+				alt139=1;
 			}
-			else if ( (LA141_0==LPARAN) ) {
-				alt141=2;
+			else if ( (LA139_0==LPARAN) ) {
+				alt139=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 141, 0, input);
+					new NoViableAltException("", 139, 0, input);
 				throw nvae;
 			}
 
-			switch (alt141) {
+			switch (alt139) {
 				case 1 :
-					// druidG.g:309:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+					// druidG.g:303:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
 					{
-					// druidG.g:309:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
-					// druidG.g:310:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+					// druidG.g:303:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+					// druidG.g:304:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
 					{
-					// druidG.g:310:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
-					// druidG.g:310:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
+					// druidG.g:304:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+					// druidG.g:304:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
 					{
-					// druidG.g:310:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
-					int alt134=2;
-					int LA134_0 = input.LA(1);
-					if ( ((LA134_0 >= DATE && LA134_0 <= DATE_YEAR_ONLY)) ) {
-						alt134=1;
+					// druidG.g:304:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
+					int alt132=2;
+					int LA132_0 = input.LA(1);
+					if ( ((LA132_0 >= DATE && LA132_0 <= DATE_YEAR_ONLY)) ) {
+						alt132=1;
 					}
-					else if ( (LA134_0==SINGLE_QUOTE_STRING) ) {
-						alt134=2;
+					else if ( (LA132_0==SINGLE_QUOTE_STRING) ) {
+						alt132=2;
 					}
 
 					else {
 						NoViableAltException nvae =
-							new NoViableAltException("", 134, 0, input);
+							new NoViableAltException("", 132, 0, input);
 						throw nvae;
 					}
 
-					switch (alt134) {
+					switch (alt132) {
 						case 1 :
-							// druidG.g:310:8: st= isoTime
+							// druidG.g:304:8: st= isoTime
 							{
-							pushFollow(FOLLOW_isoTime_in_intervalClause2070);
+							pushFollow(FOLLOW_isoTime_in_intervalClause2073);
 							st=isoTime();
 							state._fsp--;
 
 							}
 							break;
 						case 2 :
-							// druidG.g:310:22: st2= SINGLE_QUOTE_STRING
+							// druidG.g:304:22: st2= SINGLE_QUOTE_STRING
 							{
-							st2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2077); 
+							st2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2080); 
 							}
 							break;
 
 					}
 
-					match(input,WS,FOLLOW_WS_in_intervalClause2081); 
-					match(input,AND,FOLLOW_AND_in_intervalClause2083); 
-					match(input,WS,FOLLOW_WS_in_intervalClause2085); 
-					// druidG.g:310:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
-					int alt135=2;
-					int LA135_0 = input.LA(1);
-					if ( ((LA135_0 >= DATE && LA135_0 <= DATE_YEAR_ONLY)) ) {
-						alt135=1;
+					match(input,WS,FOLLOW_WS_in_intervalClause2084); 
+					match(input,AND,FOLLOW_AND_in_intervalClause2086); 
+					match(input,WS,FOLLOW_WS_in_intervalClause2088); 
+					// druidG.g:304:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
+					int alt133=2;
+					int LA133_0 = input.LA(1);
+					if ( ((LA133_0 >= DATE && LA133_0 <= DATE_YEAR_ONLY)) ) {
+						alt133=1;
 					}
-					else if ( (LA135_0==SINGLE_QUOTE_STRING) ) {
-						alt135=2;
+					else if ( (LA133_0==SINGLE_QUOTE_STRING) ) {
+						alt133=2;
 					}
 
 					else {
 						NoViableAltException nvae =
-							new NoViableAltException("", 135, 0, input);
+							new NoViableAltException("", 133, 0, input);
 						throw nvae;
 					}
 
-					switch (alt135) {
+					switch (alt133) {
 						case 1 :
-							// druidG.g:310:59: et= isoTime
+							// druidG.g:304:59: et= isoTime
 							{
-							pushFollow(FOLLOW_isoTime_in_intervalClause2090);
+							pushFollow(FOLLOW_isoTime_in_intervalClause2093);
 							et=isoTime();
 							state._fsp--;
 
 							}
 							break;
 						case 2 :
-							// druidG.g:310:73: et2= SINGLE_QUOTE_STRING
+							// druidG.g:304:73: et2= SINGLE_QUOTE_STRING
 							{
-							et2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2097); 
+							et2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2100); 
 							}
 							break;
 
@@ -3938,87 +3934,87 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:327:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+					// druidG.g:321:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
 					{
-					// druidG.g:327:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
-					// druidG.g:327:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
+					// druidG.g:321:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+					// druidG.g:321:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_intervalClause2123); 
-					// druidG.g:327:12: ( WS )?
-					int alt136=2;
-					int LA136_0 = input.LA(1);
-					if ( (LA136_0==WS) ) {
-						alt136=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_intervalClause2126); 
+					// druidG.g:321:12: ( WS )?
+					int alt134=2;
+					int LA134_0 = input.LA(1);
+					if ( (LA134_0==WS) ) {
+						alt134=1;
 					}
-					switch (alt136) {
+					switch (alt134) {
 						case 1 :
-							// druidG.g:327:12: WS
+							// druidG.g:321:12: WS
 							{
-							match(input,WS,FOLLOW_WS_in_intervalClause2125); 
+							match(input,WS,FOLLOW_WS_in_intervalClause2128); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_pairString_in_intervalClause2130);
+					pushFollow(FOLLOW_pairString_in_intervalClause2133);
 					p1=pairString();
 					state._fsp--;
 
 					intervals.add(new Interval(p1.a, p1.b));
-					// druidG.g:328:7: ( ( WS )? ',' ( WS )? p2= pairString )*
-					loop139:
+					// druidG.g:322:7: ( ( WS )? ',' ( WS )? p2= pairString )*
+					loop137:
 					while (true) {
-						int alt139=2;
-						int LA139_0 = input.LA(1);
-						if ( (LA139_0==WS) ) {
-							int LA139_1 = input.LA(2);
-							if ( (LA139_1==91) ) {
-								alt139=1;
-							}
-
-						}
-						else if ( (LA139_0==91) ) {
-							alt139=1;
-						}
-
-						switch (alt139) {
-						case 1 :
-							// druidG.g:328:8: ( WS )? ',' ( WS )? p2= pairString
-							{
-							// druidG.g:328:8: ( WS )?
-							int alt137=2;
-							int LA137_0 = input.LA(1);
-							if ( (LA137_0==WS) ) {
+						int alt137=2;
+						int LA137_0 = input.LA(1);
+						if ( (LA137_0==WS) ) {
+							int LA137_1 = input.LA(2);
+							if ( (LA137_1==91) ) {
 								alt137=1;
 							}
-							switch (alt137) {
+
+						}
+						else if ( (LA137_0==91) ) {
+							alt137=1;
+						}
+
+						switch (alt137) {
+						case 1 :
+							// druidG.g:322:8: ( WS )? ',' ( WS )? p2= pairString
+							{
+							// druidG.g:322:8: ( WS )?
+							int alt135=2;
+							int LA135_0 = input.LA(1);
+							if ( (LA135_0==WS) ) {
+								alt135=1;
+							}
+							switch (alt135) {
 								case 1 :
-									// druidG.g:328:8: WS
+									// druidG.g:322:8: WS
 									{
-									match(input,WS,FOLLOW_WS_in_intervalClause2142); 
+									match(input,WS,FOLLOW_WS_in_intervalClause2145); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_intervalClause2145); 
-							// druidG.g:328:16: ( WS )?
-							int alt138=2;
-							int LA138_0 = input.LA(1);
-							if ( (LA138_0==WS) ) {
-								alt138=1;
+							match(input,91,FOLLOW_91_in_intervalClause2148); 
+							// druidG.g:322:16: ( WS )?
+							int alt136=2;
+							int LA136_0 = input.LA(1);
+							if ( (LA136_0==WS) ) {
+								alt136=1;
 							}
-							switch (alt138) {
+							switch (alt136) {
 								case 1 :
-									// druidG.g:328:16: WS
+									// druidG.g:322:16: WS
 									{
-									match(input,WS,FOLLOW_WS_in_intervalClause2147); 
+									match(input,WS,FOLLOW_WS_in_intervalClause2150); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_pairString_in_intervalClause2152);
+							pushFollow(FOLLOW_pairString_in_intervalClause2155);
 							p2=pairString();
 							state._fsp--;
 
@@ -4027,27 +4023,27 @@ public class druidGParser extends Parser {
 							break;
 
 						default :
-							break loop139;
+							break loop137;
 						}
 					}
 
-					// druidG.g:328:79: ( WS )?
-					int alt140=2;
-					int LA140_0 = input.LA(1);
-					if ( (LA140_0==WS) ) {
-						alt140=1;
+					// druidG.g:322:79: ( WS )?
+					int alt138=2;
+					int LA138_0 = input.LA(1);
+					if ( (LA138_0==WS) ) {
+						alt138=1;
 					}
-					switch (alt140) {
+					switch (alt138) {
 						case 1 :
-							// druidG.g:328:79: WS
+							// druidG.g:322:79: WS
 							{
-							match(input,WS,FOLLOW_WS_in_intervalClause2158); 
+							match(input,WS,FOLLOW_WS_in_intervalClause2161); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_intervalClause2161); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_intervalClause2164); 
 					}
 
 					}
@@ -4072,7 +4068,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "getEquals"
-	// druidG.g:333:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
+	// druidG.g:327:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
 	public final EqualsToHolder getEquals() throws RecognitionException {
 		EqualsToHolder holder = null;
 
@@ -4081,41 +4077,41 @@ public class druidGParser extends Parser {
 		Token b=null;
 
 		try {
-			// druidG.g:334:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
-			// druidG.g:334:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+			// druidG.g:328:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
+			// druidG.g:328:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
 			{
-			// druidG.g:334:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
-			// druidG.g:334:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
+			// druidG.g:328:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+			// druidG.g:328:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_getEquals2184); 
-			// druidG.g:334:10: ( WS )?
-			int alt142=2;
-			int LA142_0 = input.LA(1);
-			if ( (LA142_0==WS) ) {
-				alt142=1;
+			a=(Token)match(input,ID,FOLLOW_ID_in_getEquals2187); 
+			// druidG.g:328:10: ( WS )?
+			int alt140=2;
+			int LA140_0 = input.LA(1);
+			if ( (LA140_0==WS) ) {
+				alt140=1;
 			}
-			switch (alt142) {
+			switch (alt140) {
 				case 1 :
-					// druidG.g:334:10: WS
+					// druidG.g:328:10: WS
 					{
-					match(input,WS,FOLLOW_WS_in_getEquals2186); 
+					match(input,WS,FOLLOW_WS_in_getEquals2189); 
 					}
 					break;
 
 			}
 
-			match(input,EQUALS,FOLLOW_EQUALS_in_getEquals2189); 
-			// druidG.g:334:21: ( WS )?
-			int alt143=2;
-			int LA143_0 = input.LA(1);
-			if ( (LA143_0==WS) ) {
-				alt143=1;
+			match(input,EQUALS,FOLLOW_EQUALS_in_getEquals2192); 
+			// druidG.g:328:21: ( WS )?
+			int alt141=2;
+			int LA141_0 = input.LA(1);
+			if ( (LA141_0==WS) ) {
+				alt141=1;
 			}
-			switch (alt143) {
+			switch (alt141) {
 				case 1 :
-					// druidG.g:334:21: WS
+					// druidG.g:328:21: WS
 					{
-					match(input,WS,FOLLOW_WS_in_getEquals2191); 
+					match(input,WS,FOLLOW_WS_in_getEquals2194); 
 					}
 					break;
 
@@ -4150,7 +4146,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "granularityClause"
-	// druidG.g:339:1: granularityClause returns [Pair<Granularity, List<Pair<Integer, Integer>>> clause] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) );
+	// druidG.g:333:1: granularityClause returns [Pair<Granularity, List<Pair<Integer, Integer>>> clause] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) );
 	public final Pair<Granularity, List<Pair<Integer, Integer>>> granularityClause() throws RecognitionException {
 		Pair<Granularity, List<Pair<Integer, Integer>>> clause = null;
 
@@ -4164,33 +4160,33 @@ public class druidGParser extends Parser {
 
 		Granularity granularity = new Granularity("all");clause = new Pair<>(granularity, null);
 		try {
-			// druidG.g:341:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) )
-			int alt166=2;
-			int LA166_0 = input.LA(1);
-			if ( (LA166_0==SINGLE_QUOTE_STRING) ) {
-				alt166=1;
+			// druidG.g:335:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) )
+			int alt164=2;
+			int LA164_0 = input.LA(1);
+			if ( (LA164_0==SINGLE_QUOTE_STRING) ) {
+				alt164=1;
 			}
-			else if ( (LA166_0==DURATION||LA166_0==PERIOD) ) {
-				alt166=2;
+			else if ( (LA164_0==DURATION||LA164_0==PERIOD) ) {
+				alt164=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 166, 0, input);
+					new NoViableAltException("", 164, 0, input);
 				throw nvae;
 			}
 
-			switch (alt166) {
+			switch (alt164) {
 				case 1 :
-					// druidG.g:341:3: ( (s= SINGLE_QUOTE_STRING ) )
+					// druidG.g:335:3: ( (s= SINGLE_QUOTE_STRING ) )
 					{
-					// druidG.g:341:3: ( (s= SINGLE_QUOTE_STRING ) )
-					// druidG.g:341:4: (s= SINGLE_QUOTE_STRING )
+					// druidG.g:335:3: ( (s= SINGLE_QUOTE_STRING ) )
+					// druidG.g:335:4: (s= SINGLE_QUOTE_STRING )
 					{
-					// druidG.g:341:4: (s= SINGLE_QUOTE_STRING )
-					// druidG.g:341:5: s= SINGLE_QUOTE_STRING
+					// druidG.g:335:4: (s= SINGLE_QUOTE_STRING )
+					// druidG.g:335:5: s= SINGLE_QUOTE_STRING
 					{
-					s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2236); 
+					s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2239); 
 					}
 
 					granularity = new Granularity((s!=null?s.getText():null));clause = new Pair<>(granularity, null);
@@ -4199,33 +4195,68 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:343:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
+					// druidG.g:337:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
 					{
-					// druidG.g:343:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
-					int alt165=2;
-					int LA165_0 = input.LA(1);
-					if ( (LA165_0==DURATION) ) {
-						alt165=1;
+					// druidG.g:337:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
+					int alt163=2;
+					int LA163_0 = input.LA(1);
+					if ( (LA163_0==DURATION) ) {
+						alt163=1;
 					}
-					else if ( (LA165_0==PERIOD) ) {
-						alt165=2;
+					else if ( (LA163_0==PERIOD) ) {
+						alt163=2;
 					}
 
 					else {
 						NoViableAltException nvae =
-							new NoViableAltException("", 165, 0, input);
+							new NoViableAltException("", 163, 0, input);
 						throw nvae;
 					}
 
-					switch (alt165) {
+					switch (alt163) {
 						case 1 :
-							// druidG.g:344:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:338:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							{
-							// druidG.g:344:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
-							// druidG.g:344:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
+							// druidG.g:338:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:338:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
-							match(input,DURATION,FOLLOW_DURATION_in_granularityClause2260); 
-							// druidG.g:344:16: ( WS )?
+							match(input,DURATION,FOLLOW_DURATION_in_granularityClause2263); 
+							// druidG.g:338:16: ( WS )?
+							int alt142=2;
+							int LA142_0 = input.LA(1);
+							if ( (LA142_0==WS) ) {
+								alt142=1;
+							}
+							switch (alt142) {
+								case 1 :
+									// druidG.g:338:16: WS
+									{
+									match(input,WS,FOLLOW_WS_in_granularityClause2265); 
+									}
+									break;
+
+							}
+
+							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2268); 
+							// druidG.g:338:27: ( WS )?
+							int alt143=2;
+							int LA143_0 = input.LA(1);
+							if ( (LA143_0==WS) ) {
+								alt143=1;
+							}
+							switch (alt143) {
+								case 1 :
+									// druidG.g:338:27: WS
+									{
+									match(input,WS,FOLLOW_WS_in_granularityClause2270); 
+									}
+									break;
+
+							}
+
+							dur=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2275); 
+							granularity.setDuration((dur!=null?dur.getText():null));
+							// druidG.g:338:93: ( WS )?
 							int alt144=2;
 							int LA144_0 = input.LA(1);
 							if ( (LA144_0==WS) ) {
@@ -4233,70 +4264,69 @@ public class druidGParser extends Parser {
 							}
 							switch (alt144) {
 								case 1 :
-									// druidG.g:344:16: WS
+									// druidG.g:338:93: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2262); 
+									match(input,WS,FOLLOW_WS_in_granularityClause2279); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2265); 
-							// druidG.g:344:27: ( WS )?
-							int alt145=2;
-							int LA145_0 = input.LA(1);
-							if ( (LA145_0==WS) ) {
-								alt145=1;
-							}
-							switch (alt145) {
-								case 1 :
-									// druidG.g:344:27: WS
-									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2267); 
-									}
-									break;
-
-							}
-
-							dur=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2272); 
-							granularity.setDuration((dur!=null?dur.getText():null));
-							// druidG.g:344:93: ( WS )?
+							// druidG.g:338:97: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
 							int alt146=2;
 							int LA146_0 = input.LA(1);
-							if ( (LA146_0==WS) ) {
-								alt146=1;
+							if ( (LA146_0==91) ) {
+								int LA146_1 = input.LA(2);
+								if ( (LA146_1==WS) ) {
+									int LA146_4 = input.LA(3);
+									if ( (LA146_4==SINGLE_QUOTE_STRING) ) {
+										alt146=1;
+									}
+								}
+								else if ( (LA146_1==SINGLE_QUOTE_STRING) ) {
+									alt146=1;
+								}
 							}
 							switch (alt146) {
 								case 1 :
-									// druidG.g:344:93: WS
+									// druidG.g:338:98: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2276); 
+									match(input,91,FOLLOW_91_in_granularityClause2283); 
+									// druidG.g:338:102: ( WS )?
+									int alt145=2;
+									int LA145_0 = input.LA(1);
+									if ( (LA145_0==WS) ) {
+										alt145=1;
+									}
+									switch (alt145) {
+										case 1 :
+											// druidG.g:338:102: WS
+											{
+											match(input,WS,FOLLOW_WS_in_granularityClause2285); 
+											}
+											break;
+
+									}
+
+									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2290); 
+									granularity.setOrigin((orig!=null?orig.getText():null));
 									}
 									break;
 
 							}
 
-							// druidG.g:344:97: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
-							int alt148=2;
-							int LA148_0 = input.LA(1);
-							if ( (LA148_0==91) ) {
-								int LA148_1 = input.LA(2);
-								if ( (LA148_1==WS) ) {
-									int LA148_4 = input.LA(3);
-									if ( (LA148_4==SINGLE_QUOTE_STRING) ) {
-										alt148=1;
-									}
-								}
-								else if ( (LA148_1==SINGLE_QUOTE_STRING) ) {
-									alt148=1;
-								}
+							clause = new Pair<>(granularity, null);
+							// druidG.g:338:211: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
+							int alt150=2;
+							int LA150_0 = input.LA(1);
+							if ( (LA150_0==WS||LA150_0==91) ) {
+								alt150=1;
 							}
-							switch (alt148) {
+							switch (alt150) {
 								case 1 :
-									// druidG.g:344:98: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+									// druidG.g:338:212: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
 									{
-									match(input,91,FOLLOW_91_in_granularityClause2280); 
-									// druidG.g:344:102: ( WS )?
+									// druidG.g:338:212: ( WS )?
 									int alt147=2;
 									int LA147_0 = input.LA(1);
 									if ( (LA147_0==WS) ) {
@@ -4304,33 +4334,40 @@ public class druidGParser extends Parser {
 									}
 									switch (alt147) {
 										case 1 :
-											// druidG.g:344:102: WS
+											// druidG.g:338:212: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2282); 
+											match(input,WS,FOLLOW_WS_in_granularityClause2298); 
 											}
 											break;
 
 									}
 
-									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2287); 
-									granularity.setOrigin((orig!=null?orig.getText():null));
+									match(input,91,FOLLOW_91_in_granularityClause2301); 
+									// druidG.g:338:220: ( WS )?
+									int alt148=2;
+									int LA148_0 = input.LA(1);
+									if ( (LA148_0==WS) ) {
+										int LA148_1 = input.LA(2);
+										if ( (LA148_1==WS) ) {
+											alt148=1;
+										}
 									}
-									break;
+									switch (alt148) {
+										case 1 :
+											// druidG.g:338:220: WS
+											{
+											match(input,WS,FOLLOW_WS_in_granularityClause2303); 
+											}
+											break;
 
-							}
+									}
 
-							clause = new Pair<>(granularity, null);
-							// druidG.g:344:211: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
-							int alt152=2;
-							int LA152_0 = input.LA(1);
-							if ( (LA152_0==WS||LA152_0==91) ) {
-								alt152=1;
-							}
-							switch (alt152) {
-								case 1 :
-									// druidG.g:344:212: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
-									{
-									// druidG.g:344:212: ( WS )?
+									pushFollow(FOLLOW_granularityInclude_in_granularityClause2308);
+									inc=granularityInclude();
+									state._fsp--;
+
+									clause = new Pair<>(granularity, inc);
+									// druidG.g:338:288: ( WS )?
 									int alt149=2;
 									int LA149_0 = input.LA(1);
 									if ( (LA149_0==WS) ) {
@@ -4338,50 +4375,9 @@ public class druidGParser extends Parser {
 									}
 									switch (alt149) {
 										case 1 :
-											// druidG.g:344:212: WS
+											// druidG.g:338:288: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2295); 
-											}
-											break;
-
-									}
-
-									match(input,91,FOLLOW_91_in_granularityClause2298); 
-									// druidG.g:344:220: ( WS )?
-									int alt150=2;
-									int LA150_0 = input.LA(1);
-									if ( (LA150_0==WS) ) {
-										int LA150_1 = input.LA(2);
-										if ( (LA150_1==WS) ) {
-											alt150=1;
-										}
-									}
-									switch (alt150) {
-										case 1 :
-											// druidG.g:344:220: WS
-											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2300); 
-											}
-											break;
-
-									}
-
-									pushFollow(FOLLOW_granularityInclude_in_granularityClause2305);
-									inc=granularityInclude();
-									state._fsp--;
-
-									clause = new Pair<>(granularity, inc);
-									// druidG.g:344:288: ( WS )?
-									int alt151=2;
-									int LA151_0 = input.LA(1);
-									if ( (LA151_0==WS) ) {
-										alt151=1;
-									}
-									switch (alt151) {
-										case 1 :
-											// druidG.g:344:288: WS
-											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2309); 
+											match(input,WS,FOLLOW_WS_in_granularityClause2312); 
 											}
 											break;
 
@@ -4392,19 +4388,54 @@ public class druidGParser extends Parser {
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause2314); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause2317); 
 							}
 
 							}
 							break;
 						case 2 :
-							// druidG.g:346:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:340:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							{
-							// druidG.g:346:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
-							// druidG.g:346:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
+							// druidG.g:340:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:340:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
-							match(input,PERIOD,FOLLOW_PERIOD_in_granularityClause2333); 
-							// druidG.g:346:14: ( WS )?
+							match(input,PERIOD,FOLLOW_PERIOD_in_granularityClause2336); 
+							// druidG.g:340:14: ( WS )?
+							int alt151=2;
+							int LA151_0 = input.LA(1);
+							if ( (LA151_0==WS) ) {
+								alt151=1;
+							}
+							switch (alt151) {
+								case 1 :
+									// druidG.g:340:14: WS
+									{
+									match(input,WS,FOLLOW_WS_in_granularityClause2338); 
+									}
+									break;
+
+							}
+
+							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2341); 
+							// druidG.g:340:25: ( WS )?
+							int alt152=2;
+							int LA152_0 = input.LA(1);
+							if ( (LA152_0==WS) ) {
+								alt152=1;
+							}
+							switch (alt152) {
+								case 1 :
+									// druidG.g:340:25: WS
+									{
+									match(input,WS,FOLLOW_WS_in_granularityClause2343); 
+									}
+									break;
+
+							}
+
+							per=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2348); 
+							granularity.setPeriod((per!=null?per.getText():null));
+							// druidG.g:340:89: ( WS )?
 							int alt153=2;
 							int LA153_0 = input.LA(1);
 							if ( (LA153_0==WS) ) {
@@ -4412,145 +4443,110 @@ public class druidGParser extends Parser {
 							}
 							switch (alt153) {
 								case 1 :
-									// druidG.g:346:14: WS
+									// druidG.g:340:89: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2335); 
+									match(input,WS,FOLLOW_WS_in_granularityClause2352); 
 									}
 									break;
 
 							}
 
-							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2338); 
-							// druidG.g:346:25: ( WS )?
-							int alt154=2;
-							int LA154_0 = input.LA(1);
-							if ( (LA154_0==WS) ) {
-								alt154=1;
-							}
-							switch (alt154) {
-								case 1 :
-									// druidG.g:346:25: WS
-									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2340); 
-									}
-									break;
-
-							}
-
-							per=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2345); 
-							granularity.setPeriod((per!=null?per.getText():null));
-							// druidG.g:346:89: ( WS )?
+							// druidG.g:340:93: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
 							int alt155=2;
 							int LA155_0 = input.LA(1);
-							if ( (LA155_0==WS) ) {
-								alt155=1;
+							if ( (LA155_0==91) ) {
+								int LA155_1 = input.LA(2);
+								if ( (LA155_1==WS) ) {
+									int LA155_4 = input.LA(3);
+									if ( (LA155_4==SINGLE_QUOTE_STRING) ) {
+										alt155=1;
+									}
+								}
+								else if ( (LA155_1==SINGLE_QUOTE_STRING) ) {
+									alt155=1;
+								}
 							}
 							switch (alt155) {
 								case 1 :
-									// druidG.g:346:89: WS
+									// druidG.g:340:94: ',' ( WS )? tz= SINGLE_QUOTE_STRING
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2349); 
+									match(input,91,FOLLOW_91_in_granularityClause2356); 
+									// druidG.g:340:98: ( WS )?
+									int alt154=2;
+									int LA154_0 = input.LA(1);
+									if ( (LA154_0==WS) ) {
+										alt154=1;
 									}
-									break;
-
-							}
-
-							// druidG.g:346:93: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
-							int alt157=2;
-							int LA157_0 = input.LA(1);
-							if ( (LA157_0==91) ) {
-								int LA157_1 = input.LA(2);
-								if ( (LA157_1==WS) ) {
-									int LA157_4 = input.LA(3);
-									if ( (LA157_4==SINGLE_QUOTE_STRING) ) {
-										alt157=1;
-									}
-								}
-								else if ( (LA157_1==SINGLE_QUOTE_STRING) ) {
-									alt157=1;
-								}
-							}
-							switch (alt157) {
-								case 1 :
-									// druidG.g:346:94: ',' ( WS )? tz= SINGLE_QUOTE_STRING
-									{
-									match(input,91,FOLLOW_91_in_granularityClause2353); 
-									// druidG.g:346:98: ( WS )?
-									int alt156=2;
-									int LA156_0 = input.LA(1);
-									if ( (LA156_0==WS) ) {
-										alt156=1;
-									}
-									switch (alt156) {
+									switch (alt154) {
 										case 1 :
-											// druidG.g:346:98: WS
+											// druidG.g:340:98: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2355); 
+											match(input,WS,FOLLOW_WS_in_granularityClause2358); 
 											}
 											break;
 
 									}
 
-									tz=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2360); 
+									tz=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2363); 
 									granularity.setTimeZone((tz!=null?tz.getText():null));
 									}
 									break;
 
 							}
 
-							// druidG.g:346:164: ( WS )?
-							int alt158=2;
-							int LA158_0 = input.LA(1);
-							if ( (LA158_0==WS) ) {
-								alt158=1;
+							// druidG.g:340:164: ( WS )?
+							int alt156=2;
+							int LA156_0 = input.LA(1);
+							if ( (LA156_0==WS) ) {
+								alt156=1;
 							}
-							switch (alt158) {
+							switch (alt156) {
 								case 1 :
-									// druidG.g:346:164: WS
+									// druidG.g:340:164: WS
 									{
-									match(input,WS,FOLLOW_WS_in_granularityClause2366); 
+									match(input,WS,FOLLOW_WS_in_granularityClause2369); 
 									}
 									break;
 
 							}
 
-							// druidG.g:346:168: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
-							int alt160=2;
-							int LA160_0 = input.LA(1);
-							if ( (LA160_0==91) ) {
-								int LA160_1 = input.LA(2);
-								if ( (LA160_1==WS) ) {
-									int LA160_4 = input.LA(3);
-									if ( (LA160_4==SINGLE_QUOTE_STRING) ) {
-										alt160=1;
+							// druidG.g:340:168: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
+							int alt158=2;
+							int LA158_0 = input.LA(1);
+							if ( (LA158_0==91) ) {
+								int LA158_1 = input.LA(2);
+								if ( (LA158_1==WS) ) {
+									int LA158_4 = input.LA(3);
+									if ( (LA158_4==SINGLE_QUOTE_STRING) ) {
+										alt158=1;
 									}
 								}
-								else if ( (LA160_1==SINGLE_QUOTE_STRING) ) {
-									alt160=1;
+								else if ( (LA158_1==SINGLE_QUOTE_STRING) ) {
+									alt158=1;
 								}
 							}
-							switch (alt160) {
+							switch (alt158) {
 								case 1 :
-									// druidG.g:346:169: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+									// druidG.g:340:169: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
-									match(input,91,FOLLOW_91_in_granularityClause2370); 
-									// druidG.g:346:173: ( WS )?
-									int alt159=2;
-									int LA159_0 = input.LA(1);
-									if ( (LA159_0==WS) ) {
-										alt159=1;
+									match(input,91,FOLLOW_91_in_granularityClause2373); 
+									// druidG.g:340:173: ( WS )?
+									int alt157=2;
+									int LA157_0 = input.LA(1);
+									if ( (LA157_0==WS) ) {
+										alt157=1;
 									}
-									switch (alt159) {
+									switch (alt157) {
 										case 1 :
-											// druidG.g:346:173: WS
+											// druidG.g:340:173: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2372); 
+											match(input,WS,FOLLOW_WS_in_granularityClause2375); 
 											}
 											break;
 
 									}
 
-									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2377); 
+									orig=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2380); 
 									granularity.setOrigin((orig!=null?orig.getText():null));
 									}
 									break;
@@ -4558,17 +4554,58 @@ public class druidGParser extends Parser {
 							}
 
 							clause = new Pair<>(granularity, null);
-							// druidG.g:346:283: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
-							int alt164=2;
-							int LA164_0 = input.LA(1);
-							if ( (LA164_0==WS||LA164_0==91) ) {
-								alt164=1;
+							// druidG.g:340:283: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
+							int alt162=2;
+							int LA162_0 = input.LA(1);
+							if ( (LA162_0==WS||LA162_0==91) ) {
+								alt162=1;
 							}
-							switch (alt164) {
+							switch (alt162) {
 								case 1 :
-									// druidG.g:346:284: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
+									// druidG.g:340:284: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
 									{
-									// druidG.g:346:284: ( WS )?
+									// druidG.g:340:284: ( WS )?
+									int alt159=2;
+									int LA159_0 = input.LA(1);
+									if ( (LA159_0==WS) ) {
+										alt159=1;
+									}
+									switch (alt159) {
+										case 1 :
+											// druidG.g:340:284: WS
+											{
+											match(input,WS,FOLLOW_WS_in_granularityClause2389); 
+											}
+											break;
+
+									}
+
+									match(input,91,FOLLOW_91_in_granularityClause2392); 
+									// druidG.g:340:292: ( WS )?
+									int alt160=2;
+									int LA160_0 = input.LA(1);
+									if ( (LA160_0==WS) ) {
+										int LA160_1 = input.LA(2);
+										if ( (LA160_1==WS) ) {
+											alt160=1;
+										}
+									}
+									switch (alt160) {
+										case 1 :
+											// druidG.g:340:292: WS
+											{
+											match(input,WS,FOLLOW_WS_in_granularityClause2394); 
+											}
+											break;
+
+									}
+
+									pushFollow(FOLLOW_granularityInclude_in_granularityClause2399);
+									inc=granularityInclude();
+									state._fsp--;
+
+									clause = new Pair<>(granularity, inc);
+									// druidG.g:340:360: ( WS )?
 									int alt161=2;
 									int LA161_0 = input.LA(1);
 									if ( (LA161_0==WS) ) {
@@ -4576,50 +4613,9 @@ public class druidGParser extends Parser {
 									}
 									switch (alt161) {
 										case 1 :
-											// druidG.g:346:284: WS
+											// druidG.g:340:360: WS
 											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2386); 
-											}
-											break;
-
-									}
-
-									match(input,91,FOLLOW_91_in_granularityClause2389); 
-									// druidG.g:346:292: ( WS )?
-									int alt162=2;
-									int LA162_0 = input.LA(1);
-									if ( (LA162_0==WS) ) {
-										int LA162_1 = input.LA(2);
-										if ( (LA162_1==WS) ) {
-											alt162=1;
-										}
-									}
-									switch (alt162) {
-										case 1 :
-											// druidG.g:346:292: WS
-											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2391); 
-											}
-											break;
-
-									}
-
-									pushFollow(FOLLOW_granularityInclude_in_granularityClause2396);
-									inc=granularityInclude();
-									state._fsp--;
-
-									clause = new Pair<>(granularity, inc);
-									// druidG.g:346:360: ( WS )?
-									int alt163=2;
-									int LA163_0 = input.LA(1);
-									if ( (LA163_0==WS) ) {
-										alt163=1;
-									}
-									switch (alt163) {
-										case 1 :
-											// druidG.g:346:360: WS
-											{
-											match(input,WS,FOLLOW_WS_in_granularityClause2400); 
+											match(input,WS,FOLLOW_WS_in_granularityClause2403); 
 											}
 											break;
 
@@ -4630,7 +4626,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause2405); 
+							match(input,RPARAN,FOLLOW_RPARAN_in_granularityClause2408); 
 							}
 
 							}
@@ -4657,7 +4653,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "granularityInclude"
-	// druidG.g:350:1: granularityInclude returns [List<Pair<Integer, Integer>> microIntervals] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
+	// druidG.g:344:1: granularityInclude returns [List<Pair<Integer, Integer>> microIntervals] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
 	public final List<Pair<Integer, Integer>> granularityInclude() throws RecognitionException {
 		List<Pair<Integer, Integer>> microIntervals = null;
 
@@ -4667,70 +4663,70 @@ public class druidGParser extends Parser {
 
 		microIntervals = new ArrayList<>();
 		try {
-			// druidG.g:352:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
-			// druidG.g:353:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+			// druidG.g:346:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
+			// druidG.g:347:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
 			{
-			// druidG.g:353:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
-			// druidG.g:353:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
+			// druidG.g:347:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+			// druidG.g:347:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
 			{
-			match(input,WS,FOLLOW_WS_in_granularityInclude2433); 
-			match(input,INCLUDE,FOLLOW_INCLUDE_in_granularityInclude2435); 
-			// druidG.g:353:15: ( WS )?
-			int alt167=2;
-			int LA167_0 = input.LA(1);
-			if ( (LA167_0==WS) ) {
-				alt167=1;
+			match(input,WS,FOLLOW_WS_in_granularityInclude2436); 
+			match(input,INCLUDE,FOLLOW_INCLUDE_in_granularityInclude2438); 
+			// druidG.g:347:15: ( WS )?
+			int alt165=2;
+			int LA165_0 = input.LA(1);
+			if ( (LA165_0==WS) ) {
+				alt165=1;
 			}
-			switch (alt167) {
+			switch (alt165) {
 				case 1 :
-					// druidG.g:353:15: WS
+					// druidG.g:347:15: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude2437); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude2440); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_granularityInclude2440); 
-			// druidG.g:353:26: ( WS )?
-			int alt168=2;
-			int LA168_0 = input.LA(1);
-			if ( (LA168_0==WS) ) {
-				alt168=1;
+			match(input,LPARAN,FOLLOW_LPARAN_in_granularityInclude2443); 
+			// druidG.g:347:26: ( WS )?
+			int alt166=2;
+			int LA166_0 = input.LA(1);
+			if ( (LA166_0==WS) ) {
+				alt166=1;
 			}
-			switch (alt168) {
+			switch (alt166) {
 				case 1 :
-					// druidG.g:353:26: WS
+					// druidG.g:347:26: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude2442); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude2445); 
 					}
 					break;
 
 			}
 
-			// druidG.g:353:30: (p1= pairNums ( ',' p2= pairNums )* )
-			// druidG.g:353:31: p1= pairNums ( ',' p2= pairNums )*
+			// druidG.g:347:30: (p1= pairNums ( ',' p2= pairNums )* )
+			// druidG.g:347:31: p1= pairNums ( ',' p2= pairNums )*
 			{
-			pushFollow(FOLLOW_pairNums_in_granularityInclude2448);
+			pushFollow(FOLLOW_pairNums_in_granularityInclude2451);
 			p1=pairNums();
 			state._fsp--;
 
 			microIntervals.add(p1);
-			// druidG.g:353:69: ( ',' p2= pairNums )*
-			loop169:
+			// druidG.g:347:69: ( ',' p2= pairNums )*
+			loop167:
 			while (true) {
-				int alt169=2;
-				int LA169_0 = input.LA(1);
-				if ( (LA169_0==91) ) {
-					alt169=1;
+				int alt167=2;
+				int LA167_0 = input.LA(1);
+				if ( (LA167_0==91) ) {
+					alt167=1;
 				}
 
-				switch (alt169) {
+				switch (alt167) {
 				case 1 :
-					// druidG.g:353:70: ',' p2= pairNums
+					// druidG.g:347:70: ',' p2= pairNums
 					{
-					match(input,91,FOLLOW_91_in_granularityInclude2453); 
-					pushFollow(FOLLOW_pairNums_in_granularityInclude2457);
+					match(input,91,FOLLOW_91_in_granularityInclude2456); 
+					pushFollow(FOLLOW_pairNums_in_granularityInclude2460);
 					p2=pairNums();
 					state._fsp--;
 
@@ -4739,29 +4735,29 @@ public class druidGParser extends Parser {
 					break;
 
 				default :
-					break loop169;
+					break loop167;
 				}
 			}
 
 			}
 
-			// druidG.g:353:115: ( WS )?
-			int alt170=2;
-			int LA170_0 = input.LA(1);
-			if ( (LA170_0==WS) ) {
-				alt170=1;
+			// druidG.g:347:115: ( WS )?
+			int alt168=2;
+			int LA168_0 = input.LA(1);
+			if ( (LA168_0==WS) ) {
+				alt168=1;
 			}
-			switch (alt170) {
+			switch (alt168) {
 				case 1 :
-					// druidG.g:353:115: WS
+					// druidG.g:347:115: WS
 					{
-					match(input,WS,FOLLOW_WS_in_granularityInclude2464); 
+					match(input,WS,FOLLOW_WS_in_granularityInclude2467); 
 					}
 					break;
 
 			}
 
-			match(input,RPARAN,FOLLOW_RPARAN_in_granularityInclude2467); 
+			match(input,RPARAN,FOLLOW_RPARAN_in_granularityInclude2470); 
 			}
 
 			}
@@ -4781,7 +4777,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "pairNums"
-	// druidG.g:356:1: pairNums returns [Pair<Integer, Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
+	// druidG.g:350:1: pairNums returns [Pair<Integer, Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
 	public final Pair<Integer, Integer> pairNums() throws RecognitionException {
 		Pair<Integer, Integer> pair = null;
 
@@ -4790,14 +4786,48 @@ public class druidGParser extends Parser {
 		Token j=null;
 
 		try {
-			// druidG.g:357:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
-			// druidG.g:357:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+			// druidG.g:351:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
+			// druidG.g:351:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
 			{
-			// druidG.g:357:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
-			// druidG.g:357:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
+			// druidG.g:351:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+			// druidG.g:351:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
 			{
-			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairNums2486); 
-			// druidG.g:357:13: ( WS )?
+			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairNums2489); 
+			// druidG.g:351:13: ( WS )?
+			int alt169=2;
+			int LA169_0 = input.LA(1);
+			if ( (LA169_0==WS) ) {
+				alt169=1;
+			}
+			switch (alt169) {
+				case 1 :
+					// druidG.g:351:13: WS
+					{
+					match(input,WS,FOLLOW_WS_in_pairNums2491); 
+					}
+					break;
+
+			}
+
+			i=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2496); 
+			// druidG.g:351:25: ( WS )?
+			int alt170=2;
+			int LA170_0 = input.LA(1);
+			if ( (LA170_0==WS) ) {
+				alt170=1;
+			}
+			switch (alt170) {
+				case 1 :
+					// druidG.g:351:25: WS
+					{
+					match(input,WS,FOLLOW_WS_in_pairNums2499); 
+					}
+					break;
+
+			}
+
+			match(input,91,FOLLOW_91_in_pairNums2502); 
+			// druidG.g:351:33: ( WS )?
 			int alt171=2;
 			int LA171_0 = input.LA(1);
 			if ( (LA171_0==WS) ) {
@@ -4805,16 +4835,16 @@ public class druidGParser extends Parser {
 			}
 			switch (alt171) {
 				case 1 :
-					// druidG.g:357:13: WS
+					// druidG.g:351:33: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums2488); 
+					match(input,WS,FOLLOW_WS_in_pairNums2504); 
 					}
 					break;
 
 			}
 
-			i=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2493); 
-			// druidG.g:357:25: ( WS )?
+			j=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2509); 
+			// druidG.g:351:44: ( WS )?
 			int alt172=2;
 			int LA172_0 = input.LA(1);
 			if ( (LA172_0==WS) ) {
@@ -4822,49 +4852,15 @@ public class druidGParser extends Parser {
 			}
 			switch (alt172) {
 				case 1 :
-					// druidG.g:357:25: WS
+					// druidG.g:351:44: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairNums2496); 
+					match(input,WS,FOLLOW_WS_in_pairNums2511); 
 					}
 					break;
 
 			}
 
-			match(input,91,FOLLOW_91_in_pairNums2499); 
-			// druidG.g:357:33: ( WS )?
-			int alt173=2;
-			int LA173_0 = input.LA(1);
-			if ( (LA173_0==WS) ) {
-				alt173=1;
-			}
-			switch (alt173) {
-				case 1 :
-					// druidG.g:357:33: WS
-					{
-					match(input,WS,FOLLOW_WS_in_pairNums2501); 
-					}
-					break;
-
-			}
-
-			j=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2506); 
-			// druidG.g:357:44: ( WS )?
-			int alt174=2;
-			int LA174_0 = input.LA(1);
-			if ( (LA174_0==WS) ) {
-				alt174=1;
-			}
-			switch (alt174) {
-				case 1 :
-					// druidG.g:357:44: WS
-					{
-					match(input,WS,FOLLOW_WS_in_pairNums2508); 
-					}
-					break;
-
-			}
-
-			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairNums2511); 
+			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairNums2514); 
 			}
 
 			 pair = new Pair<>(Integer.parseInt((i!=null?i.getText():null)), Integer.parseInt((j!=null?j.getText():null)));
@@ -4885,7 +4881,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "pairString"
-	// druidG.g:360:1: pairString returns [Pair<String, String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
+	// druidG.g:354:1: pairString returns [Pair<String, String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
 	public final Pair<String, String> pairString() throws RecognitionException {
 		Pair<String, String> pair = null;
 
@@ -4894,14 +4890,48 @@ public class druidGParser extends Parser {
 		Token j=null;
 
 		try {
-			// druidG.g:361:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
-			// druidG.g:361:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+			// druidG.g:355:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
+			// druidG.g:355:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
 			{
-			// druidG.g:361:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
-			// druidG.g:361:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
+			// druidG.g:355:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+			// druidG.g:355:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
 			{
-			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairString2531); 
-			// druidG.g:361:13: ( WS )?
+			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairString2534); 
+			// druidG.g:355:13: ( WS )?
+			int alt173=2;
+			int LA173_0 = input.LA(1);
+			if ( (LA173_0==WS) ) {
+				alt173=1;
+			}
+			switch (alt173) {
+				case 1 :
+					// druidG.g:355:13: WS
+					{
+					match(input,WS,FOLLOW_WS_in_pairString2536); 
+					}
+					break;
+
+			}
+
+			i=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2541); 
+			// druidG.g:355:40: ( WS )?
+			int alt174=2;
+			int LA174_0 = input.LA(1);
+			if ( (LA174_0==WS) ) {
+				alt174=1;
+			}
+			switch (alt174) {
+				case 1 :
+					// druidG.g:355:40: WS
+					{
+					match(input,WS,FOLLOW_WS_in_pairString2544); 
+					}
+					break;
+
+			}
+
+			match(input,91,FOLLOW_91_in_pairString2547); 
+			// druidG.g:355:48: ( WS )?
 			int alt175=2;
 			int LA175_0 = input.LA(1);
 			if ( (LA175_0==WS) ) {
@@ -4909,16 +4939,16 @@ public class druidGParser extends Parser {
 			}
 			switch (alt175) {
 				case 1 :
-					// druidG.g:361:13: WS
+					// druidG.g:355:48: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString2533); 
+					match(input,WS,FOLLOW_WS_in_pairString2549); 
 					}
 					break;
 
 			}
 
-			i=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2538); 
-			// druidG.g:361:40: ( WS )?
+			j=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2554); 
+			// druidG.g:355:74: ( WS )?
 			int alt176=2;
 			int LA176_0 = input.LA(1);
 			if ( (LA176_0==WS) ) {
@@ -4926,49 +4956,15 @@ public class druidGParser extends Parser {
 			}
 			switch (alt176) {
 				case 1 :
-					// druidG.g:361:40: WS
+					// druidG.g:355:74: WS
 					{
-					match(input,WS,FOLLOW_WS_in_pairString2541); 
+					match(input,WS,FOLLOW_WS_in_pairString2556); 
 					}
 					break;
 
 			}
 
-			match(input,91,FOLLOW_91_in_pairString2544); 
-			// druidG.g:361:48: ( WS )?
-			int alt177=2;
-			int LA177_0 = input.LA(1);
-			if ( (LA177_0==WS) ) {
-				alt177=1;
-			}
-			switch (alt177) {
-				case 1 :
-					// druidG.g:361:48: WS
-					{
-					match(input,WS,FOLLOW_WS_in_pairString2546); 
-					}
-					break;
-
-			}
-
-			j=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2551); 
-			// druidG.g:361:74: ( WS )?
-			int alt178=2;
-			int LA178_0 = input.LA(1);
-			if ( (LA178_0==WS) ) {
-				alt178=1;
-			}
-			switch (alt178) {
-				case 1 :
-					// druidG.g:361:74: WS
-					{
-					match(input,WS,FOLLOW_WS_in_pairString2553); 
-					}
-					break;
-
-			}
-
-			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairString2556); 
+			match(input,RSQUARE,FOLLOW_RSQUARE_in_pairString2559); 
 			}
 
 			 pair = new Pair<>(((i!=null?i.getText():null)).replaceAll("'", ""), ((j!=null?j.getText():null)).replaceAll("'", ""));
@@ -4989,7 +4985,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "havingClause"
-	// druidG.g:368:1: havingClause returns [Having having] : h= complexHaving ;
+	// druidG.g:362:1: havingClause returns [Having having] : h= complexHaving ;
 	public final Having havingClause() throws RecognitionException {
 		Having having = null;
 
@@ -4997,10 +4993,10 @@ public class druidGParser extends Parser {
 		Having h =null;
 
 		try {
-			// druidG.g:369:2: (h= complexHaving )
-			// druidG.g:369:4: h= complexHaving
+			// druidG.g:363:2: (h= complexHaving )
+			// druidG.g:363:4: h= complexHaving
 			{
-			pushFollow(FOLLOW_complexHaving_in_havingClause2581);
+			pushFollow(FOLLOW_complexHaving_in_havingClause2584);
 			h=complexHaving();
 			state._fsp--;
 
@@ -5022,7 +5018,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleHaving"
-	// druidG.g:372:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
+	// druidG.g:366:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
 	public final Having simpleHaving() throws RecognitionException {
 		Having having = null;
 
@@ -5034,19 +5030,19 @@ public class druidGParser extends Parser {
 		EqualsToHolder e =null;
 
 		try {
-			// druidG.g:373:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
-			int alt183=3;
-			int LA183_0 = input.LA(1);
-			if ( (LA183_0==ID) ) {
+			// druidG.g:367:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
+			int alt181=3;
+			int LA181_0 = input.LA(1);
+			if ( (LA181_0==ID) ) {
 				switch ( input.LA(2) ) {
 				case WS:
 					{
-					int LA183_3 = input.LA(3);
-					if ( (LA183_3==COMPARE_OPER) ) {
-						alt183=1;
+					int LA181_3 = input.LA(3);
+					if ( (LA181_3==COMPARE_OPER) ) {
+						alt181=1;
 					}
-					else if ( (LA183_3==EQUALS) ) {
-						alt183=2;
+					else if ( (LA181_3==EQUALS) ) {
+						alt181=2;
 					}
 
 					else {
@@ -5056,7 +5052,7 @@ public class druidGParser extends Parser {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 183, 3, input);
+								new NoViableAltException("", 181, 3, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -5067,12 +5063,12 @@ public class druidGParser extends Parser {
 					break;
 				case COMPARE_OPER:
 					{
-					alt183=1;
+					alt181=1;
 					}
 					break;
 				case EQUALS:
 					{
-					alt183=2;
+					alt181=2;
 					}
 					break;
 				default:
@@ -5080,59 +5076,59 @@ public class druidGParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 183, 1, input);
+							new NoViableAltException("", 181, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
 					}
 				}
 			}
-			else if ( (LA183_0==NOT) ) {
-				alt183=3;
+			else if ( (LA181_0==NOT) ) {
+				alt181=3;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 183, 0, input);
+					new NoViableAltException("", 181, 0, input);
 				throw nvae;
 			}
 
-			switch (alt183) {
+			switch (alt181) {
 				case 1 :
-					// druidG.g:373:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:367:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					{
-					// druidG.g:373:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-					// druidG.g:373:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// druidG.g:367:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:367:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
-					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2602); 
-					// druidG.g:373:10: ( WS )?
-					int alt179=2;
-					int LA179_0 = input.LA(1);
-					if ( (LA179_0==WS) ) {
-						alt179=1;
+					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2605); 
+					// druidG.g:367:10: ( WS )?
+					int alt177=2;
+					int LA177_0 = input.LA(1);
+					if ( (LA177_0==WS) ) {
+						alt177=1;
 					}
-					switch (alt179) {
+					switch (alt177) {
 						case 1 :
-							// druidG.g:373:10: WS
+							// druidG.g:367:10: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving2604); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving2607); 
 							}
 							break;
 
 					}
 
-					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2609); 
-					// druidG.g:373:29: ( WS )?
-					int alt180=2;
-					int LA180_0 = input.LA(1);
-					if ( (LA180_0==WS) ) {
-						alt180=1;
+					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2612); 
+					// druidG.g:367:29: ( WS )?
+					int alt178=2;
+					int LA178_0 = input.LA(1);
+					if ( (LA178_0==WS) ) {
+						alt178=1;
 					}
-					switch (alt180) {
+					switch (alt178) {
 						case 1 :
-							// druidG.g:373:29: WS
+							// druidG.g:367:29: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving2611); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving2614); 
 							}
 							break;
 
@@ -5153,12 +5149,12 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:374:4: (e= getEquals )
+					// druidG.g:368:4: (e= getEquals )
 					{
-					// druidG.g:374:4: (e= getEquals )
-					// druidG.g:374:5: e= getEquals
+					// druidG.g:368:4: (e= getEquals )
+					// druidG.g:368:5: e= getEquals
 					{
-					pushFollow(FOLLOW_getEquals_in_simpleHaving2633);
+					pushFollow(FOLLOW_getEquals_in_simpleHaving2636);
 					e=getEquals();
 					state._fsp--;
 
@@ -5168,42 +5164,42 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 3 :
-					// druidG.g:375:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:369:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					{
-					// druidG.g:375:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-					// druidG.g:375:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// druidG.g:369:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:369:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
-					n=(Token)match(input,NOT,FOLLOW_NOT_in_simpleHaving2644); 
-					match(input,WS,FOLLOW_WS_in_simpleHaving2646); 
-					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2650); 
-					// druidG.g:375:19: ( WS )?
-					int alt181=2;
-					int LA181_0 = input.LA(1);
-					if ( (LA181_0==WS) ) {
-						alt181=1;
+					n=(Token)match(input,NOT,FOLLOW_NOT_in_simpleHaving2647); 
+					match(input,WS,FOLLOW_WS_in_simpleHaving2649); 
+					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2653); 
+					// druidG.g:369:19: ( WS )?
+					int alt179=2;
+					int LA179_0 = input.LA(1);
+					if ( (LA179_0==WS) ) {
+						alt179=1;
 					}
-					switch (alt181) {
+					switch (alt179) {
 						case 1 :
-							// druidG.g:375:19: WS
+							// druidG.g:369:19: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving2652); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving2655); 
 							}
 							break;
 
 					}
 
-					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2657); 
-					// druidG.g:375:38: ( WS )?
-					int alt182=2;
-					int LA182_0 = input.LA(1);
-					if ( (LA182_0==WS) ) {
-						alt182=1;
+					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2660); 
+					// druidG.g:369:38: ( WS )?
+					int alt180=2;
+					int LA180_0 = input.LA(1);
+					if ( (LA180_0==WS) ) {
+						alt180=1;
 					}
-					switch (alt182) {
+					switch (alt180) {
 						case 1 :
-							// druidG.g:375:38: WS
+							// druidG.g:369:38: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleHaving2659); 
+							match(input,WS,FOLLOW_WS_in_simpleHaving2662); 
 							}
 							break;
 
@@ -5240,7 +5236,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "complexHaving"
-	// druidG.g:378:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
+	// druidG.g:372:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
 	public final Having complexHaving() throws RecognitionException {
 		Having having = null;
 
@@ -5251,17 +5247,17 @@ public class druidGParser extends Parser {
 		Having b =null;
 
 		try {
-			// druidG.g:379:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
-			int alt184=2;
-			alt184 = dfa184.predict(input);
-			switch (alt184) {
+			// druidG.g:373:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
+			int alt182=2;
+			alt182 = dfa182.predict(input);
+			switch (alt182) {
 				case 1 :
-					// druidG.g:379:4: (s= simpleHaving )
+					// druidG.g:373:4: (s= simpleHaving )
 					{
-					// druidG.g:379:4: (s= simpleHaving )
-					// druidG.g:379:5: s= simpleHaving
+					// druidG.g:373:4: (s= simpleHaving )
+					// druidG.g:373:5: s= simpleHaving
 					{
-					pushFollow(FOLLOW_simpleHaving_in_complexHaving2692);
+					pushFollow(FOLLOW_simpleHaving_in_complexHaving2695);
 					s=simpleHaving();
 					state._fsp--;
 
@@ -5271,16 +5267,16 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:380:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+					// druidG.g:374:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
 					{
-					// druidG.g:380:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
-					// druidG.g:380:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
+					// druidG.g:374:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+					// druidG.g:374:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
 					{
-					pushFollow(FOLLOW_simpleHaving_in_complexHaving2703);
+					pushFollow(FOLLOW_simpleHaving_in_complexHaving2706);
 					a=simpleHaving();
 					state._fsp--;
 
-					match(input,WS,FOLLOW_WS_in_complexHaving2705); 
+					match(input,WS,FOLLOW_WS_in_complexHaving2708); 
 					o=input.LT(1);
 					if ( input.LA(1)==AND||input.LA(1)==OR ) {
 						input.consume();
@@ -5290,8 +5286,8 @@ public class druidGParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					match(input,WS,FOLLOW_WS_in_complexHaving2715); 
-					pushFollow(FOLLOW_complexHaving_in_complexHaving2719);
+					match(input,WS,FOLLOW_WS_in_complexHaving2718); 
+					pushFollow(FOLLOW_complexHaving_in_complexHaving2722);
 					b=complexHaving();
 					state._fsp--;
 
@@ -5317,7 +5313,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "grandFilter"
-	// druidG.g:387:1: grandFilter returns [Filter filter] : a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ;
+	// druidG.g:381:1: grandFilter returns [Filter filter] : a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ;
 	public final Filter grandFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5327,32 +5323,32 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:388:2: (a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* )
-			// druidG.g:388:3: a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			// druidG.g:382:2: (a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* )
+			// druidG.g:382:3: a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
 			{
-			pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2748);
+			pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2751);
 			a=semiGrandFilter();
 			state._fsp--;
 
 			filter = a;
-			// druidG.g:388:35: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
-			loop185:
+			// druidG.g:382:35: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			loop183:
 			while (true) {
-				int alt185=2;
-				int LA185_0 = input.LA(1);
-				if ( (LA185_0==WS) ) {
-					int LA185_1 = input.LA(2);
-					if ( (LA185_1==AND||LA185_1==OR) ) {
-						alt185=1;
+				int alt183=2;
+				int LA183_0 = input.LA(1);
+				if ( (LA183_0==WS) ) {
+					int LA183_1 = input.LA(2);
+					if ( (LA183_1==AND||LA183_1==OR) ) {
+						alt183=1;
 					}
 
 				}
 
-				switch (alt185) {
+				switch (alt183) {
 				case 1 :
-					// druidG.g:388:36: WS o= ( AND | OR ) WS b= semiGrandFilter
+					// druidG.g:382:36: WS o= ( AND | OR ) WS b= semiGrandFilter
 					{
-					match(input,WS,FOLLOW_WS_in_grandFilter2753); 
+					match(input,WS,FOLLOW_WS_in_grandFilter2756); 
 					o=input.LT(1);
 					if ( input.LA(1)==AND||input.LA(1)==OR ) {
 						input.consume();
@@ -5362,8 +5358,8 @@ public class druidGParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					match(input,WS,FOLLOW_WS_in_grandFilter2763); 
-					pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2767);
+					match(input,WS,FOLLOW_WS_in_grandFilter2766); 
+					pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2770);
 					b=semiGrandFilter();
 					state._fsp--;
 
@@ -5380,7 +5376,7 @@ public class druidGParser extends Parser {
 					break;
 
 				default :
-					break loop185;
+					break loop183;
 				}
 			}
 
@@ -5401,7 +5397,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "semiGrandFilter"
-	// druidG.g:400:1: semiGrandFilter returns [Filter filter] : (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN );
+	// druidG.g:394:1: semiGrandFilter returns [Filter filter] : (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN );
 	public final Filter semiGrandFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5411,27 +5407,27 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:401:2: (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN )
-			int alt189=2;
-			int LA189_0 = input.LA(1);
-			if ( (LA189_0==ID||LA189_0==NOT) ) {
-				alt189=1;
+			// druidG.g:395:2: (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN )
+			int alt187=2;
+			int LA187_0 = input.LA(1);
+			if ( (LA187_0==ID||LA187_0==NOT) ) {
+				alt187=1;
 			}
-			else if ( (LA189_0==LPARAN) ) {
-				alt189=2;
+			else if ( (LA187_0==LPARAN) ) {
+				alt187=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 189, 0, input);
+					new NoViableAltException("", 187, 0, input);
 				throw nvae;
 			}
 
-			switch (alt189) {
+			switch (alt187) {
 				case 1 :
-					// druidG.g:402:2: a= simpleLogicalFilter
+					// druidG.g:396:2: a= simpleLogicalFilter
 					{
-					pushFollow(FOLLOW_simpleLogicalFilter_in_semiGrandFilter2798);
+					pushFollow(FOLLOW_simpleLogicalFilter_in_semiGrandFilter2801);
 					a=simpleLogicalFilter();
 					state._fsp--;
 
@@ -5439,48 +5435,48 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:403:3: LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN
+					// druidG.g:397:3: LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_semiGrandFilter2805); 
-					// druidG.g:403:10: ( WS )?
-					int alt186=2;
-					int LA186_0 = input.LA(1);
-					if ( (LA186_0==WS) ) {
-						alt186=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_semiGrandFilter2808); 
+					// druidG.g:397:10: ( WS )?
+					int alt184=2;
+					int LA184_0 = input.LA(1);
+					if ( (LA184_0==WS) ) {
+						alt184=1;
 					}
-					switch (alt186) {
+					switch (alt184) {
 						case 1 :
-							// druidG.g:403:10: WS
+							// druidG.g:397:10: WS
 							{
-							match(input,WS,FOLLOW_WS_in_semiGrandFilter2807); 
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2810); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2812);
+					pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2815);
 					a=semiGrandFilter();
 					state._fsp--;
 
 					filter = a;
-					// druidG.g:403:47: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
-					loop187:
+					// druidG.g:397:47: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+					loop185:
 					while (true) {
-						int alt187=2;
-						int LA187_0 = input.LA(1);
-						if ( (LA187_0==WS) ) {
-							int LA187_1 = input.LA(2);
-							if ( (LA187_1==AND||LA187_1==OR) ) {
-								alt187=1;
+						int alt185=2;
+						int LA185_0 = input.LA(1);
+						if ( (LA185_0==WS) ) {
+							int LA185_1 = input.LA(2);
+							if ( (LA185_1==AND||LA185_1==OR) ) {
+								alt185=1;
 							}
 
 						}
 
-						switch (alt187) {
+						switch (alt185) {
 						case 1 :
-							// druidG.g:403:48: WS o= ( AND | OR ) WS b= semiGrandFilter
+							// druidG.g:397:48: WS o= ( AND | OR ) WS b= semiGrandFilter
 							{
-							match(input,WS,FOLLOW_WS_in_semiGrandFilter2818); 
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2821); 
 							o=input.LT(1);
 							if ( input.LA(1)==AND||input.LA(1)==OR ) {
 								input.consume();
@@ -5490,8 +5486,8 @@ public class druidGParser extends Parser {
 								MismatchedSetException mse = new MismatchedSetException(null,input);
 								throw mse;
 							}
-							match(input,WS,FOLLOW_WS_in_semiGrandFilter2828); 
-							pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2832);
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2831); 
+							pushFollow(FOLLOW_semiGrandFilter_in_semiGrandFilter2835);
 							b=semiGrandFilter();
 							state._fsp--;
 
@@ -5507,27 +5503,27 @@ public class druidGParser extends Parser {
 							break;
 
 						default :
-							break loop187;
+							break loop185;
 						}
 					}
 
-					// druidG.g:411:7: ( WS )?
-					int alt188=2;
-					int LA188_0 = input.LA(1);
-					if ( (LA188_0==WS) ) {
-						alt188=1;
+					// druidG.g:405:7: ( WS )?
+					int alt186=2;
+					int LA186_0 = input.LA(1);
+					if ( (LA186_0==WS) ) {
+						alt186=1;
 					}
-					switch (alt188) {
+					switch (alt186) {
 						case 1 :
-							// druidG.g:411:7: WS
+							// druidG.g:405:7: WS
 							{
-							match(input,WS,FOLLOW_WS_in_semiGrandFilter2848); 
+							match(input,WS,FOLLOW_WS_in_semiGrandFilter2851); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_semiGrandFilter2851); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_semiGrandFilter2854); 
 					}
 					break;
 
@@ -5547,7 +5543,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleLogicalFilter"
-	// druidG.g:414:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );
+	// druidG.g:408:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );
 	public final Filter simpleLogicalFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5557,17 +5553,17 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:415:2: ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) )
-			int alt191=2;
-			alt191 = dfa191.predict(input);
-			switch (alt191) {
+			// druidG.g:409:2: ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) )
+			int alt189=2;
+			alt189 = dfa189.predict(input);
+			switch (alt189) {
 				case 1 :
-					// druidG.g:416:2: (a= simpleFilter )
+					// druidG.g:410:2: (a= simpleFilter )
 					{
-					// druidG.g:416:2: (a= simpleFilter )
-					// druidG.g:416:3: a= simpleFilter
+					// druidG.g:410:2: (a= simpleFilter )
+					// druidG.g:410:3: a= simpleFilter
 					{
-					pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2870);
+					pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2873);
 					a=simpleFilter();
 					state._fsp--;
 
@@ -5577,36 +5573,36 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:417:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					// druidG.g:411:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
 					{
-					// druidG.g:417:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
-					int alt190=2;
-					int LA190_0 = input.LA(1);
-					if ( (LA190_0==ID) ) {
-						alt190=1;
+					// druidG.g:411:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					int alt188=2;
+					int LA188_0 = input.LA(1);
+					if ( (LA188_0==ID) ) {
+						alt188=1;
 					}
-					else if ( (LA190_0==NOT) ) {
-						alt190=2;
+					else if ( (LA188_0==NOT) ) {
+						alt188=2;
 					}
 
 					else {
 						NoViableAltException nvae =
-							new NoViableAltException("", 190, 0, input);
+							new NoViableAltException("", 188, 0, input);
 						throw nvae;
 					}
 
-					switch (alt190) {
+					switch (alt188) {
 						case 1 :
-							// druidG.g:417:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							// druidG.g:411:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
 							{
-							// druidG.g:417:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
-							// druidG.g:417:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
+							// druidG.g:411:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							// druidG.g:411:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
 							{
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2882);
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2885);
 							a=simpleFilter();
 							state._fsp--;
 
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2884); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2887); 
 							o=input.LT(1);
 							if ( input.LA(1)==AND||input.LA(1)==OR ) {
 								input.consume();
@@ -5616,8 +5612,8 @@ public class druidGParser extends Parser {
 								MismatchedSetException mse = new MismatchedSetException(null,input);
 								throw mse;
 							}
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2894); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2898);
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2897); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2901);
 							b=simpleFilter();
 							state._fsp--;
 
@@ -5626,14 +5622,14 @@ public class druidGParser extends Parser {
 							}
 							break;
 						case 2 :
-							// druidG.g:417:55: (o= NOT WS b= simpleFilter )
+							// druidG.g:411:55: (o= NOT WS b= simpleFilter )
 							{
-							// druidG.g:417:55: (o= NOT WS b= simpleFilter )
-							// druidG.g:417:56: o= NOT WS b= simpleFilter
+							// druidG.g:411:55: (o= NOT WS b= simpleFilter )
+							// druidG.g:411:56: o= NOT WS b= simpleFilter
 							{
-							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2906); 
-							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2908); 
-							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2912);
+							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2909); 
+							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2911); 
+							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2915);
 							b=simpleFilter();
 							state._fsp--;
 
@@ -5672,7 +5668,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleFilter"
-	// druidG.g:430:1: simpleFilter returns [Filter filter] : (a= selectorFilter |a= regexFilter ) ;
+	// druidG.g:424:1: simpleFilter returns [Filter filter] : (a= selectorFilter |a= regexFilter ) ;
 	public final Filter simpleFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5680,21 +5676,21 @@ public class druidGParser extends Parser {
 		Filter a =null;
 
 		try {
-			// druidG.g:431:2: ( (a= selectorFilter |a= regexFilter ) )
-			// druidG.g:431:4: (a= selectorFilter |a= regexFilter )
+			// druidG.g:425:2: ( (a= selectorFilter |a= regexFilter ) )
+			// druidG.g:425:4: (a= selectorFilter |a= regexFilter )
 			{
-			// druidG.g:431:4: (a= selectorFilter |a= regexFilter )
-			int alt192=2;
-			int LA192_0 = input.LA(1);
-			if ( (LA192_0==ID) ) {
-				int LA192_1 = input.LA(2);
-				if ( (LA192_1==WS) ) {
-					int LA192_2 = input.LA(3);
-					if ( (LA192_2==LIKE) ) {
-						alt192=2;
+			// druidG.g:425:4: (a= selectorFilter |a= regexFilter )
+			int alt190=2;
+			int LA190_0 = input.LA(1);
+			if ( (LA190_0==ID) ) {
+				int LA190_1 = input.LA(2);
+				if ( (LA190_1==WS) ) {
+					int LA190_2 = input.LA(3);
+					if ( (LA190_2==LIKE) ) {
+						alt190=2;
 					}
-					else if ( (LA192_2==EQUALS) ) {
-						alt192=1;
+					else if ( (LA190_2==EQUALS) ) {
+						alt190=1;
 					}
 
 					else {
@@ -5704,7 +5700,7 @@ public class druidGParser extends Parser {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 192, 2, input);
+								new NoViableAltException("", 190, 2, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -5712,8 +5708,8 @@ public class druidGParser extends Parser {
 					}
 
 				}
-				else if ( (LA192_1==EQUALS) ) {
-					alt192=1;
+				else if ( (LA190_1==EQUALS) ) {
+					alt190=1;
 				}
 
 				else {
@@ -5721,7 +5717,7 @@ public class druidGParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 192, 1, input);
+							new NoViableAltException("", 190, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5732,24 +5728,24 @@ public class druidGParser extends Parser {
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 192, 0, input);
+					new NoViableAltException("", 190, 0, input);
 				throw nvae;
 			}
 
-			switch (alt192) {
+			switch (alt190) {
 				case 1 :
-					// druidG.g:431:5: a= selectorFilter
+					// druidG.g:425:5: a= selectorFilter
 					{
-					pushFollow(FOLLOW_selectorFilter_in_simpleFilter2939);
+					pushFollow(FOLLOW_selectorFilter_in_simpleFilter2942);
 					a=selectorFilter();
 					state._fsp--;
 
 					}
 					break;
 				case 2 :
-					// druidG.g:431:24: a= regexFilter
+					// druidG.g:425:24: a= regexFilter
 					{
-					pushFollow(FOLLOW_regexFilter_in_simpleFilter2945);
+					pushFollow(FOLLOW_regexFilter_in_simpleFilter2948);
 					a=regexFilter();
 					state._fsp--;
 
@@ -5776,7 +5772,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "selectorFilter"
-	// druidG.g:434:1: selectorFilter returns [Filter filter] : e= getEquals ;
+	// druidG.g:428:1: selectorFilter returns [Filter filter] : e= getEquals ;
 	public final Filter selectorFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5785,10 +5781,10 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("selector");
 		try {
-			// druidG.g:436:2: (e= getEquals )
-			// druidG.g:436:4: e= getEquals
+			// druidG.g:430:2: (e= getEquals )
+			// druidG.g:430:4: e= getEquals
 			{
-			pushFollow(FOLLOW_getEquals_in_selectorFilter2970);
+			pushFollow(FOLLOW_getEquals_in_selectorFilter2973);
 			e=getEquals();
 			state._fsp--;
 
@@ -5812,7 +5808,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "regexFilter"
-	// druidG.g:442:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
+	// druidG.g:436:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
 	public final Filter regexFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5822,20 +5818,20 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("regex");
 		try {
-			// druidG.g:444:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
-			// druidG.g:444:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:438:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
+			// druidG.g:438:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
 			{
-			// druidG.g:444:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
-			// druidG.g:444:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
+			// druidG.g:438:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:438:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter2999); 
-			match(input,WS,FOLLOW_WS_in_regexFilter3001); 
-			match(input,LIKE,FOLLOW_LIKE_in_regexFilter3003); 
-			match(input,WS,FOLLOW_WS_in_regexFilter3005); 
-			// druidG.g:444:24: ( SINGLE_QUOTE_STRING )
-			// druidG.g:444:25: SINGLE_QUOTE_STRING
+			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter3002); 
+			match(input,WS,FOLLOW_WS_in_regexFilter3004); 
+			match(input,LIKE,FOLLOW_LIKE_in_regexFilter3006); 
+			match(input,WS,FOLLOW_WS_in_regexFilter3008); 
+			// druidG.g:438:24: ( SINGLE_QUOTE_STRING )
+			// druidG.g:438:25: SINGLE_QUOTE_STRING
 			{
-			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3011); 
+			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3014); 
 			}
 
 			}
@@ -5860,7 +5856,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggItem"
-	// druidG.g:454:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
+	// druidG.g:448:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
 	public final AggItem aggItem() throws RecognitionException {
 		AggItem aggItem = null;
 
@@ -5869,30 +5865,30 @@ public class druidGParser extends Parser {
 
 		  aggItem = new AggItem(); 
 		try {
-			// druidG.g:456:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
-			// druidG.g:456:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
+			// druidG.g:450:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
+			// druidG.g:450:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
 			{
-			pushFollow(FOLLOW_aggCallSite_in_aggItem3042);
+			pushFollow(FOLLOW_aggCallSite_in_aggItem3045);
 			aggCallSite(aggItem);
 			state._fsp--;
 
-			// druidG.g:456:25: ( WS AS WS x= ID )?
-			int alt193=2;
-			int LA193_0 = input.LA(1);
-			if ( (LA193_0==WS) ) {
-				int LA193_1 = input.LA(2);
-				if ( (LA193_1==AS) ) {
-					alt193=1;
+			// druidG.g:450:25: ( WS AS WS x= ID )?
+			int alt191=2;
+			int LA191_0 = input.LA(1);
+			if ( (LA191_0==WS) ) {
+				int LA191_1 = input.LA(2);
+				if ( (LA191_1==AS) ) {
+					alt191=1;
 				}
 			}
-			switch (alt193) {
+			switch (alt191) {
 				case 1 :
-					// druidG.g:456:26: WS AS WS x= ID
+					// druidG.g:450:26: WS AS WS x= ID
 					{
-					match(input,WS,FOLLOW_WS_in_aggItem3046); 
-					match(input,AS,FOLLOW_AS_in_aggItem3048); 
-					match(input,WS,FOLLOW_WS_in_aggItem3050); 
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem3054); 
+					match(input,WS,FOLLOW_WS_in_aggItem3049); 
+					match(input,AS,FOLLOW_AS_in_aggItem3051); 
+					match(input,WS,FOLLOW_WS_in_aggItem3053); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggItem3057); 
 					aggItem.setAsName((x!=null?x.getText():null));
 					}
 					break;
@@ -5916,135 +5912,135 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggCallSite"
-	// druidG.g:458:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
+	// druidG.g:452:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
 	public final void aggCallSite(AggItem aggItem) throws RecognitionException {
 		Token x=null;
 		Token y=null;
 		String p =null;
 
 		try {
-			// druidG.g:459:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
-			int alt200=2;
-			int LA200_0 = input.LA(1);
-			if ( (LA200_0==DOUBLE_SUM||LA200_0==HYPER_UNIQUE||LA200_0==JAVASCRIPT||LA200_0==LONG_SUM||LA200_0==MAX||LA200_0==MIN||LA200_0==UNIQUE) ) {
-				alt200=1;
+			// druidG.g:453:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
+			int alt198=2;
+			int LA198_0 = input.LA(1);
+			if ( (LA198_0==DOUBLE_SUM||LA198_0==HYPER_UNIQUE||LA198_0==JAVASCRIPT||LA198_0==LONG_SUM||LA198_0==MAX||LA198_0==MIN||LA198_0==UNIQUE) ) {
+				alt198=1;
 			}
-			else if ( (LA200_0==COUNT) ) {
-				alt200=2;
+			else if ( (LA198_0==COUNT) ) {
+				alt198=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 200, 0, input);
+					new NoViableAltException("", 198, 0, input);
 				throw nvae;
 			}
 
-			switch (alt200) {
+			switch (alt198) {
 				case 1 :
-					// druidG.g:459:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:453:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
 					{
-					pushFollow(FOLLOW_aggFunc_in_aggCallSite3073);
+					pushFollow(FOLLOW_aggFunc_in_aggCallSite3076);
 					p=aggFunc();
 					state._fsp--;
 
 					aggItem.setAggType(p);
-					// druidG.g:459:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
-					// druidG.g:459:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
+					// druidG.g:453:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:453:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
 					{
-					// druidG.g:459:40: ( WS )?
-					int alt194=2;
-					int LA194_0 = input.LA(1);
-					if ( (LA194_0==WS) ) {
-						alt194=1;
+					// druidG.g:453:40: ( WS )?
+					int alt192=2;
+					int LA192_0 = input.LA(1);
+					if ( (LA192_0==WS) ) {
+						alt192=1;
 					}
-					switch (alt194) {
+					switch (alt192) {
 						case 1 :
-							// druidG.g:459:40: WS
+							// druidG.g:453:40: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3078); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3081); 
 							}
 							break;
 
 					}
 
-					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite3081); 
-					// druidG.g:459:51: ( WS )?
-					int alt195=2;
-					int LA195_0 = input.LA(1);
-					if ( (LA195_0==WS) ) {
-						alt195=1;
+					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite3084); 
+					// druidG.g:453:51: ( WS )?
+					int alt193=2;
+					int LA193_0 = input.LA(1);
+					if ( (LA193_0==WS) ) {
+						alt193=1;
 					}
-					switch (alt195) {
+					switch (alt193) {
 						case 1 :
-							// druidG.g:459:51: WS
+							// druidG.g:453:51: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3083); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3086); 
 							}
 							break;
 
 					}
 
-					// druidG.g:459:55: (x= ID )
-					// druidG.g:459:57: x= ID
+					// druidG.g:453:55: (x= ID )
+					// druidG.g:453:57: x= ID
 					{
-					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3090); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3093); 
 					aggItem.setFieldName((x!=null?x.getText():null));
 					}
 
-					// druidG.g:459:96: ( ( WS )? ',' ( WS )? y= ID )*
-					loop198:
+					// druidG.g:453:96: ( ( WS )? ',' ( WS )? y= ID )*
+					loop196:
 					while (true) {
-						int alt198=2;
-						int LA198_0 = input.LA(1);
-						if ( (LA198_0==WS) ) {
-							int LA198_1 = input.LA(2);
-							if ( (LA198_1==91) ) {
-								alt198=1;
-							}
-
-						}
-						else if ( (LA198_0==91) ) {
-							alt198=1;
-						}
-
-						switch (alt198) {
-						case 1 :
-							// druidG.g:459:97: ( WS )? ',' ( WS )? y= ID
-							{
-							// druidG.g:459:97: ( WS )?
-							int alt196=2;
-							int LA196_0 = input.LA(1);
-							if ( (LA196_0==WS) ) {
+						int alt196=2;
+						int LA196_0 = input.LA(1);
+						if ( (LA196_0==WS) ) {
+							int LA196_1 = input.LA(2);
+							if ( (LA196_1==91) ) {
 								alt196=1;
 							}
-							switch (alt196) {
+
+						}
+						else if ( (LA196_0==91) ) {
+							alt196=1;
+						}
+
+						switch (alt196) {
+						case 1 :
+							// druidG.g:453:97: ( WS )? ',' ( WS )? y= ID
+							{
+							// druidG.g:453:97: ( WS )?
+							int alt194=2;
+							int LA194_0 = input.LA(1);
+							if ( (LA194_0==WS) ) {
+								alt194=1;
+							}
+							switch (alt194) {
 								case 1 :
-									// druidG.g:459:97: WS
+									// druidG.g:453:97: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite3096); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite3099); 
 									}
 									break;
 
 							}
 
-							match(input,91,FOLLOW_91_in_aggCallSite3099); 
-							// druidG.g:459:105: ( WS )?
-							int alt197=2;
-							int LA197_0 = input.LA(1);
-							if ( (LA197_0==WS) ) {
-								alt197=1;
+							match(input,91,FOLLOW_91_in_aggCallSite3102); 
+							// druidG.g:453:105: ( WS )?
+							int alt195=2;
+							int LA195_0 = input.LA(1);
+							if ( (LA195_0==WS) ) {
+								alt195=1;
 							}
-							switch (alt197) {
+							switch (alt195) {
 								case 1 :
-									// druidG.g:459:105: WS
+									// druidG.g:453:105: WS
 									{
-									match(input,WS,FOLLOW_WS_in_aggCallSite3101); 
+									match(input,WS,FOLLOW_WS_in_aggCallSite3104); 
 									}
 									break;
 
 							}
 
-							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3106); 
+							y=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3109); 
 
 								    if (aggItem.fieldNames == null || aggItem.fieldNames.isEmpty()) {
 								       aggItem.fieldNames = new ArrayList<>();
@@ -6057,40 +6053,40 @@ public class druidGParser extends Parser {
 							break;
 
 						default :
-							break loop198;
+							break loop196;
 						}
 					}
 
-					// druidG.g:466:6: ( WS )?
-					int alt199=2;
-					int LA199_0 = input.LA(1);
-					if ( (LA199_0==WS) ) {
-						alt199=1;
+					// druidG.g:460:6: ( WS )?
+					int alt197=2;
+					int LA197_0 = input.LA(1);
+					if ( (LA197_0==WS) ) {
+						alt197=1;
 					}
-					switch (alt199) {
+					switch (alt197) {
 						case 1 :
-							// druidG.g:466:6: WS
+							// druidG.g:460:6: WS
 							{
-							match(input,WS,FOLLOW_WS_in_aggCallSite3112); 
+							match(input,WS,FOLLOW_WS_in_aggCallSite3115); 
 							}
 							break;
 
 					}
 
-					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite3115); 
+					match(input,RPARAN,FOLLOW_RPARAN_in_aggCallSite3118); 
 					}
 
 					}
 					break;
 				case 2 :
-					// druidG.g:467:4: COUNT ( '(*)' )
+					// druidG.g:461:4: COUNT ( '(*)' )
 					{
-					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite3122); 
+					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite3125); 
 					aggItem.setAggType("count");
-					// druidG.g:467:41: ( '(*)' )
-					// druidG.g:467:42: '(*)'
+					// druidG.g:461:41: ( '(*)' )
+					// druidG.g:461:42: '(*)'
 					{
-					match(input,89,FOLLOW_89_in_aggCallSite3127); 
+					match(input,89,FOLLOW_89_in_aggCallSite3130); 
 					}
 
 					}
@@ -6111,102 +6107,102 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggFunc"
-	// druidG.g:470:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
+	// druidG.g:464:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
 	public final String aggFunc() throws RecognitionException {
 		String name = null;
 
 
 		try {
-			// druidG.g:471:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
-			int alt201=7;
+			// druidG.g:465:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
+			int alt199=7;
 			switch ( input.LA(1) ) {
 			case LONG_SUM:
 				{
-				alt201=1;
+				alt199=1;
 				}
 				break;
 			case DOUBLE_SUM:
 				{
-				alt201=2;
+				alt199=2;
 				}
 				break;
 			case UNIQUE:
 				{
-				alt201=3;
+				alt199=3;
 				}
 				break;
 			case HYPER_UNIQUE:
 				{
-				alt201=4;
+				alt199=4;
 				}
 				break;
 			case MIN:
 				{
-				alt201=5;
+				alt199=5;
 				}
 				break;
 			case MAX:
 				{
-				alt201=6;
+				alt199=6;
 				}
 				break;
 			case JAVASCRIPT:
 				{
-				alt201=7;
+				alt199=7;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 201, 0, input);
+					new NoViableAltException("", 199, 0, input);
 				throw nvae;
 			}
-			switch (alt201) {
+			switch (alt199) {
 				case 1 :
-					// druidG.g:471:4: LONG_SUM
+					// druidG.g:465:4: LONG_SUM
 					{
-					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc3145); 
+					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc3148); 
 					name = "longSum";
 					}
 					break;
 				case 2 :
-					// druidG.g:472:4: DOUBLE_SUM
+					// druidG.g:466:4: DOUBLE_SUM
 					{
-					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc3152); 
+					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc3155); 
 					name = "doubleSum";
 					}
 					break;
 				case 3 :
-					// druidG.g:473:4: UNIQUE
+					// druidG.g:467:4: UNIQUE
 					{
-					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc3159); 
+					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc3162); 
 					name = "unique";
 					}
 					break;
 				case 4 :
-					// druidG.g:474:4: HYPER_UNIQUE
+					// druidG.g:468:4: HYPER_UNIQUE
 					{
-					match(input,HYPER_UNIQUE,FOLLOW_HYPER_UNIQUE_in_aggFunc3166); 
+					match(input,HYPER_UNIQUE,FOLLOW_HYPER_UNIQUE_in_aggFunc3169); 
 					name = "hyperUnique";
 					}
 					break;
 				case 5 :
-					// druidG.g:475:4: MIN
+					// druidG.g:469:4: MIN
 					{
-					match(input,MIN,FOLLOW_MIN_in_aggFunc3173); 
+					match(input,MIN,FOLLOW_MIN_in_aggFunc3176); 
 					name = "min";
 					}
 					break;
 				case 6 :
-					// druidG.g:476:4: MAX
+					// druidG.g:470:4: MAX
 					{
-					match(input,MAX,FOLLOW_MAX_in_aggFunc3180); 
+					match(input,MAX,FOLLOW_MAX_in_aggFunc3183); 
 					name = "max";
 					}
 					break;
 				case 7 :
-					// druidG.g:477:4: JAVASCRIPT
+					// druidG.g:471:4: JAVASCRIPT
 					{
-					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc3187); 
+					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc3190); 
 					name = "javascript";
 					}
 					break;
@@ -6227,7 +6223,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggItem"
-	// druidG.g:483:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
+	// druidG.g:477:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
 	public final PostAggItem postAggItem() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6237,86 +6233,86 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:485:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
-			int alt211=2;
-			int LA211_0 = input.LA(1);
-			if ( (LA211_0==FLOAT||LA211_0==ID||LA211_0==JAVASCRIPT||LA211_0==LONG||LA211_0==UNIQUE) ) {
-				alt211=1;
+			// druidG.g:479:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
+			int alt209=2;
+			int LA209_0 = input.LA(1);
+			if ( (LA209_0==FLOAT||LA209_0==ID||LA209_0==JAVASCRIPT||LA209_0==LONG||LA209_0==UNIQUE) ) {
+				alt209=1;
 			}
-			else if ( (LA211_0==LPARAN) ) {
-				alt211=2;
+			else if ( (LA209_0==LPARAN) ) {
+				alt209=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 211, 0, input);
+					new NoViableAltException("", 209, 0, input);
 				throw nvae;
 			}
 
-			switch (alt211) {
+			switch (alt209) {
 				case 1 :
-					// druidG.g:485:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:479:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:485:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:485:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:479:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:479:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					pushFollow(FOLLOW_simpleArith_in_postAggItem3215);
+					pushFollow(FOLLOW_simpleArith_in_postAggItem3218);
 					a=simpleArith();
 					state._fsp--;
 
-					// druidG.g:485:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-					int alt204=2;
-					int LA204_0 = input.LA(1);
-					if ( (LA204_0==WS) ) {
-						int LA204_1 = input.LA(2);
-						if ( (LA204_1==ARITH_OPER) ) {
-							alt204=1;
+					// druidG.g:479:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					int alt202=2;
+					int LA202_0 = input.LA(1);
+					if ( (LA202_0==WS) ) {
+						int LA202_1 = input.LA(2);
+						if ( (LA202_1==ARITH_OPER) ) {
+							alt202=1;
 						}
 					}
-					else if ( (LA204_0==ARITH_OPER) ) {
-						alt204=1;
+					else if ( (LA202_0==ARITH_OPER) ) {
+						alt202=1;
 					}
-					switch (alt204) {
+					switch (alt202) {
 						case 1 :
-							// druidG.g:485:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:479:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:485:21: ( WS )?
-							int alt202=2;
-							int LA202_0 = input.LA(1);
-							if ( (LA202_0==WS) ) {
-								alt202=1;
+							// druidG.g:479:21: ( WS )?
+							int alt200=2;
+							int LA200_0 = input.LA(1);
+							if ( (LA200_0==WS) ) {
+								alt200=1;
 							}
-							switch (alt202) {
+							switch (alt200) {
 								case 1 :
-									// druidG.g:485:21: WS
+									// druidG.g:479:21: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3219); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3222); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3222);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3225);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:485:55: ( WS )?
-							int alt203=2;
-							int LA203_0 = input.LA(1);
-							if ( (LA203_0==WS) ) {
-								alt203=1;
+							// druidG.g:479:55: ( WS )?
+							int alt201=2;
+							int LA201_0 = input.LA(1);
+							if ( (LA201_0==WS) ) {
+								alt201=1;
 							}
-							switch (alt203) {
+							switch (alt201) {
 								case 1 :
-									// druidG.g:485:55: WS
+									// druidG.g:479:55: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3225); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3228); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem3230);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem3233);
 							b=postAggItem();
 							state._fsp--;
 
@@ -6336,65 +6332,65 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:492:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:486:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:492:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:492:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:486:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:486:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					// druidG.g:492:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
-					// druidG.g:492:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
+					// druidG.g:486:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
+					// druidG.g:486:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
 					{
-					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem3248); 
-					// druidG.g:492:13: ( WS )?
+					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem3251); 
+					// druidG.g:486:13: ( WS )?
+					int alt203=2;
+					int LA203_0 = input.LA(1);
+					if ( (LA203_0==WS) ) {
+						alt203=1;
+					}
+					switch (alt203) {
+						case 1 :
+							// druidG.g:486:13: WS
+							{
+							match(input,WS,FOLLOW_WS_in_postAggItem3253); 
+							}
+							break;
+
+					}
+
+					pushFollow(FOLLOW_postAggItem_in_postAggItem3258);
+					a=postAggItem();
+					state._fsp--;
+
+					// druidG.g:486:31: ( WS )?
+					int alt204=2;
+					int LA204_0 = input.LA(1);
+					if ( (LA204_0==WS) ) {
+						alt204=1;
+					}
+					switch (alt204) {
+						case 1 :
+							// druidG.g:486:31: WS
+							{
+							match(input,WS,FOLLOW_WS_in_postAggItem3260); 
+							}
+							break;
+
+					}
+
+					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem3263); 
+					}
+
+					// druidG.g:486:43: ( postAggLabel[postAggItem] )?
 					int alt205=2;
 					int LA205_0 = input.LA(1);
-					if ( (LA205_0==WS) ) {
+					if ( (LA205_0==AS) ) {
 						alt205=1;
 					}
 					switch (alt205) {
 						case 1 :
-							// druidG.g:492:13: WS
+							// druidG.g:486:44: postAggLabel[postAggItem]
 							{
-							match(input,WS,FOLLOW_WS_in_postAggItem3250); 
-							}
-							break;
-
-					}
-
-					pushFollow(FOLLOW_postAggItem_in_postAggItem3255);
-					a=postAggItem();
-					state._fsp--;
-
-					// druidG.g:492:31: ( WS )?
-					int alt206=2;
-					int LA206_0 = input.LA(1);
-					if ( (LA206_0==WS) ) {
-						alt206=1;
-					}
-					switch (alt206) {
-						case 1 :
-							// druidG.g:492:31: WS
-							{
-							match(input,WS,FOLLOW_WS_in_postAggItem3257); 
-							}
-							break;
-
-					}
-
-					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem3260); 
-					}
-
-					// druidG.g:492:43: ( postAggLabel[postAggItem] )?
-					int alt207=2;
-					int LA207_0 = input.LA(1);
-					if ( (LA207_0==AS) ) {
-						alt207=1;
-					}
-					switch (alt207) {
-						case 1 :
-							// druidG.g:492:44: postAggLabel[postAggItem]
-							{
-							pushFollow(FOLLOW_postAggLabel_in_postAggItem3264);
+							pushFollow(FOLLOW_postAggLabel_in_postAggItem3267);
 							postAggLabel(postAggItem);
 							state._fsp--;
 
@@ -6403,59 +6399,59 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:492:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
-					int alt210=2;
-					int LA210_0 = input.LA(1);
-					if ( (LA210_0==WS) ) {
-						int LA210_1 = input.LA(2);
-						if ( (LA210_1==ARITH_OPER) ) {
-							alt210=1;
+					// druidG.g:486:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					int alt208=2;
+					int LA208_0 = input.LA(1);
+					if ( (LA208_0==WS) ) {
+						int LA208_1 = input.LA(2);
+						if ( (LA208_1==ARITH_OPER) ) {
+							alt208=1;
 						}
 					}
-					else if ( (LA210_0==ARITH_OPER) ) {
-						alt210=1;
+					else if ( (LA208_0==ARITH_OPER) ) {
+						alt208=1;
 					}
-					switch (alt210) {
+					switch (alt208) {
 						case 1 :
-							// druidG.g:492:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:486:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:492:73: ( WS )?
-							int alt208=2;
-							int LA208_0 = input.LA(1);
-							if ( (LA208_0==WS) ) {
-								alt208=1;
+							// druidG.g:486:73: ( WS )?
+							int alt206=2;
+							int LA206_0 = input.LA(1);
+							if ( (LA206_0==WS) ) {
+								alt206=1;
 							}
-							switch (alt208) {
+							switch (alt206) {
 								case 1 :
-									// druidG.g:492:73: WS
+									// druidG.g:486:73: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3270); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3273); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3273);
+							pushFollow(FOLLOW_postAggArithOper_in_postAggItem3276);
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:492:107: ( WS )?
-							int alt209=2;
-							int LA209_0 = input.LA(1);
-							if ( (LA209_0==WS) ) {
-								alt209=1;
+							// druidG.g:486:107: ( WS )?
+							int alt207=2;
+							int LA207_0 = input.LA(1);
+							if ( (LA207_0==WS) ) {
+								alt207=1;
 							}
-							switch (alt209) {
+							switch (alt207) {
 								case 1 :
-									// druidG.g:492:107: WS
+									// druidG.g:486:107: WS
 									{
-									match(input,WS,FOLLOW_WS_in_postAggItem3276); 
+									match(input,WS,FOLLOW_WS_in_postAggItem3279); 
 									}
 									break;
 
 							}
 
-							pushFollow(FOLLOW_postAggItem_in_postAggItem3281);
+							pushFollow(FOLLOW_postAggItem_in_postAggItem3284);
 							b=postAggItem();
 							state._fsp--;
 
@@ -6491,7 +6487,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleArith"
-	// druidG.g:503:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
+	// druidG.g:497:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
 	public final PostAggItem simpleArith() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6501,63 +6497,63 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:505:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
-			// druidG.g:505:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// druidG.g:499:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
+			// druidG.g:499:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
 			{
-			// druidG.g:505:4: (a= simplePostAggAccess )
-			// druidG.g:505:5: a= simplePostAggAccess
+			// druidG.g:499:4: (a= simplePostAggAccess )
+			// druidG.g:499:5: a= simplePostAggAccess
 			{
-			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3317);
+			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3320);
 			a=simplePostAggAccess();
 			state._fsp--;
 
 			postAggItem=a;
 			}
 
-			// druidG.g:505:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
-			int alt214=2;
-			alt214 = dfa214.predict(input);
-			switch (alt214) {
+			// druidG.g:499:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			int alt212=2;
+			alt212 = dfa212.predict(input);
+			switch (alt212) {
 				case 1 :
-					// druidG.g:505:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
+					// druidG.g:499:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
 					{
-					// druidG.g:505:46: ( WS )?
-					int alt212=2;
-					int LA212_0 = input.LA(1);
-					if ( (LA212_0==WS) ) {
-						alt212=1;
+					// druidG.g:499:46: ( WS )?
+					int alt210=2;
+					int LA210_0 = input.LA(1);
+					if ( (LA210_0==WS) ) {
+						alt210=1;
 					}
-					switch (alt212) {
+					switch (alt210) {
 						case 1 :
-							// druidG.g:505:46: WS
+							// druidG.g:499:46: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith3323); 
+							match(input,WS,FOLLOW_WS_in_simpleArith3326); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_postAggArithOper_in_simpleArith3326);
+					pushFollow(FOLLOW_postAggArithOper_in_simpleArith3329);
 					postAggArithOper(postAggItem);
 					state._fsp--;
 
-					// druidG.g:505:80: ( WS )?
-					int alt213=2;
-					int LA213_0 = input.LA(1);
-					if ( (LA213_0==WS) ) {
-						alt213=1;
+					// druidG.g:499:80: ( WS )?
+					int alt211=2;
+					int LA211_0 = input.LA(1);
+					if ( (LA211_0==WS) ) {
+						alt211=1;
 					}
-					switch (alt213) {
+					switch (alt211) {
 						case 1 :
-							// druidG.g:505:80: WS
+							// druidG.g:499:80: WS
 							{
-							match(input,WS,FOLLOW_WS_in_simpleArith3329); 
+							match(input,WS,FOLLOW_WS_in_simpleArith3332); 
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3334);
+					pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3337);
 					b=simplePostAggAccess();
 					state._fsp--;
 
@@ -6591,7 +6587,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simplePostAggAccess"
-	// druidG.g:517:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
+	// druidG.g:511:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
 	public final PostAggItem simplePostAggAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6602,40 +6598,40 @@ public class druidGParser extends Parser {
 		PostAggItem js =null;
 
 		try {
-			// druidG.g:518:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
-			int alt215=4;
+			// druidG.g:512:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
+			int alt213=4;
 			switch ( input.LA(1) ) {
 			case FLOAT:
 			case LONG:
 				{
-				alt215=1;
+				alt213=1;
 				}
 				break;
 			case ID:
 				{
-				alt215=2;
+				alt213=2;
 				}
 				break;
 			case UNIQUE:
 				{
-				alt215=3;
+				alt213=3;
 				}
 				break;
 			case JAVASCRIPT:
 				{
-				alt215=4;
+				alt213=4;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 215, 0, input);
+					new NoViableAltException("", 213, 0, input);
 				throw nvae;
 			}
-			switch (alt215) {
+			switch (alt213) {
 				case 1 :
-					// druidG.g:518:4: c= constantAccess
+					// druidG.g:512:4: c= constantAccess
 					{
-					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess3363);
+					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess3366);
 					c=constantAccess();
 					state._fsp--;
 
@@ -6643,9 +6639,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:519:4: f= fieldAccess
+					// druidG.g:513:4: f= fieldAccess
 					{
-					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess3380);
+					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess3383);
 					f=fieldAccess();
 					state._fsp--;
 
@@ -6653,9 +6649,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 3 :
-					// druidG.g:520:4: h= hyperUniqueCardinality
+					// druidG.g:514:4: h= hyperUniqueCardinality
 					{
-					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3393);
+					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3396);
 					h=hyperUniqueCardinality();
 					state._fsp--;
 
@@ -6663,9 +6659,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 4 :
-					// druidG.g:521:4: js= postAggJavascriptDef
+					// druidG.g:515:4: js= postAggJavascriptDef
 					{
-					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3402);
+					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3405);
 					js=postAggJavascriptDef();
 					state._fsp--;
 
@@ -6689,7 +6685,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "constantAccess"
-	// druidG.g:526:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:520:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem constantAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6698,60 +6694,60 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("constant"); 
 		try {
-			// druidG.g:528:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:528:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:522:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:522:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:528:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:528:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
+			// druidG.g:522:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:522:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
 			{
-			// druidG.g:528:5: (a= FLOAT |a= LONG )
-			int alt216=2;
-			int LA216_0 = input.LA(1);
-			if ( (LA216_0==FLOAT) ) {
-				alt216=1;
+			// druidG.g:522:5: (a= FLOAT |a= LONG )
+			int alt214=2;
+			int LA214_0 = input.LA(1);
+			if ( (LA214_0==FLOAT) ) {
+				alt214=1;
 			}
-			else if ( (LA216_0==LONG) ) {
-				alt216=2;
+			else if ( (LA214_0==LONG) ) {
+				alt214=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 216, 0, input);
+					new NoViableAltException("", 214, 0, input);
 				throw nvae;
 			}
 
-			switch (alt216) {
+			switch (alt214) {
 				case 1 :
-					// druidG.g:528:6: a= FLOAT
+					// druidG.g:522:6: a= FLOAT
 					{
-					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess3432); 
+					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess3435); 
 					}
 					break;
 				case 2 :
-					// druidG.g:528:16: a= LONG
+					// druidG.g:522:16: a= LONG
 					{
-					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess3438); 
+					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess3441); 
 					}
 					break;
 
 			}
 
 			postAggItem.constantValue = Double.valueOf((a!=null?a.getText():null));
-			// druidG.g:530:5: ( WS postAggLabel[postAggItem] )?
-			int alt217=2;
-			int LA217_0 = input.LA(1);
-			if ( (LA217_0==WS) ) {
-				int LA217_1 = input.LA(2);
-				if ( (LA217_1==AS) ) {
-					alt217=1;
+			// druidG.g:524:5: ( WS postAggLabel[postAggItem] )?
+			int alt215=2;
+			int LA215_0 = input.LA(1);
+			if ( (LA215_0==WS) ) {
+				int LA215_1 = input.LA(2);
+				if ( (LA215_1==AS) ) {
+					alt215=1;
 				}
 			}
-			switch (alt217) {
+			switch (alt215) {
 				case 1 :
-					// druidG.g:530:6: WS postAggLabel[postAggItem]
+					// druidG.g:524:6: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_constantAccess3451); 
-					pushFollow(FOLLOW_postAggLabel_in_constantAccess3453);
+					match(input,WS,FOLLOW_WS_in_constantAccess3454); 
+					pushFollow(FOLLOW_postAggLabel_in_constantAccess3456);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -6779,7 +6775,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "fieldAccess"
-	// druidG.g:533:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:527:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem fieldAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6788,28 +6784,28 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("fieldAccess"); 
 		try {
-			// druidG.g:535:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:535:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:529:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:529:4: (a= ID ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:535:4: (a= ID ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:535:5: a= ID ( WS postAggLabel[postAggItem] )?
+			// druidG.g:529:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:529:5: a= ID ( WS postAggLabel[postAggItem] )?
 			{
-			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess3481); 
-			// druidG.g:535:10: ( WS postAggLabel[postAggItem] )?
-			int alt218=2;
-			int LA218_0 = input.LA(1);
-			if ( (LA218_0==WS) ) {
-				int LA218_1 = input.LA(2);
-				if ( (LA218_1==AS) ) {
-					alt218=1;
+			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess3484); 
+			// druidG.g:529:10: ( WS postAggLabel[postAggItem] )?
+			int alt216=2;
+			int LA216_0 = input.LA(1);
+			if ( (LA216_0==WS) ) {
+				int LA216_1 = input.LA(2);
+				if ( (LA216_1==AS) ) {
+					alt216=1;
 				}
 			}
-			switch (alt218) {
+			switch (alt216) {
 				case 1 :
-					// druidG.g:535:11: WS postAggLabel[postAggItem]
+					// druidG.g:529:11: WS postAggLabel[postAggItem]
 					{
-					match(input,WS,FOLLOW_WS_in_fieldAccess3484); 
-					pushFollow(FOLLOW_postAggLabel_in_fieldAccess3486);
+					match(input,WS,FOLLOW_WS_in_fieldAccess3487); 
+					pushFollow(FOLLOW_postAggLabel_in_fieldAccess3489);
 					postAggLabel(postAggItem);
 					state._fsp--;
 
@@ -6838,7 +6834,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "hyperUniqueCardinality"
-	// druidG.g:538:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
+	// druidG.g:532:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
 	public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6847,14 +6843,48 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("hyperUniqueCardinality"); 
 		try {
-			// druidG.g:540:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
-			// druidG.g:540:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:534:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
+			// druidG.g:534:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
 			{
-			// druidG.g:540:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
-			// druidG.g:540:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
+			// druidG.g:534:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:534:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
 			{
-			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality3515); 
-			// druidG.g:540:12: ( WS )?
+			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality3518); 
+			// druidG.g:534:12: ( WS )?
+			int alt217=2;
+			int LA217_0 = input.LA(1);
+			if ( (LA217_0==WS) ) {
+				alt217=1;
+			}
+			switch (alt217) {
+				case 1 :
+					// druidG.g:534:12: WS
+					{
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3520); 
+					}
+					break;
+
+			}
+
+			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality3523); 
+			// druidG.g:534:23: ( WS )?
+			int alt218=2;
+			int LA218_0 = input.LA(1);
+			if ( (LA218_0==WS) ) {
+				alt218=1;
+			}
+			switch (alt218) {
+				case 1 :
+					// druidG.g:534:23: WS
+					{
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3525); 
+					}
+					break;
+
+			}
+
+			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality3530); 
+			// druidG.g:534:32: ( WS )?
 			int alt219=2;
 			int LA219_0 = input.LA(1);
 			if ( (LA219_0==WS) ) {
@@ -6862,49 +6892,15 @@ public class druidGParser extends Parser {
 			}
 			switch (alt219) {
 				case 1 :
-					// druidG.g:540:12: WS
+					// druidG.g:534:32: WS
 					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3517); 
+					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3532); 
 					}
 					break;
 
 			}
 
-			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality3520); 
-			// druidG.g:540:23: ( WS )?
-			int alt220=2;
-			int LA220_0 = input.LA(1);
-			if ( (LA220_0==WS) ) {
-				alt220=1;
-			}
-			switch (alt220) {
-				case 1 :
-					// druidG.g:540:23: WS
-					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3522); 
-					}
-					break;
-
-			}
-
-			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality3527); 
-			// druidG.g:540:32: ( WS )?
-			int alt221=2;
-			int LA221_0 = input.LA(1);
-			if ( (LA221_0==WS) ) {
-				alt221=1;
-			}
-			switch (alt221) {
-				case 1 :
-					// druidG.g:540:32: WS
-					{
-					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3529); 
-					}
-					break;
-
-			}
-
-			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality3532); 
+			match(input,RPARAN,FOLLOW_RPARAN_in_hyperUniqueCardinality3535); 
 			postAggItem.fieldName = (a!=null?a.getText():null);
 			}
 
@@ -6925,7 +6921,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggJavascriptDef"
-	// druidG.g:545:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
+	// druidG.g:539:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
 	public final PostAggItem postAggJavascriptDef() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6934,27 +6930,27 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("javascript"); 
 		try {
-			// druidG.g:547:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
-			// druidG.g:547:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
+			// druidG.g:541:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
+			// druidG.g:541:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
 			{
-			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3558); 
-			// druidG.g:547:15: ( WS )?
-			int alt222=2;
-			int LA222_0 = input.LA(1);
-			if ( (LA222_0==WS) ) {
-				alt222=1;
+			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3561); 
+			// druidG.g:541:15: ( WS )?
+			int alt220=2;
+			int LA220_0 = input.LA(1);
+			if ( (LA220_0==WS) ) {
+				alt220=1;
 			}
-			switch (alt222) {
+			switch (alt220) {
 				case 1 :
-					// druidG.g:547:15: WS
+					// druidG.g:541:15: WS
 					{
-					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef3560); 
+					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef3563); 
 					}
 					break;
 
 			}
 
-			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3565); 
+			str=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3568); 
 			postAggItem.parseToJs((str!=null?str.getText():null));
 			}
 
@@ -6973,20 +6969,20 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggLabel"
-	// druidG.g:550:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
+	// druidG.g:544:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
 	public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
 		Token id=null;
 
 		try {
-			// druidG.g:551:2: ( ( AS WS id= ID ) )
-			// druidG.g:551:4: ( AS WS id= ID )
+			// druidG.g:545:2: ( ( AS WS id= ID ) )
+			// druidG.g:545:4: ( AS WS id= ID )
 			{
-			// druidG.g:551:4: ( AS WS id= ID )
-			// druidG.g:551:5: AS WS id= ID
+			// druidG.g:545:4: ( AS WS id= ID )
+			// druidG.g:545:5: AS WS id= ID
 			{
-			match(input,AS,FOLLOW_AS_in_postAggLabel3581); 
-			match(input,WS,FOLLOW_WS_in_postAggLabel3583); 
-			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel3587); 
+			match(input,AS,FOLLOW_AS_in_postAggLabel3584); 
+			match(input,WS,FOLLOW_WS_in_postAggLabel3586); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_postAggLabel3590); 
 			}
 
 			postAggItem.name = (id!=null?id.getText():null);
@@ -7006,15 +7002,15 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggArithOper"
-	// druidG.g:554:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
+	// druidG.g:548:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
 	public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
 		Token arith=null;
 
 		try {
-			// druidG.g:555:2: (arith= ARITH_OPER )
-			// druidG.g:555:3: arith= ARITH_OPER
+			// druidG.g:549:2: (arith= ARITH_OPER )
+			// druidG.g:549:3: arith= ARITH_OPER
 			{
-			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper3603); 
+			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper3606); 
 			postAggItem.fn = (arith!=null?arith.getText():null);
 			}
 
@@ -7036,7 +7032,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "isoTime"
-	// druidG.g:560:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
+	// druidG.g:554:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
 	public final druidGParser.isoTime_return isoTime() throws RecognitionException {
 		druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
 		retval.start = input.LT(1);
@@ -7044,120 +7040,120 @@ public class druidGParser extends Parser {
 		Token d=null;
 
 		try {
-			// druidG.g:561:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
-			int alt223=9;
+			// druidG.g:555:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
+			int alt221=9;
 			switch ( input.LA(1) ) {
 			case DATE_YEAR_ONLY:
 				{
-				alt223=1;
+				alt221=1;
 				}
 				break;
 			case DATE_YEAR_MONTH_ONLY:
 				{
-				alt223=2;
+				alt221=2;
 				}
 				break;
 			case DATE:
 				{
-				alt223=3;
+				alt221=3;
 				}
 				break;
 			case DATE_HOUR:
 				{
-				alt223=4;
+				alt221=4;
 				}
 				break;
 			case DATE_HOUR_MIN:
 				{
-				alt223=5;
+				alt221=5;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC:
 				{
-				alt223=6;
+				alt221=6;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB:
 				{
-				alt223=7;
+				alt221=7;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB_TZ:
 				{
-				alt223=8;
+				alt221=8;
 				}
 				break;
 			case DATE_HOUR_MIN_SEC_SUB_UTC_TZ:
 				{
-				alt223=9;
+				alt221=9;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 223, 0, input);
+					new NoViableAltException("", 221, 0, input);
 				throw nvae;
 			}
-			switch (alt223) {
+			switch (alt221) {
 				case 1 :
-					// druidG.g:561:3: d= DATE_YEAR_ONLY
+					// druidG.g:555:3: d= DATE_YEAR_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime3622); 
+					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime3625); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 2 :
-					// druidG.g:562:3: d= DATE_YEAR_MONTH_ONLY
+					// druidG.g:556:3: d= DATE_YEAR_MONTH_ONLY
 					{
-					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3630); 
+					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3633); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 3 :
-					// druidG.g:563:3: d= DATE
+					// druidG.g:557:3: d= DATE
 					{
-					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime3638); 
+					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime3641); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 4 :
-					// druidG.g:564:3: d= DATE_HOUR
+					// druidG.g:558:3: d= DATE_HOUR
 					{
-					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime3646); 
+					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime3649); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 5 :
-					// druidG.g:565:3: d= DATE_HOUR_MIN
+					// druidG.g:559:3: d= DATE_HOUR_MIN
 					{
-					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime3654); 
+					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime3657); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 6 :
-					// druidG.g:566:3: d= DATE_HOUR_MIN_SEC
+					// druidG.g:560:3: d= DATE_HOUR_MIN_SEC
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3662); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3665); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 7 :
-					// druidG.g:567:3: d= DATE_HOUR_MIN_SEC_SUB
+					// druidG.g:561:3: d= DATE_HOUR_MIN_SEC_SUB
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3670); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3673); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 8 :
-					// druidG.g:568:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
+					// druidG.g:562:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3678); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3681); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 9 :
-					// druidG.g:569:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+					// druidG.g:563:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
 					{
-					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3686); 
+					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3689); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
@@ -7180,28 +7176,28 @@ public class druidGParser extends Parser {
 	// Delegated rules
 
 
-	protected DFA184 dfa184 = new DFA184(this);
-	protected DFA191 dfa191 = new DFA191(this);
-	protected DFA214 dfa214 = new DFA214(this);
-	static final String DFA184_eotS =
+	protected DFA182 dfa182 = new DFA182(this);
+	protected DFA189 dfa189 = new DFA189(this);
+	protected DFA212 dfa212 = new DFA212(this);
+	static final String DFA182_eotS =
 		"\176\uffff";
-	static final String DFA184_eofS =
+	static final String DFA182_eofS =
 		"\12\uffff\1\24\1\uffff\1\24\2\uffff\1\24\1\uffff\3\24\3\uffff\2\24\5\uffff"+
 		"\2\24\3\uffff\2\24\3\uffff\1\24\15\uffff\1\24\17\uffff\1\24\67\uffff";
-	static final String DFA184_minS =
+	static final String DFA182_minS =
 		"\1\50\1\14\1\130\1\14\2\41\1\50\3\41\1\103\1\41\1\103\1\14\1\41\1\103"+
 		"\1\41\2\103\1\4\3\uffff\1\103\1\4\3\uffff\1\14\1\41\1\103\1\4\3\uffff"+
 		"\1\103\1\4\3\uffff\1\4\15\uffff\1\4\15\uffff\2\41\1\103\67\uffff";
-	static final String DFA184_maxS =
+	static final String DFA182_maxS =
 		"\1\76\2\130\1\36\2\130\1\50\2\130\1\66\1\130\1\116\2\130\1\66\1\130\1"+
 		"\116\2\130\1\127\3\uffff\1\130\1\127\3\uffff\1\14\2\130\1\127\3\uffff"+
 		"\1\130\1\127\3\uffff\1\127\15\uffff\1\127\15\uffff\1\130\1\66\1\130\67"+
 		"\uffff";
-	static final String DFA184_acceptS =
+	static final String DFA182_acceptS =
 		"\24\uffff\1\1\35\uffff\1\2\24\uffff\1\1\15\uffff\1\1\41\uffff\4\1\3\uffff";
-	static final String DFA184_specialS =
+	static final String DFA182_specialS =
 		"\176\uffff}>";
-	static final String[] DFA184_transitionS = {
+	static final String[] DFA182_transitionS = {
 			"\1\1\25\uffff\1\2",
 			"\1\4\21\uffff\1\5\71\uffff\1\3",
 			"\1\6",
@@ -7336,57 +7332,57 @@ public class druidGParser extends Parser {
 			""
 	};
 
-	static final short[] DFA184_eot = DFA.unpackEncodedString(DFA184_eotS);
-	static final short[] DFA184_eof = DFA.unpackEncodedString(DFA184_eofS);
-	static final char[] DFA184_min = DFA.unpackEncodedStringToUnsignedChars(DFA184_minS);
-	static final char[] DFA184_max = DFA.unpackEncodedStringToUnsignedChars(DFA184_maxS);
-	static final short[] DFA184_accept = DFA.unpackEncodedString(DFA184_acceptS);
-	static final short[] DFA184_special = DFA.unpackEncodedString(DFA184_specialS);
-	static final short[][] DFA184_transition;
+	static final short[] DFA182_eot = DFA.unpackEncodedString(DFA182_eotS);
+	static final short[] DFA182_eof = DFA.unpackEncodedString(DFA182_eofS);
+	static final char[] DFA182_min = DFA.unpackEncodedStringToUnsignedChars(DFA182_minS);
+	static final char[] DFA182_max = DFA.unpackEncodedStringToUnsignedChars(DFA182_maxS);
+	static final short[] DFA182_accept = DFA.unpackEncodedString(DFA182_acceptS);
+	static final short[] DFA182_special = DFA.unpackEncodedString(DFA182_specialS);
+	static final short[][] DFA182_transition;
 
 	static {
-		int numStates = DFA184_transitionS.length;
-		DFA184_transition = new short[numStates][];
+		int numStates = DFA182_transitionS.length;
+		DFA182_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA184_transition[i] = DFA.unpackEncodedString(DFA184_transitionS[i]);
+			DFA182_transition[i] = DFA.unpackEncodedString(DFA182_transitionS[i]);
 		}
 	}
 
-	protected class DFA184 extends DFA {
+	protected class DFA182 extends DFA {
 
-		public DFA184(BaseRecognizer recognizer) {
+		public DFA182(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 184;
-			this.eot = DFA184_eot;
-			this.eof = DFA184_eof;
-			this.min = DFA184_min;
-			this.max = DFA184_max;
-			this.accept = DFA184_accept;
-			this.special = DFA184_special;
-			this.transition = DFA184_transition;
+			this.decisionNumber = 182;
+			this.eot = DFA182_eot;
+			this.eof = DFA182_eof;
+			this.min = DFA182_min;
+			this.max = DFA182_max;
+			this.accept = DFA182_accept;
+			this.special = DFA182_special;
+			this.transition = DFA182_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "378:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );";
+			return "372:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );";
 		}
 	}
 
-	static final String DFA191_eotS =
+	static final String DFA189_eotS =
 		"\110\uffff";
-	static final String DFA191_eofS =
+	static final String DFA189_eofS =
 		"\10\uffff\1\16\2\uffff\3\16\3\uffff\3\16\3\uffff\1\16\60\uffff";
-	static final String DFA191_minS =
+	static final String DFA189_minS =
 		"\1\50\1\36\1\uffff\1\36\1\41\1\130\2\41\1\103\1\116\1\41\2\103\1\4\3\uffff"+
 		"\2\103\1\4\3\uffff\1\4\3\uffff\1\130\54\uffff";
-	static final String DFA191_maxS =
+	static final String DFA189_maxS =
 		"\1\76\1\130\1\uffff\1\64\3\130\1\116\1\130\2\116\2\130\1\127\3\uffff\2"+
 		"\130\1\127\3\uffff\1\127\3\uffff\1\130\54\uffff";
-	static final String DFA191_acceptS =
+	static final String DFA189_acceptS =
 		"\2\uffff\1\2\13\uffff\1\1\30\uffff\1\1\3\uffff\1\1\3\uffff\1\1\13\uffff"+
 		"\1\1\13\uffff\1\1";
-	static final String DFA191_specialS =
+	static final String DFA189_specialS =
 		"\110\uffff}>";
-	static final String[] DFA191_transitionS = {
+	static final String[] DFA189_transitionS = {
 			"\1\1\25\uffff\1\2",
 			"\1\4\71\uffff\1\3",
 			"",
@@ -7467,64 +7463,64 @@ public class druidGParser extends Parser {
 			""
 	};
 
-	static final short[] DFA191_eot = DFA.unpackEncodedString(DFA191_eotS);
-	static final short[] DFA191_eof = DFA.unpackEncodedString(DFA191_eofS);
-	static final char[] DFA191_min = DFA.unpackEncodedStringToUnsignedChars(DFA191_minS);
-	static final char[] DFA191_max = DFA.unpackEncodedStringToUnsignedChars(DFA191_maxS);
-	static final short[] DFA191_accept = DFA.unpackEncodedString(DFA191_acceptS);
-	static final short[] DFA191_special = DFA.unpackEncodedString(DFA191_specialS);
-	static final short[][] DFA191_transition;
+	static final short[] DFA189_eot = DFA.unpackEncodedString(DFA189_eotS);
+	static final short[] DFA189_eof = DFA.unpackEncodedString(DFA189_eofS);
+	static final char[] DFA189_min = DFA.unpackEncodedStringToUnsignedChars(DFA189_minS);
+	static final char[] DFA189_max = DFA.unpackEncodedStringToUnsignedChars(DFA189_maxS);
+	static final short[] DFA189_accept = DFA.unpackEncodedString(DFA189_acceptS);
+	static final short[] DFA189_special = DFA.unpackEncodedString(DFA189_specialS);
+	static final short[][] DFA189_transition;
 
 	static {
-		int numStates = DFA191_transitionS.length;
-		DFA191_transition = new short[numStates][];
+		int numStates = DFA189_transitionS.length;
+		DFA189_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA191_transition[i] = DFA.unpackEncodedString(DFA191_transitionS[i]);
+			DFA189_transition[i] = DFA.unpackEncodedString(DFA189_transitionS[i]);
 		}
 	}
 
-	protected class DFA191 extends DFA {
+	protected class DFA189 extends DFA {
 
-		public DFA191(BaseRecognizer recognizer) {
+		public DFA189(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 191;
-			this.eot = DFA191_eot;
-			this.eof = DFA191_eof;
-			this.min = DFA191_min;
-			this.max = DFA191_max;
-			this.accept = DFA191_accept;
-			this.special = DFA191_special;
-			this.transition = DFA191_transition;
+			this.decisionNumber = 189;
+			this.eot = DFA189_eot;
+			this.eof = DFA189_eof;
+			this.min = DFA189_min;
+			this.max = DFA189_max;
+			this.accept = DFA189_accept;
+			this.special = DFA189_special;
+			this.transition = DFA189_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "414:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );";
+			return "408:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );";
 		}
 	}
 
-	static final String DFA214_eotS =
+	static final String DFA212_eotS =
 		"\134\uffff";
-	static final String DFA214_eofS =
+	static final String DFA212_eofS =
 		"\2\3\132\uffff";
-	static final String DFA214_minS =
+	static final String DFA212_minS =
 		"\2\5\1\41\6\uffff\1\41\3\uffff\1\41\3\uffff\1\70\1\116\1\uffff\1\41\3"+
 		"\uffff\1\70\1\116\4\uffff\1\70\1\116\1\uffff\1\70\1\50\1\116\4\uffff\1"+
 		"\70\1\116\1\uffff\1\70\1\50\1\116\1\uffff\1\70\1\50\1\116\1\uffff\2\50"+
 		"\1\113\1\uffff\1\70\1\50\1\116\1\uffff\2\50\1\113\1\uffff\2\50\1\113\1"+
 		"\uffff\1\50\3\113\25\uffff";
-	static final String DFA214_maxS =
+	static final String DFA212_maxS =
 		"\1\130\1\127\1\130\6\uffff\1\130\3\uffff\1\124\3\uffff\2\130\1\uffff\1"+
 		"\124\3\uffff\2\130\4\uffff\2\130\1\uffff\1\70\1\130\1\116\4\uffff\2\130"+
 		"\1\uffff\1\70\1\130\1\116\1\uffff\1\70\1\130\1\116\1\uffff\1\130\1\50"+
 		"\1\130\1\uffff\1\70\1\130\1\116\1\uffff\1\130\1\50\1\130\1\uffff\1\130"+
 		"\1\50\1\130\1\uffff\1\50\2\130\1\113\25\uffff";
-	static final String DFA214_acceptS =
+	static final String DFA212_acceptS =
 		"\3\uffff\1\2\12\uffff\3\1\4\uffff\3\1\3\uffff\3\1\6\uffff\4\1\6\uffff"+
 		"\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\3\uffff\1\1\4\uffff"+
 		"\25\1";
-	static final String DFA214_specialS =
+	static final String DFA212_specialS =
 		"\134\uffff}>";
-	static final String[] DFA214_transitionS = {
+	static final String[] DFA212_transitionS = {
 			"\1\2\75\uffff\1\3\7\uffff\1\3\14\uffff\1\1",
 			"\1\11\40\uffff\1\3\11\uffff\1\3\2\uffff\1\3\17\uffff\1\3\5\uffff\1\3"+
 			"\1\uffff\1\3\13\uffff\1\3",
@@ -7624,38 +7620,38 @@ public class druidGParser extends Parser {
 			""
 	};
 
-	static final short[] DFA214_eot = DFA.unpackEncodedString(DFA214_eotS);
-	static final short[] DFA214_eof = DFA.unpackEncodedString(DFA214_eofS);
-	static final char[] DFA214_min = DFA.unpackEncodedStringToUnsignedChars(DFA214_minS);
-	static final char[] DFA214_max = DFA.unpackEncodedStringToUnsignedChars(DFA214_maxS);
-	static final short[] DFA214_accept = DFA.unpackEncodedString(DFA214_acceptS);
-	static final short[] DFA214_special = DFA.unpackEncodedString(DFA214_specialS);
-	static final short[][] DFA214_transition;
+	static final short[] DFA212_eot = DFA.unpackEncodedString(DFA212_eotS);
+	static final short[] DFA212_eof = DFA.unpackEncodedString(DFA212_eofS);
+	static final char[] DFA212_min = DFA.unpackEncodedStringToUnsignedChars(DFA212_minS);
+	static final char[] DFA212_max = DFA.unpackEncodedStringToUnsignedChars(DFA212_maxS);
+	static final short[] DFA212_accept = DFA.unpackEncodedString(DFA212_acceptS);
+	static final short[] DFA212_special = DFA.unpackEncodedString(DFA212_specialS);
+	static final short[][] DFA212_transition;
 
 	static {
-		int numStates = DFA214_transitionS.length;
-		DFA214_transition = new short[numStates][];
+		int numStates = DFA212_transitionS.length;
+		DFA212_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA214_transition[i] = DFA.unpackEncodedString(DFA214_transitionS[i]);
+			DFA212_transition[i] = DFA.unpackEncodedString(DFA212_transitionS[i]);
 		}
 	}
 
-	protected class DFA214 extends DFA {
+	protected class DFA212 extends DFA {
 
-		public DFA214(BaseRecognizer recognizer) {
+		public DFA212(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 214;
-			this.eot = DFA214_eot;
-			this.eof = DFA214_eof;
-			this.min = DFA214_min;
-			this.max = DFA214_max;
-			this.accept = DFA214_accept;
-			this.special = DFA214_special;
-			this.transition = DFA214_transition;
+			this.decisionNumber = 212;
+			this.eot = DFA212_eot;
+			this.eof = DFA212_eof;
+			this.min = DFA212_min;
+			this.max = DFA212_max;
+			this.accept = DFA212_accept;
+			this.special = DFA212_special;
+			this.transition = DFA212_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "505:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
+			return "499:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
 		}
 	}
 
@@ -7717,476 +7713,480 @@ public class druidGParser extends Parser {
 	public static final BitSet FOLLOW_WS_in_insertStmnt459 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
 	public static final BitSet FOLLOW_anyValue_in_insertStmnt464 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
 	public static final BitSet FOLLOW_WS_in_insertStmnt470 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertStmnt473 = new BitSet(new long[]{0x0000000002000402L,0x0000000001400000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt475 = new BitSet(new long[]{0x0000000002000402L,0x0000000000400000L});
+	public static final BitSet FOLLOW_RPARAN_in_insertStmnt473 = new BitSet(new long[]{0x0000000000000000L,0x0000000001400000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt475 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
 	public static final BitSet FOLLOW_FROM_in_insertStmnt492 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
 	public static final BitSet FOLLOW_WS_in_insertStmnt494 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
 	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt499 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt504 = new BitSet(new long[]{0x0000000002000402L,0x0000000000400000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt504 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
 	public static final BitSet FOLLOW_WHERE_in_insertStmnt514 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
 	public static final BitSet FOLLOW_WS_in_insertStmnt516 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-	public static final BitSet FOLLOW_intervalClause_in_insertStmnt520 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt522 = new BitSet(new long[]{0x0000000002000402L});
-	public static final BitSet FOLLOW_BREAK_in_insertStmnt530 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt532 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_insertStmnt534 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt536 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt540 = new BitSet(new long[]{0x0000000002000002L});
-	public static final BitSet FOLLOW_DELIMITER_in_insertStmnt554 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt556 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertStmnt559 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt561 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt566 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt570 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertStmnt573 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt575 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt580 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt586 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertStmnt589 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertStmnt591 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INSERT_HADOOP_in_insertHStmnt615 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt617 = new BitSet(new long[]{0x0000200000000000L});
-	public static final BitSet FOLLOW_INTO_in_insertHStmnt619 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt621 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_insertHStmnt626 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt631 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt634 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt636 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_insertHStmnt639 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt643 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertHStmnt646 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt648 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_insertHStmnt651 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt659 = new BitSet(new long[]{0x0000000400000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt661 = new BitSet(new long[]{0x0000000400000000L});
-	public static final BitSet FOLLOW_FROM_in_insertHStmnt671 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt673 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt678 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt683 = new BitSet(new long[]{0x0000000002000402L,0x0000000000400440L});
-	public static final BitSet FOLLOW_WHERE_in_insertHStmnt688 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt690 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-	public static final BitSet FOLLOW_intervalClause_in_insertHStmnt694 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt696 = new BitSet(new long[]{0x0000000002000402L,0x0000000000000440L});
-	public static final BitSet FOLLOW_BREAK_in_insertHStmnt704 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt706 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_insertHStmnt708 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt710 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt714 = new BitSet(new long[]{0x0000000002000002L,0x0000000000000440L});
-	public static final BitSet FOLLOW_DELIMITER_in_insertHStmnt729 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt731 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt734 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt736 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt741 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt745 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertHStmnt748 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt750 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt755 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt761 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt764 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000440L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt766 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000440L});
-	public static final BitSet FOLLOW_PARTITION_in_insertHStmnt775 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt777 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt780 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt782 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt787 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt789 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertHStmnt792 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt794 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_LONG_in_insertHStmnt799 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt803 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt806 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000400L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt808 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
-	public static final BitSet FOLLOW_ROLLUP_in_insertHStmnt816 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt818 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt821 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt823 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt828 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt830 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertHStmnt833 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt835 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_LONG_in_insertHStmnt840 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt844 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt847 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertHStmnt849 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INSERT_REALTIME_in_insertRTStmnt872 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt874 = new BitSet(new long[]{0x0000200000000000L});
-	public static final BitSet FOLLOW_INTO_in_insertRTStmnt876 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt878 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_insertRTStmnt883 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt888 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertRTStmnt891 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt893 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_insertRTStmnt896 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt900 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertRTStmnt903 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt905 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_insertRTStmnt908 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt913 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertRTStmnt916 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt918 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_VALUES_in_insertRTStmnt924 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt926 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_insertRTStmnt929 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt931 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_anyValue_in_insertRTStmnt937 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt944 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_insertRTStmnt947 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt949 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_anyValue_in_insertRTStmnt954 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt960 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_insertRTStmnt963 = new BitSet(new long[]{0x0000000000000002L,0x0000000001400000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt965 = new BitSet(new long[]{0x0000000000000002L,0x0000000001400000L});
-	public static final BitSet FOLLOW_WHERE_in_insertRTStmnt971 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt973 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-	public static final BitSet FOLLOW_intervalClause_in_insertRTStmnt977 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt985 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_BREAK_in_insertRTStmnt987 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt989 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_insertRTStmnt991 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_insertRTStmnt993 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertRTStmnt997 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_queryStmnt_in_grandQuery1031 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000008L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1041 = new BitSet(new long[]{0x0009000000000000L,0x0000000000000200L});
-	public static final BitSet FOLLOW_set_in_grandQuery1045 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1066 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_grandQuery1069 = new BitSet(new long[]{0x0000000000000000L,0x0000000001002000L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1071 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-	public static final BitSet FOLLOW_queryStmnt_in_grandQuery1077 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1082 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_grandQuery1085 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000002L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1087 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-	public static final BitSet FOLLOW_ON_in_grandQuery1090 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1097 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_grandQuery1100 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1102 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_grandQuery1108 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1113 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_grandQuery1116 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1118 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_grandQuery1123 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1129 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_grandQuery1132 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000008L});
-	public static final BitSet FOLLOW_WS_in_grandQuery1151 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-	public static final BitSet FOLLOW_OPT_SEMI_COLON_in_grandQuery1154 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SELECT_in_queryStmnt1177 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1205 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_queryStmnt1207 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1211 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_queryStmnt1214 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1216 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_selectItems_in_queryStmnt1219 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1250 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-	public static final BitSet FOLLOW_90_in_queryStmnt1252 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1267 = new BitSet(new long[]{0x0000000400000000L});
-	public static final BitSet FOLLOW_FROM_in_queryStmnt1269 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1290 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt1294 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1331 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1333 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-	public static final BitSet FOLLOW_queryStmnt_in_queryStmnt1338 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1341 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1360 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_WHERE_in_queryStmnt1362 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1364 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-	public static final BitSet FOLLOW_whereClause_in_queryStmnt1366 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1384 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_BREAK_in_queryStmnt1386 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1388 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt1390 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1392 = new BitSet(new long[]{0x0000000020000000L,0x0000000000004080L});
-	public static final BitSet FOLLOW_granularityClause_in_queryStmnt1396 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1413 = new BitSet(new long[]{0x0000000800000000L});
-	public static final BitSet FOLLOW_GROUP_in_queryStmnt1415 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1417 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt1419 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1421 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt1447 = new BitSet(new long[]{0x0000000000000002L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1479 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_queryStmnt1482 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1484 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt1489 = new BitSet(new long[]{0x0000000000000002L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1546 = new BitSet(new long[]{0x0000001000000000L});
-	public static final BitSet FOLLOW_HAVING_in_queryStmnt1548 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1550 = new BitSet(new long[]{0x4000010000000000L});
-	public static final BitSet FOLLOW_havingClause_in_queryStmnt1554 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1598 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_ORDER_in_queryStmnt1600 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1602 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BY_in_queryStmnt1604 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1606 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_queryStmnt1611 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1644 = new BitSet(new long[]{0x0000000004000080L});
-	public static final BitSet FOLLOW_set_in_queryStmnt1648 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1698 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LIMIT_in_queryStmnt1700 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1702 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_LONG_in_queryStmnt1707 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1745 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-	public static final BitSet FOLLOW_THEN_in_queryStmnt1747 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1749 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_queryStmnt1753 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1768 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_WHICH_in_queryStmnt1770 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1772 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_CONTAINS_in_queryStmnt1774 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1778 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1781 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1783 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1789 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1793 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_queryStmnt1796 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1798 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1803 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1810 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1813 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1819 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_SORT_in_queryStmnt1821 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1823 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1826 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1828 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1834 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1839 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1842 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1854 = new BitSet(new long[]{0x0000004000000000L});
-	public static final BitSet FOLLOW_HINT_in_queryStmnt1856 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1858 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1861 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1863 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1868 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_queryStmnt1872 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1875 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1909 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_anyValue1917 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggItem_in_selectItems1940 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleDim_in_selectItems1950 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_simpleDim1971 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleDim1974 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_AS_in_simpleDim1976 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleDim1978 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_simpleDim1982 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_intervalClause_in_whereClause2005 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_whereClause2010 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_AND_in_whereClause2012 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_whereClause2014 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_grandFilter_in_whereClause2018 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_92_in_intervalClause2044 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2046 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_BETWEEN_in_intervalClause2048 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2050 = new BitSet(new long[]{0x0100000000FF8000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_isoTime_in_intervalClause2070 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2077 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2081 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_AND_in_intervalClause2083 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2085 = new BitSet(new long[]{0x0000000000FF8000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_isoTime_in_intervalClause2090 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2097 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_intervalClause2123 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2125 = new BitSet(new long[]{0x0200000000000000L});
-	public static final BitSet FOLLOW_pairString_in_intervalClause2130 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2142 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_intervalClause2145 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2147 = new BitSet(new long[]{0x0200000000000000L});
-	public static final BitSet FOLLOW_pairString_in_intervalClause2152 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_intervalClause2158 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_intervalClause2161 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_getEquals2184 = new BitSet(new long[]{0x0000000040000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_getEquals2186 = new BitSet(new long[]{0x0000000040000000L});
-	public static final BitSet FOLLOW_EQUALS_in_getEquals2189 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_getEquals2191 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_set_in_getEquals2197 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2236 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DURATION_in_granularityClause2260 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2262 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityClause2265 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2267 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2272 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2276 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_91_in_granularityClause2280 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2282 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2287 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2295 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_granularityClause2298 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2300 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_granularityInclude_in_granularityClause2305 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2309 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityClause2314 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PERIOD_in_granularityClause2333 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2335 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityClause2338 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2340 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2345 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2349 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_91_in_granularityClause2353 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2355 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2360 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2366 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_91_in_granularityClause2370 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2372 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2377 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2386 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_granularityClause2389 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2391 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_granularityInclude_in_granularityClause2396 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_granularityClause2400 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityClause2405 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude2433 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_INCLUDE_in_granularityInclude2435 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude2437 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_granularityInclude2440 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude2442 = new BitSet(new long[]{0x0200000000000000L});
-	public static final BitSet FOLLOW_pairNums_in_granularityInclude2448 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_91_in_granularityInclude2453 = new BitSet(new long[]{0x0200000000000000L});
-	public static final BitSet FOLLOW_pairNums_in_granularityInclude2457 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_granularityInclude2464 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_granularityInclude2467 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LSQUARE_in_pairNums2486 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_pairNums2488 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_LONG_in_pairNums2493 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_pairNums2496 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_pairNums2499 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_pairNums2501 = new BitSet(new long[]{0x0040000000000000L});
-	public static final BitSet FOLLOW_LONG_in_pairNums2506 = new BitSet(new long[]{0x0000000000000000L,0x0000000001001000L});
-	public static final BitSet FOLLOW_WS_in_pairNums2508 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_RSQUARE_in_pairNums2511 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LSQUARE_in_pairString2531 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_pairString2533 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString2538 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
-	public static final BitSet FOLLOW_WS_in_pairString2541 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_pairString2544 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_pairString2546 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString2551 = new BitSet(new long[]{0x0000000000000000L,0x0000000001001000L});
-	public static final BitSet FOLLOW_WS_in_pairString2553 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_RSQUARE_in_pairString2556 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_complexHaving_in_havingClause2581 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_simpleHaving2602 = new BitSet(new long[]{0x0000000000001000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving2604 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving2609 = new BitSet(new long[]{0x0040000200000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving2611 = new BitSet(new long[]{0x0040000200000000L});
-	public static final BitSet FOLLOW_set_in_simpleHaving2616 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_getEquals_in_simpleHaving2633 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_simpleHaving2644 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving2646 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_simpleHaving2650 = new BitSet(new long[]{0x0000000000001000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving2652 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving2657 = new BitSet(new long[]{0x0040000200000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleHaving2659 = new BitSet(new long[]{0x0040000200000000L});
-	public static final BitSet FOLLOW_set_in_simpleHaving2664 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleHaving_in_complexHaving2692 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleHaving_in_complexHaving2703 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_complexHaving2705 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_complexHaving2709 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_complexHaving2715 = new BitSet(new long[]{0x4000010000000000L});
-	public static final BitSet FOLLOW_complexHaving_in_complexHaving2719 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2748 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2753 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_grandFilter2757 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_grandFilter2763 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2767 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_simpleLogicalFilter_in_semiGrandFilter2798 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_semiGrandFilter2805 = new BitSet(new long[]{0x4100010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_semiGrandFilter2807 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2812 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_semiGrandFilter2818 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_semiGrandFilter2822 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_semiGrandFilter2828 = new BitSet(new long[]{0x4100010000000000L});
-	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2832 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_semiGrandFilter2848 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_semiGrandFilter2851 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2870 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2882 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2884 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
-	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2888 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2894 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2898 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2906 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2908 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2912 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2939 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2945 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_getEquals_in_selectorFilter2970 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_regexFilter2999 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter3001 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LIKE_in_regexFilter3003 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_regexFilter3005 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3011 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggCallSite_in_aggItem3042 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggItem3046 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_AS_in_aggItem3048 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggItem3050 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggItem3054 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_aggFunc_in_aggCallSite3073 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3078 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_aggCallSite3081 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3083 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite3090 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3096 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-	public static final BitSet FOLLOW_91_in_aggCallSite3099 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3101 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_aggCallSite3106 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
-	public static final BitSet FOLLOW_WS_in_aggCallSite3112 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_aggCallSite3115 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_aggCallSite3122 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-	public static final BitSet FOLLOW_89_in_aggCallSite3127 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc3145 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc3152 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_aggFunc3159 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HYPER_UNIQUE_in_aggFunc3166 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MIN_in_aggFunc3173 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MAX_in_aggFunc3180 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc3187 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simpleArith_in_postAggItem3215 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3219 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3222 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3225 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3230 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPARAN_in_postAggItem3248 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3250 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3255 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3257 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_postAggItem3260 = new BitSet(new long[]{0x0000000000000062L,0x0000000001000000L});
-	public static final BitSet FOLLOW_postAggLabel_in_postAggItem3264 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3270 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3273 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_postAggItem3276 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_postAggItem_in_postAggItem3281 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3317 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith3323 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith3326 = new BitSet(new long[]{0x0040810200000000L,0x0000000001100000L});
-	public static final BitSet FOLLOW_WS_in_simpleArith3329 = new BitSet(new long[]{0x0040810200000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3334 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess3363 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess3380 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3393 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3402 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_constantAccess3432 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_LONG_in_constantAccess3438 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_constantAccess3451 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_constantAccess3453 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_fieldAccess3481 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_fieldAccess3484 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess3486 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality3515 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3517 = new BitSet(new long[]{0x0100000000000000L});
-	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality3520 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3522 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality3527 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
-	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3529 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality3532 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3558 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
-	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef3560 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3565 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AS_in_postAggLabel3581 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_WS_in_postAggLabel3583 = new BitSet(new long[]{0x0000010000000000L});
-	public static final BitSet FOLLOW_ID_in_postAggLabel3587 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper3603 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime3622 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3630 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_in_isoTime3638 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime3646 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime3654 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3662 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3670 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3678 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3686 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_intervalClause_in_insertStmnt520 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt527 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_BREAK_in_insertStmnt529 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt531 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_insertStmnt533 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt535 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt539 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt553 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_DELIMITER_in_insertStmnt555 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt557 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertStmnt560 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt562 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt567 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt571 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertStmnt574 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt576 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertStmnt581 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt587 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertStmnt590 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertStmnt592 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INSERT_HADOOP_in_insertHStmnt616 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt618 = new BitSet(new long[]{0x0000200000000000L});
+	public static final BitSet FOLLOW_INTO_in_insertHStmnt620 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt622 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_insertHStmnt627 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt632 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt635 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt637 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_insertHStmnt640 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt644 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertHStmnt647 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt649 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_insertHStmnt652 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt657 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt660 = new BitSet(new long[]{0x0000000400000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt662 = new BitSet(new long[]{0x0000000400000000L});
+	public static final BitSet FOLLOW_FROM_in_insertHStmnt669 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt671 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt676 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt681 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+	public static final BitSet FOLLOW_WHERE_in_insertHStmnt686 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt688 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
+	public static final BitSet FOLLOW_intervalClause_in_insertHStmnt692 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt699 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_BREAK_in_insertHStmnt701 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt703 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_insertHStmnt705 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt707 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt711 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt726 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_DELIMITER_in_insertHStmnt728 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt730 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt733 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt735 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt740 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt744 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertHStmnt747 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt749 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt754 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt760 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt763 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt765 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt774 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_PARTITION_in_insertHStmnt776 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt778 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt781 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt783 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt788 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt790 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertHStmnt793 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt795 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LONG_in_insertHStmnt800 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt804 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt807 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt809 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt817 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_ROLLUP_in_insertHStmnt819 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt821 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertHStmnt824 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt826 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertHStmnt831 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt833 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertHStmnt836 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt838 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LONG_in_insertHStmnt843 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt847 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertHStmnt850 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertHStmnt852 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INSERT_REALTIME_in_insertRTStmnt875 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt877 = new BitSet(new long[]{0x0000200000000000L});
+	public static final BitSet FOLLOW_INTO_in_insertRTStmnt879 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt881 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_insertRTStmnt886 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt891 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertRTStmnt894 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt896 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_insertRTStmnt899 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt903 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertRTStmnt906 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt908 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_insertRTStmnt911 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt916 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertRTStmnt919 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt921 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_VALUES_in_insertRTStmnt927 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt929 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_insertRTStmnt932 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt934 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_anyValue_in_insertRTStmnt940 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt947 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_insertRTStmnt950 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt952 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_anyValue_in_insertRTStmnt957 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt963 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_insertRTStmnt966 = new BitSet(new long[]{0x0000000000000002L,0x0000000001400000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt968 = new BitSet(new long[]{0x0000000000000002L,0x0000000001400000L});
+	public static final BitSet FOLLOW_WHERE_in_insertRTStmnt974 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt976 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
+	public static final BitSet FOLLOW_intervalClause_in_insertRTStmnt980 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt988 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_BREAK_in_insertRTStmnt990 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt992 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_insertRTStmnt994 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_insertRTStmnt996 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_insertRTStmnt1000 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_queryStmnt_in_grandQuery1034 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000008L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1044 = new BitSet(new long[]{0x0009000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_set_in_grandQuery1048 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1069 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_grandQuery1072 = new BitSet(new long[]{0x0000000000000000L,0x0000000001002000L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1074 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+	public static final BitSet FOLLOW_queryStmnt_in_grandQuery1080 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1085 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_grandQuery1088 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000002L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1090 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_ON_in_grandQuery1093 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1100 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_grandQuery1103 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1105 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_grandQuery1111 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1116 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_grandQuery1119 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1121 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_grandQuery1126 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1132 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_grandQuery1135 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000008L});
+	public static final BitSet FOLLOW_WS_in_grandQuery1154 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
+	public static final BitSet FOLLOW_OPT_SEMI_COLON_in_grandQuery1157 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SELECT_in_queryStmnt1180 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1208 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_queryStmnt1210 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1214 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_queryStmnt1217 = new BitSet(new long[]{0x1480818008004000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1219 = new BitSet(new long[]{0x1480818008004000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_selectItems_in_queryStmnt1222 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1253 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+	public static final BitSet FOLLOW_90_in_queryStmnt1255 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1270 = new BitSet(new long[]{0x0000000400000000L});
+	public static final BitSet FOLLOW_FROM_in_queryStmnt1272 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1293 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt1297 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1334 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1336 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+	public static final BitSet FOLLOW_queryStmnt_in_queryStmnt1341 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1344 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1363 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+	public static final BitSet FOLLOW_WHERE_in_queryStmnt1365 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1367 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
+	public static final BitSet FOLLOW_whereClause_in_queryStmnt1369 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1387 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_BREAK_in_queryStmnt1389 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1391 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt1393 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1395 = new BitSet(new long[]{0x0000000020000000L,0x0000000000004080L});
+	public static final BitSet FOLLOW_granularityClause_in_queryStmnt1399 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1416 = new BitSet(new long[]{0x0000000800000000L});
+	public static final BitSet FOLLOW_GROUP_in_queryStmnt1418 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1420 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt1422 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1424 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt1450 = new BitSet(new long[]{0x0000000000000002L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1482 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_queryStmnt1485 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1487 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt1492 = new BitSet(new long[]{0x0000000000000002L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1549 = new BitSet(new long[]{0x0000001000000000L});
+	public static final BitSet FOLLOW_HAVING_in_queryStmnt1551 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1553 = new BitSet(new long[]{0x4000010000000000L});
+	public static final BitSet FOLLOW_havingClause_in_queryStmnt1557 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1601 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+	public static final BitSet FOLLOW_ORDER_in_queryStmnt1603 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1605 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_BY_in_queryStmnt1607 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1609 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_queryStmnt1614 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1647 = new BitSet(new long[]{0x0000000004000080L});
+	public static final BitSet FOLLOW_set_in_queryStmnt1651 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1701 = new BitSet(new long[]{0x0020000000000000L});
+	public static final BitSet FOLLOW_LIMIT_in_queryStmnt1703 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1705 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LONG_in_queryStmnt1710 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1748 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+	public static final BitSet FOLLOW_THEN_in_queryStmnt1750 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1752 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_queryStmnt1756 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1771 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_WHICH_in_queryStmnt1773 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1775 = new BitSet(new long[]{0x0000000000002000L});
+	public static final BitSet FOLLOW_CONTAINS_in_queryStmnt1777 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1781 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1784 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1786 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1792 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1796 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_queryStmnt1799 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1801 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1806 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1813 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1816 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1822 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+	public static final BitSet FOLLOW_SORT_in_queryStmnt1824 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1826 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1829 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1831 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1837 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1842 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1845 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1857 = new BitSet(new long[]{0x0000004000000000L});
+	public static final BitSet FOLLOW_HINT_in_queryStmnt1859 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1861 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_queryStmnt1864 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1866 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_queryStmnt1871 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_queryStmnt1875 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_queryStmnt1878 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_anyValue1912 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_anyValue1920 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggItem_in_selectItems1943 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleDim_in_selectItems1953 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_simpleDim1974 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleDim1977 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_AS_in_simpleDim1979 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleDim1981 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_simpleDim1985 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_intervalClause_in_whereClause2008 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_whereClause2013 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_AND_in_whereClause2015 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_whereClause2017 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_grandFilter_in_whereClause2021 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_92_in_intervalClause2047 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2049 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_BETWEEN_in_intervalClause2051 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2053 = new BitSet(new long[]{0x0100000000FF8000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_isoTime_in_intervalClause2073 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2080 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2084 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_AND_in_intervalClause2086 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2088 = new BitSet(new long[]{0x0000000000FF8000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_isoTime_in_intervalClause2093 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2100 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_intervalClause2126 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2128 = new BitSet(new long[]{0x0200000000000000L});
+	public static final BitSet FOLLOW_pairString_in_intervalClause2133 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2145 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_intervalClause2148 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2150 = new BitSet(new long[]{0x0200000000000000L});
+	public static final BitSet FOLLOW_pairString_in_intervalClause2155 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_intervalClause2161 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_intervalClause2164 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_getEquals2187 = new BitSet(new long[]{0x0000000040000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_getEquals2189 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_EQUALS_in_getEquals2192 = new BitSet(new long[]{0x0040000200000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_getEquals2194 = new BitSet(new long[]{0x0040000200000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_set_in_getEquals2200 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2239 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DURATION_in_granularityClause2263 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2265 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityClause2268 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2270 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2275 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2279 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_91_in_granularityClause2283 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2285 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2290 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2298 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_granularityClause2301 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2303 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_granularityInclude_in_granularityClause2308 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2312 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityClause2317 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PERIOD_in_granularityClause2336 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2338 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityClause2341 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2343 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2348 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2352 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_91_in_granularityClause2356 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2358 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2363 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2369 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_91_in_granularityClause2373 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2375 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2380 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2389 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_granularityClause2392 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2394 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_granularityInclude_in_granularityClause2399 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_granularityClause2403 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityClause2408 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude2436 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_INCLUDE_in_granularityInclude2438 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude2440 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_granularityInclude2443 = new BitSet(new long[]{0x0200000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude2445 = new BitSet(new long[]{0x0200000000000000L});
+	public static final BitSet FOLLOW_pairNums_in_granularityInclude2451 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_91_in_granularityInclude2456 = new BitSet(new long[]{0x0200000000000000L});
+	public static final BitSet FOLLOW_pairNums_in_granularityInclude2460 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_granularityInclude2467 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_granularityInclude2470 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LSQUARE_in_pairNums2489 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_pairNums2491 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LONG_in_pairNums2496 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_pairNums2499 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_pairNums2502 = new BitSet(new long[]{0x0040000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_pairNums2504 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LONG_in_pairNums2509 = new BitSet(new long[]{0x0000000000000000L,0x0000000001001000L});
+	public static final BitSet FOLLOW_WS_in_pairNums2511 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+	public static final BitSet FOLLOW_RSQUARE_in_pairNums2514 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LSQUARE_in_pairString2534 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_pairString2536 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString2541 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000000L});
+	public static final BitSet FOLLOW_WS_in_pairString2544 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_pairString2547 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_pairString2549 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_pairString2554 = new BitSet(new long[]{0x0000000000000000L,0x0000000001001000L});
+	public static final BitSet FOLLOW_WS_in_pairString2556 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+	public static final BitSet FOLLOW_RSQUARE_in_pairString2559 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_complexHaving_in_havingClause2584 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_simpleHaving2605 = new BitSet(new long[]{0x0000000000001000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving2607 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving2612 = new BitSet(new long[]{0x0040000200000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving2614 = new BitSet(new long[]{0x0040000200000000L});
+	public static final BitSet FOLLOW_set_in_simpleHaving2619 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_getEquals_in_simpleHaving2636 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_simpleHaving2647 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving2649 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_simpleHaving2653 = new BitSet(new long[]{0x0000000000001000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving2655 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_COMPARE_OPER_in_simpleHaving2660 = new BitSet(new long[]{0x0040000200000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleHaving2662 = new BitSet(new long[]{0x0040000200000000L});
+	public static final BitSet FOLLOW_set_in_simpleHaving2667 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleHaving_in_complexHaving2695 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleHaving_in_complexHaving2706 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_complexHaving2708 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_complexHaving2712 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_complexHaving2718 = new BitSet(new long[]{0x4000010000000000L});
+	public static final BitSet FOLLOW_complexHaving_in_complexHaving2722 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2751 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2756 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_grandFilter2760 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_grandFilter2766 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_grandFilter2770 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_simpleLogicalFilter_in_semiGrandFilter2801 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_semiGrandFilter2808 = new BitSet(new long[]{0x4100010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2810 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2815 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2821 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_semiGrandFilter2825 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2831 = new BitSet(new long[]{0x4100010000000000L});
+	public static final BitSet FOLLOW_semiGrandFilter_in_semiGrandFilter2835 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_semiGrandFilter2851 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_semiGrandFilter2854 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2873 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2885 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2887 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000010L});
+	public static final BitSet FOLLOW_set_in_simpleLogicalFilter2891 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2897 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2901 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_simpleLogicalFilter2909 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleLogicalFilter2911 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_simpleFilter_in_simpleLogicalFilter2915 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_selectorFilter_in_simpleFilter2942 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_regexFilter_in_simpleFilter2948 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_getEquals_in_selectorFilter2973 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_regexFilter3002 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter3004 = new BitSet(new long[]{0x0010000000000000L});
+	public static final BitSet FOLLOW_LIKE_in_regexFilter3006 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_regexFilter3008 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3014 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggCallSite_in_aggItem3045 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggItem3049 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_AS_in_aggItem3051 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggItem3053 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggItem3057 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_aggFunc_in_aggCallSite3076 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3081 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_aggCallSite3084 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3086 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite3093 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3099 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_91_in_aggCallSite3102 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3104 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_aggCallSite3109 = new BitSet(new long[]{0x0000000000000000L,0x0000000009000800L});
+	public static final BitSet FOLLOW_WS_in_aggCallSite3115 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_aggCallSite3118 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_aggCallSite3125 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+	public static final BitSet FOLLOW_89_in_aggCallSite3130 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LONG_SUM_in_aggFunc3148 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOUBLE_SUM_in_aggFunc3155 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_aggFunc3162 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HYPER_UNIQUE_in_aggFunc3169 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MIN_in_aggFunc3176 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MAX_in_aggFunc3183 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_aggFunc3190 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simpleArith_in_postAggItem3218 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3222 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3225 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3228 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3233 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPARAN_in_postAggItem3251 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3253 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3258 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3260 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_postAggItem3263 = new BitSet(new long[]{0x0000000000000062L,0x0000000001000000L});
+	public static final BitSet FOLLOW_postAggLabel_in_postAggItem3267 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3273 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_postAggItem3276 = new BitSet(new long[]{0x0140810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_postAggItem3279 = new BitSet(new long[]{0x0140810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_postAggItem_in_postAggItem3284 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3320 = new BitSet(new long[]{0x0000000000000022L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith3326 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_postAggArithOper_in_simpleArith3329 = new BitSet(new long[]{0x0040810200000000L,0x0000000001100000L});
+	public static final BitSet FOLLOW_WS_in_simpleArith3332 = new BitSet(new long[]{0x0040810200000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_simplePostAggAccess_in_simpleArith3337 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantAccess_in_simplePostAggAccess3366 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_fieldAccess_in_simplePostAggAccess3383 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3396 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3405 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_constantAccess3435 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_LONG_in_constantAccess3441 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_constantAccess3454 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_constantAccess3456 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_fieldAccess3484 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_fieldAccess3487 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_postAggLabel_in_fieldAccess3489 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNIQUE_in_hyperUniqueCardinality3518 = new BitSet(new long[]{0x0100000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3520 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_LPARAN_in_hyperUniqueCardinality3523 = new BitSet(new long[]{0x0000010000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3525 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_hyperUniqueCardinality3530 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000800L});
+	public static final BitSet FOLLOW_WS_in_hyperUniqueCardinality3532 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_RPARAN_in_hyperUniqueCardinality3535 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3561 = new BitSet(new long[]{0x0000000000000000L,0x0000000001004000L});
+	public static final BitSet FOLLOW_WS_in_postAggJavascriptDef3563 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+	public static final BitSet FOLLOW_SINGLE_QUOTE_STRING_in_postAggJavascriptDef3568 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AS_in_postAggLabel3584 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_WS_in_postAggLabel3586 = new BitSet(new long[]{0x0000010000000000L});
+	public static final BitSet FOLLOW_ID_in_postAggLabel3590 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARITH_OPER_in_postAggArithOper3606 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_ONLY_in_isoTime3625 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3633 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_in_isoTime3641 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_in_isoTime3649 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_in_isoTime3657 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3665 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3673 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3681 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3689 = new BitSet(new long[]{0x0000000000000002L});
 }

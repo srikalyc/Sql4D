@@ -15,8 +15,8 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * Ex: Used in data ingestion.
- *"pathSpec" : {
+ * Ex: Used in hadoop data ingestion.
+ *"inputSpec" : {
       "type" : "static",
       "paths" : "data.json",// This can be just a folder(comma separated list of paths)
       "filePattern": "*.gz"// This is optional if the paths has full path of file
@@ -24,7 +24,7 @@ import org.json.JSONObject;
  * 
  * @author srikalyan
  */
-public class PathSpec {
+public class InputSpec {
     private String path = null;//TODO: This should be a list(right now we support only one path)
     public String type = "static";//TODO: Check out what are other types.
     private String filePattern = null;

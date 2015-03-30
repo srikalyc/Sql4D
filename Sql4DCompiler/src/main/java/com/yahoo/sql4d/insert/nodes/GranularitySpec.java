@@ -33,7 +33,7 @@ public class GranularitySpec {
     private static final List<String> validGSimpleStrings = Arrays.asList("none", "minute", "fifteen_minute", "thirty_minute", "hour" , "day");
     public String gran = "day";
     public String type = "uniform";//TODO: Check out what are other types.
-    public Interval interval = new Interval("2000-01-01", "2050-12-31");
+    public Interval interval = new Interval("2014-01-01", "2015-12-31");
     
     public GranularitySpec(String gString) {
         this.gran = unquote(gString);

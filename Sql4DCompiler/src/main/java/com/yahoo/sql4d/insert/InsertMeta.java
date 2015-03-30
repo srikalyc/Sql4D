@@ -11,9 +11,13 @@
  */
 package com.yahoo.sql4d.insert;
 
-import com.yahoo.sql4d.BaseStatementMeta;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.yahoo.sql4d.CrudStatementMeta;
+import com.yahoo.sql4d.insert.nodes.GranularitySpec;
 import com.yahoo.sql4d.query.nodes.AggItem;
+import static com.yahoo.sql4d.utils.DruidUtils.getColumns;
+import static com.yahoo.sql4d.utils.DruidUtils.getDimensions;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,10 +29,15 @@ import org.json.JSONObject;
  *
  * @author srikalyan
  */
-public class InsertMeta extends CrudStatementMeta {
+public abstract class InsertMeta extends CrudStatementMeta {
 
+    public String dataFormat = "tsv";//
+    public String delimiter = null;
+    public String listDelimiter = null;
     public List<AggItem> aggregations = new ArrayList<>();
     public Map<String, String> fetchDimensions = new LinkedHashMap<>();
+
+    public GranularitySpec granularitySpec = new GranularitySpec("day");
 
     public InsertMeta() {
     }
@@ -53,6 +62,66 @@ public class InsertMeta extends CrudStatementMeta {
         map.put("dataSource", dataSource);
         return map;
     }
+
+    //TODO: IOConfig should be called before dataSchema to ensure proper format values etc are filled in.
+    // See getFirehose() method to see what dependencies are being filled in. This dependency should 
+    // be removed in future.
+    public Map<String, Object> getSpec() {
+        return ImmutableMap.<String, Object>of(
+                "ioConfig", getIoConfig(),
+                "dataSchema", getDataSchema(),
+                "tuningConfig", getTuningConfig());
+    }
+
+    public Map<String, Object> getDimensionSpec() {
+        List<String> dims = getDimensions(fetchDimensions);
+        return ImmutableMap.<String, Object>of(
+                "dimensions", dims.subList(1, dims.size()),
+                "dimensionExclusions", ImmutableList.<String>of(),
+                "spatialDimensions", ImmutableList.<String>of());
+    }
+    
+    public List<JSONObject> getMetricsSpec() {
+        ImmutableList.Builder<JSONObject> builder = ImmutableList.<JSONObject>builder();
+        for (AggItem item : aggregations) {
+            builder.add(item.getJson());
+        }
+        return builder.build();
+    }
+
+    public Map<String, Object> getParser() {
+        return ImmutableMap.<String, Object>of(
+                "type", "string",
+                "parseSpec", getParseSpec());
+    }
+
+    public Map<String, Object> getParseSpec() {
+        ImmutableMap.Builder builder = ImmutableMap.<String, Object>builder();
+        builder.put("format", dataFormat).
+                put("timestampSpec", getTimestampSpec()).
+                put("dimensionsSpec", getDimensionSpec());
+        if (delimiter != null) {
+            builder.put("delimiter", delimiter);
+        }
+        if (listDelimiter != null) {
+            builder.put("listDelimiter", listDelimiter);
+        }
+        builder.put("columns", getColumns(fetchDimensions, aggregations));
+        return builder.build();
+    }
+    
+    public Map<String, Object> getDataSchema() {
+        return ImmutableMap.<String, Object>of(
+                "dataSource", dataSource,
+                "parser", getParser(),
+                "metricsSpec", getMetricsSpec(),
+                "granularitySpec", granularitySpec.getJson()
+                );
+    }
+    
+    public abstract Map<String, Object> getTimestampSpec();
+    public abstract Map<String, Object> getIoConfig();
+    public abstract Map<String, Object> getTuningConfig();
 
     public <T> void postProcess(T anyContext) {
 

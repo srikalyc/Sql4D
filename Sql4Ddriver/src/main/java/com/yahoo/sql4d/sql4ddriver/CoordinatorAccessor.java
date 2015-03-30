@@ -80,7 +80,7 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * @return 
      */
     public Either<String, List<String>> dataSources(Map<String, String> reqHeaders) {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources", null, reqHeaders);
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("druid/coordinator/v1/metadata/datasources", null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }
@@ -104,7 +104,7 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * @return
      */
     public Either<String, Tuple2<List<String>, List<String>>> aboutDataSource(String name, Map<String, String> reqHeaders) {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + name, null, reqHeaders);
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("druid/coordinator/v1/metadata/datasources/" + name, null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }
@@ -155,7 +155,7 @@ public class CoordinatorAccessor extends DruidNodeAccessor {
      * "2014-11-01T00:00:00.000-07:00/2014-11-02T00:00:00.000-07:00" .. ]
      */
     public Either<String, List<Interval>> segments(String dataSource, Map<String, String> reqHeaders) {
-        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("info/datasources/" + dataSource + "/segments?full", null, reqHeaders);
+        Either<String, Either<JSONArray, JSONObject>> resp = fireCommand("druid/coordinator/v1/metadata/datasources/" + dataSource + "/segments?full", null, reqHeaders);
         if (resp.isLeft()) {
             return new Left<>(resp.left().get());
         }
