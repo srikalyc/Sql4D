@@ -68,7 +68,7 @@ public class BatchInsertMeta extends InsertMeta {
     public Map<String, Object> getTimestampSpec() {
         return ImmutableMap.<String, Object>of(
                 "column", "timestamp",
-                "format", "auto");
+                "format", "iso");//TODO: Check if auto works. We are setting to default iso.
     }
 
     @Override
