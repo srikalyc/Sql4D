@@ -59,7 +59,10 @@ public class AggItem  {
         this.fieldName = fieldName;
         this.asName = asName;
     }
-
+//Count, hyper unique etc are not direct metrics.
+    public boolean isDirectMetric() {
+        return !("hyperUnique".equals(type) || "unique".equals(type) ||  "count".equals(type) || "javascript".equals(type));
+    }
     public void setAggType(String aggType) {
         this.type = aggType;
     }
@@ -70,6 +73,14 @@ public class AggItem  {
 
     public void setAsName(String asName) {
         this.asName = asName;
+    }
+    
+    /**
+     * 
+     * @return AS name (alias) if not null (else the fieldName)
+     */
+    public String getCanonicalName() {
+        return (asName != null)?asName:fieldName;
     }
 
     @Override

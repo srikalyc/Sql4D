@@ -16,12 +16,13 @@ import com.google.common.collect.ImmutableMap;
 import com.yahoo.sql4d.CrudStatementMeta;
 import com.yahoo.sql4d.insert.nodes.GranularitySpec;
 import com.yahoo.sql4d.query.nodes.AggItem;
-import static com.yahoo.sql4d.utils.DruidUtils.getColumns;
 import static com.yahoo.sql4d.utils.DruidUtils.getDimensions;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.json.JSONObject;
 
 /**
@@ -36,6 +37,7 @@ public abstract class InsertMeta extends CrudStatementMeta {
     public String listDelimiter = null;
     public List<AggItem> aggregations = new ArrayList<>();
     public Map<String, String> fetchDimensions = new LinkedHashMap<>();
+    public Set<String> orderedColumns = new LinkedHashSet<>();//For maintaining the insert order of data columns.
 
     public GranularitySpec granularitySpec = new GranularitySpec("day");
 
@@ -46,6 +48,11 @@ public abstract class InsertMeta extends CrudStatementMeta {
         super(dataSource);
     }
 
+    // Could be a dimension or metric.
+    public void addColumnInOrder(String column) {
+        orderedColumns.add(column);
+    }
+        
     @Override
     public String toString() {
         return getJson().toString(2);
@@ -106,7 +113,7 @@ public abstract class InsertMeta extends CrudStatementMeta {
         if (listDelimiter != null) {
             builder.put("listDelimiter", listDelimiter);
         }
-        builder.put("columns", getColumns(fetchDimensions, aggregations));
+        builder.put("columns", orderedColumns);
         return builder.build();
     }
     

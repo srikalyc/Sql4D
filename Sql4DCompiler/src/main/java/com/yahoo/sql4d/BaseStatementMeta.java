@@ -34,7 +34,6 @@ public abstract class BaseStatementMeta {
         this.dataSource = dataSource;
     }
 
-    
     @Override
     public String toString() {
         return getJson().toString(2);

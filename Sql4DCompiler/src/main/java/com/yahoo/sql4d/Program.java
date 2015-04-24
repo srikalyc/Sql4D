@@ -46,8 +46,8 @@ public abstract class Program<T extends BaseStatementMeta> {
         return stmnts.size();
     }
     
-    public void print(boolean toConsole) {
-        if (toConsole) {
+    public void print(boolean toConsole) {        
+        if (toConsole) {            
             System.out.println(toString());
         }
     }
