@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 druidG.g 2015-03-29 17:04:52
+// $ANTLR 3.5.2 druidG.g 2015-04-24 15:38:08
 
 	package com.yahoo.sql4d.converter;
 
@@ -3641,12 +3641,16 @@ public class druidGParser extends Parser {
 						        ((BaseAggQueryMeta)meta).aggregations.add(ai);
 						      } else if (meta instanceof InsertMeta) {
 					 	        ((InsertMeta)meta).aggregations.add(ai);
+					   	        if (ai.isDirectMetric()) {//Unique, hyperUnique, Count etc are not part of the data
+						      	  ((InsertMeta)meta).addColumnInOrder(ai.getCanonicalName());
+						        }
 						      }
+						      
 						   
 					}
 					break;
 				case 2 :
-					// druidG.g:277:5: sd= simpleDim
+					// druidG.g:281:5: sd= simpleDim
 					{
 					pushFollow(FOLLOW_simpleDim_in_selectItems1953);
 					sd=simpleDim();
@@ -3657,6 +3661,7 @@ public class druidGParser extends Parser {
 						         ((PlainDimQueryMeta)meta).fetchDimensions.put(sd.a, sd.b);
 						      } else if (meta instanceof InsertMeta) {
 					 	         ((InsertMeta)meta).fetchDimensions.put(sd.a, sd.b);
+					 	         ((InsertMeta)meta).addColumnInOrder((sd.b != null)? sd.b : sd.a);
 						      }
 						   
 					}
@@ -3677,7 +3682,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleDim"
-	// druidG.g:286:1: simpleDim returns [Pair<String, String> dims] : (a= ID ( WS AS WS b= ID )? ) ;
+	// druidG.g:291:1: simpleDim returns [Pair<String, String> dims] : (a= ID ( WS AS WS b= ID )? ) ;
 	public final Pair<String, String> simpleDim() throws RecognitionException {
 		Pair<String, String> dims = null;
 
@@ -3686,14 +3691,14 @@ public class druidGParser extends Parser {
 		Token b=null;
 
 		try {
-			// druidG.g:287:2: ( (a= ID ( WS AS WS b= ID )? ) )
-			// druidG.g:287:4: (a= ID ( WS AS WS b= ID )? )
+			// druidG.g:292:2: ( (a= ID ( WS AS WS b= ID )? ) )
+			// druidG.g:292:4: (a= ID ( WS AS WS b= ID )? )
 			{
-			// druidG.g:287:4: (a= ID ( WS AS WS b= ID )? )
-			// druidG.g:287:5: a= ID ( WS AS WS b= ID )?
+			// druidG.g:292:4: (a= ID ( WS AS WS b= ID )? )
+			// druidG.g:292:5: a= ID ( WS AS WS b= ID )?
 			{
 			a=(Token)match(input,ID,FOLLOW_ID_in_simpleDim1974); 
-			// druidG.g:287:10: ( WS AS WS b= ID )?
+			// druidG.g:292:10: ( WS AS WS b= ID )?
 			int alt130=2;
 			int LA130_0 = input.LA(1);
 			if ( (LA130_0==WS) ) {
@@ -3704,7 +3709,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt130) {
 				case 1 :
-					// druidG.g:287:11: WS AS WS b= ID
+					// druidG.g:292:11: WS AS WS b= ID
 					{
 					match(input,WS,FOLLOW_WS_in_simpleDim1977); 
 					match(input,AS,FOLLOW_AS_in_simpleDim1979); 
@@ -3737,21 +3742,21 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "whereClause"
-	// druidG.g:294:1: whereClause[QueryMeta qMeta] : intls= intervalClause ( WS AND WS f= grandFilter )? ;
+	// druidG.g:299:1: whereClause[QueryMeta qMeta] : intls= intervalClause ( WS AND WS f= grandFilter )? ;
 	public final void whereClause(QueryMeta qMeta) throws RecognitionException {
 		List<Interval> intls =null;
 		Filter f =null;
 
 		try {
-			// druidG.g:295:2: (intls= intervalClause ( WS AND WS f= grandFilter )? )
-			// druidG.g:295:3: intls= intervalClause ( WS AND WS f= grandFilter )?
+			// druidG.g:300:2: (intls= intervalClause ( WS AND WS f= grandFilter )? )
+			// druidG.g:300:3: intls= intervalClause ( WS AND WS f= grandFilter )?
 			{
 			pushFollow(FOLLOW_intervalClause_in_whereClause2008);
 			intls=intervalClause();
 			state._fsp--;
 
 			qMeta.intervals.addAll(intls);
-			// druidG.g:295:57: ( WS AND WS f= grandFilter )?
+			// druidG.g:300:57: ( WS AND WS f= grandFilter )?
 			int alt131=2;
 			int LA131_0 = input.LA(1);
 			if ( (LA131_0==WS) ) {
@@ -3762,7 +3767,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt131) {
 				case 1 :
-					// druidG.g:295:58: WS AND WS f= grandFilter
+					// druidG.g:300:58: WS AND WS f= grandFilter
 					{
 					match(input,WS,FOLLOW_WS_in_whereClause2013); 
 					match(input,AND,FOLLOW_AND_in_whereClause2015); 
@@ -3793,7 +3798,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "intervalClause"
-	// druidG.g:299:1: intervalClause returns [List<Interval> intervals] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
+	// druidG.g:304:1: intervalClause returns [List<Interval> intervals] : 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) ;
 	public final List<Interval> intervalClause() throws RecognitionException {
 		List<Interval> intervals = null;
 
@@ -3807,14 +3812,14 @@ public class druidGParser extends Parser {
 
 		 intervals = new ArrayList<>();
 		try {
-			// druidG.g:301:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
-			// druidG.g:301:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+			// druidG.g:306:2: ( 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) ) )
+			// druidG.g:306:4: 'interval' WS BETWEEN WS ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
 			{
 			match(input,92,FOLLOW_92_in_intervalClause2047); 
 			match(input,WS,FOLLOW_WS_in_intervalClause2049); 
 			match(input,BETWEEN,FOLLOW_BETWEEN_in_intervalClause2051); 
 			match(input,WS,FOLLOW_WS_in_intervalClause2053); 
-			// druidG.g:302:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
+			// druidG.g:307:2: ( ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) ) | ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN ) )
 			int alt139=2;
 			int LA139_0 = input.LA(1);
 			if ( ((LA139_0 >= DATE && LA139_0 <= DATE_YEAR_ONLY)||LA139_0==SINGLE_QUOTE_STRING) ) {
@@ -3832,15 +3837,15 @@ public class druidGParser extends Parser {
 
 			switch (alt139) {
 				case 1 :
-					// druidG.g:303:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+					// druidG.g:308:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
 					{
-					// druidG.g:303:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
-					// druidG.g:304:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+					// druidG.g:308:4: ( ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) ) )
+					// druidG.g:309:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
 					{
-					// druidG.g:304:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
-					// druidG.g:304:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
+					// druidG.g:309:6: ( (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING ) )
+					// druidG.g:309:7: (st= isoTime |st2= SINGLE_QUOTE_STRING ) WS AND WS (et= isoTime |et2= SINGLE_QUOTE_STRING )
 					{
-					// druidG.g:304:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
+					// druidG.g:309:7: (st= isoTime |st2= SINGLE_QUOTE_STRING )
 					int alt132=2;
 					int LA132_0 = input.LA(1);
 					if ( ((LA132_0 >= DATE && LA132_0 <= DATE_YEAR_ONLY)) ) {
@@ -3858,7 +3863,7 @@ public class druidGParser extends Parser {
 
 					switch (alt132) {
 						case 1 :
-							// druidG.g:304:8: st= isoTime
+							// druidG.g:309:8: st= isoTime
 							{
 							pushFollow(FOLLOW_isoTime_in_intervalClause2073);
 							st=isoTime();
@@ -3867,7 +3872,7 @@ public class druidGParser extends Parser {
 							}
 							break;
 						case 2 :
-							// druidG.g:304:22: st2= SINGLE_QUOTE_STRING
+							// druidG.g:309:22: st2= SINGLE_QUOTE_STRING
 							{
 							st2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2080); 
 							}
@@ -3878,7 +3883,7 @@ public class druidGParser extends Parser {
 					match(input,WS,FOLLOW_WS_in_intervalClause2084); 
 					match(input,AND,FOLLOW_AND_in_intervalClause2086); 
 					match(input,WS,FOLLOW_WS_in_intervalClause2088); 
-					// druidG.g:304:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
+					// druidG.g:309:58: (et= isoTime |et2= SINGLE_QUOTE_STRING )
 					int alt133=2;
 					int LA133_0 = input.LA(1);
 					if ( ((LA133_0 >= DATE && LA133_0 <= DATE_YEAR_ONLY)) ) {
@@ -3896,7 +3901,7 @@ public class druidGParser extends Parser {
 
 					switch (alt133) {
 						case 1 :
-							// druidG.g:304:59: et= isoTime
+							// druidG.g:309:59: et= isoTime
 							{
 							pushFollow(FOLLOW_isoTime_in_intervalClause2093);
 							et=isoTime();
@@ -3905,7 +3910,7 @@ public class druidGParser extends Parser {
 							}
 							break;
 						case 2 :
-							// druidG.g:304:73: et2= SINGLE_QUOTE_STRING
+							// druidG.g:309:73: et2= SINGLE_QUOTE_STRING
 							{
 							et2=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_intervalClause2100); 
 							}
@@ -3934,13 +3939,13 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:321:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+					// druidG.g:326:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
 					{
-					// druidG.g:321:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
-					// druidG.g:321:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
+					// druidG.g:326:4: ( LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN )
+					// druidG.g:326:5: LPARAN ( WS )? p1= pairString ( ( WS )? ',' ( WS )? p2= pairString )* ( WS )? RPARAN
 					{
 					match(input,LPARAN,FOLLOW_LPARAN_in_intervalClause2126); 
-					// druidG.g:321:12: ( WS )?
+					// druidG.g:326:12: ( WS )?
 					int alt134=2;
 					int LA134_0 = input.LA(1);
 					if ( (LA134_0==WS) ) {
@@ -3948,7 +3953,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt134) {
 						case 1 :
-							// druidG.g:321:12: WS
+							// druidG.g:326:12: WS
 							{
 							match(input,WS,FOLLOW_WS_in_intervalClause2128); 
 							}
@@ -3961,7 +3966,7 @@ public class druidGParser extends Parser {
 					state._fsp--;
 
 					intervals.add(new Interval(p1.a, p1.b));
-					// druidG.g:322:7: ( ( WS )? ',' ( WS )? p2= pairString )*
+					// druidG.g:327:7: ( ( WS )? ',' ( WS )? p2= pairString )*
 					loop137:
 					while (true) {
 						int alt137=2;
@@ -3979,9 +3984,9 @@ public class druidGParser extends Parser {
 
 						switch (alt137) {
 						case 1 :
-							// druidG.g:322:8: ( WS )? ',' ( WS )? p2= pairString
+							// druidG.g:327:8: ( WS )? ',' ( WS )? p2= pairString
 							{
-							// druidG.g:322:8: ( WS )?
+							// druidG.g:327:8: ( WS )?
 							int alt135=2;
 							int LA135_0 = input.LA(1);
 							if ( (LA135_0==WS) ) {
@@ -3989,7 +3994,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt135) {
 								case 1 :
-									// druidG.g:322:8: WS
+									// druidG.g:327:8: WS
 									{
 									match(input,WS,FOLLOW_WS_in_intervalClause2145); 
 									}
@@ -3998,7 +4003,7 @@ public class druidGParser extends Parser {
 							}
 
 							match(input,91,FOLLOW_91_in_intervalClause2148); 
-							// druidG.g:322:16: ( WS )?
+							// druidG.g:327:16: ( WS )?
 							int alt136=2;
 							int LA136_0 = input.LA(1);
 							if ( (LA136_0==WS) ) {
@@ -4006,7 +4011,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt136) {
 								case 1 :
-									// druidG.g:322:16: WS
+									// druidG.g:327:16: WS
 									{
 									match(input,WS,FOLLOW_WS_in_intervalClause2150); 
 									}
@@ -4027,7 +4032,7 @@ public class druidGParser extends Parser {
 						}
 					}
 
-					// druidG.g:322:79: ( WS )?
+					// druidG.g:327:79: ( WS )?
 					int alt138=2;
 					int LA138_0 = input.LA(1);
 					if ( (LA138_0==WS) ) {
@@ -4035,7 +4040,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt138) {
 						case 1 :
-							// druidG.g:322:79: WS
+							// druidG.g:327:79: WS
 							{
 							match(input,WS,FOLLOW_WS_in_intervalClause2161); 
 							}
@@ -4068,7 +4073,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "getEquals"
-	// druidG.g:327:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
+	// druidG.g:332:1: getEquals returns [EqualsToHolder holder] : (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) ;
 	public final EqualsToHolder getEquals() throws RecognitionException {
 		EqualsToHolder holder = null;
 
@@ -4077,14 +4082,14 @@ public class druidGParser extends Parser {
 		Token b=null;
 
 		try {
-			// druidG.g:328:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
-			// druidG.g:328:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+			// druidG.g:333:2: ( (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) ) )
+			// druidG.g:333:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
 			{
-			// druidG.g:328:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
-			// druidG.g:328:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
+			// druidG.g:333:4: (a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG ) )
+			// druidG.g:333:5: a= ID ( WS )? EQUALS ( WS )? b= ( SINGLE_QUOTE_STRING | FLOAT | LONG )
 			{
 			a=(Token)match(input,ID,FOLLOW_ID_in_getEquals2187); 
-			// druidG.g:328:10: ( WS )?
+			// druidG.g:333:10: ( WS )?
 			int alt140=2;
 			int LA140_0 = input.LA(1);
 			if ( (LA140_0==WS) ) {
@@ -4092,7 +4097,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt140) {
 				case 1 :
-					// druidG.g:328:10: WS
+					// druidG.g:333:10: WS
 					{
 					match(input,WS,FOLLOW_WS_in_getEquals2189); 
 					}
@@ -4101,7 +4106,7 @@ public class druidGParser extends Parser {
 			}
 
 			match(input,EQUALS,FOLLOW_EQUALS_in_getEquals2192); 
-			// druidG.g:328:21: ( WS )?
+			// druidG.g:333:21: ( WS )?
 			int alt141=2;
 			int LA141_0 = input.LA(1);
 			if ( (LA141_0==WS) ) {
@@ -4109,7 +4114,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt141) {
 				case 1 :
-					// druidG.g:328:21: WS
+					// druidG.g:333:21: WS
 					{
 					match(input,WS,FOLLOW_WS_in_getEquals2194); 
 					}
@@ -4146,7 +4151,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "granularityClause"
-	// druidG.g:333:1: granularityClause returns [Pair<Granularity, List<Pair<Integer, Integer>>> clause] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) );
+	// druidG.g:338:1: granularityClause returns [Pair<Granularity, List<Pair<Integer, Integer>>> clause] : ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) );
 	public final Pair<Granularity, List<Pair<Integer, Integer>>> granularityClause() throws RecognitionException {
 		Pair<Granularity, List<Pair<Integer, Integer>>> clause = null;
 
@@ -4160,7 +4165,7 @@ public class druidGParser extends Parser {
 
 		Granularity granularity = new Granularity("all");clause = new Pair<>(granularity, null);
 		try {
-			// druidG.g:335:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) )
+			// druidG.g:340:2: ( ( (s= SINGLE_QUOTE_STRING ) ) | ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) ) )
 			int alt164=2;
 			int LA164_0 = input.LA(1);
 			if ( (LA164_0==SINGLE_QUOTE_STRING) ) {
@@ -4178,13 +4183,13 @@ public class druidGParser extends Parser {
 
 			switch (alt164) {
 				case 1 :
-					// druidG.g:335:3: ( (s= SINGLE_QUOTE_STRING ) )
+					// druidG.g:340:3: ( (s= SINGLE_QUOTE_STRING ) )
 					{
-					// druidG.g:335:3: ( (s= SINGLE_QUOTE_STRING ) )
-					// druidG.g:335:4: (s= SINGLE_QUOTE_STRING )
+					// druidG.g:340:3: ( (s= SINGLE_QUOTE_STRING ) )
+					// druidG.g:340:4: (s= SINGLE_QUOTE_STRING )
 					{
-					// druidG.g:335:4: (s= SINGLE_QUOTE_STRING )
-					// druidG.g:335:5: s= SINGLE_QUOTE_STRING
+					// druidG.g:340:4: (s= SINGLE_QUOTE_STRING )
+					// druidG.g:340:5: s= SINGLE_QUOTE_STRING
 					{
 					s=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2239); 
 					}
@@ -4195,9 +4200,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:337:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
+					// druidG.g:342:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
 					{
-					// druidG.g:337:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
+					// druidG.g:342:3: ( ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) | ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN ) )
 					int alt163=2;
 					int LA163_0 = input.LA(1);
 					if ( (LA163_0==DURATION) ) {
@@ -4215,13 +4220,13 @@ public class druidGParser extends Parser {
 
 					switch (alt163) {
 						case 1 :
-							// druidG.g:338:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:343:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							{
-							// druidG.g:338:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
-							// druidG.g:338:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
+							// druidG.g:343:5: ( DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:343:7: DURATION ( WS )? LPARAN ( WS )? dur= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
 							match(input,DURATION,FOLLOW_DURATION_in_granularityClause2263); 
-							// druidG.g:338:16: ( WS )?
+							// druidG.g:343:16: ( WS )?
 							int alt142=2;
 							int LA142_0 = input.LA(1);
 							if ( (LA142_0==WS) ) {
@@ -4229,7 +4234,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt142) {
 								case 1 :
-									// druidG.g:338:16: WS
+									// druidG.g:343:16: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2265); 
 									}
@@ -4238,7 +4243,7 @@ public class druidGParser extends Parser {
 							}
 
 							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2268); 
-							// druidG.g:338:27: ( WS )?
+							// druidG.g:343:27: ( WS )?
 							int alt143=2;
 							int LA143_0 = input.LA(1);
 							if ( (LA143_0==WS) ) {
@@ -4246,7 +4251,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt143) {
 								case 1 :
-									// druidG.g:338:27: WS
+									// druidG.g:343:27: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2270); 
 									}
@@ -4256,7 +4261,7 @@ public class druidGParser extends Parser {
 
 							dur=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2275); 
 							granularity.setDuration((dur!=null?dur.getText():null));
-							// druidG.g:338:93: ( WS )?
+							// druidG.g:343:93: ( WS )?
 							int alt144=2;
 							int LA144_0 = input.LA(1);
 							if ( (LA144_0==WS) ) {
@@ -4264,7 +4269,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt144) {
 								case 1 :
-									// druidG.g:338:93: WS
+									// druidG.g:343:93: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2279); 
 									}
@@ -4272,7 +4277,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							// druidG.g:338:97: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
+							// druidG.g:343:97: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
 							int alt146=2;
 							int LA146_0 = input.LA(1);
 							if ( (LA146_0==91) ) {
@@ -4289,10 +4294,10 @@ public class druidGParser extends Parser {
 							}
 							switch (alt146) {
 								case 1 :
-									// druidG.g:338:98: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+									// druidG.g:343:98: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
 									match(input,91,FOLLOW_91_in_granularityClause2283); 
-									// druidG.g:338:102: ( WS )?
+									// druidG.g:343:102: ( WS )?
 									int alt145=2;
 									int LA145_0 = input.LA(1);
 									if ( (LA145_0==WS) ) {
@@ -4300,7 +4305,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt145) {
 										case 1 :
-											// druidG.g:338:102: WS
+											// druidG.g:343:102: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2285); 
 											}
@@ -4316,7 +4321,7 @@ public class druidGParser extends Parser {
 							}
 
 							clause = new Pair<>(granularity, null);
-							// druidG.g:338:211: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
+							// druidG.g:343:211: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
 							int alt150=2;
 							int LA150_0 = input.LA(1);
 							if ( (LA150_0==WS||LA150_0==91) ) {
@@ -4324,9 +4329,9 @@ public class druidGParser extends Parser {
 							}
 							switch (alt150) {
 								case 1 :
-									// druidG.g:338:212: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
+									// druidG.g:343:212: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
 									{
-									// druidG.g:338:212: ( WS )?
+									// druidG.g:343:212: ( WS )?
 									int alt147=2;
 									int LA147_0 = input.LA(1);
 									if ( (LA147_0==WS) ) {
@@ -4334,7 +4339,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt147) {
 										case 1 :
-											// druidG.g:338:212: WS
+											// druidG.g:343:212: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2298); 
 											}
@@ -4343,7 +4348,7 @@ public class druidGParser extends Parser {
 									}
 
 									match(input,91,FOLLOW_91_in_granularityClause2301); 
-									// druidG.g:338:220: ( WS )?
+									// druidG.g:343:220: ( WS )?
 									int alt148=2;
 									int LA148_0 = input.LA(1);
 									if ( (LA148_0==WS) ) {
@@ -4354,7 +4359,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt148) {
 										case 1 :
-											// druidG.g:338:220: WS
+											// druidG.g:343:220: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2303); 
 											}
@@ -4367,7 +4372,7 @@ public class druidGParser extends Parser {
 									state._fsp--;
 
 									clause = new Pair<>(granularity, inc);
-									// druidG.g:338:288: ( WS )?
+									// druidG.g:343:288: ( WS )?
 									int alt149=2;
 									int LA149_0 = input.LA(1);
 									if ( (LA149_0==WS) ) {
@@ -4375,7 +4380,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt149) {
 										case 1 :
-											// druidG.g:338:288: WS
+											// druidG.g:343:288: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2312); 
 											}
@@ -4394,13 +4399,13 @@ public class druidGParser extends Parser {
 							}
 							break;
 						case 2 :
-							// druidG.g:340:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:345:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
 							{
-							// druidG.g:340:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
-							// druidG.g:340:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
+							// druidG.g:345:5: ( PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN )
+							// druidG.g:345:7: PERIOD ( WS )? LPARAN ( WS )? per= SINGLE_QUOTE_STRING ( WS )? ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )? ( WS )? ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )? ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )? RPARAN
 							{
 							match(input,PERIOD,FOLLOW_PERIOD_in_granularityClause2336); 
-							// druidG.g:340:14: ( WS )?
+							// druidG.g:345:14: ( WS )?
 							int alt151=2;
 							int LA151_0 = input.LA(1);
 							if ( (LA151_0==WS) ) {
@@ -4408,7 +4413,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt151) {
 								case 1 :
-									// druidG.g:340:14: WS
+									// druidG.g:345:14: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2338); 
 									}
@@ -4417,7 +4422,7 @@ public class druidGParser extends Parser {
 							}
 
 							match(input,LPARAN,FOLLOW_LPARAN_in_granularityClause2341); 
-							// druidG.g:340:25: ( WS )?
+							// druidG.g:345:25: ( WS )?
 							int alt152=2;
 							int LA152_0 = input.LA(1);
 							if ( (LA152_0==WS) ) {
@@ -4425,7 +4430,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt152) {
 								case 1 :
-									// druidG.g:340:25: WS
+									// druidG.g:345:25: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2343); 
 									}
@@ -4435,7 +4440,7 @@ public class druidGParser extends Parser {
 
 							per=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_granularityClause2348); 
 							granularity.setPeriod((per!=null?per.getText():null));
-							// druidG.g:340:89: ( WS )?
+							// druidG.g:345:89: ( WS )?
 							int alt153=2;
 							int LA153_0 = input.LA(1);
 							if ( (LA153_0==WS) ) {
@@ -4443,7 +4448,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt153) {
 								case 1 :
-									// druidG.g:340:89: WS
+									// druidG.g:345:89: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2352); 
 									}
@@ -4451,7 +4456,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							// druidG.g:340:93: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
+							// druidG.g:345:93: ( ',' ( WS )? tz= SINGLE_QUOTE_STRING )?
 							int alt155=2;
 							int LA155_0 = input.LA(1);
 							if ( (LA155_0==91) ) {
@@ -4468,10 +4473,10 @@ public class druidGParser extends Parser {
 							}
 							switch (alt155) {
 								case 1 :
-									// druidG.g:340:94: ',' ( WS )? tz= SINGLE_QUOTE_STRING
+									// druidG.g:345:94: ',' ( WS )? tz= SINGLE_QUOTE_STRING
 									{
 									match(input,91,FOLLOW_91_in_granularityClause2356); 
-									// druidG.g:340:98: ( WS )?
+									// druidG.g:345:98: ( WS )?
 									int alt154=2;
 									int LA154_0 = input.LA(1);
 									if ( (LA154_0==WS) ) {
@@ -4479,7 +4484,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt154) {
 										case 1 :
-											// druidG.g:340:98: WS
+											// druidG.g:345:98: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2358); 
 											}
@@ -4494,7 +4499,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							// druidG.g:340:164: ( WS )?
+							// druidG.g:345:164: ( WS )?
 							int alt156=2;
 							int LA156_0 = input.LA(1);
 							if ( (LA156_0==WS) ) {
@@ -4502,7 +4507,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt156) {
 								case 1 :
-									// druidG.g:340:164: WS
+									// druidG.g:345:164: WS
 									{
 									match(input,WS,FOLLOW_WS_in_granularityClause2369); 
 									}
@@ -4510,7 +4515,7 @@ public class druidGParser extends Parser {
 
 							}
 
-							// druidG.g:340:168: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
+							// druidG.g:345:168: ( ',' ( WS )? orig= SINGLE_QUOTE_STRING )?
 							int alt158=2;
 							int LA158_0 = input.LA(1);
 							if ( (LA158_0==91) ) {
@@ -4527,10 +4532,10 @@ public class druidGParser extends Parser {
 							}
 							switch (alt158) {
 								case 1 :
-									// druidG.g:340:169: ',' ( WS )? orig= SINGLE_QUOTE_STRING
+									// druidG.g:345:169: ',' ( WS )? orig= SINGLE_QUOTE_STRING
 									{
 									match(input,91,FOLLOW_91_in_granularityClause2373); 
-									// druidG.g:340:173: ( WS )?
+									// druidG.g:345:173: ( WS )?
 									int alt157=2;
 									int LA157_0 = input.LA(1);
 									if ( (LA157_0==WS) ) {
@@ -4538,7 +4543,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt157) {
 										case 1 :
-											// druidG.g:340:173: WS
+											// druidG.g:345:173: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2375); 
 											}
@@ -4554,7 +4559,7 @@ public class druidGParser extends Parser {
 							}
 
 							clause = new Pair<>(granularity, null);
-							// druidG.g:340:283: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
+							// druidG.g:345:283: ( ( WS )? ',' ( WS )? inc= granularityInclude ( WS )? )?
 							int alt162=2;
 							int LA162_0 = input.LA(1);
 							if ( (LA162_0==WS||LA162_0==91) ) {
@@ -4562,9 +4567,9 @@ public class druidGParser extends Parser {
 							}
 							switch (alt162) {
 								case 1 :
-									// druidG.g:340:284: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
+									// druidG.g:345:284: ( WS )? ',' ( WS )? inc= granularityInclude ( WS )?
 									{
-									// druidG.g:340:284: ( WS )?
+									// druidG.g:345:284: ( WS )?
 									int alt159=2;
 									int LA159_0 = input.LA(1);
 									if ( (LA159_0==WS) ) {
@@ -4572,7 +4577,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt159) {
 										case 1 :
-											// druidG.g:340:284: WS
+											// druidG.g:345:284: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2389); 
 											}
@@ -4581,7 +4586,7 @@ public class druidGParser extends Parser {
 									}
 
 									match(input,91,FOLLOW_91_in_granularityClause2392); 
-									// druidG.g:340:292: ( WS )?
+									// druidG.g:345:292: ( WS )?
 									int alt160=2;
 									int LA160_0 = input.LA(1);
 									if ( (LA160_0==WS) ) {
@@ -4592,7 +4597,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt160) {
 										case 1 :
-											// druidG.g:340:292: WS
+											// druidG.g:345:292: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2394); 
 											}
@@ -4605,7 +4610,7 @@ public class druidGParser extends Parser {
 									state._fsp--;
 
 									clause = new Pair<>(granularity, inc);
-									// druidG.g:340:360: ( WS )?
+									// druidG.g:345:360: ( WS )?
 									int alt161=2;
 									int LA161_0 = input.LA(1);
 									if ( (LA161_0==WS) ) {
@@ -4613,7 +4618,7 @@ public class druidGParser extends Parser {
 									}
 									switch (alt161) {
 										case 1 :
-											// druidG.g:340:360: WS
+											// druidG.g:345:360: WS
 											{
 											match(input,WS,FOLLOW_WS_in_granularityClause2403); 
 											}
@@ -4653,7 +4658,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "granularityInclude"
-	// druidG.g:344:1: granularityInclude returns [List<Pair<Integer, Integer>> microIntervals] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
+	// druidG.g:349:1: granularityInclude returns [List<Pair<Integer, Integer>> microIntervals] : ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) ;
 	public final List<Pair<Integer, Integer>> granularityInclude() throws RecognitionException {
 		List<Pair<Integer, Integer>> microIntervals = null;
 
@@ -4663,15 +4668,15 @@ public class druidGParser extends Parser {
 
 		microIntervals = new ArrayList<>();
 		try {
-			// druidG.g:346:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
-			// druidG.g:347:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+			// druidG.g:351:2: ( ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN ) )
+			// druidG.g:352:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
 			{
-			// druidG.g:347:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
-			// druidG.g:347:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
+			// druidG.g:352:2: ( WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN )
+			// druidG.g:352:4: WS INCLUDE ( WS )? LPARAN ( WS )? (p1= pairNums ( ',' p2= pairNums )* ) ( WS )? RPARAN
 			{
 			match(input,WS,FOLLOW_WS_in_granularityInclude2436); 
 			match(input,INCLUDE,FOLLOW_INCLUDE_in_granularityInclude2438); 
-			// druidG.g:347:15: ( WS )?
+			// druidG.g:352:15: ( WS )?
 			int alt165=2;
 			int LA165_0 = input.LA(1);
 			if ( (LA165_0==WS) ) {
@@ -4679,7 +4684,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt165) {
 				case 1 :
-					// druidG.g:347:15: WS
+					// druidG.g:352:15: WS
 					{
 					match(input,WS,FOLLOW_WS_in_granularityInclude2440); 
 					}
@@ -4688,7 +4693,7 @@ public class druidGParser extends Parser {
 			}
 
 			match(input,LPARAN,FOLLOW_LPARAN_in_granularityInclude2443); 
-			// druidG.g:347:26: ( WS )?
+			// druidG.g:352:26: ( WS )?
 			int alt166=2;
 			int LA166_0 = input.LA(1);
 			if ( (LA166_0==WS) ) {
@@ -4696,7 +4701,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt166) {
 				case 1 :
-					// druidG.g:347:26: WS
+					// druidG.g:352:26: WS
 					{
 					match(input,WS,FOLLOW_WS_in_granularityInclude2445); 
 					}
@@ -4704,15 +4709,15 @@ public class druidGParser extends Parser {
 
 			}
 
-			// druidG.g:347:30: (p1= pairNums ( ',' p2= pairNums )* )
-			// druidG.g:347:31: p1= pairNums ( ',' p2= pairNums )*
+			// druidG.g:352:30: (p1= pairNums ( ',' p2= pairNums )* )
+			// druidG.g:352:31: p1= pairNums ( ',' p2= pairNums )*
 			{
 			pushFollow(FOLLOW_pairNums_in_granularityInclude2451);
 			p1=pairNums();
 			state._fsp--;
 
 			microIntervals.add(p1);
-			// druidG.g:347:69: ( ',' p2= pairNums )*
+			// druidG.g:352:69: ( ',' p2= pairNums )*
 			loop167:
 			while (true) {
 				int alt167=2;
@@ -4723,7 +4728,7 @@ public class druidGParser extends Parser {
 
 				switch (alt167) {
 				case 1 :
-					// druidG.g:347:70: ',' p2= pairNums
+					// druidG.g:352:70: ',' p2= pairNums
 					{
 					match(input,91,FOLLOW_91_in_granularityInclude2456); 
 					pushFollow(FOLLOW_pairNums_in_granularityInclude2460);
@@ -4741,7 +4746,7 @@ public class druidGParser extends Parser {
 
 			}
 
-			// druidG.g:347:115: ( WS )?
+			// druidG.g:352:115: ( WS )?
 			int alt168=2;
 			int LA168_0 = input.LA(1);
 			if ( (LA168_0==WS) ) {
@@ -4749,7 +4754,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt168) {
 				case 1 :
-					// druidG.g:347:115: WS
+					// druidG.g:352:115: WS
 					{
 					match(input,WS,FOLLOW_WS_in_granularityInclude2467); 
 					}
@@ -4777,7 +4782,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "pairNums"
-	// druidG.g:350:1: pairNums returns [Pair<Integer, Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
+	// druidG.g:355:1: pairNums returns [Pair<Integer, Integer> pair] : ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) ;
 	public final Pair<Integer, Integer> pairNums() throws RecognitionException {
 		Pair<Integer, Integer> pair = null;
 
@@ -4786,14 +4791,14 @@ public class druidGParser extends Parser {
 		Token j=null;
 
 		try {
-			// druidG.g:351:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
-			// druidG.g:351:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+			// druidG.g:356:2: ( ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE ) )
+			// druidG.g:356:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
 			{
-			// druidG.g:351:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
-			// druidG.g:351:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
+			// druidG.g:356:4: ( LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE )
+			// druidG.g:356:5: LSQUARE ( WS )? i= LONG ( WS )? ',' ( WS )? j= LONG ( WS )? RSQUARE
 			{
 			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairNums2489); 
-			// druidG.g:351:13: ( WS )?
+			// druidG.g:356:13: ( WS )?
 			int alt169=2;
 			int LA169_0 = input.LA(1);
 			if ( (LA169_0==WS) ) {
@@ -4801,7 +4806,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt169) {
 				case 1 :
-					// druidG.g:351:13: WS
+					// druidG.g:356:13: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairNums2491); 
 					}
@@ -4810,7 +4815,7 @@ public class druidGParser extends Parser {
 			}
 
 			i=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2496); 
-			// druidG.g:351:25: ( WS )?
+			// druidG.g:356:25: ( WS )?
 			int alt170=2;
 			int LA170_0 = input.LA(1);
 			if ( (LA170_0==WS) ) {
@@ -4818,7 +4823,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt170) {
 				case 1 :
-					// druidG.g:351:25: WS
+					// druidG.g:356:25: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairNums2499); 
 					}
@@ -4827,7 +4832,7 @@ public class druidGParser extends Parser {
 			}
 
 			match(input,91,FOLLOW_91_in_pairNums2502); 
-			// druidG.g:351:33: ( WS )?
+			// druidG.g:356:33: ( WS )?
 			int alt171=2;
 			int LA171_0 = input.LA(1);
 			if ( (LA171_0==WS) ) {
@@ -4835,7 +4840,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt171) {
 				case 1 :
-					// druidG.g:351:33: WS
+					// druidG.g:356:33: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairNums2504); 
 					}
@@ -4844,7 +4849,7 @@ public class druidGParser extends Parser {
 			}
 
 			j=(Token)match(input,LONG,FOLLOW_LONG_in_pairNums2509); 
-			// druidG.g:351:44: ( WS )?
+			// druidG.g:356:44: ( WS )?
 			int alt172=2;
 			int LA172_0 = input.LA(1);
 			if ( (LA172_0==WS) ) {
@@ -4852,7 +4857,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt172) {
 				case 1 :
-					// druidG.g:351:44: WS
+					// druidG.g:356:44: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairNums2511); 
 					}
@@ -4881,7 +4886,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "pairString"
-	// druidG.g:354:1: pairString returns [Pair<String, String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
+	// druidG.g:359:1: pairString returns [Pair<String, String> pair] : ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) ;
 	public final Pair<String, String> pairString() throws RecognitionException {
 		Pair<String, String> pair = null;
 
@@ -4890,14 +4895,14 @@ public class druidGParser extends Parser {
 		Token j=null;
 
 		try {
-			// druidG.g:355:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
-			// druidG.g:355:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+			// druidG.g:360:2: ( ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE ) )
+			// druidG.g:360:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
 			{
-			// druidG.g:355:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
-			// druidG.g:355:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
+			// druidG.g:360:4: ( LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE )
+			// druidG.g:360:5: LSQUARE ( WS )? i= SINGLE_QUOTE_STRING ( WS )? ',' ( WS )? j= SINGLE_QUOTE_STRING ( WS )? RSQUARE
 			{
 			match(input,LSQUARE,FOLLOW_LSQUARE_in_pairString2534); 
-			// druidG.g:355:13: ( WS )?
+			// druidG.g:360:13: ( WS )?
 			int alt173=2;
 			int LA173_0 = input.LA(1);
 			if ( (LA173_0==WS) ) {
@@ -4905,7 +4910,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt173) {
 				case 1 :
-					// druidG.g:355:13: WS
+					// druidG.g:360:13: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairString2536); 
 					}
@@ -4914,7 +4919,7 @@ public class druidGParser extends Parser {
 			}
 
 			i=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2541); 
-			// druidG.g:355:40: ( WS )?
+			// druidG.g:360:40: ( WS )?
 			int alt174=2;
 			int LA174_0 = input.LA(1);
 			if ( (LA174_0==WS) ) {
@@ -4922,7 +4927,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt174) {
 				case 1 :
-					// druidG.g:355:40: WS
+					// druidG.g:360:40: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairString2544); 
 					}
@@ -4931,7 +4936,7 @@ public class druidGParser extends Parser {
 			}
 
 			match(input,91,FOLLOW_91_in_pairString2547); 
-			// druidG.g:355:48: ( WS )?
+			// druidG.g:360:48: ( WS )?
 			int alt175=2;
 			int LA175_0 = input.LA(1);
 			if ( (LA175_0==WS) ) {
@@ -4939,7 +4944,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt175) {
 				case 1 :
-					// druidG.g:355:48: WS
+					// druidG.g:360:48: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairString2549); 
 					}
@@ -4948,7 +4953,7 @@ public class druidGParser extends Parser {
 			}
 
 			j=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_pairString2554); 
-			// druidG.g:355:74: ( WS )?
+			// druidG.g:360:74: ( WS )?
 			int alt176=2;
 			int LA176_0 = input.LA(1);
 			if ( (LA176_0==WS) ) {
@@ -4956,7 +4961,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt176) {
 				case 1 :
-					// druidG.g:355:74: WS
+					// druidG.g:360:74: WS
 					{
 					match(input,WS,FOLLOW_WS_in_pairString2556); 
 					}
@@ -4985,7 +4990,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "havingClause"
-	// druidG.g:362:1: havingClause returns [Having having] : h= complexHaving ;
+	// druidG.g:367:1: havingClause returns [Having having] : h= complexHaving ;
 	public final Having havingClause() throws RecognitionException {
 		Having having = null;
 
@@ -4993,8 +4998,8 @@ public class druidGParser extends Parser {
 		Having h =null;
 
 		try {
-			// druidG.g:363:2: (h= complexHaving )
-			// druidG.g:363:4: h= complexHaving
+			// druidG.g:368:2: (h= complexHaving )
+			// druidG.g:368:4: h= complexHaving
 			{
 			pushFollow(FOLLOW_complexHaving_in_havingClause2584);
 			h=complexHaving();
@@ -5018,7 +5023,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleHaving"
-	// druidG.g:366:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
+	// druidG.g:371:1: simpleHaving returns [Having having] : ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) );
 	public final Having simpleHaving() throws RecognitionException {
 		Having having = null;
 
@@ -5030,7 +5035,7 @@ public class druidGParser extends Parser {
 		EqualsToHolder e =null;
 
 		try {
-			// druidG.g:367:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
+			// druidG.g:372:2: ( (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) | (e= getEquals ) | (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) ) )
 			int alt181=3;
 			int LA181_0 = input.LA(1);
 			if ( (LA181_0==ID) ) {
@@ -5095,13 +5100,13 @@ public class druidGParser extends Parser {
 
 			switch (alt181) {
 				case 1 :
-					// druidG.g:367:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:372:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					{
-					// druidG.g:367:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-					// druidG.g:367:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// druidG.g:372:4: (a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:372:5: a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
 					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2605); 
-					// druidG.g:367:10: ( WS )?
+					// druidG.g:372:10: ( WS )?
 					int alt177=2;
 					int LA177_0 = input.LA(1);
 					if ( (LA177_0==WS) ) {
@@ -5109,7 +5114,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt177) {
 						case 1 :
-							// druidG.g:367:10: WS
+							// druidG.g:372:10: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleHaving2607); 
 							}
@@ -5118,7 +5123,7 @@ public class druidGParser extends Parser {
 					}
 
 					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2612); 
-					// druidG.g:367:29: ( WS )?
+					// druidG.g:372:29: ( WS )?
 					int alt178=2;
 					int LA178_0 = input.LA(1);
 					if ( (LA178_0==WS) ) {
@@ -5126,7 +5131,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt178) {
 						case 1 :
-							// druidG.g:367:29: WS
+							// druidG.g:372:29: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleHaving2614); 
 							}
@@ -5149,10 +5154,10 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:368:4: (e= getEquals )
+					// druidG.g:373:4: (e= getEquals )
 					{
-					// druidG.g:368:4: (e= getEquals )
-					// druidG.g:368:5: e= getEquals
+					// druidG.g:373:4: (e= getEquals )
+					// druidG.g:373:5: e= getEquals
 					{
 					pushFollow(FOLLOW_getEquals_in_simpleHaving2636);
 					e=getEquals();
@@ -5164,15 +5169,15 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 3 :
-					// druidG.g:369:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:374:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
 					{
-					// druidG.g:369:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
-					// druidG.g:369:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
+					// druidG.g:374:4: (n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT ) )
+					// druidG.g:374:5: n= NOT WS a= ID ( WS )? t= COMPARE_OPER ( WS )? v= ( LONG | FLOAT )
 					{
 					n=(Token)match(input,NOT,FOLLOW_NOT_in_simpleHaving2647); 
 					match(input,WS,FOLLOW_WS_in_simpleHaving2649); 
 					a=(Token)match(input,ID,FOLLOW_ID_in_simpleHaving2653); 
-					// druidG.g:369:19: ( WS )?
+					// druidG.g:374:19: ( WS )?
 					int alt179=2;
 					int LA179_0 = input.LA(1);
 					if ( (LA179_0==WS) ) {
@@ -5180,7 +5185,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt179) {
 						case 1 :
-							// druidG.g:369:19: WS
+							// druidG.g:374:19: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleHaving2655); 
 							}
@@ -5189,7 +5194,7 @@ public class druidGParser extends Parser {
 					}
 
 					t=(Token)match(input,COMPARE_OPER,FOLLOW_COMPARE_OPER_in_simpleHaving2660); 
-					// druidG.g:369:38: ( WS )?
+					// druidG.g:374:38: ( WS )?
 					int alt180=2;
 					int LA180_0 = input.LA(1);
 					if ( (LA180_0==WS) ) {
@@ -5197,7 +5202,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt180) {
 						case 1 :
-							// druidG.g:369:38: WS
+							// druidG.g:374:38: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleHaving2662); 
 							}
@@ -5236,7 +5241,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "complexHaving"
-	// druidG.g:372:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
+	// druidG.g:377:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );
 	public final Having complexHaving() throws RecognitionException {
 		Having having = null;
 
@@ -5247,15 +5252,15 @@ public class druidGParser extends Parser {
 		Having b =null;
 
 		try {
-			// druidG.g:373:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
+			// druidG.g:378:2: ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) )
 			int alt182=2;
 			alt182 = dfa182.predict(input);
 			switch (alt182) {
 				case 1 :
-					// druidG.g:373:4: (s= simpleHaving )
+					// druidG.g:378:4: (s= simpleHaving )
 					{
-					// druidG.g:373:4: (s= simpleHaving )
-					// druidG.g:373:5: s= simpleHaving
+					// druidG.g:378:4: (s= simpleHaving )
+					// druidG.g:378:5: s= simpleHaving
 					{
 					pushFollow(FOLLOW_simpleHaving_in_complexHaving2695);
 					s=simpleHaving();
@@ -5267,10 +5272,10 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:374:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+					// druidG.g:379:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
 					{
-					// druidG.g:374:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
-					// druidG.g:374:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
+					// druidG.g:379:4: (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving )
+					// druidG.g:379:5: a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving
 					{
 					pushFollow(FOLLOW_simpleHaving_in_complexHaving2706);
 					a=simpleHaving();
@@ -5313,7 +5318,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "grandFilter"
-	// druidG.g:381:1: grandFilter returns [Filter filter] : a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ;
+	// druidG.g:386:1: grandFilter returns [Filter filter] : a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ;
 	public final Filter grandFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5323,15 +5328,15 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:382:2: (a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* )
-			// druidG.g:382:3: a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			// druidG.g:387:2: (a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* )
+			// druidG.g:387:3: a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
 			{
 			pushFollow(FOLLOW_semiGrandFilter_in_grandFilter2751);
 			a=semiGrandFilter();
 			state._fsp--;
 
 			filter = a;
-			// druidG.g:382:35: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+			// druidG.g:387:35: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
 			loop183:
 			while (true) {
 				int alt183=2;
@@ -5346,7 +5351,7 @@ public class druidGParser extends Parser {
 
 				switch (alt183) {
 				case 1 :
-					// druidG.g:382:36: WS o= ( AND | OR ) WS b= semiGrandFilter
+					// druidG.g:387:36: WS o= ( AND | OR ) WS b= semiGrandFilter
 					{
 					match(input,WS,FOLLOW_WS_in_grandFilter2756); 
 					o=input.LT(1);
@@ -5397,7 +5402,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "semiGrandFilter"
-	// druidG.g:394:1: semiGrandFilter returns [Filter filter] : (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN );
+	// druidG.g:399:1: semiGrandFilter returns [Filter filter] : (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN );
 	public final Filter semiGrandFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5407,7 +5412,7 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:395:2: (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN )
+			// druidG.g:400:2: (a= simpleLogicalFilter | LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN )
 			int alt187=2;
 			int LA187_0 = input.LA(1);
 			if ( (LA187_0==ID||LA187_0==NOT) ) {
@@ -5425,7 +5430,7 @@ public class druidGParser extends Parser {
 
 			switch (alt187) {
 				case 1 :
-					// druidG.g:396:2: a= simpleLogicalFilter
+					// druidG.g:401:2: a= simpleLogicalFilter
 					{
 					pushFollow(FOLLOW_simpleLogicalFilter_in_semiGrandFilter2801);
 					a=simpleLogicalFilter();
@@ -5435,10 +5440,10 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:397:3: LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN
+					// druidG.g:402:3: LPARAN ( WS )? a= semiGrandFilter ( WS o= ( AND | OR ) WS b= semiGrandFilter )* ( WS )? RPARAN
 					{
 					match(input,LPARAN,FOLLOW_LPARAN_in_semiGrandFilter2808); 
-					// druidG.g:397:10: ( WS )?
+					// druidG.g:402:10: ( WS )?
 					int alt184=2;
 					int LA184_0 = input.LA(1);
 					if ( (LA184_0==WS) ) {
@@ -5446,7 +5451,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt184) {
 						case 1 :
-							// druidG.g:397:10: WS
+							// druidG.g:402:10: WS
 							{
 							match(input,WS,FOLLOW_WS_in_semiGrandFilter2810); 
 							}
@@ -5459,7 +5464,7 @@ public class druidGParser extends Parser {
 					state._fsp--;
 
 					filter = a;
-					// druidG.g:397:47: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
+					// druidG.g:402:47: ( WS o= ( AND | OR ) WS b= semiGrandFilter )*
 					loop185:
 					while (true) {
 						int alt185=2;
@@ -5474,7 +5479,7 @@ public class druidGParser extends Parser {
 
 						switch (alt185) {
 						case 1 :
-							// druidG.g:397:48: WS o= ( AND | OR ) WS b= semiGrandFilter
+							// druidG.g:402:48: WS o= ( AND | OR ) WS b= semiGrandFilter
 							{
 							match(input,WS,FOLLOW_WS_in_semiGrandFilter2821); 
 							o=input.LT(1);
@@ -5507,7 +5512,7 @@ public class druidGParser extends Parser {
 						}
 					}
 
-					// druidG.g:405:7: ( WS )?
+					// druidG.g:410:7: ( WS )?
 					int alt186=2;
 					int LA186_0 = input.LA(1);
 					if ( (LA186_0==WS) ) {
@@ -5515,7 +5520,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt186) {
 						case 1 :
-							// druidG.g:405:7: WS
+							// druidG.g:410:7: WS
 							{
 							match(input,WS,FOLLOW_WS_in_semiGrandFilter2851); 
 							}
@@ -5543,7 +5548,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleLogicalFilter"
-	// druidG.g:408:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );
+	// druidG.g:413:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );
 	public final Filter simpleLogicalFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5553,15 +5558,15 @@ public class druidGParser extends Parser {
 		Filter b =null;
 
 		try {
-			// druidG.g:409:2: ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) )
+			// druidG.g:414:2: ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) )
 			int alt189=2;
 			alt189 = dfa189.predict(input);
 			switch (alt189) {
 				case 1 :
-					// druidG.g:410:2: (a= simpleFilter )
+					// druidG.g:415:2: (a= simpleFilter )
 					{
-					// druidG.g:410:2: (a= simpleFilter )
-					// druidG.g:410:3: a= simpleFilter
+					// druidG.g:415:2: (a= simpleFilter )
+					// druidG.g:415:3: a= simpleFilter
 					{
 					pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2873);
 					a=simpleFilter();
@@ -5573,9 +5578,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:411:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					// druidG.g:416:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
 					{
-					// druidG.g:411:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
+					// druidG.g:416:3: ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) )
 					int alt188=2;
 					int LA188_0 = input.LA(1);
 					if ( (LA188_0==ID) ) {
@@ -5593,10 +5598,10 @@ public class druidGParser extends Parser {
 
 					switch (alt188) {
 						case 1 :
-							// druidG.g:411:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							// druidG.g:416:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
 							{
-							// druidG.g:411:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
-							// druidG.g:411:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
+							// druidG.g:416:4: (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter )
+							// druidG.g:416:5: a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter
 							{
 							pushFollow(FOLLOW_simpleFilter_in_simpleLogicalFilter2885);
 							a=simpleFilter();
@@ -5622,10 +5627,10 @@ public class druidGParser extends Parser {
 							}
 							break;
 						case 2 :
-							// druidG.g:411:55: (o= NOT WS b= simpleFilter )
+							// druidG.g:416:55: (o= NOT WS b= simpleFilter )
 							{
-							// druidG.g:411:55: (o= NOT WS b= simpleFilter )
-							// druidG.g:411:56: o= NOT WS b= simpleFilter
+							// druidG.g:416:55: (o= NOT WS b= simpleFilter )
+							// druidG.g:416:56: o= NOT WS b= simpleFilter
 							{
 							o=(Token)match(input,NOT,FOLLOW_NOT_in_simpleLogicalFilter2909); 
 							match(input,WS,FOLLOW_WS_in_simpleLogicalFilter2911); 
@@ -5668,7 +5673,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleFilter"
-	// druidG.g:424:1: simpleFilter returns [Filter filter] : (a= selectorFilter |a= regexFilter ) ;
+	// druidG.g:429:1: simpleFilter returns [Filter filter] : (a= selectorFilter |a= regexFilter ) ;
 	public final Filter simpleFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5676,10 +5681,10 @@ public class druidGParser extends Parser {
 		Filter a =null;
 
 		try {
-			// druidG.g:425:2: ( (a= selectorFilter |a= regexFilter ) )
-			// druidG.g:425:4: (a= selectorFilter |a= regexFilter )
+			// druidG.g:430:2: ( (a= selectorFilter |a= regexFilter ) )
+			// druidG.g:430:4: (a= selectorFilter |a= regexFilter )
 			{
-			// druidG.g:425:4: (a= selectorFilter |a= regexFilter )
+			// druidG.g:430:4: (a= selectorFilter |a= regexFilter )
 			int alt190=2;
 			int LA190_0 = input.LA(1);
 			if ( (LA190_0==ID) ) {
@@ -5734,7 +5739,7 @@ public class druidGParser extends Parser {
 
 			switch (alt190) {
 				case 1 :
-					// druidG.g:425:5: a= selectorFilter
+					// druidG.g:430:5: a= selectorFilter
 					{
 					pushFollow(FOLLOW_selectorFilter_in_simpleFilter2942);
 					a=selectorFilter();
@@ -5743,7 +5748,7 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:425:24: a= regexFilter
+					// druidG.g:430:24: a= regexFilter
 					{
 					pushFollow(FOLLOW_regexFilter_in_simpleFilter2948);
 					a=regexFilter();
@@ -5772,7 +5777,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "selectorFilter"
-	// druidG.g:428:1: selectorFilter returns [Filter filter] : e= getEquals ;
+	// druidG.g:433:1: selectorFilter returns [Filter filter] : e= getEquals ;
 	public final Filter selectorFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5781,8 +5786,8 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("selector");
 		try {
-			// druidG.g:430:2: (e= getEquals )
-			// druidG.g:430:4: e= getEquals
+			// druidG.g:435:2: (e= getEquals )
+			// druidG.g:435:4: e= getEquals
 			{
 			pushFollow(FOLLOW_getEquals_in_selectorFilter2973);
 			e=getEquals();
@@ -5808,7 +5813,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "regexFilter"
-	// druidG.g:436:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
+	// druidG.g:441:1: regexFilter returns [Filter filter] : (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) ;
 	public final Filter regexFilter() throws RecognitionException {
 		Filter filter = null;
 
@@ -5818,18 +5823,18 @@ public class druidGParser extends Parser {
 
 		filter = new Filter("regex");
 		try {
-			// druidG.g:438:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
-			// druidG.g:438:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:443:2: ( (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) ) )
+			// druidG.g:443:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
 			{
-			// druidG.g:438:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
-			// druidG.g:438:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
+			// druidG.g:443:4: (a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING ) )
+			// druidG.g:443:5: a= ID WS LIKE WS b= ( SINGLE_QUOTE_STRING )
 			{
 			a=(Token)match(input,ID,FOLLOW_ID_in_regexFilter3002); 
 			match(input,WS,FOLLOW_WS_in_regexFilter3004); 
 			match(input,LIKE,FOLLOW_LIKE_in_regexFilter3006); 
 			match(input,WS,FOLLOW_WS_in_regexFilter3008); 
-			// druidG.g:438:24: ( SINGLE_QUOTE_STRING )
-			// druidG.g:438:25: SINGLE_QUOTE_STRING
+			// druidG.g:443:24: ( SINGLE_QUOTE_STRING )
+			// druidG.g:443:25: SINGLE_QUOTE_STRING
 			{
 			b=(Token)match(input,SINGLE_QUOTE_STRING,FOLLOW_SINGLE_QUOTE_STRING_in_regexFilter3014); 
 			}
@@ -5856,7 +5861,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggItem"
-	// druidG.g:448:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
+	// druidG.g:453:1: aggItem returns [AggItem aggItem] : aggCallSite[aggItem] ( WS AS WS x= ID )? ;
 	public final AggItem aggItem() throws RecognitionException {
 		AggItem aggItem = null;
 
@@ -5865,14 +5870,14 @@ public class druidGParser extends Parser {
 
 		  aggItem = new AggItem(); 
 		try {
-			// druidG.g:450:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
-			// druidG.g:450:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
+			// druidG.g:455:2: ( aggCallSite[aggItem] ( WS AS WS x= ID )? )
+			// druidG.g:455:4: aggCallSite[aggItem] ( WS AS WS x= ID )?
 			{
 			pushFollow(FOLLOW_aggCallSite_in_aggItem3045);
 			aggCallSite(aggItem);
 			state._fsp--;
 
-			// druidG.g:450:25: ( WS AS WS x= ID )?
+			// druidG.g:455:25: ( WS AS WS x= ID )?
 			int alt191=2;
 			int LA191_0 = input.LA(1);
 			if ( (LA191_0==WS) ) {
@@ -5883,7 +5888,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt191) {
 				case 1 :
-					// druidG.g:450:26: WS AS WS x= ID
+					// druidG.g:455:26: WS AS WS x= ID
 					{
 					match(input,WS,FOLLOW_WS_in_aggItem3049); 
 					match(input,AS,FOLLOW_AS_in_aggItem3051); 
@@ -5912,14 +5917,14 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggCallSite"
-	// druidG.g:452:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
+	// druidG.g:457:1: aggCallSite[AggItem aggItem] : (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) );
 	public final void aggCallSite(AggItem aggItem) throws RecognitionException {
 		Token x=null;
 		Token y=null;
 		String p =null;
 
 		try {
-			// druidG.g:453:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
+			// druidG.g:458:2: (p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN ) | COUNT ( '(*)' ) )
 			int alt198=2;
 			int LA198_0 = input.LA(1);
 			if ( (LA198_0==DOUBLE_SUM||LA198_0==HYPER_UNIQUE||LA198_0==JAVASCRIPT||LA198_0==LONG_SUM||LA198_0==MAX||LA198_0==MIN||LA198_0==UNIQUE) ) {
@@ -5937,17 +5942,17 @@ public class druidGParser extends Parser {
 
 			switch (alt198) {
 				case 1 :
-					// druidG.g:453:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:458:4: p= aggFunc ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
 					{
 					pushFollow(FOLLOW_aggFunc_in_aggCallSite3076);
 					p=aggFunc();
 					state._fsp--;
 
 					aggItem.setAggType(p);
-					// druidG.g:453:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
-					// druidG.g:453:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
+					// druidG.g:458:39: ( ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN )
+					// druidG.g:458:40: ( WS )? LPARAN ( WS )? (x= ID ) ( ( WS )? ',' ( WS )? y= ID )* ( WS )? RPARAN
 					{
-					// druidG.g:453:40: ( WS )?
+					// druidG.g:458:40: ( WS )?
 					int alt192=2;
 					int LA192_0 = input.LA(1);
 					if ( (LA192_0==WS) ) {
@@ -5955,7 +5960,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt192) {
 						case 1 :
-							// druidG.g:453:40: WS
+							// druidG.g:458:40: WS
 							{
 							match(input,WS,FOLLOW_WS_in_aggCallSite3081); 
 							}
@@ -5964,7 +5969,7 @@ public class druidGParser extends Parser {
 					}
 
 					match(input,LPARAN,FOLLOW_LPARAN_in_aggCallSite3084); 
-					// druidG.g:453:51: ( WS )?
+					// druidG.g:458:51: ( WS )?
 					int alt193=2;
 					int LA193_0 = input.LA(1);
 					if ( (LA193_0==WS) ) {
@@ -5972,7 +5977,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt193) {
 						case 1 :
-							// druidG.g:453:51: WS
+							// druidG.g:458:51: WS
 							{
 							match(input,WS,FOLLOW_WS_in_aggCallSite3086); 
 							}
@@ -5980,14 +5985,14 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:453:55: (x= ID )
-					// druidG.g:453:57: x= ID
+					// druidG.g:458:55: (x= ID )
+					// druidG.g:458:57: x= ID
 					{
 					x=(Token)match(input,ID,FOLLOW_ID_in_aggCallSite3093); 
 					aggItem.setFieldName((x!=null?x.getText():null));
 					}
 
-					// druidG.g:453:96: ( ( WS )? ',' ( WS )? y= ID )*
+					// druidG.g:458:96: ( ( WS )? ',' ( WS )? y= ID )*
 					loop196:
 					while (true) {
 						int alt196=2;
@@ -6005,9 +6010,9 @@ public class druidGParser extends Parser {
 
 						switch (alt196) {
 						case 1 :
-							// druidG.g:453:97: ( WS )? ',' ( WS )? y= ID
+							// druidG.g:458:97: ( WS )? ',' ( WS )? y= ID
 							{
-							// druidG.g:453:97: ( WS )?
+							// druidG.g:458:97: ( WS )?
 							int alt194=2;
 							int LA194_0 = input.LA(1);
 							if ( (LA194_0==WS) ) {
@@ -6015,7 +6020,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt194) {
 								case 1 :
-									// druidG.g:453:97: WS
+									// druidG.g:458:97: WS
 									{
 									match(input,WS,FOLLOW_WS_in_aggCallSite3099); 
 									}
@@ -6024,7 +6029,7 @@ public class druidGParser extends Parser {
 							}
 
 							match(input,91,FOLLOW_91_in_aggCallSite3102); 
-							// druidG.g:453:105: ( WS )?
+							// druidG.g:458:105: ( WS )?
 							int alt195=2;
 							int LA195_0 = input.LA(1);
 							if ( (LA195_0==WS) ) {
@@ -6032,7 +6037,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt195) {
 								case 1 :
-									// druidG.g:453:105: WS
+									// druidG.g:458:105: WS
 									{
 									match(input,WS,FOLLOW_WS_in_aggCallSite3104); 
 									}
@@ -6057,7 +6062,7 @@ public class druidGParser extends Parser {
 						}
 					}
 
-					// druidG.g:460:6: ( WS )?
+					// druidG.g:465:6: ( WS )?
 					int alt197=2;
 					int LA197_0 = input.LA(1);
 					if ( (LA197_0==WS) ) {
@@ -6065,7 +6070,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt197) {
 						case 1 :
-							// druidG.g:460:6: WS
+							// druidG.g:465:6: WS
 							{
 							match(input,WS,FOLLOW_WS_in_aggCallSite3115); 
 							}
@@ -6079,12 +6084,12 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:461:4: COUNT ( '(*)' )
+					// druidG.g:466:4: COUNT ( '(*)' )
 					{
 					match(input,COUNT,FOLLOW_COUNT_in_aggCallSite3125); 
 					aggItem.setAggType("count");
-					// druidG.g:461:41: ( '(*)' )
-					// druidG.g:461:42: '(*)'
+					// druidG.g:466:41: ( '(*)' )
+					// druidG.g:466:42: '(*)'
 					{
 					match(input,89,FOLLOW_89_in_aggCallSite3130); 
 					}
@@ -6107,13 +6112,13 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "aggFunc"
-	// druidG.g:464:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
+	// druidG.g:469:1: aggFunc returns [String name] : ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT );
 	public final String aggFunc() throws RecognitionException {
 		String name = null;
 
 
 		try {
-			// druidG.g:465:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
+			// druidG.g:470:2: ( LONG_SUM | DOUBLE_SUM | UNIQUE | HYPER_UNIQUE | MIN | MAX | JAVASCRIPT )
 			int alt199=7;
 			switch ( input.LA(1) ) {
 			case LONG_SUM:
@@ -6158,49 +6163,49 @@ public class druidGParser extends Parser {
 			}
 			switch (alt199) {
 				case 1 :
-					// druidG.g:465:4: LONG_SUM
+					// druidG.g:470:4: LONG_SUM
 					{
 					match(input,LONG_SUM,FOLLOW_LONG_SUM_in_aggFunc3148); 
 					name = "longSum";
 					}
 					break;
 				case 2 :
-					// druidG.g:466:4: DOUBLE_SUM
+					// druidG.g:471:4: DOUBLE_SUM
 					{
 					match(input,DOUBLE_SUM,FOLLOW_DOUBLE_SUM_in_aggFunc3155); 
 					name = "doubleSum";
 					}
 					break;
 				case 3 :
-					// druidG.g:467:4: UNIQUE
+					// druidG.g:472:4: UNIQUE
 					{
 					match(input,UNIQUE,FOLLOW_UNIQUE_in_aggFunc3162); 
 					name = "unique";
 					}
 					break;
 				case 4 :
-					// druidG.g:468:4: HYPER_UNIQUE
+					// druidG.g:473:4: HYPER_UNIQUE
 					{
 					match(input,HYPER_UNIQUE,FOLLOW_HYPER_UNIQUE_in_aggFunc3169); 
 					name = "hyperUnique";
 					}
 					break;
 				case 5 :
-					// druidG.g:469:4: MIN
+					// druidG.g:474:4: MIN
 					{
 					match(input,MIN,FOLLOW_MIN_in_aggFunc3176); 
 					name = "min";
 					}
 					break;
 				case 6 :
-					// druidG.g:470:4: MAX
+					// druidG.g:475:4: MAX
 					{
 					match(input,MAX,FOLLOW_MAX_in_aggFunc3183); 
 					name = "max";
 					}
 					break;
 				case 7 :
-					// druidG.g:471:4: JAVASCRIPT
+					// druidG.g:476:4: JAVASCRIPT
 					{
 					match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_aggFunc3190); 
 					name = "javascript";
@@ -6223,7 +6228,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggItem"
-	// druidG.g:477:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
+	// druidG.g:482:1: postAggItem returns [PostAggItem postAggItem] : ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) );
 	public final PostAggItem postAggItem() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6233,7 +6238,7 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:479:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
+			// druidG.g:484:2: ( (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) | ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? ) )
 			int alt209=2;
 			int LA209_0 = input.LA(1);
 			if ( (LA209_0==FLOAT||LA209_0==ID||LA209_0==JAVASCRIPT||LA209_0==LONG||LA209_0==UNIQUE) ) {
@@ -6251,16 +6256,16 @@ public class druidGParser extends Parser {
 
 			switch (alt209) {
 				case 1 :
-					// druidG.g:479:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:484:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:479:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:479:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:484:4: (a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:484:5: a= simpleArith ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
 					pushFollow(FOLLOW_simpleArith_in_postAggItem3218);
 					a=simpleArith();
 					state._fsp--;
 
-					// druidG.g:479:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:484:20: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					int alt202=2;
 					int LA202_0 = input.LA(1);
 					if ( (LA202_0==WS) ) {
@@ -6274,9 +6279,9 @@ public class druidGParser extends Parser {
 					}
 					switch (alt202) {
 						case 1 :
-							// druidG.g:479:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:484:21: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:479:21: ( WS )?
+							// druidG.g:484:21: ( WS )?
 							int alt200=2;
 							int LA200_0 = input.LA(1);
 							if ( (LA200_0==WS) ) {
@@ -6284,7 +6289,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt200) {
 								case 1 :
-									// druidG.g:479:21: WS
+									// druidG.g:484:21: WS
 									{
 									match(input,WS,FOLLOW_WS_in_postAggItem3222); 
 									}
@@ -6296,7 +6301,7 @@ public class druidGParser extends Parser {
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:479:55: ( WS )?
+							// druidG.g:484:55: ( WS )?
 							int alt201=2;
 							int LA201_0 = input.LA(1);
 							if ( (LA201_0==WS) ) {
@@ -6304,7 +6309,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt201) {
 								case 1 :
-									// druidG.g:479:55: WS
+									// druidG.g:484:55: WS
 									{
 									match(input,WS,FOLLOW_WS_in_postAggItem3228); 
 									}
@@ -6332,16 +6337,16 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:486:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:491:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
 					{
-					// druidG.g:486:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
-					// druidG.g:486:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:491:4: ( ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )? )
+					// druidG.g:491:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN ) ( postAggLabel[postAggItem] )? ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					{
-					// druidG.g:486:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
-					// druidG.g:486:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
+					// druidG.g:491:5: ( LPARAN ( WS )? a= postAggItem ( WS )? RPARAN )
+					// druidG.g:491:6: LPARAN ( WS )? a= postAggItem ( WS )? RPARAN
 					{
 					match(input,LPARAN,FOLLOW_LPARAN_in_postAggItem3251); 
-					// druidG.g:486:13: ( WS )?
+					// druidG.g:491:13: ( WS )?
 					int alt203=2;
 					int LA203_0 = input.LA(1);
 					if ( (LA203_0==WS) ) {
@@ -6349,7 +6354,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt203) {
 						case 1 :
-							// druidG.g:486:13: WS
+							// druidG.g:491:13: WS
 							{
 							match(input,WS,FOLLOW_WS_in_postAggItem3253); 
 							}
@@ -6361,7 +6366,7 @@ public class druidGParser extends Parser {
 					a=postAggItem();
 					state._fsp--;
 
-					// druidG.g:486:31: ( WS )?
+					// druidG.g:491:31: ( WS )?
 					int alt204=2;
 					int LA204_0 = input.LA(1);
 					if ( (LA204_0==WS) ) {
@@ -6369,7 +6374,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt204) {
 						case 1 :
-							// druidG.g:486:31: WS
+							// druidG.g:491:31: WS
 							{
 							match(input,WS,FOLLOW_WS_in_postAggItem3260); 
 							}
@@ -6380,7 +6385,7 @@ public class druidGParser extends Parser {
 					match(input,RPARAN,FOLLOW_RPARAN_in_postAggItem3263); 
 					}
 
-					// druidG.g:486:43: ( postAggLabel[postAggItem] )?
+					// druidG.g:491:43: ( postAggLabel[postAggItem] )?
 					int alt205=2;
 					int LA205_0 = input.LA(1);
 					if ( (LA205_0==AS) ) {
@@ -6388,7 +6393,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt205) {
 						case 1 :
-							// druidG.g:486:44: postAggLabel[postAggItem]
+							// druidG.g:491:44: postAggLabel[postAggItem]
 							{
 							pushFollow(FOLLOW_postAggLabel_in_postAggItem3267);
 							postAggLabel(postAggItem);
@@ -6399,7 +6404,7 @@ public class druidGParser extends Parser {
 
 					}
 
-					// druidG.g:486:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
+					// druidG.g:491:72: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem )?
 					int alt208=2;
 					int LA208_0 = input.LA(1);
 					if ( (LA208_0==WS) ) {
@@ -6413,9 +6418,9 @@ public class druidGParser extends Parser {
 					}
 					switch (alt208) {
 						case 1 :
-							// druidG.g:486:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
+							// druidG.g:491:73: ( WS )? postAggArithOper[postAggItem] ( WS )? b= postAggItem
 							{
-							// druidG.g:486:73: ( WS )?
+							// druidG.g:491:73: ( WS )?
 							int alt206=2;
 							int LA206_0 = input.LA(1);
 							if ( (LA206_0==WS) ) {
@@ -6423,7 +6428,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt206) {
 								case 1 :
-									// druidG.g:486:73: WS
+									// druidG.g:491:73: WS
 									{
 									match(input,WS,FOLLOW_WS_in_postAggItem3273); 
 									}
@@ -6435,7 +6440,7 @@ public class druidGParser extends Parser {
 							postAggArithOper(postAggItem);
 							state._fsp--;
 
-							// druidG.g:486:107: ( WS )?
+							// druidG.g:491:107: ( WS )?
 							int alt207=2;
 							int LA207_0 = input.LA(1);
 							if ( (LA207_0==WS) ) {
@@ -6443,7 +6448,7 @@ public class druidGParser extends Parser {
 							}
 							switch (alt207) {
 								case 1 :
-									// druidG.g:486:107: WS
+									// druidG.g:491:107: WS
 									{
 									match(input,WS,FOLLOW_WS_in_postAggItem3279); 
 									}
@@ -6487,7 +6492,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simpleArith"
-	// druidG.g:497:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
+	// druidG.g:502:1: simpleArith returns [PostAggItem postAggItem] : (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? ;
 	public final PostAggItem simpleArith() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6497,11 +6502,11 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("arithmetic"); 
 		try {
-			// druidG.g:499:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
-			// druidG.g:499:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// druidG.g:504:2: ( (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )? )
+			// druidG.g:504:4: (a= simplePostAggAccess ) ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
 			{
-			// druidG.g:499:4: (a= simplePostAggAccess )
-			// druidG.g:499:5: a= simplePostAggAccess
+			// druidG.g:504:4: (a= simplePostAggAccess )
+			// druidG.g:504:5: a= simplePostAggAccess
 			{
 			pushFollow(FOLLOW_simplePostAggAccess_in_simpleArith3320);
 			a=simplePostAggAccess();
@@ -6510,14 +6515,14 @@ public class druidGParser extends Parser {
 			postAggItem=a;
 			}
 
-			// druidG.g:499:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
+			// druidG.g:504:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?
 			int alt212=2;
 			alt212 = dfa212.predict(input);
 			switch (alt212) {
 				case 1 :
-					// druidG.g:499:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
+					// druidG.g:504:46: ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess
 					{
-					// druidG.g:499:46: ( WS )?
+					// druidG.g:504:46: ( WS )?
 					int alt210=2;
 					int LA210_0 = input.LA(1);
 					if ( (LA210_0==WS) ) {
@@ -6525,7 +6530,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt210) {
 						case 1 :
-							// druidG.g:499:46: WS
+							// druidG.g:504:46: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleArith3326); 
 							}
@@ -6537,7 +6542,7 @@ public class druidGParser extends Parser {
 					postAggArithOper(postAggItem);
 					state._fsp--;
 
-					// druidG.g:499:80: ( WS )?
+					// druidG.g:504:80: ( WS )?
 					int alt211=2;
 					int LA211_0 = input.LA(1);
 					if ( (LA211_0==WS) ) {
@@ -6545,7 +6550,7 @@ public class druidGParser extends Parser {
 					}
 					switch (alt211) {
 						case 1 :
-							// druidG.g:499:80: WS
+							// druidG.g:504:80: WS
 							{
 							match(input,WS,FOLLOW_WS_in_simpleArith3332); 
 							}
@@ -6587,7 +6592,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "simplePostAggAccess"
-	// druidG.g:511:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
+	// druidG.g:516:1: simplePostAggAccess returns [PostAggItem postAggItem] : (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef );
 	public final PostAggItem simplePostAggAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6598,7 +6603,7 @@ public class druidGParser extends Parser {
 		PostAggItem js =null;
 
 		try {
-			// druidG.g:512:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
+			// druidG.g:517:2: (c= constantAccess |f= fieldAccess |h= hyperUniqueCardinality |js= postAggJavascriptDef )
 			int alt213=4;
 			switch ( input.LA(1) ) {
 			case FLOAT:
@@ -6629,7 +6634,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt213) {
 				case 1 :
-					// druidG.g:512:4: c= constantAccess
+					// druidG.g:517:4: c= constantAccess
 					{
 					pushFollow(FOLLOW_constantAccess_in_simplePostAggAccess3366);
 					c=constantAccess();
@@ -6639,7 +6644,7 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 2 :
-					// druidG.g:513:4: f= fieldAccess
+					// druidG.g:518:4: f= fieldAccess
 					{
 					pushFollow(FOLLOW_fieldAccess_in_simplePostAggAccess3383);
 					f=fieldAccess();
@@ -6649,7 +6654,7 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 3 :
-					// druidG.g:514:4: h= hyperUniqueCardinality
+					// druidG.g:519:4: h= hyperUniqueCardinality
 					{
 					pushFollow(FOLLOW_hyperUniqueCardinality_in_simplePostAggAccess3396);
 					h=hyperUniqueCardinality();
@@ -6659,7 +6664,7 @@ public class druidGParser extends Parser {
 					}
 					break;
 				case 4 :
-					// druidG.g:515:4: js= postAggJavascriptDef
+					// druidG.g:520:4: js= postAggJavascriptDef
 					{
 					pushFollow(FOLLOW_postAggJavascriptDef_in_simplePostAggAccess3405);
 					js=postAggJavascriptDef();
@@ -6685,7 +6690,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "constantAccess"
-	// druidG.g:520:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:525:1: constantAccess returns [PostAggItem postAggItem] : ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem constantAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6694,13 +6699,13 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("constant"); 
 		try {
-			// druidG.g:522:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:522:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:527:2: ( ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:527:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:522:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:522:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
+			// druidG.g:527:4: ( (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:527:5: (a= FLOAT |a= LONG ) ( WS postAggLabel[postAggItem] )?
 			{
-			// druidG.g:522:5: (a= FLOAT |a= LONG )
+			// druidG.g:527:5: (a= FLOAT |a= LONG )
 			int alt214=2;
 			int LA214_0 = input.LA(1);
 			if ( (LA214_0==FLOAT) ) {
@@ -6718,13 +6723,13 @@ public class druidGParser extends Parser {
 
 			switch (alt214) {
 				case 1 :
-					// druidG.g:522:6: a= FLOAT
+					// druidG.g:527:6: a= FLOAT
 					{
 					a=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_constantAccess3435); 
 					}
 					break;
 				case 2 :
-					// druidG.g:522:16: a= LONG
+					// druidG.g:527:16: a= LONG
 					{
 					a=(Token)match(input,LONG,FOLLOW_LONG_in_constantAccess3441); 
 					}
@@ -6733,7 +6738,7 @@ public class druidGParser extends Parser {
 			}
 
 			postAggItem.constantValue = Double.valueOf((a!=null?a.getText():null));
-			// druidG.g:524:5: ( WS postAggLabel[postAggItem] )?
+			// druidG.g:529:5: ( WS postAggLabel[postAggItem] )?
 			int alt215=2;
 			int LA215_0 = input.LA(1);
 			if ( (LA215_0==WS) ) {
@@ -6744,7 +6749,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt215) {
 				case 1 :
-					// druidG.g:524:6: WS postAggLabel[postAggItem]
+					// druidG.g:529:6: WS postAggLabel[postAggItem]
 					{
 					match(input,WS,FOLLOW_WS_in_constantAccess3454); 
 					pushFollow(FOLLOW_postAggLabel_in_constantAccess3456);
@@ -6775,7 +6780,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "fieldAccess"
-	// druidG.g:527:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
+	// druidG.g:532:1: fieldAccess returns [PostAggItem postAggItem] : (a= ID ( WS postAggLabel[postAggItem] )? ) ;
 	public final PostAggItem fieldAccess() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6784,14 +6789,14 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("fieldAccess"); 
 		try {
-			// druidG.g:529:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
-			// druidG.g:529:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:534:2: ( (a= ID ( WS postAggLabel[postAggItem] )? ) )
+			// druidG.g:534:4: (a= ID ( WS postAggLabel[postAggItem] )? )
 			{
-			// druidG.g:529:4: (a= ID ( WS postAggLabel[postAggItem] )? )
-			// druidG.g:529:5: a= ID ( WS postAggLabel[postAggItem] )?
+			// druidG.g:534:4: (a= ID ( WS postAggLabel[postAggItem] )? )
+			// druidG.g:534:5: a= ID ( WS postAggLabel[postAggItem] )?
 			{
 			a=(Token)match(input,ID,FOLLOW_ID_in_fieldAccess3484); 
-			// druidG.g:529:10: ( WS postAggLabel[postAggItem] )?
+			// druidG.g:534:10: ( WS postAggLabel[postAggItem] )?
 			int alt216=2;
 			int LA216_0 = input.LA(1);
 			if ( (LA216_0==WS) ) {
@@ -6802,7 +6807,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt216) {
 				case 1 :
-					// druidG.g:529:11: WS postAggLabel[postAggItem]
+					// druidG.g:534:11: WS postAggLabel[postAggItem]
 					{
 					match(input,WS,FOLLOW_WS_in_fieldAccess3487); 
 					pushFollow(FOLLOW_postAggLabel_in_fieldAccess3489);
@@ -6834,7 +6839,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "hyperUniqueCardinality"
-	// druidG.g:532:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
+	// druidG.g:537:1: hyperUniqueCardinality returns [PostAggItem postAggItem] : ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) ;
 	public final PostAggItem hyperUniqueCardinality() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6843,14 +6848,14 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("hyperUniqueCardinality"); 
 		try {
-			// druidG.g:534:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
-			// druidG.g:534:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:539:2: ( ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN ) )
+			// druidG.g:539:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
 			{
-			// druidG.g:534:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
-			// druidG.g:534:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
+			// druidG.g:539:4: ( UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN )
+			// druidG.g:539:5: UNIQUE ( WS )? LPARAN ( WS )? a= ID ( WS )? RPARAN
 			{
 			match(input,UNIQUE,FOLLOW_UNIQUE_in_hyperUniqueCardinality3518); 
-			// druidG.g:534:12: ( WS )?
+			// druidG.g:539:12: ( WS )?
 			int alt217=2;
 			int LA217_0 = input.LA(1);
 			if ( (LA217_0==WS) ) {
@@ -6858,7 +6863,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt217) {
 				case 1 :
-					// druidG.g:534:12: WS
+					// druidG.g:539:12: WS
 					{
 					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3520); 
 					}
@@ -6867,7 +6872,7 @@ public class druidGParser extends Parser {
 			}
 
 			match(input,LPARAN,FOLLOW_LPARAN_in_hyperUniqueCardinality3523); 
-			// druidG.g:534:23: ( WS )?
+			// druidG.g:539:23: ( WS )?
 			int alt218=2;
 			int LA218_0 = input.LA(1);
 			if ( (LA218_0==WS) ) {
@@ -6875,7 +6880,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt218) {
 				case 1 :
-					// druidG.g:534:23: WS
+					// druidG.g:539:23: WS
 					{
 					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3525); 
 					}
@@ -6884,7 +6889,7 @@ public class druidGParser extends Parser {
 			}
 
 			a=(Token)match(input,ID,FOLLOW_ID_in_hyperUniqueCardinality3530); 
-			// druidG.g:534:32: ( WS )?
+			// druidG.g:539:32: ( WS )?
 			int alt219=2;
 			int LA219_0 = input.LA(1);
 			if ( (LA219_0==WS) ) {
@@ -6892,7 +6897,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt219) {
 				case 1 :
-					// druidG.g:534:32: WS
+					// druidG.g:539:32: WS
 					{
 					match(input,WS,FOLLOW_WS_in_hyperUniqueCardinality3532); 
 					}
@@ -6921,7 +6926,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggJavascriptDef"
-	// druidG.g:539:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
+	// druidG.g:544:1: postAggJavascriptDef returns [PostAggItem postAggItem] : JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING ;
 	public final PostAggItem postAggJavascriptDef() throws RecognitionException {
 		PostAggItem postAggItem = null;
 
@@ -6930,11 +6935,11 @@ public class druidGParser extends Parser {
 
 		  postAggItem = new PostAggItem("javascript"); 
 		try {
-			// druidG.g:541:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
-			// druidG.g:541:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
+			// druidG.g:546:2: ( JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING )
+			// druidG.g:546:4: JAVASCRIPT ( WS )? str= SINGLE_QUOTE_STRING
 			{
 			match(input,JAVASCRIPT,FOLLOW_JAVASCRIPT_in_postAggJavascriptDef3561); 
-			// druidG.g:541:15: ( WS )?
+			// druidG.g:546:15: ( WS )?
 			int alt220=2;
 			int LA220_0 = input.LA(1);
 			if ( (LA220_0==WS) ) {
@@ -6942,7 +6947,7 @@ public class druidGParser extends Parser {
 			}
 			switch (alt220) {
 				case 1 :
-					// druidG.g:541:15: WS
+					// druidG.g:546:15: WS
 					{
 					match(input,WS,FOLLOW_WS_in_postAggJavascriptDef3563); 
 					}
@@ -6969,16 +6974,16 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggLabel"
-	// druidG.g:544:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
+	// druidG.g:549:1: postAggLabel[PostAggItem postAggItem] : ( AS WS id= ID ) ;
 	public final void postAggLabel(PostAggItem postAggItem) throws RecognitionException {
 		Token id=null;
 
 		try {
-			// druidG.g:545:2: ( ( AS WS id= ID ) )
-			// druidG.g:545:4: ( AS WS id= ID )
+			// druidG.g:550:2: ( ( AS WS id= ID ) )
+			// druidG.g:550:4: ( AS WS id= ID )
 			{
-			// druidG.g:545:4: ( AS WS id= ID )
-			// druidG.g:545:5: AS WS id= ID
+			// druidG.g:550:4: ( AS WS id= ID )
+			// druidG.g:550:5: AS WS id= ID
 			{
 			match(input,AS,FOLLOW_AS_in_postAggLabel3584); 
 			match(input,WS,FOLLOW_WS_in_postAggLabel3586); 
@@ -7002,13 +7007,13 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "postAggArithOper"
-	// druidG.g:548:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
+	// druidG.g:553:1: postAggArithOper[PostAggItem postAggItem] : arith= ARITH_OPER ;
 	public final void postAggArithOper(PostAggItem postAggItem) throws RecognitionException {
 		Token arith=null;
 
 		try {
-			// druidG.g:549:2: (arith= ARITH_OPER )
-			// druidG.g:549:3: arith= ARITH_OPER
+			// druidG.g:554:2: (arith= ARITH_OPER )
+			// druidG.g:554:3: arith= ARITH_OPER
 			{
 			arith=(Token)match(input,ARITH_OPER,FOLLOW_ARITH_OPER_in_postAggArithOper3606); 
 			postAggItem.fn = (arith!=null?arith.getText():null);
@@ -7032,7 +7037,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "isoTime"
-	// druidG.g:554:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
+	// druidG.g:559:1: isoTime returns [String date] : (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ );
 	public final druidGParser.isoTime_return isoTime() throws RecognitionException {
 		druidGParser.isoTime_return retval = new druidGParser.isoTime_return();
 		retval.start = input.LT(1);
@@ -7040,7 +7045,7 @@ public class druidGParser extends Parser {
 		Token d=null;
 
 		try {
-			// druidG.g:555:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
+			// druidG.g:560:2: (d= DATE_YEAR_ONLY |d= DATE_YEAR_MONTH_ONLY |d= DATE |d= DATE_HOUR |d= DATE_HOUR_MIN |d= DATE_HOUR_MIN_SEC |d= DATE_HOUR_MIN_SEC_SUB |d= DATE_HOUR_MIN_SEC_SUB_TZ |d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ )
 			int alt221=9;
 			switch ( input.LA(1) ) {
 			case DATE_YEAR_ONLY:
@@ -7095,63 +7100,63 @@ public class druidGParser extends Parser {
 			}
 			switch (alt221) {
 				case 1 :
-					// druidG.g:555:3: d= DATE_YEAR_ONLY
+					// druidG.g:560:3: d= DATE_YEAR_ONLY
 					{
 					d=(Token)match(input,DATE_YEAR_ONLY,FOLLOW_DATE_YEAR_ONLY_in_isoTime3625); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 2 :
-					// druidG.g:556:3: d= DATE_YEAR_MONTH_ONLY
+					// druidG.g:561:3: d= DATE_YEAR_MONTH_ONLY
 					{
 					d=(Token)match(input,DATE_YEAR_MONTH_ONLY,FOLLOW_DATE_YEAR_MONTH_ONLY_in_isoTime3633); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 3 :
-					// druidG.g:557:3: d= DATE
+					// druidG.g:562:3: d= DATE
 					{
 					d=(Token)match(input,DATE,FOLLOW_DATE_in_isoTime3641); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 4 :
-					// druidG.g:558:3: d= DATE_HOUR
+					// druidG.g:563:3: d= DATE_HOUR
 					{
 					d=(Token)match(input,DATE_HOUR,FOLLOW_DATE_HOUR_in_isoTime3649); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 5 :
-					// druidG.g:559:3: d= DATE_HOUR_MIN
+					// druidG.g:564:3: d= DATE_HOUR_MIN
 					{
 					d=(Token)match(input,DATE_HOUR_MIN,FOLLOW_DATE_HOUR_MIN_in_isoTime3657); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 6 :
-					// druidG.g:560:3: d= DATE_HOUR_MIN_SEC
+					// druidG.g:565:3: d= DATE_HOUR_MIN_SEC
 					{
 					d=(Token)match(input,DATE_HOUR_MIN_SEC,FOLLOW_DATE_HOUR_MIN_SEC_in_isoTime3665); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 7 :
-					// druidG.g:561:3: d= DATE_HOUR_MIN_SEC_SUB
+					// druidG.g:566:3: d= DATE_HOUR_MIN_SEC_SUB
 					{
 					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB,FOLLOW_DATE_HOUR_MIN_SEC_SUB_in_isoTime3673); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 8 :
-					// druidG.g:562:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
+					// druidG.g:567:3: d= DATE_HOUR_MIN_SEC_SUB_TZ
 					{
 					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_TZ_in_isoTime3681); 
 					retval.date = (d!=null?d.getText():null);
 					}
 					break;
 				case 9 :
-					// druidG.g:563:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
+					// druidG.g:568:3: d= DATE_HOUR_MIN_SEC_SUB_UTC_TZ
 					{
 					d=(Token)match(input,DATE_HOUR_MIN_SEC_SUB_UTC_TZ,FOLLOW_DATE_HOUR_MIN_SEC_SUB_UTC_TZ_in_isoTime3689); 
 					retval.date = (d!=null?d.getText():null);
@@ -7363,7 +7368,7 @@ public class druidGParser extends Parser {
 		}
 		@Override
 		public String getDescription() {
-			return "372:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );";
+			return "377:1: complexHaving returns [Having having] : ( (s= simpleHaving ) | (a= simpleHaving WS o= ( AND | OR ) WS b= complexHaving ) );";
 		}
 	}
 
@@ -7494,7 +7499,7 @@ public class druidGParser extends Parser {
 		}
 		@Override
 		public String getDescription() {
-			return "408:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );";
+			return "413:1: simpleLogicalFilter returns [Filter filter] : ( (a= simpleFilter ) | ( (a= simpleFilter WS o= ( AND | OR ) WS b= simpleFilter ) | (o= NOT WS b= simpleFilter ) ) );";
 		}
 	}
 
@@ -7651,7 +7656,7 @@ public class druidGParser extends Parser {
 		}
 		@Override
 		public String getDescription() {
-			return "499:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
+			return "504:45: ( ( WS )? postAggArithOper[postAggItem] ( WS )? b= simplePostAggAccess )?";
 		}
 	}
 

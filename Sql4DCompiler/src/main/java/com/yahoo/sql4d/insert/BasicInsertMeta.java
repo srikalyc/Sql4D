@@ -62,7 +62,7 @@ public class BasicInsertMeta extends InsertMeta {
     public Map<String, Object> getTimestampSpec() {
         return ImmutableMap.<String, Object>of(
                 "column", "timestamp",
-                "format", (timestampFormat != null) ? timestampFormat : "auto");
+                "format", (timestampFormat != null) ? timestampFormat : "iso");//TODO: Check if auto works instead of iso as default.
     }
 
     @Override

@@ -272,13 +272,18 @@ selectItems[BaseStatementMeta meta]
 	        ((BaseAggQueryMeta)meta).aggregations.add(ai);
 	      } else if (meta instanceof InsertMeta) {
  	        ((InsertMeta)meta).aggregations.add(ai);
+   	        if (ai.isDirectMetric()) {//Unique, hyperUnique, Count etc are not part of the data
+	      	  ((InsertMeta)meta).addColumnInOrder(ai.getCanonicalName());
+	        }
 	      }
+	      
 	   }
 	|  sd=simpleDim { 
 	      if (meta instanceof QueryMeta) {
 	         ((PlainDimQueryMeta)meta).fetchDimensions.put(sd.a, sd.b);
 	      } else if (meta instanceof InsertMeta) {
  	         ((InsertMeta)meta).fetchDimensions.put(sd.a, sd.b);
+ 	         ((InsertMeta)meta).addColumnInOrder((sd.b != null)? sd.b : sd.a);
 	      }
 	   }
 	;

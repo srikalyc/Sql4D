@@ -294,6 +294,7 @@ public class DDataSource {
             return new Left<>(dropTable((DropProgram) pgm, reqHeaders, printToConsole));
         } else if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
+            iPgm.print(printToConsole);
             return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), reqHeaders, iPgm.waitForCompletion));
         } else {
             return selectRows((QueryProgram) pgm, reqHeaders, printToConsole);
