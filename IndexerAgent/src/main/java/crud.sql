@@ -1,20 +1,27 @@
--- FIFTEEN_MINUTELY, THIRTY_MINUTELY, HOURLY, DAILY, MONTHLY
+-- Start the Derby network server 
+--  cd $DERBY_HOME/lib/; java -jar derbyrun.jar server start
+-- Start the Derby client
+-- ij 
+-- connect 'jdbc:derby://localhost:1527/indexerDB;create=true'
+-- Then run the following create statements.
+
 CREATE TABLE DataSource (
     id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    data_source VARCHAR(64) NOT NULL,
-    feed_type VARCHAR(24),
-    begin_time VARCHAR(10),
-    current_run_time VARCHAR(10),
-    end_time VARCHAR(10),
+    name VARCHAR(64) NOT NULL,
+    startTime BIGINT,
+    spinFromTime BIGINT,
+    endTime BIGINT,
+    frequency VARCHAR(64) NOT NULL,
+    status VARCHAR(64) NOT NULL,
     CONSTRAINT dataSource_pk PRIMARY KEY (id)
 ) ;
--- NOT_STARTED, IN_PROGRESS, DONE, FAILED, TIMED_OUT
+
 CREATE TABLE StatusTrail (
     id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    data_source_id INTEGER CONSTRAINT dataSource_fk  REFERENCES DataSource (id) ON DELETE CASCADE ON UPDATE RESTRICT,
-    task_nominal_time VARCHAR(10),
-    status VARCHAR(24), 
-    current_attempt_count INTEGER DEFAULT 0, 
-    task_id VARCHAR(32), 
-    CONSTRAINT status_trail_pk PRIMARY KEY (id)
+    dataSourceId INTEGER CONSTRAINT dataSource_fk  REFERENCES DataSource (id) ON DELETE CASCADE ON UPDATE RESTRICT,
+    nominalTime BIGINT,
+    status VARCHAR(64) NOT NULL,
+    givenUp INTEGER DEFAULT 0, -- non-zero value means we have 'givenUp'
+    attemptsDone INTEGER DEFAULT 0, -- 'givenUp' is set to non-zero when attemptDone reaches max configured.
+    CONSTRAINT statusTrail_pk PRIMARY KEY (id)
 ) ;

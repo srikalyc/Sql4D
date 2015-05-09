@@ -16,5 +16,5 @@ package com.yahoo.sql4d.indexeragent.meta;
  * @author srikalyan
  */
 public enum JobStatus {
-    NOT_STARTED, IN_PROGRESS, DONE, FAILED, TIMED_OUT
+    done, not_done
 }

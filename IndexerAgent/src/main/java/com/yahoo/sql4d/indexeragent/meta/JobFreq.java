@@ -12,9 +12,9 @@
 package com.yahoo.sql4d.indexeragent.meta;
 
 /**
- *
+ * 
  * @author srikalyan
  */
 public enum JobFreq {
-    FIFTEEN_MINUTELY, THIRTY_MINUTELY, HOURLY, DAILY, MONTHLY
+    minute,fifteen_minute,thirty_minute,hour,day
 }

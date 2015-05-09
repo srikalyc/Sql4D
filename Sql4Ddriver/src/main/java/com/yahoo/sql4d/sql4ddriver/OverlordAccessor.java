@@ -17,6 +17,7 @@ import static java.lang.String.format;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -62,6 +63,9 @@ public class OverlordAccessor extends DruidNodeAccessor {
                 return "Task submitted , task Id " + respJson;
             }
         } catch (IOException ex) {
+            ex.printStackTrace();
+            return format("Http %s \n", ex);
+        } catch (IllegalStateException | JSONException ex) {
             ex.printStackTrace();
             return format("Http %s \n", ex);
         } finally {

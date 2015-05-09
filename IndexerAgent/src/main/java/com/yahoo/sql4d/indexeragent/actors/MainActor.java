@@ -18,6 +18,8 @@ import akka.actor.UntypedActor;
 import akka.routing.RoundRobinPool;
 import com.yahoo.sql4d.indexeragent.work.Work;
 import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import scala.concurrent.duration.Duration;
 
 /**
@@ -27,6 +29,7 @@ import scala.concurrent.duration.Duration;
  */
 public class MainActor extends UntypedActor {
 
+    private static final Logger log = LoggerFactory.getLogger(MainActor.class);
     private static final int INITIAL_DELAY = 1;// In secs
     private static final int CRON_INTERVAL = 10;// In secs
     private static final int MAX_CONCURRENCY = 10;// # of workers.
@@ -48,7 +51,7 @@ public class MainActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         if (message.equals("startTicking")) {
-            System.out.println("Started ticking ...");
+            log.info("Started ticking ...");
             tick = getContext().system().scheduler().schedule(
                         Duration.create(INITIAL_DELAY, TimeUnit.SECONDS),
                         Duration.create(CRON_INTERVAL, TimeUnit.SECONDS),
@@ -56,7 +59,7 @@ public class MainActor extends UntypedActor {
         } else if (message.equals("tick")) {
             workerRouter.tell(new Work(), getSelf());
         } else if (message.equals("stop")) {
-            System.out.println("Stopped ticking ...");
+            log.info("Stopped ticking ...");
             tick.cancel();
         } else {
             unhandled(message);
