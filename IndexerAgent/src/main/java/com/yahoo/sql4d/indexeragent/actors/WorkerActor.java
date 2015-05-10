@@ -12,25 +12,45 @@
 package com.yahoo.sql4d.indexeragent.actors;
 
 import akka.actor.UntypedActor;
-import com.yahoo.sql4d.indexeragent.work.Work;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  *
  * @author srikalyan
  */
 public class WorkerActor extends UntypedActor {
-
+    private static final Logger log = LoggerFactory.getLogger(WorkerActor.class);
     public WorkerActor() {
     }
 
     @Override
-    public void onReceive(Object o) throws Exception {
-        if (o instanceof Work) {
-            System.out.println(hashCode() + " received some work " + o);
-        } else {
-            throw new UnsupportedOperationException("Worker received unknown message ." + o);
+    public void onReceive(Object message) throws Exception {        
+        if (!(message instanceof MessageTypes)) {
+            unhandled(message);
+            return;
         }
-        
+        switch((MessageTypes)message) {
+            case GENERATE_WORK:
+                generateWork();
+                log.info("{} need to generate some work {}",hashCode(), message);
+                break;
+            case EXECUTE_WORK:
+                executeWork();
+                log.debug("{} need to execute some work {}",hashCode(), message);
+                break;
+            default:
+                throw new UnsupportedOperationException("Worker received unknown message ." + message);                    
+        }
     }
 
+    private void generateWork() {
+//         List<DataSource> tables = db().getAllDataSources();
+//         for (DataSource ds:tables) {
+//             
+//         }
+    }
+
+    private void executeWork() {
+        
+    }
 }

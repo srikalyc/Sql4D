@@ -32,7 +32,8 @@ public class StatusTrail {
     private String status;
     private int givenUp;
     private int attemptsDone;
-
+    private String fullPath;
+    
     public StatusTrail setId(int id) {
         this.id = id;
         return this;
@@ -63,6 +64,12 @@ public class StatusTrail {
         return this;
     }
 
+    public StatusTrail setFullPath(String fullPath) {
+        this.fullPath = fullPath;
+        return this;
+    }
+
+    
     public int getId() {
         return id;
     }
@@ -87,8 +94,20 @@ public class StatusTrail {
         return attemptsDone;
     }
 
+    public String getFullPath() {
+        return fullPath;
+    }
+
+    public void updateFrom(StatusTrail st) {
+        setNominalTime(st.getNominalTime());        
+        setStatus(JobStatus.valueOf(st.getStatus()));
+        setGivenUp(st.getGivenUp());
+        setAttemptsDone(st.getAttemptsDone());
+        setFullPath(st.getFullPath());
+    }
+    
     @Override
     public String toString() {
-        return String.format("%d %d %d %s %d %d", id, dataSourceId, nominalTime, status, givenUp, attemptsDone);
+        return String.format("%d %d %d %s %d %d %s", id, dataSourceId, nominalTime, status, givenUp, attemptsDone, fullPath);
     }
 }

@@ -33,8 +33,8 @@ import org.json.JSONObject;
 public abstract class InsertMeta extends CrudStatementMeta {
 
     public String dataFormat = "tsv";//
-    public String delimiter = null;
-    public String listDelimiter = null;
+    public String delimiter = ",";
+    public String listDelimiter = "\n";
     public List<AggItem> aggregations = new ArrayList<>();
     public Map<String, String> fetchDimensions = new LinkedHashMap<>();
     public Set<String> orderedColumns = new LinkedHashSet<>();//For maintaining the insert order of data columns.

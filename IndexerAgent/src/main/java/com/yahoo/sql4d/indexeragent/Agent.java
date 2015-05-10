@@ -18,11 +18,10 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.yahoo.sql4d.indexeragent.actors.MainActor;
 import com.yahoo.sql4d.indexeragent.meta.DBHandler;
-import com.yahoo.sql4d.indexeragent.meta.JobStatus;
-import com.yahoo.sql4d.indexeragent.meta.beans.DataSource;
 import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static com.yahoo.sql4d.indexeragent.actors.MessageTypes.*;
 
 /**
  * Agent starts a MainActor actor which orchestrates indexing tasks. Sends a "startTicking"
@@ -50,14 +49,14 @@ public class Agent {
         config = ConfigFactory.parseFile(new File(args[0])).resolve();
         dbHandler = new DBHandler();
         log.info("{}", config);
-        //dbHandler.addOrUpdateDataSource(new DataSource().setDataSource("soda").setStartTime(1431125500000L).setEndTime(1431135500000L).setSpinFromTime(1431125500000L).setStatus(JobStatus.not_done).setFrequency(JobFreq.minute));
-        System.out.println(dbHandler.getDataSource("soda"));
-        DataSource ds = dbHandler.getDataSource("soda");
-        ds.setStatus(JobStatus.done);
-        dbHandler.addOrUpdateDataSource(ds);
-        System.out.println(dbHandler.getDataSource("soda"));
+        //dbHandler.addOrUpdateDataSource(new DataSource().setDataSource("vmeta").setStartTime(1431125400000L).setEndTime(1431135500000L).setSpinFromTime(1431125500000L).setStatus(JobStatus.not_done).setFrequency(JobFreq.minute));
+        //System.out.println(dbHandler.getAllDataSources());
         Agent agent = new Agent();
-        agent.master.tell("startTicking", null);
+        agent.master.tell(BOOT_FROM_SQLS, null);
+    }
+    
+    public static DBHandler db() {
+        return dbHandler;
     }
     
     public static int getConfigAsInt(String key, int defaultVal) {
@@ -91,5 +90,8 @@ public class Agent {
     public static int getRetryDelay() {
         return getConfigAsInt("retryDelay", 60);
     }
+    public static String getDsqlsPath() {
+        return getConfigAsStr("sqlsPath", System.getenv("user.home") + File.separator + "dsqls");
+    }        
     
 }

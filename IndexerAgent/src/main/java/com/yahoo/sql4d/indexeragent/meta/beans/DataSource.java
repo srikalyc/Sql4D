@@ -34,13 +34,16 @@ public class DataSource {
     private long endTime;
     private String frequency;
     private String status;
+    private String templatePath;
+    private String delimiter;
+    private String listDelimiter;
     
     public DataSource setId(int id) {
         this.id = id;
         return this;
     }
 
-    public DataSource setDataSource(String dataSource) {
+    public DataSource setName(String dataSource) {
         this.name = dataSource;
         return this;
     }
@@ -70,11 +73,26 @@ public class DataSource {
         return this;
     }
 
+    public DataSource setTemplatePath(String templatePath) {
+        this.templatePath = templatePath;
+        return this;
+    }
+
+    public DataSource setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+    }
+
+    public DataSource setListDelimiter(String listDelimiter) {
+        this.listDelimiter = listDelimiter;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
 
-    public String getDataSource() {
+    public String getName() {
         return name;
     }
 
@@ -98,9 +116,33 @@ public class DataSource {
         return status;
     }
 
+    public String getTemplatePath() {
+        return templatePath;
+    }
+
+    public String getDelimiter() {
+        return delimiter;
+    }
+
+    public String getListDelimiter() {
+        return listDelimiter;
+    }
+
+    public void updateFrom(DataSource ds) {
+        setName(ds.getName());
+        setStartTime(ds.getStartTime());
+        setSpinFromTime(ds.getSpinFromTime());
+        setEndTime(ds.getEndTime());
+        setFrequency(JobFreq.valueOf(ds.getFrequency()));
+        setStatus(JobStatus.valueOf(ds.getStatus()));
+        setTemplatePath(ds.getTemplatePath());
+        setDelimiter(ds.getDelimiter());
+        setListDelimiter(ds.getListDelimiter());
+    }
+    
     @Override
     public String toString() {
-        return String.format("%d %s %d %d %d %s %s", id, name, startTime, spinFromTime, endTime, frequency, status);
+        return String.format("%d %s %d %d %d %s %s %s %s %s", id, name, startTime, spinFromTime, endTime, frequency, status, templatePath, delimiter, listDelimiter);
     }
         
 }

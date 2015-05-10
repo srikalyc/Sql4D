@@ -14,33 +14,49 @@ package com.yahoo.sql4d.indexeragent.actors;
 import akka.actor.ActorRef;
 import akka.actor.Cancellable;
 import akka.actor.Props;
+import akka.actor.Scheduler;
 import akka.actor.UntypedActor;
 import akka.routing.RoundRobinPool;
-import com.yahoo.sql4d.indexeragent.work.Work;
 import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.concurrent.duration.Duration;
-
+import static com.yahoo.sql4d.indexeragent.Agent.*;
+import java.io.File;
+import java.io.FilenameFilter;
+import static com.yahoo.sql4d.indexeragent.actors.MessageTypes.*;
+import com.yahoo.sql4d.indexeragent.sql.SqlFileSniffer;
+import com.yahoo.sql4d.indexeragent.util.FileSniffer;
+import java.nio.file.Paths;
+import scala.concurrent.duration.FiniteDuration;
 /**
  * Upon receiving "startSignal" the MainActor actor starts a scheduler and schedules
  tasks(if any) to Workers by sending Work messages.
  * @author srikalyan
  */
-public class MainActor extends UntypedActor {
 
+public class MainActor extends UntypedActor {
+    
     private static final Logger log = LoggerFactory.getLogger(MainActor.class);
     private static final int INITIAL_DELAY = 1;// In secs
-    private static final int CRON_INTERVAL = 10;// In secs
-    private static final int MAX_CONCURRENCY = 10;// # of workers.
+    private static final int WORK_GENERATE_INTERVAL = 3600;// In secs
+    private static final int WORK_ASSIGN_INTERVAL = 60;// In secs
+    private final int MAX_CONCURRENCY;// # of workers.
 
     private static ActorRef workerRouter;
     
-    private Cancellable tick;
+    private final Scheduler scheduler;
+    // The following 2 are crons.
+    private Cancellable workInstanceGenerator;
+    private Cancellable workAssigner;
+    // The following is an observer(observes changes to druid sql files)
+    private FileSniffer sqlSniffer;//Allows to dynamically add/remove/modify more tables by adding sql files without bringing down Agent.
 
     public MainActor() {
+        MAX_CONCURRENCY = getMaxParallelTasks();
         workerRouter = getContext().actorOf(Props.create(WorkerActor.class).
-                withRouter(new RoundRobinPool(MAX_CONCURRENCY)),"workerRouter");    
+                withRouter(new RoundRobinPool(MAX_CONCURRENCY)), "workerRouter");    
+        scheduler = getContext().system().scheduler();
     }
     
 
@@ -50,20 +66,59 @@ public class MainActor extends UntypedActor {
 
     @Override
     public void onReceive(Object message) throws Exception {
-        if (message.equals("startTicking")) {
-            log.info("Started ticking ...");
-            tick = getContext().system().scheduler().schedule(
-                        Duration.create(INITIAL_DELAY, TimeUnit.SECONDS),
-                        Duration.create(CRON_INTERVAL, TimeUnit.SECONDS),
-                        getSelf(), "tick", getContext().dispatcher(), null);
-        } else if (message.equals("tick")) {
-            workerRouter.tell(new Work(), getSelf());
-        } else if (message.equals("stop")) {
-            log.info("Stopped ticking ...");
-            tick.cancel();
-        } else {
+        if (!(message instanceof MessageTypes)) {
             unhandled(message);
+            return;
+        }
+        switch((MessageTypes)message) {
+            case BOOT_FROM_SQLS:
+                log.info("Booting off template sqls from {}", getDsqlsPath());
+                sqlSniffer = new SqlFileSniffer(getDsqlsPath());
+                sqlSniffer.startSniffing();
+                bootFromDsqls(getDsqlsPath());
+                getSelf().tell(START_TICKING, getSelf());
+                break;
+            case START_TICKING:
+                log.info("Started ticking ...");
+                workInstanceGenerator = scheduler.schedule(secs(INITIAL_DELAY), secs(WORK_GENERATE_INTERVAL),
+                            getSelf(), GENERATE_WORK, getContext().dispatcher(), null);
+                workAssigner = scheduler.schedule(secs(INITIAL_DELAY), secs(WORK_ASSIGN_INTERVAL),
+                            getSelf(), EXECUTE_WORK, getContext().dispatcher(), null);
+                break;
+            case GENERATE_WORK:
+                workerRouter.tell(GENERATE_WORK, getSelf());
+                break;
+            case EXECUTE_WORK:
+                workerRouter.tell(EXECUTE_WORK, getSelf());
+                break;
+            case STOP_TICKING:
+                log.info("Stopped ticking ...");
+                workInstanceGenerator.cancel();
+                workAssigner.cancel();
+                sqlSniffer.stopSniffing();
+                break;  
+            default:
+                unhandled(message);
         }
     }
-
+    
+    /**
+     * Read off a bunch of sql files expecting insert statements within them.
+     */
+    private void bootFromDsqls(String path) {
+        File[] files = new File(path).listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".sql");
+            }
+        });
+        
+        for (File file:files) {//In this context only add/update is cared for.
+            sqlSniffer.onCreate(Paths.get(file.toURI()));
+        }        
+    }
+    
+    private FiniteDuration secs(int sec) {
+        return Duration.create(sec, TimeUnit.SECONDS);        
+    }
 }

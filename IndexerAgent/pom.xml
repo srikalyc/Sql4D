@@ -12,6 +12,11 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
+            <groupId>com.yahoo.sql4d</groupId>
+            <artifactId>Sql4Ddriver</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>

@@ -13,6 +13,9 @@ CREATE TABLE DataSource (
     endTime BIGINT,
     frequency VARCHAR(64) NOT NULL,
     status VARCHAR(64) NOT NULL,
+    templatePath VARCHAR(256) NOT NULL,
+    delimiter VARCHAR(4) NOT NULL,
+    listDelimiter VARCHAR(4) NOT NULL,
     CONSTRAINT dataSource_pk PRIMARY KEY (id)
 ) ;
 
@@ -23,5 +26,6 @@ CREATE TABLE StatusTrail (
     status VARCHAR(64) NOT NULL,
     givenUp INTEGER DEFAULT 0, -- non-zero value means we have 'givenUp'
     attemptsDone INTEGER DEFAULT 0, -- 'givenUp' is set to non-zero when attemptDone reaches max configured.
+    fullPath VARCHAR(256) NOT NULL,
     CONSTRAINT statusTrail_pk PRIMARY KEY (id)
 ) ;

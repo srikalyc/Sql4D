@@ -72,10 +72,20 @@ public class DBHandler {
         em.getTransaction().commit();
     }
     
+    public void removeDataSource(DataSource ds) {
+        em.getTransaction().begin();
+        em.remove(ds);
+        em.getTransaction().commit();
+    }
+
     public void addOrUpdateStatusTrail(StatusTrail st) {
         em.getTransaction().begin();
         em.persist(st);
         em.getTransaction().commit();
+    }
+
+    public List<DataSource> getAllDataSources() {
+        return em.createQuery("SELECT ds FROM DataSource ds", DataSource.class).getResultList();        
     }
 
     public DataSource getDataSource(String tableName) {

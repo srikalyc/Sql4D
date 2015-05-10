@@ -5,11 +5,12 @@
     <class>com.yahoo.sql4d.indexeragent.meta.beans.DataSource</class>
     <class>com.yahoo.sql4d.indexeragent.meta.beans.StatusTrail</class>
     <properties>
+      <!-- The following jdbc properties could be overriden in the base properties passed to the Agent.-->
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/indexerDB;create=true"/>
       <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
       <!-- Connection Pool -->
