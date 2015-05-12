@@ -49,15 +49,16 @@ public class Agent {
         config = ConfigFactory.parseFile(new File(args[0])).resolve();
         dbHandler = new DBHandler();
         log.info("Indexer Agent configuration {}", config);
-        Agent agent = new Agent();
+        final Agent agent = new Agent();
         agent.master.tell(BOOT_FROM_SQLS, null);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
                 try {
+                    agent.master.tell(STOP_TICKING, null);
                     Thread.currentThread().join();
                 } catch (InterruptedException ex) {
-                    log.error("Exception while waiting for system shutdonw {}", ex);
+                    log.error("Exception while waiting for system shutdown {}", ex);
                 }
             }
         });
