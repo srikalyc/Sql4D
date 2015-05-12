@@ -22,7 +22,7 @@ import javax.persistence.Table;
  * @author srikalyan
  */
 @Entity
-@Table(name = "DataSource")
+@Table(name = "StatusTrail")
 public class StatusTrail {
     @Id
     @GeneratedValue

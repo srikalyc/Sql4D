@@ -48,11 +48,19 @@ public class Agent {
         }
         config = ConfigFactory.parseFile(new File(args[0])).resolve();
         dbHandler = new DBHandler();
-        log.info("{}", config);
-        //dbHandler.addOrUpdateDataSource(new DataSource().setDataSource("vmeta").setStartTime(1431125400000L).setEndTime(1431135500000L).setSpinFromTime(1431125500000L).setStatus(JobStatus.not_done).setFrequency(JobFreq.minute));
-        //System.out.println(dbHandler.getAllDataSources());
+        log.info("Indexer Agent configuration {}", config);
         Agent agent = new Agent();
         agent.master.tell(BOOT_FROM_SQLS, null);
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Thread.currentThread().join();
+                } catch (InterruptedException ex) {
+                    log.error("Exception while waiting for system shutdonw {}", ex);
+                }
+            }
+        });
     }
     
     public static DBHandler db() {
@@ -85,7 +93,7 @@ public class Agent {
         return getConfigAsInt("slaTime", 300);
     }
     public static int getTaskAttemptDelay() {
-        return getConfigAsInt("taskAttemptDelay", 60);
+        return getConfigAsInt("taskAttemptDelay", 90);
     }
     public static int getRetryDelay() {
         return getConfigAsInt("retryDelay", 60);

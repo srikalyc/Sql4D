@@ -16,6 +16,7 @@ CREATE TABLE DataSource (
     templatePath VARCHAR(256) NOT NULL,
     delimiter VARCHAR(4) NOT NULL,
     listDelimiter VARCHAR(4) NOT NULL,
+    templateJson VARCHAR(2000) NOT NULL,
     CONSTRAINT dataSource_pk PRIMARY KEY (id)
 ) ;
 

@@ -39,7 +39,7 @@ public class MainActor extends UntypedActor {
     
     private static final Logger log = LoggerFactory.getLogger(MainActor.class);
     private static final int INITIAL_DELAY = 1;// In secs
-    private static final int WORK_GENERATE_INTERVAL = 3600;// In secs
+    private static final int WORK_GENERATE_INTERVAL = 120;// In secs
     private static final int WORK_ASSIGN_INTERVAL = 60;// In secs
     private final int MAX_CONCURRENCY;// # of workers.
 

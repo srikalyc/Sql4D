@@ -102,30 +102,36 @@ public class SqlFileSniffer extends FileSniffer {
         DataSource ds = new DataSource();
         switch(insertPgm.getStmntType()) {
             case INSERT:
-                BasicInsertMeta stmt = (BasicInsertMeta)insertPgm.nthStmnt(0);
+                BasicInsertMeta stmt = (BasicInsertMeta)insertPgm.nthStmnt(0);                
                 Interval interval = stmt.granularitySpec.interval;
+                // Round to nearest hour(zero out the mins, secs and millis)
+                long startTime = getDateTime(interval.startTime).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).getMillis();
                 ds.setName(stmt.dataSource).
                         setDelimiter(stmt.delimiter).
                         setListDelimiter(stmt.listDelimiter).
                         setTemplatePath(stmt.dataPath).
-                        setStartTime(getDateTime(interval.startTime).getMillis()).
-                        setSpinFromTime(getDateTime(interval.startTime).getMillis()).
+                        setStartTime(startTime).
+                        setSpinFromTime(startTime).
                         setFrequency(JobFreq.valueOf(stmt.granularitySpec.gran)).
                         setEndTime(getDateTime(interval.endTime).getMillis()).
-                        setStatus(JobStatus.not_done);
+                        setStatus(JobStatus.not_done).
+                        setTemplateJson(stmt.getJson().toString());
                 break;
             case INSERT_HADOOP:
                 BatchInsertMeta bStmt = (BatchInsertMeta)insertPgm.nthStmnt(0);
                 Interval bInterval = bStmt.granularitySpec.interval;
+                // Round to nearest hour(zero out the mins, secs and millis)
+                long startBTime = getDateTime(bInterval.startTime).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0).getMillis();
                 ds.setName(bStmt.dataSource).
                         setDelimiter(bStmt.delimiter).
                         setListDelimiter(bStmt.listDelimiter).
                         setTemplatePath(bStmt.inputSpec.getRawPath()).
-                        setStartTime(getDateTime(bInterval.startTime).getMillis()).
-                        setSpinFromTime(getDateTime(bInterval.startTime).getMillis()).
+                        setStartTime(startBTime).
+                        setSpinFromTime(startBTime).
                         setFrequency(JobFreq.valueOf(bStmt.granularitySpec.gran)).
                         setEndTime(getDateTime(bInterval.endTime).getMillis()).
-                        setStatus(JobStatus.not_done);
+                        setStatus(JobStatus.not_done).
+                        setTemplateJson(bStmt.getJson().toString());
                 break;
             case INSERT_REALTIME:
                 log.error("Realtime insert currently unsupported {}", pgm);

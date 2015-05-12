@@ -23,8 +23,8 @@ import org.joda.time.DateTimeZone;
  */
 public class Utils {
 
-    private static final DecimalFormat twoFormat = new DecimalFormat("##");
-    private static final DecimalFormat fourFormat = new DecimalFormat("####");
+    private static final DecimalFormat twoFormat = new DecimalFormat("00");
+    private static final DecimalFormat fourFormat = new DecimalFormat("0000");
 
     /**
      * I/p          ->       O/p
@@ -39,6 +39,27 @@ public class Utils {
         return nthDateOf(dateStr, 0, 0);
     }
 
+    public static String year(DateTime dt) {
+        return fourFormat.format(dt.getYear());
+    }
+
+    public static String month(DateTime dt) {
+        return twoFormat.format(dt.getMonthOfYear());
+    }
+    
+    public static String day(DateTime dt) {
+        return twoFormat.format(dt.getDayOfMonth());
+    }
+
+    public static String hour(DateTime dt) {
+        return twoFormat.format(dt.getHourOfDay());
+    }
+
+    public static String mins(DateTime dt) {
+        return twoFormat.format(dt.getMinuteOfHour());
+    }
+    
+    
     /**
      * 
      * @param dateStr

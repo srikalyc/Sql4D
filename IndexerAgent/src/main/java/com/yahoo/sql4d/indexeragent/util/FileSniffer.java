@@ -32,6 +32,7 @@ public abstract class FileSniffer {
     private final String fileExtension;
     private WatchService watcher;
     private final AtomicBoolean stopSniff = new AtomicBoolean(false);
+    private Thread snifferThread;
     
     public FileSniffer(String pathToSniff, String fileExtension) {
         sniffPath = Paths.get(pathToSniff);
@@ -45,40 +46,46 @@ public abstract class FileSniffer {
     }
     
     public void startSniffing() {
-        while (!stopSniff.get()) {            
-            try {
-                WatchKey watckKey = watcher.take();// Blocks here                
-                for (WatchEvent<?> event : watckKey.pollEvents()) {
-                    log.info("Event Kind : {}", event.kind());
-                    if (event.kind() == OVERFLOW) {// If event is lost/discarded.
-                        continue;
+        snifferThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!stopSniff.get()) {            
+                    try {
+                        WatchKey watckKey = watcher.take();// Blocks here                
+                        for (WatchEvent<?> event : watckKey.pollEvents()) {
+                            log.info("Event Kind : {}", event.kind());
+                            if (event.kind() == OVERFLOW) {// If event is lost/discarded.
+                                continue;
+                            }
+                            log.info("Event: {}", event.context().toString());
+                            if (event.context().toString().endsWith(fileExtension) && (event.context() instanceof Path)) {
+                                Path fullPath = Paths.get(sniffPath.toString(), ((Path)event.context()).getFileName().toString());
+                                if (event.kind() == ENTRY_CREATE) {
+                                    log.info("New file found: {}", event.context().toString());
+                                    onCreate(fullPath);
+                                }
+                                if (event.kind() == ENTRY_DELETE) {
+                                    log.info("File {} deleted.", event.context().toString());
+                                    onDelete(fullPath);
+                                }
+                                if (event.kind() == ENTRY_MODIFY) {
+                                    log.info("File {} modified.", event.context().toString());
+                                    onModify(fullPath);
+                                }
+                            }
+                        }
+                        if (!watckKey.reset()) {
+                            log.error("Watch key has become invalid !!");
+                            stopSniff.set(true);
+                        }
+                    } catch (InterruptedException ex) {
+                        log.error("Exception while sniffing {}", ex);
+                        stopSniff.set(true);
                     }
-                    log.info("Event: {}", event.context().toString());
-                    if (event.context().toString().endsWith(fileExtension) && (event.context() instanceof Path)) {
-                        Path fullPath = Paths.get(sniffPath.toString(), ((Path)event.context()).getFileName().toString());
-                        if (event.kind() == ENTRY_CREATE) {
-                            log.info("New file found: {}", event.context().toString());
-                            onCreate(fullPath);
-                        }
-                        if (event.kind() == ENTRY_DELETE) {
-                            log.info("File {} deleted.", event.context().toString());
-                            onDelete(fullPath);
-                        }
-                        if (event.kind() == ENTRY_MODIFY) {
-                            log.info("File {} modified.", event.context().toString());
-                            onModify(fullPath);
-                        }
-                    }
-                }
-                if (!watckKey.reset()) {
-                    log.error("Watch key has become invalid !!");
-                    stopSniff.set(true);
-                }
-            } catch (InterruptedException ex) {
-                log.error("Exception while sniffing {}", ex);
-                stopSniff.set(true);
+                }     
             }
-        }     
+        });
+        snifferThread.start();
     }
     
     public void stopSniffing() {

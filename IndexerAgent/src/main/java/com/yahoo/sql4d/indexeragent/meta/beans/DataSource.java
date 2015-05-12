@@ -37,6 +37,7 @@ public class DataSource {
     private String templatePath;
     private String delimiter;
     private String listDelimiter;
+    private String templateJson;
     
     public DataSource setId(int id) {
         this.id = id;
@@ -88,6 +89,11 @@ public class DataSource {
         return this;
     }
 
+    public DataSource setTemplateJson(String templateJson) {
+        this.templateJson = templateJson;
+        return this;
+    }
+    
     public int getId() {
         return id;
     }
@@ -128,6 +134,10 @@ public class DataSource {
         return listDelimiter;
     }
 
+    public String getTemplateJson() {
+        return templateJson;
+    }
+    
     public void updateFrom(DataSource ds) {
         setName(ds.getName());
         setStartTime(ds.getStartTime());
@@ -138,11 +148,12 @@ public class DataSource {
         setTemplatePath(ds.getTemplatePath());
         setDelimiter(ds.getDelimiter());
         setListDelimiter(ds.getListDelimiter());
+        setTemplateJson(ds.getTemplateJson());
     }
     
     @Override
     public String toString() {
-        return String.format("%d %s %d %d %d %s %s %s %s %s", id, name, startTime, spinFromTime, endTime, frequency, status, templatePath, delimiter, listDelimiter);
+        return String.format("%d %s %d %d %d %s %s %s %s %s %s", id, name, startTime, spinFromTime, endTime, frequency, status, templatePath, delimiter, listDelimiter, templateJson);
     }
         
 }
