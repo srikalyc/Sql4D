@@ -16,14 +16,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import static com.yahoo.sql4d.indexeragent.Agent.*;
 /**
  *
  * @author srikalyan
  */
 @Entity
 @Table(name = "StatusTrail")
-public class StatusTrail {
+public class StatusTrail implements Comparable<StatusTrail> {
     @Id
     @GeneratedValue
     private int id;
@@ -32,7 +32,7 @@ public class StatusTrail {
     private String status;
     private int givenUp;
     private int attemptsDone;
-    private String fullPath;
+    private String taskId;// This is the druid indexer taskId.
     
     public StatusTrail setId(int id) {
         this.id = id;
@@ -61,14 +61,16 @@ public class StatusTrail {
     
     public StatusTrail setAttemptsDone(int attemptsDone) {
         this.attemptsDone = attemptsDone;
+        if (attemptsDone >= getMaxTaskAttempts()) {
+            setGivenUp(1);
+        }
         return this;
     }
 
-    public StatusTrail setFullPath(String fullPath) {
-        this.fullPath = fullPath;
+    public StatusTrail setTaskId(String taskId) {
+        this.taskId = taskId;
         return this;
     }
-
     
     public int getId() {
         return id;
@@ -94,20 +96,30 @@ public class StatusTrail {
         return attemptsDone;
     }
 
-    public String getFullPath() {
-        return fullPath;
+    public String getTaskId() {
+        return taskId;
     }
-
+    
     public void updateFrom(StatusTrail st) {
+        setDataSourceId(st.getDataSourceId());        
         setNominalTime(st.getNominalTime());        
         setStatus(JobStatus.valueOf(st.getStatus()));
         setGivenUp(st.getGivenUp());
         setAttemptsDone(st.getAttemptsDone());
-        setFullPath(st.getFullPath());
+        setTaskId(st.getTaskId());
     }
     
     @Override
     public String toString() {
-        return String.format("%d %d %d %s %d %d %s", id, dataSourceId, nominalTime, status, givenUp, attemptsDone, fullPath);
+        return String.format("%d %d %d %s %d %d %s", id, dataSourceId, nominalTime, status, givenUp, attemptsDone, taskId);
+    }
+
+    @Override
+    public int compareTo(StatusTrail other) {
+        if (getId() == other.getId()) {
+            return 0;// We assume if id's are same then their nominal times are as well.
+        }// This way if a table was being ingested into for a long time and a new table gets added
+        // for with a requirement for historical data ingestion then it is given its fair share.
+        return -((int)(getNominalTime() - other.getNominalTime()) + getId() - other.getId());
     }
 }

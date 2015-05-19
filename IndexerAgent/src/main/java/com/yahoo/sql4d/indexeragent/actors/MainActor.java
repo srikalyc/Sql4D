@@ -38,17 +38,22 @@ import scala.concurrent.duration.FiniteDuration;
 public class MainActor extends UntypedActor {
     
     private static final Logger log = LoggerFactory.getLogger(MainActor.class);
-    private static final int INITIAL_DELAY = 1;// In secs
-    private static final int WORK_GENERATE_INTERVAL = 120;// In secs
-    private static final int WORK_ASSIGN_INTERVAL = 60;// In secs
+    private static final int INITIAL_WORK_GENERATE_DELAY = 1;// In secs
+    private static final int INITIAL_WORK_ASSIGNER_DELAY = 2;// In secs
+    private static final int INITIAL_WORK_TRACKER_DELAY = 3;// In secs
+    private static final int WORK_GENERATE_INTERVAL = 15;// In secs
+    private static final int WORK_ASSIGN_INTERVAL = 15;// In secs
+    private static final int WORK_TRACKER_INTERVAL = 15;// In secs
     private final int MAX_CONCURRENCY;// # of workers.
 
     private static ActorRef workerRouter;
     
     private final Scheduler scheduler;
-    // The following 2 are crons.
+    // The following 3 are crons.
     private Cancellable workInstanceGenerator;
     private Cancellable workAssigner;
+    private Cancellable workProgressTracker;
+    
     // The following is an observer(observes changes to druid sql files)
     private FileSniffer sqlSniffer;//Allows to dynamically add/remove/modify more tables by adding sql files without bringing down Agent.
 
@@ -80,10 +85,12 @@ public class MainActor extends UntypedActor {
                 break;
             case START_TICKING:
                 log.info("Started ticking ...");
-                workInstanceGenerator = scheduler.schedule(secs(INITIAL_DELAY), secs(WORK_GENERATE_INTERVAL),
+                workInstanceGenerator = scheduler.schedule(secs(INITIAL_WORK_GENERATE_DELAY), secs(WORK_GENERATE_INTERVAL),
                             getSelf(), GENERATE_WORK, getContext().dispatcher(), null);
-                workAssigner = scheduler.schedule(secs(INITIAL_DELAY), secs(WORK_ASSIGN_INTERVAL),
+                workAssigner = scheduler.schedule(secs(INITIAL_WORK_ASSIGNER_DELAY), secs(WORK_ASSIGN_INTERVAL),
                             getSelf(), EXECUTE_WORK, getContext().dispatcher(), null);
+                workProgressTracker = scheduler.schedule(secs(INITIAL_WORK_ASSIGNER_DELAY), secs(WORK_TRACKER_INTERVAL),
+                            getSelf(), TRACK_WORK, getContext().dispatcher(), null);
                 break;
             case GENERATE_WORK:
                 workerRouter.tell(GENERATE_WORK, getSelf());
@@ -91,10 +98,14 @@ public class MainActor extends UntypedActor {
             case EXECUTE_WORK:
                 workerRouter.tell(EXECUTE_WORK, getSelf());
                 break;
+            case TRACK_WORK:
+                workerRouter.tell(TRACK_WORK, getSelf());
+                break;
             case STOP_TICKING:
                 log.info("Stopped ticking ...");
                 workInstanceGenerator.cancel();
                 workAssigner.cancel();
+                workProgressTracker.cancel();
                 sqlSniffer.stopSniffing();
                 break;  
             default:

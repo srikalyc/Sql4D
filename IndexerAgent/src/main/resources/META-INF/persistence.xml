@@ -13,12 +13,13 @@
       <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
+      <property name="hibernate.connection.autocommit" value="false"/>
       <!-- Connection Pool -->
       <property name="hibernate.c3p0.min_size" value="5"/>
-      <property name="hibernate.c3p0.max_size" value="20"/>
-      <property name="hibernate.c3p0.timeout" value="500"/>
-      <property name="hibernate.c3p0.max_statements" value="50"/>
-      <property name="hibernate.c3p0.idle_test_period" value="2000"/>
+      <property name="hibernate.c3p0.max_size" value="50"/>
+      <property name="hibernate.c3p0.timeout" value="60"/><!-- In seconds-->
+      <property name="hibernate.c3p0.max_statements" value="50"/><!-- # of prepared statements that is cached-->
+      <property name="hibernate.c3p0.idle_test_period" value="2"/><!-- In seconds-->
       <!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/indexerDB?autoReconnectForPools=true" />-->
       <!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
       <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />-->

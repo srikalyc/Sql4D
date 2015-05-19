@@ -16,5 +16,5 @@ package com.yahoo.sql4d.indexeragent.actors;
  * @author srikalyan
  */
 public enum MessageTypes { 
-    BOOT_FROM_SQLS, START_TICKING, GENERATE_WORK, EXECUTE_WORK, STOP_TICKING
+    BOOT_FROM_SQLS, START_TICKING, GENERATE_WORK, EXECUTE_WORK, TRACK_WORK, STOP_TICKING
 }

@@ -22,14 +22,31 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static com.yahoo.sql4d.indexeragent.meta.Utils.*;
+import static com.yahoo.sql4d.indexeragent.DruidMeta.*;
+import com.yahoo.sql4d.indexeragent.util.UniquePriorityQueue;
+import com.yahoo.sql4d.sql4ddriver.DDataSource;
+import com.yahoo.sql4d.sql4ddriver.Joiner4All;
+import com.yahoo.sql4d.sql4ddriver.Mapper4All;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
+import scala.util.Either;
 
 /**
- *
+ * Generates work, executes and tracks them upon receiving appropriate instructions from master.
  * @author srikalyan
  */
 public class WorkerActor extends UntypedActor {
     private static final Logger log = LoggerFactory.getLogger(WorkerActor.class);
+    private static final DateTimeFormatter isoFormat = ISODateTimeFormat.dateTime().withZoneUTC();
+    private final UniquePriorityQueue<StatusTrail> newWorkQueue = new UniquePriorityQueue<>();
+    private final UniquePriorityQueue<StatusTrail> inProgressWorkQueue = new UniquePriorityQueue<>();
+    private final DDataSource druidDriver;
+    
     public WorkerActor() {
+        druidDriver = new DDataSource(getBrokerHost(), getBrokerPort(), 
+                getCoordinatorHost(), getCoordinatorPort(), 
+                getOverlordHost(), getOverlordPort());
     }
 
     @Override
@@ -41,11 +58,12 @@ public class WorkerActor extends UntypedActor {
         switch((MessageTypes)message) {
             case GENERATE_WORK:
                 generateWork();
-                log.info("{} need to generate some work {}",hashCode(), message);
                 break;
             case EXECUTE_WORK:
                 executeWork();
-                log.debug("{} need to execute some work {}",hashCode(), message);
+                break;
+            case TRACK_WORK:
+                checkInProgressWork();
                 break;
             default:
                 throw new UnsupportedOperationException("Worker received unknown message ." + message);                    
@@ -66,13 +84,12 @@ public class WorkerActor extends UntypedActor {
             //If startTime = spinOffTime = 00 hr. If now - getTaskAttemptDelay() = 03 hr, and job is hourly job then
             // The following will materialize 00, 01, 02 , 03 adds them to StatusTrail, updates the spinnOff Time to 03.
             // NOTE: All the above times should be within endTime.
-            while (now - getTaskAttemptDelay() > currentSpinOffTime && currentSpinOffTime <= ds.getEndTime()) {                                
+            while (now - getTaskAttemptDelayInMillis() > currentSpinOffTime && currentSpinOffTime <= ds.getEndTime()) {                                
                 StatusTrail st = new StatusTrail().setNominalTime(currentSpinOffTime).
                         setAttemptsDone(0).
                         setDataSourceId(ds.getId()).
                         setGivenUp(0).
-                        setStatus(JobStatus.not_done).
-                        setFullPath(materializeTemplate(ds.getTemplatePath(), currentSpinOffTime));
+                        setStatus(JobStatus.not_done);
                 db().addOrUpdateStatusTrail(st);
                 currentSpinOffTime += JobFreq.valueOf(ds.getFrequency()).inMillis();
                 log.info("Generated work : {}", st);
@@ -89,16 +106,65 @@ public class WorkerActor extends UntypedActor {
      * Run the jobs which are eligible to run.
      */
     private void executeWork() {
-        
+        newWorkQueue.addAll(db().getAllIncompleteTasks());
+        StatusTrail st = null;        
+        while ((st = newWorkQueue.poll()) != null) {
+            log.info("New task {}", st);
+            DataSource ds = db().getDataSource(st.getDataSourceId());//TODO: Cache the DataSource table.
+            String frozenSql = materializeTemplate(ds.getTemplateSql(), st.getNominalTime(), st.getNominalTime(), st.getNominalTime() + JobFreq.valueOf(ds.getFrequency()).inMillis());
+            log.info("Sql is {}", frozenSql);
+            Either<String, Either<Joiner4All, Mapper4All>> result = druidDriver.query(frozenSql, null, null, false, "sql", true);
+            if (result.isLeft()) {
+                String taskId = result.left().get();// Because we forced async mode we will get back taskId.
+                log.info("Submitted task {} to overlord ", taskId);
+                st.setTaskId(taskId);
+                st.setStatus(JobStatus.in_progress);
+                db().addOrUpdateStatusTrail(st);
+            } else {// Something wrong. Insert always returns left.
+                log.error("Got weird result (expected to run insert) {}", result.right().get());
+            }
+        }
     }
     
-    public String materializeTemplate(String template, long timestamp) {
-        DateTime dt = new DateTime(timestamp);
+    /**
+     * Run the jobs which are eligible to run.
+     */
+    private void checkInProgressWork() {
+        inProgressWorkQueue.addAll(db().getAllInprogressTasks());
+        StatusTrail st = null;        
+        while ((st = inProgressWorkQueue.poll()) != null) {
+            switch(druidDriver.pollIndexerTaskStatus(st.getTaskId())) {
+                case SUCCESS:
+                    st.setStatus(JobStatus.done);
+                    st.setAttemptsDone(st.getAttemptsDone() + 1);// This will also set givenUp.
+                    db().addOrUpdateStatusTrail(st);
+                    log.info("Task {} succeeded.", st);
+                    break;
+                case FAILED:
+                    st.setStatus(JobStatus.not_done);
+                    st.setAttemptsDone(st.getAttemptsDone() + 1);// This will also set givenUp.
+                    db().addOrUpdateStatusTrail(st);
+                    log.info("Task {} failed.", st);
+                    break;
+                case RUNNING:
+                    log.info("Task {} in progress.", st);
+                    break;
+                case UNKNOWN:
+                    log.info("Task {} status unknown.", st);
+                    break;
+            }            
+        }
+    }
+
+    private String materializeTemplate(String template, long timestamp, long start, long end) {
+        DateTime dt = new DateTime(timestamp, DateTimeZone.UTC);
         return template.replaceAll("\\{YEAR\\}", year(dt)).
                 replaceAll("\\{YEAR\\}", year(dt)).
                 replaceAll("\\{MONTH\\}", month(dt)).
                 replaceAll("\\{DAY\\}", day(dt)).
                 replaceAll("\\{HOUR\\}", hour(dt)).
-                replaceAll("\\{MIN\\}", mins(dt));
+                replaceAll("\\{MIN\\}", mins(dt)).
+                replaceAll(":startTime", isoFormat.print(start)).
+                replaceAll(":endTime", isoFormat.print(end));
     }    
 }

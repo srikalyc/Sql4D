@@ -37,7 +37,7 @@ public class DataSource {
     private String templatePath;
     private String delimiter;
     private String listDelimiter;
-    private String templateJson;
+    private String templateSql;
     
     public DataSource setId(int id) {
         this.id = id;
@@ -89,8 +89,8 @@ public class DataSource {
         return this;
     }
 
-    public DataSource setTemplateJson(String templateJson) {
-        this.templateJson = templateJson;
+    public DataSource setTemplateSql(String templateSql) {
+        this.templateSql = templateSql;
         return this;
     }
     
@@ -134,8 +134,8 @@ public class DataSource {
         return listDelimiter;
     }
 
-    public String getTemplateJson() {
-        return templateJson;
+    public String getTemplateSql() {
+        return templateSql;
     }
     
     public void updateFrom(DataSource ds) {
@@ -148,12 +148,12 @@ public class DataSource {
         setTemplatePath(ds.getTemplatePath());
         setDelimiter(ds.getDelimiter());
         setListDelimiter(ds.getListDelimiter());
-        setTemplateJson(ds.getTemplateJson());
+        setTemplateSql(ds.getTemplateSql());
     }
     
     @Override
     public String toString() {
-        return String.format("%d %s %d %d %d %s %s %s %s %s %s", id, name, startTime, spinFromTime, endTime, frequency, status, templatePath, delimiter, listDelimiter, templateJson);
+        return String.format("%d %s %d %d %d %s %s %s %s %s %s", id, name, startTime, spinFromTime, endTime, frequency, status, templatePath, delimiter, listDelimiter, templateSql);
     }
         
 }

@@ -115,7 +115,7 @@ public class SqlFileSniffer extends FileSniffer {
                         setFrequency(JobFreq.valueOf(stmt.granularitySpec.gran)).
                         setEndTime(getDateTime(interval.endTime).getMillis()).
                         setStatus(JobStatus.not_done).
-                        setTemplateJson(stmt.getJson().toString());
+                        setTemplateSql(templatizeSql(insertStmntStr, interval));
                 break;
             case INSERT_HADOOP:
                 BatchInsertMeta bStmt = (BatchInsertMeta)insertPgm.nthStmnt(0);
@@ -131,12 +131,17 @@ public class SqlFileSniffer extends FileSniffer {
                         setFrequency(JobFreq.valueOf(bStmt.granularitySpec.gran)).
                         setEndTime(getDateTime(bInterval.endTime).getMillis()).
                         setStatus(JobStatus.not_done).
-                        setTemplateJson(bStmt.getJson().toString());
+                        setTemplateSql(templatizeSql(insertStmntStr, bInterval));
                 break;
             case INSERT_REALTIME:
                 log.error("Realtime insert currently unsupported {}", pgm);
                 return null;
         }
         return ds;
+    }
+    
+    private String templatizeSql(String payload, Interval interval) {
+        return payload.replaceAll(interval.startTime, ":startTime").
+                replaceAll(interval.endTime, ":endTime");
     }
 }

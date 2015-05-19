@@ -93,19 +93,40 @@ public class DBHandler {
         return resultList.isEmpty()?null:resultList.get(0);
     }
     
+    public DataSource getDataSource(int id) {
+        return em.find(DataSource.class, id);
+    }
     /**
      * Tasks whose status:not_done and givenUp:zero
      * @param tableName
-     * @param maxNominalTime
      * @return 
      */
-    public List<StatusTrail> getIncompleteTasks(String tableName, long maxNominalTime) {
+    public List<StatusTrail> getIncompleteTasks(String tableName) {
         DataSource ds = getDataSource(tableName);
         return em.createQuery("SELECT st FROM StatusTrail st WHERE st.dataSourceId = :dataSourceId "
-                + "AND st.status == 'not_done' AND st.givenUp == 0 AND st.nominalTime <= :nominalTime", 
+                + "AND st.status = 'not_done' AND st.givenUp = 0", 
                 StatusTrail.class).
-                setParameter("dataSourceId", ds.getId()).
-                setParameter("nominalTime", maxNominalTime).getResultList();        
+                setParameter("dataSourceId", ds.getId()).getResultList();        
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public List<StatusTrail> getAllIncompleteTasks() {
+        return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
+                + " st.status = 'not_done' AND st.givenUp = 0", 
+                StatusTrail.class).getResultList();        
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public List<StatusTrail> getAllInprogressTasks() {
+        return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
+                + " st.status = 'in_progress' AND st.givenUp = 0", 
+                StatusTrail.class).getResultList();        
     }
 
     /**

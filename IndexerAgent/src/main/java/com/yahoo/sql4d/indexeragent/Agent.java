@@ -46,7 +46,11 @@ public class Agent {
             log.error("Need path to properties file to boot...");
             System.exit(1);
         }
-        config = ConfigFactory.parseFile(new File(args[0])).resolve();
+        init(args[0]);
+    }
+    
+    private static void init(String configFile) {
+        config = ConfigFactory.parseFile(new File(configFile)).resolve();
         dbHandler = new DBHandler();
         log.info("Indexer Agent configuration {}", config);
         final Agent agent = new Agent();
@@ -74,7 +78,7 @@ public class Agent {
         } catch(Exception e) {
             return defaultVal;
         }
-    }
+    }    
 
     public static String getConfigAsStr(String key, String defaultVal) {
         try {
@@ -87,18 +91,35 @@ public class Agent {
     public static int getMaxTaskAttempts() {
         return getConfigAsInt("maxRetries", 3);
     }    
+    
     public static int getMaxParallelTasks() {
         return getConfigAsInt("maxParallelTasks", 30);
     }
+    
     public static int getSlaTime() {
         return getConfigAsInt("slaTime", 300);
     }
+
+    public static int getSlaTimeInMillis() {
+        return getSlaTime() * 60 * 1000;
+    }
+
     public static int getTaskAttemptDelay() {
         return getConfigAsInt("taskAttemptDelay", 90);
     }
+    
+    public static int getTaskAttemptDelayInMillis() {
+        return getTaskAttemptDelay() * 60 * 1000;
+    }
+
     public static int getRetryDelay() {
         return getConfigAsInt("retryDelay", 60);
     }
+
+    public static int getRetryDelayInMillis() {
+        return getRetryDelay() * 60 * 1000;
+    }
+
     public static String getDsqlsPath() {
         return getConfigAsStr("sqlsPath", System.getenv("user.home") + File.separator + "dsqls");
     }        
