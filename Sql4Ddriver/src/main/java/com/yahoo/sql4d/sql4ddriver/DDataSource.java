@@ -274,6 +274,22 @@ public class DDataSource {
      * @return 
      */
     public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, NamedParameters namedParams, Map<String, String> reqHeaders, boolean printToConsole, String queryMode) {
+        return query(sqlOrJsonQuery, namedParams, reqHeaders, printToConsole, queryMode, false);
+    }
+    
+    /**
+     * Use this to force asynchronous mode(indexer tasks). You can then call
+     * {@link DDataSource#pollIndexerTaskStatus(java.lang.String) } to poll and find
+     * status. Hard limit on any task is 2 hours. See {@link OverlordAccessor} for more.
+     * @param sqlOrJsonQuery
+     * @param namedParams
+     * @param reqHeaders
+     * @param printToConsole
+     * @param queryMode
+     * @param forceAsync
+     * @return 
+     */
+    public Either<String, Either<Joiner4All, Mapper4All>> query(String sqlOrJsonQuery, NamedParameters namedParams, Map<String, String> reqHeaders, boolean printToConsole, String queryMode, boolean forceAsync) {
         if ("json".equals(queryMode)) {//TODO : #19
             Either<String, Either<Mapper4All, JSONArray>> result = broker.fireQuery(sqlOrJsonQuery, reqHeaders, true);
             if (result.isLeft()) return new Left<>(result.left().get());
@@ -295,10 +311,14 @@ public class DDataSource {
         } else if (pgm instanceof InsertProgram) {
             InsertProgram iPgm = (InsertProgram) pgm;
             iPgm.print(printToConsole);
-            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), reqHeaders, iPgm.waitForCompletion));
+            return new Left<>(overlord.fireTask(iPgm.nthStmnt(0), reqHeaders, !forceAsync && iPgm.waitForCompletion));
         } else {
             return selectRows((QueryProgram) pgm, reqHeaders, printToConsole);
         }
+    }
+    
+    public TaskStatus pollIndexerTaskStatus(String taskId) {
+        return overlord.pollTaskStatus(taskId, null);
     }
     
     private String deleteRows(DeleteProgram dPgm, Map<String, String> reqHeaders, boolean printToConsole) {

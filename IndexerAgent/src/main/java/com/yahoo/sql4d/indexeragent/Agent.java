@@ -17,8 +17,11 @@ import akka.actor.Props;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.yahoo.sql4d.indexeragent.actors.MainActor;
+import com.yahoo.sql4d.indexeragent.meta.DBHandler;
 import java.io.File;
-import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static com.yahoo.sql4d.indexeragent.actors.MessageTypes.*;
 
 /**
  * Agent starts a MainActor actor which orchestrates indexing tasks. Sends a "startTicking"
@@ -26,30 +29,99 @@ import java.util.Properties;
  * @author srikalyan
  */
 public class Agent {
-    private static final String propsFileLocation = System.getProperty("user.home") + File.separator + ".dindexer";
-    private static final Properties globalProperties = new Properties();//TODO: Load from $HOME/.dindexer
-    private static final String SQLS_FOLDER_BASE = "sqlsFolderBase";
+    private static final Logger log = LoggerFactory.getLogger(Agent.class);
 
     private final ActorSystem system;
     private final ActorRef master;
-    private static final Config config;
+    public static Config config;
+    private static DBHandler dbHandler;
     
-    static {
-        //TODO: Properties loaded from .dindexer overrides the below.
-        config = ConfigFactory.parseFile(new File(propsFileLocation)).resolve();
-        System.out.println(config.getString("my.organization.project.name"));
-        System.out.println(config.getString("my.organization.project.description"));
-        globalProperties.setProperty(SQLS_FOLDER_BASE, System.getProperty("user.home") + File.separator + "dsqls");
-    }
-
     public Agent() {
         system = ActorSystem.create("IndexerAgentSystem");
         master = system.actorOf(Props.create(MainActor.class), "master");
     }
     
     public static void main(String[] args) {
-         Agent agent = new Agent();
-         agent.master.tell("startTicking", null);
+        if (args.length != 1) {
+            log.error("Need path to properties file to boot...");
+            System.exit(1);
+        }
+        init(args[0]);
+    }
+    
+    private static void init(String configFile) {
+        config = ConfigFactory.parseFile(new File(configFile)).resolve();
+        dbHandler = new DBHandler();
+        log.info("Indexer Agent configuration {}", config);
+        final Agent agent = new Agent();
+        agent.master.tell(BOOT_FROM_SQLS, null);
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                try {
+                    agent.master.tell(STOP_TICKING, null);
+                    Thread.currentThread().join();
+                } catch (InterruptedException ex) {
+                    log.error("Exception while waiting for system shutdown {}", ex);
+                }
+            }
+        });
+    }
+    
+    public static DBHandler db() {
+        return dbHandler;
+    }
+    
+    public static int getConfigAsInt(String key, int defaultVal) {
+        try {
+            return config.getInt(key);
+        } catch(Exception e) {
+            return defaultVal;
+        }
+    }    
+
+    public static String getConfigAsStr(String key, String defaultVal) {
+        try {
+            return config.getString(key);
+        } catch(Exception e) {
+            return defaultVal;
+        }
     }
 
+    public static int getMaxTaskAttempts() {
+        return getConfigAsInt("maxRetries", 3);
+    }    
+    
+    public static int getMaxParallelTasks() {
+        return getConfigAsInt("maxParallelTasks", 30);
+    }
+    
+    public static int getSlaTime() {
+        return getConfigAsInt("slaTime", 300);
+    }
+
+    public static int getSlaTimeInMillis() {
+        return getSlaTime() * 60 * 1000;
+    }
+
+    public static int getTaskAttemptDelay() {
+        return getConfigAsInt("taskAttemptDelay", 90);
+    }
+    
+    public static int getTaskAttemptDelayInMillis() {
+        return getTaskAttemptDelay() * 60 * 1000;
+    }
+
+    public static int getRetryDelay() {
+        return getConfigAsInt("retryDelay", 60);
+    }
+
+    public static int getRetryDelayInMillis() {
+        return getRetryDelay() * 60 * 1000;
+    }
+
+    public static String getDsqlsPath() {
+        return getConfigAsStr("sqlsPath", System.getenv("user.home") + File.separator + "dsqls");
+    }        
+    
 }

@@ -9,12 +9,12 @@
  * governing permissions and limitations under the License. See accompanying
  * LICENSE file.
  */
-package com.yahoo.sql4d.indexeragent.sql;
+package com.yahoo.sql4d.indexeragent.actors;
 
 /**
- *
+ * Akka Messages.
  * @author srikalyan
  */
-public interface MySqlDAODictionary {
-    
+public enum MessageTypes { 
+    BOOT_FROM_SQLS, START_TICKING, GENERATE_WORK, EXECUTE_WORK, TRACK_WORK, STOP_TICKING
 }

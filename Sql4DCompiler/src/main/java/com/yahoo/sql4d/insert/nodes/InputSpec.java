@@ -25,11 +25,13 @@ import org.json.JSONObject;
  * @author srikalyan
  */
 public class InputSpec {
+    private String rawPath = null;
     private String path = null;//TODO: This should be a list(right now we support only one path)
     public String type = "static";//TODO: Check out what are other types.
     private String filePattern = null;
     
     public void setPath(String p) {
+        this.rawPath = p;
         path = p;
         int starIndex = p.indexOf("*");
         if (starIndex >= 0) {
@@ -37,7 +39,15 @@ public class InputSpec {
             path = p.substring(0, starIndex);
         }
     }
-    
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getRawPath() {
+        return rawPath;
+    }
+        
     @Override
     public String toString() {
         return String.format(getJson().toString(2));

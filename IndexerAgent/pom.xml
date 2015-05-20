@@ -4,13 +4,18 @@
     <parent>
         <groupId>com.yahoo.sql4d</groupId>
         <artifactId>Sql4D</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <version>4.0.0</version>
+    <version>4.0.2</version>
     <artifactId>IndexerAgent</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>com.yahoo.sql4d</groupId>
+            <artifactId>Sql4Ddriver</artifactId>
+            <version>4.0.2</version>
+        </dependency>
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -40,7 +45,21 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>3.6.9.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>3.6.9.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -91,6 +110,18 @@
             <artifactId>config</artifactId>
             <version>1.2.1</version>
         </dependency> 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>       
+        <dependency><!-- For RollingFileAppender to function -->
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+        </dependency>
     </dependencies>
     
     <properties>

@@ -17,6 +17,7 @@ import static java.lang.String.format;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -27,7 +28,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
     private final String overlordUrl = "http://%s:%d/druid/indexer/v1/task";
     private final String overlordHost;
     private int overlordPort = 8087;
-    private static final int MAX_WAIT_TIME = 60000;// 30 secs
+    private static final int TWO_HOURS_IN_MILLIS = 7200000;// 7200 secs
     
     public OverlordAccessor(String host, int port, int maxConns) {
         super(host, port, maxConns);
@@ -54,14 +55,14 @@ public class OverlordAccessor extends DruidNodeAccessor {
             String strResp = IOUtils.toString(resp.getEntity().getContent());
             JSONObject respJson = new JSONObject(strResp);
             if (wait) {
-                if (waitForTask(respJson.getString("task"), reqHeaders)) {
+                if (waitForTask(respJson.getString("task"), reqHeaders, TWO_HOURS_IN_MILLIS)) {
                     return "Task completed successfully , task Id " + respJson;
                 }
                 return "Task failed/still running, task Id " + respJson;
             } else {
-                return "Task submitted , task Id " + respJson;
+                return respJson.getString("task");
             }
-        } catch (IOException ex) {
+        } catch (IOException | IllegalStateException | JSONException ex) {
             ex.printStackTrace();
             return format("Http %s \n", ex);
         } finally {
@@ -70,18 +71,19 @@ public class OverlordAccessor extends DruidNodeAccessor {
     }
 
     /**
-     *
+     * 
      * @param taskId
      * @param reqHeaders
+     * @param maxWaitTime
      * @return
      */
-    public boolean waitForTask(String taskId, Map<String, String> reqHeaders) {
+    public boolean waitForTask(String taskId, Map<String, String> reqHeaders, int maxWaitTime) {
         long startT = System.currentTimeMillis();
         long endT = System.currentTimeMillis();
         boolean finalStatus = false;
         String statusStr = "Task failed ..";
         OUTER:
-        while (endT - startT < MAX_WAIT_TIME) {
+        while (endT - startT < maxWaitTime) {
             CloseableHttpResponse resp = null;
             String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
             try {
@@ -112,4 +114,36 @@ public class OverlordAccessor extends DruidNodeAccessor {
         return finalStatus;
     }
 
+    /**
+     * Poll for task's status for tasks fired with 0 wait time.
+     * @param taskId
+     * @param reqHeaders
+     * @return 
+     */
+    public TaskStatus pollTaskStatus(String taskId, Map<String, String> reqHeaders) {
+        CloseableHttpResponse resp = null;
+        String url = format("%s/%s/status", format(overlordUrl, overlordHost, overlordPort), taskId);
+        try {
+            resp = get(url, reqHeaders);
+            //TODO: Check for nulls in the following.
+            JSONObject respJson = new JSONObject(IOUtils.toString(resp.getEntity().getContent()));
+            JSONObject status = respJson.optJSONObject("status");
+            if (status != null && null != status.getString("status")) {
+                switch (status.getString("status")) {
+                    case "SUCCESS":
+                        return TaskStatus.SUCCESS;
+                    case "RUNNING":
+                        return TaskStatus.RUNNING;
+                    default:
+                        return TaskStatus.FAILED;
+                }
+            }
+        } catch (IOException ex) {
+            System.err.println(format("Http %s \n", ex));
+        } finally {
+            returnClient(resp);
+        }// Happens when result looks like {"task":"null"} which has no status(because such a task itself does not exist)
+        return TaskStatus.UNKNOWN;
+    }
+    
 }

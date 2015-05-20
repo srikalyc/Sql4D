@@ -22,23 +22,23 @@ import org.joda.time.format.DateTimeFormatter;
  */
 public class TimeUtils {
 
-    private static final DateTimeFormatter yearOnlyFormat = DateTimeFormat.forPattern("yyyy").withOffsetParsed();
-    private static final DateTimeFormatter yearMonthOnlyFormat = DateTimeFormat.forPattern("yyyy-MM").withOffsetParsed();
-    private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd").withOffsetParsed();
+    private static final DateTimeFormatter yearOnlyFormat = DateTimeFormat.forPattern("yyyy").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter yearMonthOnlyFormat = DateTimeFormat.forPattern("yyyy-MM").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd").withOffsetParsed().withZoneUTC();
 
-    private static final DateTimeFormatter dateHourWithSpaceOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH").withOffsetParsed();
-    private static final DateTimeFormatter dateHourMinWithSpaceOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeAndTZWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ssZZ").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecAndTZWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSSZZ").withOffsetParsed();
+    private static final DateTimeFormatter dateHourWithSpaceOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateHourMinWithSpaceOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeWithSubSecWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeAndTZWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ssZZ").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeWithSubSecAndTZWithSpaceFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSSZZ").withOffsetParsed().withZoneUTC();
 
-    private static final DateTimeFormatter dateHourOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH").withOffsetParsed();
-    private static final DateTimeFormatter dateHourMinOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ").withOffsetParsed();
-    private static final DateTimeFormatter dateTimeWithSubSecAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZ").withOffsetParsed();
+    private static final DateTimeFormatter dateHourOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateHourMinOnlyFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeWithSubSecFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZZ").withOffsetParsed().withZoneUTC();
+    private static final DateTimeFormatter dateTimeWithSubSecAndTZFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZ").withOffsetParsed().withZoneUTC();
     
     private static final ImmutableMap<DateTimeFormatter, String> formatterMap = ImmutableMap.<DateTimeFormatter, String>builder().put(
             yearOnlyFormat, "yyyy").put(

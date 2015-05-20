@@ -12,9 +12,35 @@
 package com.yahoo.sql4d.indexeragent.meta;
 
 /**
- *
+ * 
  * @author srikalyan
  */
 public enum JobFreq {
-    FIFTEEN_MINUTELY, THIRTY_MINUTELY, HOURLY, DAILY, MONTHLY
+    minute,fifteen_minute,thirty_minute,hour,day;
+    
+    public int inMinutes() {
+        int mins = 0;
+        switch(this) {
+            case minute:
+                mins = 1;
+                break;
+            case fifteen_minute:
+                mins = 15;
+                break;
+            case thirty_minute:
+                mins = 30;
+                break;
+            case hour:
+                mins = 60;
+                break;
+            case day:
+                mins = 1440;
+                break;
+        }
+        return mins;
+    }
+    
+    public int inMillis() {
+        return inMinutes() * 60 * 1000;
+    }
 }
