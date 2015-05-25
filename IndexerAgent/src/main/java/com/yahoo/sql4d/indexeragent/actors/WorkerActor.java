@@ -39,8 +39,8 @@ import scala.util.Either;
 public class WorkerActor extends UntypedActor {
     private static final Logger log = LoggerFactory.getLogger(WorkerActor.class);
     private static final DateTimeFormatter isoFormat = ISODateTimeFormat.dateTime().withZoneUTC();
-    private final UniquePriorityQueue<StatusTrail> newWorkQueue = new UniquePriorityQueue<>();
-    private final UniquePriorityQueue<StatusTrail> inProgressWorkQueue = new UniquePriorityQueue<>();
+    private static final UniquePriorityQueue<StatusTrail> newWorkQueue = new UniquePriorityQueue<>();
+    private static final UniquePriorityQueue<StatusTrail> inProgressWorkQueue = new UniquePriorityQueue<>();
     private final DDataSource druidDriver;
     
     public WorkerActor() {
