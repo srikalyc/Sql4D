@@ -39,11 +39,11 @@ public class MainActor extends UntypedActor {
     
     private static final Logger log = LoggerFactory.getLogger(MainActor.class);
     private static final int INITIAL_WORK_GENERATE_DELAY = 1;// In secs
-    private static final int INITIAL_WORK_ASSIGNER_DELAY = 2;// In secs
+    private static final int INITIAL_WORK_EXECUTE_DELAY = 2;// In secs
     private static final int INITIAL_WORK_TRACKER_DELAY = 3;// In secs
-    private static final int WORK_GENERATE_INTERVAL = 15;// In secs
-    private static final int WORK_ASSIGN_INTERVAL = 15;// In secs
-    private static final int WORK_TRACKER_INTERVAL = 15;// In secs
+    private final int WORK_GENERATE_INTERVAL;// In secs
+    private final int WORK_EXECUTE_INTERVAL;// In secs
+    private final int WORK_TRACKER_INTERVAL;// In secs
     private final int MAX_CONCURRENCY;// # of workers.
 
     private static ActorRef workerRouter;
@@ -51,7 +51,7 @@ public class MainActor extends UntypedActor {
     private final Scheduler scheduler;
     // The following 3 are crons.
     private Cancellable workInstanceGenerator;
-    private Cancellable workAssigner;
+    private Cancellable workExecutor;
     private Cancellable workProgressTracker;
     
     // The following is an observer(observes changes to druid sql files)
@@ -62,6 +62,9 @@ public class MainActor extends UntypedActor {
         workerRouter = getContext().actorOf(Props.create(WorkerActor.class).
                 withRouter(new RoundRobinPool(MAX_CONCURRENCY)), "workerRouter");    
         scheduler = getContext().system().scheduler();
+        WORK_GENERATE_INTERVAL = getWorkGenerateInterval();
+        WORK_EXECUTE_INTERVAL = getWorkExecuteInterval();
+        WORK_TRACKER_INTERVAL = getWorkTrackInterval();
     }
     
 
@@ -86,8 +89,8 @@ public class MainActor extends UntypedActor {
             case START_TICKING:
                 log.info("Started ticking ...");
                 workInstanceGenerator = schedule(INITIAL_WORK_GENERATE_DELAY, WORK_GENERATE_INTERVAL, GENERATE_WORK);
-                workAssigner = schedule(INITIAL_WORK_ASSIGNER_DELAY, WORK_ASSIGN_INTERVAL, EXECUTE_WORK);
-                workProgressTracker = schedule(INITIAL_WORK_ASSIGNER_DELAY, WORK_TRACKER_INTERVAL, TRACK_WORK);
+                workExecutor = schedule(INITIAL_WORK_EXECUTE_DELAY, WORK_EXECUTE_INTERVAL, EXECUTE_WORK);
+                workProgressTracker = schedule(INITIAL_WORK_TRACKER_DELAY, WORK_TRACKER_INTERVAL, TRACK_WORK);
                 break;
             case GENERATE_WORK:
                 workerRouter.tell(GENERATE_WORK, getSelf());
@@ -101,7 +104,7 @@ public class MainActor extends UntypedActor {
             case STOP_TICKING:
                 log.info("Stopped ticking ...");
                 workInstanceGenerator.cancel();
-                workAssigner.cancel();
+                workExecutor.cancel();
                 workProgressTracker.cancel();
                 sqlSniffer.stopSniffing();
                 break;  

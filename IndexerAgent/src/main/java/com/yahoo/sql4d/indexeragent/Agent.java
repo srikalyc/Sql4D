@@ -123,5 +123,16 @@ public class Agent {
     public static String getDsqlsPath() {
         return getConfigAsStr("sqlsPath", System.getenv("user.home") + File.separator + "dsqls");
     }        
+
+    public static int getWorkGenerateInterval() {
+        return getConfigAsInt("work.generate.interval", 15);
+    }
     
+    public static int getWorkExecuteInterval() {
+        return getConfigAsInt("work.execute.interval", 15);
+    }
+
+    public static int getWorkTrackInterval() {
+        return getConfigAsInt("work.track.interval", 15);
+    }
 }
