@@ -84,7 +84,7 @@ public class WorkerActor extends UntypedActor {
             //If startTime = spinOffTime = 00 hr. If now - getTaskAttemptDelay() = 03 hr, and job is hourly job then
             // The following will materialize 00, 01, 02 , 03 adds them to StatusTrail, updates the spinnOff Time to 03.
             // NOTE: All the above times should be within endTime.
-            while (now - getTaskAttemptDelayInMillis() > currentSpinOffTime && currentSpinOffTime <= ds.getEndTime()) {                                
+            while (now > (currentSpinOffTime + getTaskAttemptDelayInMillis()) && currentSpinOffTime <= ds.getEndTime()) {                                
                 StatusTrail st = new StatusTrail().setNominalTime(currentSpinOffTime).
                         setAttemptsDone(0).
                         setDataSourceId(ds.getId()).
