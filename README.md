@@ -21,6 +21,11 @@ Java JDBC access to druid
 =========================
 http://druidwithsql.tumblr.com/post/111014674922/accessing-druid-through-java-driver-interface
 
+Indexer Agent to ingest periodic data sets
+==========================================
+https://github.com/srikalyc/Sql4D/wiki/Using-Indexer-Agent-for-batch-ingestion
+
+
 Compatibiltiy with druid
 =========================
   If you are using Druid 0.6.X then use Sql4D version 3.5.6 from maven central (or) clone the Sql4D, and build against the tag v3.5.6 .
