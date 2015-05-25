@@ -13,6 +13,8 @@ package com.yahoo.sql4d.indexeragent.util;
 
 import java.util.Collection;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A priority Queue that disallows duplicates. Thread safe.
@@ -20,19 +22,30 @@ import java.util.concurrent.PriorityBlockingQueue;
  * @param <T>
  */
 public class UniquePriorityQueue<T> extends PriorityBlockingQueue<T> {
-
+    private final Lock writeLock = new ReentrantLock();
     @Override
     public boolean add(T e) {
-        if (!contains(e)) {
-            return super.add(e);
+        try {
+            writeLock.lock();
+            if (!contains(e)) {
+                return super.add(e);
+            }
+        } finally {
+            writeLock.unlock();
         }
         return false;
     }
 
     @Override
     public boolean offer(T e) {
-        if (!contains(e)) {
-            return super.offer(e);
+        try {
+            writeLock.lock();
+            if (!contains(e)) {
+                return super.offer(e);
+            }
+        }
+         finally {
+            writeLock.unlock();
         }
         return false;
     }

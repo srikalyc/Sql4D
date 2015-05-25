@@ -29,12 +29,12 @@ import com.yahoo.sql4d.indexeragent.sql.SqlFileSniffer;
 import com.yahoo.sql4d.indexeragent.util.FileSniffer;
 import java.nio.file.Paths;
 import scala.concurrent.duration.FiniteDuration;
+
 /**
  * Upon receiving "startSignal" the MainActor actor starts a scheduler and schedules
  tasks(if any) to Workers by sending Work messages.
  * @author srikalyan
  */
-
 public class MainActor extends UntypedActor {
     
     private static final Logger log = LoggerFactory.getLogger(MainActor.class);
@@ -85,12 +85,9 @@ public class MainActor extends UntypedActor {
                 break;
             case START_TICKING:
                 log.info("Started ticking ...");
-                workInstanceGenerator = scheduler.schedule(secs(INITIAL_WORK_GENERATE_DELAY), secs(WORK_GENERATE_INTERVAL),
-                            getSelf(), GENERATE_WORK, getContext().dispatcher(), null);
-                workAssigner = scheduler.schedule(secs(INITIAL_WORK_ASSIGNER_DELAY), secs(WORK_ASSIGN_INTERVAL),
-                            getSelf(), EXECUTE_WORK, getContext().dispatcher(), null);
-                workProgressTracker = scheduler.schedule(secs(INITIAL_WORK_ASSIGNER_DELAY), secs(WORK_TRACKER_INTERVAL),
-                            getSelf(), TRACK_WORK, getContext().dispatcher(), null);
+                workInstanceGenerator = schedule(INITIAL_WORK_GENERATE_DELAY, WORK_GENERATE_INTERVAL, GENERATE_WORK);
+                workAssigner = schedule(INITIAL_WORK_ASSIGNER_DELAY, WORK_ASSIGN_INTERVAL, EXECUTE_WORK);
+                workProgressTracker = schedule(INITIAL_WORK_ASSIGNER_DELAY, WORK_TRACKER_INTERVAL, TRACK_WORK);
                 break;
             case GENERATE_WORK:
                 workerRouter.tell(GENERATE_WORK, getSelf());
@@ -112,7 +109,17 @@ public class MainActor extends UntypedActor {
                 unhandled(message);
         }
     }
-    
+    /**
+     * Schedules messages ever interval seconds.
+     * @param initialDelay
+     * @param interval
+     * @param message
+     * @return 
+     */
+    private Cancellable schedule(int initialDelay, int interval, MessageTypes message) {
+        return scheduler.schedule(secs(initialDelay), secs(interval),
+                            getSelf(), message, getContext().dispatcher(), null);
+    }
     /**
      * Read off a bunch of sql files expecting insert statements within them.
      */

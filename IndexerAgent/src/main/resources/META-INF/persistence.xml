@@ -7,12 +7,15 @@
     <properties>
       <!-- The following jdbc properties could be overriden in the base properties passed to the Agent.-->
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/indexerDB;create=true"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+<!--      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/indexerDB?autoReconnectForPools=true" />
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
       <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.password" value=""/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
+<!--      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />-->
       <property name="hibernate.connection.autocommit" value="false"/>
       <!-- Connection Pool -->
       <property name="hibernate.c3p0.min_size" value="5"/>
@@ -20,9 +23,6 @@
       <property name="hibernate.c3p0.timeout" value="60"/><!-- In seconds-->
       <property name="hibernate.c3p0.max_statements" value="50"/><!-- # of prepared statements that is cached-->
       <property name="hibernate.c3p0.idle_test_period" value="2"/><!-- In seconds-->
-      <!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/indexerDB?autoReconnectForPools=true" />-->
-      <!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
-      <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />-->
     </properties>
   </persistence-unit>
 </persistence>
