@@ -14,8 +14,7 @@ package com.yahoo.sql4d.sql4ddriver;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.http.HttpHost;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -31,6 +30,8 @@ import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.pool.PoolStats;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Base class for all druid types. 
@@ -38,6 +39,7 @@ import org.apache.http.util.EntityUtils;
  * @author srikalyan
  */
 public class DruidNodeAccessor {
+    private static final Logger log = LoggerFactory.getLogger(DruidNodeAccessor.class);
     private static String PROXY_HOST;
     private static int PROXY_PORT;
     private static final PoolingHttpClientConnectionManager pool = new PoolingHttpClientConnectionManager();
@@ -108,14 +110,14 @@ public class DruidNodeAccessor {
             }
         } catch (IOException ex) {
             //TODO: Could not consume response completely. This is serious because the client will not be returned back to pool.
-            Logger.getLogger(DruidNodeAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("Error returning client to pool {}", ExceptionUtils.getStackTrace(ex));
         }
     }
     public void shutdown() {
         try {
             pool.close();
         } catch (Exception ex) {
-            Logger.getLogger(DruidNodeAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("Error shutting down the NodeAccessor for druid {}", ExceptionUtils.getStackTrace(ex));
         }
     }
     

@@ -71,7 +71,7 @@ public class SqlFileSniffer extends FileSniffer {
             DataSource ds = processSql(insertStmnt);
             DataSource existingDs = db().getDataSource(ds.getName());
             if (existingDs == null) {//We never saw this table before.
-                db().addOrUpdateDataSource(ds);
+                db().addDataSource(ds);
                 return;
             }
             // If startTime/endTime/templatePath changed then we should update the table.
@@ -80,7 +80,7 @@ public class SqlFileSniffer extends FileSniffer {
                     !existingDs.getTemplatePath().equals(ds.getTemplatePath())) {
                 // We have to reuse the existing entity bean(else update will fail).
                 existingDs.updateFrom(ds);
-                db().addOrUpdateDataSource(existingDs);
+                db().updateDataSource(existingDs);
             }                 
         } catch (IOException ex) {
             log.error("Exception while loading druid sql file {} : {}", file, ex);

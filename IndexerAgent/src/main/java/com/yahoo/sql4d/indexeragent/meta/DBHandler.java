@@ -21,6 +21,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +31,8 @@ import org.slf4j.LoggerFactory;
 public class DBHandler {
     private static final Logger log = LoggerFactory.getLogger(DBHandler.class);
     private final EntityManagerFactory emFactory;
-    private final EntityManager em;
+    
+    enum Action { ADD, UPDATE, DELETE }
     
     public DBHandler() {
         String host = getHost();
@@ -63,50 +65,104 @@ public class DBHandler {
                 "javax.persistence.jdbc.driver", driver);
         log.info("Overriding database configuration : {}", configOverride);
         emFactory = Persistence.createEntityManagerFactory("indexerAgent", configOverride);
-        em = emFactory.createEntityManager();
     }
     
-    public void addOrUpdateDataSource(DataSource ds) {
-        em.getTransaction().begin();
-        em.persist(ds);
-        em.getTransaction().commit();
+    private EntityManager getEntityManager() {
+        return emFactory.createEntityManager();
+    }
+    
+    private void addUpdateDeleteEntity(Object entity, Action action) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            switch (action) {
+                case ADD:
+                    em.persist(entity);
+                    break;
+                case UPDATE:
+                    em.merge(entity);
+                    break;
+                case DELETE:
+                    em.remove(entity);
+                    break;
+            }
+        } catch(RuntimeException e) {            
+            log.error("Something wrong persisting/merging/removing entity {}, so rolling back . Exception is {}", entity, ExceptionUtils.getStackTrace(e));
+            em.getTransaction().rollback();
+        } finally {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().commit();
+            }  
+            em.close();
+        }
+    }
+
+    public void addDataSource(DataSource ds) {
+        addUpdateDeleteEntity(ds, Action.ADD);
+    }
+    
+    public void updateDataSource(DataSource ds) {
+        addUpdateDeleteEntity(ds, Action.UPDATE);
     }
     
     public void removeDataSource(DataSource ds) {
-        em.getTransaction().begin();
-        em.remove(ds);
-        em.getTransaction().commit();
+        addUpdateDeleteEntity(ds, Action.DELETE);
     }
 
-    public void addOrUpdateStatusTrail(StatusTrail st) {
-        em.getTransaction().begin();
-        em.persist(st);
-        em.getTransaction().commit();
+    public void addStatusTrail(StatusTrail st) {
+        addUpdateDeleteEntity(st, Action.ADD);
+    }
+
+    public void updateStatusTrail(StatusTrail st) {
+        addUpdateDeleteEntity(st, Action.UPDATE);
+    }
+    
+    public void removeStatusTrail(StatusTrail st) {
+        addUpdateDeleteEntity(st, Action.DELETE);
     }
 
     public List<DataSource> getAllDataSources() {
-        return em.createQuery("SELECT ds FROM DataSource ds", DataSource.class).getResultList();        
+        EntityManager em = getEntityManager();
+        try {        
+            return em.createQuery("SELECT ds FROM DataSource ds", DataSource.class).getResultList();        
+        } finally {
+            em.close();
+        }
     }
 
     public DataSource getDataSource(String tableName) {
-        List<DataSource> resultList = em.createQuery("SELECT ds FROM DataSource ds WHERE ds.name = :name", DataSource.class).setParameter("name", tableName).getResultList();        
-        return resultList.isEmpty()?null:resultList.get(0);
+        EntityManager em = getEntityManager();
+        try {        
+            List<DataSource> resultList = em.createQuery("SELECT ds FROM DataSource ds WHERE ds.name = :name", DataSource.class).setParameter("name", tableName).getResultList();        
+            return resultList.isEmpty()?null:resultList.get(0);
+        } finally {
+            em.close();
+        }
     }
     
     public DataSource getDataSource(int id) {
-        return em.find(DataSource.class, id);
+        EntityManager em = getEntityManager();
+        try {        
+            return em.find(DataSource.class, id);
+        } finally {
+            em.close();
+        }
     }
     /**
      * Tasks whose status:not_done and givenUp:zero
-     * @param tableName
+     * @param ds
      * @return 
      */
-    public List<StatusTrail> getIncompleteTasks(String tableName) {
-        DataSource ds = getDataSource(tableName);
-        return em.createQuery("SELECT st FROM StatusTrail st WHERE st.dataSourceId = :dataSourceId "
-                + "AND st.status = 'not_done' AND st.givenUp = 0", 
-                StatusTrail.class).
-                setParameter("dataSourceId", ds.getId()).getResultList();        
+    public List<StatusTrail> getIncompleteTasks(DataSource ds) {
+        EntityManager em = getEntityManager();
+        try {        
+            return em.createQuery("SELECT st FROM StatusTrail st WHERE st.dataSourceId = :dataSourceId "
+                    + "AND st.status = 'not_done' AND st.givenUp = 0 ORDER BY st.id DESC", 
+                    StatusTrail.class).
+                    setParameter("dataSourceId", ds.getId()).getResultList();        
+        } finally {
+            em.close();
+        }
     }
 
     /**
@@ -114,9 +170,14 @@ public class DBHandler {
      * @return 
      */
     public List<StatusTrail> getAllIncompleteTasks() {
-        return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
-                + " st.status = 'not_done' AND st.givenUp = 0", 
-                StatusTrail.class).getResultList();        
+        EntityManager em = getEntityManager();
+        try {        
+            return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
+                    + " st.status = 'not_done' AND st.givenUp = 0 ORDER BY st.id DESC", 
+                    StatusTrail.class).getResultList();        
+        } finally {
+            em.close();
+        }
     }
 
     /**
@@ -124,9 +185,28 @@ public class DBHandler {
      * @return 
      */
     public List<StatusTrail> getAllInprogressTasks() {
-        return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
-                + " st.status = 'in_progress' AND st.givenUp = 0", 
-                StatusTrail.class).getResultList();        
+        EntityManager em = getEntityManager();
+        try {        
+            return em.createQuery("SELECT st FROM StatusTrail st WHERE  "
+                    + " st.status = 'in_progress' AND st.givenUp = 0", 
+                    StatusTrail.class).getResultList();        
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public long getInprogressTasksCount() {
+        EntityManager em = getEntityManager();
+        try {        
+            return (long)em.createQuery("SELECT COUNT(st.id) FROM StatusTrail st WHERE  "
+                    + " st.status = 'in_progress' AND st.givenUp = 0").getSingleResult();        
+        } finally {
+            em.close();
+        }
     }
 
     /**
@@ -138,7 +218,11 @@ public class DBHandler {
         st.setStatus(success ? JobStatus.done : JobStatus.not_done);
         st.setAttemptsDone(st.getAttemptsDone() + 1);
         st.setGivenUp(st.getAttemptsDone() >= getMaxTaskAttempts() ? 1 : 0);
-        addOrUpdateStatusTrail(st);
+        updateStatusTrail(st);
     }
 
+    public void shutdown() {
+        log.info("Shutting down and cleaning up database connections..");
+        emFactory.close();
+    }
 }

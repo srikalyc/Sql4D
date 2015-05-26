@@ -60,6 +60,7 @@ public class Agent {
             public void run() {
                 try {
                     agent.master.tell(STOP_TICKING, null);
+                    db().shutdown();
                     Thread.currentThread().join();
                 } catch (InterruptedException ex) {
                     log.error("Exception while waiting for system shutdown {}", ex);
@@ -92,8 +93,8 @@ public class Agent {
         return getConfigAsInt("maxRetries", 3);
     }    
     
-    public static int getMaxParallelTasks() {
-        return getConfigAsInt("maxParallelTasks", 30);
+    public static int getNumWorkers() {
+        return getConfigAsInt("numWorkers", 3);
     }
     
     public static int getSlaTime() {
@@ -128,10 +129,13 @@ public class Agent {
         return getConfigAsInt("work.generate.interval", 15);
     }
     
-    public static int getWorkExecuteInterval() {
-        return getConfigAsInt("work.execute.interval", 15);
+    public static int getWorkExecuteMsgsPerSec() {
+        return getConfigAsInt("work.execute.msgsPerSecond", 1);
     }
 
+    public static int getWorkExecuteMaxAtGivenTime() {
+        return getConfigAsInt("work.execute.maxAtGivenTime", 10);
+    }
     public static int getWorkTrackInterval() {
         return getConfigAsInt("work.track.interval", 15);
     }

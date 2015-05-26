@@ -23,10 +23,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static com.yahoo.sql4d.indexeragent.meta.Utils.*;
 import static com.yahoo.sql4d.indexeragent.DruidMeta.*;
-import com.yahoo.sql4d.indexeragent.util.UniquePriorityQueue;
+import com.yahoo.sql4d.indexeragent.util.UniqueOnlyQueue;
 import com.yahoo.sql4d.sql4ddriver.DDataSource;
 import com.yahoo.sql4d.sql4ddriver.Joiner4All;
 import com.yahoo.sql4d.sql4ddriver.Mapper4All;
+import java.util.ArrayList;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
@@ -39,8 +40,8 @@ import scala.util.Either;
 public class WorkerActor extends UntypedActor {
     private static final Logger log = LoggerFactory.getLogger(WorkerActor.class);
     private static final DateTimeFormatter isoFormat = ISODateTimeFormat.dateTime().withZoneUTC();
-    private static final UniquePriorityQueue<StatusTrail> newWorkQueue = new UniquePriorityQueue<>();
-    private static final UniquePriorityQueue<StatusTrail> inProgressWorkQueue = new UniquePriorityQueue<>();
+    private static final UniqueOnlyQueue<StatusTrail> newWorkQueue = new UniqueOnlyQueue<>();
+    private static final UniqueOnlyQueue<StatusTrail> inProgressWorkQueue = new UniqueOnlyQueue<>();
     private final DDataSource druidDriver;
     
     public WorkerActor() {
@@ -76,39 +77,45 @@ public class WorkerActor extends UntypedActor {
     private void generateWork() {
         List<DataSource> tables = db().getAllDataSources();
         long now = System.currentTimeMillis();
+        List<List<StatusTrail>> stPerDataSource = new ArrayList<>();
         for (DataSource ds:tables) {
+            if (ds.getStatus() == null) {
+                log.error("DataSource {}'s status is null", ds);
+                continue;
+            }
             if (JobStatus.valueOf(ds.getStatus()) == JobStatus.done) {                
                 continue;
             }
             long currentSpinOffTime = ds.getSpinFromTime();            
-            //If startTime = spinOffTime = 00 hr. If now - getTaskAttemptDelay() = 03 hr, and job is hourly job then
+            //If startTime = spinOffTime = 00 hr. If now = getTaskAttemptDelay() + 03 hr, and job is hourly job then
             // The following will materialize 00, 01, 02 , 03 adds them to StatusTrail, updates the spinnOff Time to 03.
             // NOTE: All the above times should be within endTime.
-            while (now > (currentSpinOffTime + getTaskAttemptDelayInMillis()) && currentSpinOffTime <= ds.getEndTime()) {                                
+            while (now > (currentSpinOffTime + getTaskAttemptDelayInMillis()) && currentSpinOffTime < ds.getEndTime()) {                                
                 StatusTrail st = new StatusTrail().setNominalTime(currentSpinOffTime).
                         setAttemptsDone(0).
                         setDataSourceId(ds.getId()).
                         setGivenUp(0).
                         setStatus(JobStatus.not_done);
-                db().addOrUpdateStatusTrail(st);
+                db().addStatusTrail(st);
                 currentSpinOffTime += JobFreq.valueOf(ds.getFrequency()).inMillis();
                 log.info("Generated work : {}", st);
             }
             if (currentSpinOffTime > ds.getEndTime()) {
                 ds.setStatus(JobStatus.done);
             }
+            stPerDataSource.add(db().getIncompleteTasks(ds));
             //Update the spinOff Time to point to time from which next set of materialization will happen.
-            db().addOrUpdateDataSource(ds.setSpinFromTime(currentSpinOffTime));
+            db().updateDataSource(ds.setSpinFromTime(currentSpinOffTime));
         }
+        newWorkQueue.mergeKLists(stPerDataSource);
     }
 
     /**
      * Run the jobs which are eligible to run.
      */
     private void executeWork() {
-        newWorkQueue.addAll(db().getAllIncompleteTasks());
         StatusTrail st = null;        
-        while ((st = newWorkQueue.poll()) != null) {
+        if ((st = newWorkQueue.removeFirst()) != null) {
             log.info("New task {}", st);
             DataSource ds = db().getDataSource(st.getDataSourceId());//TODO: Cache the DataSource table.
             String frozenSql = materializeTemplate(ds.getTemplateSql(), st.getNominalTime(), st.getNominalTime(), st.getNominalTime() + JobFreq.valueOf(ds.getFrequency()).inMillis());
@@ -119,7 +126,14 @@ public class WorkerActor extends UntypedActor {
                 log.info("Submitted task {} to overlord ", taskId);
                 st.setTaskId(taskId);
                 st.setStatus(JobStatus.in_progress);
-                db().addOrUpdateStatusTrail(st);
+                db().updateStatusTrail(st);
+                // Quite possible st may exist in Q- when an item is removed and executed
+                // during which time if work generator generates the same st and 
+                // updates Q because it still found the ST as not_done.
+                if (newWorkQueue.contains(st)) {
+                    newWorkQueue.remove(st);
+                    log.warn("newWorkQueue had one more entry for st {} which was just set to in_progress", st);
+                }                
             } else {// Something wrong. Insert always returns left.
                 log.error("Got weird result (expected to run insert) {}", result.right().get());
             }
@@ -132,18 +146,27 @@ public class WorkerActor extends UntypedActor {
     private void checkInProgressWork() {
         inProgressWorkQueue.addAll(db().getAllInprogressTasks());
         StatusTrail st = null;        
-        while ((st = inProgressWorkQueue.poll()) != null) {
+        while ((st = inProgressWorkQueue.removeFirst()) != null) {
+            if (st.getTaskId() == null) {
+                 log.info("Found task with null taskId {}.", st);
+                 st.setStatus(JobStatus.not_done).setAttemptsDone(0).setGivenUp(0);
+                 db().updateStatusTrail(st);
+                 log.info("Marked the status as not done to ensure it is resubmitted {}", st);
+                 continue;
+            }
             switch(druidDriver.pollIndexerTaskStatus(st.getTaskId())) {
                 case SUCCESS:
+                    newWorkQueue.remove(st);// Make sure.
                     st.setStatus(JobStatus.done);
                     st.setAttemptsDone(st.getAttemptsDone() + 1);// This will also set givenUp.
-                    db().addOrUpdateStatusTrail(st);
-                    log.info("Task {} succeeded.", st);
+                    db().updateStatusTrail(st);
+                    log.info("Task {} succeeded.", st);                    
                     break;
                 case FAILED:
+                    newWorkQueue.remove(st);// Make sure.
                     st.setStatus(JobStatus.not_done);
                     st.setAttemptsDone(st.getAttemptsDone() + 1);// This will also set givenUp.
-                    db().addOrUpdateStatusTrail(st);
+                    db().updateStatusTrail(st);
                     log.info("Task {} failed.", st);
                     break;
                 case RUNNING:
@@ -156,6 +179,7 @@ public class WorkerActor extends UntypedActor {
         }
     }
 
+    
     private String materializeTemplate(String template, long timestamp, long start, long end) {
         DateTime dt = new DateTime(timestamp, DateTimeZone.UTC);
         return template.replaceAll("\\{YEAR\\}", year(dt)).

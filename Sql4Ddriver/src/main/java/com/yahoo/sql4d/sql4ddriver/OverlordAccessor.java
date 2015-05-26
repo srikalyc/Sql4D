@@ -16,15 +16,20 @@ import java.io.IOException;
 import static java.lang.String.format;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Submit tasks to druid. Both Synchronous(with timeout) and asynchronous are supported.
  * @author srikalyan
  */
 public class OverlordAccessor extends DruidNodeAccessor {
+    private static final Logger log = LoggerFactory.getLogger(OverlordAccessor.class);
     private final String overlordUrl = "http://%s:%d/druid/indexer/v1/task";
     private final String overlordHost;
     private int overlordPort = 8087;
@@ -60,10 +65,15 @@ public class OverlordAccessor extends DruidNodeAccessor {
                 }
                 return "Task failed/still running, task Id " + respJson;
             } else {
+                String taskId = respJson.optString("task");
+                if (StringUtils.isBlank(taskId)) {
+                    log.error("Response has no taskId, Response body : {}", respJson);
+                    return null;
+                }
                 return respJson.getString("task");
             }
-        } catch (IOException | IllegalStateException | JSONException ex) {
-            ex.printStackTrace();
+        } catch (IOException | IllegalStateException | JSONException ex) {            
+            log.error("Error when firing task to overlord {}", ExceptionUtils.getStackTrace(ex));
             return format("Http %s \n", ex);
         } finally {
             returnClient(resp);
@@ -105,12 +115,12 @@ public class OverlordAccessor extends DruidNodeAccessor {
                     }
                 }
             } catch (IOException ex) {
-                System.err.println(format("Http %s \n", ex));
+                log.error("Error waiting for task {}", ExceptionUtils.getStackTrace(ex));
             } finally {
                 returnClient(resp);
             }
         }
-        System.err.println(statusStr);
+        log.info("Status : {}", statusStr);
         return finalStatus;
     }
 
@@ -139,7 +149,7 @@ public class OverlordAccessor extends DruidNodeAccessor {
                 }
             }
         } catch (IOException ex) {
-            System.err.println(format("Http %s \n", ex));
+            log.error("Error polling for task status {}", ExceptionUtils.getStackTrace(ex));
         } finally {
             returnClient(resp);
         }// Happens when result looks like {"task":"null"} which has no status(because such a task itself does not exist)

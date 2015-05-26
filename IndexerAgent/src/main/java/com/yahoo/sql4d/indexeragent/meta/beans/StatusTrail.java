@@ -115,11 +115,7 @@ public class StatusTrail implements Comparable<StatusTrail> {
     }
 
     @Override
-    public int compareTo(StatusTrail other) {
-        if (getId() == other.getId()) {
-            return 0;// We assume if id's are same then their nominal times are as well.
-        }// This way if a table was being ingested into for a long time and a new table gets added
-        // for with a requirement for historical data ingestion then it is given its fair share.
-        return -((int)(getNominalTime() - other.getNominalTime()) + getId() - other.getId());
+    public int compareTo(StatusTrail other) {        
+        return getId() - other.getId();
     }
 }

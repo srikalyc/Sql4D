@@ -61,8 +61,8 @@ CREATE TABLE DataSource (
 
 CREATE TABLE StatusTrail (
     id INT NOT NULL AUTO_INCREMENT,
-    dataSourceId INT,
-    nominalTime BIGINT,
+    dataSourceId INT NOT NULL,
+    nominalTime BIGINT NOT NULL,
     status VARCHAR(64) NOT NULL,
     givenUp INT DEFAULT 0, -- non-zero value means we have 'givenUp'
     attemptsDone INT DEFAULT 0, -- 'givenUp' is set to non-zero when attemptDone reaches max configured.
