@@ -89,13 +89,13 @@ public class UniqueOnlyQueue<T> extends LinkedHashSet<T> {
     }
     
     /**
-     * This method zips together all the lists. For ex: 
+     * This method first removes all existing entries and zips together all the lists. For ex: 
      * [[x1, x2, x3] [y1, y2] [z1] [d1, d2, d3]] -> [x1, y1, z1, d1, x2, y2, d2, x3, d3]
      * Assuming each list is per datasource and are sorted by id(latest on top) then
      * by zipping we are picking one latest from each data source.
      * @param kLists 
      */
-    public void mergeKLists(List<List<T>> kLists) {
+    public void clearAndMergeKLists(List<List<T>> kLists) {
         try {
             // Beauty of reentrant locks. The same thread is going to acquire the 
             // same lock again multiple times during add.
