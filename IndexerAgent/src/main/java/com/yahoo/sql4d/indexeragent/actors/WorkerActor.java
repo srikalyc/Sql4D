@@ -107,7 +107,7 @@ public class WorkerActor extends UntypedActor {
             //Update the spinOff Time to point to time from which next set of materialization will happen.
             db().updateDataSource(ds.setSpinFromTime(currentSpinOffTime));
         }
-        newWorkQueue.mergeKLists(stPerDataSource);
+        newWorkQueue.clearAndMergeKLists(stPerDataSource);
     }
 
     /**

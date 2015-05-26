@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Handles database interaction specifically for Indexer Agent.
  * @author srikalyan
  */
 public class DBHandler {
