@@ -18,6 +18,7 @@ import static java.nio.file.StandardWatchEventKinds.*;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,14 @@ public abstract class FileSniffer {
             public void run() {
                 while (!stopSniff.get()) {            
                     try {
-                        WatchKey watckKey = watcher.take();// Blocks here                
+                        // Could have done take() instead of poll() but that blocks indefinitely.                        
+                        WatchKey watckKey = watcher.poll(3, TimeUnit.SECONDS);                
+                        if (stopSniff.get()) {
+                            break;
+                        }
+                        if (watckKey == null) {
+                            continue;
+                        }
                         for (WatchEvent<?> event : watckKey.pollEvents()) {
                             log.info("Event Kind : {}", event.kind());
                             if (event.kind() == OVERFLOW) {// If event is lost/discarded.

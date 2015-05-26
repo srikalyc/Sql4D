@@ -27,7 +27,7 @@ public final class DruidMeta {
         return getConfigAsStr("druid.coordinator", "127.0.0.1:8081").split(COLON);
     }    
     private static String[] getOverlord() {
-        return getConfigAsStr("druid.broker", "127.0.0.1:8090").split(COLON);
+        return getConfigAsStr("druid.overlord", "127.0.0.1:8090").split(COLON);
     }    
     
     public static String getBrokerHost() {

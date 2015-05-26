@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
+import static java.lang.String.*;
 
 /**
  * Insert Meta for batch ingestions.
@@ -50,6 +51,7 @@ public class BatchInsertMeta extends InsertMeta {
     @Override
     public Map<String, Object> getDataMap() {
         return ImmutableMap.<String, Object>of(
+                "id", format("index_hadoop_%s_%d_%d", dataSource, System.currentTimeMillis(), System.nanoTime()),
                 "type", "index_hadoop",
                 "spec", getSpec());
     }
