@@ -6,8 +6,8 @@ Sql4D -> SQL interface to druid(see http://druid.io/ ), has 3 sub components
 
 Tutors
 ===========
-| Description        | Where to get from      | 
-| ------------------------------ |:-------------| 
+| Description             | Where to get from      | 
+| --------------------------------- |:-------------| 
 | Getting started guide         | https://github.com/srikalyc/Sql4D/wiki         |
 | A first look at druid with Sql         | http://druidwithsql.tumblr.com/post/98578718282/a-first-look-at-druid-with-sql  |
 | Insert and deleting data in druid with Sql         | http://druidwithsql.tumblr.com/post/108054375927/simple-insert-deleting-data-drop-table-in-druid |
@@ -17,7 +17,7 @@ Tutors
 
 Compatibiltiy with druid
 =========================
-| Druid Version        | SQL4D Version from Maven Central      | Comments      |
+| Druid Version        | SQL4D Version(Maven Central)      | Comments      |
 | ------------- |:-------------:| :-------------:| 
 | 0.6.X         | 3.X.X         | You could also instead clone the Sql4D, and build against the tag v3.5.6 |
 | 0.7.X         | 4.X.X         | You could also instead clone the Sql4D, and build against the master |
