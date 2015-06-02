@@ -31,7 +31,7 @@ Compatibiltiy with druid
 | Druid Version        | SQL4D Version from Maven Central      | Comments      |
 | ------------- |:-------------:| :-------------:| 
 | 0.6.X         | 3.X.X         | You could also instead clone the Sql4D, and build against the tag v3.5.6 |
-| 0.7.X         | centered      | You could also instead clone the Sql4D, and build against the master |
+| 0.7.X         | 4.X.X         | You could also instead clone the Sql4D, and build against the master |
 
   
 
