@@ -28,16 +28,12 @@ https://github.com/srikalyc/Sql4D/wiki/Using-Indexer-Agent-for-batch-ingestion
 
 Compatibiltiy with druid
 =========================
-  If you are using Druid 0.6.X then use Sql4D version 3.5.6 from maven central (or) clone the Sql4D, and build against the tag v3.5.6 .
-  If you are using Druid 0.7.X then use Sql4D version 4.0.0 from maven central (or) clone the Sql4D, and build against the master.
+| Druid Version        | SQL4D Version from Maven Central      | Comments      |
+| ------------- |:-------------:| :-------------:| 
+| 0.6.X         | 3.X.X         | You could also instead clone the Sql4D, and build against the tag v3.5.6 |
+| 0.7.X         | centered      | You could also instead clone the Sql4D, and build against the master |
 
-
-
-
-
-
-
-
+  
 
 NOTE: Sql4D/sql4ddriver/.../PrettyPrint.java contains a code snippet modified from a publication here: http://stackoverflow.com/questions/11383070/pretty-print-2d-array-in-java . The
  text/code is licensed under Creative Commons-BY-SA 3.0.
