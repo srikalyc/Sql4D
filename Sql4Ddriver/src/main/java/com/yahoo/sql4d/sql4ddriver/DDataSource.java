@@ -354,7 +354,7 @@ public class DDataSource {
     }
 
     private Either<String, Either<Joiner4All, Mapper4All>> selectRows(QueryProgram qPgm, Map<String, String> reqHeaders, boolean printToConsole) {
-        if (qPgm.numStmnts() > 2) return new Left<>("Currently join for more than 2 Sqls not supported....");
+        // if (qPgm.numStmnts() > 2) return new Left<>("Currently join for more than 2 Sqls not supported....");
         qPgm.print(printToConsole);
         Joiner4All joiner = null;
         if (qPgm.numStmnts() == 1) {

@@ -138,7 +138,7 @@ grandQuery returns [QueryProgram program]
 	     {program.addJoinType($j.text.toUpperCase());}
 	   WS? LPARAN WS? (s2=queryStmnt) {program.addStmnt(s2);} WS? RPARAN WS? ON 
 	   WS? LPARAN WS? (a=ID{ program.addJoinHook($a.text); }) (WS? ',' WS? a=ID{ program.addJoinHook($a.text); })*  WS? RPARAN 
-          )?
+          )*
 	  WS? OPT_SEMI_COLON? {}
 	;
 
