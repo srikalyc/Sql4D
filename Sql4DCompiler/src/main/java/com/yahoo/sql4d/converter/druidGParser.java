@@ -2386,7 +2386,7 @@ public class druidGParser extends Parser {
 
 
 	// $ANTLR start "grandQuery"
-	// druidG.g:134:1: grandQuery returns [QueryProgram program] : (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? ;
+	// druidG.g:134:1: grandQuery returns [QueryProgram program] : (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )* ( WS )? ( OPT_SEMI_COLON )? ;
 	public final QueryProgram grandQuery() throws RecognitionException {
 		QueryProgram program = null;
 
@@ -2398,8 +2398,8 @@ public class druidGParser extends Parser {
 
 		 program = null; 
 		try {
-			// druidG.g:136:2: ( (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )? )
-			// druidG.g:136:4: (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )? ( WS )? ( OPT_SEMI_COLON )?
+			// druidG.g:136:2: ( (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )* ( WS )? ( OPT_SEMI_COLON )? )
+			// druidG.g:136:4: (s1= queryStmnt ) ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )* ( WS )? ( OPT_SEMI_COLON )?
 			{
 			// druidG.g:136:4: (s1= queryStmnt )
 			// druidG.g:136:5: s1= queryStmnt
@@ -2411,16 +2411,20 @@ public class druidGParser extends Parser {
 			}
 
 			 program = new QueryProgram();program.addStmnt(s1); 
-			// druidG.g:137:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )?
-			int alt95=2;
-			int LA95_0 = input.LA(1);
-			if ( (LA95_0==WS) ) {
-				int LA95_1 = input.LA(2);
-				if ( (LA95_1==JOIN||LA95_1==LEFT_JOIN||LA95_1==RIGHT_JOIN) ) {
-					alt95=1;
+			// druidG.g:137:4: ( WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN )*
+			loop95:
+			while (true) {
+				int alt95=2;
+				int LA95_0 = input.LA(1);
+				if ( (LA95_0==WS) ) {
+					int LA95_1 = input.LA(2);
+					if ( (LA95_1==JOIN||LA95_1==LEFT_JOIN||LA95_1==RIGHT_JOIN) ) {
+						alt95=1;
+					}
+
 				}
-			}
-			switch (alt95) {
+
+				switch (alt95) {
 				case 1 :
 					// druidG.g:137:5: WS j= ( JOIN | LEFT_JOIN | RIGHT_JOIN ) ( WS )? LPARAN ( WS )? (s2= queryStmnt ) ( WS )? RPARAN ( WS )? ON ( WS )? LPARAN ( WS )? (a= ID ) ( ( WS )? ',' ( WS )? a= ID )* ( WS )? RPARAN
 					{
@@ -2635,6 +2639,9 @@ public class druidGParser extends Parser {
 					}
 					break;
 
+				default :
+					break loop95;
+				}
 			}
 
 			// druidG.g:142:4: ( WS )?
